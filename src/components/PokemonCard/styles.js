@@ -77,7 +77,6 @@ export const PokemonCardStyled = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     width: 146px;
     height: 38px;
     background-color: #ffffff;
