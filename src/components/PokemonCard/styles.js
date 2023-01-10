@@ -11,7 +11,7 @@ const fadeIn = keyframes`
 
 export const PokemonCardStyled = styled.div`
   padding: 16px;
-  width: 310px;
+  width: 280px;
   height: 180px;
   background-color: grey;
   border-radius: 12px;
@@ -45,11 +45,12 @@ export const PokemonCardStyled = styled.div`
   .name {
     text-transform: capitalize;
   }
-  .container.tipo {
-    width: 100px;
+  .container-tipo {
+    width: 150px;
+    display: flex;
     img {
       max-width: 100px;
-      height: 32px;
+      height: 24px;
       border-radius: 8px;
       overflow: hidden;
       border: 1px dashed #ffffff;
@@ -66,8 +67,8 @@ export const PokemonCardStyled = styled.div`
     width: 193px;
     height: 193px;
     position: absolute;
-    top: 0px;
-    right: -35px;
+    top: 5px;
+    right: -40px;
     z-index: 2;
     animation: ${fadeIn} 1.5s ease-in-out;
   }
