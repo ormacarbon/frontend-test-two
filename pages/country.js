@@ -1,10 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
+import hooks from "../utils/hooks";
 
 export default function Country() {
+	const { searchUniversitiesByCountry } = hooks();
 	const [countryName, setCountryName] = useState("");
+	const [universitiesResults, setUniversitiesResult] = useState([]);
 
-	const searchUniversities = () => {
-		//...
+	const searchUniversities = async (event) => {
+		event.preventDefault();
+		setUniversitiesResult(await searchUniversitiesByCountry(countryName));
 	};
 
 	return (
@@ -20,8 +24,26 @@ export default function Country() {
 				></input>
 				<br />
 				<br />
-				<button onClick={() => searchUniversities()}>Search</button>
+				<button onClick={(e) => searchUniversities(e)}>Search</button>
 			</form>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Country</th>
+						<th>Webpage</th>
+					</tr>
+				</thead>
+				<tbody>
+					{universitiesResults?.map((item, index) => (
+						<tr>
+							<td>{item?.name}</td>
+							<td>{item?.country}</td>
+							<td>{item?.web_pages[0]}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
 		</div>
 	);
 }
