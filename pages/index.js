@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "./api/api";
-import PokemonCard from "./components/PokemonCard";
+import PokemonCard from "../components/PokemonCard";
 import styles from "../styles/index.module.scss";
 
 export default function Home() {
