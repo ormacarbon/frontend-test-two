@@ -16,3 +16,17 @@ export const HeaderContainer = styled.header`
     padding: 2rem 2rem;
   }
 ` 
+
+export const ToggleTheme = styled.button`
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  svg {
+    color: ${(props) => props.theme.color};
+  }
+`
