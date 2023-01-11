@@ -6,6 +6,7 @@ export const StyledIndex = styled.main`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 33px;
   }
 
   .container-buttons {
@@ -13,6 +14,8 @@ export const StyledIndex = styled.main`
     width: 100vw;
     align-items: center;
     justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
     .button-pages {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
       height: 40px;
