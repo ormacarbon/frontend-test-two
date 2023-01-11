@@ -14,9 +14,9 @@ export const HeaderComponent = () => {
        <Navigation>
            <ul>
                <li><Link href='/'>Coins</Link></li>
-               <li><Link href='/'>Exchange</Link></li>
-               <li><Link href='/'>Derivatives</Link></li>
-               <li><Link href='/'>Nfts</Link></li>
+               <li><Link href='/exchange'>Exchange</Link></li>
+               <li><Link href='/derivatives'>Derivatives</Link></li>
+               <li><Link href='/nfts'>Nfts</Link></li>
            </ul>
        </Navigation>
 

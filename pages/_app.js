@@ -6,7 +6,6 @@ import Theme from "../styles/themes/Theme";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>  
         <ThemeStore>
           <Theme>
             <HeaderComponent/>
@@ -14,7 +13,6 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </Theme>
         </ThemeStore>
-    </>
   );
 }
 

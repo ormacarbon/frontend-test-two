@@ -6,21 +6,19 @@ export const Header = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1.3rem;
 `
 export const Container = styled.div`
     width: 100%;
     height: 70px;
-    max-width: 1100px;
+    max-width: 1700px;
     margin: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: ${props =>props.theme.primary};
-    background-color:${props =>props.theme.header} ;
-    border: 1px solid ${props =>props.theme.borderColor};
+    background-color:${props =>props.theme.primaryBack} ;
+    border-bottom: 1px solid ${props =>props.theme.borderColor};
     padding: 2rem;
-    border-radius: 3rem;
     box-shadow: 10px 10px 51px -7px rgba(0,0,0,0.19);
     h3{
         font-size: 2rem;

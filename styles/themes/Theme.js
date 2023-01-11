@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 const themes ={
     dark:{
-        header: "#374151",
+        primaryBack: "#374151",
         background: '#1F2937',
         primary: "#FFFFFF",
         secondary: "#D1D5DB",
@@ -13,7 +13,7 @@ const themes ={
         borderColor: '#edeff2',
     },
     light:{
-        header: "#FFFFFF",
+        primaryBack: "#FFFFFF",
         background: '#F0F1F3',
         primary: "#3B82F6",
         secondary: "#D1D5DB",
