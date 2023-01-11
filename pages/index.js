@@ -1,8 +1,12 @@
+import { HeaderComponent } from "../Components/Header";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
+    <>
+      <HeaderComponent/>
+      <main>
+        aoba
+      </main>
+    </>
   )
 }
