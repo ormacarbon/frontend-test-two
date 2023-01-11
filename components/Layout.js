@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
@@ -8,7 +9,7 @@ const AppContainer = styled.div`
   min-height: 100vh;
 `;
 
-export default function Layout({ children }) {
+export default function Layout({ children, currentPage }) {
   return (
     <>
       <Head>
@@ -19,7 +20,11 @@ export default function Layout({ children }) {
       <AppContainer>
         <header>
           <h1>Welcome to Tales&#039; observatory!</h1>
-          <nav></nav>
+          <nav>
+            {currentPage !== 'home' && <Link href='/'>Home</Link>}
+            {currentPage !== 'explore' && <Link href='/explore'>Explore</Link>}
+            {currentPage !== 'gallery' && <Link href='/gallery'>Gallery</Link>}
+          </nav>
         </header>
         <main>
           {children}
