@@ -1,7 +1,15 @@
+import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
+import Pokemon from "../components/Pokemon";
+
+type PokemonList = {
+  name: string;
+  url: string;
+};
 
 export default function Home() {
+  // It's better to use React Query than UseEffect for API calls
   const { data, isFetching } = useQuery("pokémon list", async () => {
     const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
 
@@ -14,12 +22,8 @@ export default function Home() {
         {isFetching ? (
           <p>Loading...</p>
         ) : (
-          data?.results?.map((pokemon) => {
-            return (
-              <li key={pokemon.name}>
-                <strong>{pokemon.name}</strong>
-              </li>
-            );
+          data?.results?.map((pokemon: PokemonList) => {
+            return <Pokemon key={pokemon.name} pokemonData={pokemon} />;
           })
         )}
       </ul>
