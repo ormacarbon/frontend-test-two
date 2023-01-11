@@ -17,4 +17,8 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 87.5%; // 14px
       }
    }
+
+   body {
+      background-color: ${props => props.theme.colors.backgroundColor}
+   }
 `
