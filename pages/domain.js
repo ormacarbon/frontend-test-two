@@ -1,3 +1,15 @@
+import UniversitySearcher from "../components/UniversitySearcher";
+import hooks from "../utils/hooks";
+
 export default function Domain() {
-	return <h1>Domain</h1>;
+	const { searchUniversitiesByDomain } = hooks();
+
+	return (
+		<div>
+			<UniversitySearcher
+				dataRetrieverFunction={searchUniversitiesByDomain}
+				searchParamName="domain"
+			/>
+		</div>
+	);
 }
