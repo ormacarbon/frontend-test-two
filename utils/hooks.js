@@ -6,7 +6,7 @@ const hooks = () => {
 			const res = await api.get(`/search?country=${countryName}`);
 			return res.data;
 		} catch (error) {
-			alert(error);
+			throw new Error(error.message);
 		}
 	};
 
@@ -15,7 +15,7 @@ const hooks = () => {
 			const res = await api.get(`/search?name=${universityName}`);
 			return res.data;
 		} catch (error) {
-			alert(error);
+			throw new Error(error.message);
 		}
 	};
 
@@ -24,7 +24,7 @@ const hooks = () => {
 			const res = await api.get(`/search?domain=${domainPage}`);
 			return res.data;
 		} catch (error) {
-			alert(error);
+			throw new Error(error.message);
 		}
 	};
 
