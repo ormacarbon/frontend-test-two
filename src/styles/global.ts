@@ -1,24 +1,24 @@
-import { globalCss } from ".";
+import { createGlobalStyle } from "styled-components";
 
-export const globalStyles = globalCss({
-  '*': {
-    margin: 0,
-    padding: 0,
-    boxSizing: 'border-box',
-  },
+export const globalStyles = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  };
 
-  body: {
-    backgroundColor: '$gray900',
-    color: '$gray100',
-    '-webkit-font-smoothing': 'antialised',
-  },
+  body{
+    background-color: ${({theme}) => theme.colors.gray900};
+    color: ${({theme}) => theme.colors.gray100};
+    -webkit-font-smoothing: antialised;
+  };
 
-  'body, input textarea, button': {
-    fontFamily: 'Roboto',
-    fontWeight: 400,
-  },
+  body, input textarea, button{
+    font-family: Roboto;
+    font-weight: 400;
+  };
 
-  button: {
-    cursor: 'pointer',
+  button {
+    cursor: pointer;
   }
-})
+`

@@ -1,57 +1,22 @@
-import { styled } from "../../styles";
+import styled from "styled-components";
 
-export const CartButtonContainer = styled('button', {
-  width: '3rem',
-  height: '3rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative',
-  borderRadius: 6,
-  border: 'none',
-  backgroundColor: '$gray800',
-  color: '$gray500',
+
+export const CartButtonContainer = styled.button`
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 6;
+  border: none;
+  background-color: ${({theme}) => theme.colors.gray800};
+  color: ${({theme}) => theme.colors.gray100};
   
 
-  '&:disabled': {
-    opacity: 0.6,
-    cursor: 'not-allowed',
-  },
-
-  variants: {
-    color: {
-      gray: {
-        backgroundColor: '$gray800',
-        color: '$gray500',
-      },
-      green: {
-        backgroundColor: '$green500',
-        color: '$white',
-        '&:not(:disabled):hover':{
-          backgroundColor: '$green300',
-        }
-      },
-    },
-    size:{
-      medium: {
-        width: '3rem',
-        height: '3rem',
-        svg: {
-          fontSize: 24,
-        },
-      },
-      large: {
-        width: '3.5rem',
-        height: '3.5rem',
-        svg: {
-          fontSize: 32,
-        },
-      }
-    }
-  },
-
-  defaultVariants: {
-    color: "gray",
-    size: 'medium',
-  }
-});
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  };
+`
+  

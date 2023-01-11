@@ -1,64 +1,65 @@
-import { styled } from '..';
+import styled from "styled-components";
 
-export const SucessContainer = styled('main', {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  margin: '0 auto',
-  height: 656,
 
-  h1: {
-    fontSize: '$2xl',
-    color: '$gray100',
-  },
+export const SucessContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 656;
 
-  p: {
-    fontSize: '$xl',
-    color: '$gray300',
-    maxWidth: 560,
-    textAlign: 'center',
-    marginTop: '2rem',
-    lineHeight: '1.4',
-  },
+  h1 {
+    font-size: ${({theme}) => theme.fontSize["2xl"]};
+    color: ${({theme}) => theme.colors.gray100};
+  };
 
-  a: {
-    display: 'block',
-    marginTop: '5rem',
-    color: '$green500',
-    fontSize: '$lg',
-    textDecoration: 'none',
-    fontWeight: 'bold',
+  p {
+    font-size: ${({theme}) => theme.fontSize.xl};
+    color: ${({theme}) => theme.colors.gray300};
+    max-width: 560;
+    text-align: center;
+    margin-top: 2rem;
+    line-height: 1.4;
+  };
 
-    '&:hover': {
-      color: '$green300'
+  a {
+    display: block;
+    margin-top: 5rem;
+    color: ${({theme}) => theme.colors.green500};
+    font-size: ${({theme}) => theme.fontSize.lg};
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      color: ${({theme}) => theme.colors.green300};
     }
   }
-})
+`
 
-export const ImagesContainer = styled('section', {
-  display: 'flex',
-  alignContent: 'center',
-  marginBottom: '3rem',
+export const ImagesContainer = styled.section`
+  display: flex;
+  align-content: center;
+  margin-bottom: 3rem;
 
-  "div + div": {
-    marginLeft: 'calc(-140px / 2)',
+  div + div{
+    margin-left: calc(-140px / 2);
   }
-});
+`
 
-export const ImageContainer = styled('div', {
-  width: '100%',
-  maxWidth: 140,
-  height: 140,
-  background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
-  borderRadius: '50%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative',
-  boxShadow: '0px 0px 60px rgba(0, 0, 0, 0.8)',
+export const ImageContainer = styled.div`
+  width: 100%;
+  max-width: 140;
+  height: 140;
+  background: linear-gradient(180deg, #1EA483 0%, #7465D4 100%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
 
-  img: {
-    objectFit: 'cover',
+  img {
+    object-fit: cover;
   }
-})
+`

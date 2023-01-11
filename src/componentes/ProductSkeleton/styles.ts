@@ -1,35 +1,37 @@
-import { keyframes, styled } from "../../styles";
+import styled, { keyframes } from "styled-components";
 
-const skeletonAnimation = keyframes({
-  "0%": {
-    backgroundPosition: "-200px 0",
-  },
-  "100%": {
-    backgroundPosition: "calc(-200px + 100%) 0",
-  },
-})
 
-export const ProductSkeletonContainer = styled('div', {
-  width: 696,
-  height: 656,
-  display: 'grid',
-  gridTemplateColumns: '1fr 32px',
-  gap: 24,
-
-  div: {
-    diplay: 'grid',
-    gridTemplateColumns: '330px 100px',
-    justifyContent: 'space-between',
+const skeletonAnimation = keyframes`
+  0% {
+    background-position: -200px 0;
   }
-})
 
-export const SkeletonItem = styled('div', {
-  animation: `´${skeletonAnimation} 1300ms ease-in-out infinite`,
-  backgroundColor: '$gray800',
-  backgroundImage: 'linear-gradient(90deg, $gray800, $gray700, $gray800)',
-  backgroundSize: '200px 100%',
-  backgroundRepeat: 'no-repeat',
-  width: '100%',
-  height: '100%',
-  borderRadius: 8,
-});
+  100% {
+    background-position: calc(-200px + 100%) 0;
+  }
+`
+
+export const ProductSkeletonContainer = styled.div`
+  width: 696;
+  height: 656;
+  display: grid;
+  grid-template-columns: 1fr 32px;
+  gap: 24;
+
+  div {
+    display: grid;
+    grid-template-columns: 330px 100px;
+    justify-content: space-between;
+  }
+`
+
+export const SkeletonItem = styled.div`
+  background-color: ${({theme}) => theme.colors.gray800};
+  background-image: linear-gradient(90deg, ${({theme}) => theme.colors.gray800}, ${({theme}) => theme.colors.gray700}, ${({theme}) => theme.colors.gray800});
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  border-radius: 8;
+  animation: ${skeletonAnimation} 1300ms ease-in-out infinite;
+`
