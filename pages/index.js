@@ -1,8 +1,42 @@
+import { useContext, useEffect, useState } from 'react';
+import MovieCard from '../components/movie-card';
+import { MovieList } from '../styles/popular';
 
-export default function Home() {
+
+import Router from 'next/router';
+import { contextApiKey } from '../context/context';
+
+export default function Index() {
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [search, setSearch] = useState('')
+  const apiKey = useContext(contextApiKey);
+
+  useEffect(() => {
+    getUpcomingMovies()
+  }, [])
+
+  const getUpcomingMovies = () => {
+    const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en&page=1&region=BR`
+    fetch(url)
+      .then((response) => response.json())
+      .then(newMovies => setUpcomingMovies(newMovies.results))
+  }
+
+  const movieSearch = (searchValue) => {
+    Router.push({ pathname: '/search', query: { searchValue } })
+  }
+
   return (
     <div>
-      <h1>Hello, World!</h1>
+      <input type="text" onKeyDown={event => event.key === "Enter" && movieSearch(event.target.value)} placeholder='buscar filmes' />
+      <div>
+        <span>Em breve nos cinemas</span>
+        <MovieList>
+          {upcomingMovies.slice(0, 5).map(movie => (
+            <MovieCard movieProps={movie} />
+          ))}
+        </MovieList>
+      </div>
     </div>
   )
 }
