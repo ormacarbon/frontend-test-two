@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
 const NavLink = styled.a`
-	margin-right: 5px;
+	margin: 10px;
 `;
 
 export default function navbar() {
 	return (
 		<div>
 			<nav>
-				<NavLink href="/country">
-					Search universities by country
-				</NavLink>
-				<NavLink href="/name">Search university by name</NavLink>
-				<NavLink href="/domain">Search university by domain</NavLink>
+				Search universities by:
+				<NavLink href="/country">Country</NavLink>
+				<NavLink href="/name">Name</NavLink>
+				<NavLink href="/domain">Domain</NavLink>
 			</nav>
 		</div>
 	);
