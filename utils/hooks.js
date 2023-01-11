@@ -10,8 +10,18 @@ const hooks = () => {
 		}
 	};
 
+	const searchUniversitiesByName = async (universityName) => {
+		try {
+			const res = await api.get(`/search?name=${universityName}`);
+			return res.data;
+		} catch (error) {
+			alert(error);
+		}
+	};
+
 	return {
 		searchUniversitiesByCountry,
+		searchUniversitiesByName,
 	};
 };
 
