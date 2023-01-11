@@ -18,16 +18,17 @@ export const StyledIndex = styled.main`
     margin-top: 80px;
     margin-bottom: 20px;
     .button-pages {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
       height: 40px;
       max-width: 80px;
       min-width: 30px;
-      background-color: #ffffff;
+      background-color: #f3f3f3;
       border-radius: 8px;
       border: none;
       cursor: pointer;
       transition: box-shadow 0.2s ease;
       margin: 0 15px;
+      color: #404040;
     }
   }
   .button-pages.active {
