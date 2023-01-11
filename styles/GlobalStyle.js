@@ -8,10 +8,17 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box ;
         font-family: sans-serif;
     }
+    body{
+        background-color: ${props=>props.theme.background};
+    }
     a{
         text-decoration:none;
     }
     li{
         list-style:none
+    }
+    button{
+        cursor: pointer;
+        border: none;
     }
 ` 
