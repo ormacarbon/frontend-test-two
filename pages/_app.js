@@ -1,4 +1,5 @@
 import MainContainer from "./components/MainContainer";
+import "../styles/global.scss";
 
 function MyApp({ Component, pageProps }) {
   return (
