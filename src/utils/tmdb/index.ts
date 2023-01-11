@@ -10,4 +10,15 @@ const getData = async ({ endPoint }: GetDataParams): Promise<any> => {
   return data
 }
 
-export { getData }
+const getDataPerPage = async ({ endPoint }: GetDataParams, page: number): Promise<any> => {
+  try {
+    const { data } = await tmdbApi.get(`${endPoint}${process.env.NEXT_PUBLIC_TMDB_KEY}&language=pt-BR&page=${page}`)
+  
+    return data
+  } catch (error) {
+    return []    
+  }
+}
+
+
+export { getData, getDataPerPage }
