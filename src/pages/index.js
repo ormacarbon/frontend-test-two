@@ -1,17 +1,17 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { ArrowLeft, ArrowRight } from 'phosphor-react';
 
 import { useDarkModeContext } from '../contexts/DarkMode';
 
 import TMDB from '../services/tmdb';
+import { HomeContainer, HomeMoviesList, HomeMovies } from '../styles/Home';
+import Image from 'next/image';
+import { MovieRow } from '../components/MovieRow';
 
 export const getServerSideProps = async () => {
-  const filmList = await TMDB.getRomanceMovies(1);
+  const filmList = await TMDB.getHomeList(1);
 
-  const filmResult = await fetch(
-    'https://api.themoviedb.org/3/discover/tv?with_network=213&language=pt-BR&api_key=f9306fe66c04a7f0d28c85fdfd4d561b'
-  );
-  const filmJson = await filmResult.json();
-  // console.log(filmJson);
   return {
     props: { filmList }
   };
@@ -24,14 +24,16 @@ export default function Home({ filmList }) {
   useEffect(() => {
     setfilmListResult(filmList);
   }, [filmList]);
-  console.log(filmListResult.itens);
+  console.log(filmListResult);
+
+
+
   return (
-    <div>
-      {/* {filmListResult.itens !== undefined &&
-        filmListResult.itens.results.map((iten, index) => (
-          <h4 key={index}>{iten.title || iten.name}</h4>
-        ))} */}
-      <h1 onClick={toggleDarkMode}>Hello, World!</h1>
-    </div>
+    <HomeContainer darkMode={darkMode}>
+      {filmListResult.length > 0 &&
+        filmListResult.map((iten, index) => (
+          <MovieRow title={iten.title} itens={iten.itens} key={index} />
+        ))}
+    </HomeContainer>
   );
 }

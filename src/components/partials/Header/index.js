@@ -5,15 +5,17 @@ import Link from 'next/link';
 
 import { useDarkModeContext } from '../../../contexts/DarkMode';
 
-import { HeaderContainer } from './styled';
+import { HeaderContainer, DarkModeContainer } from './styled';
+
+import { DarkModeSwitcher } from '../../DarkModeSwitcher';
 
 import logoNetflixImage from '/public/assets/netflix-logo.svg';
 import perfilImage from '/public/assets/perfil.png';
 
-export const Header = () => {
+export const Header = ({ black }) => {
   const { darkMode, toggleDarkMode } = useDarkModeContext();
   return (
-    <HeaderContainer darkMode={darkMode}>
+    <HeaderContainer darkMode={darkMode} blackBackground={black}>
       <Image
         src={logoNetflixImage}
         alt="Netflix"
@@ -26,6 +28,9 @@ export const Header = () => {
         <Link href={'/toprated'}>Em Alta</Link>
         <Link href={'/movies'}>Filmes</Link>
       </nav>
+      <DarkModeContainer>
+        <DarkModeSwitcher />
+      </DarkModeContainer>
       <Image src={perfilImage} alt="perfil" priority className="perfil" />
     </HeaderContainer>
   );
