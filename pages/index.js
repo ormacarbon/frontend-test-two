@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "./api/api";
 import PokemonCard from "./components/PokemonCard";
+import styles from "../styles/index.module.scss";
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
@@ -20,14 +21,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <h1>Hello, World!</h1>
-
-      <div className="pokemons">
-        {pokemons.map((pokemon) => {
-          return <PokemonCard key={pokemon.name} pokemon={pokemon} />;
-        })}
-      </div>
+    <div className={styles.pokemons}>
+      {pokemons.map((pokemon) => {
+        return <PokemonCard key={pokemon.name} pokemon={pokemon} />;
+      })}
     </div>
   );
 }
