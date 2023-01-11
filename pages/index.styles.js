@@ -7,6 +7,7 @@ export const StyledIndex = styled.main`
     flex-wrap: wrap;
     justify-content: center;
     gap: 33px;
+    margin-top: 30px;
   }
 
   .container-buttons {

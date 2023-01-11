@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { CardColor, PokemonCardStyled } from "./styles";
 import { getPokemonType } from "./types";
+import Link from "next/link";
 
 export default function PokemonCard({ pokemon }) {
   const [pokemonDetail, setPokemonDetail] = useState({});
@@ -77,7 +78,7 @@ export default function PokemonCard({ pokemon }) {
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonDetail.id}.png`}
           alt={pokemon.name}
         />
-        <img className="img-pokedex" src={"/images/pokedex.png"}/>
+        <img className="img-pokedex" src={"/images/pokedex.png"} />
       </CardColor>
       <section className="container-details">
         <h1 className="name">{pokemon.name}</h1>
@@ -88,7 +89,9 @@ export default function PokemonCard({ pokemon }) {
         </div>
         <hr />
         <div className="container-buttons-pokemon">
-          <button>Details</button>
+          <Link href="/details/[id]" as={`/details/${pokemon.name}`}>
+            <button>Details</button>
+          </Link>
           <button>Catch!</button>
         </div>
       </section>
