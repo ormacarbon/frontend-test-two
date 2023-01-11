@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import ObservatoryContext from './ObservatoryContext';
 
 export default function ObservatoryProvider({ children }) {
+	const [pictures, setPictures] = useState([]);
 
-  const objectValue = {
+	const objectValue = {
+		pictures,
+		setPictures,
+	};
 
-  };
-
-  return (
-    <ObservatoryContext.Provider value={objectValue}>
-      {children}
-    </ObservatoryContext.Provider>
-  );
+	return (
+		<ObservatoryContext.Provider value={objectValue}>
+			{children}
+		</ObservatoryContext.Provider>
+	);
 }
