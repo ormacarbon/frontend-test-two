@@ -4,12 +4,15 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   padding: 2rem 0;
   width: 100%;
-  max-width: 1100;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   button {
     margin-left: auto;
+  }
+  @media (max-width: 992px){
+    padding: 2rem 2rem;
   }
 ` 

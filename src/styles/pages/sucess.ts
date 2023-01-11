@@ -7,7 +7,7 @@ export const SucessContainer = styled.main`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  height: 656;
+  height: 656px;
 
   h1 {
     font-size: ${({theme}) => theme.fontSize["2xl"]};
@@ -17,7 +17,7 @@ export const SucessContainer = styled.main`
   p {
     font-size: ${({theme}) => theme.fontSize.xl};
     color: ${({theme}) => theme.colors.gray300};
-    max-width: 560;
+    max-width: 560px;
     text-align: center;
     margin-top: 2rem;
     line-height: 1.4;
@@ -35,6 +35,10 @@ export const SucessContainer = styled.main`
       color: ${({theme}) => theme.colors.green300};
     }
   }
+
+  @media (max-width: 992px){
+    padding: 1rem;
+  }
 `
 
 export const ImagesContainer = styled.section`
@@ -49,10 +53,10 @@ export const ImagesContainer = styled.section`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  max-width: 140;
-  height: 140;
+  max-width: 140px;
+  height: 130px;
   background: linear-gradient(180deg, #1EA483 0%, #7465D4 100%);
-  border-radius: 50%;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

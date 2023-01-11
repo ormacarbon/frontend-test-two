@@ -28,6 +28,11 @@ export const CartContent = styled(Dialog.Content)`
     overflow-y: auto;
     flex: 1;
   }
+
+  @media (max-width: 992px){
+    width: 100%;
+    padding: 2rem;
+  }
 `
 
 export const CartClose = styled(Dialog.Close)`
@@ -73,7 +78,7 @@ export const CartCProductDetails = styled.div`
   };
 
   strong {
-    margin-top: 4;
+    margin-top: 4px;
     font-size: ${({theme}) => theme.fontSize.md};
     font-weight: bold;
   };
@@ -99,7 +104,7 @@ export const CartFinalization = styled.div`
     font-size: ${({theme}) => theme.fontSize.md};
     height: 4.3125rem;
     border: none;
-    border-radius: 8;
+    border-radius: 8px;
     font-weight: bold;
 
     &:disabled {
@@ -116,8 +121,8 @@ export const CartFinalization = styled.div`
 export const FinalizationDatails = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8;
-  margin-bottom: 55;
+  gap: 8px;
+  margin-bottom: 55px;
 
   div {
     display: flex;

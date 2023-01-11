@@ -12,11 +12,11 @@ const skeletonAnimation = keyframes`
 `
 
 export const ProductSkeletonContainer = styled.div`
-  width: 696;
-  height: 656;
+  width: 696px;
+  height: 656px;
   display: grid;
   grid-template-columns: 1fr 32px;
-  gap: 24;
+  gap: 24px;
 
   div {
     display: grid;
@@ -32,6 +32,6 @@ export const SkeletonItem = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
-  border-radius: 8;
+  border-radius: 8px;
   animation: ${skeletonAnimation} 1300ms ease-in-out infinite;
 `

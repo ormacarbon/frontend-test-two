@@ -6,7 +6,7 @@ export const HomeContainer = styled.main`
   width: 100%;
   max-width: calc(100vw - ((100vw - 1180px) / 2));
   margin-left: auto;
-  min-height: 656;
+  min-height: 656px;
 `
 
 export const SliderContainer = styled.div`
@@ -20,7 +20,7 @@ export const SliderContainer = styled.div`
 
 export const Product = styled.div`
   background: linear-gradient(180deg, #1EA483 0%, #7465D4 100%);
-  border-radius: 8;
+  border-radius: 8px;
   cursor:   pointer;
   position: relative;
   overflow: hidden;
@@ -28,13 +28,20 @@ export const Product = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 656;
+  min-height: 656px;
   &:hover {
   footer {
     transform: translateY(0%);
     opacity: 1;
     }
   };
+
+  @media (max-width: 992px){
+    min-height: 450px;
+    img{
+      width: 300px;
+    }
+  }
 
   img {
     object-fit: cover;
@@ -46,7 +53,7 @@ export const Product = styled.div`
     left: 0.25rem;
     right: 0.25rem;
     padding: 2rem;
-    border-radius: 6;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content:  space-between;
@@ -58,7 +65,7 @@ export const Product = styled.div`
     div {
       display: flex;
       flex-direction: column;
-      gap: 4;
+      gap: 4px;
     };
 
     strong {
@@ -71,5 +78,13 @@ export const Product = styled.div`
       font-weight: bold;
       color: ${({theme}) => theme.colors.green300};
     };
+
+    @media (max-width: 992px){
+      min-height: 100px;
+      padding: 1rem;
+      strong{
+        font-size: 1rem;
+      }
+    }
   };
 `
