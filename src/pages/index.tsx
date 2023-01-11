@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react"
 
-import { getData } from "@utils/tmdb"
+import { getData, getDataPerPage } from "@utils/tmdb"
 
 import { Movie } from "@components/movie"
 
 import * as Styled from "@styles/pages/home"
+import { Pagination } from "@components/pagination"
 
 type MovieData = {
   adult: boolean
@@ -31,12 +32,29 @@ type PopularMoviesResponse = {
 }
 
 export default function Home() {
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   const [moviesList, setMoviesList] = useState<MovieData[]>([])
   
   useEffect(() => {
     const getPopularMovies = async () => {
       const response: PopularMoviesResponse = await getData({ endPoint: '/movie/popular?' })
+      
+      setTotalPage(response.total_pages)
+      const listWithConvertedDate: MovieData[] = response.results.map(movie => {
+        return {
+          ...movie,
+          release_date: new Date(movie.release_date).toLocaleDateString('pt-BR')
+        }
+      })
+
+      setMoviesList(listWithConvertedDate)
+    }
+
+    const getMoviesPerPage = async () => {
+      const response: PopularMoviesResponse = await getDataPerPage({ endPoint: `/movie/popular?` }, currentPage)
       
       const listWithConvertedDate: MovieData[] = response.results.map(movie => {
         return {
@@ -48,8 +66,12 @@ export default function Home() {
       setMoviesList(listWithConvertedDate)
     }
 
-    getPopularMovies()
-  }, [])
+    if(currentPage === 1) {
+      getPopularMovies()
+    } else {
+      getMoviesPerPage()
+    }
+  }, [currentPage])
 
   return (
     <Styled.Main>
@@ -64,6 +86,7 @@ export default function Home() {
           />
         ))}
       </>
+      <Pagination pageActive={currentPage} totalPage={totalPage} setPage={setCurrentPage} />
     </Styled.Main>
   )
 }
