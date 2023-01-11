@@ -11,6 +11,7 @@ export default function UniversitySearcher(props) {
 	const [offset, setOffset] = useState(0);
 	const [limit, setLimit] = useState(12);
 	const [pageNumber, setPageNumber] = useState(1);
+	const [isThereAnError, setisThereAnError] = useState(false);
 
 	useEffect(() => {
 		updateList();
@@ -19,7 +20,13 @@ export default function UniversitySearcher(props) {
 
 	const searchUniversities = async (event) => {
 		event.preventDefault();
-		setUniversitiesResult(await dataRetrieverFunction(searchParam));
+		setisThereAnError(false);
+		try {
+			setUniversitiesResult(await dataRetrieverFunction(searchParam));
+		} catch (error) {
+			setisThereAnError(true);
+			setUniversitiesResult([]);
+		}
 		setOffset(0);
 	};
 
@@ -72,6 +79,11 @@ export default function UniversitySearcher(props) {
 					onChange={(e) => setLimit(e.target.value)}
 				/>
 			</form>
+			<br />
+			{isThereAnError && (
+				<div>There was an error when trying to fetch the data.</div>
+			)}
+
 			<br />
 			<UniversitiesTable list={listUpdated} />
 			<form>
