@@ -6,6 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={darkTheme}>
       <Component {...pageProps} />
+      <GlobalStyles />
     </ThemeProvider>
   );
 }
