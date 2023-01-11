@@ -29,4 +29,8 @@ export const StyledIndex = styled.main`
       margin: 0 15px;
     }
   }
+  .button-pages.active {
+  text-decoration: underline;
+  font-weight: 800;
+}
 `;

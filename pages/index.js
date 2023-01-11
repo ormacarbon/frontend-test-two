@@ -26,8 +26,15 @@ export default function Home() {
 
   useEffect(() => {
     setCurrentPage(Number(router.query.page) || 1);
-    fetchPokemons(currentPage);
+    fetchPokemons(Number(router.query.page) || 1);
   }, [router.query.page]);
+
+  const getButtonClass = (page) => {
+    if (page === currentPage) {
+      return "button-pages active";
+    }
+    return "button-pages";
+  };
 
   return (
     <StyledIndex>
@@ -39,7 +46,7 @@ export default function Home() {
       </section>
       <section className="container-buttons">
         <button
-          className="button-pages"
+          className={getButtonClass(1)}
           onClick={() => {
             setCurrentPage(1);
             router.push({
@@ -52,7 +59,7 @@ export default function Home() {
           {"<<"}
         </button>
         <button
-          className="button-pages"
+          className={getButtonClass(currentPage - 1)}
           onClick={() => {
             if (currentPage > 1) {
               setCurrentPage(currentPage - 1);
@@ -69,7 +76,7 @@ export default function Home() {
         {currentPage <= 3 && (
           <>
             <button
-              className="button-pages"
+              className={getButtonClass(2)}
               onClick={() => {
                 setCurrentPage(2);
                 router.push({
@@ -81,7 +88,7 @@ export default function Home() {
               2
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(3)}
               onClick={() => {
                 setCurrentPage(3);
                 router.push({
@@ -93,7 +100,7 @@ export default function Home() {
               3
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(4)}
               onClick={() => {
                 setCurrentPage(4);
                 router.push({
@@ -109,7 +116,7 @@ export default function Home() {
         {currentPage >= 4 && currentPage <=6 &&  (
           <>
             <button
-              className="button-pages"
+              className={getButtonClass(4)}
               onClick={() => {
                 setCurrentPage(4);
                 router.push({
@@ -121,7 +128,7 @@ export default function Home() {
               4
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(5)}
               onClick={() => {
                 setCurrentPage(5);
                 router.push({
@@ -133,7 +140,7 @@ export default function Home() {
               5
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(6)}
               onClick={() => {
                 setCurrentPage(6);
                 router.push({
@@ -145,7 +152,7 @@ export default function Home() {
               6
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(7)}
               onClick={() => {
                 setCurrentPage(7);
                 router.push({
@@ -161,7 +168,7 @@ export default function Home() {
         {currentPage >= 7 && (
           <>
             <button
-              className="button-pages"
+              className={getButtonClass(7)}
               onClick={() => {
                 setCurrentPage(7);
                 router.push({
@@ -173,7 +180,7 @@ export default function Home() {
               7
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(8)}
               onClick={() => {
                 setCurrentPage(8);
                 router.push({
@@ -185,7 +192,7 @@ export default function Home() {
               8
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(9)}
               onClick={() => {
                 setCurrentPage(9);
                 router.push({
@@ -197,7 +204,7 @@ export default function Home() {
               9
             </button>
             <button
-              className="button-pages"
+              className={getButtonClass(10)}
               onClick={() => {
                 setCurrentPage(10);
                 router.push({
