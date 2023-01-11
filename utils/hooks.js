@@ -19,9 +19,19 @@ const hooks = () => {
 		}
 	};
 
+	const searchUniversitiesByDomain = async (domainPage) => {
+		try {
+			const res = await api.get(`/search?domain=${domainPage}`);
+			return res.data;
+		} catch (error) {
+			alert(error);
+		}
+	};
+
 	return {
 		searchUniversitiesByCountry,
 		searchUniversitiesByName,
+		searchUniversitiesByDomain,
 	};
 };
 
