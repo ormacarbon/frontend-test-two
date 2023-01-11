@@ -26,6 +26,9 @@
       "@templates/*": [
         "./src/templates/*"
       ],
+      "@types/*": [
+        "./src/types/*"
+      ],
       "@utils/*": [
         "./src/utils/*"
       ]
