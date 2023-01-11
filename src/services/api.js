@@ -1,5 +1,9 @@
-import dotenv from 'dotenv';
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const BASE_URL = 'http://api.weatherapi.com/v1';
 
-dotenv.config();
-
-const API_KEY = process.env.API_KEY;
+export const getWeather = async (city) => {
+  const response = await fetch(`${BASE_URL}/current.json?key=${API_KEY}&q=${city}}`);
+  const data = await response.json()
+  console.log(data);
+  return data;
+};
