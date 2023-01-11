@@ -10,8 +10,7 @@ export default function Navbar() {
 
         <TopNavbar>
             <Logo>
-                <h3>Rick and Morty NEXT.JS</h3>
-                <Image src='/images/portalgun.png' width='70' height='50' alt='Portal Gun'/>
+                <h3>Rick and Morty API NEXT.JS</h3>
             </Logo>
             
 

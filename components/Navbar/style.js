@@ -18,7 +18,9 @@ export const Logo = styled.div`
   justify-content: center;
   padding: 1em;
   color: #eee;
-  border-left: 2px solid #99e763;
+  border-left: 2px solid #ff0000;
+  border-bottom: 2px solid #ff0000;
+  border-radius: 4px;
 `;
 
 // LIST UL
@@ -44,7 +46,7 @@ export const ListItem = styled.li`
       left: 0px;
       width: 0px;
       height: 3px;
-      background-color: #99e763;
+      background-color: #ff0000;
       transition: all 1s ease;
     }
 

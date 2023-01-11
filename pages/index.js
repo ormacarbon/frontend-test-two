@@ -1,9 +1,14 @@
+import { useContext } from "react";
+import GlobalContext from "../context/UserContext";
+
+
 
 
 export default function Home() {
+
   return (
     <div>
-      <h1>Hello, World!</h1>
+      <h1>Home</h1>
     </div>
-  )
+  );
 }
