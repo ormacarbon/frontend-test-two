@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Pokemon({ pokemonData }) {
-  const { data, isFetching } = useQuery(
-    `pokémon data ${pokemonData.name}`,
-    async () => {
-      const response = await axios.get(pokemonData.url);
+  // It's better to use React Query than useEffect and useState for API calls
+  const { data } = useQuery(`pokémon data ${pokemonData.name}`, async () => {
+    const response = await axios.get(pokemonData.url);
 
-      return response.data;
-    }
-  );
+    return response.data;
+  });
 
   return (
     data && (
@@ -23,9 +22,9 @@ export default function Pokemon({ pokemonData }) {
           height={40}
           alt={data.name + "icon"}
         />
-        <span>
+        <Link href={"pokemon/" + data.id}>
           <b>{data.name}</b> - EXP {data.base_experience}
-        </span>
+        </Link>
       </div>
     )
   );

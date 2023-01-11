@@ -9,7 +9,7 @@ type PokemonList = {
 };
 
 export default function Home() {
-  // It's better to use React Query than UseEffect for API calls
+  // It's better to use React Query than useEffect and useState for API calls
   const { data, isFetching } = useQuery("pokémon list", async () => {
     const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
 
