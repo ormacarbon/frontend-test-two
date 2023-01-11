@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "../src/components/Navbar";
 import PokemonCard from "../src/components/PokemonCard";
 import { StyledIndex } from "./index.styles";
 import { useRouter } from "next/router";
+import { GlobalContext } from "../contexts/state";
 
 export default function Home() {
-  const [pokelist, setPokelist] = useState([]);
+  const { pokelist, setPokelist } = useContext(GlobalContext);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
 
