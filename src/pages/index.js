@@ -1,10 +1,12 @@
-import Link from "next/link";
+import { useRouter } from "next/router"
+import { useEffect } from "react"
 
-export default function SignIn() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-      <Link href="/dashboard">Dashboard</Link>
-    </div>
-  )
+export default function Index() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/signin")
+  }, []);
+
+  return <div/>
 }
