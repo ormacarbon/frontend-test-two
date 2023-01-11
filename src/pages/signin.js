@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { globalContext } from "../context/globalContext";
 import { useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import login from "../assets/images/login.svg";
 import google from "../assets/images/google.svg";
 import { 
@@ -11,13 +12,18 @@ import {
   InitialWeatherLocation,
   TempWeather,
   Login,
-  SpanOr,
   ImageContainer,
   LoginForm
 } from "../styles/signin";
 
 export default function SignIn() {
-  const { currentWeather, weather } = useContext(globalContext);
+  const { currentWeather, weather, user, setUser, validateUserFields } = useContext(globalContext);
+  const router = useRouter();
+
+  const setUserToLocalStorage = (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    router.push("/dashboard");
+  }
 
   useEffect(() => {
     currentWeather('São Paulo');
@@ -53,7 +59,6 @@ export default function SignIn() {
               />
               <p>Login with google account</p>
             </button>
-            <SpanOr>or</SpanOr>
           </div>
         </Login>
         <ImageContainer>
@@ -69,6 +74,7 @@ export default function SignIn() {
               type="email"
               id="email"
               name="email"
+              onChange={ (e) => setUser({ ...user, email: e.target.value }) }
             />
           </label>
           <label htmlFor="password">
@@ -77,9 +83,14 @@ export default function SignIn() {
               type="password"
               id="password"
               name="password"
+              onChange={ (e) => setUser({ ...user, password: e.target.value }) }
             />
           </label>
-          <button>
+          <button
+            type="button"
+            disabled={ !validateUserFields(user.email, user.password) }
+            onClick={ () => setUserToLocalStorage(user) }
+          >
             Sign in
           </button>
         </LoginForm>

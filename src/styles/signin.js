@@ -27,7 +27,7 @@ export const LoginContainer = styled.div`
 export const InitialWeatherContainer = styled.div`
   align-items: center;
   display: flex;
-  color: #2b4ead;
+  color: #5d58e3;
   justify-content: center;
   padding-top: 6rem;
 `;
@@ -86,7 +86,7 @@ export const Login = styled.div`
     width: 80%;
 
     h1 {
-      color: #2b4ead;
+      color: #5d58e3;
       font-size: 2.5rem;
       font-weight: 700;
       margin: 0 0 2rem 0;
@@ -94,7 +94,7 @@ export const Login = styled.div`
     }
   
     span {
-      color: #2b4ead;
+      color: #5d58e3;
       font-size: 2.5rem;
       font-weight: 400;
     }
@@ -120,13 +120,6 @@ export const Login = styled.div`
   }
 `;
 
-export const SpanOr = styled.span`
-  color: #727272 !important;
-  font-size: 1.5rem !important;
-  margin-top: 3rem;
-  text-align: center;
-`;
-
 export const ImageContainer = styled.div`
   align-items: center;
   display: flex;
@@ -146,6 +139,7 @@ export const LoginForm = styled.div`
 
   label {
     display: flex;
+    color: #727272;
     flex-direction: column;
     font-size: 1rem;
     font-weight: 600;
@@ -168,11 +162,12 @@ export const LoginForm = styled.div`
 
   button {
     align-items: center;
-    background: #2b4ead;
+    background: #5d58e3;
     border: none;
     border-radius: 10px;
     color: #F5F5F5;
     display: flex;
+    font-size: 1rem;
     height: 3rem;
     justify-content: center;
     margin-top: 1.5rem;
