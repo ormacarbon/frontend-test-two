@@ -1,3 +1,15 @@
+import UniversitySearcher from "../components/UniversitySearcher";
+import hooks from "../utils/hooks";
+
 export default function Country() {
-	return <h1>Country</h1>;
+	const { searchUniversitiesByCountry } = hooks();
+
+	return (
+		<div>
+			<UniversitySearcher
+				dataRetrieverFunction={searchUniversitiesByCountry}
+				searchParamName="country"
+			/>
+		</div>
+	);
 }
