@@ -16,10 +16,12 @@ export default function Pokemon({ pokemonData }) {
   return (
     data && (
       <div style={{ display: "flex", alignItems: "center" }}>
-        <img
+        <Image
           src={data.sprites.front_default}
-          style={{ width: 30, marginRight: 20 }}
-          alt=""
+          style={{ marginRight: 20 }}
+          width={40}
+          height={40}
+          alt={data.name + "icon"}
         />
         <span>
           <b>{data.name}</b> - EXP {data.base_experience}
