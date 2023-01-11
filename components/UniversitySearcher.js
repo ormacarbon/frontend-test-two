@@ -52,7 +52,7 @@ export default function UniversitySearcher(props) {
 		<div>
 			<h3>Search universities by {searchParamName}</h3>
 			<form>
-				<label>Country Name</label>
+				<label>{searchParamName}</label>
 				<br />
 				<input
 					value={searchParam}
