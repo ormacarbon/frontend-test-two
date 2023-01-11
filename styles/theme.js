@@ -1,5 +1,5 @@
 const colors = {
-  primary: '#0094C6',
+  primary: '#FF2330',
   light: '#f8f9fa',
   dark: '#202028',
 
@@ -34,6 +34,7 @@ const colors = {
     '100': '#C1C1C1',
     '200': '#92999C',
     '300': '#5E6567',
+    '400': '#3d3d4d',
   }
 }
 
@@ -50,10 +51,11 @@ const fonts = {
 }
 
 const spacing = {
-  xs: '5px',
-  sm: '10px',
-  md: '20px',
-  lg: '30px',
+  xs: '0.5rem',
+  sm: '0.75rem',
+  md: '1rem',
+  lg: '1.5rem',
+  xl: '2rem'
 }
 
 const breakpoints = {
