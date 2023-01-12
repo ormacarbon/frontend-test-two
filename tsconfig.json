@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/index.js", "pages/home.tsx"  ],
+, "pages/index.tsx", "pages/home.tsx", "components/search-movie-card.js"  ],
   "exclude": [
     "node_modules"
   ]

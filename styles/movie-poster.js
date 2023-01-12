@@ -23,15 +23,3 @@ border: 1px solid #abc;
   transform: scale( 1.05 );
 }
 `
-
-export const MovieTitle = styled.div`
-font-size: 1rem;
-color: #f4f1de;
-margin-top: 1rem;
-overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp: 1; 
-line-clamp: 1; 
--webkit-box-orient: vertical;
-`

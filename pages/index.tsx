@@ -22,13 +22,8 @@ export default function Index() {
       .then(newMovies => setUpcomingMovies(newMovies.results))
   }
 
-  const movieSearch = (searchValue) => {
-    Router.push({ pathname: '/search', query: { searchValue } })
-  }
-
   return (
     <div>
-      <input type="text" onKeyDown={event => event.key === "Enter" && movieSearch(event.target.value)} placeholder='buscar filmes' />
       <div>
         <span>Em breve nos cinemas</span>
         <MovieList>

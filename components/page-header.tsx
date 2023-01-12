@@ -2,15 +2,18 @@ import styled from "styled-components";
 import React, { useState } from 'react';
 import { Header, HeaderLi, HeaderLogo, HeaderUl, HeaderLogoContainer, HeaderLogoText } from '../styles/header'
 import Link from 'next/link';
+import MovieSearchInput from './movie-search-input';
 
-const PageHeader = ({ searchValue, setSearchValue }) => {
+const PageHeader = () => {
 
   return (
     <Header>
-      <HeaderLogoContainer>
-        <HeaderLogo src='/movie-roll.png' />
-        <HeaderLogoText>MovieRoll</HeaderLogoText>
-      </HeaderLogoContainer>
+      <Link href={'/'}>
+        <HeaderLogoContainer>
+          <HeaderLogo src='/movie-roll.png' />
+          <HeaderLogoText>MovieRoll</HeaderLogoText>
+        </HeaderLogoContainer>
+      </Link>
       <HeaderUl>
         <Link href={'/'}>
           <HeaderLi>Home</HeaderLi>
@@ -22,6 +25,7 @@ const PageHeader = ({ searchValue, setSearchValue }) => {
           <HeaderLi>Filmes em cartaz</HeaderLi>
         </Link>
       </HeaderUl>
+      <MovieSearchInput />
     </Header>
   )
 }
