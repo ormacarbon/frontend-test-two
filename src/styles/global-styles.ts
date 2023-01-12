@@ -18,15 +18,20 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.20rem;
+    height: 0.25rem;
+
+    @media screen and (min-width: 800px) {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
   }
   *::-webkit-scrollbar-track{
     background-color: ${({ theme }) => theme.colors.background3};
     border-radius:  ${({ theme }) => theme.radii.md},
   }
   *::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.background1};
+    background-color: ${({ theme }) => theme.colors.primary};
     border-radius:  ${({ theme }) => theme.radii.md};
     border: none;
     outline: none;
