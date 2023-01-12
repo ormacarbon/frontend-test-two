@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
-import Image from "next/image";
+import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
+import axios from "axios";
 
 export const getServerSideProps = async (context: {
   params: { id: number };
@@ -42,6 +43,23 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
 
   return (
     <div className="bg-gray-200 flex min-w-screen min-h-screen -mb-6">
+      <Head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+        <meta
+          name="description"
+          content="A Twitter clone I made from scratch with React JS and Tailwind CSS."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="keywords"
+          content="Pokémon, Search, List, Pokédex, Pedro, Lucena"
+        />
+        <meta name="author" content="Pedro Lucena"></meta>
+        <title>
+          {data.name.slice(0, 1).toUpperCase() + data.name.slice(1)} - Pokémon
+          Search
+        </title>
+      </Head>
       <main className="mt-5 mx-auto">
         <div className="block sm:block md:block lg:block xl:flex xl:gap-5">
           <section className="bg-white mt-5 w-80 rounded-xl shadow py-4">

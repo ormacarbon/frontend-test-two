@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import Head from "next/head";
+import Image from "next/image";
 import axios from "axios";
 import { useQuery } from "react-query";
 import PokemonList from "../components/PokemonList";
 import PokemonGrid from "../components/PokemonGrid";
-import Image from "next/image";
 import { BsListUl, BsGrid3X3 } from "react-icons/bs";
 
 type PokemonListType = {
@@ -36,6 +37,20 @@ export default function Home() {
 
   return (
     <div className="bg-gray-200 w-screen min-h-screen -mb-6">
+      <Head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+        <meta
+          name="description"
+          content="A Twitter clone I made from scratch with React JS and Tailwind CSS."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="keywords"
+          content="Pokémon, Search, List, Pokédex, Pedro, Lucena"
+        />
+        <meta name="author" content="Pedro Lucena"></meta>
+        <title>Pokémon Search</title>
+      </Head>
       <div className="flex pt-3">
         {grid ? (
           <div className="flex mx-auto gap-1">
