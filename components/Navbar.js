@@ -1,18 +1,14 @@
-import styled from "styled-components";
-
-const NavLink = styled.a`
-	margin: 10px;
-`;
+import { NavLink, SpaceEvenly } from "../styles/componentStyles";
 
 export default function navbar() {
 	return (
 		<div>
-			<nav>
+			<SpaceEvenly>
 				Search universities by:
 				<NavLink href="/country">Country</NavLink>
 				<NavLink href="/name">Name</NavLink>
 				<NavLink href="/domain">Domain</NavLink>
-			</nav>
+			</SpaceEvenly>
 		</div>
 	);
 }

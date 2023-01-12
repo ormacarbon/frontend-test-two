@@ -1,24 +1,23 @@
 import { createGlobalStyle } from "styled-components";
 
 export const lightTheme = {
-	body: "#FFF",
-	text: "#363537",
-	toggleBorder: "#FFF",
-	background: "#363537",
+	body: "#DAB9A4",
+	text: "#2E294E",
+	primary: "#CB4A5B",
 };
 
 export const darkTheme = {
-	body: "#363537",
-	text: "#FAFAFA",
-	toggleBorder: "#6B8096",
-	background: "#999",
+	body: "#2E294E",
+	text: "#DAB9A4",
+	borderColor: "#B2917C",
+	primary: "#CB4A5B",
 };
 
 export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
-    transition: all 0.50s linear;
+    font-family: monospace;
+	font-size: large;
   }
 `;
