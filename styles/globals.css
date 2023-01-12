@@ -1,4 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Concert One', cursive;
+}
+
+a {
+  text-decoration: none;
+  color: #0891B2;
 }

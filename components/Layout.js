@@ -1,13 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import styled from 'styled-components';
-
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-`;
+import { AppContainer } from '../styles';
 
 export default function Layout({ children, currentPage }) {
 	return (
