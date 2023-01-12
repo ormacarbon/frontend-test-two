@@ -1,6 +1,8 @@
 //? Card component
 import Card from "../components/Card/Card"
 
+import { CharactersContainer } from "../styles/characterStyles"
+
 // API CALL
 export async function getStaticProps () {
 
@@ -22,10 +24,10 @@ export async function getStaticProps () {
 export default function Characters({ characters }) {
 
   return (
-    <div>
+    <CharactersContainer>
       <h1>Characters</h1>
       {!Characters ? <p>Carregando..</p> : <Card characters={characters}/>}
       
-    </div>
+    </CharactersContainer>
   );
 }

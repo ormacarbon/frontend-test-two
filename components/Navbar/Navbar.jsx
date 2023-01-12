@@ -1,44 +1,81 @@
-//? Styled Components
-import { TopNavbar, Logo, List, ListItem } from './style'
-//? Next Dependences
-import Link from 'next/link'
-import Image from 'next/image'
+// //? Styled Components
+import { ThemeContext } from "styled-components";
+import {
+  NavbarContainer,
+  LeftContainer,
+  RightContainer,
+  NavbarExtendedContainer,
+  NavbarInnerContainer,
+  NavbarLinkContainer,
+  NavbarLink,
+  Logo,
+  OpenLinksButton,
+  NavbarLinkExtended,
+} from "./style";
+// //? React dependences + Switch
+import Switch from "react-switch";
+import { useContext } from "react";
+import React, { useState } from "react";
 
-import Switch from 'react-switch'
-import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
 
-export default function Navbar({ onChangeTheme }) {
+export default function TopNavbar({ onChangeTheme }) {
+  const { name, colors } = useContext(ThemeContext);
+  const [extendNavbar, setExtendNavbar] = useState(false);
 
-    const { name, colors } = useContext(ThemeContext)
-
-    return (
-
-        <TopNavbar>
-            <Logo>
-                <h3>Rick and Morty API NEXT.JS</h3>
-            </Logo>
-            
-
-            <List>
-                <ListItem><Link href='/'>Home</Link></ListItem>
-                <ListItem><Link href='/characters'>Characters</Link></ListItem>
-                <ListItem><Link href='/about'>About</Link></ListItem>
-            </List>
-
-            <Switch 
+  return (
+    <NavbarContainer extendNavbar={extendNavbar}>
+      <NavbarInnerContainer>
+        <LeftContainer>
+          <NavbarLinkContainer>
+            <NavbarLink href="/">Home</NavbarLink>
+            <NavbarLink href="/about">About</NavbarLink>
+            <NavbarLink href="/characters">Characters</NavbarLink>
+            <NavbarLink href="#0">
+              <Switch
                 onChange={onChangeTheme}
-                checked={name === 'light'}
+                checked={name === "light"}
                 height={20}
                 width={40}
                 checkedIcon={false}
                 uncheckedIcon={false}
                 handleDiameter={20}
                 offColor={colors.secondary}
-                onColor={colors.secondary}  
-            />
-        </TopNavbar>
+                onColor={colors.secondary}
+              />
+            </NavbarLink>
 
-    )
+            <OpenLinksButton
+              onClick={() => {
+                setExtendNavbar((curr) => !curr);
+              }}
+            >
+              {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
+            </OpenLinksButton>
+          </NavbarLinkContainer>
+        </LeftContainer>
+        <RightContainer>
 
+          <Logo src="/images/portalgun.png" alt="Portal Gun"></Logo>
+        </RightContainer>
+      </NavbarInnerContainer>
+      {extendNavbar && (
+        <NavbarExtendedContainer>
+          <NavbarLinkExtended href="/">Home</NavbarLinkExtended>
+          <NavbarLinkExtended href="/about">About</NavbarLinkExtended>
+          <NavbarLinkExtended href="/characters">Characters</NavbarLinkExtended>
+          <NavbarLinkExtended href="#0"> <Switch
+                onChange={onChangeTheme}
+                checked={name === "light"}
+                height={20}
+                width={40}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                handleDiameter={20}
+                offColor={colors.secondary}
+                onColor={colors.secondary}
+              /></NavbarLinkExtended>
+        </NavbarExtendedContainer>
+      )}
+    </NavbarContainer>
+  );
 }

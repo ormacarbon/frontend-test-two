@@ -7,7 +7,7 @@ export const CardCapsule = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 4em auto;
 `;
 
 export const CardCharacter = styled.div`
@@ -18,11 +18,12 @@ export const CardCharacter = styled.div`
   padding: 2em 1em;
   margin-bottom: 2em;
   border-radius: 1em;
-  border: 2px solid #e33d33;
+  border: 2px solid;
+  border-color: ${(props) => props.theme.colors.borderColor} ;
   width: 23%;
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
-  background-color: #f6f6f6;
-  color: #fff;
+  background-color: ${(props) => props.theme.colors.cardBgColor};
+  color: ${(props) => props.theme.colors.textColor};
 
   > img {
     max-width: 100%;
@@ -31,11 +32,11 @@ export const CardCharacter = styled.div`
 
   > h4 {
     text-transform: capitalize;
-    color: #000;
     margin: 1em 0 1em;
+    color: ${(props) => props.theme.colors.textColor};
   }
 
   > p {
-    color: #000;
+    color: ${(props) => props.theme.colors.textColor};
   }
 `;
