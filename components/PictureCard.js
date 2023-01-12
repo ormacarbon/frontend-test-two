@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ObservatoryContext from '../context/ObservatoryContext';
 
@@ -12,21 +11,33 @@ const PictureContainer = styled.div`
   height: 600px;
 `;
 
-export default function PictureCard({ picture, details, moreInfo, saved }) {
+export default function PictureCard({ picture, details, moreInfo }) {
 	const { id, title, description, date, url } = picture;
 
-	const { setSavedPictures } = useContext(ObservatoryContext);
+	const { savedPictures, setSavedPictures } = useContext(ObservatoryContext);
 
-	const router = useRouter();
+	const [isPicSaved, setIsPicSaved] = useState(false);
 
-	const savePicture = () => {
-		const savedPictures = JSON.parse(localStorage.getItem('favPics'));
-		const newSavedPictures = saved ? savedPictures.filter(pic => pic.id !== picture.id) : (savedPictures ? [...savedPictures, picture] : [picture]);
+	useEffect(() => {
+		const localPics = JSON.parse(localStorage.getItem('favPics'));
+		const picSaved = localPics.some(pic => pic.id === id);
 
-		localStorage.setItem('favPics', JSON.stringify(newSavedPictures));
-		setSavedPictures(newSavedPictures);
+		setIsPicSaved(picSaved);
+		setSavedPictures(localPics);
 
-		if (!saved) router.push('/gallery');
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	const editFavs = () => {
+		let newFavPics;
+
+		if (isPicSaved) newFavPics = savedPictures.filter(pic => pic.id !== id);
+		else newFavPics = [...savedPictures, picture];
+
+		localStorage.setItem('favPics', JSON.stringify(newFavPics));
+	
+		setSavedPictures(newFavPics);
+		setIsPicSaved(prev => !prev);
 	};
 
 	return (
@@ -36,12 +47,12 @@ export default function PictureCard({ picture, details, moreInfo, saved }) {
 					<h2>{title}</h2>
 					<p>{description}</p>
 					<p>{new Date(date).toLocaleDateString('pt-BR')}</p>
-					<button onClick={savePicture}>Save/Unsave Picture</button>
 				</div>
 			)}
 			<PictureContainer>
 				<Image fill sizes='(max-width: 600px) 20vw' src={url} alt={title} />
 			</PictureContainer>
+			<button onClick={editFavs}>{isPicSaved ? 'Unsave Picture' : 'Save Picture'}</button>
 			{moreInfo && <Link href={`/picture/${id}`}>More info</Link>}
 		</div>
 	);

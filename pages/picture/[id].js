@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
+import Layout from '../../components/Layout';
 import PictureCard from '../../components/PictureCard';
 import ObservatoryContext from '../../context/ObservatoryContext';
 
@@ -13,7 +13,7 @@ export default function PictureInfo() {
 	const [picture, setPicture] = useState();
 
 	useEffect(() => {
-		if (pictures[0].title === '') router.push('/explore');
+		if (pictures.length === 0) router.push('/explore');
 		else {
 			const currentPicture = pictures.find(picture => picture.id === id);
 
@@ -23,5 +23,9 @@ export default function PictureInfo() {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if (picture) return <PictureCard details picture={picture}  />;
+	if (picture) return (
+		<Layout currentPage='pic-info'>
+			<PictureCard details picture={picture}  />
+		</Layout>
+	);
 }

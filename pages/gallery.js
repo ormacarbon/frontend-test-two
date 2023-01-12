@@ -1,22 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Layout from '../components/Layout';
 import PictureCard from '../components/PictureCard';
 import ObservatoryContext from '../context/ObservatoryContext';
 
 export default function Gallery() {
-	const { savedPictures, setSavedPictures } = useContext(ObservatoryContext);
+	const { savedPictures } = useContext(ObservatoryContext);
+
+	const [galleryPics, setGalleryPics] = useState([]);
 
 	useEffect(() => {
 		const localPictures = JSON.parse(localStorage.getItem('favPics'));
 
-		setSavedPictures(localPictures);
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		setGalleryPics(localPictures);
+	}, [savedPictures]);
 
-	if (savedPictures) return (
+	return (
 		<Layout currentPage='gallery'>
-			{savedPictures.map(picture => (
-				<PictureCard key={picture.id} picture={picture} details saved />
+			{galleryPics.map(picture => (
+				<PictureCard key={picture.id} picture={picture} details />
 			))}
 		</Layout>
 	);

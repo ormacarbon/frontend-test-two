@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ObservatoryContext from './ObservatoryContext';
 
 export default function ObservatoryProvider({ children }) {
 	const [pictures, setPictures] = useState([]);
 	const [savedPictures, setSavedPictures] = useState([]);
 
-	const objectValue = {
+	useEffect(() => {
+		const favPics = localStorage.getItem('favPics');
+
+		if (!favPics) localStorage.setItem('favPics', JSON.stringify([]));
+	});
+
+	const valueObj = {
 		pictures,
 		setPictures,
 		savedPictures,
@@ -13,7 +19,7 @@ export default function ObservatoryProvider({ children }) {
 	};
 
 	return (
-		<ObservatoryContext.Provider value={objectValue}>
+		<ObservatoryContext.Provider value={valueObj}>
 			{children}
 		</ObservatoryContext.Provider>
 	);

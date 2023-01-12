@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import Layout from '../components/Layout';
@@ -7,9 +5,13 @@ import PictureCard from '../components/PictureCard';
 import ObservatoryContext from '../context/ObservatoryContext';
 
 export default function Explore() {
+	const picsPerPage = 10;
+
 	const [filter, setFilter] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [onSearch, setOnSearch] = useState(false);
+	const [pageTop, setPageTop] = useState(0);
+	const [pageBottom, setPageBottom] = useState(picsPerPage);
 
 	const { pictures, setPictures } = useContext(ObservatoryContext);
 
@@ -18,24 +20,36 @@ export default function Explore() {
 		setLoading(true);
 
 		const response = await fetch(`https://images-api.nasa.gov/search?media_type=image&q=${filter}`);
-		const data = await response.json();
+		const json = await response.json();
 
-		const rawPictures = data.collection.items;
-		const formattedPictures = rawPictures.map(({ data, links }) => ({
+		const rawPictures = json.collection.items;
+		const formattedPictures = rawPictures.map(({ data, links, url }) => ({
 			id: data[0].nasa_id,
 			title: data[0].title,
-			url: links[0].href,
+			url: links[0].href || url,
 			description: data[0].description,
 			date: data[0].date_created
 		}));
 
-		console.log(formattedPictures);
 		setPictures(formattedPictures);
 
 		setLoading(false);
 	};
 
-	/* {(pictures.length === 0) && <h2>No results...</h2>} */
+	const previousPage = () => {
+		if (pageTop !== 0) {
+			setPageTop(prev => prev - picsPerPage);
+			setPageBottom(prev => prev - picsPerPage);
+		}
+	};
+
+	const nextPage = () => {
+		if (pageBottom < pictures.length) {
+			setPageTop(prev => prev + picsPerPage);
+			setPageBottom(prev => prev + picsPerPage);
+		}
+	};
+
 	return (
 		<Layout currentPage='explore'>
 			<input onChange={({ target }) => setFilter(target.value)} />
@@ -43,9 +57,13 @@ export default function Explore() {
 			{onSearch && (
 				loading ? <h2>Loading...</h2> : (
 					pictures.length === 0 ? <h2>No results.</h2> : (
-						<div>
-							{pictures.map(picture => <PictureCard key={picture.id} picture={picture} moreInfo />)}
-						</div>
+						<>
+							<div>
+								{pictures.slice(pageTop, pageBottom).map(picture => <PictureCard key={picture.id} picture={picture} moreInfo />)}
+							</div>
+							<button onClick={previousPage}>Previous Page</button>
+							<button onClick={nextPage}>Next Page</button>
+						</>
 					)
 				)
 			)}
