@@ -1,10 +1,17 @@
 import Layout from "../components/layout";
-import { AppContext } from "../utils/AppContext";
+import { Context } from "../utils/AppContext";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../styles/ThemeConfig";
 import { useState } from "react";
+import hooks from "../utils/hooks";
 
 function MyApp({ Component, pageProps }) {
+	const {
+		searchUniversitiesByCountry,
+		searchUniversitiesByDomain,
+		searchUniversitiesByName,
+	} = hooks();
+
 	const [theme, setTheme] = useState("light");
 
 	const toggleTheme = () => {
@@ -14,11 +21,18 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<ThemeProvider theme={theme == "light" ? lightTheme : darkTheme}>
 			<GlobalStyles />
-			<Layout>
-				<AppContext>
+			<Context.Provider
+				value={{
+					searchUniversitiesByCountry,
+					searchUniversitiesByDomain,
+					searchUniversitiesByName,
+					toggleTheme,
+				}}
+			>
+				<Layout>
 					<Component {...pageProps} />
-				</AppContext>
-			</Layout>
+				</Layout>
+			</Context.Provider>
 		</ThemeProvider>
 	);
 }
