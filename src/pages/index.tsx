@@ -1,5 +1,5 @@
-import { AppLayout, PostCard, PostsList } from "@/components/layout";
-import { Heading } from "@/components/typography";
+import { AppLayout, CategoriesList, PostsList } from "@/components/layout";
+import { Heading, SessionHeading } from "@/components/typography";
 import Head from "next/head";
 import styled from "styled-components";
 
@@ -10,11 +10,17 @@ export default function Dashboard() {
         <title>My Blog</title>
       </Head>
 
-      <AppLayout sessionTitle="My blog">
+      <AppLayout>
         <HomeContainer>
-          <Heading variant="xl">Recently Published</Heading>
+          <RecentlyPublished>
+            <SessionHeading>Recently Published</SessionHeading>
+            <PostsList />
+          </RecentlyPublished>
 
-          <PostsList />
+          <TopCategories>
+            <SessionHeading>Top Categories</SessionHeading>
+            <CategoriesList />
+          </TopCategories>
         </HomeContainer>
       </AppLayout>
     </>
@@ -23,9 +29,36 @@ export default function Dashboard() {
 
 const HomeContainer = styled.main`
   height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 5rem;
+  padding: 1rem;
+
+  @media screen and (min-width: 800px) {
+    max-width: 1100px;
+    margin: 0 auto;
+    grid-template-columns: 2fr 1fr;
+    gap: 8rem;
+  }
+`;
+
+const RecentlyPublished = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 1rem;
-  overflow: auto;
+  gap: 2rem;
+
+  @media screen and (min-width: 800px) {
+    grid-column: 1;
+  }
+`;
+
+const TopCategories = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media screen and (min-width: 800px) {
+    grid-column: 2;
+  }
 `;
