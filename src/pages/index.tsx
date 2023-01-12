@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <ul>
+      <ul className="mt-3">
         {isFetching ? (
           <Image
             src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
