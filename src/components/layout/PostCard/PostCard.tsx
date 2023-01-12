@@ -1,21 +1,27 @@
+import { LinkButton } from "@/components/form";
+import { Post } from "@/types";
 import React from "react";
 import { Heading } from "../../typography";
+import { CategoryTag } from "../CategoryTag/CategoryTag";
 import * as S from "./post-card.style";
 
-interface PostCardProps {
-  title: string;
-  content: string;
-}
-
-export const PostCard = ({ title, content }: PostCardProps) => {
+export const PostCard = ({ title, body, tags, id }: Post) => {
   return (
     <S.PostCardContainer>
       <S.ContentContainer>
-        <Heading variant="xl">{title}</Heading>
-        <S.Content>{content}</S.Content>
+        <div>
+          <Heading variant="xl">{title}</Heading>
+          <S.CategoriesContainer>
+            {tags.map((category) => (
+              <CategoryTag key={category} tagName={category} />
+            ))}
+          </S.CategoriesContainer>
+        </div>
+
+        <S.Content>{body}</S.Content>
       </S.ContentContainer>
 
-      <button>see more</button>
+      <LinkButton href={`/posts/${id}`}>Read more</LinkButton>
     </S.PostCardContainer>
   );
 };
