@@ -10,7 +10,14 @@ export interface Movies {
   vote_count: number
 }
 
+export interface MoviesData {
+  results: Movies[]
+  total_pages: number
+}
+
 export interface MoviesContextData {
-  movies: Movies[]
+  movies: MoviesData
   isLoading: boolean
+  page: number
+  setPage: (page: number) => void
 }
