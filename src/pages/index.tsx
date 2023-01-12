@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { HomeContainer, Product, SliderContainer } from "../styles/pages/home";
+import { HomeContainer, Product } from "../styles/pages/home";
 import { GetStaticProps } from "next";
 import { stripe } from "../lib/stripe";
 import Stripe from "stripe";
 import Link from 'next/link';
 import Head from "next/head";
-import useEmblaCarousel from "embla-carousel-react";
 import { CartButton } from "../componentes/CartButton";
 import { useCart } from "../hooks/useCart";
 import { IProduct } from "../context/CartContext";
@@ -19,12 +18,6 @@ interface ProductProps {
 
 export default function Home({ products }: ProductProps) {
   const [isloading, setIsLoading] = useState(true);
-
-  const [emblaRef] = useEmblaCarousel({
-    align: 'start',
-    skipSnaps: false,
-    dragFree: true,
-  })
 
   const { addProductToCart, checkIfProductAlreadyInCart } = useCart();
 
@@ -42,22 +35,19 @@ export default function Home({ products }: ProductProps) {
     <Head>
       <title>Home | Next Shop</title>
     </Head>
-    <div style={{overflow: 'hidden', width:'100%'}}>
       <HomeContainer>
-        <div className="embla" ref={emblaRef}>
-          <SliderContainer className="embla__container container">
             {isloading ? (
              <>
-              <ProductSkeleton className="embla__slide" />
-              <ProductSkeleton className="embla__slide" />
-              <ProductSkeleton className="embla__slide" />
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
              </>
             ) : (
               <>
               {products.map(product => {
                 return(
                   <Link key={product.id} href={`/product/${product.id}`} prefetch={false}>
-                    <Product className="embla__slide">
+                    <Product className="keen-slider__slide">
                       <Image src={product.imageUrl} width={520} height={400} alt="" />
                       <footer>
                         <div>
@@ -72,17 +62,15 @@ export default function Home({ products }: ProductProps) {
               })}
               </>
             )}
-          </SliderContainer>
-        </div>
       </HomeContainer>
-    </div>
   </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
-    expand: ['data.default_price']
+    expand: ['data.default_price'],
+    limit: 50
   });
 
   const products = response.data.map(product => {

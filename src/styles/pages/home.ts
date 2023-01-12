@@ -2,19 +2,14 @@ import styled from "styled-components";
 
 
 export const HomeContainer = styled.main`
-  display: flex;
-  width: 100%;
-  /* max-width: calc(100vw - ((100vw - 1180px) / 2)); */
-  margin-left: auto;
-  min-height: 656px;
-`
+  width: 85%;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 
-export const SliderContainer = styled.div`
-  display: flex;
-  gap: 3rem;
-  margin: 0 auto;
-  embla__slide {
-    /* min-width: 43.5rem; */
+  @media (max-width: 768px){
+    grid-template-columns: 1fr;
   }
 `
 
@@ -28,7 +23,6 @@ export const Product = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 656px;
   &:hover {
   footer {
     transform: translateY(0%);
@@ -37,7 +31,7 @@ export const Product = styled.div`
   };
 
   @media (max-width: 992px){
-    min-height: 450px;
+    
     img{
       width: 300px;
     }
