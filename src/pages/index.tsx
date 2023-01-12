@@ -14,33 +14,61 @@ type PokemonListType = {
 export default function Home() {
   const [page, setPage] = useState(1);
   const [grid, setGrid] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   // It's better to use React Query than useEffect and useState for API calls
-  const { data, isFetching } = useQuery(["pokémon list", page], async () => {
-    const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon?offset=${(page - 1) * 20}&limit=20`
-    );
-    return response.data;
-  });
+  const { data, isFetching } = useQuery(
+    ["pokémon list", page, searchTerm],
+    async () => {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon?offset=${(page - 1) * 20}&limit=20`
+      );
+      const filteredData = response.data.results.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      return { ...response.data, results: filteredData };
+    }
+  );
 
   return (
     <div className="bg-gray-200 w-screen min-h-screen -mb-6">
-      <div className="flex justify-around pt-2">
-        <div></div>
+      <div className="flex pt-3">
         {grid ? (
-          <button
-            onClick={() => setGrid(!grid)}
-            className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
-          >
-            <BsListUl />
-          </button>
+          <div className="flex mx-auto gap-1">
+            <input
+              type="text"
+              placeholder="Search for a Pokémon"
+              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            <button
+              onClick={() => setGrid(!grid)}
+              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+            >
+              <BsListUl />
+            </button>
+          </div>
         ) : (
-          <button
-            onClick={() => setGrid(!grid)}
-            className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
-          >
-            <BsGrid3X3 />
-          </button>
+          <div className="flex mx-auto gap-1">
+            <input
+              type="text"
+              placeholder="Search for a Pokémon"
+              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            <button
+              onClick={() => setGrid(!grid)}
+              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+            >
+              <BsGrid3X3 />
+            </button>
+          </div>
         )}
       </div>
       {grid ? (
