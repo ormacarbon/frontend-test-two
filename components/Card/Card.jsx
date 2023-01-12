@@ -4,7 +4,6 @@ import { CardCharacter, CardCapsule } from "./style"
 
 export default function Card ({ characters }) {
 
-
     return (
 
         <CardCapsule>
@@ -12,7 +11,7 @@ export default function Card ({ characters }) {
                 <CardCharacter key={item.id}>
                     <Image src={item.image} width={200} height={200} alt={item.name}/>
                     <h4>{item.name}</h4>
-                    <p>Status: {item.status}</p>
+                    {item.status === "Alive" ? <p>{item.status} V</p> : <p>{item.status} X</p>}
                 </CardCharacter>
             ))}
         </CardCapsule>

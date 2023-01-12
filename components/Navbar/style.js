@@ -6,7 +6,7 @@ export const TopNavbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #121212;
+  background-color: ${(props) => props.theme.colors.primary};
   padding: 1em;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.12);
 `;
@@ -17,9 +17,9 @@ export const Logo = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1em;
-  color: #eee;
-  border-left: 2px solid #ff0000;
-  border-bottom: 2px solid #ff0000;
+  color: ${(props) => props.theme.colors.textColor};
+  border-left: 2px solid #121212;
+  border-bottom: 2px solid #121212;
   border-radius: 4px;
 `;
 
@@ -35,7 +35,7 @@ export const ListItem = styled.li`
 
   > a {
     text-decoration: none;
-    color: #f6f6f6;
+    color: ${(props) => props.theme.colors.textColor};
     font-weight: bold;
     position: relative;
 
@@ -51,6 +51,7 @@ export const ListItem = styled.li`
     }
 
     &:hover::before {
+      background-color: #00ff00;
       width: 100%;
     }
   }

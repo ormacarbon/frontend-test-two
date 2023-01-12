@@ -4,7 +4,13 @@ import { TopNavbar, Logo, List, ListItem } from './style'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function Navbar() {
+import Switch from 'react-switch'
+import { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+
+export default function Navbar({ onChangeTheme }) {
+
+    const { name, colors } = useContext(ThemeContext)
 
     return (
 
@@ -19,7 +25,18 @@ export default function Navbar() {
                 <ListItem><Link href='/characters'>Characters</Link></ListItem>
                 <ListItem><Link href='/about'>About</Link></ListItem>
             </List>
-            
+
+            <Switch 
+                onChange={onChangeTheme}
+                checked={name === 'light'}
+                height={20}
+                width={40}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                handleDiameter={20}
+                offColor={colors.secondary}
+                onColor={colors.secondary}  
+            />
         </TopNavbar>
 
     )
