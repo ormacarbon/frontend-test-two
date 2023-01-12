@@ -10,7 +10,7 @@ export default function UniversitySearcher(props) {
 	const [listUpdated, setListUpdated] = useState([]);
 	const [listLength, setListLength] = useState(0);
 	const [offset, setOffset] = useState(0);
-	const [limit, setLimit] = useState(12);
+	const [limit, setLimit] = useState(15);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [isThereAnError, setisThereAnError] = useState(false);
 
