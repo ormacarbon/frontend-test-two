@@ -8,6 +8,7 @@ export default function UniversitySearcher(props) {
 	const [searchParam, setSearchParam] = useState("");
 	const [universitiesResults, setUniversitiesResult] = useState([]);
 	const [listUpdated, setListUpdated] = useState([]);
+	const [listLength, setListLength] = useState(0);
 	const [offset, setOffset] = useState(0);
 	const [limit, setLimit] = useState(12);
 	const [pageNumber, setPageNumber] = useState(1);
@@ -17,6 +18,10 @@ export default function UniversitySearcher(props) {
 		updateList();
 		calculatePageNumber();
 	}, [universitiesResults, offset, limit]);
+
+	useEffect(() => {
+		updateListLength();
+	}, [universitiesResults]);
 
 	const searchUniversities = async (event) => {
 		event.preventDefault();
@@ -30,6 +35,10 @@ export default function UniversitySearcher(props) {
 		setOffset(0);
 	};
 
+	const updateListLength = () => {
+		setListLength(universitiesResults.length);
+	};
+
 	const updateList = () => {
 		const endNumber = offset + Number(limit);
 		const newList = universitiesResults.slice(offset, endNumber);
@@ -39,15 +48,13 @@ export default function UniversitySearcher(props) {
 	const goForward = (event) => {
 		event.preventDefault();
 		const newOffset = offset + Number(limit);
-		setOffset(newOffset);
+		if (newOffset < listLength) setOffset(newOffset);
 	};
 
 	const goBack = (event) => {
 		event.preventDefault();
 		const newOffset = offset - Number(limit);
-		if (newOffset >= 0) {
-			setOffset(newOffset);
-		}
+		if (newOffset >= 0) setOffset(newOffset);
 	};
 
 	const calculatePageNumber = () => {
