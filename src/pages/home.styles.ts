@@ -16,3 +16,8 @@ export const CardContainer = styled.div`
   gap: 20px;
   padding: 10px;
 `
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

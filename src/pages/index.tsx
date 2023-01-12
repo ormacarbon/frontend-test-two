@@ -1,9 +1,12 @@
+import { useMovies } from 'contexts/MoviesContext'
+
 import * as S from './home.styles'
 
 import { Filters } from 'components/Filters'
 import { Header } from 'components/Header'
 import { MovieCard } from 'components/MovieCard'
-import { useMovies } from 'contexts/MoviesContext'
+import { Pagination } from 'components/Pagination'
+
 import { tmdbImage } from 'constants/url'
 
 export default function Home() {
@@ -18,7 +21,7 @@ export default function Home() {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          movies?.map((movie) => (
+          movies?.results?.map((movie) => (
             <MovieCard
               key={movie.id}
               title={movie.title}
@@ -28,6 +31,10 @@ export default function Home() {
           ))
         )}
       </S.CardContainer>
+
+      <S.PaginationContainer>
+        <Pagination />
+      </S.PaginationContainer>
     </S.Container>
   )
 }
