@@ -1,11 +1,10 @@
-import { createGlobalStyle } from "styled-components";
-
 export const darkTheme = {
   title: "dark",
 
   primary: "#333",
-  secondary: "#b0aaaa",
+  secondary: "#adbac7",
 
+  buttonColor: "#000",
   background: "#222",
   text: "#fff",
 };
@@ -16,13 +15,7 @@ export const lightTheme = {
   primary: "#ffcc01",
   secondary: "#385ba9",
 
+  buttonColor: "#fff",
   background: "#fff",
   text: "#222",
 };
-
-export const GlobalStyles = createGlobalStyle`
-  body{
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
-  }
-`;
