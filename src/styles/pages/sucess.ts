@@ -11,12 +11,12 @@ export const SucessContainer = styled.main`
 
   h1 {
     font-size: ${({theme}) => theme.fontSize["2xl"]};
-    color: ${({theme}) => theme.colors.gray100};
+    color: ${(props) => props.theme.colors.secondary100};
   };
 
   p {
     font-size: ${({theme}) => theme.fontSize.xl};
-    color: ${({theme}) => theme.colors.gray300};
+    color: ${(props) => props.theme.colors.secondary100};
     max-width: 560px;
     text-align: center;
     margin-top: 2rem;
@@ -64,6 +64,7 @@ export const ImageContainer = styled.div`
   box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
 
   img {
-    object-fit: cover;
+    object-fit: contain;
+    padding: 0.35rem;
   }
 `

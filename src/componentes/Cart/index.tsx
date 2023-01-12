@@ -44,7 +44,7 @@ export function Cart(){
             </CartClose>
             <h2>Sacola de Compras</h2>
             <section>
-              { cartItemsQuantity <= 0 && <p>Parece que seu carrinho está vazio :(</p>}
+              { cartItemsQuantity <= 0 && <p className="texto">Parece que seu carrinho está vazio :(</p>}
               {cartItems.map((cartItem) => (
                 <CartProduct key={cartItem.id}>
                   <CartProductImage>

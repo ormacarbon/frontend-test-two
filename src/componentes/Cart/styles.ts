@@ -27,6 +27,10 @@ export const CartContent = styled(Dialog.Content)`
     gap: 1.5rem;
     overflow-y: auto;
     flex: 1;
+
+    .texto{
+      color: ${({theme}) => theme.colors.gray100};
+    }
   }
 
   @media (max-width: 992px){
@@ -58,11 +62,12 @@ export const CartProductImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8;
+  border-radius: 8px;
   background: linear-gradient(180deg, #1EA483 0%, #7465D4 100%);
 
   img {
-    object-fit: cover;
+    object-fit: contain;
+    padding: 0.5rem;
   }
 `
 
@@ -78,6 +83,7 @@ export const CartCProductDetails = styled.div`
   };
 
   strong {
+    color: ${(props) => props.theme.colors.white};
     margin-top: 4px;
     font-size: ${({theme}) => theme.fontSize.md};
     font-weight: bold;
@@ -100,7 +106,7 @@ export const CartFinalization = styled.div`
   button {
     width: 100%;
     background: ${({theme}) => theme.colors.green500};
-    color: ${({theme}) => theme.colors.white};
+    color: ${(props) => props.theme.colors.secondary100};
     font-size: ${({theme}) => theme.fontSize.md};
     height: 4.3125rem;
     border: none;
@@ -131,8 +137,12 @@ export const FinalizationDatails = styled.div`
 
     p {
       font-size: ${({theme}) => theme.fontSize.md};
-      color: ${({theme}) => theme.colors.gray300};
+      color: ${({theme}) => theme.colors.gray100};
     };
+
+    span{
+      color: ${({theme}) => theme.colors.gray100};
+    }
 
     &:last-child {
       font-weight: bold;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const HomeContainer = styled.main`
   display: flex;
   width: 100%;
-  max-width: calc(100vw - ((100vw - 1180px) / 2));
+  /* max-width: calc(100vw - ((100vw - 1180px) / 2)); */
   margin-left: auto;
   min-height: 656px;
 `
@@ -14,7 +14,7 @@ export const SliderContainer = styled.div`
   gap: 3rem;
   margin: 0 auto;
   embla__slide {
-    min-width: 43.5rem;
+    /* min-width: 43.5rem; */
   }
 `
 
@@ -44,7 +44,7 @@ export const Product = styled.div`
   }
 
   img {
-    object-fit: cover;
+    object-fit: contain;
   };
 
   footer {

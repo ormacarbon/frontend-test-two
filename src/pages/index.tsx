@@ -40,7 +40,7 @@ export default function Home({ products }: ProductProps) {
   return (
     <>
     <Head>
-      <title>Home | Ignite Shop</title>
+      <title>Home | Next Shop</title>
     </Head>
     <div style={{overflow: 'hidden', width:'100%'}}>
       <HomeContainer>

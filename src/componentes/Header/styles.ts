@@ -17,6 +17,7 @@ export const HeaderContainer = styled.header`
   }
 ` 
 
+
 export const ToggleTheme = styled.button`
   width: 3rem;
   height: 3rem;
@@ -26,7 +27,13 @@ export const ToggleTheme = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+  background-color: ${({theme}) => theme.colors.gray800};
+  border-radius: 8px;
+
+  @media (max-width: 992px){
+    bottom: 1rem;
+  }
   svg {
-    color: ${(props) => props.theme.color};
+    color: ${({theme}) => theme.colors.white};
   }
 `

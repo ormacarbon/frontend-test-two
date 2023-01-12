@@ -5,8 +5,8 @@ import { Header } from '../componentes/Header';
 import { CartContextProvider } from '../context/CartContext';
 import { GlobalStyles } from '../styles/global';
 import { Container } from '../styles/pages/app';
-import { dark } from '../styles/themes/dark';
-import { light } from '../styles/themes/light';
+import { darkTheme } from '../styles/themes/dark';
+import { lightTheme } from '../styles/themes/light';
 
 type Theme = 'light' | 'dark'
 
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
     currentTheme === 'dark' ? setCurrentTheme('light') : setCurrentTheme('dark')
   }
   return (
-    <ThemeProvider theme={currentTheme === 'dark' ? dark : light}>
+    <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
       <ThemeContext.Provider value={{ currentTheme, toggleTheme }}>
         <GlobalStyles />
         <CartContextProvider>

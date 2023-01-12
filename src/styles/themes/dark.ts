@@ -1,7 +1,8 @@
-export const dark = {
-    colors: {   
-        'primary-100': '#121214',
-        'secondary-100': '#e1e1e6',
+export const darkTheme = {
+    colors: {  
+        primary100: '#121214',
+        secondary100: '#fff',
+        white: '#fff',
         gray900: '#121214',
         gray800: '#202024',
         gray700: '#2B2B30',

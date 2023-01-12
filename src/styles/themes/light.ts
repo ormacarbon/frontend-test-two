@@ -1,7 +1,8 @@
-export const light = {
+export const lightTheme = {
   colors: {   
-    'primary-100': '#fff',
-    'secondary-100': '#e1e1e6',
+    primary100: '#fff',
+    secondary100: '#121214',
+    white: '#fff',
     gray900: '#121214',
     gray800: '#202024',
     gray700: '#2B2B30',

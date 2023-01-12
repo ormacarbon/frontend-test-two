@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Sun, Moon } from 'phosphor-react';
 import { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
+import { ThemeContext } from '../../pages/_app';
 import { Cart } from '../Cart';
 import { HeaderContainer, ToggleTheme } from './styles';
 
