@@ -23,6 +23,7 @@
       "no-return-await":"off",
       "import/prefer-default-export":"off",
       "react/jsx-no-bind":"off",
-      "react/jsx-no-constructed-context-values": "off"
+      "react/jsx-no-constructed-context-values": "off",
+      "@next/next/no-img-element": "off"
     }
 }

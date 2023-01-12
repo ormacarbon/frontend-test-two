@@ -2,38 +2,35 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import Switch from 'react-switch';
 import { ThemeContext } from '../../contexts/ThemeContext';
-import { StyledHeader } from './styles';
+import { StyledHeader, ListNavMenu, ContainerLogo } from './styles';
 
 export default function Header() {
   const { handleToggleTheme, theme, currentTheme } = useContext(ThemeContext);
 
   return (
     <StyledHeader theme={currentTheme}>
-      <Switch
-        onChange={handleToggleTheme}
-        checked={theme === 'dark'}
-        checkedIcon={false}
-        uncheckedIcon={false}
-        height={12}
-        width={30}
-        handleDiameter={20}
-        offColor="#523465"
-        onColor="#863"
-      />
+      <ContainerLogo theme={currentTheme}>
+        <Link href="/"><h1>LOGO</h1></Link>
+        <Switch
+          onChange={handleToggleTheme}
+          checked={theme === 'dark'}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={25}
+          width={50}
+          handleDiameter={25}
+          onColor="#ccc"
+          offColor="#444"
+        />
+      </ContainerLogo>
+
       <nav>
-        <ul style={{ display: 'flex', listStyle: 'none', gap: '25px' }}>
-          <li>
-            <button type="button">
-              <Link href="/"> Home</Link>
-            </button>
-          </li>
-          <li>Seasons</li>
-          <li>Classificação</li>
-        </ul>
+        <ListNavMenu theme={currentTheme}>
+          <li><Link href="/"> Home</Link></li>
+          <li><Link href="/test"> Seasons</Link></li>
+          <li><Link href="/test2"> Results</Link></li>
+        </ListNavMenu>
       </nav>
     </StyledHeader>
   );
 }
-
-Header.propTypes = {
-};

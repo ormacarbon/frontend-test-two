@@ -1,13 +1,5 @@
-import Link from 'next/link';
+import Main from '../components/Main';
 
 export default function Home() {
-  return (
-    <div>
-      <h1>Hello, World!!!!</h1>
-      <div>
-
-        <Link href="/test">Test</Link>
-      </div>
-    </div>
-  );
+  return <Main />;
 }

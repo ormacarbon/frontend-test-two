@@ -9,12 +9,12 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme[100]};
-    color: #fff;
+    background-color: ${({ theme }) => theme.primaryColor};
+    color: ${({ theme }) => theme.tertiaryColor};
   }
 
   a{
     text-decoration: none;
-    color: #fff;
+    color:${({ theme }) => theme.tertiaryColor};
   }
 `;

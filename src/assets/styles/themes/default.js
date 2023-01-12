@@ -1,16 +1,16 @@
 export const themes = {
   light: {
-    50: '#eef7ef',
-    100: '#cfe6d1',
-    200: '#aed4b2',
-    300: '#8dc493',
-    400: '#6cb473',
+    primaryColor: '#fff',
+    secondaryColor: '#5900ff',
+    tertiaryColor: '#222',
+    textColorHover: '#fff',
+    textColor: '#222',
   },
   dark: {
-    50: '#539a5a',
-    100: '#417846',
-    300: '#2f5632',
-    200: '#1c331f',
-    400: '#081109',
+    primaryColor: '#222',
+    secondaryColor: '#5900ff',
+    tertiaryColor: '#fff',
+    textColorHover: '#222',
+    textColor: '#fff',
   },
 };
