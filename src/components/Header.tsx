@@ -12,7 +12,7 @@ export default function Header() {
           <div className="flex space-x-4">
             <Link
               href="/"
-              className="px-2 py-1 text-white hover:bg-blue-900 rounded-md font-semibold"
+              className="px-2 py-1 text-white hover:bg-blue-900 rounded-md font-semibold transition-all duration-250 ease-in"
             >
               Home
             </Link>
