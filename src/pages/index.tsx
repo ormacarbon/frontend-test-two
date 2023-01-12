@@ -8,6 +8,7 @@ import { MovieCard } from 'components/MovieCard'
 import { Pagination } from 'components/Pagination'
 
 import { tmdbImage } from 'constants/url'
+import Link from 'next/link'
 
 export default function Home() {
   const { movies, isLoading } = useMovies()
@@ -22,12 +23,13 @@ export default function Home() {
           <p>Loading...</p>
         ) : (
           movies?.results?.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              title={movie.title}
-              date={movie.release_date}
-              poster={tmdbImage(movie.poster_path, 185)}
-            />
+            <Link key={movie.id} href={`/movie/${movie.id}`}>
+              <MovieCard
+                title={movie.title}
+                date={movie.release_date}
+                poster={tmdbImage(movie.poster_path, 185)}
+              />
+            </Link>
           ))
         )}
       </S.CardContainer>

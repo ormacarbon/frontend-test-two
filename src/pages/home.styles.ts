@@ -15,6 +15,10 @@ export const CardContainer = styled.div`
   height: 100%;
   gap: 20px;
   padding: 10px;
+
+  a {
+    text-decoration: none;
+  }
 `
 export const PaginationContainer = styled.div`
   display: flex;
