@@ -15,7 +15,7 @@ export default function PokemonList({ pokemonData }) {
   return (
     data && (
       <Link href={"pokemon/" + data.id} className="flex px-10">
-        <div className="mx-auto bg-white rounded-md w-96 my-2 flex">
+        <div className="mx-auto bg-white rounded-md w-96 my-2 flex shadow">
           <div className="flex mx-auto">
             <Image
               src={data.sprites.front_default}

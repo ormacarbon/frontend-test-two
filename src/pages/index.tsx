@@ -22,7 +22,24 @@ export default function Home() {
 
   return (
     <div className="bg-gray-200 w-screen min-h-screen -mb-6">
-      <button onClick={() => setGrid(!grid)}>Toggle View</button>
+      <div className="flex justify-around">
+        <div></div>
+        {grid ? (
+          <button
+            onClick={() => setGrid(!grid)}
+            className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+          >
+            List view
+          </button>
+        ) : (
+          <button
+            onClick={() => setGrid(!grid)}
+            className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+          >
+            Grid view
+          </button>
+        )}
+      </div>
       {grid ? (
         <div className="mt-3">
           {isFetching ? (
