@@ -10,7 +10,6 @@ export const Header = styled.header`
 export const Container = styled.div`
     width: 100%;
     height: 70px;
-    max-width: 1700px;
     margin: auto;
     display: flex;
     justify-content: space-around;

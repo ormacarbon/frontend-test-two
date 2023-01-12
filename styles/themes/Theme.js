@@ -1,4 +1,4 @@
-import { ThemeContext } from "../../Context/ThemeStore";
+import { ThemeContext } from "../../Context/index";
 import { ThemeProvider } from "styled-components";
 import { useContext } from "react";
 

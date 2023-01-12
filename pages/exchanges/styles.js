@@ -9,9 +9,10 @@ export const Container = styled.div`
 
 export const ExchangesBox = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3,1fr);    
     gap: 2rem;
-    justify-content: space-around;
+    justify-items: center;
+    align-content: center;
 `
 export const InputBox = styled.div`
     width: 100%;

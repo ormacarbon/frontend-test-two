@@ -3,10 +3,10 @@ import React from "react";
 import { IoCaretBackSharp } from "react-icons/io5";
 import { LinkContainer } from "./styles";
 
-export default function BackBtn() {
+export default function BackBtn(props) {
   return (
     <LinkContainer>
-      <Link href="/" className="back">
+      <Link href={props.link} className="back">
         <IoCaretBackSharp />
         <p>Back</p>
       </Link>

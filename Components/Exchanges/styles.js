@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ExchangeItems = styled.div`
-        max-width: 300px;
+        width: 350px;
         padding: 2rem;
         border-radius: 1rem;
         background-color: ${props=>props.theme.primaryBack};
@@ -11,6 +11,14 @@ export const ExchangeItems = styled.div`
         line-height: 2rem;
         :hover{
             transform: scale(1.1);
+        }
+        .score{
+            font-weight: bold;
+            color: ${props=>props.theme.primary};
+            font-size: 1rem;
+        }
+        p{
+            color: ${props=>props.theme.text};
         }
         a{
             color: ${props=>props.theme.desc};

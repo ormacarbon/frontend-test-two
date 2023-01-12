@@ -1,31 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Input } from '../../Components/SearchComponent/styles'
 import {useApi} from '../../hooks/useApi'
 import ExchangesList from '../../Components/Exchanges'
 import { Container, ExchangesBox, InputBox } from './styles'
+import debounce from 'lodash.debounce'
+import LoaderComponent from "../../Components/Loader";
+import SEO from '../../Components/SEO'
 
 export default function Exchange() {
     const[search,setSearch]=useState('')
-    const {response} = useApi('exchanges')
+    const {response, isLoading} = useApi('exchanges')
     console.log(response)
 
-    const handleChange = e => {
+    const handleChange = debounce(e => {
         e.preventDefault();
         setSearch(e.target.value.toLowerCase());
-      };
-     const filteredExchanges = response.filter(coin =>
+    }, 500);
+    
+    useEffect(() => {
+        return () => handleChange.cancel();
+    }, []);
+
+     const filteredExchanges = useMemo(()=>response.filter(coin =>
         coin.name.toLowerCase().includes(search.toLowerCase())
-      );
+      ),[response,search])
 
   return (
     <main>
+        <SEO name='Crypto.me | Exchanges' desc='all exchanges'/>
         <section id='exchanges'>
             <InputBox>
                 <Input placeholder='Search your favorive exchange' onChange={handleChange}/>
             </InputBox>
             <Container>
             <ExchangesBox>
-            {filteredExchanges.map(broker=>(
+            {isLoading ? <LoaderComponent/> : filteredExchanges.map(broker=>(
                 <ExchangesList
                     key={broker.id}
                     id={broker.id}

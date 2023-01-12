@@ -1,18 +1,18 @@
 import { HeaderComponent } from "../Components/Header";
-import { ThemeStore } from "../Context/ThemeStore";
+import { ThemeProvider } from "../Context";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import Theme from "../styles/themes/Theme";
 
 
 function MyApp({ Component, pageProps }) {
   return (
-        <ThemeStore>
+        <ThemeProvider>
           <Theme>
             <HeaderComponent/>
             <GlobalStyle />
             <Component {...pageProps} />
           </Theme>
-        </ThemeStore>
+        </ThemeProvider>
   );
 }
 

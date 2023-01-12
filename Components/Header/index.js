@@ -2,21 +2,21 @@ import Link from 'next/link'
 import React,{useContext} from 'react'
 import { Container, Header, Navigation, SwitchButton } from './styles'
 import {FiMoon, FiSun} from 'react-icons/fi'
-import { ThemeContext } from '../../Context/ThemeStore'
+import { ThemeContext } from '../../Context/index'
 
 export const HeaderComponent = () => {
   const { theme, switchTheme } = useContext(ThemeContext);
   return (
     <Header>
        <Container>
-       <h3>Logo</h3>
+       <h3>Crypto.me</h3>
 
        <Navigation>
            <ul>
                <li><Link href='/'>Coins</Link></li>
-               <li><Link href='/exchange'>Exchange</Link></li>
+               <li><Link href='/exchanges'>Exchanges</Link></li>
                <li><Link href='/derivatives'>Derivatives</Link></li>
-               <li><Link href='/nfts'>Nfts</Link></li>
+               <li><Link href='/nfts'>NFTs</Link></li>
            </ul>
        </Navigation>
 
