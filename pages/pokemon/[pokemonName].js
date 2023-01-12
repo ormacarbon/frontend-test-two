@@ -31,9 +31,6 @@ export const getStaticProps = async (context) => {
 };
 
 export default function Pokemon({ pokemon }) {
-  console.log("estamos pegando a api", pokemon);
-  console.log("habilidade", pokemon.abilities[1].ability.url);
-
   return (
     <div>
       <Image
