@@ -8,7 +8,13 @@ export const CardCapsule = styled.div`
   align-items: center;
   max-width: 1100px;
   margin: 4em auto;
+
+  @media (max-width: 699px) {
+    justify-content: center;
+  }
 `;
+
+
 
 export const CardCharacter = styled.div`
   display: flex;
@@ -19,7 +25,7 @@ export const CardCharacter = styled.div`
   margin-bottom: 2em;
   border-radius: 1em;
   border: 2px solid;
-  border-color: ${(props) => props.theme.colors.borderColor} ;
+  border-color: ${(props) => props.theme.colors.borderColor};
   width: 23%;
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
   background-color: ${(props) => props.theme.colors.cardBgColor};
@@ -38,5 +44,13 @@ export const CardCharacter = styled.div`
 
   > p {
     color: ${(props) => props.theme.colors.textColor};
+  }
+
+  @media (max-width:900px ) {
+    width: 48%;
+  }
+
+  @media (max-width:699px ) {
+    width: 75%;
   }
 `;
