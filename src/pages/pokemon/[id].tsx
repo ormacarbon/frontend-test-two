@@ -15,7 +15,26 @@ export const getServerSideProps = async (context: any) => {
   };
 };
 
-export default function PokemonDetails({ data }: any) {
+interface PokemonData {
+  id: number;
+  name: string;
+  base_experience: number;
+  abilities: Array<{ ability: { name: string } }>;
+  moves: Array<{ move: { name: string } }>;
+  weight: number;
+  sprites: {
+    front_default?: string;
+    front_shiny?: string;
+    front_female?: string;
+    back_default?: string;
+    back_shiny?: string;
+    back_female?: string;
+    front_shiny_female?: string;
+    back_shiny_female?: string;
+  };
+}
+
+export default function PokemonDetails({ data }: { data: PokemonData }) {
   return (
     <div className="bg-gray-200 flex w-[100vw] -mb-6">
       <main className="mt-5 mx-auto">
