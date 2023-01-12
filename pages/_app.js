@@ -1,9 +1,12 @@
 import Layout from "../components/layout";
+import { AppContext } from "../utils/AppContext";
 
 function MyApp({ Component, pageProps }) {
 	return (
 		<Layout>
-			<Component {...pageProps} />
+			<AppContext>
+				<Component {...pageProps} />
+			</AppContext>
 		</Layout>
 	);
 }

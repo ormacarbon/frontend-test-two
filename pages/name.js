@@ -1,8 +1,9 @@
 import UniversitySearcher from "../components/UniversitySearcher";
-import hooks from "../utils/hooks";
+import { Context } from "../utils/AppContext";
+import { useContext } from "react";
 
 export default function Name() {
-	const { searchUniversitiesByName } = hooks();
+	const { searchUniversitiesByName } = useContext(Context);
 
 	return (
 		<div>
