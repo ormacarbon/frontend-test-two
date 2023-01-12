@@ -9,7 +9,7 @@ https://github.com/public-apis/public-apis
 ---------------------------------------------------------------------
 ## REQUISITOS:
 
-- SEJA ORIGINAL, PROJETOS DESCARADAMENTE COPIADOS SERÃO DESCARTADOS!
+- SEJA ORIGINAL, PROJETOS SUSPEITOS DE SEREM COPIADOS SERÃO DESCARTADOS!
 - QUEREMOS VER O SEU CÓDIGO, E NÃO O DE OUTROS.
 
 ## GIT
