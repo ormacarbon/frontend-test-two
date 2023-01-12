@@ -40,9 +40,11 @@ const colors = {
 
 const fonts = {
   size: {
-    small: '14px',
-    medium: '16px',
-    large: '20px',
+    sm: '14px',
+    md: '16px',
+    lg: '20px',
+    xl: '32px',
+    '2xl': '48px',
   },
   family: {
     heading: '"Open Sans", sans-serif',
@@ -55,7 +57,9 @@ const spacing = {
   sm: '0.75rem',
   md: '1rem',
   lg: '1.5rem',
-  xl: '2rem'
+  xl: '2rem',
+  '2xl': '3rem',
+  '3xl': '4rem',
 }
 
 const breakpoints = {
