@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import PokemonList from "../components/PokemonList";
 import PokemonGrid from "../components/PokemonGrid";
 import Image from "next/image";
+import { BsListUl, BsGrid3X3 } from "react-icons/bs";
 
 type PokemonListType = {
   name: string;
@@ -18,25 +19,25 @@ export default function Home() {
     return response.data;
   });
 
-  const [grid, setGrid] = useState(false);
+  const [grid, setGrid] = useState(true);
 
   return (
     <div className="bg-gray-200 w-screen min-h-screen -mb-6">
-      <div className="flex justify-around">
+      <div className="flex justify-around pt-2">
         <div></div>
         {grid ? (
           <button
             onClick={() => setGrid(!grid)}
-            className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+            className="bg-gray-500 hover:bg-gray-600 active:bg-gray-700 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
           >
-            List view
+            <BsListUl />
           </button>
         ) : (
           <button
             onClick={() => setGrid(!grid)}
-            className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+            className="bg-gray-500 hover:bg-gray-600 active:bg-gray-700 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
           >
-            Grid view
+            <BsGrid3X3 />
           </button>
         )}
       </div>
@@ -63,7 +64,7 @@ export default function Home() {
           )}
         </div>
       ) : (
-        <ul className="mt-3">
+        <ul className="mt-1">
           {isFetching ? (
             <Image
               src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
