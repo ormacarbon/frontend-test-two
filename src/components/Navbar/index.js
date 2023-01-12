@@ -11,7 +11,6 @@ export default function Navbar() {
     setSearchResults,
     allPokelist,
   } = useContext(GlobalContext);
-  const [expanded, setExpanded] = useState(false);
 
   const searchPokemon = () => {
     const foundPokemons = allPokelist.filter((pokemon) =>
@@ -25,9 +24,6 @@ export default function Navbar() {
     setSearchResults([]);
   };
 
-
-
-
   return (
     <StyledNavbar>
       <Link href="/">
@@ -39,27 +35,18 @@ export default function Navbar() {
         <button className="button-pokedex">Pokédex</button>
       </Link>
       <div className="search-container">
-        <button
-          className="button-search"
-          onClick={() => setExpanded(!expanded)}
-        >
+        <input
+          type="text"
+          placeholder="Search Pokemon..."
+          className="search-input"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+        <button className="button-search" onClick={searchPokemon}>
           <img src={"/images/search.svg"} />
         </button>
-        {expanded && (
-          <>
-            <input
-              type="text"
-              placeholder="Search Pokemon..."
-              className="search-input"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
-            <button className="button-search" onClick={searchPokemon}>
-              Search
-            </button>
-          </>
-        )}
       </div>
     </StyledNavbar>
   );
 }
+//onClick={searchPokemon}
