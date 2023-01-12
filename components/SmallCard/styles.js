@@ -4,7 +4,7 @@ export const Container = styled.button`
   flex: 1;
   display: flex;
   gap: ${props => props.theme.spacing.sm};
-  padding: ${props => props.theme.spacing.lg};
+  padding: ${props => props.theme.spacing.md};
   border-radius: ${props => props.theme.spacing.xl};
   color: ${ props => props.theme.colors.light };
   background: ${props => props.active && props.theme.colors.gray[400]};
@@ -35,15 +35,16 @@ export const Header = styled.header`
   align-items: flex-start;
   justify-content: space-between;
   font-weight: 500;
+  gap: ${ props => props.theme.spacing.md};
 
   span {
-    font-size: ${ props => props.theme.fonts.size.xl };
+    font-size: ${ props => props.theme.fonts.size.lg};
   }
 
   div {
-    padding: ${ props => props.theme.spacing.xs } ${ props => props.theme.spacing.sm };
+    padding: ${ props => props.theme.spacing.xs } ${ props => props.theme.spacing.sm};
     background: ${ props => props.theme.colors.label};
-    font-size: ${ props => props.theme.fonts.size.xs };
+    font-size: ${ props => props.theme.fonts.size.xs};
     color: ${ props => props.theme.colors.light};
     border-radius: ${ props => props.theme.spacing.lg};
   }
@@ -52,11 +53,11 @@ export const Header = styled.header`
 export const Content = styled.div`
   flex: 1;
   display: flex;
-  gap: ${ props => props.theme.spacing.sm };
+  gap: ${ props => props.theme.spacing.sm};
   flex-direction: column;
 `
 
 export const Types = styled.div`
   display: flex;
-  gap: ${ props => props.theme.spacing.xs };
+  gap: ${ props => props.theme.spacing.xs};
 `
