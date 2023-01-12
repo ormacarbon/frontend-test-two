@@ -7,7 +7,8 @@ const darkTheme = {
         borderColor: "#ff0000",
         cardBgColor: "#121212",
         backgroundColor: "#121212",
-        textColor:"#fff"
+        textColor:"#fff",
+        inputColor: "#fff"
     }
 };
 

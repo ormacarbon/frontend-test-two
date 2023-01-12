@@ -1,20 +1,21 @@
-import Image from "next/image"
+import Image from "next/image";
 
-import { CardCharacter, CardCapsule } from "./style"
+import { CardCharacter, CardCapsule } from "./style";
 
-export default function Card ({ characters }) {
-
-    return (
-
-        <CardCapsule>
-            {characters.map((item) => (
-                <CardCharacter key={item.id}>
-                    <Image src={item.image} width={200} height={200} alt={item.name}/>
-                    <h4>{item.name}</h4>
-                    {item.status === "Alive" ? <p>{item.status} V</p> : <p>{item.status} X</p>}
-                </CardCharacter>
-            ))}
-        </CardCapsule>
-    )
-
+export default function Card({ characters, search }) {
+  return (
+    <CardCapsule>
+          {characters.map((item) => (
+        <CardCharacter key={item.id}>
+          <Image src={item.image} width={200} height={200} alt={item.name} />
+          <h4>{item.name}</h4>
+          {item.status === "Alive" ? (
+            <p>{item.status} V</p>
+          ) : (
+            <p>{item.status} X</p>
+          )}
+        </CardCharacter>
+      ))}
+    </CardCapsule>
+  );
 }

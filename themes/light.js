@@ -7,7 +7,8 @@ const lightTheme = {
         borderColor: "#00ff00",
         cardBgColor: "#f6f6f6",
         backgroundColor: "#f6f6f6",
-        textColor:"#272727"
+        textColor:"#272727",
+        inputColor: "#000"
     }
 };
 

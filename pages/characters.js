@@ -1,86 +1,61 @@
-//? Card component
-import { useEffect, useState } from "react";
+//? Components
 import Card from "../components/Card/Card";
+import Search from "../components/Search/Search";
+
+import { useEffect, useState } from "react";
 
 import { CharactersContainer } from "../styles/characterStyles";
+import Pagination from "../components/Pagination/Pagination";
 
 //! API CALL
-export async function getServerSideProps() {
-  const apiURL = "https://rickandmortyapi.com/api/character/";
+// export async function getServerSideProps() {
+//   const apiURL = "https://rickandmortyapi.com/api/character/";
 
-  const res = await fetch(`${apiURL}`);
-  const data = await res.json();
+//   const res = await fetch(`${apiURL}`);
+//   const data = await res.json();
 
-  return {
-    props: {
-      data: data
-    },
-  };
-}
-
-
+//   return {
+//     props: {
+//       data: data,
+//     },
+//   };
+// }
 
 //! COMPONENT
-export default function Characters({ data }) {
-  const apiURL = "https://rickandmortyapi.com/api/character/";
+export default function Characters() {
 
-  const { info, results: defaultResults = [] } = data;
-  const [results, updateResults] = useState(defaultResults);
-  const [page, updatePage] = useState({
-    ...info,
-    current: apiURL,
-  });
+  
+  const [info, setinfo] = useState(0)
+  const [results, setResults] = useState([])
+  const [search, setSearch] = useState("");
+  const [pageNumber, setPageNumber] = useState(1)
 
-  const { current } = page;
 
   useEffect(() => {
-    if (current === apiURL) return;
 
-    async function request() {
-      const res = await fetch(current);
-      const nextData = await res.json();
+    fetch(`https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`)
+    .then((res) => res.json())
+    .then((res) => {
+      setResults(res.results)
+      setinfo(res.info)
+      console.log(res.info)
+    })
+    .catch((err) => console.log(err))
+  }, [search, pageNumber])
 
-      updatePage({
-        current,
-        ...nextData.info,
-      });
-
-      if (!nextData.info?.prev) {
-        updateResults(nextData.results);
-        return;
-      }
-
-      updateResults((prev) => {
-        return [...prev, ...nextData.results];
-      });
-    }
-
-    request();
-  }, [current]);
-
-  function handleOnSubmitSearch(e) {
-    e.preventDefault();
-
-    const { currentTarget = {} } = e;
-    const fields = Array.from(currentTarget?.elements);
-    const fieldQuery = fields.find((field) => field.name === "query");
-
-    const value = fieldQuery.value || "";
-    const endpoint = `https://rickandmortyapi.com/api/character/?name=${value}`;
-
-    updatePage({
-      current: endpoint,
-    });
-  }
+  console.log('RENDER')
+  
 
   return (
     <CharactersContainer>
       <h1>Characters</h1>
-      <form onSubmit={handleOnSubmitSearch}>
-        <input name="query" type="search" />
-        <button>Search</button>
-      </form>
-      {!Characters ? <p>Carregando..</p> : <Card characters={results} />}
+      <Search search={search} setSearch={setSearch}/>
+      {!results ? (
+        <p>No results found...</p>
+      ) : (
+        <Card characters={results}  />
+      )}
+      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} info={info} />
     </CharactersContainer>
   );
 }
