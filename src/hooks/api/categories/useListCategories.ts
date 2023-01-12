@@ -1,20 +1,20 @@
 import { useQueryGet } from "@/hooks/react-query";
-import { PostsData } from "@/types";
+import { CategoryData } from "@/types";
 import { AxiosRequestConfig } from "axios";
 
-interface useListPostsProps {
+interface useListCategoriesProps {
   reqConfig?: AxiosRequestConfig;
   queryConfigs?: {
-    onSuccess?(data: PostsData): void;
+    onSuccess?(data: CategoryData): void;
     onError?(error: unknown): void;
   };
 }
 
-export const useListPosts = (queryOptions?: useListPostsProps) => {
+export const useListCategories = (queryOptions?: useListCategoriesProps) => {
   const { queryConfigs, reqConfig } = queryOptions || {};
 
-  const { data, ...rest } = useQueryGet<PostsData>({
-    queryKeys: ["posts"],
+  const { data, ...rest } = useQueryGet<CategoryData>({
+    queryKeys: ["categories"],
     url: "/posts",
     reqConfig,
     queryConfigs: {
@@ -23,5 +23,5 @@ export const useListPosts = (queryOptions?: useListPostsProps) => {
     },
   });
 
-  return { postsList: data, ...rest };
+  return { categoriesList: data, ...rest };
 };

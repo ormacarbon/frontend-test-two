@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 interface useReactQueryProps {
   queryKeys: string[];
   url: string;
-  params?: AxiosRequestConfig;
+  reqConfig?: AxiosRequestConfig;
   queryConfigs?: {
     enabled?: boolean;
     refetchOnWindowFocus?: boolean;
@@ -15,13 +15,13 @@ interface useReactQueryProps {
 export function useQueryGet<ResponseDataType>({
   queryKeys,
   url,
-  params,
+  reqConfig,
   queryConfigs,
 }: useReactQueryProps) {
   const queryResponse = useQuery(
     queryKeys,
     async () => {
-      const { data } = await api.get<ResponseDataType>(url, params);
+      const { data } = await api.get<ResponseDataType>(url, reqConfig);
       return data;
     },
     { retry: false, ...queryConfigs }
