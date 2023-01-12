@@ -1,8 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { AboutContainer, CoinDetail } from "./styles";
-import { IoCaretBackSharp } from "react-icons/io5";
-import Link from "next/link";
+import BackBtn from "../../Components/BackBtn";
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
@@ -25,10 +24,7 @@ export default function CryptoDetail({ coin }) {
           <div className="box">
             <img src={coin.image.small} alt={coin.name} />
             <p>{coin.name}</p>
-          <Link href="/" className="back">
-            <IoCaretBackSharp />
-            <p>Voltar</p>
-          </Link>
+            <BackBtn />
           </div>
         </div>
         <p

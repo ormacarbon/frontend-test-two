@@ -1,21 +1,12 @@
 import styled from "styled-components";
 
-export const TableCoins = styled.div`
-    width: 100%;
-    max-width: 1500px;
-    margin: auto;
-    .text{
-        width: 100%;
-        max-width: 800px;
-        margin: auto;
-    }
-   
-` 
 export const Container = styled.div`
-
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    background-color: ${props=>props.theme.primaryBack};
 `
 export const CoinContainer = styled.div`
- width: 100%;
  padding: 2rem;
  border-bottom: 1px solid ${props=>props.theme.borderColor};
 ul{
@@ -57,10 +48,4 @@ ul>li>img{
     background-color: ${props=>props.theme.secondary};
     transition: 300ms;
 }
-`
-export const TableCoinsContainer = styled.div`
-     max-width: 800px;
-    margin: auto;
-    border-radius:1rem;
-    background-color: ${props=>props.theme.primaryBack};
 `
