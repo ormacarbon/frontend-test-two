@@ -42,7 +42,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="bg-gray-200 flex min-w-screen min-h-screen -mb-6">
+    <div className="bg-gray-200 dark:bg-gray-800 flex min-w-screen min-h-screen -mb-6">
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta
@@ -62,27 +62,31 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
       </Head>
       <main className="mt-5 mx-auto">
         <div className="block sm:block md:block lg:block xl:flex xl:gap-5">
-          <section className="bg-white mt-5 w-80 rounded-xl shadow py-4">
+          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
             <Image
               src={data.sprites.front_default}
               alt={data.name + "icon"}
               width={400}
               height={400}
             />
-            <h1 className="text-center capitalize text-4xl font-bold">
+            <h1 className="text-center dark:text-gray-200 capitalize text-4xl font-bold">
               {data.name}
             </h1>
-            <p className="text-center text-2xl">{data.base_experience} XP</p>
+            <p className="text-center text-2xl dark:text-gray-200">
+              {data.base_experience} XP
+            </p>
           </section>
-          <section className="bg-white mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-center text-2xl font-bold pb-2">Moves</h2>
+          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
+            <h2 className="text-center text-2xl dark:text-gray-200 font-bold pb-2">
+              Moves
+            </h2>
             {showMore ? (
-              <div className="h-96 overflow-y-auto mx-3 border-2">
+              <div className="h-96 overflow-y-auto mx-3 border-2 dark:border-gray-600">
                 {data.moves.map((i) => {
                   return (
                     <p
                       key={i.move.name}
-                      className="text-center text-xl capitalize"
+                      className="text-center text-xl dark:text-gray-200 capitalize"
                     >
                       -{i.move.name.replace(/-/g, " ")}
                     </p>
@@ -94,7 +98,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                 return (
                   <p
                     key={i.move.name}
-                    className="text-center text-xl capitalize"
+                    className="text-center text-xl dark:text-gray-200 capitalize"
                   >
                     -{i.move.name.replace(/-/g, " ")}
                   </p>
@@ -110,8 +114,10 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
               </button>
             )}
           </section>
-          <section className="bg-white mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-center text-2xl font-bold">Gallery</h2>
+          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
+            <h2 className="text-center text-2xl dark:text-gray-200 font-bold">
+              Gallery
+            </h2>
             <div className="flex">
               <div className="mx-auto grid grid-cols-3">
                 {data.sprites.front_default && (
@@ -122,7 +128,9 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">Front default</p>
+                    <p className="text-center dark:text-gray-200">
+                      Front default
+                    </p>
                   </div>
                 )}
                 {data.sprites.front_shiny && (
@@ -133,7 +141,9 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">Front shiny</p>
+                    <p className="text-center dark:text-gray-200">
+                      Front shiny
+                    </p>
                   </div>
                 )}
                 {data.sprites.front_female && (
@@ -144,7 +154,9 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">Front female</p>
+                    <p className="text-center dark:text-gray-200">
+                      Front female
+                    </p>
                   </div>
                 )}
                 {data.sprites.back_default && (
@@ -155,7 +167,9 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">Back default</p>
+                    <p className="text-center dark:text-gray-200">
+                      Back default
+                    </p>
                   </div>
                 )}
                 {data.sprites.back_shiny && (
@@ -166,7 +180,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">Back shiny</p>
+                    <p className="text-center dark:text-gray-200">Back shiny</p>
                   </div>
                 )}
                 {data.sprites.back_female && (
@@ -177,7 +191,9 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">Back female</p>
+                    <p className="text-center dark:text-gray-200">
+                      Back female
+                    </p>
                   </div>
                 )}
                 {data.sprites.front_shiny_female && (
@@ -188,7 +204,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">
+                    <p className="text-center dark:text-gray-200">
                       Front shiny <br />
                       female
                     </p>
@@ -202,7 +218,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center">
+                    <p className="text-center dark:text-gray-200">
                       Back shiny <br />
                       female
                     </p>
@@ -213,28 +229,39 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
           </section>
         </div>
         <div className="block sm:block md:block lg:block xl:flex xl:gap-5">
-          <section className="bg-white mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-2xl font-bold text-center">Abilities</h2>
+          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
+            <h2 className="text-2xl font-bold text-center dark:text-gray-200">
+              Abilities
+            </h2>
             {data.abilities.map((i) => {
               return (
                 <p
                   key={i.ability.name}
-                  className="text-center text-xl capitalize"
+                  className="text-center text-xl dark:text-gray-200 capitalize"
                 >
                   -{i.ability.name.replace(/-/g, " ")}
                 </p>
               );
             })}
           </section>
-          <section className="bg-white mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-center text-2xl font-bold">Weight</h2>
-            <p className="text-center text-xl">{data.weight} Hg</p>
+          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
+            <h2 className="text-center text-2xl font-bold dark:text-gray-200">
+              Weight
+            </h2>
+            <p className="text-center text-xl dark:text-gray-200">
+              {data.weight} Hg
+            </p>
           </section>
-          <section className="bg-white mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-2xl font-bold text-center">Types</h2>
+          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
+            <h2 className="text-2xl font-bold text-center dark:text-gray-200">
+              Types
+            </h2>
             {data.types.map((i) => {
               return (
-                <p key={i.type.name} className="text-center text-xl capitalize">
+                <p
+                  key={i.type.name}
+                  className="text-center text-xl dark:text-gray-200 capitalize"
+                >
                   -{i.type.name.replace(/-/g, " ")}
                 </p>
               );

@@ -36,7 +36,7 @@ export default function Home() {
   );
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-700 w-screen min-h-screen -mb-6">
+    <div className="bg-gray-200 dark:bg-gray-800 min-w-screen min-h-screen -mb-6">
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta
@@ -57,13 +57,13 @@ export default function Home() {
             <input
               type="text"
               placeholder="Search for a Pokémon"
-              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto"
+              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto dark:bg-gray-700 dark:border-gray-800 dark:text-gray-200 dark:focus:border-gray-800"
               value={searchTerm}
               onChange={handleSearch}
             />
             <button
               onClick={() => setGrid(!grid)}
-              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
             >
               <BsListUl />
             </button>
@@ -73,13 +73,13 @@ export default function Home() {
             <input
               type="text"
               placeholder="Search for a Pokémon"
-              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto"
+              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto dark:bg-gray-700 dark:border-gray-800 dark:text-gray-200 dark:focus:border-gray-800"
               value={searchTerm}
               onChange={handleSearch}
             />
             <button
               onClick={() => setGrid(!grid)}
-              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
             >
               <BsGrid3X3 />
             </button>
@@ -133,8 +133,8 @@ export default function Home() {
           onClick={() => setPage(1)}
           className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
             page === 1
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600"
+              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
+              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
           }`}
         >
           1
@@ -143,8 +143,8 @@ export default function Home() {
           onClick={() => setPage(2)}
           className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
             page === 2
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600"
+              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
+              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
           }`}
         >
           2
@@ -153,28 +153,28 @@ export default function Home() {
           onClick={() => setPage(3)}
           className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
             page === 3
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600"
+              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
+              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
           }`}
         >
           3
         </button>
         <button
           onClick={() => setPage(4)}
-          className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
+          className={` py-3 px-5 text-gray-200 font-semibold rounded transition-all duration-250 ease-in ${
             page === 4
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600"
+              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
+              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
           }`}
         >
           4
         </button>
         <button
           onClick={() => setPage(5)}
-          className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
+          className={` py-3 px-5 text-gray-200 font-semibold rounded transition-all duration-250 ease-in ${
             page === 5
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600"
+              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
+              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
           }`}
         >
           5
