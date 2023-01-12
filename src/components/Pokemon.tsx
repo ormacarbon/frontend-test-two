@@ -14,17 +14,21 @@ export default function Pokemon({ pokemonData }) {
 
   return (
     data && (
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Image
-          src={data.sprites.front_default}
-          style={{ marginRight: 20 }}
-          width={40}
-          height={40}
-          alt={data.name + "icon"}
-        />
-        <Link href={"pokemon/" + data.id}>
-          <b>{data.name}</b> - EXP {data.base_experience}
-        </Link>
+      <div className="flex px-10">
+        <div className="mx-auto bg-gray-200 rounded-md w-full md:w-96 my-2 flex">
+          <Image
+            src={data.sprites.front_default}
+            width={40}
+            height={40}
+            alt={data.name + "icon"}
+            className="w-[40px] h-[40px]"
+          />
+          <Link href={"pokemon/" + data.id} className="flex">
+            <p className="align-middle text-center my-auto flex capitalize">
+              {data.name} - XP {data.base_experience}
+            </p>
+          </Link>
+        </div>
       </div>
     )
   );
