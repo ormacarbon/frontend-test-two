@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps = async (context: {
+  params: { id: number };
+}) => {
   const id = context.params.id;
   const fetch = await axios.get("https://pokeapi.co/api/v2/pokemon/" + id);
   const res = await fetch.data;
@@ -35,6 +37,8 @@ interface PokemonData {
 }
 
 export default function PokemonDetails({ data }: { data: PokemonData }) {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <div className="bg-gray-200 flex w-[100vw] -mb-6">
       <main className="mt-5 mx-auto">
@@ -65,13 +69,35 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
         </section>
         <section className="bg-white mt-5 w-[400px] rounded-xl shadow py-4">
           <h2 className="text-center text-2xl font-bold">Moves</h2>
-          {data.moves.map((i) => {
-            return (
-              <p key={i.move.name} className="text-center text-xl capitalize">
-                -{i.move.name.replace(/-/g, " ")}
-              </p>
-            );
-          })}
+          {showMore
+            ? data.moves.map((i) => {
+                return (
+                  <p
+                    key={i.move.name}
+                    className="text-center text-xl capitalize"
+                  >
+                    -{i.move.name.replace(/-/g, " ")}
+                  </p>
+                );
+              })
+            : data.moves.slice(0, 20).map((i) => {
+                return (
+                  <p
+                    key={i.move.name}
+                    className="text-center text-xl capitalize"
+                  >
+                    -{i.move.name.replace(/-/g, " ")}
+                  </p>
+                );
+              })}
+          {data.moves.length > 20 && (
+            <button
+              className="flex mx-auto my-2   bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "Show less" : "Show more..."}
+            </button>
+          )}
         </section>
         <section className="bg-white mt-5 w-[400px] rounded-xl shadow py-4">
           <h2 className="text-center text-2xl font-bold">Weight</h2>
