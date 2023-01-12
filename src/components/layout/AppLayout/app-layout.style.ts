@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const AppContent = styled.main`
   height: 100%;
   overflow: hidden;
-  padding: 1rem;
   grid-area: content;
 `;
 
