@@ -2,6 +2,7 @@ const colors = {
   primary: '#FF2330',
   light: '#f8f9fa',
   dark: '#202028',
+  label: '#4592C430',
 
   orange: '#FD7D24',
 
@@ -35,16 +36,21 @@ const colors = {
     '200': '#92999C',
     '300': '#5E6567',
     '400': '#3d3d4d',
+    '500': '#2C2E3B',
+    '600': '#252733',
+    '700': '#17171e'
   }
 }
 
 const fonts = {
   size: {
+    xs: '12px',
     sm: '14px',
     md: '16px',
     lg: '20px',
-    xl: '32px',
-    '2xl': '48px',
+    xl: '28px',
+    '2xl': '32px',
+    '3xl': '48px',
   },
   family: {
     heading: '"Open Sans", sans-serif',
@@ -53,13 +59,14 @@ const fonts = {
 }
 
 const spacing = {
-  xs: '0.5rem',
-  sm: '0.75rem',
-  md: '1rem',
-  lg: '1.5rem',
-  xl: '2rem',
-  '2xl': '3rem',
-  '3xl': '4rem',
+  xs: '0.25rem',
+  sm: '0.5rem',
+  md: '0.75rem',
+  lg: '1rem',
+  xl: '1.5rem',
+  '2xl': '2rem',
+  '3xl': '3rem',
+  '4xl': '4rem',
 }
 
 const breakpoints = {
@@ -111,7 +118,7 @@ const types = {
     color: colors.pink[100],
     text: colors.dark,
   },
-  figthing: {
+  fighting: {
     color: colors.red[200],
     text: colors.light,
   },
@@ -137,6 +144,10 @@ const types = {
   },
   dragon: {
     color: colors.orange,
+    text: colors.light,
+  },
+  dark : {
+    color: colors.gray[600],
     text: colors.light,
   }
 }
