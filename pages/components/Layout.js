@@ -8,7 +8,7 @@ export default function Layout({children}) {
       <>
       <Head>
          <link rel='shortcut icon' href='/images/favicon.ico'/>
-         <title>Pokémom</title>
+         <title>Pokémon</title>
          <meta property="og:title" content="My page title" key="title" />
       </Head>
          <Navbar/>
