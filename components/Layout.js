@@ -4,6 +4,8 @@ import { AppContainer } from '../styles';
 import { useTheme } from 'next-themes';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
+const iconStyle = { color: '#0891B2', cursor: 'pointer' };
+
 export default function Layout({ children, currentPage }) {
 	const { theme, setTheme } = useTheme();
 
@@ -21,13 +23,19 @@ export default function Layout({ children, currentPage }) {
 						{currentPage !== 'home' && <Link href='/'>Home</Link>}
 						{currentPage !== 'explore' && <Link href='/explore'>Explore</Link>}
 						{currentPage !== 'gallery' && <Link href='/gallery'>Gallery</Link>}
-						{theme === 'light' ? <FaMoon style={{ color: '#0891B2', cursor: 'pointer' }} onClick={() => setTheme('dark')} /> : <FaSun style={{ color: '#0891B2', cursor: 'pointer' }} onClick={() => setTheme('light')} />}
+						{theme === 'light' ? <FaMoon style={iconStyle} onClick={() => setTheme('dark')} /> : (
+							<FaSun style={iconStyle} onClick={() => setTheme('light')} />
+						)}
 					</nav>
 				</header>
 				<main>
 					{children}
 				</main>
-				<footer><a href='https://talesrodriguesdev.vercel.app/' target='_blank' rel="noreferrer">Tales Rodrigues DEV</a></footer>
+				<footer>
+					<a href='https://talesrodriguesdev.vercel.app/' target='_blank' rel="noreferrer">Tales Rodrigues DEV</a>
+					{' '}
+					- Checkout <a href='https://api.nasa.gov/' target='_blank' rel="noreferrer">NASA</a> Open APIs
+				</footer>
 			</AppContainer>
 		</>
 	);

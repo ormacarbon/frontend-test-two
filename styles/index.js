@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+const layoutPartition = props => props.appTheme === 'light' ? '1px solid black' : '1px solid white';
+const innerBorders = props => props.appTheme === 'light' ? '2px solid black' : '2px solid white';
+
 export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,45 +11,40 @@ export const AppContainer = styled.div`
 	font-size: large;
 	color: ${props => props.appTheme === 'light' ? 'black' : 'white'};
 
-	header {
+	header, footer {
 		position: fixed;
-		top: 0;
 		width: 100vw;
 		z-index: 1;
 		background-color: ${props => props.appTheme === 'light' ? 'white' : 'black'};
 		text-align: center;
-		padding: 20px 0px;
-		border-bottom: ${props => props.appTheme === 'light' ? '1px solid black' : '1px solid white'};
+	}
+
+	header {
+		top: 0;
+		border-bottom: ${layoutPartition};
+		padding-top: 20px;
 	}
 
 	footer {
-		position: fixed;
 		bottom: 0;
-		width: 100vw;
-		z-index: 1;
-		background-color: ${props => props.appTheme === 'light' ? 'white' : 'black'};
-		text-align: center;
-		padding: 20px 0px;
-		border-top: ${props => props.appTheme === 'light' ? '1px solid black' : '1px solid white'};
-		padding-top: 8px;
+		border-top: ${layoutPartition};
+		padding: 15px 0px 20px 0px;
 	}
 
 	header nav {
-		margin: 20px 0px;
+		margin: 40px 0px 20px;
 		font-size: x-large;
-
-		a {
-			margin-right: 20px;
-			border: '2px solid red';
-		}
+		display: flex;
+		justify-content: space-around;
+		align-items: flex-start;
 	}
 
 	main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 20vh;
-		margin-bottom: 5vh;
+		margin-top: 25vh;
+		margin-bottom: 8vh;
 	}
 `;
 
@@ -54,19 +52,20 @@ export const Button = styled.button`
 	padding: 12px 20px 21px;
 	margin-left: 10px;
 	font-size: x-large;
-	border: ${props => props.appTheme === 'light' ? '2px solid black' : '2px solid white'};
+	border: ${innerBorders};
 	border-radius: 10px;
 	background-color: transparent;
 	cursor: pointer;
 `;
 
 export const PictureCardContainer = styled.div`
-	border: ${props => props.appTheme === 'light' ? '2px solid black' : '2px solid white'};
+	border: ${innerBorders};
 	margin-bottom: 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border-radius: 10px;
+	width: 90vw;
 
 	section {
 		position: relative;
@@ -77,4 +76,15 @@ export const PictureCardContainer = styled.div`
 		border-radius: 100%;
 		margin: 10px 30px;
 	}
+
+	@media screen and (min-width: 600px) {
+		width: 500px;
+	}
+`;
+
+export const PictureCardsGrid = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-top: 40px;
 `;

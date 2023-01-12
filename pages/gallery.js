@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Layout from '../components/Layout';
 import PictureCard from '../components/PictureCard';
 import ObservatoryContext from '../context/ObservatoryContext';
+import { PictureCardsGrid } from '../styles';
 
 export default function Gallery() {
 	const { savedPictures } = useContext(ObservatoryContext);
@@ -16,9 +17,11 @@ export default function Gallery() {
 
 	return (
 		<Layout currentPage='gallery'>
-			{galleryPics.map(picture => (
-				<PictureCard key={picture.id} picture={picture} details />
-			))}
+			<PictureCardsGrid>
+				{galleryPics.map(picture => (
+					<PictureCard key={picture.id} picture={picture} details />
+				))}
+			</PictureCardsGrid>
 		</Layout>
 	);
 }

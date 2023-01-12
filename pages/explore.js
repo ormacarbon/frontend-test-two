@@ -3,10 +3,10 @@ import { useState } from 'react';
 import Layout from '../components/Layout';
 import PictureCard from '../components/PictureCard';
 import ObservatoryContext from '../context/ObservatoryContext';
-import { Button } from '../styles';
+import { Button, PictureCardsGrid } from '../styles';
 
 export default function Explore() {
-	const picsPerPage = 10;
+	const picsPerPage = 9;
 
 	const [filter, setFilter] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -33,7 +33,6 @@ export default function Explore() {
 		}));
 
 		setPictures(formattedPictures);
-
 		setLoading(false);
 	};
 
@@ -51,20 +50,22 @@ export default function Explore() {
 		}
 	};
 
+	const inputStyle = { padding: '0px 10px 10px 10px', lineHeight: '2', fontSize: 'x-large', border: '2px solid black', borderRadius: '10px', width: '50vw' };
+
 	return (
 		<Layout currentPage='explore'>
 			<div style={{ marginBottom: '30px' }}>
-				<input style={{ padding: '0px 10px 10px 10px', lineHeight: '2', fontSize: 'x-large', border: '2px solid black', borderRadius: '10px', width: '50vw' }} onChange={({ target }) => setFilter(target.value)} />
+				<input style={inputStyle} onChange={({ target }) => setFilter(target.value)} />
 				<Button appTheme={theme} onClick={fetchPictures}>Search</Button>
 			</div>
 			{onSearch && (
 				loading ? <h2>Loading...</h2> : (
 					pictures.length === 0 ? <h2>No results.</h2> : (
 						<>
-							<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+							<PictureCardsGrid>
 								{pictures.slice(pageTop, pageBottom).map(picture => <PictureCard key={picture.id} picture={picture} moreInfo />)}
-							</div>
-							<div style={{marginBottom: '15px'}}>
+							</PictureCardsGrid>
+							<div style={{ marginBottom: '15px' }}>
 								<Button appTheme={theme} onClick={previousPage}>Previous Page</Button>
 								<Button appTheme={theme} onClick={nextPage}>Next Page</Button>
 							</div>

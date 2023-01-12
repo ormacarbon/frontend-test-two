@@ -12,7 +12,9 @@ export default function Home() {
 		<Layout currentPage='home'>
 			<Image src='/observatory.png' width={400} height={400} alt='Astronomical Observatory' />
 			<h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Are you ready to explore the universe?</h2>
-			<Button appTheme={theme}><Link style={{ fontSize: '1.8em', color: 'black' }} href='/explore'>Let&#039;s go!</Link></Button>
+			<Button appTheme={theme}>
+				<Link style={{ fontSize: '1.8em', color: theme === 'light' ? 'black' : 'white' }} href='/explore'>Let&#039;s go!</Link>
+			</Button>
 		</Layout>
 	);
 }

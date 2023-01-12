@@ -34,12 +34,15 @@ export default function PictureCard({ picture, details, moreInfo }) {
 		setIsPicSaved(prev => !prev);
 	};
 
+	const sameProperties = { maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis' };
+	const heartStyle = { color: '#fb7185', margin: '10px', cursor: 'pointer' };
+
 	return (
 		<PictureCardContainer appTheme={theme}>
 			{details && (
 				<div style={{ padding: '20px' }}>
-					<h2 style={{ minHeight: '1.2em', maxWidth: '80vw', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</h2>
-					<p style={{ lineHeight: 1.2, maxHeight: '50px', maxWidth: '80vw', overflow: 'hidden', textOverflow: 'ellipsis', margin: '10px 0px' }}>{description}</p>
+					<h2 style={{ minHeight: '1.2em', ...sameProperties, whiteSpace: 'nowrap', textAlign: 'center' }}>{title}</h2>
+					<p style={{ lineHeight: 1.2, maxHeight: '50px', ...sameProperties, margin: '10px 0px' }}>{description}</p>
 					<p style={{ textAlign: 'center' }}>{new Date(date).toLocaleDateString('pt-BR')}</p>
 				</div>
 			)}
@@ -47,10 +50,14 @@ export default function PictureCard({ picture, details, moreInfo }) {
 				<Image fill sizes='(max-width: 600px) 20vw' src={url} alt={title} />
 			</section>
 			<div style={{ fontSize: '3em', display: 'flex', alignItems: 'center' }}>
-				{isPicSaved ? <AiFillHeart style={{ color: '#fb7185', margin: '10px', cursor: 'pointer' }} onClick={editFavs} /> : <AiOutlineHeart style={{ color: '#fb7185', margin: '10px', cursor: 'pointer' }} onClick={editFavs} />}
-				<a href={`https://images-api.nasa.gov/search?nasa_id=${id}`} download target='_blank' rel="noreferrer"><AiOutlineDownload style={{ margin: '10px' }} /></a>
+				{isPicSaved ? <AiFillHeart style={heartStyle} onClick={editFavs} /> : (
+					<AiOutlineHeart style={heartStyle} onClick={editFavs} />
+				)}
+				<a href={`https://images-api.nasa.gov/search?nasa_id=${id}`} download target='_blank' rel="noreferrer">
+					<AiOutlineDownload style={{ margin: '10px' }} />
+				</a>
 			</div>
-			{moreInfo && <Link href={`/picture/${id}`} style={{marginBottom: '15px'}} >More info</Link>}
+			{moreInfo && <Link href={`/picture/${id}`} style={{ marginBottom: '15px' }}>More info</Link>}
 		</PictureCardContainer>
 	);
 }
