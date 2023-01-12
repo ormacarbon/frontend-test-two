@@ -5,7 +5,8 @@ export default function Navbar() {
   return (
     <NavbarMenu>
       <Menu>
-        <Link href="/">Pokemons</Link>
+        <Link href="/">Home</Link>
+        <Link href="/pokemon">Pokemons</Link>
       </Menu>
     </NavbarMenu>
   );
