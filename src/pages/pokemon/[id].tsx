@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 
 export const getServerSideProps = async (context: any) => {
   const id = context.params.id;
@@ -57,7 +58,7 @@ export default function PokemonDetails({ data }: any) {
           <h2 className="text-center text-2xl font-bold">Weight</h2>
           <p className="text-center text-xl">{data.weight} Hg</p>
         </section>
-        <section className="bg-white mt-5 w-[400px] rounded-xl shadow py-4 mb-5">
+        <section className="bg-white mt-5 w-[400px] rounded-xl shadow py-4">
           <h2 className="text-center text-2xl font-bold">Gallery</h2>
           <div className="flex">
             <div className="mx-auto grid grid-cols-3">
@@ -158,6 +159,14 @@ export default function PokemonDetails({ data }: any) {
             </div>
           </div>
         </section>
+        <div className="py-7">
+          <Link
+            href="/"
+            className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
+          >
+            Back
+          </Link>
+        </div>
       </main>
     </div>
   );
