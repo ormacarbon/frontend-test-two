@@ -12,7 +12,6 @@ export const StyledNavbar = styled.header`
     cursor: pointer;
   }
   button {
-    transition: box-shadow 0.2s ease;
     border: none;
     width: 180px;
     height: 3.5rem;
@@ -40,7 +39,6 @@ export const StyledNavbar = styled.header`
   }
 
   .search-container {
-    transition: width 0.2s ease;
     cursor: pointer;
     display: flex;
 
@@ -69,14 +67,12 @@ export const StyledNavbar = styled.header`
     font-weight: 700;
     background: transparent;
     border: none;
-    transition: width 0.2s ease;
     display: flex;
     align-self: center;
   }
 
   .search-input:focus {
     outline: none;
-    width: 250px;
     border: 0 none;
   }
 `;

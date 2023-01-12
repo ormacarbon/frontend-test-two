@@ -41,6 +41,7 @@ export default function Navbar() {
           className="search-input"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && searchPokemon()}
         />
         <button className="button-search" onClick={searchPokemon}>
           <img src={"/images/search.svg"} />
@@ -49,4 +50,3 @@ export default function Navbar() {
     </StyledNavbar>
   );
 }
-//onClick={searchPokemon}
