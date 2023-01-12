@@ -10,6 +10,7 @@ export default function toggle(props) {
 				onChange={(e) => toggleFunction()}
 				checked={isChecked}
 			/>
+
 			<label>{toggleText}</label>
 		</div>
 	);
