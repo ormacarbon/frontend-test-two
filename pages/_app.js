@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import { Context } from "../utils/AppContext";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../styles/ThemeConfig";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import hooks from "../utils/hooks";
 
 function MyApp({ Component, pageProps }) {
@@ -13,9 +13,40 @@ function MyApp({ Component, pageProps }) {
 	} = hooks();
 
 	const [theme, setTheme] = useState("light");
+	const [themeHelper, setThemeHelper] = useState("light");
+
+	const [isStorageTheme, setIsStorageTheme] = useState(true);
+
+	useEffect(() => {
+		setStoredTheme();
+	}, []);
+
+	useEffect(() => {
+		if (!isStorageTheme)
+			localStorage.setItem("@theme", JSON.stringify(theme));
+		else setIsStorageTheme(false);
+	}, [theme]);
+
+	useEffect(() => {
+		setTheme(themeHelper);
+	}, [themeHelper]);
+
+	const setStoredTheme = () => {
+		const storageTheme = getThemeFromStorage();
+		if (storageTheme) setThemeHelper(storageTheme);
+		else setThemeHelper("light");
+	};
+
+	const getThemeFromStorage = () => {
+		return treatStorageItem(localStorage.getItem("@theme"));
+	};
+
+	const treatStorageItem = (storageItem) => {
+		return String(storageItem).replace('"', "").replace('"', "");
+	};
 
 	const toggleTheme = () => {
-		theme == "light" ? setTheme("dark") : setTheme("light");
+		theme == "light" ? setThemeHelper("dark") : setThemeHelper("light");
 	};
 
 	return (
@@ -27,6 +58,7 @@ function MyApp({ Component, pageProps }) {
 					searchUniversitiesByDomain,
 					searchUniversitiesByName,
 					toggleTheme,
+					theme,
 				}}
 			>
 				<Layout>
