@@ -3,14 +3,14 @@ import styled from 'styled-components'
 export const Container = styled.aside`
   width: 17.5rem;
   height: 100vh;
-  padding: ${props => props.theme.spacing.lg};
+  padding: ${props => props.theme.spacing.xl};
 
   border-right: 1px solid ${props => props.theme.colors.gray[400]};
 `
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  gap: ${props => props.theme.spacing.xs};
+  gap: ${props => props.theme.spacing.sm};
 
   .minor-text {
     display: block;
@@ -20,7 +20,7 @@ export const Header = styled.header`
 `
 
 export const List = styled.ul`
-  margin-top: ${props => props.theme.spacing.xl};
+  margin-top: ${props => props.theme.spacing['2xl']};
 
   li {
     list-style-type: none
