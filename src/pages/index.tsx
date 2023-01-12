@@ -36,12 +36,12 @@ export default function Home() {
   );
 
   return (
-    <div className="bg-gray-200 w-screen min-h-screen -mb-6">
+    <div className="bg-gray-200 dark:bg-gray-700 w-screen min-h-screen -mb-6">
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta
           name="description"
-          content="A Twitter clone I made from scratch with React JS and Tailwind CSS."
+          content="A simple website for Pokémon searching made with Next JS, React JS, React Query and Tailwind CSS."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
