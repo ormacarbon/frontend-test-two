@@ -27,3 +27,7 @@ export const Header = styled.div`
 	padding: 10px;
 	align-items: baseline;
 `;
+
+export const Title = styled.h1`
+	user-select: none;
+`;
