@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const NavbarMenu = styled.div`
-  background-color: #ffcc01;
-  border-bottom: 0.4rem solid #375caa;
+  background-color: ${(props) => props.theme.primary};
+  border-bottom: 0.4rem solid ${(props) => props.theme.secondary};
   display: flex;
   justify-content: center;
   margin-bottom: 3rem;
@@ -11,7 +11,7 @@ export const NavbarMenu = styled.div`
 export const Menu = styled.div`
   padding: 2rem;
   a {
-    color: #375caa;
+    color: ${(props) => props.theme.text};
     text-decoration: none;
     font-weight: 700;
     font-size: 1.6rem;

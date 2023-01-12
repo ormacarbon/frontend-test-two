@@ -7,10 +7,8 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body{
+    background-color: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.text};
+  }
 `;
-
-// * {
-//   padding: 0;
-//   margin: 0;
-//   box-sizing: border-box;
-// }
