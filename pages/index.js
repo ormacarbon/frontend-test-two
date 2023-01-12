@@ -48,7 +48,7 @@ export default function Home() {
       </section>
       <section className="container-buttons">
         <button
-          className={getButtonClass(1)}
+          className={getButtonClass(0)}
           onClick={() => {
             setCurrentPage(1);
             router.push({

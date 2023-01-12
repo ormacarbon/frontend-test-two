@@ -17,22 +17,29 @@ export const StyledIndex = styled.main`
     justify-content: center;
     margin-top: 80px;
     margin-bottom: 20px;
+
     .button-pages {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       height: 40px;
-      max-width: 80px;
-      min-width: 30px;
-      background-color: #f3f3f3;
-      border-radius: 8px;
+      width: 40px;
+      background-color: grey;
+      border-radius: 6px;
       border: none;
       cursor: pointer;
       transition: box-shadow 0.2s ease;
       margin: 0 15px;
-      color: #404040;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
     }
   }
   .button-pages.active {
-  text-decoration: underline;
-  font-weight: 800;
-}
+    text-decoration: underline;
+    font-weight: 800;
+  }
+  .button-pages[disabled] {
+    background-color: lightgray;
+    color: white;
+    cursor: not-allowed;
+  }
 `;
