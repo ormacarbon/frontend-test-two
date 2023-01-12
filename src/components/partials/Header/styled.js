@@ -14,12 +14,8 @@ export const HeaderContainer = styled.header`
   height: 7rem;
 
   background-color: ${(props) =>
-    props.blackBackground
-      ? props.theme.colors['gray-700']
-      : props.darkMode
-      ? props.theme.colors.black
-      : props.theme.colors.white};
-  z-index: 9999;
+    props.blackBackground ? props.theme.colors['gray-700'] : 'transparent'};
+  z-index: 100;
 
   transition: all ease 0.4s;
   nav {
@@ -33,15 +29,28 @@ export const HeaderContainer = styled.header`
     /* darkMode
       blackBackground */
     a {
+      position: relative;
       color: ${(props) =>
         props.darkMode || props.blackBackground
-          ? props.theme.colors.white
+          ? props.theme.colors['gray-100']
           : props.theme.colors.black};
       font-weight: bold;
 
+      padding: 0.2rem 0.4rem;
+      background: ${(props) =>
+        props.blackBackground
+          ? 'none'
+          : props.darkMode
+          ? 'rgba(0,0,0, .4)'
+          : 'rgba(255,255,255, .7)'};
+      border-radius: 8px;
+
+      transition: all ease 0.4s;
+
       &:hover {
-        font-weight: bold;
-        border-bottom: 1px solid #ffffff;
+        color: ${(props) =>
+          props.darkMode ? props.theme.colors.white : props.theme.colors.black};
+        opacity: 0.9;
       }
     }
   }

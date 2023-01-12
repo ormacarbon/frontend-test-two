@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MovieRowContainer = styled.div`
+export const MovieRowContainer = styled.section`
   position: relative;
 
   h2 {
@@ -10,6 +10,10 @@ export const MovieRowContainer = styled.div`
       props.darkMode ? props.theme.colors.white : props.theme.colors.black};
 
     transition: all ease 0.4s;
+
+    &.changeOnDark {
+      color: ${props => props.theme.colors.white};
+    }
   }
 
   &:hover .movieRow--left,

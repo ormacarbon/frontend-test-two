@@ -36,8 +36,12 @@ export const MovieRow = ({ title, itens }) => {
   }
 
   return (
-    <MovieRowContainer className="movieRow" darkMode={darkMode}>
-      <h2>{title}</h2>
+    <MovieRowContainer className={`movieRow `} darkMode={darkMode}>
+      <h2
+        className={`${title === 'Originais do Netflix' ? 'changeOnDark' : ''}`}
+      >
+        {title}
+      </h2>
       <MovieRowArrowLeft className="movieRow--left" onClick={handleLeftArrow}>
         <ArrowLeft />
       </MovieRowArrowLeft>

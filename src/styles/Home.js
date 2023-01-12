@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
-  margin-top: 7rem;
   background-color: ${(props) =>
     props.darkMode ? props.theme.colors.black : props.theme.colors.white};
 
@@ -10,4 +9,9 @@ export const HomeContainer = styled.div`
 
 export const HomeMovies = styled.div``;
 
-export const HomeMoviesList = styled.div``;
+export const HomeMoviesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin-top: -16rem;
+`;

@@ -74,22 +74,31 @@ const tmdb = {
       )
     };
   },
-  getTrendings: async (type) => {
+  getTrendings: async (type, page) => {
     let itens;
 
-    console.log(type);
+    page ? (page = page.toString()) : (page = '1');
+
     switch (type) {
       case 'all':
-        console.log('ALL');
-        itens = await basicFetch(`/trending/all/week?language=pt-BR`);
+        itens = await basicFetch(
+          `/trending/all/week?language=pt-BR&page=${page}`
+        );
         break;
       case 'movie':
-        console.log('MOVIE');
-        itens = await basicFetch(`/trending/movie/week?language=pt-BR`);
+        itens = await basicFetch(
+          `/trending/movie/week?language=pt-BR&page=${page}`
+        );
         break;
       case 'tv':
-        console.log('TV');
-        itens = await basicFetch(`/trending/tv/week?language=pt-BR`);
+        itens = await basicFetch(
+          `/trending/tv/week?language=pt-BR&page=${page}`
+        );
+        break;
+      default:
+        itens = await basicFetch(
+          `/trending/all/week?language=pt-BR&page=${page}`
+        );
         break;
     }
     return {
@@ -174,6 +183,9 @@ const tmdb = {
     }
 
     return info;
+  },
+  getImage: (imageId) => {
+    return `https://image.tmdb.org/t/p/original/${imageId}`;
   }
 };
 
