@@ -1,19 +1,17 @@
-import Image from 'next/image'
 import * as S from './styles'
 
-export function MovieCard() {
+import Image from 'next/image'
+
+import { MovieCardProps } from 'interfaces/props'
+
+export function MovieCard({ title, date, poster }: MovieCardProps) {
   return (
     <S.Container>
-      <Image
-        src="/img/image.png"
-        alt="Imagem de um filme"
-        width={156}
-        height={232}
-      />
+      <Image src={poster} alt="Imagem de um filme" width={156} height={232} />
 
       <S.Content>
-        <S.Title>Oi, Alberto</S.Title>
-        <S.Date>12 NOV 2021</S.Date>
+        <S.Title>{title}</S.Title>
+        <S.Date>{date}</S.Date>
       </S.Content>
     </S.Container>
   )

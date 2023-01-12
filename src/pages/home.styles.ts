@@ -13,6 +13,6 @@ export const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  gap: 10px;
+  gap: 20px;
   padding: 10px;
 `
