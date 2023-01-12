@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { ThemeProvider } from "styled-components"
-import { lightTheme, darkTheme, GlobalStyles } from "../themeConfig"
+import { lightTheme, darkTheme, GlobalStyles } from "../shared/styles/ThemeConfig"
 
 function MyApp({ Component, pageProps }) {
 
