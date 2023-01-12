@@ -3,14 +3,13 @@ import { Header } from "../Header/Header";
 import { AppContent, Container } from "./app-layout.style";
 
 interface AppLayoutProps {
-  sessionTitle: string;
   children: ReactElement;
 }
 
-export const AppLayout = ({ sessionTitle, children }: AppLayoutProps) => {
+export const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <Container>
-      <Header>{sessionTitle}</Header>
+      <Header>My Blog</Header>
 
       {/* <Sidebar css={{ gridArea: "sidebar" }} /> */}
 
