@@ -1,27 +1,64 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StyledNavbar } from "./styles";
-import Link from 'next/link';
-
+import Link from "next/link";
+import { GlobalContext } from "../../../contexts/state";
 
 export default function Navbar() {
+  const {
+    searchValue,
+    setSearchValue,
+    searchResults,
+    setSearchResults,
+    allPokelist,
+  } = useContext(GlobalContext);
   const [expanded, setExpanded] = useState(false);
+
+  const searchPokemon = () => {
+    const foundPokemons = allPokelist.filter((pokemon) =>
+      pokemon.name.includes(searchValue)
+    );
+    setSearchResults(foundPokemons);
+  };
+
+  const clearSearch = () => {
+    setSearchValue("");
+    setSearchResults([]);
+  };
+
+
+
+
   return (
     <StyledNavbar>
-      <Link href='/'>
-      <button className="button-home">Home</button>
+      <Link href="/">
+        <button className="button-home" onClick={clearSearch}>
+          Home
+        </button>
       </Link>
-      <Link href='/pokedex'>
-      <button className="button-pokedex">Pokédex</button>
+      <Link href="/pokedex">
+        <button className="button-pokedex">Pokédex</button>
       </Link>
       <div className="search-container">
         <button
           className="button-search"
           onClick={() => setExpanded(!expanded)}
-        ><img src={"/images/search.svg"}/></button>
+        >
+          <img src={"/images/search.svg"} />
+        </button>
         {expanded && (
-          <input type="text" placeholder="Search Pokemon..." className="search-input" />
+          <>
+            <input
+              type="text"
+              placeholder="Search Pokemon..."
+              className="search-input"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+            <button className="button-search" onClick={searchPokemon}>
+              Search
+            </button>
+          </>
         )}
-        
       </div>
     </StyledNavbar>
   );

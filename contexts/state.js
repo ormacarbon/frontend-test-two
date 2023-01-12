@@ -5,8 +5,10 @@ import { createContext } from "react";
 export const GlobalContext = createContext({});
 
 export default function GlobalProvider({ children }) {
-  // const [pokemonDetail, setPokemonDetail] = useState({});
   const [pokelist, setPokelist] = useState([]);
+  const [allPokelist, setAllPokelist] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   function getPokemonColor(pokemonType) {
     switch (pokemonType) {
@@ -56,7 +58,13 @@ export default function GlobalProvider({ children }) {
     <GlobalContext.Provider value={{ 
       pokelist,
       setPokelist,
-      getPokemonColor
+      getPokemonColor,
+      allPokelist,
+      setAllPokelist,
+      searchResults,
+      setSearchResults,
+      searchValue,
+      setSearchValue
     }}>
       {children}
     </GlobalContext.Provider>

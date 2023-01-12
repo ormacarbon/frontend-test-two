@@ -7,7 +7,8 @@ import { useRouter } from "next/router";
 import { GlobalContext } from "../contexts/state";
 
 export default function Home() {
-  const { pokelist, setPokelist } = useContext(GlobalContext);
+  const { pokelist, setPokelist, allPokelist, setAllPokelist, searchResults, setSearchResults, searchValue, setSearchValue } =
+    useContext(GlobalContext);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -24,11 +25,33 @@ export default function Home() {
     }
   };
 
+  const fetchAllPokemons = async () => {
+    try {
+      const response = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0"
+      );
+      setAllPokelist(response.data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     setCurrentPage(Number(router.query.page) || 1);
     fetchPokemons(Number(router.query.page) || 1);
   }, [router.query.page]);
 
+  useEffect(() => {
+    fetchAllPokemons();
+  }, []);
+
+  useEffect(() => {
+    if (searchValue === "" || router.query.page) {
+      setSearchResults([]);
+    }
+  }, [searchValue, router.query.page]);
+
+  console.log(allPokelist);
   const getButtonClass = (page) => {
     if (page === currentPage) {
       return "button-pages active";
@@ -40,9 +63,13 @@ export default function Home() {
     <StyledIndex>
       <Navbar />
       <section className="container-pokemons">
-        {pokelist.map((pokemon) => {
-          return <PokemonCard pokemon={pokemon} key={pokemon.url} />;
-        })}
+        {searchResults.length > 0
+          ? searchResults.map((pokemon) => {
+              return <PokemonCard pokemon={pokemon} key={pokemon.url} />;
+            })
+          : pokelist.map((pokemon) => {
+              return <PokemonCard pokemon={pokemon} key={pokemon.url} />;
+            })}
       </section>
       <section className="container-buttons">
         <button
@@ -113,7 +140,7 @@ export default function Home() {
             </button>
           </>
         )}
-        {currentPage >= 4 && currentPage <=6 &&  (
+        {currentPage >= 4 && currentPage <= 6 && (
           <>
             <button
               className={getButtonClass(4)}

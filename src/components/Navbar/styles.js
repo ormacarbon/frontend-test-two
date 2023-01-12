@@ -43,17 +43,23 @@ export const StyledNavbar = styled.header`
     transition: width 0.2s ease;
     cursor: pointer;
     display: flex;
-    
-    img{
+
+    img {
       width: 25px;
     }
-    .button-search{
+    .button-search {
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       width: 80px;
-      background-color: lightgray;
+      background-color: #f3f3f3;
+    }
+    .button-search:hover {
+      background-color: lightgrey;
+    }
+    .button-search:active {
+      background-color: darkgray;
     }
   }
   .search-input {
