@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Pokemon({ pokemonData }) {
+export default function PokemonList({ pokemonData }) {
   // It's better to use React Query than useEffect and useState for API calls
   const { data } = useQuery(`pokémon data ${pokemonData.name}`, async () => {
     const response = await axios.get(pokemonData.url);
