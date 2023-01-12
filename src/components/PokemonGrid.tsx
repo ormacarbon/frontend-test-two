@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function PokemonList({ pokemonData }) {
+export default function PokemonGrid({ pokemonData }) {
   // It's better to use React Query than useEffect and useState for API calls
   const { data } = useQuery(`pokémon data ${pokemonData.name}`, async () => {
     const response = await axios.get(pokemonData.url);
@@ -14,17 +14,20 @@ export default function PokemonList({ pokemonData }) {
 
   return (
     data && (
-      <Link href={"pokemon/" + data.id} className="flex px-10">
-        <div className="mx-auto bg-white rounded-md w-96 my-2 flex">
-          <div className="flex mx-auto">
-            <Image
-              src={data.sprites.front_default}
-              width={40}
-              height={40}
-              alt={data.name + "icon"}
-              className="w-[40px] h-[40px] object-contain"
-            />
-            <p className="align-middle text-center my-auto flex capitalize">
+      <Link
+        href={"pokemon/" + data.id}
+        className="flex px-10 bg-white shadow-lg rounded-xl"
+      >
+        <div className="mx-auto rounded-md w-full md:w-96 my-2">
+          <Image
+            src={data.sprites.front_default}
+            width={200}
+            height={200}
+            alt={data.name + "icon"}
+            className="w-[200px] h-[200px] object-contain"
+          />
+          <div className="flex">
+            <p className="mx-auto capitalize">
               {data.name}
               <span className="font-bold ml-1">{data.base_experience}XP</span>
             </p>

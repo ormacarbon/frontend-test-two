@@ -40,7 +40,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="bg-gray-200 flex w-[100vw] -mb-6">
+    <div className="bg-gray-200 flex w-screen min-h-screen -mb-6">
       <main className="mt-5 mx-auto">
         <section className="bg-white w-[400px] rounded-xl shadow pb-4">
           <Image
