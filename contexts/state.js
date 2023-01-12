@@ -5,10 +5,12 @@ import { createContext } from "react";
 export const GlobalContext = createContext({});
 
 export default function GlobalProvider({ children }) {
-  const [pokelist, setPokelist] = useState([]);
   const [allPokelist, setAllPokelist] = useState([]);
+  const [pokelist, setPokelist] = useState([]);
+  const [pokedex, setPokedex] = useState([])
   const [searchResults, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isAddPokemon, setIsAddPokemon] = useState(true);
 
   function getPokemonColor(pokemonType) {
     switch (pokemonType) {
@@ -53,6 +55,32 @@ export default function GlobalProvider({ children }) {
     }
   }
 
+  const addToPokedex = (pokemonToAdd) => {
+    setIsAddPokemon(true)
+    const isAlreadyOnPokedex = pokedex.find(
+      (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
+    );
+    if (!isAlreadyOnPokedex) {
+      const newPokedex = [...pokedex, pokemonToAdd];
+      setPokedex(newPokedex);
+    }
+    filterPokemon(pokemonToAdd.name);
+  };
+
+  const removeFromPokedex = (pokemonToRemove) => {
+    setIsAddPokemon(false)
+    const newPokedex = pokedex.filter(
+      (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
+    );
+    setPokedex(newPokedex);
+  };
+
+  const filterPokemon = (pokemonName) => {
+    const pokeFilter = pokelist.filter(
+      (pokemon) => pokemon.name !== pokemonName
+    );
+    setPokelist(pokeFilter);
+  };
 
   return (
     <GlobalContext.Provider value={{ 
@@ -64,7 +92,11 @@ export default function GlobalProvider({ children }) {
       searchResults,
       setSearchResults,
       searchValue,
-      setSearchValue
+      setSearchValue,
+      pokedex,
+      setPokedex,
+      addToPokedex,
+      removeFromPokedex
     }}>
       {children}
     </GlobalContext.Provider>

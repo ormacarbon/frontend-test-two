@@ -7,12 +7,13 @@ import { useRouter } from "next/router";
 import { GlobalContext } from "../contexts/state";
 
 export default function Home() {
-  const { pokelist, setPokelist, allPokelist, setAllPokelist, searchResults, setSearchResults, searchValue, setSearchValue } =
+  const { pokelist, setPokelist, allPokelist, setAllPokelist, searchResults, setSearchResults, searchValue, pokedex } =
     useContext(GlobalContext);
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const router = useRouter();
+  const pathname = router.pathname;
 
   const fetchPokemons = async (page) => {
     try {
@@ -51,7 +52,14 @@ export default function Home() {
     }
   }, [searchValue, router.query.page]);
 
-  console.log(allPokelist);
+  const filteredPokemonList = () =>
+  pokelist.filter(
+    (pokemonInList) =>
+      !pokedex.find(
+        (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
+      )
+  );
+
   const getButtonClass = (page) => {
     if (page === currentPage) {
       return "button-pages active";
@@ -65,10 +73,10 @@ export default function Home() {
       <section className="container-pokemons">
         {searchResults.length > 0
           ? searchResults.map((pokemon) => {
-              return <PokemonCard pokemon={pokemon} key={pokemon.url} />;
+              return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
             })
-          : pokelist.map((pokemon) => {
-              return <PokemonCard pokemon={pokemon} key={pokemon.url} />;
+          : filteredPokemonList().map((pokemon) => {
+              return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
             })}
       </section>
       <section className="container-buttons">

@@ -5,8 +5,8 @@ import Link from "next/link";
 import axios from "axios";
 import { GlobalContext } from "../../../contexts/state";
 
-export default function PokemonCard({ pokemon }) {
-  const { getPokemonColor } = useContext(GlobalContext);
+export default function PokemonCard({ pokemon, pathname }) {
+  const { getPokemonColor, addToPokedex, removeFromPokedex } = useContext(GlobalContext);
 
   const [pokemonDetail, setPokemonDetail] = useState({});
 
@@ -22,10 +22,7 @@ export default function PokemonCard({ pokemon }) {
   useEffect(() => {
     fetchPokemonDetail();
   }, []);
-
-
-
-
+  console.log(pathname);
 
   return (
     <PokemonCardStyled>
@@ -56,7 +53,24 @@ export default function PokemonCard({ pokemon }) {
           <Link href="/details/[id]" as={`/details/${pokemonDetail.id}`}>
             <button>Details</button>
           </Link>
-          <button>Catch!</button>
+          {pathname === "/" && (
+            <button
+              className="button-catch"
+              onClick={() => addToPokedex(pokemon)}
+            >
+              Catch!
+            </button>
+          )}
+          {pathname === "/pokedex" && (
+            <button
+            className="button-remove"
+            onClick={() => removeFromPokedex(pokemon)}
+          >
+            Remove
+          </button>
+          )
+
+          }
         </div>
       </section>
     </PokemonCardStyled>

@@ -87,6 +87,12 @@ export const PokemonCardStyled = styled.div`
       button:active {
         background-color: #00b306;
       }
+      .button-remove:hover {
+        background-color: #ff6f6f;
+      }
+      .button-remove:active {
+        background-color: #ff0000;
+      }
     }
   }
 `;
