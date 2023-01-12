@@ -10,7 +10,6 @@ export default function Home() {
   const { pokelist, setPokelist } = useContext(GlobalContext);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
 
   const router = useRouter();
 
@@ -20,7 +19,6 @@ export default function Home() {
         `https://pokeapi.co/api/v2/pokemon?limit=15&offset=${(page - 1) * 15}`
       );
       setPokelist(response.data.results);
-      setTotalPages(Math.ceil(response.data.count / 15));
     } catch (error) {
       console.log(error);
     }
@@ -222,7 +220,7 @@ export default function Home() {
         <button
           className="button-pages"
           onClick={() => {
-            if (currentPage < totalPages && currentPage < 10) {
+            if (currentPage < 10) {
               setCurrentPage(currentPage + 1);
               router.push({
                 pathname: "/pokemons",
