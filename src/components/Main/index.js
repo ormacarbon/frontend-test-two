@@ -24,7 +24,7 @@ export default function Main() {
       <Container theme={currentTheme}>
         {leagues.map((league) => (
           <Link
-            href="/test"
+            href={`/${league.name}/${league.id}`}
             theme={currentTheme}
             type="button"
             key={league.id}

@@ -27,8 +27,8 @@ export default function Header() {
       <nav>
         <ListNavMenu theme={currentTheme}>
           <li><Link href="/"> Home</Link></li>
-          <li><Link href="/test"> Seasons</Link></li>
-          <li><Link href="/test2"> Results</Link></li>
+          <li><Link href="/"> Seasons</Link></li>
+          <li><Link href="/"> Results</Link></li>
         </ListNavMenu>
       </nav>
     </StyledHeader>
