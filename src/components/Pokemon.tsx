@@ -25,7 +25,8 @@ export default function Pokemon({ pokemonData }) {
           />
           <Link href={"pokemon/" + data.id} className="flex">
             <p className="align-middle text-center my-auto flex capitalize">
-              {data.name} - XP {data.base_experience}
+              {data.name}
+              <span className="font-bold ml-1">{data.base_experience}XP</span>
             </p>
           </Link>
         </div>

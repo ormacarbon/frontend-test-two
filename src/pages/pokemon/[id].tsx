@@ -20,11 +20,11 @@ export default function PokemonDetails({ data }: any) {
       <Image
         src={data.sprites.front_default}
         alt={data.name + "icon"}
-        width={40}
-        height={40}
+        width={400}
+        height={400}
       />
-      <h1>{data.name}</h1>
-      <p>XP - {data.base_experience}</p>
+      <h1 className="text-center capitalize text-4xl font-bold">{data.name}</h1>
+      <p className="text-center text-2xl">{data.base_experience} XP</p>
       <h2>Abilities</h2>
       <div>
         {data.abilities.map((i) => {
