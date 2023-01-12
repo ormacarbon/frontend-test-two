@@ -1,2 +1,2 @@
 export * from "./Heading/Heading";
-export * from "./SessionHeading/SessionHeading";
+export * from "./SectionHeading/SectionHeading";

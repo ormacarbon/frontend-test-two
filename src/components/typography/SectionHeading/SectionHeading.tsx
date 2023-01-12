@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SessionHeading = styled.h3`
+export const SectionHeading = styled.h3`
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: ${({ theme }) => theme.fontSizes.md};

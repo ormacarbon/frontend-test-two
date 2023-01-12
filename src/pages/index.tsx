@@ -1,5 +1,5 @@
 import { AppLayout, CategoriesList, PostsList } from "@/components/layout";
-import { Heading, SessionHeading } from "@/components/typography";
+import { SectionHeading } from "@/components/typography";
 import Head from "next/head";
 import styled from "styled-components";
 
@@ -13,12 +13,12 @@ export default function Dashboard() {
       <AppLayout>
         <HomeContainer>
           <RecentlyPublished>
-            <SessionHeading>Recently Published</SessionHeading>
+            <SectionHeading>Recently Published</SectionHeading>
             <PostsList />
           </RecentlyPublished>
 
           <TopCategories>
-            <SessionHeading>Top Categories</SessionHeading>
+            <SectionHeading>Top Categories</SectionHeading>
             <CategoriesList />
           </TopCategories>
         </HomeContainer>
@@ -43,7 +43,7 @@ const HomeContainer = styled.main`
   }
 `;
 
-const RecentlyPublished = styled.div`
+const RecentlyPublished = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -53,7 +53,7 @@ const RecentlyPublished = styled.div`
   }
 `;
 
-const TopCategories = styled.div`
+const TopCategories = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
