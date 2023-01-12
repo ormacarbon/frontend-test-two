@@ -1,10 +1,9 @@
-import Navbar from "../components/Navbar";
+import Head from "../components/Head";
 
 export default function Home() {
 	return (
 		<div>
-			<h1>University searcher</h1>
-			<Navbar />
+			<h1>Home</h1>
 		</div>
 	);
 }
