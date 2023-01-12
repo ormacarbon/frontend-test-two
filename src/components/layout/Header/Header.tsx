@@ -9,12 +9,12 @@ export const Header = ({ children, ...props }: HeaderProps) => {
   return (
     <S.HeaderContainer {...props}>
       <S.HeaderBox>
-        <Heading variant="2xl">{children}</Heading>
-      </S.HeaderBox>
+        <Heading variant="xl">{children}</Heading>
 
-      <S.MenuBox>
-        <AiOutlineMenu size={30} />
-      </S.MenuBox>
+        <S.MenuBox>
+          <AiOutlineMenu size={30} />
+        </S.MenuBox>
+      </S.HeaderBox>
     </S.HeaderContainer>
   );
 };
