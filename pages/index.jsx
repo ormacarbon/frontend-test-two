@@ -1,6 +1,6 @@
 export default function Home() {
   function toggleTheme(e) {
-    const container = document.querySelector("#container");
+    const container = document.getElementById('container');
     if (e.target.checked) {
       container.classList.add("dark");
     } else {
