@@ -11,7 +11,7 @@ export default function Header() {
           </div>
           <div className="flex space-x-4">
             <Link
-              href="#"
+              href="/"
               className="px-2 py-1 text-white hover:bg-blue-900 rounded-md"
             >
               Home
