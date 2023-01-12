@@ -1,8 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { AppContainer } from '../styles';
+import { useTheme } from 'next-themes';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 export default function Layout({ children, currentPage }) {
+	const { theme, setTheme } = useTheme();
+
 	return (
 		<>
 			<Head>
@@ -10,13 +14,14 @@ export default function Layout({ children, currentPage }) {
 				<meta name='description' content='Behold amazing NASA pictures' />
 				<link rel="icon" href="favicon.ico" />
 			</Head>
-			<AppContainer>
+			<AppContainer appTheme={theme}>
 				<header>
 					<h1>Welcome to Tales&#039; observatory!</h1>
 					<nav>
 						{currentPage !== 'home' && <Link href='/'>Home</Link>}
 						{currentPage !== 'explore' && <Link href='/explore'>Explore</Link>}
 						{currentPage !== 'gallery' && <Link href='/gallery'>Gallery</Link>}
+						{theme === 'light' ? <FaMoon style={{ color: '#0891B2', cursor: 'pointer' }} onClick={() => setTheme('dark')} /> : <FaSun style={{ color: '#0891B2', cursor: 'pointer' }} onClick={() => setTheme('light')} />}
 					</nav>
 				</header>
 				<main>

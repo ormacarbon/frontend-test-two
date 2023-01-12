@@ -8,7 +8,7 @@ import { PictureCardContainer } from '../styles';
 export default function PictureCard({ picture, details, moreInfo }) {
 	const { id, title, description, date, url } = picture;
 
-	const { savedPictures, setSavedPictures } = useContext(ObservatoryContext);
+	const { savedPictures, setSavedPictures, theme } = useContext(ObservatoryContext);
 
 	const [isPicSaved, setIsPicSaved] = useState(false);
 
@@ -35,7 +35,7 @@ export default function PictureCard({ picture, details, moreInfo }) {
 	};
 
 	return (
-		<PictureCardContainer>
+		<PictureCardContainer appTheme={theme}>
 			{details && (
 				<div style={{ padding: '20px' }}>
 					<h2 style={{ minHeight: '1.2em', maxWidth: '80vw', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</h2>
@@ -47,7 +47,7 @@ export default function PictureCard({ picture, details, moreInfo }) {
 				<Image fill sizes='(max-width: 600px) 20vw' src={url} alt={title} />
 			</section>
 			<div style={{ fontSize: '3em', display: 'flex', alignItems: 'center' }}>
-				{isPicSaved ? <AiFillHeart style={{ color: '#fb7185', margin: '10px' }} onClick={editFavs} /> : <AiOutlineHeart style={{ color: 'pink' }} onClick={editFavs} />}
+				{isPicSaved ? <AiFillHeart style={{ color: '#fb7185', margin: '10px', cursor: 'pointer' }} onClick={editFavs} /> : <AiOutlineHeart style={{ color: '#fb7185', margin: '10px', cursor: 'pointer' }} onClick={editFavs} />}
 				<a href={`https://images-api.nasa.gov/search?nasa_id=${id}`} download target='_blank' rel="noreferrer"><AiOutlineDownload style={{ margin: '10px' }} /></a>
 			</div>
 			{moreInfo && <Link href={`/picture/${id}`} style={{marginBottom: '15px'}} >More info</Link>}

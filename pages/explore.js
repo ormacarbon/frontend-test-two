@@ -14,7 +14,7 @@ export default function Explore() {
 	const [pageTop, setPageTop] = useState(0);
 	const [pageBottom, setPageBottom] = useState(picsPerPage);
 
-	const { pictures, setPictures } = useContext(ObservatoryContext);
+	const { pictures, setPictures, theme } = useContext(ObservatoryContext);
 
 	const fetchPictures = async () => {
 		setOnSearch(true);
@@ -55,7 +55,7 @@ export default function Explore() {
 		<Layout currentPage='explore'>
 			<div style={{ marginBottom: '30px' }}>
 				<input style={{ padding: '0px 10px 10px 10px', lineHeight: '2', fontSize: 'x-large', border: '2px solid black', borderRadius: '10px', width: '50vw' }} onChange={({ target }) => setFilter(target.value)} />
-				<Button onClick={fetchPictures}>Search</Button>
+				<Button appTheme={theme} onClick={fetchPictures}>Search</Button>
 			</div>
 			{onSearch && (
 				loading ? <h2>Loading...</h2> : (
@@ -65,8 +65,8 @@ export default function Explore() {
 								{pictures.slice(pageTop, pageBottom).map(picture => <PictureCard key={picture.id} picture={picture} moreInfo />)}
 							</div>
 							<div style={{marginBottom: '15px'}}>
-								<Button onClick={previousPage}>Previous Page</Button>
-								<Button onClick={nextPage}>Next Page</Button>
+								<Button appTheme={theme} onClick={previousPage}>Previous Page</Button>
+								<Button appTheme={theme} onClick={nextPage}>Next Page</Button>
 							</div>
 						</>
 					)

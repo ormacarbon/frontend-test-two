@@ -6,16 +6,17 @@ export const AppContainer = styled.div`
   justify-content: space-between;
   min-height: 100vh;
 	font-size: large;
+	color: ${props => props.appTheme === 'light' ? 'black' : 'white'};
 
 	header {
 		position: fixed;
 		top: 0;
 		width: 100vw;
 		z-index: 1;
-		background-color: white;
+		background-color: ${props => props.appTheme === 'light' ? 'white' : 'black'};
 		text-align: center;
 		padding: 20px 0px;
-		border-bottom: 1px solid black;
+		border-bottom: ${props => props.appTheme === 'light' ? '1px solid black' : '1px solid white'};
 	}
 
 	footer {
@@ -23,18 +24,20 @@ export const AppContainer = styled.div`
 		bottom: 0;
 		width: 100vw;
 		z-index: 1;
-		background-color: white;
+		background-color: ${props => props.appTheme === 'light' ? 'white' : 'black'};
 		text-align: center;
 		padding: 20px 0px;
-		border-top: 1px solid black;
+		border-top: ${props => props.appTheme === 'light' ? '1px solid black' : '1px solid white'};
 		padding-top: 8px;
 	}
 
 	header nav {
 		margin: 20px 0px;
+		font-size: x-large;
 
 		a {
 			margin-right: 20px;
+			border: '2px solid red';
 		}
 	}
 
@@ -51,13 +54,14 @@ export const Button = styled.button`
 	padding: 12px 20px 21px;
 	margin-left: 10px;
 	font-size: x-large;
-	border: 2px solid black;
+	border: ${props => props.appTheme === 'light' ? '2px solid black' : '2px solid white'};
 	border-radius: 10px;
 	background-color: transparent;
+	cursor: pointer;
 `;
 
 export const PictureCardContainer = styled.div`
-	border: 2px solid black;
+	border: ${props => props.appTheme === 'light' ? '2px solid black' : '2px solid white'};
 	margin-bottom: 30px;
 	display: flex;
 	flex-direction: column;
