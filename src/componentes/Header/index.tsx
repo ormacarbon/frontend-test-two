@@ -14,7 +14,7 @@ export function Header(){
   const { toggleTheme, currentTheme } = useContext(ThemeContext)
 
   function handleToggleTheme() {
-    toggleTheme()
+    toggleTheme();
   }
     return(
       <HeaderContainer>

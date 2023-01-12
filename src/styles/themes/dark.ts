@@ -1,8 +1,7 @@
-export const darkTheme = {
-    background: '#121214',
-    color: '#e1e1e6',
+export const dark = {
     colors: {   
-        white: '#FFF',
+        'primary-100': '#121214',
+        'secondary-100': '#e1e1e6',
         gray900: '#121214',
         gray800: '#202024',
         gray700: '#2B2B30',
@@ -18,4 +17,4 @@ export const darkTheme = {
         xl: '1.5rem',
         '2xl': '2rem',
   }
-} as const
+}

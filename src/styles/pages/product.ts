@@ -46,7 +46,7 @@ export const ProductDetails = styled.div`
 
   h1{
     font-size: ${({theme}) => theme.fontSize["2xl"]};
-    color: ${({theme}) => theme.colors.gray300};
+    color: ${({theme}) => theme.colors['secondary-100']};
   };
 
   span{
@@ -60,7 +60,7 @@ export const ProductDetails = styled.div`
     margin-top: 2.5rem;
     font-size: ${({theme}) => theme.fontSize.md};
     line-height: 1.6;
-    color: ${({theme}) => theme.colors.gray300};
+    color: ${({theme}) => theme.colors['secondary-100']};
   };
 
   button {
