@@ -140,8 +140,8 @@ export const InfoFooterContent = styled.span`
 export const Separator = styled.span`
 display: inline-block;
 width: 2px;
-background-color: var(--font-color);
-height: 16px;
+background-color: var(--separator-color);
+height: 18px;
 margin-inline: 12px;
 `
 export const InfoFooterLink = styled.a`

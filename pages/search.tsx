@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import Loader from '../components/loader';
 import SearchMovieCard from '../components/search-movie-card';
 import { applicationContext } from '../context/context';
-import { SearchListContainer, SearchMovieList, SearchPageContainer } from '../styles/search';
+import { SearchListContainer, SearchMovieList, SearchPageContainer, SearchPageInformation } from '../styles/search';
 import styled from "styled-components";
 import { ListButton } from '../styles/popular';
 
@@ -32,6 +32,7 @@ export default function Search() {
         setLoading(false)
       })
   }
+  const emptySearch = searchData?.total_results === 0
 
   const ButtonContainer = styled.div`
   display: flex;
@@ -39,7 +40,6 @@ export default function Search() {
   margin-inline: 3rem;
   margin-block: 2rem;
 `
-
   function handlePageChange(action: 'prev' | 'next') {
     action === 'prev' ? setMoviePage(moviePage - 1) : setMoviePage(moviePage + 1)
     window.scrollTo(0, 0)
@@ -47,7 +47,10 @@ export default function Search() {
 
   return (
     <SearchPageContainer>
-      <div>Encontramos {searchData?.total_results} resultados para <b>{searchInput}</b>  😀</div>
+      {!emptySearch ?
+        <SearchPageInformation>Encontramos {searchData?.total_results} resultados para "{searchInput}"  😀</SearchPageInformation> :
+        <SearchPageInformation>Poxa vida 😢 nenhum resultado para esta busca</SearchPageInformation>
+      }
       {
         loading ?
           <Loader /> :
@@ -60,12 +63,14 @@ export default function Search() {
           </SearchListContainer>
 
       }
-      <ButtonContainer>
-        {moviePage !== 1 &&
-          <ListButton onClick={() => handlePageChange('prev')}>Anterior</ListButton>
-        }
-        <ListButton onClick={() => handlePageChange('next')}>Próximo</ListButton>
-      </ButtonContainer>
+      {searchData?.total_results !== 0 && (
+        <ButtonContainer>
+          {moviePage !== 1 &&
+            <ListButton onClick={() => handlePageChange('prev')}>Anterior</ListButton>
+          }
+          <ListButton onClick={() => handlePageChange('next')}>Próximo</ListButton>
+        </ButtonContainer>
+      )}
     </SearchPageContainer>
   )
 }

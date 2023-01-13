@@ -38,4 +38,5 @@ font-weight: 600;
 line-height: 2rem;
 margin-bottom: 1rem;
 margin-inline: 2rem;
+text-align: center;
 `

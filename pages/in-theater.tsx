@@ -1,66 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
-import MovieCard from '../components/movie-card';
-import { applicationContext } from '../context/context';
-import { PageTitle } from '../styles/home';
-import styled from "styled-components";
-import { ListButton, MovieList } from '../styles/popular';
-import Loader from '../components/loader';
-import { handlePageChange } from '../utils/utils';
+import MoviesList from '../components/movies-list';
 
 export default function InTheater() {
-  const [movieData, setMovieData] = useState([]);
-  const [movieQuery, setMovieQuery] = useState();
-  const [moviePage, setMoviePage] = useState(1)
-  const [totalPages, setTotalPages] = useState(0)
-  const [loading, setLoading] = useState(true)
-  const { apiKey } = useContext(applicationContext)
 
-
-  const getMovieRequest = async () => {
-    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=pt-br&query=${movieQuery}&region=BR&page=${moviePage}`
-
-    fetch(url)
-      .then(response => response.json())
-      .then(json => {
-        setLoading(false)
-        setMovieData(json.results)
-        setTotalPages(json.total_pages)
-      })
-  }
-
-  useEffect(() => {
-    getMovieRequest()
-  }, [moviePage])
-
-  const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: ${moviePage === 1 ? 'end' : 'space-between'};
-  margin-inline: 3rem;
-  margin-block: 2rem;
-`
   return (
-    <div>
-      <PageTitle>
-        <div>Em cartaz</div>
-      </PageTitle>
-      {
-        loading ?
-          <Loader /> :
-          <MovieList>
-            {movieData.map(movie => (
-              <MovieCard movieProps={movie} />
-            ))}
-          </MovieList>
-      }
-
-      <ButtonContainer>
-        {moviePage !== 1 &&
-          <ListButton onClick={() => handlePageChange('prev', moviePage, setMoviePage)}>Anterior</ListButton>
-        }
-        {moviePage < totalPages && (
-          <ListButton onClick={() => handlePageChange('next', moviePage, setMoviePage)}>Próximo</ListButton>
-        )}
-      </ButtonContainer>
-    </div>
+    <MoviesList pageTitle={'Nos cinemas'} urlPrefix={'now_playing'} />
   )
 }

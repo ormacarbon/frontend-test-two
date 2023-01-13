@@ -4,6 +4,11 @@ export const SearchPageContainer = styled.div`
     padding-inline: 2rem;
 `
 
+export const SearchPageInformation = styled.div`
+  text-align: center;
+  line-height: 1.25;
+`
+
 export const SearchMovieList = styled.div`
 `
 
