@@ -16,7 +16,7 @@ function Layout({ children }) {
       <NavBar />
       <main>
         <header className='header'>
-          <h2>hi Pokémon trainer,</h2>
+          {title === 'overview' && <h2>hi Pokémon trainer,</h2>}
           <h1>{title}</h1>
         </header>
         {children}
