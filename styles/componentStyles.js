@@ -6,8 +6,12 @@ export const NavLink = styled.a`
 `;
 
 export const SpaceEvenly = styled.nav`
-	display: flex;
+	display: contents;
 	justify-content: space-evenly;
+
+	@media (min-width: 409px) {
+		display: flex;
+	}
 `;
 
 export const SpaceBetween = styled.div`
@@ -61,7 +65,6 @@ export const Container = styled.div`
 export const TableContainer = styled.div`
 	margin-top: 10px;
 	justify-content: space-between;
-	width: 70%;
 `;
 
 export const Table = styled.table`
@@ -70,17 +73,23 @@ export const Table = styled.table`
 	border-width: 1px;
 	padding: 4px;
 	border-color: ${(props) => props.theme.borderColor};
-	margin: 10px;
+	text-align: center;
+	margin: auto;
 `;
 
 export const Overflow = styled.div`
 	overflow: auto;
 `;
+
 export const Tr = styled.tr`
 	border: solid;
 	border-width: 1px;
 	padding: 4px;
 	border-color: ${(props) => props.theme.borderColor};
+`;
+
+export const TableMenu = styled.div`
+	margin-top: 10px;
 `;
 
 export const Th = styled.th`
