@@ -21,6 +21,7 @@ export default function UniversitySearcher(props) {
 	const [limit, setLimit] = useState(15);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [isThereAnError, setisThereAnError] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		updateList();
@@ -33,6 +34,7 @@ export default function UniversitySearcher(props) {
 
 	const searchUniversities = async (event) => {
 		event.preventDefault();
+		setIsLoading(true);
 		setisThereAnError(false);
 		try {
 			setUniversitiesResult(await dataRetrieverFunction(searchParam));
@@ -41,6 +43,7 @@ export default function UniversitySearcher(props) {
 			setUniversitiesResult([]);
 		}
 		setOffset(0);
+		setIsLoading(false);
 	};
 
 	const updateListLength = () => {
@@ -101,6 +104,7 @@ export default function UniversitySearcher(props) {
 
 			<br />
 			<TableContainer>
+				{isLoading && <div>Loading...</div>}
 				<UniversitiesTable list={listUpdated} />
 				<TableMenu>
 					<SpaceBetween>
