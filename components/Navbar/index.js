@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { NavbarMenu } from "./styles.js";
+// import { NavbarMenu } from "./styles.js";
 
 export default function Navbar() {
   return (
-    <NavbarMenu>
+    <div className="navbar">
       <Link href="/">Home</Link>
       <Link href="/pokemon">Pokemons</Link>
       <Link href="/search">Search Pokemon</Link>
-    </NavbarMenu>
+    </div>
   );
 }
