@@ -16,7 +16,7 @@ export const HeaderComponent = () => {
                <li><Link href='/'>Coins</Link></li>
                <li><Link href='/exchanges'>Exchanges</Link></li>
                <li><Link href='/derivatives'>Derivatives</Link></li>
-               <li><Link href='/nfts'>NFTs</Link></li>
+               <li><Link href='/companies'>Companies</Link></li>
            </ul>
        </Navigation>
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ExchangeItems = styled.div`
         width: 350px;
+        height: 280px;
         padding: 2rem;
         border-radius: 1rem;
         background-color: ${props=>props.theme.primaryBack};

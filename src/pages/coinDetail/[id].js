@@ -1,39 +1,21 @@
-import axios from "axios";
 import React from "react";
 import { AboutContainer, CoinDetail } from "./styles";
 import BackBtn from "../../Components/BackBtn";
-import Head from "next/head";
 import SEO from "../../Components/SEO";
+import { CoinService } from "../../classes";
 
-export async function getStaticProps({ params }) {
-  const response = await axios.get(
-    `https://api.coingecko.com/api/v3/coins/${params.id}`
-  );
-  const data = await response.data;
+
+export async function getServerSideProps({ params }) {
+  const coin = await CoinService.getCoin(params.id);
   return {
     props: {
-      coin: data,
+      coin
     },
   };
 }
 
-export async function getStaticPaths() {
-  //get all the possible id's
-  const response = await axios.get("https://api.coingecko.com/api/v3/coins");
-  if (response.status === 200) {
-    const data = await response.data;
-    const paths = data.map((coin) => ({
-      params: { id: coin.id },
-    }));
-    return { paths, fallback: false };
-  } else {
-    return { paths: [], fallback: false };
-  }
-}
-
-export default function CryptoDetail({ coin }) {
+export default function CryptoDetail({ coin}) {
   return (
-    <>
       <main>
         <SEO name={coin.name + ' | Coin Detail'} desc={coin.name}/>
         <section id='coins-details'>
@@ -41,7 +23,7 @@ export default function CryptoDetail({ coin }) {
           <AboutContainer>
             <div className="header-text">
               <div className="box">
-                <img src={coin.image.small} alt={coin.name} />
+              <img src={coin.image.small} alt={coin.name} />
                 <p>{coin.name}</p>
                 <BackBtn key={coin.id} link={'/'} />
               </div>
@@ -54,6 +36,9 @@ export default function CryptoDetail({ coin }) {
         </CoinDetail>
         </section>
       </main>
-    </>
   );
 }
+
+
+
+

@@ -6,35 +6,19 @@ import moment from "moment";
 import { SectionTitle } from "../../Components/SectionTitle";
 import SEO from "../../Components/SEO";
 import BackBtn from '../../Components/BackBtn/index'
+import { ExchangeService } from "../../classes";
 
-export async function getStaticProps({ params }) {
-  const response = await axios.get(
-    `https://api.coingecko.com/api/v3/exchanges/${params.id}`
-  );
-  const data = await response.data;
+export async function getServerSideProps({ params }) {
+  const exchange = await ExchangeService.getExchange(params.id)
   return {
     props: {
-      exchange: data,
+      exchange
     },
   };
 }
 
-export async function getStaticPaths() {
-  //get all the possible id's
-  const response = await axios.get(
-    "https://api.coingecko.com/api/v3/exchanges"
-  );
-  const data = await response.data;
-  const paths = data.map((exchange) => ({
-    params: { id: exchange.id },
-  }));
-
-  return { paths, fallback: false };
-}
-
 export default function exchange({ exchange }) {
   return (
-    <>
       <main>
         <SEO name={exchange.name + ' | Exchange Detail'} desc={exchange.name}/>
         <section id="exchange-detail">
@@ -60,7 +44,7 @@ export default function exchange({ exchange }) {
                   {useMemo(
                     () =>
                       moment(news.created_at).format("MMMM Do YYYY, h:mm:ss a"),
-                    [exchange]
+                    [news.created_at]
                   )}
                 </label>
                 <p>{news.description}</p>
@@ -70,6 +54,5 @@ export default function exchange({ exchange }) {
           </NewsContainer>
         </section>
       </main>
-    </>
   );
 }

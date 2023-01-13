@@ -12,9 +12,10 @@ export default function CoinList({
   currentPrice,
 }) {
   return (
-    <Link href={`/coinDetail/${id}`}>
+
     <Container>
       <CoinContainer>
+      <Link href={`/coinDetail/${id}`}>
         <ul>
           <li>
             <img src={image} alt={name} />
@@ -29,8 +30,8 @@ export default function CoinList({
             <li>{NormalPriceFormat(marketCap)}</li>
           </div>
         </ul>
+        </Link>
       </CoinContainer>
     </Container>
-    </Link>
   );
 }
