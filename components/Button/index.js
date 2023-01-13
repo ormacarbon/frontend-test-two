@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container } from './styles'
 
-function Button({title}) {
+function Button({title, color}) {
   return(
-    <Container>
+    <Container color={color}>
       {title}
     </Container>
   )
