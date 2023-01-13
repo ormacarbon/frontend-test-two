@@ -30,6 +30,7 @@ export const SearchPokemons = styled.div`
       color: ${(props) => props.theme.buttonColor};
       border-radius: 8px;
       font-weight: 700;
+      cursor: pointer;
     }
   }
 

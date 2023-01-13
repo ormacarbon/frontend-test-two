@@ -7,15 +7,13 @@ export const Pokemon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-`;
 
-export const DetailButton = styled.div`
-  padding: 0.3rem 0.3rem;
-  background: ${(props) => props.theme.secondary};
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 0 auto;
   a {
+    padding: 0.3rem 0.3rem;
+    background: ${(props) => props.theme.secondary};
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 auto;
     color: ${(props) => props.theme.buttonColor};
     text-decoration: none;
   }
