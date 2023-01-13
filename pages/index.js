@@ -1,8 +1,14 @@
+import Search from "../components/Search/index";
+import Feed from "../components/Feed/index";
+import { MainTitle } from "../styles/global";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  )
-}
+    <>
+      <MainTitle>Explore News and Stand Awake!</MainTitle>
+      <Search />
+      <Feed />
+    </>
+  );
+};
+export default Home;
