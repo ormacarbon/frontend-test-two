@@ -1,24 +1,22 @@
+import { PostListSkeleton } from "@/components/feedback";
 import { AppLayout, PostCard } from "@/components/layout";
 import { Heading } from "@/components/typography";
 import { useGetOneCategoryPosts } from "@/hooks/api/categories/useGetOneCategoryPosts";
 import { usePageSlug } from "@/hooks/helpers";
 import { filterPostsByCategory } from "@/src/helpers";
-import { removeDuplicates } from "@/src/helpers/removeDuplicates";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { AiFillAccountBook } from "react-icons/ai";
 import styled from "styled-components";
 
 export default function CategorySlug() {
   const categoryId = usePageSlug("category-slug");
 
-  const { postsList } = useGetOneCategoryPosts({
+  const { postsList, isLoading } = useGetOneCategoryPosts({
     categoryId,
   });
 
   const { postsByCategory } = filterPostsByCategory({
     categoryId,
-    postsList: postsList.posts,
+    postsList: postsList?.posts,
   });
 
   return (
@@ -30,20 +28,26 @@ export default function CategorySlug() {
       <AppLayout>
         <PostSlugContainer>
           <CategoryTitle>
-            <Heading variant="2xl">{categoryId?.toUpperCase()}</Heading>
+            <Heading variant="2xl">
+              {postsByCategory?.length > 0 && categoryId?.toUpperCase()}
+            </Heading>
             {postsByCategory?.length} articles
           </CategoryTitle>
 
           <PostsByCategoryContainer>
-            {postsByCategory?.map((post) => {
-              return (
-                <PostCard
-                  post={post}
-                  variant={"with-background"}
-                  key={post.id}
-                />
-              );
-            })}
+            {isLoading ? (
+              <PostListSkeleton />
+            ) : (
+              postsByCategory?.map((post) => {
+                return (
+                  <PostCard
+                    post={post}
+                    variant={"with-background"}
+                    key={post.id}
+                  />
+                );
+              })
+            )}
           </PostsByCategoryContainer>
         </PostSlugContainer>
       </AppLayout>
