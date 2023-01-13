@@ -6,7 +6,11 @@ const lightTheme = {
 		danger: "#D35269",
 		border: "#93A392",
 		neutral: "#463730",
-		letters: '#F3F3F3'
+		letters: '#F3F3F3',
+		darker: '#101014',
+		textPrimary: '#101014',
+		textSeconday: '#F3F3F3',
+		input: "#dfdfdf"
 	},
 	screens: {
 		sm: "640px",
@@ -17,6 +21,10 @@ const lightTheme = {
 
 		xl: "1280px",
 	},
+	fonts: {
+		primary: 'Press Start 2P',
+		secondary: 'Roboto'
+	}
 };
 
 export default lightTheme;
