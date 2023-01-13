@@ -32,7 +32,7 @@ export default function Layout({ children, currentPage }) {
 					{children}
 				</main>
 				<footer>
-					<a href='https://talesrodriguesdev.vercel.app/' target='_blank' rel="noreferrer">Tales Rodrigues DEV</a>
+					<a href='https://talesrodriguesdev.vercel.app/' target='_blank' rel="noreferrer">TalesRodriguesDEV</a>
 					{' '}
 					- Checkout <a href='https://api.nasa.gov/' target='_blank' rel="noreferrer">NASA</a> Open APIs
 				</footer>

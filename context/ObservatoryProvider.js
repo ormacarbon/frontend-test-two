@@ -14,7 +14,9 @@ export default function ObservatoryProvider({ children }) {
 		if (!favPics) localStorage.setItem('favPics', JSON.stringify([]));
 
 		setTheme('light');
-	});
+		
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const valueObj = {
 		pictures,
