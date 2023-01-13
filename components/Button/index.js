@@ -1,10 +1,10 @@
 import React from 'react'
 import { Container } from './styles'
 
-function Button({title, color}) {
+function Button(props) {
   return(
-    <Container color={color}>
-      {title}
+    <Container color={props.color} onClick={props.onClick}>
+      {props.title}
     </Container>
   )
 }
