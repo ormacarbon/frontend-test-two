@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NavbarMenu, Menu } from "../styles/navbar";
+import { NavbarMenu, Menu } from "./styles.js";
 
 export default function Navbar() {
   return (
