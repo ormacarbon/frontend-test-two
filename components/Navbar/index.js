@@ -4,10 +4,8 @@ import { NavbarMenu, Menu } from "./styles.js";
 export default function Navbar() {
   return (
     <NavbarMenu>
-      <Menu>
-        <Link href="/">Home</Link>
-        <Link href="/pokemon">Pokemons</Link>
-      </Menu>
+      <Link href="/">Home</Link>
+      <Link href="/pokemon">Pokemons</Link>
     </NavbarMenu>
   );
 }
