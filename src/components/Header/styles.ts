@@ -6,13 +6,12 @@ export const StyledHeader = styled.header`
   background: ${(props) => props.theme.colors.black};
 
   height: 5rem;
+  padding: 0 4rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-
-  padding: 0 4rem;
 
   span {
     color: ${(props) => props.theme.colors["indigo-800"]};
