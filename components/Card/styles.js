@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   flex: 1;
-  height: 100%;
   display: flex;
   background: ${(props) => props.theme.colors.gray['600']};
   flex-direction: column;
@@ -12,7 +11,13 @@ export const Container = styled.button`
   color: ${(props) => props.theme.colors.light};
   border: 1px solid ${(props) => props.theme.colors.gray[400]};
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
-  transition: background 0.3s, border 0.3s;
+  transition: background 0.3s, border 0.3s, margin 0.3s;
+  margin: ${(props) => props.theme.spacing.sm};
+  cursor: pointer;
+
+  :hover {
+    margin: 0;
+  }
 `
 
 export const Frame = styled.div`
