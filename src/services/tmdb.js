@@ -17,6 +17,14 @@ const basicFetch = async (endpoint) => {
   return json;
 };
 
+const webFetch = async (endpoint) => {
+  const req = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}${endpoint}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+  );
+  const json = await req.json();
+  return json;
+};
+
 const tmdb = {
   getHomeList: async () => {
     return [
@@ -81,7 +89,8 @@ const tmdb = {
 
     switch (type) {
       case 'all':
-        itens = await basicFetch(
+        console.log('all');
+        itens = await webFetch(
           `/trending/all/week?language=pt-BR&page=${page}`
         );
         break;
@@ -177,15 +186,29 @@ const tmdb = {
           info = await basicFetch(`/tv/${movieId}?language=pt-BR`);
           break;
         default:
-          info;
-          break;
+          info = await basicFetch(`/movie/${movieId}?language=pt-BR`);
+          if (info.success === false) {
+            info = await basicFetch(`/tv/${movieId}?language=pt-BR`);
+            return info;
+          } else {
+            return info;
+          }
       }
-    }
 
-    return info;
+      return info;
+    }
   },
+
   getImage: (imageId) => {
     return `https://image.tmdb.org/t/p/original/${imageId}`;
+  },
+  getMovieById: async (movieId) => {
+    let result = await webFetch(`/movie/${movieId}?language=pt-BR`);
+    console.log(result);
+    return result;
+  },
+  getTvById: async (movieId) => {
+    return await webFetch(`/tv/${movieId}?language=pt-BR`);
   }
 };
 

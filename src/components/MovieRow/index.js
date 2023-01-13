@@ -3,17 +3,22 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'phosphor-react';
 
+import TMDB from '../../services/tmdb';
+
 import {
   MovieRowContainer,
   MovieRowArrowLeft,
   MovieRowArrowRight,
   MovieArrowListArea,
-  MovieRowList
+  MovieRowList,
+  MovieRowTitle,
+  MovieRowIten
 } from './styled';
 
 import { useDarkModeContext } from '../../contexts/DarkMode';
+import Link from 'next/link';
 
-export const MovieRow = ({ title, itens }) => {
+export const MovieRow = ({ title, itens, slug }) => {
   const [scrollX, setScrollX] = useState(0);
 
   const { darkMode } = useDarkModeContext();
@@ -36,40 +41,60 @@ export const MovieRow = ({ title, itens }) => {
   }
 
   return (
-    <MovieRowContainer className={`movieRow `} darkMode={darkMode}>
-      <h2
-        className={`${title === 'Originais do Netflix' ? 'changeOnDark' : ''}`}
-      >
-        {title}
-      </h2>
-      <MovieRowArrowLeft className="movieRow--left" onClick={handleLeftArrow}>
-        <ArrowLeft />
-      </MovieRowArrowLeft>
-      <MovieRowArrowRight
-        className="movieRow--right"
-        onClick={handleRightArrow}
-      >
-        <ArrowRight />
-      </MovieRowArrowRight>
-      <MovieArrowListArea className="movieRow--listArea">
-        <MovieRowList
-          className="movieRow--list"
-          style={{
-            marginLeft: scrollX,
-            width: `${itens.results.length * 15}rem`
-          }}
+    <>
+      <Link href={slug} passHref>
+        <MovieRowTitle
+          darkMode={darkMode}
+          className={`${slug === 'originals' ? 'changeOnDark' : ''}`}
         >
-          {itens.results &&
-            itens.results.map((iten, index) => (
-              <div className="movieRow--iten" key={index}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w300${iten.poster_path}`}
-                  alt={iten.name}
-                />
-              </div>
-            ))}
-        </MovieRowList>
-      </MovieArrowListArea>
-    </MovieRowContainer>
+          {title}
+          <span>Ver tudo</span>
+          <ArrowRight />
+        </MovieRowTitle>
+      </Link>
+      <MovieRowContainer className={`movieRow `} darkMode={darkMode}>
+        <MovieRowArrowLeft className="movieRow--left" onClick={handleLeftArrow}>
+          <ArrowLeft />
+        </MovieRowArrowLeft>
+        <MovieRowArrowRight
+          className="movieRow--right"
+          onClick={handleRightArrow}
+        >
+          <ArrowRight />
+        </MovieRowArrowRight>
+        <MovieArrowListArea className="movieRow--listArea">
+          <MovieRowList
+            className="movieRow--list"
+            style={{
+              marginLeft: scrollX,
+              width: `${itens.results.length * 15}rem`
+            }}
+          >
+            {/* {title !== 'Originais do Netflix' &&
+              
+            } */}
+            {itens.results &&
+              itens.results.map((iten, index) => (
+                <MovieRowIten
+                  href={
+                    iten.media_type
+                      ? `/trendings/${iten.media_type}/${iten.id}`
+                      : title !== 'Originais do Netflix'
+                      ? `${slug}/movie/${iten.id}`
+                      : `/originals/${iten.id}`
+                  }
+                  key={index}
+                  className="movieRow--iten"
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300${iten.poster_path}`}
+                    alt={iten.name}
+                  />
+                </MovieRowIten>
+              ))}
+          </MovieRowList>
+        </MovieArrowListArea>
+      </MovieRowContainer>
+    </>
   );
 };

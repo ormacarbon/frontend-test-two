@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import { useDarkModeContext } from '../contexts/DarkMode';
 
 import TMDB from '../services/tmdb';
@@ -17,7 +19,6 @@ export const getServerSideProps = async (context) => {
   );
   let chosenMovie = originals[0].itens.results[randonChosen];
   let chosenMovieInfo = await TMDB.getMovieInfo(chosenMovie.id, 'tv');
-  console.log(chosenMovieInfo);
 
   return {
     props: { filmList, featuredMovie: chosenMovieInfo }
@@ -26,7 +27,21 @@ export const getServerSideProps = async (context) => {
 
 export default function Home({ filmList, featuredMovie }) {
   const { darkMode, toggleDarkMode } = useDarkModeContext();
-  console.log(featuredMovie);
+
+  console.log(filmList);
+
+  const [originalMovieIten, setOriginalMovieIten] = useState();
+
+  useEffect(() => {
+    const originalMovie = async () => {
+      let original = await TMDB.getTvById(filmList[0].itens.results[0].id);
+
+      setOriginalMovieIten(original);
+    };
+    originalMovie();
+  }, []);
+
+  console.log(originalMovieIten)
 
   return (
     <>
@@ -38,7 +53,12 @@ export default function Home({ filmList, featuredMovie }) {
         <HomeMoviesList>
           {filmList.length > 0 &&
             filmList.map((iten, index) => (
-              <MovieRow title={iten.title} itens={iten.itens} key={index} />
+              <MovieRow
+                title={iten.title}
+                itens={iten.itens}
+                slug={iten.slug}
+                key={index}
+              />
             ))}
         </HomeMoviesList>
       </HomeContainer>

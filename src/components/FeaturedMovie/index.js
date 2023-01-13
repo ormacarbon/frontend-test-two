@@ -22,7 +22,9 @@ export const FeaturedMovie = ({ movie }) => {
           <h2>{movie.original_name}</h2>
           <FeaturedMovieInfo>
             <span className="points">{movie.vote_average} pontos</span>
-            <span className="year">{firstDate.getFullYear()}</span>
+            {movie.first_air_date && (
+              <span className="year">{firstDate.getFullYear()}</span>
+            )}
             <span className="seasons">
               {movie.number_of_seasons} temporada
               {movie.number_of_seasons > 1 ? 's' : ''}
