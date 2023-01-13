@@ -20,13 +20,6 @@ export const Inline = styled.div`
 	justify-content: space-around;
 `;
 
-export const Header = styled.div`
-	background-color: ${(props) => props.theme.primary};
-	border: solid;
-	border-radius: 3px;
-	padding: 10px;
-`;
-
 export const Input = styled.input`
 	background-color: ${(props) => props.theme.primary};
 	border-radius: 4px;
@@ -57,7 +50,16 @@ export const Title = styled.h1`
 	user-select: none;
 `;
 
-export const TableNavigator = styled.div`
+export const Container = styled.div`
+	background-color: ${(props) => props.theme.primary};
+	border: solid;
+	border-radius: 3px;
+	padding: 10px;
+	margin: 3px;
+`;
+
+export const TableContainer = styled.div`
+	margin-top: 10px;
 	justify-content: space-between;
 	width: 70%;
 `;
