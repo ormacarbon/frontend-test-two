@@ -32,4 +32,11 @@ export const SearchPokemons = styled.div`
       font-weight: 700;
     }
   }
+
+  .undefined {
+    display: none;
+    a {
+      display: none;
+    }
+  }
 `;
