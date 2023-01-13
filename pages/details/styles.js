@@ -10,14 +10,14 @@ const fadeIn = keyframes`
 `;
 
 export const DetailStyled = styled.div`
-  padding: 16px;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
+  padding-top: 60px;
   flex-wrap: wrap;
-  gap: 40px;
-  margin: 50px;
-  align-items: center;
+  width: 100vw;
+  height: 85vh;
+  gap: 30px;
+  background-color: ${({ theme }) => theme.backgroundBase};
   color: #ffffff;
   animation: ${fadeIn} 1.5s ease-in-out;
   h1 {
@@ -173,7 +173,6 @@ export const CardColor = styled.div`
   flex-direction: column;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   .img-pokemon {
     width: 270px;

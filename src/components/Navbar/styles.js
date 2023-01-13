@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const StyledNavbar = styled.header`
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.backgroundLevel2};
   height: 3.5rem;
+  width: 100%;
   display: flex;
-  position: relative;
   align-items: center;
-  border-bottom: 1px solid grey;
+  position: relative;
+  border-bottom: 1px solid ${({ theme }) => theme.borderBase};
   a,
   button {
     cursor: pointer;
@@ -17,9 +18,9 @@ export const StyledNavbar = styled.header`
     height: 3.5rem;
     font-weight: 500;
     font-size: 1.3rem;
-    color: #404040;
+    color: ${({ theme }) => theme.textColorBase};
     border-radius: 2px;
-    border: 1px solid grey;
+    border: 1px solid ${({ theme }) => theme.borderBase};
   }
   img {
     width: 180px;
@@ -29,7 +30,10 @@ export const StyledNavbar = styled.header`
     transform: translate(-50%, -50%);
   }
   .button-home {
-    background-color: #f3f3f3;
+    background-color: ${({ theme }) => theme.backgroundLevel1};
+  }
+  .button-pokedex {
+    background-color: ${({ theme }) => theme.backgroundLevel1};
   }
   button:hover {
     background-color: lightgray;
@@ -51,7 +55,7 @@ export const StyledNavbar = styled.header`
       justify-content: center;
       position: relative;
       width: 80px;
-      background-color: #f3f3f3;
+      background-color: ${({ theme }) => theme.backgroundLevel1};
     }
     .button-search:hover {
       background-color: lightgrey;
@@ -76,23 +80,21 @@ export const StyledNavbar = styled.header`
     border: 0 none;
   }
 
-  /* The switch - the box around the slider */
   .switch {
     font-size: 17px;
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    display: flex;
     width: 3.5em;
     height: 2em;
+    right: 50px;
   }
 
-  /* Hide default HTML checkbox */
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
 
-  /* The slider */
   .slider {
     position: absolute;
     cursor: pointer;
@@ -103,7 +105,6 @@ export const StyledNavbar = styled.header`
     background-color: #ccc;
     transition: 0.4s;
     border-radius: 10px;
-    border: 1px solid grey;
   }
 
   .slider:before {
@@ -116,7 +117,6 @@ export const StyledNavbar = styled.header`
     bottom: 0.3em;
     background-color: white;
     transition: 0.4s;
-    border: 1px solid grey;
   }
 
   input:checked + .slider {

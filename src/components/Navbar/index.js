@@ -8,13 +8,11 @@ export default function Navbar() {
   const {
     searchValue,
     setSearchValue,
-    searchResults,
     setSearchResults,
     allPokelist,
   } = useContext(GlobalContext);
-  const contexto = useContext(ColorModeContext);
+  const context = useContext(ColorModeContext);
 
-  console.log("contexto dentro na navbar", contexto);
 
   const searchPokemon = () => {
     const foundPokemons = allPokelist.filter((pokemon) =>
@@ -53,7 +51,7 @@ export default function Navbar() {
       </div>
       <label className="switch">
         <input type="checkbox" onChange={() => {
-          contexto.toggleMode()
+          context.toggleMode()
         }}/>
         <span className="slider"></span>
       </label>

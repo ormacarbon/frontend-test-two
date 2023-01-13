@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const StyledIndex = styled.main`
-  width: 100vw;
+  width: 100%;
+  background-color: ${({ theme }) => theme.backgroundBase};
+  min-height: 100vh;
+
   .container-pokemons {
     display: flex;
     flex-wrap: wrap;
@@ -12,11 +15,11 @@ export const StyledIndex = styled.main`
 
   .container-buttons {
     display: flex;
-    width: 100vw;
+    width: 100%;
     align-items: center;
     justify-content: center;
     margin-top: 80px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 
     .button-pages {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -37,8 +40,9 @@ export const StyledIndex = styled.main`
     text-decoration: underline;
     font-weight: 800;
   }
+
   .button-pages[disabled] {
-    background-color: lightgray;
+    background-color: ${({ theme }) => theme.backgroundLevel2};
     color: white;
     cursor: not-allowed;
   }

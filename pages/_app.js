@@ -15,11 +15,11 @@ function ProvideWrapper({ children }) {
 }
 
 export function MyApp({ Component, pageProps }) {
-  const contexto = useContext(ColorModeContext);
+  const context = useContext(ColorModeContext);
 
   return (
     <GlobalProvider>
-      <ThemeProvider theme={theme[contexto.mode]}>
+      <ThemeProvider theme={theme[context.mode]}>
         <GlobalStyles />
         <Component {...pageProps} />
       </ThemeProvider>
