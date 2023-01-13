@@ -3,6 +3,7 @@ import { Context } from "../utils/AppContext";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../styles/ThemeConfig";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import hooks from "../utils/hooks";
 
 function MyApp({ Component, pageProps }) {
@@ -50,22 +51,32 @@ function MyApp({ Component, pageProps }) {
 	};
 
 	return (
-		<ThemeProvider theme={theme == "light" ? lightTheme : darkTheme}>
-			<GlobalStyles />
-			<Context.Provider
-				value={{
-					searchUniversitiesByCountry,
-					searchUniversitiesByDomain,
-					searchUniversitiesByName,
-					toggleTheme,
-					theme,
-				}}
-			>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</Context.Provider>
-		</ThemeProvider>
+		<div>
+			<Head>
+				<meta charset="UTF-8" />
+				<meta name="keywords" content="titla, meta, nextjs" />
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1.0"
+				/>
+			</Head>
+			<ThemeProvider theme={theme == "light" ? lightTheme : darkTheme}>
+				<GlobalStyles />
+				<Context.Provider
+					value={{
+						searchUniversitiesByCountry,
+						searchUniversitiesByDomain,
+						searchUniversitiesByName,
+						toggleTheme,
+						theme,
+					}}
+				>
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</Context.Provider>
+			</ThemeProvider>
+		</div>
 	);
 }
 
