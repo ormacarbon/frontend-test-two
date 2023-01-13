@@ -15,7 +15,7 @@ export default function Home({ leagues }) {
       <Container theme={currentTheme}>
         {leagues.data.map((league) => (
           <Link
-            href={`/${league.name}/${league.id}`}
+            href={`/${league.id}`}
             theme={currentTheme}
             type="button"
             key={league.id}

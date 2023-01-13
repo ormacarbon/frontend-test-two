@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/ThemeContext';
@@ -7,6 +8,8 @@ import { Section, ContainerLogoLeague, ContainerSeasons } from './styles';
 
 export default function LeagueDetails({ detailsLeagueSelected, seasonsLeague }) {
   const { currentTheme, theme } = useContext(ThemeContext);
+  const { asPath } = useRouter();
+
   const setLogo = (
     theme === 'dark'
       ? detailsLeagueSelected.logos.dark
@@ -25,8 +28,8 @@ export default function LeagueDetails({ detailsLeagueSelected, seasonsLeague }) 
         <strong>Temporadas</strong>
         <ul>
           {seasonsLeague.map((season) => (
-            <Link href="/">
-              <li key={season.year}>{season.year}</li>
+            <Link key={season.year} href={`${asPath}/${season.year}`}>
+              <li>{season.year}</li>
             </Link>
           ))}
         </ul>
@@ -59,6 +62,7 @@ export async function getServerSideProps(context) {
     props: {
       detailsLeagueSelected: detailsLeague.data,
       seasonsLeague: seasonsLeague.data.seasons,
+      leagueId: context.params.leagueId,
     },
   };
 }

@@ -17,8 +17,8 @@ class APIservice {
     return this.httpClient.get(`/leagues/${id}/seasons`);
   }
 
-  listStadingsOfSeason({ id, seasonSelected, orderBy = 'asc' }) {
-    return this.httpClient.get(`/leagues/${id}/standings?season=${seasonSelected}&sort=${orderBy}`);
+  listStadingsOfSeason(id, season, orderBy = 'asc') {
+    return this.httpClient.get(`/leagues/${id}/standings?season=${season}&sort=${orderBy}`);
   }
 }
 
