@@ -24,7 +24,6 @@ export const MovieRow = ({
   pagination,
   paginationAdd,
   paginationRemove,
-  loading
 }) => {
   const [scrollX, setScrollX] = useState(0);
 
@@ -55,11 +54,12 @@ export const MovieRow = ({
             <Link href={slug} passHref>
               <MovieRowTitle
                 darkMode={darkMode}
-                className={`${slug === 'originals' ? 'changeOnDark' : ''}`}
               >
-                {title}
-                <span>Ver tudo</span>
-                <ArrowRight />
+                <strong>{title}</strong>
+                <span>
+                  Ver tudo
+                  <ArrowRight />
+                </span>
               </MovieRowTitle>
             </Link>
             {pagination && (

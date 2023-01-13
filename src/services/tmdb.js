@@ -1,14 +1,3 @@
-/*
- * Originais da netflix
- * Recomendados (trending)
- * Em alta (top rated)
- * ação
- * comédia
- * terror
- * romance
- * documentários
- */
-
 const basicFetch = async (endpoint) => {
   const req = await fetch(
     `${process.env.API_BASE}${endpoint}&api_key=${process.env.API_KEY}`
@@ -90,7 +79,6 @@ const tmdb = {
 
     switch (type) {
       case 'all':
-        console.log('all');
         itens = await webFetch(
           `/trending/all/week?language=pt-BR&page=${page}`
         );
@@ -108,6 +96,44 @@ const tmdb = {
         break;
       default:
         itens = await webFetch(
+          `/trending/all/week?language=pt-BR&page=${page}`
+        );
+        title = 'Recomendados para você';
+        break;
+    }
+    return {
+      slug: 'trendings',
+      title: title ? title : 'Recomendados para você',
+      itens
+    };
+  },
+  getTrendingsSSR: async (type, page) => {
+    let itens;
+    let title;
+
+    page ? (page = page.toString()) : (page = '1');
+
+    switch (type) {
+      case 'all':
+        itens = await basicFetch(
+          `/trending/all/week?language=pt-BR&page=${page}`
+        );
+        title = 'Recomendados para você (todos)';
+        break;
+      case 'movie':
+        itens = await basicFetch(
+          `/trending/movie/week?language=pt-BR&page=${page}`
+        );
+        title = 'Recomendados para você (filmes)';
+        break;
+      case 'tv':
+        itens = await basicFetch(
+          `/trending/tv/week?language=pt-BR&page=${page}`
+        );
+        title = 'Recomendados para você (séries)';
+        break;
+      default:
+        itens = await basicFetch(
           `/trending/all/week?language=pt-BR&page=${page}`
         );
         title = 'Recomendados para você';
@@ -207,7 +233,6 @@ const tmdb = {
   },
   getMovieById: async (movieId) => {
     let result = await webFetch(`/movie/${movieId}?language=pt-BR`);
-    console.log(result);
     return result;
   },
   getTvById: async (movieId) => {

@@ -1,26 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight } from 'phosphor-react';
+import Head from 'next/head';
 
 import { useDarkModeContext } from '../../contexts/DarkMode';
-
-import TMDB from '../../services/tmdb';
-import { HomeContainer, HomeMoviesList, HomeMovies } from '../../styles/Home';
-import Image from 'next/image';
-import { MovieRow } from '../../components/MovieRow';
-import Head from 'next/head';
-import { FeaturedMovie } from '../../components/FeaturedMovie';
-import { TrendingsMovieListContainer } from '../../styles/Trendings';
 import { usePageActiveContext } from '../../contexts/PageActive';
 
+import TMDB from '../../services/tmdb';
+
+import { MovieRow } from '../../components/MovieRow';
+import { FeaturedMovie } from '../../components/FeaturedMovie';
+
+import { TrendingsMovieListContainer } from '../../styles/Trendings';
+import { HomeContainer } from '../../styles/Home';
 
 export const getServerSideProps = async () => {
-  const allList = await TMDB.getTrendings('all', 1);
-  const moviesList = await TMDB.getTrendings('movie', 1);
-  const seriesList = await TMDB.getTrendings('tv', 1);
-
-  console.log(allList.itens.results.length);
+  const allList = await TMDB.getTrendingsSSR('all', 1);
+  const moviesList = await TMDB.getTrendingsSSR('movie', 1);
+  const seriesList = await TMDB.getTrendingsSSR('tv', 1);
 
   const trendingBanner = await TMDB.getMovieInfo(
     allList.itens.results[
@@ -60,8 +56,6 @@ export default function Home({
   useEffect(() => {
     setUpdatedAllList(allList);
   }, [allList]);
-
-  console.log(updatedAllList);
 
   const { changePageActive } = usePageActiveContext();
   const { darkMode } = useDarkModeContext();

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowUp } from 'phosphor-react';
 
 import { BackToTopContainer } from './styled';

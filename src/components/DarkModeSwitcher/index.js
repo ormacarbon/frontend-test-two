@@ -1,8 +1,9 @@
 import * as C from './styled';
 
+import { useDarkModeContext } from '../../contexts/DarkMode';
+
 import { SwitcherMoon } from '../Svgs/SwitcherMoon';
 import { SwitcherSum } from '../Svgs/SwitcherSum';
-import { useDarkModeContext } from '../../contexts/DarkMode';
 
 export const DarkModeSwitcher = () => {
   const { darkMode, toggleDarkMode } = useDarkModeContext();

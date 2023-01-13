@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import Head from 'next/head';
 
 import { useDarkModeContext } from '../contexts/DarkMode';
+import { usePageActiveContext } from '../contexts/PageActive';
 
 import TMDB from '../services/tmdb';
-import { HomeContainer, HomeMoviesList, HomeMovies } from '../styles/Home';
+
 import { MovieRow } from '../components/MovieRow';
-import Head from 'next/head';
 import { FeaturedMovie } from '../components/FeaturedMovie';
-import { usePageActiveContext } from '../contexts/PageActive';
+
+import { HomeContainer, HomeMoviesList } from '../styles/Home';
 
 export const getServerSideProps = async () => {
   //* Get a list of movies
@@ -27,21 +29,8 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home({ filmList, featuredMovie }) {
-  const { darkMode, toggleDarkMode } = useDarkModeContext();
+  const { darkMode } = useDarkModeContext();
   const { changePageActive } = usePageActiveContext();
-
-  console.log(filmList);
-
-  const [originalMovieIten, setOriginalMovieIten] = useState();
-
-  useEffect(() => {
-    const originalMovie = async () => {
-      let original = await TMDB.getTvById(filmList[0].itens.results[0].id);
-
-      setOriginalMovieIten(original);
-    };
-    originalMovie();
-  }, [filmList]);
 
   useEffect(() => {
     changePageActive('/');

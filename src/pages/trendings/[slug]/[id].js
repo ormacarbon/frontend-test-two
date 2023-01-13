@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRef } from 'react';
 import TMDB from '../../../services/tmdb';
 import {
   TrendingSlugIdContainer,
@@ -14,6 +13,7 @@ import {
   TrendingSlugIdSlogan,
   TrendingSlugIdVoteProducer
 } from '../../../styles/Trendings[slug][id]';
+
 import { useFormatter } from '../../../utils/formatter';
 
 export const getServerSideProps = async (context) => {

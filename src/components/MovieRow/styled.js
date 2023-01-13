@@ -6,23 +6,43 @@ export const MovieRowTitle = styled.h2`
   align-items: center;
   gap: 0.4rem;
 
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: ${(props) =>
     props.darkMode ? props.theme.colors.white : props.theme.colors.black};
 
   margin-left: 3rem;
   transition: all ease 0.4s;
 
-  &.changeOnDark {
-    color: ${(props) => props.theme.colors.white};
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    gap: 0;
+  }
+
+  strong {
+    background-color: ${(props) =>
+      props.darkMode ? '' : props.theme.colors['gray-100']};
+    border-radius: 4px;
+    padding-inline: 0.2rem;
+    z-index: 1;
   }
 
   span {
+    display: flex;
+    align-items: center;
     font-size: 1.2rem;
     color: ${(props) => props.theme.colors['blue-200']};
     margin-left: 0.8rem;
 
     transition: all ease 0.4s;
+
+    background-color: ${(props) =>
+      props.darkMode ? '' : props.theme.colors['red-600']};
+    padding: 0.2rem 0.2rem 0.1rem 0.8rem;
+    border-radius: 4px;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   svg {
@@ -39,7 +59,7 @@ export const MovieRowTitle = styled.h2`
 
     span {
       opacity: 0;
-      margin-left: -1.6rem;
+      margin-left: -10rem;
     }
   }
 `;
@@ -64,7 +84,7 @@ export const MovieRowArrow = styled.div`
   position: absolute;
   width: 4rem;
   height: 22.5rem;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 99;
 
   display: flex;
@@ -76,6 +96,10 @@ export const MovieRowArrow = styled.div`
   opacity: 0;
 
   transition: all ease 0.3s;
+
+  @media (max-width: 768px) {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 
   svg {
     width: 5rem;
@@ -149,6 +173,11 @@ export const MovieRowPagination = styled.div`
   gap: 2.4rem;
   margin-right: 3.2rem;
 
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-right: 1.6rem;
+  }
+
   button {
     padding: 0.5rem;
     border-radius: 4px;
@@ -159,6 +188,10 @@ export const MovieRowPagination = styled.div`
     transition: all ease 0.3s;
     margin-bottom: 0.4rem;
 
+    @media (max-width: 768px) {
+      padding: 0.2rem;
+    }
+
     &:hover {
       transform: scale(1);
     }
@@ -167,6 +200,10 @@ export const MovieRowPagination = styled.div`
       width: 2.8rem;
       height: auto;
       color: ${(props) => props.theme.colors['red-600']};
+
+      @media (max-width: 768px) {
+        width: 2.4rem;
+      }
     }
   }
 `;
