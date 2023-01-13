@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import Head from 'next/head'
-import { Container, Top, Text, Middle, Bottom } from './styles'
+import GitLogo from './assets/github.svg'
+import { Bottom, Container, Middle, Text, Top } from './styles/styles'
 
 export default function Home() {
   return (
@@ -10,15 +12,18 @@ export default function Home() {
         <meta name='description' content='website pages' />
       </Head>
       <Top>
-        <Text>Rafa's Library</Text>
+        <Image src={GitLogo} alt='github logo' />
+        <Text>Github Pages</Text>
       </Top>
       <Middle>
-
+        <Text>Welcome to your portfolio!</Text>
+        <h2>A plache where you can see you github profile
+          <br /> by adding your username to the code!</h2>
       </Middle>
       <Bottom>
         <ul>
-          <li>Library</li>
-          <li>Contact</li>
+          <li><a href='/library'>See here</a></li>
+          <li><a href='/contact'>Contact</a></li>
         </ul>
       </Bottom>
     </Container>
