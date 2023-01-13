@@ -1,0 +1,259 @@
+.LoadingBox {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.HomeMainBox {
+
+    width: 100%;
+
+    article {
+        padding: 20px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        input {
+            height: 20px;
+            width: 60%;
+            margin-top: 10px;
+            color: #666;
+            padding: 5px;
+            padding-left: 10px;
+            border-radius: 10px;
+            outline: none;
+            border: rgba(204, 204, 204, 0.5) solid 1px;
+        }
+
+    }
+
+    .AlignBox {
+        display: flex;
+        justify-content: center;
+
+        div {
+            max-width: 100%;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            grid-auto-rows: minmax(270px, auto);
+        }
+    }
+
+    .ControlsBox {
+        height: 50px;
+        margin-bottom: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            transition: 400ms;
+            height: 40px;
+            width: 80px;
+            outline: none;
+            border: none;
+            border-radius: 15px;
+            color: #666;
+        }
+
+        button:first-child {
+            margin-right: 10px;
+        }
+
+        button:last-child {
+            margin-left: 10px;
+        }
+
+        button:hover {
+            transition: 400ms;
+            background-color: #2F2F3B;
+            color: #fff;
+        }
+
+        h4 {
+            align-items: center;
+            background-color: #2F2F3B;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: center;
+            justify-content: center;
+            display: flex;
+            height: 30px;
+            width: 30px;
+        }
+    }
+}
+
+
+@media screen and (orientation:portrait) {
+
+    article {
+        padding: 20px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #2F2F3B;
+
+        h1 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #fff;
+            font-weight: 400;
+        }
+    }
+
+    .AlignBox {
+        display: flex;
+        justify-content: center;
+
+        div {
+            max-width: 100%;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+            grid-auto-rows: minmax(270px, auto);
+        }
+    }
+}
+
+
+@media screen and(max-width: 850px) {
+    .HomeMainBox {
+
+        width: 100%;
+        //height: 100vh;
+
+        article {
+            padding: 20px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .AlignBox {
+            display: flex;
+            justify-content: center;
+
+            div {
+                max-width: 100%;
+                padding: 20px;
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 20px;
+                grid-auto-rows: minmax(270px, auto);
+            }
+        }
+    }
+
+}
+
+@media screen and(max-width:1200px) and (min-width: 851px) {
+
+    .HomeMainBox {
+
+        width: 100%;
+        //height: 100vh;
+
+        article {
+            padding: 20px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .AlignBox {
+            display: flex;
+            justify-content: center;
+
+            div {
+                max-width: 100%;
+                padding: 20px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                grid-auto-rows: minmax(270px, auto);
+                //background-color: red;
+            }
+        }
+    }
+}
+
+
+@media screen and(min-width:1500px) {
+
+    .HomeMainBox {
+
+        width: 100%;
+        //height: 100vh;
+
+        article {
+            padding: 20px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .AlignBox {
+            display: flex;
+            justify-content: center;
+
+            div {
+                max-width: 100%;
+                padding: 20px;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                grid-auto-rows: minmax(270px, auto);
+            }
+        }
+    }
+
+}
+
+@media screen and(min-width:1900px) {
+
+    .HomeMainBox {
+
+        width: 100%;
+        //height: 100vh;
+
+        article {
+            padding: 20px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .AlignBox {
+            display: flex;
+            justify-content: center;
+
+            div {
+                max-width: 100%;
+                padding: 20px;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+                grid-auto-rows: minmax(270px, auto);
+            }
+        }
+    }
+
+}

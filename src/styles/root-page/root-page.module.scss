@@ -1,8 +1,20 @@
+.BlackRoot{
+    display: flex;
+    display: inline-flexbox;
+    width: 100%;
+    background-color: rgb(12, 16, 27);
+    .menu-box{
+    }
+    .ContentBox{
+         margin-left: 250px;
+         width: 100%;
+    }
+}
 .RootMainPage{
     display: flex;
     display: inline-flexbox;
     width: 100%;
-    background-color: black;
+   
     .menu-box{
     }
     .ContentBox{
