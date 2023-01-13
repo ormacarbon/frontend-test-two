@@ -43,7 +43,7 @@ function ExpandedCard(props) {
         </Header>
         <Description>{props.description}</Description>
         <div className="button-container">
-          <Button title="Discover More" />
+          <Button title="Discover More" size="lg"/>
         </div>
       </Content>
     </Container>

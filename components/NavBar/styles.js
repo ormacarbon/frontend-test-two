@@ -5,7 +5,7 @@ export const Container = styled.aside`
   height: 100vh;
   padding: ${props => props.theme.spacing.xl};
 
-  border-right: 1px solid ${props => props.theme.colors.gray[400]};
+  border-right: 1px solid ${props => props.theme.colors.gray400};
 `
 export const Header = styled.header`
   display: flex;

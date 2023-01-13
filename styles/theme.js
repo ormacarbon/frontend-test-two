@@ -1,45 +1,42 @@
 const colors = {
-  primary: "#FF2330",
   light: "#f8f9fa",
   dark: "#202028",
+
+  primary100: "#ff4d55",
+  primary200: "#FF2330",
+  primary300: "#B00C2A",
+  
   label: "#4592C430",
+  transparent: "transparent",
 
   orange: "#FD7D24",
 
-  green: {
-    100: "#9BCC50",
-    200: "#729F3F",
-  },
-  blue: {
-    100: "#C3DEF1",
-    200: "#51C4E7",
-    300: "#4592C4",
-  },
-  pink: {
-    100: "#FDB9E9",
-    200: "#F366B9",
-  },
-  yellow: {
-    100: "#EED535",
-    200: "#AB9842",
-  },
-  purple: {
-    100: "#B97FC9",
-    200: "#7B62A3",
-  },
-  red: {
-    100: "#E3350D",
-    200: "#B00C2A",
-  },
-  gray: {
-    100: "#C1C1C1",
-    200: "#92999C",
-    300: "#5E6567",
-    400: "#3d3d4d",
-    500: "#2C2E3B",
-    600: "#252733",
-    700: "#17171e",
-  },
+  green100: "#9BCC50",
+  green200: "#729F3F",
+
+  blue100: "#C3DEF1",
+  blue200: "#51C4E7",
+  blue300: "#4592C4",
+
+  pink100: "#FDB9E9",
+  pink200: "#F366B9",
+
+  yellow100: "#EED535",
+  yellow200: "#AB9842",
+
+  purple100: "#B97FC9",
+  purple200: "#7B62A3",
+
+  red100: "#FF2330",
+  red200: "#B00C2A",
+  
+  gray100: "#C1C1C1",
+  gray200: "#92999C",
+  gray300: "#5E6567",
+  gray400: "#3d3d4d",
+  gray500: "#2C2E3B",
+  gray600: "#252733",
+  gray700: "#17171e",
 };
 
 const fonts = {
@@ -76,67 +73,67 @@ const breakpoints = {
 
 const types = {
   grass: {
-    color: colors.green[100],
+    color: colors.green100,
     text: colors.light,
   },
   water: {
-    color: colors.blue[300],
+    color: colors.blue300,
     text: colors.light,
   },
   fire: {
-    color: colors.red[100],
+    color: colors.red100,
     text: colors.light,
   },
   normal: {
-    color: colors.gray[100],
+    color: colors.gray100,
     text: colors.dark,
   },
   electric: {
-    color: colors.yellow[100],
+    color: colors.yellow100,
     text: colors.dark,
   },
   poison: {
-    color: colors.purple[100],
+    color: colors.purple100,
     text: colors.light,
   },
   flying: {
-    color: colors.blue[100],
+    color: colors.blue100,
     text: colors.dark,
   },
   bug: {
-    color: colors.green[200],
+    color: colors.green200,
     text: colors.light,
   },
   ground: {
-    color: colors.yellow[200],
+    color: colors.yellow200,
     text: colors.light,
   },
   fairy: {
-    color: colors.pink[100],
+    color: colors.pink100,
     text: colors.dark,
   },
   fighting: {
-    color: colors.red[200],
+    color: colors.red200,
     text: colors.light,
   },
   psychic: {
-    color: colors.pink[200],
+    color: colors.pink200,
     text: colors.light,
   },
   steel: {
-    color: colors.gray[200],
+    color: colors.gray200,
     text: colors.light,
   },
   ice: {
-    color: colors.blue[200],
+    color: colors.blue200,
     text: colors.dark,
   },
   ghost: {
-    color: colors.purple[200],
+    color: colors.purple200,
     text: colors.light,
   },
   rock: {
-    color: colors.gray[300],
+    color: colors.gray300,
     text: colors.light,
   },
   dragon: {
@@ -144,7 +141,7 @@ const types = {
     text: colors.light,
   },
   dark: {
-    color: colors.gray[700],
+    color: colors.gray700,
     text: colors.light,
   },
 };

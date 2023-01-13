@@ -9,17 +9,17 @@ export const Button = styled.button`
   font-size: ${props => props.theme.fonts.size.md};
 
   background: ${props => props.active && props.theme.colors.primary};
-  color: ${props => props.active ? props.theme.colors.light : props.theme.colors.gray[200]};
+  color: ${props => props.active ? props.theme.colors.light : props.theme.colors.gray200};
   
   border-radius: ${props => props.theme.spacing.md};
   transition: background 0.3s, color 0.3s;
 
   :hover {
-    background: ${props => !props.active && props.theme.colors.gray[400]};
+    background: ${props => !props.active && props.theme.colors.gray400};
   }
 
   :disabled {
     pointer-events: none;
-    color: ${props => !props.active && props.theme.colors.gray[300]};
+    color: ${props => !props.active && props.theme.colors.gray300};
   }
 `

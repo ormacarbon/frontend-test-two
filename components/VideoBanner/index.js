@@ -8,7 +8,7 @@ function VideoBanner() {
       <Content>
         <h4>Pokémon Pokédex</h4>
         <p>Your definitive guide to the universe of Pokémons</p>
-        <Button title="Explore" color="dark"/>
+        <Button title="Explore" color="dark" hoverColor="primary200" size="lg" />
       </Content>
 
       <video autoPlay loop muted>

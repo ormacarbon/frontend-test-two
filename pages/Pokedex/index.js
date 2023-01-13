@@ -11,7 +11,7 @@ function Pokedex() {
 
   return (
     <Container>
-      <Header title="pokédex"/>
+      <Header title="pokédex" showInput />
       <Content>
         {pokemonList.length > 0 &&
           pokemonList.map((pokemon) => {
@@ -29,7 +29,7 @@ function Pokedex() {
           })}
         </Content>
         <div className="button-container">
-          <Button title={"Load more Pokémon"} onClick={() => loadPokemonList()}/>
+          <Button title={"Load more Pokémon"} size="lg" onClick={() => loadPokemonList()}/>
         </div>
     </Container>
   );

@@ -8,7 +8,7 @@ export const Container = styled.button`
   padding: ${(props) => props.theme.spacing.md};
   border-radius: ${(props) => props.theme.spacing.xl};
   color: ${(props) => props.theme.colors.light};
-  border: 1px solid ${(props) => props.theme.colors.gray[400]};
+  border: 1px solid ${(props) => props.theme.colors.gray400};
   transition: background 0.3s, border 0.3s;
 `;
 
@@ -16,8 +16,8 @@ export const Frame = styled.div`
   width: 100%;
   border-radius: ${(props) => props.theme.spacing.md};
   background-color: transparent;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, ${(props) => props.theme.colors.gray[500]} 30px, ${(props) => props.theme.colors.gray[500]} 60px);
-  border: 1px solid ${(props) => props.theme.colors.gray[400]};
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, ${(props) => props.theme.colors.gray500} 30px, ${(props) => props.theme.colors.gray500} 60px);
+  border: 1px solid ${(props) => props.theme.colors.gray400};
   img {
     width: 100%;
     height: 100%;
@@ -45,7 +45,7 @@ export const Header = styled.header`
     }
 
     span {
-      color: ${(props) => props.theme.colors.gray[300]};
+      color: ${(props) => props.theme.colors.gray300};
       border-radius: ${(props) => props.theme.spacing.lg};
     }
   }

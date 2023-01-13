@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const Container = styled.button`
   flex: 1;
   display: flex;
-  background: ${(props) => props.theme.colors.gray['600']};
+  background: ${(props) => props.theme.colors.gray600};
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.sm};
   padding: ${(props) => props.theme.spacing.md};
   border-radius: ${(props) => props.theme.spacing.md};
   color: ${(props) => props.theme.colors.light};
-  border: 1px solid ${(props) => props.theme.colors.gray[400]};
+  border: 1px solid ${(props) => props.theme.colors.gray400};
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
   transition: background 0.3s, margin 0.3s;
   margin: ${(props) => props.theme.spacing.sm};
@@ -28,8 +28,8 @@ export const Frame = styled.div`
   width: 100%;
   border-radius: ${(props) => props.theme.spacing.md};
   background-color: transparent;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, ${(props) => props.theme.colors.gray[500]} 30px, ${(props) => props.theme.colors.gray[500]} 60px);
-  border: 1px solid ${(props) => props.theme.colors.gray[400]};
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, ${(props) => props.theme.colors.gray500} 30px, ${(props) => props.theme.colors.gray500} 60px);
+  border: 1px solid ${(props) => props.theme.colors.gray400};
 
   img {
     width: 100%;
@@ -52,7 +52,7 @@ export const Header = styled.header`
   }
 
   div {
-    color: ${(props) => props.theme.colors.gray[300]};
+    color: ${(props) => props.theme.colors.gray300};
     border-radius: ${(props) => props.theme.spacing.lg};
     font-size: ${(props) => props.theme.fonts.size.md};
   }

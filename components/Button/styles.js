@@ -1,21 +1,36 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: max-content;
-  min-width: 10rem;
-  text-align: center;
-  gap: ${(props) => props.theme.spacing.lg};
-  padding: ${(props) => props.theme.spacing.lg} ${(props) => props.theme.spacing["2xl"]};
-  font-size: ${(props) => props.theme.fonts.size.md};
+export const Container = styled.button`
+  display: flex;
+  align-items: center;
+  gap: ${props => props.theme.spacing.md};
+  width: ${props => props.flex ? '100%' : 'max-content'};
+  min-width: ${props => !props.icon && '10rem' };
+  border-radius: ${props => !props.title && '50%' || props.theme.spacing.md};
+  padding: ${props => props.theme.spacing[props.size] || props.theme.spacing.md};
+  color: ${props => props.theme.colors[props.textColor] || props.theme.colors.light};
+  font-size: ${props => props.theme.fonts.size.md};
+  transition: background 0.3s, color 0.3s;
   cursor: pointer;
 
-  background: ${(props) => props.color === "dark" ? props.theme.colors.dark : props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.light};
+  background: ${
+    props => props.active ? 
+    props.theme.colors[props.activeColor] || 
+    props.theme.colors.primary100 :
+    props.theme.colors[props.color] || 
+    props.theme.colors.primary200
+  };
 
-  border-radius: ${(props) => props.theme.spacing.md};
-  transition: background 0.3s, color 0.3s;
+  span {
+    flex:1;
+  }
 
   :hover {
-    background: ${(props) => props.color === "dark" ? props.theme.colors.primary : props.theme.colors.red['200']};
+    background: ${ props => !props.active && (props.theme.colors[props.hoverColor] || props.theme.colors.primary300) };
   }
-`;
+
+  :disabled {
+    pointer-events: none;
+    filter: opacity(0.5);
+  }
+`

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { SquaresFour, BookBookmark, CircleHalfTilt, EggCrack, ImageSquare, PawPrint } from 'phosphor-react'
 
 import Pokeball from '/assets/pokeball-logo.svg'
-import IconButton from '../IconButton'
+import Button from '../Button'
 
 function NavBar() {
   const[selectedOption, setSelectedOption] = useState("overview")
@@ -24,53 +24,77 @@ function NavBar() {
       <nav>
         <List>
           <li>
-            <IconButton 
+            <Button 
               title="Overview"
               active={selectedOption === "overview"} 
               onClick={() => handleOptionClick("overview")} 
-              icon={<SquaresFour size={32} weight="fill" />}
+              icon={<SquaresFour size={32} weight="fill" />}s
+              flex
+              color="transparent"
+              activeColor="primary200"
+              hoverColor="gray500"
             />
           </li>
 
           <li>
-            <IconButton 
+            <Button 
               title="Pokédex"
               active={selectedOption === "pokedex"} 
               onClick={() => handleOptionClick("pokedex")}  
               icon={<BookBookmark size={32} weight="fill" />}
+              flex
+              color="transparent"
+              activeColor="primary200"
+              hoverColor="gray500"
             />
           </li>
 
           <li>
-            <IconButton 
+            <Button 
               title="Pokémons"
               active={selectedOption === "pokemon"} 
               onClick={() => handleOptionClick("pokemon")} 
               icon={<PawPrint size={32} weight="fill" />}
+              flex
+              color="transparent"
+              activeColor="primary200"
+              hoverColor="gray500"
             />
           </li>
 
           <li>
-            <IconButton
+            <Button
               title="Pokéballs"
               disabled 
               icon={<CircleHalfTilt size={32} weight="fill" />}
+              flex
+              color="transparent"
+              activeColor="primary200"
+              hoverColor="gray500"
             />
           </li>
 
           <li>
-            <IconButton 
+            <Button 
               title="Items"
               disabled 
               icon={<EggCrack size={32} weight="fill" />}
+              flex
+              color="transparent"
+              activeColor="primary200"
+              hoverColor="gray500"
             />
           </li>
 
           <li>
-            <IconButton
+            <Button
               title="Gallery"
               disabled 
               icon={<ImageSquare size={32} weight="fill" />}
+              flex
+              color="transparent"
+              activeColor="primary200"
+              hoverColor="gray500"
             />
           </li>
         </List>

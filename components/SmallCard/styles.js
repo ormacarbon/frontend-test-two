@@ -7,13 +7,13 @@ export const Container = styled.button`
   padding: ${props => props.theme.spacing.md};
   border-radius: ${props => props.theme.spacing.xl};
   color: ${ props => props.theme.colors.light };
-  background: ${props => props.active && props.theme.colors.gray[400]};
-  border: 1px solid ${ props => props.active ? props.theme.colors.gray[300] : props.theme.colors.gray[400]};
+  background: ${props => props.active && props.theme.colors.gray400};
+  border: 1px solid ${ props => props.active ? props.theme.colors.gray300 : props.theme.colors.gray400};
   transition: background 0.3s, border 0.3s;
   margin-bottom: ${props => props.theme.spacing.sm};
 
   :hover {
-    background: ${props => !props.active && props.theme.colors.gray[500]};
+    background: ${props => !props.active && props.theme.colors.gray500};
   }
 `
 
@@ -21,8 +21,8 @@ export const Ring = styled.div`
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background: ${ props => props.theme.colors.gray[500]};
-  border: 1px solid ${ props => props.theme.colors.gray[400]};
+  background: ${ props => props.theme.colors.gray500};
+  border: 1px solid ${ props => props.theme.colors.gray400};
   overflow: hidden;
   img {
     width: 100%;

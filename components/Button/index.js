@@ -3,8 +3,9 @@ import { Container } from './styles'
 
 function Button(props) {
   return(
-    <Container color={props.color} onClick={props.onClick}>
-      {props.title}
+    <Container {...props}>
+      {props.icon}
+      <span>{props.title}</span>
     </Container>
   )
 }

@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
   body{
-    font-family: ${props => props.theme.fonts.family};
     font-size: ${props => props.theme.fonts.size.medium};
     background: ${props => props.theme.colors.dark};
     color: ${ props => props.theme.colors.light};
@@ -14,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   * {
+    font-family: ${props => props.theme.fonts.family};
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,7 +25,6 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     background: none;
-    font-family: ${props => props.theme.fonts.family};
   }
 
   a {
