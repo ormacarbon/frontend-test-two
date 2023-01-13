@@ -3,9 +3,10 @@ import { Container, Content } from "./styles";
 import { PokemonContext } from "../../context/pokemonContext";
 
 import Card from "../../components/Card";
+import Button from "../../components/Button";
 
 function Pokedex() {
-  const { pokemonList } = useContext(PokemonContext);
+  const { pokemonList, loadPokemonList } = useContext(PokemonContext);
 
   return (
     <Container>
@@ -25,6 +26,9 @@ function Pokedex() {
             );
           })}
         </Content>
+        <div className="button-container">
+          <Button title={"Load more Pokémon"} onClick={() => loadPokemonList()}/>
+        </div>
     </Container>
   );
 }

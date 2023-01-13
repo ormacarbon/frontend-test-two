@@ -4,6 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${props => props.theme.spacing.lg};
+
+  .button-container {
+    display: flex;
+    margin-top: ${props => props.theme.spacing.xl};
+    justify-content: center;
+  }
 `
 
 export const Content = styled.div`
@@ -11,6 +17,6 @@ export const Content = styled.div`
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
   place-items: center;
-  gap: ${props => props.theme.spacing.lg};
+  gap: ${props => props.theme.spacing.xs};
   margin-top: ${props => props.theme.spacing.lg};
 `
