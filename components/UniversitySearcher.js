@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
 import UniversitiesTable from "../components/UniversitiesTable";
+import {
+	Input,
+	Button,
+	TableContainer,
+	SpaceBetween,
+	Label,
+} from "../styles/componentStyles";
 
 export default function UniversitySearcher(props) {
 	const dataRetrieverFunction = props.dataRetrieverFunction;
@@ -66,21 +73,21 @@ export default function UniversitySearcher(props) {
 		<div>
 			<h3>Search universities by {searchParamName}</h3>
 			<form>
-				<label>{searchParamName}</label>
+				<Label>{searchParamName}:</Label>
 				<br />
-				<input
+				<Input
 					value={searchParam}
 					type="text"
 					onChange={(e) => setSearchParam(e.target.value)}
 				/>
 				<br />
 				<br />
-				<button onClick={(e) => searchUniversities(e)}>Search</button>
+				<Button onClick={(e) => searchUniversities(e)}>Search</Button>
 			</form>
 			<br />
 			<form>
-				<label>Limit</label>
-				<input
+				<Label>Limit: </Label>
+				<Input
 					value={limit}
 					type="number"
 					onChange={(e) => setLimit(e.target.value)}
@@ -92,12 +99,14 @@ export default function UniversitySearcher(props) {
 			)}
 
 			<br />
-			<UniversitiesTable list={listUpdated} />
-			<form>
-				<button onClick={(e) => goBack(e)}>&lt;</button>
-				<label>{pageNumber}</label>
-				<button onClick={(e) => goForward(e)}>&gt;</button>
-			</form>
+			<TableContainer>
+				<UniversitiesTable list={listUpdated} />
+				<SpaceBetween>
+					<Button onClick={(e) => goBack(e)}>&lt;</Button>
+					<label>{pageNumber}</label>
+					<Button onClick={(e) => goForward(e)}>&gt;</Button>
+				</SpaceBetween>
+			</TableContainer>
 		</div>
 	);
 }
