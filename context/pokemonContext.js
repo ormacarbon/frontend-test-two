@@ -4,9 +4,9 @@ import axios from 'axios'
 export const PokemonContext = createContext(undefined)
 
 export function PokemonContextProvider({ children }) {
-  const [pokemonTeam, setPokemonTeam] = useState([])
-  const [pokemonList, setPokemonList] = useState([])
-  const [limit] = useState(12)
+  const [pokemonTeam, setPokemonTeam] = useState(Array(6))
+  const [pokemonList, setPokemonList] = useState(Array(12))
+  const [itemsPerPage] = useState(12)
 
   function getRandomNumber(max) {
     return Math.floor(Math.random() * max) + 1
@@ -40,9 +40,16 @@ export function PokemonContextProvider({ children }) {
   }
 
   async function initPokemonList() {
-    const list = await fetchPokemonList(limit)
+    const list = await fetchPokemonList(itemsPerPage)
     const pokemonList = await fetchPokemonFromList(list)
     setPokemonList(pokemonList)
+  }
+
+  async function loadPokemonList() {
+    console.log(pokemonTeam);
+    const list = await fetchPokemonList(itemsPerPage, pokemonList.length)
+    const pokemons = await fetchPokemonFromList(list)
+    setPokemonList([...pokemonList, ...pokemons])
   }
 
   async function fetchPokemon(id) {
@@ -99,7 +106,7 @@ export function PokemonContextProvider({ children }) {
   }, [pokemonList])
 
   return (
-    <PokemonContext.Provider value={{ pokemonTeam, pokemonList }}>
+    <PokemonContext.Provider value={{ pokemonTeam, pokemonList, loadPokemonList }}>
       {children}
     </PokemonContext.Provider>
   );
