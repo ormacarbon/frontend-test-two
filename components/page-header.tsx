@@ -10,9 +10,7 @@ import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
 
 const PageHeader = (props) => {
-  const { innerWidth } = useContext(applicationContext);
   const { theme, toggleTheme } = props;
-  const isMobile = innerWidth < 1280;
 
   const headerItems = [
     {

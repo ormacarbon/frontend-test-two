@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { applicationContext } from '../context/context';
 import { IMovie } from '../interface/movie';
-import { CastInformation, CastItem, InfoFooterContainer, InfoFooterContent, InfoFooterLink, InformationTitle, MovieBackgroundMask, MovieBanner, MovieContainer, MovieInformation, MovieInformationContainer, MoviePoster, MovieTitle, MovieTitleContainer, OriginalTitle, Overview, Separator, TitleComplement } from '../styles/movie';
+import { CastInformation, CastItem, InfoFooterContainer, InfoFooterContent, InfoFooterLink, InformationTitle, MovieBanner, MovieContainer, MovieInformation, MovieInformationContainer, MoviePoster, MoviePosterContainer, MovieTitle, MovieTitleContainer, OriginalTitle, Overview, Separator, TitleComplement, TitleComplementDate } from '../styles/movie';
 
 export default function SearchMovieCard(props) {
   const [movieData, setMovieData] = useState<IMovie>();
@@ -38,18 +38,17 @@ export default function SearchMovieCard(props) {
     <MovieContainer>
       {movieData?.backdrop_path && (
         <>
-          <MovieBackgroundMask />
           <MovieBanner src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}></MovieBanner>
         </>
       )}
       <MovieInformationContainer >
-        <div>
+        <MoviePosterContainer>
           <MoviePoster src={`https://image.tmdb.org/t/p/w500${movieData?.poster_path}`} alt="" />
-        </div>
+        </MoviePosterContainer>
         <MovieInformation>
           <MovieTitleContainer>
             <MovieTitle>{movieData?.title}</MovieTitle>
-            <TitleComplement>{movieData?.release_date.slice(0, 4)}</TitleComplement>
+            <TitleComplementDate>{movieData?.release_date.slice(0, 4)}</TitleComplementDate>
             {movieDirector && <TitleComplement>Dirigido por {movieDirector}</TitleComplement>}
             <OriginalTitle>Título original: {movieData?.original_title}</OriginalTitle>
           </MovieTitleContainer>

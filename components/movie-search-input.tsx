@@ -9,7 +9,6 @@ import { HeaderSearchInput, HeaderSearchInputContainer, SearchIcon } from '../st
 export default function MovieSearchInput() {
   const route = useRouter()
   const [searchInput, setSearchInput] = useState(route.query.searchInput)
-  const { innerWidth } = useContext(applicationContext);
 
   function handleSearch() {
     searchInput !== '' && Router.replace({ pathname: '/search', query: { searchInput } })

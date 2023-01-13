@@ -1,40 +1,57 @@
 import styled from "styled-components";
 
-export const MovieBackgroundMask = styled.div`
-width: 950px;
-height: 534px;
-position: absolute;
-background-repeat: no-repeat;
-left: 50%;
-transform: translateX(-50%);
-top: 3rem;
-`
-
 export const MovieBanner = styled.img`
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 60%);opacity: 0.3;
-  width: 950px;
-  height: 534px;
+  max-width: 950px;
+  max-height: 534px;
+  width: 100%;
   transform: translateX(-50%);
   left: 50%;
   position: absolute;
   z-index: -1;
   top: 3rem;
+
+  @media (max-width: 1279px) {
+    top: 3rem;
+  }
+  @media (max-width: 780px) {
+    top: 10rem;
+  }
 `
 
 export const MovieContainer = styled.div`
 margin-bottom: 5rem;
 `
 
+export const MoviePosterContainer = styled.div`
+  max-width: 201px;
+  max-height: 302px;
+  min-width: 100px;
+  min-height: 200px;
+
+  @media (max-width: 780px) {
+    margin-bottom: 3rem;
+  }
+`
+
 export const MoviePoster = styled.img`
-width: 230px;
+width: 100%;
 border-radius: 10px
 `
 
 export const MovieInformation = styled.div`
   margin-left: 2rem;
+  
+  @media (max-width: 780px) {
+    margin-left: unset;
+  }
   `
 
 export const MovieTitleContainer = styled.div`
+
+@media (max-width: 780px) {
+    top: 10rem;
+  }
     
 `
 
@@ -46,31 +63,47 @@ export const MovieTitle = styled.span`
   display: inline-block;
   margin-bottom: 0.5rem;
 `
-export const TitleComplement = styled.span`
+export const TitleComplement = styled.div`
   margin-right: 1rem;
   font-weight: 300;
   display: inline-block;
+
+  @media (max-width: 780px) {
+    /* display: block;
+    margin-block: 0.5rem; */
+  }
+`
+
+export const TitleComplementDate = styled(TitleComplement)`
+  display: inline-block !important;
+  margin-bottom: 1rem;
 `
 export const OriginalTitle = styled.div`
   margin-block: 1rem;
+  font-weight: 300;
 `
 export const Overview = styled.div`
-  font-weight: 400;
+  font-weight: 600;
   margin-top: 2rem;
   line-height: 1.25;
 `
 
 export const MovieInformationContainer = styled.div`
   margin-top: 160px;
+  padding-inline: 2rem;
   color: #fff;
   position: relative;
   z-index: 2;
   display: flex;
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const CastInformation = styled.div`
   margin-top: 2rem;
-  width: 500px
 `
 
 export const InformationTitle = styled.span`
