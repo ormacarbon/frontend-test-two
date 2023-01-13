@@ -7,7 +7,7 @@ import { CastInformation, CastItem, InfoFooterContainer, InfoFooterContent, Info
 export default function SearchMovieCard(props) {
   const [movieData, setMovieData] = useState<IMovie>();
   const [movieCredits, setMovieCredits] = useState<any>();
-  const {apiKey} = useContext(applicationContext);
+  const { apiKey } = useContext(applicationContext);
   const router = useRouter()
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function SearchMovieCard(props) {
 
   }, [router.isReady])
 
-  const movieDirector = movieCredits?.crew.find(it => it.job === "Director").original_name
+  const movieDirector = movieCredits?.crew.find(it => it.job === "Director")?.original_name
 
 
   return (
@@ -50,18 +50,21 @@ export default function SearchMovieCard(props) {
           <MovieTitleContainer>
             <MovieTitle>{movieData?.title}</MovieTitle>
             <TitleComplement>{movieData?.release_date.slice(0, 4)}</TitleComplement>
-            <TitleComplement>Dirigido por {movieDirector}</TitleComplement>
+            {movieDirector && <TitleComplement>Dirigido por {movieDirector}</TitleComplement>}
             <OriginalTitle>Título original: {movieData?.original_title}</OriginalTitle>
           </MovieTitleContainer>
 
           <Overview>{movieData?.overview}</Overview>
 
-          <CastInformation>
-            <InformationTitle>Elenco:</InformationTitle>
-            <div >{movieCredits?.cast.slice(0, 10).map(cast => (
-              <CastItem >{cast.name}</CastItem>
-            ))}</div>
-          </CastInformation>
+          {/* check if the array is not empty */}
+          {movieCredits?.cast.length > 0 &&
+            <CastInformation>
+              <InformationTitle>Elenco:</InformationTitle>
+              <div >{movieCredits?.cast.slice(0, 10).map(cast => (
+                <CastItem >{cast.name}</CastItem>
+              ))}</div>
+            </CastInformation>
+          }
 
           <InfoFooterContainer>
             <InfoFooterContent>{movieData?.runtime} mins</InfoFooterContent>

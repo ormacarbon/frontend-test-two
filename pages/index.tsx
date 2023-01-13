@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import styled from "styled-components";
 import HomeMovieList from '../components/home-movie-list';
 import { applicationContext } from '../context/context';
+import { PageTitle } from '../styles/home';
 
 export default function Index() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -75,24 +76,21 @@ export default function Index() {
     margin-bottom: 8rem;
   `
 
-  const IndexWelcome = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 2rem;
+  const PageDescription = styled.div`
+    text-align: center;
   `
 
   return (
     <Index>
-      <IndexWelcome>
-        <div>{welcomeMessage} e boas vindas ao MovieRoll!</div>
-        <div>O que vai assistir hoje?</div>
-      </IndexWelcome>
-      {Object.values(listOfMovies).map((list: any) => (
-        <HomeMovieList movieList={list.results} title={list?.sectionTitle} route={list?.route} ></HomeMovieList >
-      ))}
+      <div>
+        <PageTitle>
+          <PageDescription>{welcomeMessage} e boas vindas ao MovieRoll!</PageDescription>
+          <PageDescription>O que vai assistir hoje?</PageDescription>
+        </PageTitle>
+        {Object.values(listOfMovies).map((list: any) => (
+          <HomeMovieList movieList={list.results} title={list?.sectionTitle} route={list?.route} ></HomeMovieList >
+        ))}
+      </div>
     </Index>
   )
 }

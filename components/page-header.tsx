@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import styled from "styled-components";
 import { applicationContext } from '../context/context';
-import { HeaderLi, HeaderLogo, HeaderLogoContainer, HeaderLogoText, HeaderUl } from '../styles/header';
+import { HeaderLogo, HeaderLogoContainer, HeaderLogoText } from '../styles/header';
+import HeaderItem from './header-item';
 import MovieSearchInput from './movie-search-input';
 
 
@@ -14,7 +15,6 @@ const PageHeader = () => {
   display: flex;
   margin: 2rem auto;
   justify-content: center;
-  height: 2rem;
   font-size: 0.875rem;
   align-items: center;
   justify-content: ${!isMobile ? 'space-between' : 'center'} ;
@@ -22,7 +22,41 @@ const PageHeader = () => {
   position: relative;
   font-weight: 600;
   padding-inline: 2rem;
+  white-space: nowrap;
 `
+
+  const HeaderUl = styled.ul`
+  display: flex;
+  align-items: center;
+  flex-direction: ${innerWidth < 600 ? 'column' : 'row'};
+  `
+
+  const ItemHeaderContainer = styled.div`
+    display: flex;
+  `
+
+  const SearchInputContainer = styled.div`
+    
+  `
+
+  const headerItems = [
+    {
+      href: '/',
+      title: 'Home'
+    },
+    {
+      href: '/popular',
+      title: 'Populares'
+    },
+    {
+      href: '/in-theater',
+      title: 'Em cartaz'
+    },
+    {
+      href: '/soon-in-theater',
+      title: 'Em breve'
+    }
+  ]
 
   return (
     <Header>
@@ -35,16 +69,16 @@ const PageHeader = () => {
         </Link>
       )}
       <HeaderUl>
-        <Link href={'/'}>
-          <HeaderLi>Home</HeaderLi>
-        </Link>
-        <Link href={'/popular'}>
-          <HeaderLi>Filmes populares</HeaderLi>
-        </Link>
-        <Link href={'/in-theater'}>
-          <HeaderLi>Filmes em cartaz</HeaderLi>
-        </Link>
-        <MovieSearchInput />
+        <ItemHeaderContainer>
+          {headerItems.map(
+            item => (
+              <HeaderItem title={item.title} href={item.href} />
+            )
+          )}
+        </ItemHeaderContainer>
+        <SearchInputContainer>
+          <MovieSearchInput />
+        </SearchInputContainer>
       </HeaderUl>
     </Header>
   )

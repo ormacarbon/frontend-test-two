@@ -18,3 +18,14 @@ export const HomeMovieListDetail = styled(HomeMovieListTitle)`
   font-weight: 500;
   padding-left: unset;
 `
+
+export const PageTitle = styled.div`
+display: flex;
+align-items: center;
+flex-direction: column;
+font-size: 1.5rem;
+font-weight: 600;
+line-height: 2rem;
+margin-bottom: 1rem;
+margin-inline: 2rem;
+`

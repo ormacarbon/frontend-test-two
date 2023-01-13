@@ -2,11 +2,13 @@ import '../styles/style.css'
 import React, { useEffect, useState } from 'react';
 import PageHeader from '../components/page-header';
 import { applicationContext } from '../context/context';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
   const [innerWidth, setInnerWidth] = useState()
-  const [width, setWidth] = useState(0); // default width, detect on server.
+  const [width, setWidth] = useState(0);
   const apiKey = '43090d0ed080a422f191b4b3db131431'
+
 
   useEffect(() => {
     setInnerWidth(window.innerWidth)
@@ -20,6 +22,7 @@ function MyApp({ Component, pageProps }) {
     }, [handleResize]);
     return width;
   };
+
 
   useWidth()
 

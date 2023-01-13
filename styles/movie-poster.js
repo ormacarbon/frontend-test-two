@@ -17,6 +17,13 @@ border-radius: 0.5rem;
 transition: all 0.2s;
 cursor: pointer;
 border: 1px solid #abc;
+justify-content: center;
+color: #abc;
+
+img [alt] {
+  padding: 2rem;
+  border: 3px solid red;
+}
 
 
 &:hover {

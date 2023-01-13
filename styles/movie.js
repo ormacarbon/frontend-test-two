@@ -54,7 +54,7 @@ export const TitleComplement = styled.span`
   display: inline-block;
 `
 export const OriginalTitle = styled.div`
-  margin-block: 0.5rem;
+  margin-block: 1rem;
 `
 export const Overview = styled.div`
   font-weight: 300;
