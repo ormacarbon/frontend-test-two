@@ -1,11 +1,17 @@
 import Link from "next/link";
 import { Pokemon } from "../styles/pokemonCard";
 
-export default function PokemonCard({ pokemon }) {
+export default function PokemonCard({ pokemons }) {
   return (
-    <Pokemon>
-      <h3>{pokemon.name}</h3>
-      <Link href={`pokemon/${pokemon.name}`}>More Details</Link>
-    </Pokemon>
+    <>
+      {pokemons.map((pokemon) => {
+        return (
+          <Pokemon key={pokemon.name}>
+            <h3>{pokemon.name}</h3>
+            <Link href={`pokemon/${pokemon.name}`}>More Details</Link>
+          </Pokemon>
+        );
+      })}
+    </>
   );
 }
