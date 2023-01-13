@@ -7,5 +7,9 @@ export const MainContainer = styled.div `
     background-color: ${(props) => props.theme.colors.primary};
     padding: 2em;
     color:${(props) => props.theme.colors.textColor} ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 `
+

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { CardCharacter, CardCapsule } from "./style";
 
@@ -14,6 +15,7 @@ export default function Card({ characters, search }) {
           ) : (
             <p>{item.status} X</p>
           )}
+          <Link href={`/character/${item.id}`}>Details</Link>
         </CardCharacter>
       ))}
     </CardCapsule>

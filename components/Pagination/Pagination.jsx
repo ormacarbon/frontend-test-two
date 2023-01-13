@@ -6,7 +6,7 @@ export default function Pagination({ info,pageNumber, setPageNumber }) {
 
   const pagesNumber = info.pages
 
-  console.log(pagesNumber)
+
 
   const handleNextPage = () => {
     if(!info.next) return

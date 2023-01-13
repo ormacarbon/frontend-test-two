@@ -38,12 +38,11 @@ export default function Characters() {
     .then((res) => {
       setResults(res.results)
       setinfo(res.info)
-      console.log(res.info)
     })
     .catch((err) => console.log(err))
   }, [search, pageNumber])
 
-  console.log('RENDER')
+
   
 
   return (
