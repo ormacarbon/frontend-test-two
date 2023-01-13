@@ -12,9 +12,9 @@ export default function ObservatoryProvider({ children }) {
 		const favPics = localStorage.getItem('favPics');
 
 		if (!favPics) localStorage.setItem('favPics', JSON.stringify([]));
-
-		setTheme('light');
 		
+		setTheme('dark');
+
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 

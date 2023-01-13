@@ -47,7 +47,7 @@ export default function PictureCard({ picture, details, moreInfo }) {
 				</div>
 			)}
 			<section>
-				<Image fill sizes='(max-width: 600px) 20vw' src={url} alt={title} />
+				<Image fill sizes='(max-width: 600px) 20vw' src={url} alt={title} priority />
 			</section>
 			<div style={{ fontSize: '3em', display: 'flex', alignItems: 'center' }}>
 				{isPicSaved ? <AiFillHeart style={heartStyle} onClick={editFavs} /> : (

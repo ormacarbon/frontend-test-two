@@ -4,10 +4,10 @@ const layoutPartition = props => props.appTheme === 'light' ? '1px solid black' 
 const innerBorders = props => props.appTheme === 'light' ? '2px solid black' : '2px solid white';
 
 export const AppContainer = styled.div`
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh;
 	font-size: large;
 	color: ${props => props.appTheme === 'light' ? 'black' : 'white'};
 

@@ -10,7 +10,7 @@ export default function Home() {
 
 	return (
 		<Layout currentPage='home'>
-			<Image src='/observatory.png' width={300} height={300} alt='Astronomical Observatory' />
+			<Image src='/observatory.png' width={300} height={300} alt='Astronomical Observatory' priority />
 			<h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Are you ready to explore the universe?</h2>
 			<Button appTheme={theme}>
 				<Link style={{ fontSize: '1.8em', color: theme === 'light' ? 'black' : 'white' }} href='/explore'>Let&#039;s go!</Link>
