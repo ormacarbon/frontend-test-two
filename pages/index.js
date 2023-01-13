@@ -5,6 +5,7 @@ import Navbar from "../components/navbar";
 const AppContainer = styled.div`   
   box-sizing: border-box;
   font-family: "Opens-Sans", sans-serif;
+  
   padding: 0;
   margin: 0;
 `
@@ -12,7 +13,7 @@ const AppContainer = styled.div`
 export default function Home() {
   return (
     <AppContainer>
-      <Navbar/>
+      <div>oi</div>
     </AppContainer>
   )
 }

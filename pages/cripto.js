@@ -1,9 +1,20 @@
-import React from 'react'
+import Link from "next/link";
+import styled from "styled-components";
+import Navbar from "../components/navbar";
 
-const cripto = () => {
+const AppContainer = styled.div`   
+  box-sizing: border-box;
+  font-family: "Opens-Sans", sans-serif;
+  
+  padding: 0;
+  margin: 0;
+`
+
+export default function Cripto() {
   return (
-    <div>cripto</div>
+    <AppContainer>
+      
+      <div>cripto</div>
+    </AppContainer>
   )
 }
-
-export default cripto

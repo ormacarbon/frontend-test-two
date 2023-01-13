@@ -6,9 +6,11 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 const DivInitial = styled.div`
   display: flex;
   justify-content: space-between;
+
   align-items: center;
   padding: 0 5px;
-  height: 30px;
+  height: 80px;
+  background-color: black;
   @media (max-width: 576px) {
     
   }
@@ -18,13 +20,23 @@ const Lists = styled.li`
   list-style: none;
   cursor: pointer;
   padding: 0 5px;
+  color: white;
+  font-size: 25px;
+  &:hover,
+  &:focus {
+    color: palevioletred;
+  }
+  &:active {
+    color: red;
+  }
 
 `
 
 const Colum = styled.ul`
   display: flex;
-  padding: 0 5px;
+  padding: 0 20px;
   align-items: center;
+  
   @media (min-width: 768px) {   
 }
 `
@@ -35,13 +47,15 @@ const StyledLink = styled(Link)`
 `
 
 const StyledIcon = styled(DarkModeOutlinedIcon)`
-  margin-right: 20px;
+  margin-right: 15px;
+  color: white;
 `
+
 
 const navbar = () => {
   return (
     <DivInitial>
-        <h2>Orma Test</h2> 
+        <h1>Orma Test</h1> 
         <Colum>
             <StyledIcon/>
             <Lists>
@@ -54,7 +68,7 @@ const navbar = () => {
                 <StyledLink href="/cripto">Cripto</StyledLink>
             </Lists>        
             <Lists>
-                <StyledLink href="/contact">Blog</StyledLink>
+                <StyledLink href="/contact">Contact</StyledLink>
             </Lists>
         </Colum>
 
