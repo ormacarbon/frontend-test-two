@@ -12,6 +12,9 @@ const GlobalStyle = createGlobalStyle `
         
     }
 
+    main {
+        max-width:100%;
+    }
    
 
 `

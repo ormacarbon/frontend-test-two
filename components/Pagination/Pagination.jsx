@@ -4,32 +4,10 @@ import ReactPaginate from "react-paginate";
 
 export default function Pagination({ info,pageNumber, setPageNumber }) {
 
-  const pagesNumber = info.pages
 
-
-
-  const handleNextPage = () => {
-    if(!info.next) return
-
-    setPageNumber(pageNumber + 1)
-  };
-
-  const handlePrevPage = () => {
-
-    if(!info.prev) return
-
-    setPageNumber(pageNumber - 1)
-  }
 
   return (
-    // <DivButtons>
-    //   <div>
-    //     <button onClick={handlePrevPage}>clica</button>
-    //   </div>
-    //   <div>
-    //       <button onClick={handleNextPage}>clica</button>
-    //     </div>
-    // </DivButtons>
+
 
     <DivButtons>
       <ReactPaginate 

@@ -6,12 +6,25 @@ export const DivButtons = styled.div `
     padding: 1em;
     justify-content: center;
     align-items: center;
+    max-width: 70%;
 
     ul {
         display: flex;
+        justify-content: center;
         list-style-type: none;
         background-color: ${(props) => props.theme.colors.carBgColor};
         border-radius: 0px 0px 10px 10px;
+        max-width: 100%;
+        
+        @media (max-width: 699px) {
+            font-size: 0.6em;
+        }
+
+        @media (max-width: 300px) {
+            max-width: 50%;
+            font-size: 0.4em;
+        }
+        
 
         li {
             text-align: center;

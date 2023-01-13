@@ -42,7 +42,7 @@ export default function Characters() {
     .catch((err) => console.log(err))
   }, [search, pageNumber])
 
-
+  
   
 
   return (

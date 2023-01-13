@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
-import { DivCard, ImageDiv, CharacterInfo, Info } from "../../styles/singeCharacter.style";
+
+import SingleCharacter from "../../components/SingleCharacter/SingleCharacter";
 
 export const getStaticPaths = async () => {
   const api = "https://rickandmortyapi.com/api/character/";
@@ -34,39 +34,11 @@ export const getStaticProps = async (context) => {
 };
 
 export default function Character({ character }) {
-  console.log(character);
 
   return (
     <>
-        <Link href={`/characters`}>voltar</Link>
-      <DivCard>
-        <ImageDiv>
-          <h1>{character.name}</h1>
-          <Image
-            src={character.image}
-            width={200}
-            height={200}
-            alt={character.name}
-          />
-        </ImageDiv>
-        <CharacterInfo>
-          <Info>
-            <h4>Character Status: <span>{character.status}</span></h4>
-          </Info>
-          <Info>
-            <h4>Character Location: <span>{character?.location?.name}</span></h4>
-          </Info>
-          <Info>
-            <h4>Character Gender: <span>{character.gender}</span></h4>
-          </Info>
-          <Info>
-            <h4>Character Origin: <span>{character?.origin?.name}</span></h4>
-          </Info>
-          <Info>
-            <h4>Character Specie: <span>{character.species}</span></h4>
-          </Info>
-        </CharacterInfo>
-      </DivCard>
+      <SingleCharacter character={character} />
+      
     </>
   );
 }

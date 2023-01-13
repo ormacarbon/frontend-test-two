@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
+export const CharactersContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
 
-export const CharactersContainer = styled.div `
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
+`;
