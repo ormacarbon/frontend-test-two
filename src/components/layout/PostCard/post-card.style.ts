@@ -1,12 +1,30 @@
-import styled from "styled-components";
+import { ComponentProps } from "react";
+import styled, { css, DefaultTheme } from "styled-components";
 
-export const PostCardContainer = styled.div`
+const variantStyles = (
+  theme: DefaultTheme,
+  variant: "no-background" | "with-background" = "no-background"
+) =>
+  ({
+    "with-background": css`
+      background-color: ${theme.colors.background2};
+      padding: 1rem;
+    `,
+    "no-background": css`
+      background-color: none;
+    `,
+  }[variant]);
+
+export const PostCardContainer = styled.div<{
+  variant?: "no-background" | "with-background";
+}>`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
   border-radius: ${({ theme }) => theme.radii.md};
+  ${({ theme, variant }) => variantStyles(theme, variant)};
 `;
 export const ContentContainer = styled.div`
   display: flex;
