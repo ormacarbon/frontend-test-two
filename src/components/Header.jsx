@@ -17,13 +17,13 @@ export default function Header() {
             {theme === "light" ? (
               <BsFillMoonFill
                 onClick={() => setTheme("dark")}
-                className="font-medium text-xl ease-in transition-all duration-75"
+                className="font-medium text-xl cursor-pointer ease-in transition-all duration-75"
               />
             ) : (
               <BsSunFill
                 onClick={() => setTheme("light")}
                 size={25}
-                className="font-medium text-xl ease-in transition-all duration-75"
+                className="font-medium text-xl cursor-pointer ease-in transition-all duration-75"
               />
             )}
           </div>
