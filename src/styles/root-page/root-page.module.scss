@@ -1,0 +1,22 @@
+.RootMainPage{
+    display: flex;
+    display: inline-flexbox;
+    width: 100%;
+    background-color: black;
+    .menu-box{
+    }
+    .ContentBox{
+         margin-left: 250px;
+         width: 100%;
+    }
+ }
+ 
+ @media screen and (orientation: portrait) {
+     .RootMainPage{
+         flex-direction: column;
+         .ContentBox{
+             margin-left: 0;
+         }
+     }
+     
+ }

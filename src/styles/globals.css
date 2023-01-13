@@ -1,4 +1,4 @@
-:root {
+/*:root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -104,4 +104,38 @@ a {
   html {
     color-scheme: dark;
   }
+}*/
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-weight: 600;
+  color: #666;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+}
+
+h2{
+  font-weight: 600;
+  color: #666;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+h3{
+  font-weight: 600;
+  color: #666;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+h4{
+  font-weight: 600;
+  color: #666;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+p{
+  font-weight: 600;
+  color: #666;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
