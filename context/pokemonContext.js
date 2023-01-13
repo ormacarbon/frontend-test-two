@@ -4,8 +4,9 @@ import axios from 'axios'
 export const PokemonContext = createContext(undefined)
 
 export function PokemonContextProvider({ children }) {
+  const [referenceList, setReferenceList] = useState([])
   const [pokemonTeam, setPokemonTeam] = useState([])
-  const [pokemonList, setPokemonList] = useState(Array(12))
+  const [pokemonList, setPokemonList] = useState([])
   const [itemsPerPage] = useState(12)
 
   function getRandomNumber(max) {
@@ -22,33 +23,30 @@ export function PokemonContextProvider({ children }) {
     }
   }
 
-  async function fetchPokemonList(limit, offset) {
+  async function fetchPokemonList() {
     const response = await fetchData(`https://pokeapi.co/api/v2/pokemon`, {
       params: {
-        limit: limit,
-        offset: offset
+        limit: 905,
       }}
     )
     return response.results
   }
 
-  async function fetchPokemonFromList(pokemonList) {
+  async function fetchPokemonsFromList(pokemonList) {
     const promisseList = pokemonList.map((pokemon) => fetchData(pokemon.url))
-
     const list = await Promise.all(promisseList)
     return list
   }
 
   async function initPokemonList() {
-    const list = await fetchPokemonList(itemsPerPage)
-    const pokemonList = await fetchPokemonFromList(list)
+    const list = await fetchPokemonList()
+    setReferenceList(list)
+    const pokemonList = await fetchPokemonsFromList(list.slice(0, itemsPerPage))
     setPokemonList(pokemonList)
   }
 
   async function loadPokemonList() {
-    console.log(pokemonTeam);
-    const list = await fetchPokemonList(itemsPerPage, pokemonList.length)
-    const pokemons = await fetchPokemonFromList(list)
+    const pokemons = await fetchPokemonsFromList(referenceList.slice(pokemonList.length, pokemonList.length + itemsPerPage))
     setPokemonList([...pokemonList, ...pokemons])
   }
 
