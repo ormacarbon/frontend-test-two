@@ -60,7 +60,7 @@ export const Button = styled.button`
 
 export const PictureCardContainer = styled.div`
 	border: ${innerBorders};
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -83,6 +83,7 @@ export const PictureCardContainer = styled.div`
 `;
 
 export const PictureCardsGrid = styled.div`
+	width: 95vw;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;

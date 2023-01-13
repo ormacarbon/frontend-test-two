@@ -12,6 +12,8 @@ export default function ObservatoryProvider({ children }) {
 		const favPics = localStorage.getItem('favPics');
 
 		if (!favPics) localStorage.setItem('favPics', JSON.stringify([]));
+
+		setTheme('light');
 	});
 
 	const valueObj = {
