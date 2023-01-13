@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.button`
   display: flex;
   align-items: center;
-  gap: ${props => props.theme.spacing.md};
+  gap: ${props => (props.title && props.icon) && props.theme.spacing.md};
   width: ${props => props.flex ? '100%' : 'max-content'};
   min-width: ${props => !props.icon && '10rem' };
   border-radius: ${props => !props.title && '50%' || props.theme.spacing.md};
