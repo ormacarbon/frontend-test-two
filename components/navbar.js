@@ -22,6 +22,7 @@ const Lists = styled.li`
   padding: 0 5px;
   color: white;
   font-size: 25px;
+  margin-right: 15px;
   &:hover,
   &:focus {
     color: palevioletred;
@@ -47,7 +48,7 @@ const StyledLink = styled(Link)`
 `
 
 const StyledIcon = styled(DarkModeOutlinedIcon)`
-  margin-right: 15px;
+  margin-right: 40px;
   color: white;
 `
 
@@ -62,7 +63,7 @@ const navbar = () => {
                 <StyledLink href="/">Home</StyledLink>
             </Lists>
             <Lists>
-                <StyledLink href="/about">Search</StyledLink>
+                <StyledLink href="/search">Search</StyledLink>
             </Lists>  
             <Lists>
                 <StyledLink href="/cripto">Coins</StyledLink>

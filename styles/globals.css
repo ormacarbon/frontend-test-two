@@ -9,20 +9,14 @@ h1 {
     margin-left: 40px;
 }
 
-h2, p {
+h2 {
     margin-bottom: 10px;
     color: white;
-    
-}
-
-h2 {
     margin-left: 4px;
 }
+
 span {
     color: white;
-}
-p {
-    margin-left: 60px;
 }
 
 * {
