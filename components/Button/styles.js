@@ -5,7 +5,7 @@ export const Container = styled.button`
   align-items: center;
   gap: ${props => (props.title && props.icon) && props.theme.spacing.md};
   width: ${props => props.flex ? '100%' : 'max-content'};
-  min-width: ${props => !props.icon && '10rem' };
+  min-width: ${props => !props.icon && '10rem'};
   border-radius: ${props => !props.title && '50%' || props.theme.spacing.md};
   padding: ${props => props.theme.spacing[props.size] || props.theme.spacing.md};
   color: ${props => props.theme.colors[props.textColor] || props.theme.colors.light};
@@ -22,6 +22,7 @@ export const Container = styled.button`
   };
 
   span {
+    text-align: ${props => props.icon && 'start'};
     flex:1;
   }
 
