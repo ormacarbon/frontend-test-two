@@ -15,7 +15,8 @@ export default function Home() {
 					<h3>Name</h3>
 					<p>
 						Type the name of an university or a word and get the
-						results of universities' names that contain the word.
+						results of universities&apos; names that contain the
+						word.
 					</p>
 				</Container>
 				<Container>
