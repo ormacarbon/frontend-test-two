@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import SearchIcon from '@mui/icons-material/Search';
+import Cardzin from "../components/cardzin";
 import Navbar from "../components/navbar";
 
 const AppContainer = styled.div`
@@ -58,6 +59,7 @@ export default function Search() {
           <StyInp type="text" placeholder="Search Coins" ></StyInp>     
         </DivIn>
       </StyPut>
+      <Cardzin/>
     </AppContainer>
   );
 }
