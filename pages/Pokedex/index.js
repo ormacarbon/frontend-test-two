@@ -4,12 +4,14 @@ import { PokemonContext } from "../../context/pokemonContext";
 
 import Card from "../../components/Card";
 import Button from "../../components/Button";
+import Header from "../../components/Header";
 
 function Pokedex() {
   const { pokemonList, loadPokemonList } = useContext(PokemonContext);
 
   return (
     <Container>
+      <Header title="pokédex"/>
       <Content>
         {pokemonList.length > 0 &&
           pokemonList.map((pokemon) => {

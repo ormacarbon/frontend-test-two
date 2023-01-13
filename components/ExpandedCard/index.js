@@ -23,6 +23,7 @@ function ExpandedCard(props) {
             unoptimized
             width={360}
             height={360}
+            priority
           />
         )}
       </Frame>

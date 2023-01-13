@@ -6,6 +6,7 @@ import ExpandedCard from "../../components/ExpandedCard";
 import VideoBanner from "../../components/VideoBanner";
 import SmallCard from "../../components/SmallCard";
 import Box from "../../components/Box";
+import Header from "../../components/Header";
 
 function Overview() {
   const [selectedPokemon, setSelectedPokemon] = useState(0);
@@ -13,6 +14,7 @@ function Overview() {
 
   return (
     <Container>
+      <Header title="overview" subtitle="hi pokémon trainer,"/>
       <VideoBanner />
       <Content>
         <Box title="Team of the day">

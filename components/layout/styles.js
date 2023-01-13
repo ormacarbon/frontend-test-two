@@ -9,19 +9,5 @@ export const Container = styled.section`
     flex: 1;
     overflow-y: scroll;
     padding: ${props => props.theme.spacing['2xl']}  ${props => props.theme.spacing['3xl']};
-
-    .header {
-      margin-bottom: ${props => props.theme.spacing.lg};
-      text-transform: capitalize;
-
-      h1 {
-      font-size: ${props => props.theme.fonts.size['3xl']};
-      }
-
-      h2 {
-        font-size: ${props => props.theme.fonts.size.lg};
-        font-weight: 500;
-      }
-    }
   }
 `
