@@ -19,8 +19,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/hooks/useTheme.js",
-    "src/components/Header.tsx"
+    "**/*.js",
+    "**/*.jsx",
+    "src/hooks/useTheme.js"
   ],
   "exclude": ["node_modules"]
 }
