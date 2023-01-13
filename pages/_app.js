@@ -5,9 +5,16 @@ import { lightTheme } from "../themes/light";
 import { darkTheme } from "../themes/dark";
 import { GlobalStateContext } from "../contexts/GlobalStateContext";
 import { useState, useEffect } from "react";
+import { ThemeProvider as MuiTheme, createTheme } from "@mui/material/styles";
 
 export default function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState("light");
+
+  const muiTheme = createTheme({
+    palette: {
+      mode: theme,
+    },
+  });
 
   useEffect(() => {
     const localTheme = localStorage.getItem("theme");
@@ -31,8 +38,10 @@ export default function MyApp({ Component, pageProps }) {
         }}
       >
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-          <Component {...pageProps} />
-          <GlobalStyles />
+          <MuiTheme theme={muiTheme}>
+            <Component {...pageProps} />
+            <GlobalStyles />
+          </MuiTheme>
         </ThemeProvider>
       </GlobalStateContext.Provider>
     </>

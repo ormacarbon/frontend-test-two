@@ -17,7 +17,11 @@ export const MoviesList = styled.div`
   }
 
   img {
-    max-width: 300px;
+    object-fit: cover;
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
   }
 
   h1 {
@@ -31,7 +35,7 @@ export const MoviesList = styled.div`
     padding: 10px 15px;
     color: #ffffff;
     border-radius: 4px;
-    margin-top: 0.5rem;
+    margin-top: 2rem;
     font-size: 0.9rem;
 
     @media (max-width: 992px) {
@@ -45,4 +49,11 @@ export const MoviesList = styled.div`
       color: ${({ theme }) => theme.colors.backgroundColor};
     }
   }
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
 `;
