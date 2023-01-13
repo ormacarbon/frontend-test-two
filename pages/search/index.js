@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PokemonCard from "../../components/PokemonCard";
 import { api } from "../api/api";
+import PokemonResult from "./components/PokemonResult";
 import { SearchPokemons } from "./styles";
 
 export default function Search() {
@@ -39,7 +39,7 @@ export default function Search() {
         />
         <button onClick={handlePokemonSearch}>Search</button>
       </div>
-      {pokemonSearched && <PokemonCard pokemon={pokemonSearched} />}
+      {pokemonSearched && <PokemonResult pokemonSearched={pokemonSearched} />}
     </SearchPokemons>
   );
 }
