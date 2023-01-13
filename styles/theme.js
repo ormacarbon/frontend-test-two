@@ -48,7 +48,7 @@ const fonts = {
     sm: "14px",
     md: "16px",
     lg: "20px",
-    xl: "28px",
+    xl: "24px",
     "2xl": "32px",
     "3xl": "48px",
   },
