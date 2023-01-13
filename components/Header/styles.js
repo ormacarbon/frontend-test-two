@@ -35,7 +35,8 @@ export const NavItem = styled.li`
   }
 
   & > a:hover,
-  & > a.active {
+  & > a.active,
+  & > a:focus {
     background-color: var(--blue-100);
   }
 

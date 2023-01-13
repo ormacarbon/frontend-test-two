@@ -1,11 +1,11 @@
 import Search from "../components/Search/index";
 import Feed from "../components/Feed/index";
-import { MainTitle } from "../styles/global";
+import { Title } from "../styles/global";
 
 const Home = () => {
   return (
     <>
-      <MainTitle>Explore News and Stand Awake!</MainTitle>
+      <Title align="center">Explore News and Stand Awake!</Title>
       <Search />
       <Feed />
     </>

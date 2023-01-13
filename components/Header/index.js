@@ -2,9 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import ThemeButton from "../ThemeButton/index";
 import { HeaderContainer, NavList, NavItem } from "./styles";
 import LogoGetNews from "../../assets/logo-getnews";
 import Global from "../../assets/global";
+import Moon from "../../assets/moon";
 
 const Header = () => {
   const router = useRouter();
@@ -37,10 +39,7 @@ const Header = () => {
           </NavItem>
         </NavList>
       </nav>
-      <label>
-        Theme
-        <input type="checkbox" />
-      </label>
+      <ThemeButton />
     </HeaderContainer>
   );
 };

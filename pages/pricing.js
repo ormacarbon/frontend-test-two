@@ -1,5 +1,7 @@
+import PricingSection from '../components/PricingSection/index';
+
 const Pricing = () => {
-  return <h1>Pricing</h1>;
+  return <PricingSection />;
 };
 
 export default Pricing;

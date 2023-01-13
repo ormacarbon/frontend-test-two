@@ -1,4 +1,6 @@
-import { Section, Title, Paragraph } from "./styles";
+import { Section } from "./styles";
+
+import { Title, Paragraph } from "../../styles/global";
 
 const AboutSection = () => {
   return (

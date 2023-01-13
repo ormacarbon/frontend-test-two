@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Mulish', sans-serif;
     list-style: none;
     text-decoration: none;
+    color: var(--black);
   }
 
   img {
@@ -24,26 +25,37 @@ export const GlobalStyle = createGlobalStyle`
     --blue-100: #597AFF;
     --white: #FFFFFF;
     --white-100: #F8F9FF;
-    --shadow: 0px 18px 50px rgba(62, 100, 255, 0.1);
-    --shadow-hover: rgba(62, 100, 255, .45) 0px 25px 20px -20px;
-    --shadow-news: 0px 18px 20px rgba(62, 100, 255, 0.1);
+    --white-200: #EFEFFF;
+    --shadow: rgba(62, 100, 255, .45) 0px 25px 20px -20px;
+    --shadow-hover: rgba(62, 100, 255, 0.25) 0px 13px 27px -5px, rgba(62, 100, 230, 0.3) 0px 8px 16px -8px;
+    --shadow-news:  rgba(32, 70, 185, 0.1) 0px 20px 25px -5px, rgba(32, 70, 185, 0.04) 0px 10px 10px -5px;
   }
 `;
 
 export const Main = styled.div`
   margin: 2rem auto;
   max-width: 45rem;
-  padding: 1.25rem;
+  padding: 1.5rem;
   @media screen and (max-width: 500px) {
     margin: 1rem auto;
   }
 `;
 
-export const MainTitle = styled.h1`
+export const Title = styled.h1`
   font-size: 2.5rem;
-  text-align: center;
+  text-align: ${(props) => (props.align ? props.align : "left")};
+  margin-bottom: ${(props) => (props.bottom ? props.bottom : "1rem")};
   color: var(--blue);
-  @media screen and (max-width: 410px) {
-    font-size: 1.8rem;
+  @media screen and (max-width: 500px) {
+    font-size: 2rem;
+  }
+`;
+
+export const Paragraph = styled.p`
+  color: var(--black);
+  font-size: ${(props) => (props.size ? props.size : "1rem")};
+  line-height: 1.5;
+  & + p {
+    margin-top: 1rem;
   }
 `;

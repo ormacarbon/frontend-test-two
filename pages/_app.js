@@ -1,4 +1,5 @@
 import Header from "../components/Header/index";
+import Footer from "../components/Footer/index";
 import { GlobalStyle, Main } from "../styles/global";
 
 function MyApp({ Component, pageProps }) {
@@ -9,6 +10,7 @@ function MyApp({ Component, pageProps }) {
       <Main>
         <Component {...pageProps} />
       </Main>
+      <Footer />
     </>
   );
 }
