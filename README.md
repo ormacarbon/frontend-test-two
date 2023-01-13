@@ -1,52 +1,38 @@
-# **TESTE DE FRONTEND**
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Neste teste, você será livre para criar uma aplicação consumindo a API que você quiser e com o tema que desejar.
-Contudo, o seu projeto deverá seguir os requisitos mínimos de conteúdo.
+## Getting Started
 
-SUGESTÕES DE APIS:
-https://github.com/public-apis/public-apis
+First, run the development server:
 
----------------------------------------------------------------------
-## REQUISITOS:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-- SEJA ORIGINAL, PROJETOS SUSPEITOS DE SEREM COPIADOS SERÃO DESCARTADOS!
-- QUEREMOS VER O SEU CÓDIGO, E NÃO O DE OUTROS.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## GIT
-- Faça um fork deste repositório.
-- Criar uma branch para codar as suas features.
-- Criar um pull-request quando o teste for finalizado e submetido.
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-##### **NOTA: Será avaliado também se o nome da branch, títulos de commit, push e comentários possuem boa legibilidade.**
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
------------------------------------------------------
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## FRAMEWORK
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-- Utilizar as ferramentas presentes no framework do projeto (NEXT.JS).
+## Learn More
 
------------------------------------------------------
+To learn more about Next.js, take a look at the following resources:
 
-## ESTILOS
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- Os estilos deste teste devem ser feitos em styled-components (evite utilizar bootstrap, mas se necessário, use).
-- O projeto deverá conter tema claro/escuro e forma do usuário alterar entre os dois.
-- Deve ser totalmente responsivo.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
------------------------------------------------------
+## Deploy on Vercel
 
-## PROJETO
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- Deve utilizar useContext, useState e useEffect.
-- Ter ao menos 3 paginas navegáveis com router (ex: um navbar para facilitar a navegação).
-- Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição.
-
--------------------------------------------------------
-
-## REQUISITOS DIFERENCIAIS:
-
-- Código tentando seguir SOLID.
-- Código performático.
-- Utilizar inglês no projeto todo.
-- Utilizar Injeção de Dependências.
-- Fazer deploy do mesmo (heroku, netlify, aws, vercel, github pages ou outro da preferência).
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
