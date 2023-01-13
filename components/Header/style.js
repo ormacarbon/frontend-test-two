@@ -29,8 +29,8 @@ export const Container = styled.header`
     button {
       border: none;
       font-size: 1rem;
-      color: #000;
-      background-color: #fff;
+      color: ${({ theme }) => theme.colors.backgroundColor};
+      background-color: ${({ theme }) => theme.colors.textColor};
       padding: 10px 20px;
       border-radius: 4px;
       cursor: pointer;

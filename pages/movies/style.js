@@ -41,8 +41,8 @@ export const MoviesList = styled.div`
     }
 
     &:hover {
-      background-color: #fff;
-      color: #000;
+      background-color: ${({ theme }) => theme.colors.textColor};
+      color: ${({ theme }) => theme.colors.backgroundColor};
     }
   }
 `;
