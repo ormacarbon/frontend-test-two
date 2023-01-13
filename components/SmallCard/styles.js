@@ -21,8 +21,8 @@ export const Ring = styled.div`
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background: ${ props => props.theme.colors.gray[400]};
-  border: 2px solid ${ props => props.theme.colors.gray[300]};
+  background: ${ props => props.theme.colors.gray[500]};
+  border: 1px solid ${ props => props.theme.colors.gray[400]};
   overflow: hidden;
   img {
     width: 100%;
