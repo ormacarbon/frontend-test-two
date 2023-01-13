@@ -8,8 +8,8 @@ export const Pokemons = styled.div`
   gap: 1rem;
   margin-bottom: 3rem;
 
-  @media (max-width: 700px) {
+  /* @media (max-width: 700px) {
     display: flex;
     flex-direction: column;
-  }
+  } */
 `;
