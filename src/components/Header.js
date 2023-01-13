@@ -6,8 +6,6 @@ import { useTheme } from "../hooks/useTheme";
 export default function Header() {
   const [theme, setTheme] = useTheme();
 
-  console.log(theme);
-
   return (
     <nav className="bg-blue-800 text-white">
       <div className="container mx-auto">

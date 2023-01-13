@@ -20,7 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/hooks/useTheme.js",
-    "src/components/Header.js"
+    "src/components/Header.tsx"
   ],
   "exclude": ["node_modules"]
 }
