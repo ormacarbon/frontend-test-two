@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { StyledNavbar } from "./styles";
 import Link from "next/link";
 import { GlobalContext } from "../../../contexts/state";
+import { ColorModeContext } from "../../../contexts/ColorMode";
 
 export default function Navbar() {
   const {
@@ -11,6 +12,9 @@ export default function Navbar() {
     setSearchResults,
     allPokelist,
   } = useContext(GlobalContext);
+  const contexto = useContext(ColorModeContext);
+
+  console.log("contexto dentro na navbar", contexto);
 
   const searchPokemon = () => {
     const foundPokemons = allPokelist.filter((pokemon) =>
@@ -41,12 +45,18 @@ export default function Navbar() {
           className="search-input"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && searchPokemon()}
+          onKeyDown={(e) => e.key === "Enter" && searchPokemon()}
         />
         <button className="button-search" onClick={searchPokemon}>
           <img src={"/images/search.svg"} />
         </button>
       </div>
+      <label className="switch">
+        <input type="checkbox" onChange={() => {
+          contexto.toggleMode()
+        }}/>
+        <span className="slider"></span>
+      </label>
     </StyledNavbar>
   );
 }

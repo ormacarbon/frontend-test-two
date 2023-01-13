@@ -22,7 +22,6 @@ export default function PokemonCard({ pokemon, pathname }) {
   useEffect(() => {
     fetchPokemonDetail();
   }, []);
-  console.log(pathname);
 
   return (
     <PokemonCardStyled>

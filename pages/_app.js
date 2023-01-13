@@ -1,12 +1,36 @@
 import GlobalStyles from "../globalStyles";
-import GlobalProvider from "../contexts/state";
+import GlobalProvider, { GlobalContext } from "../contexts/state";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
+import { useContext, useState } from "react";
+import ColorModeProvider, { ColorModeContext } from "../contexts/ColorMode";
+useState;
 
-export default function MyApp({ Component, pageProps }) {
+function ProvideWrapper({ children }) {
+  return (
+    <ColorModeProvider inicialMode={"light"}>
+      {children}
+    </ColorModeProvider>
+  );
+}
+
+export function MyApp({ Component, pageProps }) {
+  const contexto = useContext(ColorModeContext);
 
   return (
     <GlobalProvider>
-      <GlobalStyles />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme[contexto.mode]}>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </GlobalProvider>
+  );
+}
+
+export default function _App(props) {
+  return (
+    <ProvideWrapper>
+      <MyApp {...props} />
+    </ProvideWrapper>
   );
 }

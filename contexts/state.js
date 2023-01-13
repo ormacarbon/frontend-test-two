@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { createContext } from "react";
 
 export const GlobalContext = createContext({});
@@ -11,6 +10,7 @@ export default function GlobalProvider({ children }) {
   const [searchResults, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isAddPokemon, setIsAddPokemon] = useState(true);
+
 
   function getPokemonColor(pokemonType) {
     switch (pokemonType) {
@@ -96,7 +96,7 @@ export default function GlobalProvider({ children }) {
       pokedex,
       setPokedex,
       addToPokedex,
-      removeFromPokedex
+      removeFromPokedex,
     }}>
       {children}
     </GlobalContext.Provider>

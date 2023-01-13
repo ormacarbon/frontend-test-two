@@ -75,4 +75,59 @@ export const StyledNavbar = styled.header`
     outline: none;
     border: 0 none;
   }
+
+  /* The switch - the box around the slider */
+  .switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 10px;
+    border: 1px solid grey;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.3em;
+    width: 1.4em;
+    border-radius: 6px;
+    left: 0.3em;
+    bottom: 0.3em;
+    background-color: white;
+    transition: 0.4s;
+    border: 1px solid grey;
+  }
+
+  input:checked + .slider {
+    background-color: grey;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px grey;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(1.3em);
+  }
 `;
