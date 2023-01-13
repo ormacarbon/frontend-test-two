@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Router from 'next/router';
 import { SearchDescriptionContainer, SearchMovieContainer, SearchMovieDescription, SearchMovieOriginalTitle, SearchMoviePoster, SearchMovieRating, SearchMovieRatingContainer, SearchMovieTitle } from '../styles/search';
 
 export default function SearchMovieCard(props) {

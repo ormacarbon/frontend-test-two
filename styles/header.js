@@ -1,17 +1,5 @@
 import styled from "styled-components";
 
-export const Header = styled.ul`
-    display: flex;
-    margin: 2rem auto;
-    justify-content: center;
-    height: 2rem;
-    font-size: 1rem;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 2;
-    position: relative;
-  `
-
 export const HeaderLogoContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -33,6 +21,7 @@ export const HeaderLogo = styled.img`
 
 export const HeaderUl = styled.ul`
   display: flex;
+  align-items: center;
   `
 
 export const HeaderLi = styled.li`
@@ -47,18 +36,22 @@ export const HeaderLi = styled.li`
     }
   `
 
+export const HeaderSearchInputContainer = styled.div`
+    position: relative;
+  `
+
 export const HeaderSearchInput = styled.input`
     background-color: hsla(0, 0%, 100%, .25);
     border: none;
     border-radius: 18px;
-    padding: 8px;
+    padding: 0.375rem 2rem 0.375rem 0.75rem;
     color: white;
-    padding-right: 40px;
-    width: 140px; 
+    width: 130px; 
+    margin-left: 1rem;
 `
 export const SearchIcon = styled.div`
     position: absolute;
-    right: 8px;
+    right: 14px;
     top: 8px;
     cursor: pointer;
 `

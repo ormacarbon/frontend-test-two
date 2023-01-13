@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext } from 'react';
 
-export const contextApiKey = createContext('')
+export const applicationContext = createContext()
 
 export const contextMovie = createContext('')

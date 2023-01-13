@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { HeaderSearchInput, SearchIcon } from '../styles/header'
-
 import Router from 'next/router';
+import { useState } from 'react';
+import { BsSearch } from 'react-icons/bs';
+import { HeaderSearchInput, HeaderSearchInputContainer, SearchIcon } from '../styles/header';
 
 
 export default function MovieSearchInput() {
   const [searchInput, setSearchInput] = useState('')
 
   const movieSearch = () => {
-    console.log(searchInput)
     Router.replace({ pathname: '/search', query: { searchInput } })
   }
 
@@ -17,12 +16,12 @@ export default function MovieSearchInput() {
   }
 
   return (
-    <div>
+    <HeaderSearchInputContainer>
       <HeaderSearchInput
         onChange={(event) => setSearchInput(event.target.value)}
         type="text"
         onKeyDown={event => event.key === "Enter" && handleSearch()} />
-      <SearchIcon onClick={() => handleSearch()}>🔎</SearchIcon>
-    </div>
+      <SearchIcon onClick={() => handleSearch()}><BsSearch/></SearchIcon>
+    </HeaderSearchInputContainer>
   );
 }

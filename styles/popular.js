@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const MovieList = styled.div`
+display: flex;
 display: grid;
-grid-template-columns: repeat(auto-fit,170px);
+grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
 margin: 0 auto;
-justify-content: center;
+padding-inline: 2rem;
 
 `
 export const ListButton = styled.button`

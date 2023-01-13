@@ -1,19 +1,16 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import MovieCard from '../components/movie-card';
 import SearchMovieCard from '../components/search-movie-card';
-import { contextApiKey } from '../context/context';
+import { applicationContext } from '../context/context';
 import { SearchMovieList } from '../styles/search';
 
 
 export default function Search() {
   const [movieData, setMovieData] = useState([]);
-  const apiKey = useContext(contextApiKey);
+  const {apiKey} = useContext(applicationContext);
 
   const router = useRouter()
   const searchInput = router.query.searchInput
-
-  console.log(router);
 
   useEffect(() => {
     searchMovies()

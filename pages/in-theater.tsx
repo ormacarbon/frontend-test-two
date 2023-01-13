@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import styled from "styled-components";
 import MovieCard from '../components/movie-card';
-import { contextApiKey } from '../context/context';
+import { applicationContext } from '../context/context';
+import { MovieList } from '../styles/popular';
 
 export default function InTheater() {
   const [movieData, setMovieData] = useState([]);
   const [movieQuery, setMovieQuery] = useState();
-  const apiKey = useContext(contextApiKey)
+  const {apiKey} = useContext(applicationContext)
 
 
   const getMovieRequest = async () => {
@@ -21,14 +21,6 @@ export default function InTheater() {
   useEffect(() => {
     getMovieRequest()
   }, [movieQuery])
-
-
-  const MovieList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit,170px);
-  margin: 0 auto;
-  justify-content: center;
-  `
 
   return (
     <div>

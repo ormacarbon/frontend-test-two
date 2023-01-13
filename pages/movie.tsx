@@ -1,14 +1,13 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import { contextApiKey } from '../context/context';
+import { applicationContext } from '../context/context';
 import { IMovie } from '../interface/movie';
 import { CastInformation, CastItem, InfoFooterContainer, InfoFooterContent, InfoFooterLink, InformationTitle, MovieBackgroundMask, MovieBanner, MovieContainer, MovieInformation, MovieInformationContainer, MoviePoster, MovieTitle, MovieTitleContainer, OriginalTitle, Overview, Separator, TitleComplement } from '../styles/movie';
-import { SearchMovieRating, SearchMovieRatingContainer } from '../styles/search';
 
 export default function SearchMovieCard(props) {
   const [movieData, setMovieData] = useState<IMovie>();
   const [movieCredits, setMovieCredits] = useState<any>();
-  const apiKey = useContext(contextApiKey);
+  const {apiKey} = useContext(applicationContext);
   const router = useRouter()
 
   useEffect(() => {
