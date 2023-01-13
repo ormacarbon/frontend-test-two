@@ -1,12 +1,14 @@
-import { MagnifyingGlass } from 'phosphor-react';
 import React from 'react'
 import { Container } from './styles'
+import { MagnifyingGlass } from 'phosphor-react';
+import Button from '../Button'
 
 function Input() {
   return(
     <Container>
-      <MagnifyingGlass size={20} weight="bold" />
-      <input type={'text'} placeholder={'search for a pokémon'}/>
+      <input type={'text'} placeholder={'Search Pokémon'}/>
+      <Button color="transparent" hoverColor="primary200" icon={<MagnifyingGlass size={20} weight="bold"/>}/>
+      
     </Container>
   )
 }
