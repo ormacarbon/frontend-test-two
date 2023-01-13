@@ -15,6 +15,7 @@ function Card(props) {
             alt={props.name + " Sprite"}
             width={360}
             height={360}
+            priority
           />
         )}
       </Frame>

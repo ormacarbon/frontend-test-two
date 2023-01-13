@@ -11,12 +11,16 @@ export const Container = styled.button`
   color: ${(props) => props.theme.colors.light};
   border: 1px solid ${(props) => props.theme.colors.gray[400]};
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
-  transition: background 0.3s, border 0.3s, margin 0.3s;
+  transition: background 0.3s, margin 0.3s;
   margin: ${(props) => props.theme.spacing.sm};
   cursor: pointer;
 
   :hover {
     margin: 0;
+  }
+
+  :active {
+    background: transparent;
   }
 `
 
@@ -26,6 +30,7 @@ export const Frame = styled.div`
   background-color: transparent;
   background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, ${(props) => props.theme.colors.gray[500]} 30px, ${(props) => props.theme.colors.gray[500]} 60px);
   border: 1px solid ${(props) => props.theme.colors.gray[400]};
+
   img {
     width: 100%;
     height: 100%;
