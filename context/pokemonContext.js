@@ -4,7 +4,7 @@ import axios from 'axios'
 export const PokemonContext = createContext(undefined)
 
 export function PokemonContextProvider({ children }) {
-  const [pokemonTeam, setPokemonTeam] = useState(Array(6))
+  const [pokemonTeam, setPokemonTeam] = useState([])
   const [pokemonList, setPokemonList] = useState(Array(12))
   const [itemsPerPage] = useState(12)
 
@@ -102,8 +102,8 @@ export function PokemonContextProvider({ children }) {
   }, [])
 
   useEffect(() => {
-    console.log(pokemonList)
-  }, [pokemonList])
+    console.log(pokemonTeam)
+  }, [pokemonTeam])
 
   return (
     <PokemonContext.Provider value={{ pokemonTeam, pokemonList, loadPokemonList }}>
