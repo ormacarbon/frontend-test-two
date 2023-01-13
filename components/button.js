@@ -5,9 +5,10 @@ const StyledButton = styled.button`
   border-radius: 24px;
   cursor: pointer;
   background-color: #fff;
-  margin-left: 100px;
+  margin-left: 330px;
+  
   appearance: none;
-  padding: 10px 30px;
+  padding: 16px 45px;
   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
   &:hover {
     background: #F6F9FE;

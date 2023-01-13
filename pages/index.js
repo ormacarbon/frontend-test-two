@@ -7,7 +7,7 @@ import bgimg from '../public/cripto.jpg'
 
 
 const CentralDiv = styled.div`
-  height: 95vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +37,14 @@ const TransDiv = styled.div`
 const BordDiv = styled.div`
   
 `
+const DivP = styled.p`
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 30px;
+`
 
 export default function Home() {
   return (
@@ -45,7 +53,7 @@ export default function Home() {
         <StyledImg src={bgimg} alt='/'/>
         <TransDiv>
           <h2>Welcome to the Cripto World</h2>
-          <p>Click and enjoy our product</p>
+          <DivP>Click and enjoy our product</DivP>
           <Button butname="Click Here"/>  
           <div></div>
         </TransDiv>

@@ -54,10 +54,8 @@ export default function Search() {
         </div>
       </StySearch>
       <StyPut>
-        <DivIn>
-          
-          <StyInp type="text" placeholder="Search Coins" ></StyInp>
-          
+        <DivIn> 
+          <StyInp type="text" placeholder="Search Coins" ></StyInp>     
         </DivIn>
       </StyPut>
     </AppContainer>
