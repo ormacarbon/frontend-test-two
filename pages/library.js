@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import { Bottom, Container, Middle, Text, Top } from './styles/styles'
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { Bottom, Container, Middle, Text, Top } from './styles/styles';
 
 export default function Library() {
     const [userData, setUserData] = useState({});
 
     useEffect(() => {
         //you can put your name here to see your github page
-        handleGetUserData("github");
+        handleGetUserData("batman");
     }, []);
 
     async function handleGetUserData(githubUser) {

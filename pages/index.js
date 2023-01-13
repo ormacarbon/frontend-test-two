@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Head from 'next/head'
+import Image from 'next/image'
 import GitLogo from './assets/github.svg'
-import { Bottom, Container, Middle, Text, Top } from './styles/styles'
+import { Bottom, Container, Message, Middle, Text, Top } from './styles/styles'
 
 export default function Home() {
   return (
@@ -17,8 +17,10 @@ export default function Home() {
       </Top>
       <Middle>
         <Text>Welcome to your portfolio!</Text>
-        <h2>A plache where you can see you github profile
-          <br /> by adding your username to the code!</h2>
+        <Message>
+          <h2>A plache where you can see your github profile
+            <br /> by adding your <span style={{ color: 'black' }}>username</span> to the code!</h2>
+        </Message>
       </Middle>
       <Bottom>
         <ul>
