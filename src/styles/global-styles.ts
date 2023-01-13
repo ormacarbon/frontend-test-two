@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 
 
   html, body, #__next {
-    height: 100%
+    height: 100%;
   }
 
   *::-webkit-scrollbar {
@@ -22,8 +22,8 @@ export const GlobalStyles = createGlobalStyle`
     height: 0.25rem;
 
     @media screen and (min-width: 800px) {
-      width: 0.75rem;
-      height: 0.75rem;
+      width: 0.5rem;
+      height: 0.5rem;
     }
   }
   *::-webkit-scrollbar-track{
@@ -35,13 +35,6 @@ export const GlobalStyles = createGlobalStyle`
     border-radius:  ${({ theme }) => theme.radii.md};
     border: none;
     outline: none;
-
-    &:hover {
-      filter: brightness(1.5);
-    }
-    &:active {
-      background-color: ${({ theme }) => theme.colors.background1};
-    }
   }
 
 

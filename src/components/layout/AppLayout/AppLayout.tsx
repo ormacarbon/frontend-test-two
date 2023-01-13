@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import { AppContent, Container } from "./app-layout.style";
 
@@ -11,9 +12,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     <Container>
       <Header>My Blog</Header>
 
-      {/* <Sidebar css={{ gridArea: "sidebar" }} /> */}
-
       <AppContent>{children}</AppContent>
+
+      <Footer />
     </Container>
   );
 };

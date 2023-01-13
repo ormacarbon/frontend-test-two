@@ -34,12 +34,15 @@ const HomeContainer = styled.main`
   grid-template-rows: auto auto;
   gap: 5rem;
   padding: 1rem;
+  margin-top: 2rem;
 
   @media screen and (min-width: 800px) {
     max-width: 1100px;
     margin: 0 auto;
+    margin-top: 2rem;
     grid-template-columns: 2fr 1fr;
-    gap: 8rem;
+    column-gap: 8rem;
+    row-gap: 2rem;
   }
 `;
 
