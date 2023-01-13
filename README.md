@@ -2,7 +2,6 @@
 
 SPA feita com NextJs que usa a API PunkAPI (https://punkapi.com/documentation/v2), apresenta algumas features como Random, Lista de Cervejas e Detalhes da Cerveja.
 
-![alt text](https://github.com/az1nn/frontend-test-two/tree/develop/assets/preview2.jpg?raw=true)
 ---------------------------------------------------------------------
 
 ## ESTILOS
@@ -21,3 +20,5 @@ SPA feita com NextJs que usa a API PunkAPI (https://punkapi.com/documentation/v2
 ## DEPLOY:
 
 - Aplicação disponivel em: https://beers-test-app.netlify.app/
+
+-------------------------------------------------------
