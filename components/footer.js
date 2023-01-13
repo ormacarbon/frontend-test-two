@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const FooterSec = styled.div`
   background-color: black;
-  height: 60px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ const FooterSec = styled.div`
 const footer = () => {
   return (
     <FooterSec>
-        <p>Next 2021 All Rights Reserved</p>
+        <span>Next 2021 All Rights Reserved</span>
     </FooterSec>
   )
 }

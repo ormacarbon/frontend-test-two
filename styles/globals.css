@@ -11,9 +11,16 @@ h1 {
 
 h2, p {
     margin-bottom: 10px;
+    color: white;
     
 }
 
+h2 {
+    margin-left: 4px;
+}
+span {
+    color: white;
+}
 p {
     margin-left: 60px;
 }

@@ -9,7 +9,7 @@ const DivInitial = styled.div`
 
   align-items: center;
   padding: 0 5px;
-  height: 80px;
+  height: 45px;
   background-color: black;
   @media (max-width: 576px) {
     
@@ -62,13 +62,13 @@ const navbar = () => {
                 <StyledLink href="/">Home</StyledLink>
             </Lists>
             <Lists>
-                <StyledLink href="/about">About</StyledLink>
+                <StyledLink href="/about">Search</StyledLink>
             </Lists>  
             <Lists>
-                <StyledLink href="/cripto">Cripto</StyledLink>
+                <StyledLink href="/cripto">Coins</StyledLink>
             </Lists>        
             <Lists>
-                <StyledLink href="/contact">Contact</StyledLink>
+                <StyledLink href="/contact">Exchanges</StyledLink>
             </Lists>
         </Colum>
 
