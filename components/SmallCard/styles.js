@@ -39,6 +39,8 @@ export const Header = styled.header`
 
   span {
     font-size: ${ props => props.theme.fonts.size.lg};
+    text-transform: capitalize;
+    text-align: start;
   }
 
   div {
