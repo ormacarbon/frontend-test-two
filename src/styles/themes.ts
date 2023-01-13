@@ -51,9 +51,9 @@ export const lightTheme: DefaultTheme = {
     primary: "#7221de",
     secondary: "#FF6A55",
 
-    background1: "#EFEFEF",
-    background2: "#9A9FA5",
-    background3: "#5B6268",
+    background1: "#FFFFFF",
+    background2: "#EFF1F5",
+    background3: "#C9E9F8",
 
     text1: "#141320",
     text2: "#1c1a2d",
