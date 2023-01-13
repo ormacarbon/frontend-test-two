@@ -6,8 +6,12 @@ export const NavLink = styled.a`
 `;
 
 export const SpaceEvenly = styled.nav`
-	display: flex;
+	display: contents;
 	justify-content: space-evenly;
+
+	@media (min-width: 409px) {
+		display: flex;
+	}
 `;
 
 export const SpaceBetween = styled.div`
@@ -61,7 +65,6 @@ export const Container = styled.div`
 export const TableContainer = styled.div`
 	margin-top: 10px;
 	justify-content: space-between;
-	width: 70%;
 `;
 
 export const Table = styled.table`
