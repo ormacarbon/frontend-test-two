@@ -2,7 +2,7 @@ import Image from "next/image";
 import { api } from "../api/api";
 
 export const getStaticPaths = async () => {
-  const allPokemons = await api.get("/pokemon");
+  const allPokemons = await api.get("/pokemon?limit=50&offset=0");
 
   const paths = allPokemons.data.results.map((pokemon) => {
     return {
