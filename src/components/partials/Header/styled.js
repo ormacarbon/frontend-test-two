@@ -21,7 +21,7 @@ export const HeaderContainer = styled.header`
   nav {
     flex: 1;
     display: flex;
-    gap: 2.6rem;
+    gap: 1.6rem;
 
     padding-left: 3.2rem;
 
@@ -29,6 +29,7 @@ export const HeaderContainer = styled.header`
     /* darkMode
       blackBackground */
     a {
+      font-size: 1.2rem;
       position: relative;
       color: ${(props) =>
         props.darkMode || props.blackBackground
@@ -36,7 +37,7 @@ export const HeaderContainer = styled.header`
           : props.theme.colors.black};
       font-weight: bold;
 
-      padding: 0.2rem 0.4rem;
+      padding: 0.2rem 0.6rem;
       background: ${(props) =>
         props.blackBackground
           ? 'none'
@@ -46,6 +47,10 @@ export const HeaderContainer = styled.header`
       border-radius: 8px;
 
       transition: all ease 0.4s;
+
+      &.active {
+        background-color: ${(props) => props.theme.colors['red-600']};
+      }
 
       &:hover {
         color: ${(props) =>

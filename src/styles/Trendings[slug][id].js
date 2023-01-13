@@ -97,16 +97,6 @@ export const TrendingSlugIdVoteAverage = styled(AverageVotes)``;
 export const TrendingSlugIdVotes = styled(AverageVotes)``;
 
 export const TrendingSlugIdDescription = styled.h3`
-  /* font-size: 1.4rem;
-  letter-spacing: 0;
-  line-height: 2rem;
-  font-weight: 400;
-
-  width: 100%;
-  max-width: 70%;
-
-  margin-top: 1.6rem; */
-
   margin-top: 2.4rem;
   font-size: 1.6rem;
   color: ${(props) => props.theme.colors['gray-100']};
@@ -116,7 +106,7 @@ export const TrendingSlugIdDescription = styled.h3`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 `;
 
@@ -129,14 +119,23 @@ export const TrendingSlugIdVoteProducer = styled.div`
 
   > div {
     display: flex;
-    flex-direction: column;
     gap: 0.8rem;
 
     div {
+      position: relative;
       display: flex;
       align-items: center;
+      background-color: ${(props) => props.theme.colors['gray-100']};
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
 
       gap: 0.8rem;
+
+      img {
+        max-width: 7rem !important;
+        width: 100%;
+        height: auto;
+      }
     }
   }
 `;

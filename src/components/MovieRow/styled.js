@@ -137,3 +137,36 @@ export const MovieRowIten = styled(Link)`
     }
   }
 `;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const MovieRowPagination = styled.div`
+  display: flex;
+  gap: 2.4rem;
+  margin-right: 3.2rem;
+
+  button {
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: ${(props) =>
+      props.darkMode ? 'rgba(255, 255, 255, .9)' : 'rgba(0, 0, 0, 1)'};
+
+    transform: scale(0.9);
+    transition: all ease 0.3s;
+    margin-bottom: 0.4rem;
+
+    &:hover {
+      transform: scale(1);
+    }
+
+    svg {
+      width: 2.8rem;
+      height: auto;
+      color: ${(props) => props.theme.colors['red-600']};
+    }
+  }
+`;

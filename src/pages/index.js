@@ -7,8 +7,9 @@ import { HomeContainer, HomeMoviesList, HomeMovies } from '../styles/Home';
 import { MovieRow } from '../components/MovieRow';
 import Head from 'next/head';
 import { FeaturedMovie } from '../components/FeaturedMovie';
+import { usePageActiveContext } from '../contexts/PageActive';
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   //* Get a list of movies
   const filmList = await TMDB.getHomeList(1);
 
@@ -27,6 +28,7 @@ export const getServerSideProps = async (context) => {
 
 export default function Home({ filmList, featuredMovie }) {
   const { darkMode, toggleDarkMode } = useDarkModeContext();
+  const { changePageActive } = usePageActiveContext();
 
   console.log(filmList);
 
@@ -39,9 +41,11 @@ export default function Home({ filmList, featuredMovie }) {
       setOriginalMovieIten(original);
     };
     originalMovie();
-  }, []);
+  }, [filmList]);
 
-  console.log(originalMovieIten)
+  useEffect(() => {
+    changePageActive('/');
+  }, [changePageActive]);
 
   return (
     <>

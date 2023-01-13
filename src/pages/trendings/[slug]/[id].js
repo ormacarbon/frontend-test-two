@@ -112,7 +112,6 @@ const TrendingsFilmId = ({ movieInformations }) => {
                       }}
                     />
                   )}
-                  <span>{company.name}</span>
                 </div>
               ))}
             </div>

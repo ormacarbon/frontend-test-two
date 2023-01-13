@@ -84,6 +84,7 @@ const tmdb = {
   },
   getTrendings: async (type, page) => {
     let itens;
+    let title;
 
     page ? (page = page.toString()) : (page = '1');
 
@@ -93,26 +94,28 @@ const tmdb = {
         itens = await webFetch(
           `/trending/all/week?language=pt-BR&page=${page}`
         );
+        title = 'Recomendados para você (todos)';
         break;
       case 'movie':
-        itens = await basicFetch(
+        itens = await webFetch(
           `/trending/movie/week?language=pt-BR&page=${page}`
         );
+        title = 'Recomendados para você (filmes)';
         break;
       case 'tv':
-        itens = await basicFetch(
-          `/trending/tv/week?language=pt-BR&page=${page}`
-        );
+        itens = await webFetch(`/trending/tv/week?language=pt-BR&page=${page}`);
+        title = 'Recomendados para você (séries)';
         break;
       default:
-        itens = await basicFetch(
+        itens = await webFetch(
           `/trending/all/week?language=pt-BR&page=${page}`
         );
+        title = 'Recomendados para você';
         break;
     }
     return {
       slug: 'trendings',
-      title: 'Recomendados para você',
+      title: title ? title : 'Recomendados para você',
       itens
     };
   },

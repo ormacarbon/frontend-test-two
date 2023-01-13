@@ -26,10 +26,6 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased
   }
 
-  body, input, text-area, button {
-    font: 400 1.6rem 'Inter', sans-serif
-  }
-
   ul, li {
     list-style: none;
   }
