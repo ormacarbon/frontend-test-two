@@ -36,7 +36,7 @@ Home.propTypes = {
   leagues: PropTypes.shape().isRequired,
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const json = await APIService.listLeagues();
 
   return {

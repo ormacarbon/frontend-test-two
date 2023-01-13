@@ -1,29 +1,36 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import APIService from '../../services/APIService';
-import { Section } from './styles';
+import { Section, ContainerLogoLeague, ContainerSeasons } from './styles';
 
 export default function LeagueDetails({ detailsLeagueSelected, seasonsLeague }) {
-  const { currentTheme } = useContext(ThemeContext);
+  const { currentTheme, theme } = useContext(ThemeContext);
+  const setLogo = (
+    theme === 'dark'
+      ? detailsLeagueSelected.logos.dark
+      : detailsLeagueSelected.logos.light);
 
   return (
     <Section theme={currentTheme}>
-      <div className="c-1">
+      <ContainerLogoLeague>
         <img
-          src={detailsLeagueSelected.logos.light}
+          src={setLogo}
           alt={detailsLeagueSelected.name}
-          width={150}
         />
-        <h3>{detailsLeagueSelected.name}</h3>
-      </div>
-      <div className="c-2">
+        <h2>{detailsLeagueSelected.name}</h2>
+      </ContainerLogoLeague>
+      <ContainerSeasons theme={currentTheme}>
+        <strong>Temporadas</strong>
         <ul>
           {seasonsLeague.map((season) => (
-            <li>{season.year}</li>
+            <Link href="/">
+              <li key={season.year}>{season.year}</li>
+            </Link>
           ))}
         </ul>
-      </div>
+      </ContainerSeasons>
     </Section>
   );
 }
@@ -31,7 +38,10 @@ export default function LeagueDetails({ detailsLeagueSelected, seasonsLeague }) 
 LeagueDetails.propTypes = {
   detailsLeagueSelected: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    logos: PropTypes.shape().isRequired,
+    logos: PropTypes.shape({
+      light: PropTypes.string.isRequired,
+      dark: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   seasonsLeague: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };

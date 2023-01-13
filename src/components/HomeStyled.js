@@ -5,21 +5,21 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
- h1 {
-  margin-top: 32px;
- }
+  h1 {
+    margin-top: 32px;
+  }
 `;
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(4, auto);
   gap: 16px;
   padding: 15px;
   margin-top: 32px;
 
   a {
-    background-color: ${({ theme }) => theme.backgroundHeader};
+    background-color: ${({ theme }) => theme.primaryColor};
     border-radius: 4px;
     padding: 10px;
     display: flex;
