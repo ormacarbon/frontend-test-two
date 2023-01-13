@@ -73,17 +73,23 @@ export const Table = styled.table`
 	border-width: 1px;
 	padding: 4px;
 	border-color: ${(props) => props.theme.borderColor};
-	margin: 10px;
+	text-align: center;
+	margin: auto;
 `;
 
 export const Overflow = styled.div`
 	overflow: auto;
 `;
+
 export const Tr = styled.tr`
 	border: solid;
 	border-width: 1px;
 	padding: 4px;
 	border-color: ${(props) => props.theme.borderColor};
+`;
+
+export const TableMenu = styled.div`
+	margin-top: 10px;
 `;
 
 export const Th = styled.th`

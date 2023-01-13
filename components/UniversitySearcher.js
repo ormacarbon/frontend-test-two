@@ -6,6 +6,7 @@ import {
 	TableContainer,
 	SpaceBetween,
 	Label,
+	TableMenu,
 } from "../styles/componentStyles";
 
 export default function UniversitySearcher(props) {
@@ -101,11 +102,13 @@ export default function UniversitySearcher(props) {
 			<br />
 			<TableContainer>
 				<UniversitiesTable list={listUpdated} />
-				<SpaceBetween>
-					<Button onClick={(e) => goBack(e)}>&lt;</Button>
-					<label>{pageNumber}</label>
-					<Button onClick={(e) => goForward(e)}>&gt;</Button>
-				</SpaceBetween>
+				<TableMenu>
+					<SpaceBetween>
+						<Button onClick={(e) => goBack(e)}>&lt;</Button>
+						<label>{pageNumber}</label>
+						<Button onClick={(e) => goForward(e)}>&gt;</Button>
+					</SpaceBetween>
+				</TableMenu>
 			</TableContainer>
 		</div>
 	);
