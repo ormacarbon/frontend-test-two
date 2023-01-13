@@ -14,6 +14,7 @@ const HStack = styled.section`
 
     @media (max-width: 768px) {
         width: ${(props) => props.widthMobile};
+        justify-content: ${(props) => props.mobileJustify};
     }
 `
 const VStack = styled.section`
@@ -29,6 +30,10 @@ const VStack = styled.section`
     border: ${(props) => props.border || "none"};
     border-radius: ${(props) => props.borderRadius || "0"};
     background: ${(props) => props.background || "none"};
+    
+    * {
+    color: ${(props) => props.color || "none"};
+    }
 
     @media (max-width: 768px) {
         width: ${(props) => props.widthMobile};
@@ -54,25 +59,20 @@ const Main = styled.main`
   align-items: center;
 `
 const Title = styled.h1`
-  margin: 0;
   line-height: 1.15;
   font-size: 4rem;
   text-align: center;
   text-decoration: none;
-
-  a {
-    color: ${({ theme }) => theme.colors.secondary};
-    text-decoration: none;
-    &:hover,
-    :focus,
-    :active {
-      text-decoration: underline;
-    }
-  }
 `
+const SectionTitle = styled.h2`
+  line-height: 1.15;
+  font-size: 1.5rem;
+`
+
+
 const Description = styled.p`
   text-align: center;
   line-height: 1.5;
   font-size: 1.5rem;
 `
-export { HStack, VStack, Container, Main, Title, Description}
+export { HStack, VStack, Container, Main, Title, SectionTitle, Description}
