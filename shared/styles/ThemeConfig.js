@@ -8,10 +8,10 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
-  body: '#363537',
+  body: 'rgb(40, 49, 47)',
   text: '#FAFAFA',
   toggleBorder: '#6B8096',
-  background: '#999',
+  background: 'rgb(40, 49, 47)',
 }
 
 export const GlobalStyles = createGlobalStyle`
