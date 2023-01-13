@@ -1,3 +1,5 @@
+import { Checkbox } from "../styles/componentStyles";
+
 export default function toggle(props) {
 	const toggleFunction = props.toggleFunction;
 	const toggleText = props.toggleText;
@@ -5,7 +7,7 @@ export default function toggle(props) {
 
 	return (
 		<div>
-			<input
+			<Checkbox
 				type="checkbox"
 				onChange={(e) => toggleFunction()}
 				checked={isChecked}

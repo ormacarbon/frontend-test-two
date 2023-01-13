@@ -25,7 +25,11 @@ export const Header = styled.div`
 	border: solid;
 	border-radius: 3px;
 	padding: 10px;
-	align-items: baseline;
+export const Checkbox = styled.input`
+	transition: box-shadow 0.3s;
+	accent-color: ${(props) => props.theme.body};
+	cursor: pointer;
+`;
 `;
 
 export const Title = styled.h1`
