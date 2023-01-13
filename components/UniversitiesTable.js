@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import { Table } from "../styles/componentStyles";
 
 export default function UniversitiesTable(props) {
 	const list = props?.list;
 
 	return (
-		<div>
+		<Table>
 			{list.length == 0 && <h2>No Results</h2>}
 			{list.length > 0 && (
 				<table>
@@ -13,6 +13,7 @@ export default function UniversitiesTable(props) {
 							<th>Name</th>
 							<th>Country</th>
 							<th>Webpage</th>
+							<th>Domain</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -21,11 +22,12 @@ export default function UniversitiesTable(props) {
 								<td>{item?.name}</td>
 								<td>{item?.country}</td>
 								<td>{item?.web_pages[0]}</td>
+								<td>{item?.domains[0]}</td>
 							</tr>
 						))}
 					</tbody>
 				</table>
 			)}
-		</div>
+		</Table>
 	);
 }
