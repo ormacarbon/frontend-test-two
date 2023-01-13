@@ -5,14 +5,14 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   background: ${props => props.theme.colors.gray['600']};;
-  padding: ${props => props.theme.spacing['2xl']};
+  padding: ${props => props.theme.spacing.xl};
   border-radius: ${props => props.theme.spacing.xl};
-  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
   border: 1px solid ${ props => props.theme.colors.gray[400]};
 
   h3 {
     font-size: ${props => props.theme.fonts.size.lg};
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: ${props => props.theme.spacing.lg};
   }
 `
