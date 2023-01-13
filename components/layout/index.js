@@ -15,8 +15,8 @@ function Layout({ children }) {
     <Container>
       <NavBar />
       <main>
-        <header>
-          <h2>Hi Pokémon trainer,</h2>
+        <header className='header'>
+          <h2>hi Pokémon trainer,</h2>
           <h1>{title}</h1>
         </header>
         {children}
