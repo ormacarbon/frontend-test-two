@@ -31,6 +31,7 @@ export const ListNavMenu = styled.ul`
       transition: 0.3s ease-in;
       color:${({ theme }) => theme.textColor};
       font-weight: bold;
+      font-size: 18px;
 
       &:hover {
         background-color: ${({ theme }) => theme.secondaryColor};
