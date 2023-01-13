@@ -7,6 +7,7 @@ export const Container = styled.div`
   gap: ${(props) => props.theme.spacing.lg};
   padding: ${(props) => props.theme.spacing.lg} ${(props) => props.theme.spacing["2xl"]};
   font-size: ${(props) => props.theme.fonts.size.md};
+  cursor: pointer;
 
   background: ${(props) => props.color === "dark" ? props.theme.colors.dark : props.theme.colors.primary};
   color: ${(props) => props.theme.colors.light};
@@ -15,6 +16,6 @@ export const Container = styled.div`
   transition: background 0.3s, color 0.3s;
 
   :hover {
-    background: ${(props) => props.color === "dark" ? props.theme.colors.primary : props.theme.colors.dark};
+    background: ${(props) => props.color === "dark" ? props.theme.colors.primary : props.theme.colors.red['200']};
   }
 `;
