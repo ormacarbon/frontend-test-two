@@ -8,3 +8,19 @@ h1 {
     color: white;
     margin-left: 40px;
 }
+
+h2, p {
+    margin-bottom: 10px;
+    
+}
+
+p {
+    margin-left: 60px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Opens-Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+}
