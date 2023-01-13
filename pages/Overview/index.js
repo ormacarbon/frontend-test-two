@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
-import Box from "../../components/Box";
-import VideoBanner from "../../components/VideoBanner";
+import React, { useState, useEffect, useContext } from "react";
 import { Container, Content } from "./styles";
-
 import { PokemonContext } from "../../context/pokemonContext";
-import SmallCard from "../../components/SmallCard";
+
 import ExpandedCard from "../../components/ExpandedCard";
+import VideoBanner from "../../components/VideoBanner";
+import SmallCard from "../../components/SmallCard";
+import Box from "../../components/Box";
 
 function Overview() {
   const [selectedPokemon, setSelectedPokemon] = useState(0);
@@ -13,10 +13,6 @@ function Overview() {
 
   return (
     <Container>
-      <header>
-        <h2>Hi Pokémon trainer,</h2>
-        <h1>Overview</h1>
-      </header>
       <VideoBanner />
       <Content>
         <Box title="Team of the day">
