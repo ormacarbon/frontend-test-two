@@ -95,7 +95,7 @@
 
 @media screen and (orientation:portrait) {
 
-    article {
+    .article {
         padding: 20px;
         height: 150px;
         display: flex;
@@ -130,7 +130,7 @@
 }
 
 
-@media screen and(max-width: 850px) {
+@media screen and (max-width: 850px) {
     .HomeMainBox {
 
         width: 100%;
@@ -161,7 +161,7 @@
 
 }
 
-@media screen and(max-width:1200px) and (min-width: 851px) {
+@media screen and (max-width:1200px) and (min-width: 851px) {
 
     .HomeMainBox {
 
@@ -194,7 +194,7 @@
 }
 
 
-@media screen and(min-width:1500px) {
+@media screen and (min-width:1500px) {
 
     .HomeMainBox {
 
@@ -226,7 +226,7 @@
 
 }
 
-@media screen and(min-width:1900px) {
+@media screen and (min-width:1900px) {
 
     .HomeMainBox {
 

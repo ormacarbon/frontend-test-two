@@ -14,7 +14,7 @@ export default function SideMenu({ setSelect }) {
             <div>
                 <Image className={styles.img} src={CodeLogo}></Image>
                 
-                <h4>Desafio ShareEnergy</h4>
+                <h4>Teste FrontEnd</h4>
             </div>
 
             <ul>

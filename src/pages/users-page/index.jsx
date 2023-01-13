@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import CardComponent from "./components/card-component";
 import { Audio } from 'react-loader-spinner'
-
+import styles from '../../styles/users-page/users-page.module.scss'
 export default function UsersPage(props) {
     const [itens, setItens] = useState([])
     const [currentPage, setCurrentPage] = useState(0)
@@ -44,7 +44,7 @@ export default function UsersPage(props) {
 
     if (loading) {
         return (
-            <div className="loading-box">
+            <div className={styles.LoadingBox}>
                 <Audio
                     height="80"
                     width="80"
@@ -60,9 +60,9 @@ export default function UsersPage(props) {
     }
     else {
         return (
-            <div className="home-main-box">
+            <div className={styles.HomeMainBox}>
                 <nav>
-                    <article>
+                    <article className={styles.article}>
                         <h1>Usuários disponíveis</h1>
                         <p>Aqui estão todos os usuários disponíveis no momento :)</p>
                         <input
@@ -77,7 +77,7 @@ export default function UsersPage(props) {
                         />
                     </article>
 
-                    <section className="align-box">
+                    <section className={styles.AlignBox}>
                         <div>
 
                             {
@@ -95,7 +95,7 @@ export default function UsersPage(props) {
 
                     {
                         search.length < 3 ?
-                            <div className="controls-box">
+                            <div className={styles.ControlsBox}>
                                 <button
                                     onClick={(e) => {
                                         if (currentPage > 0) {
