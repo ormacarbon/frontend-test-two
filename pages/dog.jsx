@@ -35,16 +35,6 @@ function Dog() {
       <DogCard { ...fact}/>
     </>
   );
-
-
-  return (
-    <div>
-      {console.log(fact)}
-      <h1>Dog Page</h1>
-      {/* <DogCard {...data}/> */}
-    </div>
-
-  );
 }
   
 export default Dog

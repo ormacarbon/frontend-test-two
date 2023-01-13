@@ -18,8 +18,8 @@ export async function getDogFact() {
           const data = await response.json();
           return data;
         }
-        const response = await fetch(urlCat2);
-        const data = await response.json();
+        const data = await fetch(urlCat2);
+        // const data = await response.json();
         return data;
     } catch (error) {
       return error;
