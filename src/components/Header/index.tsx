@@ -1,7 +1,5 @@
 import { StyledHeader, Nav, StyledLink } from "./styles";
 
-import Link from "next/link";
-
 import { AiOutlineSearch } from "react-icons/ai";
 
 export default function Header() {
