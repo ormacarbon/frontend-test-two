@@ -1,21 +1,31 @@
 import styled from "styled-components";
 
+export const SearchPageContainer = styled.div`
+    padding-inline: 2rem;
+`
+
 export const SearchMovieList = styled.div`
-  
 `
 
 export const SearchMoviePoster = styled.img`
   width: 100px;
   height: 150px;
   cursor: pointer;
-
+  border-radius: 10px;
+  border: 1px solid var(--separator-color);
 `
+
+export const SearchListContainer = styled.div`
+  margin-block: 3rem;
+  `
 
 export const SearchMovieContainer = styled.div`
   display: flex;
   height: 100%;
-  margin-block: 1rem;
+  margin-block: 2rem;
   align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--separator-color);
 `
 
 export const SearchDescriptionContainer = styled.div`
@@ -26,11 +36,11 @@ export const SearchDescriptionContainer = styled.div`
 export const SearchMovieTitle = styled.h1`
 font-weight: 600;
 margin-bottom: 0.5rem;
-color: #fff;
+color: var(--font-color);
 cursor: pointer;
 
 &:hover {
-  color: #a8dadc;
+  color: var(--font-hover-color);
 }
 `
 

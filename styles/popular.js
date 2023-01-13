@@ -7,6 +7,10 @@ grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
 margin: 0 auto;
 padding-inline: 2rem;
 
+@media (max-width: 780px) {
+  grid-template-columns: repeat(auto-fill,minmax(225px, 1fr));
+}
+
 `
 export const ListButton = styled.button`
   background: #303840;

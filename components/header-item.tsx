@@ -12,13 +12,13 @@ const HeaderItem = (props) => {
   const HeaderLi = styled.li`
     cursor: pointer;
     transition: all 0.1s;
-    color: #fff;
+    color: ${!isSelected ? 'var(--font-color)' : 'var(--font-selected-color)'};
     padding: 8px;
-    background-color: ${isSelected && '#1e6091'};
+    background-color: ${isSelected && 'var(--header-selected-color)'};
     border-radius: 5px;
 
     &:hover {
-      color: #e9ecef;
+      color: ${isSelected ? '#fff' : 'var(--font-hover-color)'};
     }
   `
 

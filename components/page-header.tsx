@@ -2,42 +2,17 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import styled from "styled-components";
 import { applicationContext } from '../context/context';
-import { HeaderLogo, HeaderLogoContainer, HeaderLogoText } from '../styles/header';
+import { HeaderLogo, HeaderLogoContainer, HeaderLogoText, ItemHeaderContainer, Header, HeaderUl, SearchInputContainer, ThemeTogglerContainer } from '../styles/header';
 import HeaderItem from './header-item';
 import MovieSearchInput from './movie-search-input';
+import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
 
-const PageHeader = () => {
+
+const PageHeader = (props) => {
   const { innerWidth } = useContext(applicationContext);
+  const { theme, toggleTheme } = props;
   const isMobile = innerWidth < 1280;
-
-  const Header = styled.ul`
-  display: flex;
-  margin: 2rem auto;
-  justify-content: center;
-  font-size: 0.875rem;
-  align-items: center;
-  justify-content: ${!isMobile ? 'space-between' : 'center'} ;
-  z-index: 2;
-  position: relative;
-  font-weight: 600;
-  padding-inline: 2rem;
-  white-space: nowrap;
-`
-
-  const HeaderUl = styled.ul`
-  display: flex;
-  align-items: center;
-  flex-direction: ${innerWidth < 600 ? 'column' : 'row'};
-  `
-
-  const ItemHeaderContainer = styled.div`
-    display: flex;
-  `
-
-  const SearchInputContainer = styled.div`
-    
-  `
 
   const headerItems = [
     {
@@ -58,16 +33,16 @@ const PageHeader = () => {
     }
   ]
 
+  console.log(theme)
+
   return (
     <Header>
-      {!isMobile && (
-        <Link href={'/'}>
-          <HeaderLogoContainer>
-            <HeaderLogo src='/movie-roll.png' />
-            <HeaderLogoText>MovieRoll</HeaderLogoText>
-          </HeaderLogoContainer>
-        </Link>
-      )}
+      <Link href={'/'}>
+        <HeaderLogoContainer>
+          <HeaderLogo src='/movie-roll.png' />
+          <HeaderLogoText>MovieRoll</HeaderLogoText>
+        </HeaderLogoContainer>
+      </Link>
       <HeaderUl>
         <ItemHeaderContainer>
           {headerItems.map(
@@ -75,9 +50,15 @@ const PageHeader = () => {
               <HeaderItem title={item.title} href={item.href} />
             )
           )}
+
         </ItemHeaderContainer>
         <SearchInputContainer>
-          <MovieSearchInput />
+          <div>
+            <MovieSearchInput />
+          </div>
+          <ThemeTogglerContainer onClick={() => toggleTheme()}>
+            {theme === 'white-theme' ? <BsFillMoonFill /> : <BsFillSunFill />}
+          </ThemeTogglerContainer>
         </SearchInputContainer>
       </HeaderUl>
     </Header>

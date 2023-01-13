@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const HomeMovieListContainer = styled.div`
 margin-top: 3rem;
+@media (max-width: 768px) {
+    margin-top: 5rem;
+  }
 `
 
 export const HomeMovieListTitle = styled.div`
@@ -9,6 +12,10 @@ padding-inline: 2rem;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 export const HomeMovieListDetail = styled(HomeMovieListTitle)`
   float: right;
@@ -17,6 +24,9 @@ export const HomeMovieListDetail = styled(HomeMovieListTitle)`
   font-size: 1rem;
   font-weight: 500;
   padding-left: unset;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 `
 
 export const PageTitle = styled.div`

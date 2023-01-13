@@ -16,13 +16,14 @@ display: grid;
 border-radius: 0.5rem;
 transition: all 0.2s;
 cursor: pointer;
-border: 1px solid #abc;
+border: 1px solid var(--separator-color);
 justify-content: center;
-color: #abc;
+color: var(--font-color);
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-img [alt] {
-  padding: 2rem;
-  border: 3px solid red;
+@media (max-width: 521px) {
+  height: 337.5px;
+  width: 225px;
 }
 
 

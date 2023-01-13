@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import Loader from '../components/loader';
 import SearchMovieCard from '../components/search-movie-card';
 import { applicationContext } from '../context/context';
-import { SearchMovieList } from '../styles/search';
+import { SearchListContainer, SearchMovieList, SearchPageContainer } from '../styles/search';
 import styled from "styled-components";
 import { ListButton } from '../styles/popular';
 
@@ -46,16 +46,18 @@ export default function Search() {
   }
 
   return (
-    <div>
+    <SearchPageContainer>
       <div>Encontramos {searchData?.total_results} resultados para <b>{searchInput}</b>  😀</div>
       {
         loading ?
           <Loader /> :
-          <SearchMovieList>
-            {movieData.map(movie => (
-              <SearchMovieCard movieProps={movie} />
-            ))}
-          </SearchMovieList>
+          <SearchListContainer>
+            <SearchMovieList>
+              {movieData.map(movie => (
+                <SearchMovieCard movieProps={movie} />
+              ))}
+            </SearchMovieList>
+          </SearchListContainer>
 
       }
       <ButtonContainer>
@@ -64,6 +66,6 @@ export default function Search() {
         }
         <ListButton onClick={() => handlePageChange('next')}>Próximo</ListButton>
       </ButtonContainer>
-    </div>
+    </SearchPageContainer>
   )
 }
