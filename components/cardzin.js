@@ -39,14 +39,14 @@ const ImgStyled = styled(Image)`
   
 `
 
-const cardzin = () => {
+const cardzin = ({img, nome}) => {
   return (
     <Colab>
         <Head>
-            <ImgStyled src={tether} alt="/" />
+            <ImgStyled src={img} alt="/" />
         </Head>
         <Rod>
-            <h3>nome</h3>
+            <h3>{nome}</h3>
         </Rod>
     </Colab>
   )

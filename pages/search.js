@@ -3,6 +3,8 @@ import styled from "styled-components";
 import SearchIcon from '@mui/icons-material/Search';
 import Cardzin from "../components/cardzin";
 import Navbar from "../components/navbar";
+import Axios from "axios";
+import { useState, useEffect } from "react";
 
 const AppContainer = styled.div`
   box-sizing: border-box;
@@ -47,6 +49,20 @@ const DivIn = styled.div`
 `
 
 export default function Search() {
+
+  const [coins, setCoins] = useState([]);
+  const [coinsPesquisados, setCoinsPesquisados] = useState([]);
+  
+
+  useEffect(() => {
+    Axios.get("https://api.coingecko.com/api/v3/search?query=eth").then((response) => {
+      setCoins(response.data.coins);
+    
+  });
+
+  }, []);
+
+  
   return (
     <AppContainer>
       <StySearch>
@@ -56,10 +72,25 @@ export default function Search() {
       </StySearch>
       <StyPut>
         <DivIn> 
-          <StyInp type="text" placeholder="Search Coins" ></StyInp>     
+          <StyInp 
+              placeholder="Search Coins" 
+              
+              onChange = { evento => { 
+                       
+                const textoDigitado = evento.target.value;         
+                const resultadoPesquisa = coins.filter( coin => coin.name.includes(textoDigitado));
+                setCoinsPesquisados(resultadoPesquisa);        
+                 
+              }}
+          ></StyInp>     
         </DivIn>
       </StyPut>
-      <Cardzin/>
+
+      
+      { coinsPesquisados.map( coin => (
+        <Cardzin nome={coin.name}/>
+      ))}
+
     </AppContainer>
   );
 }

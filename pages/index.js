@@ -47,6 +47,10 @@ const DivP = styled.p`
 `
 
 export default function Home() {
+
+  
+  
+
   return (
     <BordDiv>
       <CentralDiv>
