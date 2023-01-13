@@ -1,4 +1,4 @@
-import { Container, ToggleButton, ContentContainer,MenuItems,Item } from "./style";
+import { Container, ToggleButton, ContentContainer,MenuItems,Item,Brand,BrandContainer } from "./style";
 import { Fragment } from "react";
 import Hamburger from "hamburger-react";
 import { useState } from "react";
@@ -17,11 +17,15 @@ const Navbar = () => {
 					<Hamburger />
 				</ToggleButton>
 				<ContentContainer toggle={toggle}>
+          <BrandContainer>
+            <Brand>
+              OrmaPokePrice
+            </Brand>
+          </BrandContainer>
           <MenuItems>
             <Item>HOME</Item>
-            <Item>POKEDEX</Item>
-            <Item>ITEMS</Item>
-            <Item>ABILITIES</Item>
+            <Item>CARDS</Item>
+            <Item>CONTACT</Item>
           </MenuItems>
         </ContentContainer>
 			</Container>
