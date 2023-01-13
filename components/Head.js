@@ -10,7 +10,7 @@ import {
 	Title,
 } from "../styles/componentStyles";
 
-export default function navbar() {
+export default function Head() {
 	const { toggleTheme, theme } = useContext(Context);
 	const toggleDarkMode = () => {
 		toggleTheme();
