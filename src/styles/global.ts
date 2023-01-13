@@ -15,4 +15,8 @@ export default createGlobalStyle`
       font: 400 16px 'Inter', sans-serif;
       color: ${(props) => props.theme.colors.white};
     }
+
+    a{
+      text-decoration: none;
+    }
 `;
