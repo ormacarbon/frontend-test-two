@@ -1,81 +1,78 @@
 const colors = {
-  primary: '#FF2330',
-  light: '#f8f9fa',
-  dark: '#202028',
-  label: '#4592C430',
+  primary: "#FF2330",
+  light: "#f8f9fa",
+  dark: "#202028",
+  label: "#4592C430",
 
-  orange: '#FD7D24',
+  orange: "#FD7D24",
 
   green: {
-    '100': '#9BCC50',
-    '200': '#729F3F'
+    100: "#9BCC50",
+    200: "#729F3F",
   },
   blue: {
-    '100': '#C3DEF1',
-    '200': '#51C4E7',
-    '300': '#4592C4',
+    100: "#C3DEF1",
+    200: "#51C4E7",
+    300: "#4592C4",
   },
   pink: {
-    '100': '#FDB9E9',
-    '200': '#F366B9',
+    100: "#FDB9E9",
+    200: "#F366B9",
   },
   yellow: {
-    '100': '#EED535',
-    '200': '#AB9842',
+    100: "#EED535",
+    200: "#AB9842",
   },
   purple: {
-    '100': '#B97FC9',
-    '200': '#7B62A3',
+    100: "#B97FC9",
+    200: "#7B62A3",
   },
   red: {
-    '100': '#E3350D',
-    '200': '#B00C2A',
+    100: "#E3350D",
+    200: "#B00C2A",
   },
   gray: {
-    '100': '#C1C1C1',
-    '200': '#92999C',
-    '300': '#5E6567',
-    '400': '#3d3d4d',
-    '500': '#2C2E3B',
-    '600': '#252733',
-    '700': '#17171e'
-  }
-}
+    100: "#C1C1C1",
+    200: "#92999C",
+    300: "#5E6567",
+    400: "#3d3d4d",
+    500: "#2C2E3B",
+    600: "#252733",
+    700: "#17171e",
+  },
+};
 
 const fonts = {
   size: {
-    xs: '12px',
-    sm: '14px',
-    md: '16px',
-    lg: '20px',
-    xl: '28px',
-    '2xl': '32px',
-    '3xl': '48px',
+    xs: "12px",
+    sm: "14px",
+    md: "16px",
+    lg: "20px",
+    xl: "28px",
+    "2xl": "32px",
+    "3xl": "48px",
   },
-  family: {
-    heading: '"Open Sans", sans-serif',
-    body: '"Quicksand", sans-serif',
-  },
-}
+  family: '"Quicksand", sans-serif',
+};
 
 const spacing = {
-  xs: '0.25rem',
-  sm: '0.5rem',
-  md: '0.75rem',
-  lg: '1rem',
-  xl: '1.5rem',
-  '2xl': '2rem',
-  '3xl': '3rem',
-  '4xl': '4rem',
-}
+  xs: "0.25rem",
+  sm: "0.5rem",
+  md: "0.75rem",
+  lg: "1rem",
+  xl: "1.5rem",
+  "2xl": "2rem",
+  "3xl": "3rem",
+  "4xl": "4rem",
+};
 
 const breakpoints = {
-  xs: '320px',
-  sm: '576px',
-  md: '768px',
-  lg: '992px',
-  xl: '1200px',
-}
+  xs: "320px",
+  sm: "576px",
+  md: "768px",
+  lg: "992px",
+  xl: "1200px",
+};
 
 const types = {
   grass: {
@@ -108,7 +105,7 @@ const types = {
   },
   bug: {
     color: colors.green[200],
-    text: colors.light
+    text: colors.light,
   },
   ground: {
     color: colors.yellow[200],
@@ -146,16 +143,16 @@ const types = {
     color: colors.orange,
     text: colors.light,
   },
-  dark : {
-    color: colors.gray[600],
+  dark: {
+    color: colors.gray[700],
     text: colors.light,
-  }
-}
+  },
+};
 
 export const theme = {
   colors: colors,
   fonts: fonts,
   types: types,
   spacing: spacing,
-  breakpoints: breakpoints
-}
+  breakpoints: breakpoints,
+};
