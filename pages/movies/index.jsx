@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
-import { Container, MoviesList, PaginationContainer } from "./style";
+import {
+  Container,
+  MoviesList,
+  PaginationContainer,
+  SearchContainer,
+  Button,
+} from "./style";
 import Link from "next/link";
 import { Backdrop, CircularProgress } from "@mui/material";
 import Image from "next/image";
@@ -9,13 +15,15 @@ import Pagination from "@mui/material/Pagination";
 import { Tooltip } from "@mui/material";
 import { GlobalStateContext } from "../../contexts/GlobalStateContext";
 import { useContext } from "react";
+import { TextField } from "@mui/material";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const { theme, setTheme } = useContext(GlobalStateContext);
+  const { theme } = useContext(GlobalStateContext);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -52,6 +60,30 @@ export default function Movies() {
       ) : null}
       <Header />
       <Container>
+        <SearchContainer>
+          <TextField
+            label="Search a Movie"
+            variant="outlined"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+            size="small"
+            style={window.innerWidth < 600 ? { width: "80%" } : null}
+          />
+          <Button
+            onClick={() => {
+              if (search === "") {
+                return;
+              }
+              api.get(`search/movie?query=${search}`).then((response) => {
+                setMovies(response.data.results);
+              });
+            }}
+          >
+            Search
+          </Button>
+        </SearchContainer>
         <MoviesList>
           {movies.map((movie) => (
             <div key={movie.id}>

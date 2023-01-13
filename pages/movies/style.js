@@ -57,3 +57,35 @@ export const PaginationContainer = styled.div`
   align-items: center;
   margin-bottom: 4rem;
 `;
+
+export const SearchContainer = styled.div`
+  margin: 2rem 0;
+  display: flex;
+  justify-content: start;
+  gap: 0.5rem;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const Button = styled.button`
+  border: none;
+  padding: 10px 20px;
+  color: #ffffff;
+  background-color: #292929;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+
+  @media (max-width: 992px) {
+    width: 80%;
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.textColor};
+    color: ${({ theme }) => theme.colors.backgroundColor};
+  }
+`;

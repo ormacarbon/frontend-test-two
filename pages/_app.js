@@ -14,6 +14,31 @@ export default function MyApp({ Component, pageProps }) {
     palette: {
       mode: theme,
     },
+    components: {
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: theme === "light" ? "#000" : "#fff",
+              },
+              "&:hover fieldset": {
+                borderColor: theme === "light" ? "#000" : "#fff",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: theme === "light" ? "#000" : "#fff",
+              },
+            },
+            "& .MuiInputLabel-outlined": {
+              color: theme === "light" ? "#000" : "#fff",
+            },
+            "& .MuiInputLabel-outlined.Mui-focused": {
+              color: theme === "light" ? "#000" : "#fff",
+            },
+          },
+        },
+      },
+    },
   });
 
   useEffect(() => {
