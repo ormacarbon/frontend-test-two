@@ -12,11 +12,10 @@ export function Header() {
 
             <ToolBar>
                 <ToolBarItems>
-                    <Link href='/' ><Li><A>Home</A></Li></Link>
-                    <Link href='/Movies' ><Li><A>Movies</A></Li></Link>
+                    <Link href='/' ><Li><A>Home/Movies</A></Li></Link>
                     <Link href='/Series' ><Li><A>Series</A></Li></Link>
-                    <Link href='/Animations' ><Li><A>Animations</A></Li></Link>
-                    <Link href='/CreateAccount' ><Li><ButtonHeader>create account!</ButtonHeader></Li></Link>
+                    <Link href='/Persons' ><Li><A>Actors</A></Li></Link>
+                    <input />
                 </ToolBarItems>
             </ToolBar>
         </HeaderContainer>

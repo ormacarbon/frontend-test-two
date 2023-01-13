@@ -4,7 +4,7 @@ export const GlobalCard = styled.section `
 background-color: black;
 box-shadow: 0px 0.25rem 0.60rem 0 #E50914;
 width: 25rem;
-height: 14rem;
+height: 16rem;
 margin: 0.5rem;
 border-radius: 0.75rem;
 display: flex;
@@ -17,7 +17,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 padding: 1rem;
-padding-top: 4vh;
+padding-top: 1vh;
 `
 
 export const MovieName = styled.p `
@@ -33,8 +33,7 @@ height: 4rem;
 display: flex;
 flex-wrap: wrap;
 gap: 0.5rem;
-padding-top: 0.5rem;
-margin-top: 0.25rem;
+margin: 0.25rem 0;
 color:white;
 `
 export const NoteArea = styled.div `
@@ -43,32 +42,22 @@ height: 2rem;
 display: flex;
 flex-wrap: wrap;
 gap: 0.5rem;
-padding-top: 0.5rem;
-margin-top: 0.25rem;
+padding-top: 0.25rem;
 color:white;
 `
-export const ButtonArea = styled.div `
+export const YearArea = styled.div `
 width: 100%;
-height: 2rem;
+height: 2.5rem;
 display: flex;
-justify-content: end;
 gap: 0.5rem;
 padding-top: 0.5rem;
-margin-top: 0.25rem;
 color:white;
 `
 
-export const AddListButton = styled.button `
+export const Year = styled.p `
 color: #ffff;
 font-weight: 700;
-width: 50%;
-border-radius: 0.25rem;
-background-color: transparent;
-border: 2px solid #E50914;
-:hover {
-cursor: pointer;
-background-color: #E50914;
-}
+font-size: 0.85rem;
 `
 
 export const PosterArea = styled.div `

@@ -15,6 +15,7 @@ export default function Home() {
 const GlobalHomePage = styled.section `
   display: flex;
   flex-wrap: wrap;
+  justify-content:center;
   gap:0.5rem;
   min-height: 80vh;
 `
@@ -30,7 +31,7 @@ const GlobalHomePage = styled.section `
         {movies.map((movie)=> {
           return <Card 
           key={movie.id}
-          movie={movie}
+          content={movie}
           />
         })}
       </GlobalHomePage>
