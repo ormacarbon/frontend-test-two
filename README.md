@@ -1,49 +1,23 @@
-# **TESTE DE FRONTEND**
+# **TESTE DE FRONTEND - Alan Sá**
 
-Neste teste, você será livre para criar uma aplicação consumindo a API que você quiser e com o tema que desejar.
-Contudo, o seu projeto deverá seguir os requisitos mínimos de conteúdo.
+SPA feita com NextJs que usa a API PunkAPI (https://punkapi.com/documentation/v2), apresenta algumas features como Random, Lista de Cervejas e Detalhes da Cerveja.
 
-SUGESTÕES DE APIS:
-https://github.com/public-apis/public-apis
-
+![alt text](https://github.com/az1nn/frontend-test-two/tree/develop/assets/preview2.jpg?raw=true)
 ---------------------------------------------------------------------
-## REQUISITOS:
-
-## GIT
-- Faça um fork deste repositório.
-- Criar uma branch para codar as suas features.
-- Criar um pull-request quando o teste for finalizado e submetido.
-
-##### **NOTA: Será avaliado também se o nome da branch, títulos de commit, push e comentários possuem boa legibilidade.**
-
------------------------------------------------------
-
-## FRAMEWORK
-
-- Utilizar as ferramentas presentes no framework do projeto (NEXT.JS).
-
------------------------------------------------------
 
 ## ESTILOS
 
-- Os estilos deste teste devem ser feitos em styled-components (evite utilizar bootstrap, mas se necessário, use).
-- O projeto deverá conter tema claro/escuro e forma do usuário alterar entre os dois.
-- Deve ser totalmente responsivo.
+- A estilização e theming (Dark e Light) foram feitos utilizando a ferramenta Styled-components.
 
 -----------------------------------------------------
 
 ## PROJETO
 
-- Deve utilizar useContext, useState e useEffect.
-- Ter ao menos 3 paginas navegáveis com router (ex: um navbar para facilitar a navegação).
-- Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição.
+- Utiliza conceitos React, como UseEffect, UseState e mais.
+- Possui diferentes páginas, navegaveis por meio da NavBar.
 
 -------------------------------------------------------
 
-## REQUISITOS DIFERENCIAIS:
+## DEPLOY:
 
-- Código tentando seguir SOLID.
-- Código performático.
-- Utilizar inglês no projeto todo.
-- Utilizar Injeção de Dependências.
-- Fazer deploy do mesmo (heroku, netlify, aws, vercel, github pages ou outro da preferência).
+- Aplicação disponivel em: https://beers-test-app.netlify.app/
