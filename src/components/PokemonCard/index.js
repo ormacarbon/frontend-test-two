@@ -50,9 +50,17 @@ export default function PokemonCard({ pokemon, pathname }) {
         <hr />
         <div className="container-buttons-pokemon">
           <Link href="/details/[id]" as={`/details/${pokemonDetail.id}`}>
-            <button>Details</button>
+            <button className="button-details">Details</button>
           </Link>
           {pathname === "/" && (
+            <button
+              className="button-catch"
+              onClick={() => addToPokedex(pokemon)}
+            >
+              Catch!
+            </button>
+          )}
+          {pathname.includes("pokemons") && (
             <button
               className="button-catch"
               onClick={() => addToPokedex(pokemon)}

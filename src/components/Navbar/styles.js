@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledNavbar = styled.header`
   background-color: ${({ theme }) => theme.backgroundLevel2};
-  height: 3.5rem;
+  height: 55px;
   width: 100%;
   display: flex;
   align-items: center;

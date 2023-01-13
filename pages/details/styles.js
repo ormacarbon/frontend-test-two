@@ -15,7 +15,7 @@ export const DetailStyled = styled.div`
   padding-top: 60px;
   flex-wrap: wrap;
   width: 100vw;
-  height: 85vh;
+  min-height: calc(100vh - 116px);
   gap: 30px;
   background-color: ${({ theme }) => theme.backgroundBase};
   color: #ffffff;
@@ -52,7 +52,7 @@ export const DetailStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: grey;
+    background-color: ${({ theme }) => theme.backgroundLevel3};
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
     .container-tipo {
@@ -76,7 +76,7 @@ export const DetailStyled = styled.div`
     padding: 16px;
     width: 500px;
     height: 405px;
-    background: grey;
+    background-color: ${({ theme }) => theme.backgroundLevel3};
     border-radius: 8px;
     .title-base-stats {
       margin-bottom: 20px;
@@ -138,7 +138,7 @@ export const DetailStyled = styled.div`
       flex-direction: column;
       min-width: 292px;
       height: 440px;
-      background: grey;
+      background-color: ${({ theme }) => theme.backgroundLevel3};
       border-radius: 8px;
       h2 {
         padding: 15px;

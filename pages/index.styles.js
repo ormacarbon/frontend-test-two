@@ -25,7 +25,7 @@ export const StyledIndex = styled.main`
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       height: 40px;
       width: 40px;
-      background-color: grey;
+      background-color: ${({ theme }) => theme.backgroundLevel3};
       border-radius: 6px;
       border: none;
       cursor: pointer;
@@ -42,8 +42,8 @@ export const StyledIndex = styled.main`
   }
 
   .button-pages[disabled] {
-    background-color: ${({ theme }) => theme.backgroundLevel2};
-    color: white;
+    background-color: ${({ theme }) => theme.backgroundLevel1};
+    color: ${({ theme }) => theme.borderBase};
     cursor: not-allowed;
   }
 `;

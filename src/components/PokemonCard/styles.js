@@ -36,6 +36,9 @@ export const PokemonCardStyled = styled.div`
     text-transform: capitalize;
     letter-spacing: 0.03rem;
   }
+  a{
+    text-decoration: none;
+  }
 
   .container-details {
     width: 280px;
@@ -44,7 +47,7 @@ export const PokemonCardStyled = styled.div`
     flex-direction: column;
     width: 100%;
     justify-content: space-around;
-    background-color: grey;
+    background-color: ${({ theme }) => theme.backgroundLevel3};
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
     .container-tipo {
@@ -73,13 +76,16 @@ export const PokemonCardStyled = styled.div`
         align-items: center;
         width: 120px;
         height: 38px;
-        background-color: #ffffff;
+        background-color: #f9f9f9;
         border-radius: 6px;
         border: none;
         cursor: pointer;
         color: #2f2f2f;
         font-weight: 700;
         transition: box-shadow 0.2s ease;
+      }
+      .button-details{
+        text-decoration: none;
       }
       button:hover {
         background-color: #caffcc;

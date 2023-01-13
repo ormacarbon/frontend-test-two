@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const StyledPokedex = styled.main`
   width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 56px);
+  max-height: 100%;
   background-color: ${({ theme }) => theme.backgroundBase};
   color: ${({ theme }) => theme.textColorBase};
   .container-pokemons {
