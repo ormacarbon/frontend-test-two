@@ -17,10 +17,10 @@ export const CategoriesList = () => {
   const categoriesList = removeDuplicates(categories);
 
   return (
-    <S.ListContainer>
+    <S.CategoryListContainer>
       {categoriesList?.map((category) => (
-        <CategoryTag key={category} tagName={category} />
+        <CategoryTag href={category} key={category} tagName={category} />
       ))}
-    </S.ListContainer>
+    </S.CategoryListContainer>
   );
 };

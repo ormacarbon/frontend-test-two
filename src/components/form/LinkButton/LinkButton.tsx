@@ -1,4 +1,3 @@
-import { ComponentProps } from "react";
 import * as S from "./link-button";
 
 interface LinkButtonProps {

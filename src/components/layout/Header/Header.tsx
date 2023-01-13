@@ -5,11 +5,13 @@ import * as S from "./header.styles";
 interface HeaderProps {
   children: string;
 }
-export const Header = ({ children, ...props }: HeaderProps) => {
+export const Header = ({ children }: HeaderProps) => {
   return (
-    <S.HeaderContainer {...props}>
+    <S.HeaderContainer>
       <S.HeaderBox>
-        <Heading variant="xl">{children}</Heading>
+        <S.LogoBox href={"/"}>
+          <Heading variant="xl">{children}</Heading>
+        </S.LogoBox>
 
         <S.MenuBox>
           <AiOutlineMenu size={30} />

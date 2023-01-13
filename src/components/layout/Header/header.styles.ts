@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
@@ -10,9 +11,6 @@ export const HeaderContainer = styled.header`
   align-items: center;
 
   background-color: ${({ theme }) => theme.colors.background1};
-
-  border-bottom: 1px solid;
-  border-color: ${({ theme }) => theme.colors.background3};
 `;
 
 export const HeaderBox = styled.div`
@@ -28,6 +26,14 @@ export const HeaderBox = styled.div`
     margin: 0 auto;
     padding: 0 1rem 0 1rem;
   }
+`;
+
+export const LogoBox = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.text1};
 `;
 
 export const MenuBox = styled.div`
