@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import ExchangeDetail from "../../Components/ExchangeDetail";
 import {
   HeaderContainer,
@@ -84,11 +84,7 @@ export default function ExchangeDetails({ exchange }) {
           {exchange.status_updates.map((news, index) => (
             <NewsText key={index}>
               <label>
-                {useMemo(
-                  () =>
-                    moment(news.created_at).format("MMMM Do YYYY, h:mm:ss a"),
-                  [news.created_at]
-                )}
+                  {moment(news.created_at).format("MMMM Do YYYY, h:mm:ss a")}
               </label>
               <p>{news.description}</p>
             </NewsText>
