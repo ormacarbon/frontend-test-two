@@ -4,13 +4,14 @@ import {AiOutlineLink} from 'react-icons/ai'
 import { MdLocationOn } from "react-icons/md";
 import {ExchangeImage,Info,MainContainer,SocialMedia} from './styles'
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ExchangeDetail({image, name,country,trustScore,FaceUrl,MediumUrl,RedditUrl}) {
   return (
     <>
       <MainContainer>
         <ExchangeImage>
-            <img src={image} />
+            <Image src={image} width={80} height={80}/>
         </ExchangeImage>
             <h2>{name}</h2>
             <SocialMedia>

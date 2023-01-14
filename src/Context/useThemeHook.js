@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 export const useTheme = () => {
     const [theme, setTheme] = useState('light')
@@ -14,7 +14,7 @@ export const useTheme = () => {
       localStorage.setItem('theme', theme)
     }, [theme])
   
-    const switchTheme = newTheme => setTheme(newTheme)
+    const switchTheme = useCallback(newTheme => setTheme(newTheme),[theme])
   
     return useMemo(() => ({ theme, switchTheme }), [theme, switchTheme])
 }

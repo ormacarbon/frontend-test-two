@@ -23,14 +23,14 @@ export default function Home() {
 
   useEffect(() => {
     return () => handleSearch.cancel();
-  }, []);
+  }, [handleSearch]);
 
   useEffect(() => {
     const intervalId = setTimeout(() => {
       refresh(url);
     }, 300000);
     return () => clearInterval(intervalId);
-  }, [refresh]);
+  }, [refresh,url]);
 
   const filteredCoins = useMemo(() =>response.filter((coin) =>
         coin.name.toLowerCase().includes(search.toLowerCase())

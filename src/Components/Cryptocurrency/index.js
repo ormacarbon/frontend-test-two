@@ -2,6 +2,7 @@ import React from "react";
 import { CoinContainer, Container } from "./styles";
 import { NormalPriceFormat } from "../../util/index";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CoinList({
   id,
@@ -18,7 +19,7 @@ export default function CoinList({
       <Link href={`/coinDetail/${id}`}>
         <ul>
           <li>
-            <img src={image} alt={name} />
+            <Image src={image} alt={name} width={80} height={40}/>
           </li>
           <li>{name}</li>
           <li>{NormalPriceFormat(currentPrice)}</li>

@@ -25,7 +25,7 @@ export default function Exchange() {
     
     useEffect(() => {
         return () => handleSearch.cancel();
-    }, []);
+    }, [handleSearch]);
 
     useEffect(() => {
         const intervalId = setTimeout(() => {

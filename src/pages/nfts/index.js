@@ -7,7 +7,7 @@ import SEO from "../../Components/SEO";
 import Pagination from "../../Components/Pagination";
 import LoaderComponent from "../../Components/Loader";
 
-export default function nfts() {
+export default function Nfts() {
   const url = "nfts/list"
   const { response, isLoading, error,refresh } = useApi(url);
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,8 +56,8 @@ export default function nfts() {
               <LoaderComponent />
             ) : (
               currentPageNft.map((nft) => (
-                <Link href={`/nftDetail/${nft.id}`}>
-                  <ul key={nft.id}>
+                <Link href={`/nftDetail/${nft.id}`} key={nft.id}>
+                  <ul>
                     <li>Name: {nft.name}</li>
                     <li>Contract Address: {nft.contract_address}</li>
                   </ul>
