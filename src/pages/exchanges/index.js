@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Input } from '../../Components/SearchComponent/styles'
 import {useApi} from '../../hooks/useApi'
 import ExchangesList from '../../Components/Exchanges'
-import { Container, ExchangesBox, InputBox } from './styles'
+import { Container, ExchangesBox } from './styles'
+import { InputBox } from '../../styles/GlobalStyle'
 import debounce from 'lodash.debounce'
 import LoaderComponent from "../../Components/Loader";
 import SEO from '../../Components/SEO'
@@ -12,8 +13,8 @@ export default function Exchange() {
     const[search,setSearch]=useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 15
-
-    const {response, isLoading,refresh} = useApi('exchanges')
+    const url = 'exchanges'
+    const {response, isLoading,refresh} = useApi(url)
 
     const handleSearch = debounce(e => {
         e.preventDefault();

@@ -9,13 +9,12 @@ export const Container = styled.div`
 
 export const ExchangesBox = styled.div`
     display: grid;
-    grid-template-columns: repeat(3,1fr);    
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));   
     gap: 2rem;
     justify-items: center;
     align-content: center;
-`
-export const InputBox = styled.div`
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
+
+    @media(max-width:700px){
+        grid-template-columns:1fr;   
+    }
 `

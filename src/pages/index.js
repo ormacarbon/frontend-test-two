@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import CoinList from "../Components/Cryptocurrency";
 import { Input } from "../Components/SearchComponent/styles";
 import { useApi } from "../hooks/useApi";
-import { InputBox } from "./styles";
+import { InputBox } from "../styles/GlobalStyle";
 import debounce from "lodash.debounce";
 import LoaderComponent from "../Components/Loader";
 import SEO from "../Components/SEO";

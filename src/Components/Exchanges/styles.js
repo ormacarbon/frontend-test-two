@@ -31,4 +31,5 @@ export const ExchangeItems = styled.div`
         h3{
             color: ${props=>props.theme.primary};
         }
+
 `

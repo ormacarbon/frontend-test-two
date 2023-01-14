@@ -14,6 +14,10 @@ export const MainContainer = styled.div`
     h2{
         color: ${props=>props.theme.text};
     }
+    @media(max-width: 660px){
+        flex-direction: column;
+        gap: 1rem;
+    }
 `
 
 export const ExchangeImage = styled.div`
@@ -22,6 +26,12 @@ export const ExchangeImage = styled.div`
         height: 70px;
         object-fit: cover;
         border-radius: 100%;
+    }
+    @media(max-width:700px){
+        img{
+            width: 40px;
+            height: 40px;
+        }
     }
 `
 
