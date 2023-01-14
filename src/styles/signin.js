@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import wave from "../assets/images/wave.svg";
 
 export const Container = styled.div`
   align-items: center;

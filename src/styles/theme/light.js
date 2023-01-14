@@ -13,5 +13,8 @@ export default {
 
     background: '#f5f5f5',
     backgroundImage: `url(${wave?.src})`,
+    backgroundHeader: '#f5f5f5',
+
+    humidityIcon: 'invert(0)',
   }
 }

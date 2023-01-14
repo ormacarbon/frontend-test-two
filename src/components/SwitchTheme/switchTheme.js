@@ -17,7 +17,7 @@ export function SwitchTheme({ toggleTheme }) {
       width={50}
       handleDiameter={25}
       offColor={shade(0.15, colors.primary)}
-      onColor={colors.secondary}
+      onColor={shade(0.15, colors.primary)}
     />
   )
 }

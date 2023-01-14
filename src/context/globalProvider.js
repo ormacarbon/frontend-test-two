@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getWeather } from "../services/api";
 import light from "../styles/theme/light";
 import dark from "../styles/theme/dark";
+import moment from "moment";
 
 export const GlobalProvider = ({ children }) => {
   const [weather, setWeather] = useState({});
@@ -11,6 +12,7 @@ export const GlobalProvider = ({ children }) => {
     password: ''
   });
   const [theme, setTheme] = useState(light);
+  const [city, setCity] = useState('São Paulo');
   
   const currentWeather = async (city) => {
     const currentWeather = await getWeather(city);
@@ -29,6 +31,14 @@ export const GlobalProvider = ({ children }) => {
     localStorage.setItem('theme', theme.title === 'light' ? 'dark' : 'light');
   }
 
+  const selectCity = (city) => {
+    setCity(city);
+    currentWeather(city);
+  };
+
+  const weekDay = moment().format('dddd');
+  const hour = moment().format('hh:mm');
+
   const value = {
     weather,
     currentWeather,
@@ -36,7 +46,12 @@ export const GlobalProvider = ({ children }) => {
     setUser,
     validateUserFields,
     theme,
-    toggleTheme
+    toggleTheme,
+    city,
+    setCity,
+    selectCity,
+    weekDay,
+    hour
   }
 
   return (

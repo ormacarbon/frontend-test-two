@@ -20,5 +20,6 @@ export default createGlobalStyle`
     width: 4rem;
     top: 2rem;
     right: 10%;
+    z-index: 10;
   }
 `;
