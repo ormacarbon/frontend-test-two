@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div `
     box-shadow: 0.2rem 0.2rem 0.1rem #E50914;
     justify-content: space-between;
     background-color: #221f1f;
+    margin-bottom: 0.5rem;
 `
 
 export const HeaderLogo = styled.div `
@@ -42,17 +43,22 @@ export const A = styled.a `
     text-decoration: none;
     color: #E50914;
     cursor: pointer;
+    :hover {
+        color: white
+    }
 `
 
-export const ButtonHeader = styled.a `
-    text-transform: uppercase;
-    border: none;
-    font-size: 3.5vh;
-    text-align: center;
-    background-color: transparent;
-    color: #E50914;
-    text-decoration: none;
-    :hover {
-        cursor: pointer;
-    }
+export const Input = styled.input `
+background-color: transparent;
+border: 2px solid #E50914;
+box-shadow: 0.15rem 0.15rem 0.1rem #E50914;
+border-radius: 0.5rem;
+height: 6vh;
+width: 40vh;
+text-align: center;
+color: white;
+::placeholder {
+    color: white;
+    font-size: 1rem;
+}
 `

@@ -12,6 +12,10 @@ function MyApp({ Component, pageProps }) {
   const [series, setSeries] = useState([])
   const [persons, setPersons] = useState([])
 
+  const [searchMovies, setSearchMovies] = useState("")
+  const [searchSeries, setSearchSeries] = useState("")
+  const [searchActors, setSearchActors] = useState("")
+
   //movies requisition
   const getMoviesData = () => {
     const MoviesAux = [... new Set(movies)]
@@ -73,7 +77,13 @@ function MyApp({ Component, pageProps }) {
   const context = {
     movies,
     series,
-    persons
+    persons,
+    searchMovies,
+    setSearchMovies,
+    searchSeries,
+    setSearchSeries,
+    searchActors,
+    setSearchActors
   }
 
   return (
