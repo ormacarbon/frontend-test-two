@@ -14,7 +14,7 @@ export const useTheme = () => {
       localStorage.setItem('theme', theme)
     }, [theme])
   
-    const switchTheme = useCallback(newTheme => setTheme(newTheme),[theme])
+    const switchTheme = useCallback(newTheme => setTheme(newTheme),[])
   
     return useMemo(() => ({ theme, switchTheme }), [theme, switchTheme])
 }

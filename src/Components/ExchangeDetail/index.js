@@ -11,7 +11,7 @@ export default function ExchangeDetail({image, name,country,trustScore,FaceUrl,M
     <>
       <MainContainer>
         <ExchangeImage>
-            <Image src={image} width={80} height={80}/>
+            <Image src={image} width={80} height={80} alt={name}/>
         </ExchangeImage>
             <h2>{name}</h2>
             <SocialMedia>

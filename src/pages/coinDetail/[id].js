@@ -3,6 +3,7 @@ import { AboutContainer, CoinDetail } from "./styles";
 import BackBtn from "../../Components/BackBtn";
 import SEO from "../../Components/SEO";
 import { CoinService } from "../../classes";
+import Image from "next/image";
 
 
 export async function getServerSideProps({ params }) {
@@ -23,7 +24,7 @@ export default function CryptoDetail({ coin}) {
           <AboutContainer>
             <div className="header-text">
               <div className="box">
-              <img src={coin.image.small} alt={coin.name} />
+              <Image src={coin.image.small} alt={coin.name} width={50} height={50} />
                 <p>{coin.name}</p>
                 <BackBtn key={coin.id} link={'/'} />
               </div>
