@@ -22,6 +22,12 @@ export const Container = styled.div`
     h3{
         font-size: 2rem;
     }
+
+    @media(max-width:500px){
+        h3{
+        font-size: 1.2rem;
+    }
+    }
 `
 export const Navigation = styled.nav`
     ul{
@@ -37,6 +43,29 @@ export const Navigation = styled.nav`
             }
         }
     }   
+    @media(max-width:1000px){
+        display: none;
+    }
+`
+
+export const MobileContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+`
+export const MenuMobileIcon = styled.button`
+ .icon{
+        font-size: 2rem;
+        display: none;
+        cursor: pointer;
+        color: ${props =>props.theme.primary};
+    }
+    @media(max-width:1000px){
+        .icon{
+            display: block;
+        }
+    }
+
 `
 
 export const SwitchButton = styled.button`
