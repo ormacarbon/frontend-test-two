@@ -21,7 +21,7 @@ function Card(props) {
       </Frame>
       <Content>
         <Header>
-          <div>Nº&nbsp;{props.id}</div>
+          <div>Nº&nbsp;{props.id.toString().padStart(3, "0")}</div>
           <span>{props.name}</span>
         </Header>
         <Types>

@@ -31,7 +31,7 @@ function ExpandedCard(props) {
         <Header>
           <div className="title-container">
             <p>
-              {props.name} <span>Nº&nbsp;{props.id}</span>
+              {props.name} <span>Nº&nbsp;{props.id.toString().padStart(3, "0")}</span>
             </p>
           </div>
           <Types>

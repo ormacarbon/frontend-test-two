@@ -15,7 +15,7 @@ function SmallCard(props) {
       <Content>
         <Header>
           <span>{props.name}</span>
-          <div>Nº&nbsp;{props.id}</div>
+          <div>Nº&nbsp;{props.id.toString().padStart(3, "0")}</div>
         </Header>
         <Types>
           {props.type && props.type.map((type, id) => <TypeLabel key={type} type={props.type[id]}/>)}
