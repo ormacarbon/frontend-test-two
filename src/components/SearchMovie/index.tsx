@@ -2,6 +2,8 @@ import * as z from 'zod';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Container, Input } from './styles';
+import { useContext } from 'react';
+import { LikesContext } from '../../context/FavoritesContext';
 
 const searchFormSchema = z.object({
     query: z.string(),
@@ -14,12 +16,16 @@ export function SearchMovie(){
     resolver: zodResolver(searchFormSchema),
   });
 
+  const { getMovies, getQuery } = useContext(LikesContext)
+
   async function handleSearchPost(data: SearchFormInput){
     await getMovies(data.query);
+    await getQuery(data.query);
   }
+
   return(
     <Container onSubmit={handleSubmit(handleSearchPost)}>
-        <Input type="text" placeholder="Buscar Conteúdo" {...register("query")} />
+        <Input type="text" placeholder="Buscar por um filme" {...register("query")} />
     </Container>
   )
 }

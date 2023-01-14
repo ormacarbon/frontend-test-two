@@ -1,10 +1,18 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 
 export interface IMovie{
   id: number;
   title: string;
   votes: number;
   imageUrl: string;
+  vote_average: number;
+  backdrop_path: string;
+  tagline: string;
+  revenue?: number;
+  release_date: string;
+  homepage: string;
+  overview: string;
 }
 
 interface LikeContextProviderProps {
@@ -13,6 +21,9 @@ interface LikeContextProviderProps {
 
 interface LikeContextData {
   likedItems:  IMovie[];
+  query: string;
+  getQuery: (query?: string) => void;
+  getMovies: (query: string) => void;
   addMovieToLiked: (movie: IMovie) => void;
   checkIfMovieAlreadyInLiked: (movie: number) => boolean;
   removeMovieFromLiked: (movieId: number) => void;
@@ -23,6 +34,7 @@ const MOVIES_STORAGE_KEY = "Movies:likedItems";
 export const LikesContext = createContext({} as LikeContextData);
 
 export function LikeContextProvider({ children }: LikeContextProviderProps) {
+  const router = useRouter();
   const [likedItems, setlikedItems] = useState<IMovie[]>(() => {
     if (typeof window !== 'undefined') {
       const storedMovieItems = localStorage.getItem(MOVIES_STORAGE_KEY);
@@ -32,6 +44,8 @@ export function LikeContextProvider({ children }: LikeContextProviderProps) {
     }
     return []
   });
+
+  const [query, setQuery] = useState('');
 
   function addMovieToLiked(movie: IMovie) {
     setlikedItems((state) => [...state, movie]);
@@ -45,11 +59,19 @@ export function LikeContextProvider({ children }: LikeContextProviderProps) {
     return likedItems.some((movie) => movie.id === movieId);
   }
 
+  function getMovies(query?: string){
+    return router.push(`/search?q=${query}`);
+  }
+
+  function getQuery(query?: string){
+    return setQuery(query);
+  }
+
   useEffect(() => {
     localStorage.setItem(MOVIES_STORAGE_KEY, JSON.stringify(likedItems));
   }, [likedItems]);
 
   return (
-    <LikesContext.Provider value={{ likedItems,  addMovieToLiked, checkIfMovieAlreadyInLiked, removeMovieFromLiked }}>{children}</LikesContext.Provider>
+    <LikesContext.Provider value={{ likedItems, query, getQuery, getMovies,  addMovieToLiked, checkIfMovieAlreadyInLiked, removeMovieFromLiked }}>{children}</LikesContext.Provider>
   );
 }

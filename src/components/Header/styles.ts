@@ -27,4 +27,9 @@ export const HeaderContent = styled.div`
     font-weight: bold;
     text-decoration: none;
   }
+
+  @media (max-width: 768px){
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 `
