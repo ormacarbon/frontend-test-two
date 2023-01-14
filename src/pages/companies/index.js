@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import LoaderComponent from "../../Components/Loader";
-import Pagination from "../../Components/Pagination";
 import { SectionTitle } from "../../Components/SectionTitle";
 import SEO from "../../Components/SEO";
 import { useApi } from "../../hooks/useApi";
-import { CompaniesContainer, Table, Tbody, Thead } from "./styles";
+import { CompaniesContainer, Table, Tbody, Thead } from "../../styles/companies";
 
 export default function Companies() {
   const url = "companies/public_treasury/bitcoin"

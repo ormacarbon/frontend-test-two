@@ -2,7 +2,7 @@ import React from "react";
 import { NftDetailService } from "../../classes";
 import NftDetails from "../../Components/NftDetail";
 import SEO from "../../Components/SEO";
-import { Nft, NftDetailContainer, NftInfo } from "./styles";
+import { NftDetailContainer } from "../../styles/nftDetail";
 
 export async function getServerSideProps({ params }) {
   const nft = await NftDetailService.getNft(params.id);

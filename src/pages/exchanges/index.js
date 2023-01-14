@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Input } from '../../Components/SearchComponent/styles'
 import {useApi} from '../../hooks/useApi'
 import ExchangesList from '../../Components/Exchanges'
-import { Container, ExchangesBox } from './styles'
+import { Container, ExchangesBox } from '../../styles/exchanges'
 import { InputBox } from '../../styles/GlobalStyle'
 import debounce from 'lodash.debounce'
 import LoaderComponent from "../../Components/Loader";

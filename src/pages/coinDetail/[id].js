@@ -1,5 +1,5 @@
 import React from "react";
-import { AboutContainer, CoinDetail } from "./styles";
+import { AboutContainer, CoinDetail } from "../../styles/coinDetail";
 import BackBtn from "../../Components/BackBtn";
 import SEO from "../../Components/SEO";
 import { CoinService } from "../../classes";

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState,useEffect } from "react";
 import { useApi } from "../../hooks/useApi";
-import { NftItem, NftsContainer, Text } from "./styles";
+import { NftItem, NftsContainer, Text } from "../../styles/nfts";
 import { SectionTitle } from "../../Components/SectionTitle/index";
 import SEO from "../../Components/SEO";
 import Pagination from "../../Components/Pagination";

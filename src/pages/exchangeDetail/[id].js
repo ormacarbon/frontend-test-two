@@ -6,7 +6,7 @@ import {
   NewsText,
   TickerContainer,
   Tickers,
-} from "./styles";
+} from "../../styles/exchangeDetail";
 import moment from "moment";
 import { SectionTitle } from "../../Components/SectionTitle";
 import SEO from "../../Components/SEO";
