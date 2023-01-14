@@ -49,6 +49,7 @@ export const StyledNavbar = styled.header`
     img {
       width: 25px;
     }
+
     .button-search {
       display: flex;
       align-items: center;
@@ -57,13 +58,16 @@ export const StyledNavbar = styled.header`
       width: 80px;
       background-color: ${({ theme }) => theme.backgroundLevel1};
     }
+
     .button-search:hover {
       background-color: lightgrey;
     }
+
     .button-search:active {
       background-color: darkgray;
     }
   }
+  
   .search-input {
     width: 350px;
     padding: 0 20px;
@@ -73,6 +77,7 @@ export const StyledNavbar = styled.header`
     border: none;
     display: flex;
     align-self: center;
+    color: ${({ theme }) => theme.textColorBase};
   }
 
   .search-input:focus {
@@ -130,4 +135,6 @@ export const StyledNavbar = styled.header`
   input:checked + .slider:before {
     transform: translateX(1.3em);
   }
+
+
 `;

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { StyledNavbar } from "./styles";
 import Link from "next/link";
 import { GlobalContext } from "../../../contexts/state";
@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <StyledNavbar>
+    <StyledNavbar mode={context.mode}>
       <Link href="/">
         <button className="button-home" onClick={clearSearch}>
           Home

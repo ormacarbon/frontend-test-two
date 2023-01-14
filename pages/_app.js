@@ -34,3 +34,13 @@ export default function _App(props) {
     </ProvideWrapper>
   );
 }
+
+export async function getServerSideProps(context) {
+  const cookies = parseCookies(context)
+  console.log('[cookies]', cookies, cookies.USER_THEME)
+  return{
+    props: {
+      USER_THEME: cookies.USER_THEME
+    }
+  }
+}
