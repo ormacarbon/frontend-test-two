@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import * as C from './style'
 
 const gender = {
   male: 'Masculino',
@@ -48,21 +49,23 @@ const Collaborators = () => {
   }
 
   return (
-    <div>
-      <select value={itemsPerPage} onChange={handleItemsPerPage}>
-        <option>15</option>
-        <option>25</option>
-        <option>50</option>
-        <option>100</option>
-      </select>
+    <C.ContainerCollaborators>
+      <C.ContainerSelects>
+        <C.Select value={itemsPerPage} onChange={handleItemsPerPage}>
+          <option>15</option>
+          <option>25</option>
+          <option>50</option>
+          <option>100</option>
+        </C.Select>
 
-      <select value={selectedGender} onChange={handleGenderChange}>
-        <option value=''>Selecione um gênero</option>
-        <option>Masculino</option>
-        <option>Feminino</option>
-      </select>
+        <C.Select value={selectedGender} onChange={handleGenderChange}>
+          <option value=''>Selecione um gênero</option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+        </C.Select>
+      </C.ContainerSelects>
 
-      <table>
+      <C.Table>
         <thead>
           <tr>
             <th>Nome Completo</th>
@@ -79,11 +82,13 @@ const Collaborators = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-      <button onClick={handlePrevious}  disabled={currentPage === 0}>Anterior</button>
-      Pagina {currentPage + 1}
-      <button onClick={handleNext} disabled={(currentPage * itemsPerPage) + itemsPerPage >= filteredPeople.length}>Próxima</button>
-    </div>
+      </C.Table>
+      <C.ContainerButtons>
+        <button onClick={handlePrevious}  disabled={currentPage === 0}>Anterior</button>
+        Pagina {currentPage + 1}
+        <button onClick={handleNext} disabled={(currentPage * itemsPerPage) + itemsPerPage >= filteredPeople.length}>Próxima</button>
+      </C.ContainerButtons>
+    </C.ContainerCollaborators>
   )
 }
 
