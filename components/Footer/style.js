@@ -11,4 +11,8 @@ export const FooterDiv = styled.footer `
     justify-content: center;
     align-items: center;
 
+    @media (max-width: 300px) {
+        font-size: .8em;
+    }
+
 `

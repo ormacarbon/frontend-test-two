@@ -46,6 +46,7 @@ export const CardCharacter = styled.div`
 
   > img {
     max-width: 100%;
+    height: auto;
     border-bottom: 2px solid #000;
     border-radius: 2px;
   }

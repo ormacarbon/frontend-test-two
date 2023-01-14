@@ -22,7 +22,7 @@ export default function Pagination({ info,pageNumber, setPageNumber }) {
         breakLabel="..."
         nextLabel="Next"
         onPageChange={handlePageChange}
-        pageCount={info?.pages}
+        pageCount={Math.ceil(info?.pages)}
         previousLabel="Prev"
         renderOnZeroPageCount={null}
       />

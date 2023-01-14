@@ -6,7 +6,7 @@ export default function Footer () {
     return (
 
         <FooterDiv>
-            <p>Universe of Rick and Morty  <span>&copy; 2023</span></p>
+            <p>The Rick and Morty universe  <span>&copy; 2023</span></p>
         </FooterDiv>
 
     )

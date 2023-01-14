@@ -7,6 +7,7 @@ export const FormContainer = styled.form `
     justify-content: center;
     align-items: center;
     margin-top: 5em;
+    margin-bottom: 2em;
     
     input {
         outline: none;

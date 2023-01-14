@@ -55,6 +55,7 @@ export const CharacterInfo = styled.div `
         border: 1px solid;
         border-color: ${(props) => props.theme.colors.borderColor};
         border-radius: 5px;
+        max-width: 100%;
     }
 
     @media (max-width: 699px) {

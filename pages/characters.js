@@ -8,9 +8,6 @@ import { useEffect, useState } from "react";
 //? Styled components
 import { CharactersContainer } from "../styles/characterStyles";
 
-import { useQuery } from "react-query";
-
-import axios from "axios";
 
 //! API CALL
 // export async function getServerSideProps() {
@@ -34,12 +31,8 @@ export default function Characters() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
+  const [isFetching, setIsFetching] = useState(true)
 
-
-  // const { data } = useQuery('characters', async () => {
-  //   const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}`)
-  //   return res.results
-  // })
 
 
   useEffect(() => {
@@ -48,9 +41,10 @@ export default function Characters() {
     .then((res) => res.json())
     .then((res) => {
       setResults(res.results)
-      setUnfo(res.info)
+      setInfo(res.info)
     })
     .catch((err) => console.log(err))
+    .finally(() => { setIsFetching(false) })
   }, [search, pageNumber, status])
 
 
@@ -58,18 +52,20 @@ export default function Characters() {
     <CharactersContainer>
 
       {/* SEARCH AND FILTER */}
-      <Search search={search} setSearch={setSearch}/>
-      <FilterButton setStatus={setStatus}/>
+      <Search search={search} setSearch={setSearch} setStatus={setStatus}/>
+      {info?.count && (<FilterButton setStatus={setStatus}/>)}
+
+      {/* RESULTS FOUND DISPLAY */}
+      {!info?.count ? <h4>No Results found</h4> : <h4>{info?.count} results found</h4>}
+
 
       {/* CHARACTERS CARDS */}
-      {!results ? (
-        <p>No results found...</p>
-      ) : (
-        <Card characters={results}  />
-      )}
+      {isFetching && <p>Loading...</p>}
+      {results && (<Card characters={results}  />)}
 
       {/* PAGINATION COMPONENT */}
-      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} info={info} />
+      {info?.count && (<Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} info={info} />)}
+      
     </CharactersContainer>
   );
 }

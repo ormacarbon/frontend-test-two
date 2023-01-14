@@ -7,7 +7,7 @@ import { CardCharacter,
    StatusDiv, 
    NameDiv 
   } from "./style";
-import { StatusBadge } from "../../styles/singeCharacter.style";
+import { StatusBadge } from "../../components/SingleCharacter/singeCharacter";
 
 export default function Card({ characters }) {
   return (

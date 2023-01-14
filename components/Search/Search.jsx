@@ -3,7 +3,7 @@ import { DebounceInput } from "react-debounce-input"
 //? Styled
 import { FormContainer } from "./style"
 
-export default function Search({ search, setSearch }) {
+export default function Search({ setSearch, setStatus }) {
 
   // Block reload page
   const handleSubmit = (e) => {
@@ -13,6 +13,7 @@ export default function Search({ search, setSearch }) {
   // Set user search input 
   const handleChangeSearch = (e) => {
     setSearch(e.target.value)
+    setStatus('')
   }
 
   return (

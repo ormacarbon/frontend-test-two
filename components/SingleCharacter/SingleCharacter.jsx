@@ -11,9 +11,11 @@ import {
   Title,
   StatusBadge,
   InfoResult,
-} from "../../styles/singeCharacter.style";
+} from "./singeCharacter";
 
 export default function SingleCharacter({ character }) {
+
+
   return (
     <DivCard>
       <NameDiv>
@@ -24,7 +26,7 @@ export default function SingleCharacter({ character }) {
           src={character.image}
           width={250}
           height={250}
-          alt={character.name}
+          alt='Character name'
         />
         <InfoContainer>
           <Info>
