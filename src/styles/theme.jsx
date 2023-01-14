@@ -22,6 +22,7 @@ button {
 export const theme = {
   colors: {
     redCrayola: "#FA174B",
+    tangerine: "#fb8500",
     minionYellow: "#FFE45C",
     blueJeans: "#00a6fb",
     greenBlueCrayola: "#0582ca",

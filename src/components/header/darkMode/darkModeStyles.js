@@ -7,7 +7,7 @@ export const DarkModeComponent = styled.div`
       ? props.theme.colors.cadetBlueCrayola
       : props.theme.colors.white};
   border-radius: 20px;
-  padding: 3px;
+  padding: 2px 3px;
   margin-left: auto;
   transition: 0.2s;
   cursor: pointer;
@@ -22,7 +22,7 @@ export const DarkModeComponent = styled.div`
         ? props.theme.colors.prussianBlue
         : props.theme.colors.minionYellow};
     color: ${(props) =>
-      props.dark ? props.theme.colors.white : props.theme.colors.sonicSilver};
+      props.dark ? props.theme.colors.white : props.theme.colors.tangerine};
     border-radius: 50%;
     position: relative;
     transform: ${(props) =>

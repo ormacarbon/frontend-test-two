@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,11 +7,14 @@ import { themeContext } from "../../context/themeContext";
 import { DarkMode } from "./darkMode/darkMode";
 import { Search } from "./search/search";
 
-import { HeaderComponent } from "./HeaderStyle";
+import { HeaderComponent, MenuSidebarComponent } from "./HeaderStyle";
+import { useFetch } from "../../hooks/useFetch";
 
 export function Header() {
-  const [darkTheme, setDarkTheme] = useContext(themeContext);
   const [menu, setMenu] = useState(false);
+  const [darkTheme, setDarkTheme] = useContext(themeContext);
+
+  const { data, loading, error } = useFetch("genre/movie/list", null);
 
   return (
     <>
@@ -43,6 +46,27 @@ export function Header() {
           </div>
         </div>
       </HeaderComponent>
+
+      <MenuSidebarComponent className={menu ? "active" : ""} dark={darkTheme}>
+        <Search darkTheme={darkTheme} />
+
+        <div className="sidebar-link">
+          <Link href="">Trending</Link>
+        </div>
+        <div className="sidebar-link">
+          <Link href="">Discover</Link>
+        </div>
+        <div className="sidebar-link">
+          <h2>Genres</h2>
+          {data?.genres.map((genre) => {
+            return (
+              <Link key={genre.id} href="">
+                {genre.name}
+              </Link>
+            );
+          })}
+        </div>
+      </MenuSidebarComponent>
     </>
   );
 }

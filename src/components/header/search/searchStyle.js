@@ -19,6 +19,7 @@ export const SearchComponent = styled.div`
     border: 0;
     outline: 0;
     padding: 10px;
+    font-size: ${(props) => props.theme.fontSizes.fs_small};
 
     &::placeholder {
       color: ${(props) =>
