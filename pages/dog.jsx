@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DogCard from '../components/dogCard';
+import NavBar from '../components/navBar';
 import { getDogFact } from "../services/api";
 
 function Dog() {
@@ -23,6 +24,7 @@ function Dog() {
   if (fact === undefined) {
     return (
       <>
+      <NavBar />
         {console.log('1')}
         Still loading...
       </>
@@ -30,6 +32,7 @@ function Dog() {
   }
   return (
     <>
+    <NavBar />
       {console.log(fact)}
       <h1>Dog Page</h1>
       <DogCard { ...fact}/>

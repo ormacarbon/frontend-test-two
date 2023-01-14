@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CatCard from '../components/catCard';
+import NavBar from '../components/navBar';
 import { getCatMessage } from '../services/api';
 
 function Cat() {
@@ -21,6 +22,7 @@ function Cat() {
 
   return (
     <>
+    <NavBar />
       <h1>Cat Page</h1>
       <form> 
           <label htmlFor="message">Message:</label><br />
