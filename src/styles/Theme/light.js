@@ -15,10 +15,11 @@ export const light = {
     button: {
       bg: "#F0F1F3",
       text: "#677483",
+      hoverBg: "#e7e7e7",
     },
 
     input: {
-      bg: "#FAFAFA",
+      bg: "#F5F5F5",
       placeholder: "#677483",
       text: "#171C24",
     },

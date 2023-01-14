@@ -15,6 +15,7 @@ export const dark = {
     button: {
       bg: "#262D38",
       text: "#8B99AA",
+      hoverBg: "#363e4b",
     },
 
     input: {
