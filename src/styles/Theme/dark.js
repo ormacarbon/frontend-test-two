@@ -41,6 +41,6 @@ export const dark = {
       border: "#2e333a",
     },
 
-    imgBackground: "#1e232b",
+    imgBackground: "#262d38",
   },
 };

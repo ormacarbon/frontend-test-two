@@ -42,6 +42,6 @@ export const light = {
       border: "#e6e6e6",
     },
 
-    imgBackground: "#f7f7f7",
+    imgBackground: "#F0F1F3",
   },
 };
