@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const ContainerHeader = styled.header`
-  width: 100vw;
+  width: 100%;
   background-color: #FFF;
   height: 100px;
   display: flex;
   align-items: center;
+  
 `
 
 export const HeaderNavigation = styled.nav`
