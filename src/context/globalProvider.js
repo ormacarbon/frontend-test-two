@@ -1,12 +1,13 @@
 import { globalContext } from "./globalContext";
 import { useState } from "react";
-import { getWeather } from "../services/api";
+import { getWeather, getForecast } from "../services/api";
 import light from "../styles/theme/light";
 import dark from "../styles/theme/dark";
 import moment from "moment";
 
 export const GlobalProvider = ({ children }) => {
   const [weather, setWeather] = useState({});
+  const [forecast, setForecast] = useState({});
   const [user, setUser] = useState({
     email: '',
     password: ''
@@ -17,7 +18,12 @@ export const GlobalProvider = ({ children }) => {
   const currentWeather = async (city) => {
     const currentWeather = await getWeather(city);
     setWeather(currentWeather);
-    console.log(weather);
+  }
+
+  const forecastGet = async (city) => {
+    const forecastA = await getForecast(city);
+    setForecast(forecastA);
+    console.log(forecastA);
   }
 
   const validateUserFields = (email, password) => {
@@ -34,6 +40,7 @@ export const GlobalProvider = ({ children }) => {
   const selectCity = (city) => {
     setCity(city);
     currentWeather(city);
+    forecastGet(city);
   };
 
   const weekDay = moment().format('dddd');
@@ -51,7 +58,9 @@ export const GlobalProvider = ({ children }) => {
     setCity,
     selectCity,
     weekDay,
-    hour
+    hour,
+    forecast,
+    forecastGet,
   }
 
   return (

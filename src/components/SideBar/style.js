@@ -24,6 +24,7 @@ export const InputSearchDiv = styled.div`
 
   input {
     border: none;
+    border-radius: 5px 0 0 5px;
     outline: none;
     padding: 0.75rem 0.5rem;
     width: 80%;
@@ -72,6 +73,7 @@ export const WeatherSideBarStyle = styled.div`
     }
 
     h3 {
+      color: ${ props => props.theme.colors.fontSideBarTemperature };
       font-size: 4rem;
       font-weight: 500;
       text-align: start;
@@ -80,6 +82,7 @@ export const WeatherSideBarStyle = styled.div`
 
     p {
       border-bottom: 1px solid #d8d8d8;
+      color: ${ props => props.theme.colors.fontSideBarTemperature };
       font-size: 1rem;
       font-weight: 500;
       padding-bottom: 2rem;
@@ -104,13 +107,14 @@ export const WeatherSideBarStyle = styled.div`
 
       p {
         border: none;
+        color: ${ props => props.theme.colors.fontSideBarTemperature };
         font-size: 1rem;
         font-weight: 500;
         padding: 0;
       }
     }
 
-    div {
+    div:last-child {
       img {
         filter: ${ props => props.theme.colors.humidityIcon };
       }
@@ -121,6 +125,7 @@ export const WeatherSideBarStyle = styled.div`
 export const Footer = styled.footer`
   align-items: center;
   border: none;
+  color: ${ props => props.theme.colors.fontSideBarTemperature };
   display: flex;
   justify-content: flex-start;
   margin-top: auto;
@@ -130,6 +135,7 @@ export const Footer = styled.footer`
 
   img {
     cursor: pointer;
+    filter: ${ props => props.theme.colors.humidityIcon };
     height: auto;
     margin-right: 0.5rem;
     width: 1.5rem;

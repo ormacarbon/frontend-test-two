@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
   * {
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
   }
@@ -10,7 +11,6 @@ export default createGlobalStyle`
   body {
     background: ${props => props.theme.colors.background};
     color: #333;
-    font-family: 'Roboto', sans-serif;
     font-size: 14px;
   }
 
@@ -19,7 +19,7 @@ export default createGlobalStyle`
     height: 2rem;
     width: 4rem;
     top: 2rem;
-    right: 10%;
+    right: 1%;
     z-index: 10;
   }
 `;

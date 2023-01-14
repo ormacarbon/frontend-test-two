@@ -16,6 +16,8 @@ export function SwitchTheme({ toggleTheme }) {
       height={15}
       width={50}
       handleDiameter={25}
+      offHandleColor={ '#222' }
+      onHandleColor={ '#f5f5f5' }
       offColor={shade(0.15, colors.primary)}
       onColor={shade(0.15, colors.primary)}
     />
