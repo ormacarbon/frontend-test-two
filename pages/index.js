@@ -71,8 +71,8 @@ export default function Home() {
     <StyledIndex>
       <Navbar />
       <section className="container-pokemons">
-        {searchResults.length > 0
-          ? searchResults.map((pokemon) => {
+        {searchResults.length > 0 ?
+          searchResults.map((pokemon) => {
               return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
             })
           : filteredPokemonList().map((pokemon) => {

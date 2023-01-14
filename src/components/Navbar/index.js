@@ -18,7 +18,8 @@ export default function Navbar() {
     const foundPokemons = allPokelist.filter((pokemon) =>
       pokemon.name.includes(searchValue)
     );
-    setSearchResults(foundPokemons);
+    foundPokemons > 0 ? 
+    setSearchResults(foundPokemons) : alert("No Pokemon Found")
   };
 
   const clearSearch = () => {
