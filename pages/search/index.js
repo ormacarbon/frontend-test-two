@@ -5,6 +5,7 @@ import { SearchPokemons } from "./styles";
 
 export default function Search() {
   const [pokemonSearched, setPokemonSearched] = useState("");
+  const [showPokemon, setShowPokemon] = useState("");
 
   async function handlePokemonSearch() {
     try {
@@ -14,8 +15,10 @@ export default function Search() {
         (pokemon) => pokemon.name === pokemonSearched
       );
 
+      setPokemonSearched(pokemon);
+
       if (pokemon !== undefined) {
-        setPokemonSearched(pokemon);
+        setShowPokemon(pokemon);
       } else {
         alert("Pokemon não encontrado.");
       }
@@ -39,7 +42,7 @@ export default function Search() {
         />
         <button onClick={handlePokemonSearch}>Search</button>
       </div>
-      {pokemonSearched && <PokemonResult pokemonSearched={pokemonSearched} />}
+      {showPokemon && <PokemonResult pokemonSearched={pokemonSearched} />}
     </SearchPokemons>
   );
 }
