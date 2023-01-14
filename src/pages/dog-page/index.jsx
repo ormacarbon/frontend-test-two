@@ -59,7 +59,7 @@ export default function DogPage(props) {
                 }
             </section>
 
-            <article className={styles.Article}>
+            <article>
                 <button
                     onClick={(e) => {
                         fetchData()
