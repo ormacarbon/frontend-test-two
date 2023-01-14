@@ -3,11 +3,14 @@ import { useState } from "react"
 import SideMenu from '../components/side-menu'
 import CatPage from '../cat-page'
 import UsersPage from '../users-page'
+import { useContext } from 'react'
+import Theme from '@/pages/contexts/contexts'
 
 export default function RootPage(props) {
 
     const [select, setSelect] = useState(0)
-    const a = true
+    const a = false
+    const b = useContext(Theme)
 
     const Content = () => {
 

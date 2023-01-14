@@ -1,34 +1,17 @@
 .BlackRoot{
-    display: flex;
-    display: inline-flexbox;
-    width: 100%;
-    background-color: rgb(12, 16, 27);
-    .menu-box{
-    }
+    background-color: rgb(10, 14, 31);
+}
+
+.RootMainBox{
+    background-color: rgb(255, 255, 255);
+}
+.ContentBox{
+    margin-left: 250px;
+    height: 100vh;
+    overflow-y: scroll;
+}
+@media screen and (orientation: portrait) {
     .ContentBox{
-         margin-left: 250px;
-         width: 100%;
+        margin-left: 0;
     }
 }
-.RootMainPage{
-    display: flex;
-    display: inline-flexbox;
-    width: 100%;
-   
-    .menu-box{
-    }
-    .ContentBox{
-         margin-left: 250px;
-         width: 100%;
-    }
- }
- 
- @media screen and (orientation: portrait) {
-     .RootMainPage{
-         flex-direction: column;
-         .ContentBox{
-             margin-left: 0;
-         }
-     }
-     
- }
