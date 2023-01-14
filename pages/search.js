@@ -17,12 +17,12 @@ const StySearch = styled.div`
   display: flex;
   justify-content: center;
   font-size: 6rem;
-  margin-top: 100px;
+  margin-top: 60px;
 `
 const StyPut = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 30px;
   align-items: center;
   
   
@@ -50,12 +50,26 @@ const DivIn = styled.div`
 `
 
 const DivCoins = styled.div`
-  
-  display: flex;
-  align-items: center;
-  overflow-x: scroll;
+  margin-top: 60px;
+  margin-left: 6px;
   
   
+  
+  
+`
+
+const CardCoins = styled.div`
+  margin-left: 45px;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 66px;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  &:hover {
+    transform: scale(1.1, 1.1);
+  }
+
+  
+
 `
 
 export default function Search() {
@@ -111,9 +125,9 @@ export default function Search() {
 
       <DivCoins>
         { data.map( coin => (
-          <div>
+          <CardCoins>
             <Cardzin src={coin.large} nome={coin.name} />   
-          </div>   
+          </CardCoins>   
         ))}     
       </DivCoins>
       

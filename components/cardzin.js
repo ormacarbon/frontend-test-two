@@ -15,7 +15,7 @@ const Head = styled.div`
 `
 const Rod = styled.div`
   background: #FFFFFF;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.08);
   border-radius: 0px 0px 10px 10px;
   padding-top: 40px;
   padding-bottom: 40px;

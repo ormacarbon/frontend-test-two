@@ -13,7 +13,9 @@ const StyledButton = styled.button`
   &:hover {
     background: #F6F9FE;
     color: #174ea6;
+    transform: scale(1.1, 1.1);
   }
+  
   &:focus {
     color: palevioletred;
     outline: none;
