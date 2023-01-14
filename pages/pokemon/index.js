@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/api";
 import { Pokemons } from "./styles.js";
-import PokemonCard from "../../components/PokemonCard";
+import PokemonCard from "./components/PokemonCard";
 import Pagination from "./components/pagination";
 
 export default function Home() {
@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       <Pokemons>
-        <PokemonCard pokemons={currentPokemons} />;
+        <PokemonCard pokemons={currentPokemons} />
       </Pokemons>
 
       <Pagination

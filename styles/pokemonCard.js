@@ -17,4 +17,8 @@ export const Pokemon = styled.div`
     color: ${(props) => props.theme.buttonColor};
     text-decoration: none;
   }
+
+  @media (max-width: 700px) {
+    padding: 3rem 3rem;
+  }
 `;
