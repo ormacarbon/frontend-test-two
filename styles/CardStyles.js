@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-export const GlobalCard = styled.section `
-background-color: black;
+export const GlobalCard = styled.section`
+background-color: ${props => props.darkMode ? 'black' : '#E5E4E2'};
 box-shadow: 0px 0.25rem 0.60rem 0 #E50914;
 width: 25rem;
 height: 16rem;
@@ -10,7 +10,7 @@ border-radius: 0.75rem;
 display: flex;
 `
 
-export const MovieInfoArea = styled.div `
+export const MovieInfoArea = styled.div`
 width: 50%;
 height: 100%;
 display: flex;
@@ -20,47 +20,48 @@ padding: 1rem;
 padding-top: 1vh;
 `
 
-export const MovieName = styled.p `
+export const MovieName = styled.p`
 font-family: 'Inter', sans-serif;
 font-size: 1.5rem;
-color: white;
+color: ${props => props.darkMode ? 'white' : 'black'};
 font-weight: 700;
 `
 
-export const TypeArea = styled.div `
+export const TypeArea = styled.div`
 width: 100%;
 height: 4rem;
 display: flex;
 flex-wrap: wrap;
 gap: 0.5rem;
 margin: 0.25rem 0;
-color:white;
+color: ${props => props.darkMode ? 'white' : 'black'};
 `
-export const NoteArea = styled.div `
+export const NoteArea = styled.div`
 width: 100%;
 height: 2rem;
 display: flex;
 flex-wrap: wrap;
 gap: 0.5rem;
 padding-top: 0.25rem;
-color:white;
+color: ${props => props.darkMode ? 'white' : 'black'};
 `
-export const YearArea = styled.div `
+export const YearArea = styled.div`
 width: 100%;
 height: 2.5rem;
 display: flex;
 gap: 0.5rem;
 padding-top: 0.5rem;
-color:white;
+color: ${props => props.darkMode ? 'white' : 'black'};
 `
 
-export const Year = styled.p `
+export const Year = styled.p`
 color: #ffff;
 font-weight: 700;
 font-size: 0.85rem;
+color: ${props => props.darkMode ? 'white' : 'black'};
 `
 
-export const PosterArea = styled.div `
+export const PosterArea = styled.div`
 width: 50%;
 height: 100%;
 display: flex;

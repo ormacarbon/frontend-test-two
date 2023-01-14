@@ -2,26 +2,32 @@ import {GlobalCard, MovieInfoArea, MovieName, TypeArea, NoteArea, YearArea, Year
 import {getMovies} from '../utils/PosterMovies'
 import {getSeries} from '../utils/PosterSeries'
 import {getPersons} from '../utils/PosterPersons'
+
+import {useContext} from 'react'
+import {Globalcontext} from '../context/GlobalContext'
+
 import Image from 'next/image'
 
 export function Card (props) {
 
+    const context = useContext(Globalcontext)
+    const {darkMode} = context
 
     return (
         <>
-        <GlobalCard>
+        <GlobalCard darkMode={darkMode} >
             <MovieInfoArea>
-            <MovieName>{props.content.title || props.content.original_name || props.content.name}</MovieName>
-            <TypeArea>
+            <MovieName darkMode={darkMode} >{props.content.title || props.content.original_name || props.content.name}</MovieName>
+            <TypeArea darkMode={darkMode} >
                 {props.content.place_of_birth || 
                 props.content.genres.map((genre)=> {
                     return <p>{genre.name}</p>
                 })}
             </TypeArea>
-            <NoteArea> {location.pathname === '/Persons' ? <p>Popularity: {props.content.popularity}</p> :
+            <NoteArea darkMode={darkMode} > {location.pathname === '/Persons' ? <p>Popularity: {props.content.popularity}</p> :
             <p>Note: {props.content.vote_average}</p>} </NoteArea>
-            <YearArea>
-            <Year>{props.content.tagline || props.content.birthday}</Year>
+            <YearArea darkMode={darkMode} >
+            <Year darkMode={darkMode} >{props.content.tagline || props.content.birthday}</Year>
             </YearArea>
             </MovieInfoArea>
 

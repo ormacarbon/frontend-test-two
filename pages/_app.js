@@ -11,10 +11,11 @@ function MyApp({ Component, pageProps }) {
   const [movies, setMovies] = useState([])
   const [series, setSeries] = useState([])
   const [persons, setPersons] = useState([])
+  const [darkMode, setDarkMode] = useState(true)
 
   const [searchMovies, setSearchMovies] = useState("")
   const [searchSeries, setSearchSeries] = useState("")
-  const [searchActors, setSearchActors] = useState("")
+  const [searchPersons, setSearchPersons] = useState("")
 
   //movies requisition
   const getMoviesData = () => {
@@ -58,7 +59,6 @@ function MyApp({ Component, pageProps }) {
     for (let id of idPersons) {
       axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=b49965bfa5c392b42cbfd61d9a586d18`)
         .then((resp) => {
-          console.log(resp.data)
           PersonsAux.push(resp.data)
           setPersons(PersonsAux)
         })
@@ -82,15 +82,17 @@ function MyApp({ Component, pageProps }) {
     setSearchMovies,
     searchSeries,
     setSearchSeries,
-    searchActors,
-    setSearchActors
+    searchPersons,
+    setSearchPersons,
+    darkMode,
+    setDarkMode
   }
 
   return (
     <>
       <GlobalStyles />
 
-      <Container>
+      <Container darkMode={darkMode}>
         <Globalcontext.Provider value={context}>
           <MainContainer>
             <Component {...pageProps} />

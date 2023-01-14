@@ -7,7 +7,7 @@ import { GlobalPersonsPage } from '../styles/PagesStyles'
 export default function Persons() {
 
     const context = useContext(Globalcontext)
-    const { persons } = context
+    const { persons, searchPersons } = context
 
 
     return (
@@ -18,12 +18,15 @@ export default function Persons() {
 
 
             <GlobalPersonsPage>
-                {persons.map((person)=> {
-                    return <Card 
-                    key={person.id}
-                    content={person}
-                    />
-                })}
+                {persons.filter((person) => {
+                    return person.name.toLowerCase().includes(searchPersons)
+                })
+                    .map((person) => {
+                        return <Card
+                            key={person.id}
+                            content={person}
+                        />
+                    })}
             </GlobalPersonsPage>
         </>
     )
