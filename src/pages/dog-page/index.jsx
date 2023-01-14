@@ -9,50 +9,53 @@ export default function DogPage(props) {
 
     const [loading, setLoading] = useState(false)
     const [dog, setDog] = useState(null)
-    const {theme, toggleTheme} = useContext(Theme)
+    const { theme, toggleTheme } = useContext(Theme)
 
-    async function fetchData (){
+    async function fetchData() {
         setLoading(true)
-        try{
+        try {
             const response = await fetch('https://random.dog/woof.json?filter=mp4%2Cwebm');
             const json = await response.json();
             setDog(json)
         }
-        catch (e){
+        catch (e) {
             setDog(null)
         }
-        finally{
+        finally {
             setLoading(false)
         }
     }
 
     useEffect(() => {
         fetchData()
-    },[])
+    }, [])
 
-    return(
+    return (
         <div className={styles.DogMainBox}>
-            <article className={theme? styles.Head: styles.BlackHead}>
+            <article className={theme ? styles.Head : styles.BlackHead}>
                 <h1 className={styles.Dark}>Veja aqui doguinhos bonitinhos :)</h1>
             </article>
-            
+
             <section>
                 {
-                    loading?
-                    <Audio
-                        height="80"
-                        width="80"
-                        radius="9"
-                        color="#2F2F3B"
-                        ariaLabel="loading"
-                        wrapperStyle
-                        wrapperClass
-                    />
-                    :
-                    dog === null?
-                    <h1>Sem doguinho ainda :(</h1>
-                    :
-                    <img src={dog.url} alt="" />
+                    loading ?
+                        <div className={styles.LoadingBox}>
+                            <Audio
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color="#2F2F3B"
+                                ariaLabel="loading"
+                                wrapperStyle
+                                wrapperClass
+                            />
+                        </div>
+
+                        :
+                        dog === null ?
+                            <h1>Sem doguinho ainda :(</h1>
+                            :
+                            <img src={dog.url} alt="" />
                 }
             </section>
 

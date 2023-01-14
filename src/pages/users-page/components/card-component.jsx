@@ -2,7 +2,7 @@
 import styles from '../../../styles/users-page/card-component.module.scss'
 import code from "../../../assets/code-logo.png"
 import { useContext } from 'react'
-import Theme from '@/pages/contexts/contexts'
+import Theme from '../../contexts/contexts'
 
 export default function CardComponent(props){
     const {theme, toggleTheme} = useContext(Theme)
@@ -11,7 +11,7 @@ export default function CardComponent(props){
         <nav className={styles.CardComponentMainBox}>
             <section className={styles.CardContentBox}>
                 
-                <img className={styles.image} src={props.item.picture.large} alt="" />
+                <img className={styles.image} src={props.item.picture !== undefined? props.item.picture.large: code} alt="" />
                 <h3 className={theme? styles.light: styles.dark}>{props.item.name.first} {props.item.name.last}</h3>
                 
             </section>

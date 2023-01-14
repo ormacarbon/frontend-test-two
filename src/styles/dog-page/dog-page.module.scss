@@ -1,3 +1,9 @@
+.LoadingPage{
+    width: 100%;
+    height: 92%;
+    align-items: center;
+    justify-content: center;
+}
 .DogMainBox{
     display: flex;
     flex-direction: column;
@@ -40,6 +46,12 @@
         justify-content: center;
         width: 100%;
         height: 75vh;
+        div{
+            width: 100%;
+            height: 92%;
+            align-items: center;
+            justify-content: center;
+        }
 
         img{
             width: 100%;

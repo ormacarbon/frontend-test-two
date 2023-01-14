@@ -11,9 +11,9 @@ export default function UsersPage(props) {
     const [search, setSeach] = useState('')
     const [loading, setLoading] = useState(false)
     const [searchItens, setSearchItens] = useState([])
-    const pages = Math.ceil(itens.length / 12)
-    const startIndex = currentPage * 12
-    const endIndex = startIndex + 12;
+    const pages = Math.ceil(itens.length / 15)
+    const startIndex = currentPage * 15
+    const endIndex = startIndex + 15;
     const currentItens = itens.slice(startIndex, endIndex)
     const {theme, toggleTheme} = useContext(Theme)
 
