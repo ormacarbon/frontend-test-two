@@ -11,5 +11,5 @@ Localização dos requisitos:
 Pacotes externos usados no projeto:
     . React-Paginate => { usado para fazer a paginação }
     - React-Debounce-Input => { usado para inserir delay no Input de Seach }
-    - React-Switch => { Implementa um switch(Botão) para usar como seletor de tema }
+    - React-Switch => { Implementa um switch(Botão) para usar como seletor de tema }.
     
