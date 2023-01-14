@@ -1,13 +1,17 @@
 import styles from '../../styles/cat-page/cat-page.module.scss'
 import { useEffect, useState } from 'react'
 import { Audio } from 'react-loader-spinner'
+import { useContext } from 'react'
+import Theme from '../contexts/contexts'
+
 export default function CatPage(props) {
     const [cat, setCat] = useState('200')
     const url = "https://http.cat/";
     const [loading, setLoading] = useState(false)
+    const {theme, toggleTheme} = useContext(Theme)
 
-    const status =  {
-        "codes":[
+    const status = {
+        "codes": [
             {
                 "code": "100",
                 "phrase": "Continue",
@@ -36,14 +40,14 @@ export default function CatPage(props) {
                 "spec_title": "RFC7231#6.3.2",
                 "spec_href": "https://tools.ietf.org/html/rfc7231#section-6.3.2"
             },
-             {
+            {
                 "code": "202",
                 "phrase": "Accepted",
                 "description": "\"indicates that the request has been accepted for processing, but the processing has not been completed.\"",
                 "spec_title": "RFC7231#6.3.3",
                 "spec_href": "https://tools.ietf.org/html/rfc7231#section-6.3.3"
             },
-             {
+            {
                 "code": "203",
                 "phrase": "Non-Authoritative Information",
                 "description": "\"indicates that the request was successful but the enclosed payload has been modified from that of the origin server's 200 (OK) response by a transforming proxy.\"",
@@ -64,14 +68,14 @@ export default function CatPage(props) {
                 "spec_title": "RFC7231#6.3.6",
                 "spec_href": "https://tools.ietf.org/html/rfc7231#section-6.3.6"
             },
-             {
+            {
                 "code": "206",
                 "phrase": "Partial Content",
                 "description": "\"indicates that the server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the requests's Range header field.\"",
                 "spec_title": "RFC7233#4.1",
                 "spec_href": "https://tools.ietf.org/html/rfc7233#section-4.1"
             },
-           {
+            {
                 "code": "300",
                 "phrase": "Multiple Choices",
                 "description": "\"indicates that the target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.\"",
@@ -120,7 +124,7 @@ export default function CatPage(props) {
                 "spec_title": "RFC7231#6.4.7",
                 "spec_href": "https://tools.ietf.org/html/rfc7231#section-6.4.7"
             },
-             {
+            {
                 "code": "400",
                 "phrase": "Bad Request",
                 "description": "\"indicates that the server cannot or will not process the request because the received syntax is invalid, nonsensical, or exceeds some limitation on what the server is willing to process.\"",
@@ -141,7 +145,7 @@ export default function CatPage(props) {
                 "spec_title": "RFC7231#6.5.2",
                 "spec_href": "https://tools.ietf.org/html/rfc7231#section-6.5.2"
             },
-             {
+            {
                 "code": "403",
                 "phrase": "Forbidden",
                 "description": "\"indicates that the server understood the request but refuses to authorize it.\"",
@@ -239,7 +243,7 @@ export default function CatPage(props) {
                 "spec_title": "RFC7233#4.4",
                 "spec_href": "https://tools.ietf.org/html/rfc7233#section-4.4"
             },
-             {
+            {
                 "code": "417",
                 "phrase": "Expectation Failed",
                 "description": "\"indicates that the expectation given in the request's Expect header field could not be met by at least one of the inbound servers.\"",
@@ -405,51 +409,52 @@ export default function CatPage(props) {
 
     return (
         <div className={styles.CatMainBox}>
-            <nav className={styles.HttpMainBox}>
+            <nav className={theme? styles.HttpMainBox: styles.BlackHttpMainBox}>
                 <article>
                     <h1>Escolha um status qualquer</h1>
                 </article>
 
                 <section>
                     <ul>
-                       {
+                        {
                             status.codes.map((item) => {
-                                return <li 
+                                return <li
+                                    className={styles.ligt}
                                     key={item.code}
                                     value={item.code}
                                     onClick={(e) => {
                                         setLoading(true)
                                         setCat(e.target.value)
-                                        
+
                                         setTimeout(() => {
                                             setLoading(false)
                                         }, 500);
                                     }}
                                 >
-                                    status: {item.code}, {item.phrase}
+                                    Status: {item.code}: {item.phrase}
                                 </li>
                             })
-                       }
+                        }
                     </ul>
                 </section>
             </nav>
 
             <nav className={styles.ImageMainBox}>
                 {
-                    loading?
-                    <div className={styles.LoadingBox}>
-                        <Audio
-                        height="80"
-                        width="80"
-                        radius="9"
-                        color="#2F2F3B"
-                        ariaLabel="loading"
-                        wrapperStyle
-                        wrapperClass
-                    />
-                    </div>
-                    :
-                    <img src={'https://http.cat/' + cat + '.jpg'} alt="" />
+                    loading ?
+                        <div className={styles.LoadingBox}>
+                            <Audio
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color="#2F2F3B"
+                                ariaLabel="loading"
+                                wrapperStyle
+                                wrapperClass
+                            />
+                        </div>
+                        :
+                        <img src={'https://http.cat/' + cat + '.jpg'} alt="" />
                 }
             </nav>
         </div>

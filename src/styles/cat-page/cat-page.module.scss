@@ -52,26 +52,80 @@
         }
     }
 
+    .BlackHttpMainBox{
+        height: 100vh;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        border-right: rgba(204, 204, 204, 0.5) solid 2px;
+        min-height: 100vh;
+        max-width: 500px;
+
+        article{
+            width: 100%;
+            padding: 20px;
+            height: 100px;
+            h1{
+                color: #D6D9DB   
+            }
+        }
+
+        section{
+            width: 100%;
+            display: flex;
+            overflow-y: scroll;
+
+            ul{
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+
+                li{
+                    transition: 400ms;
+                    list-style: none;
+                    width: 85%;
+                    background-color: rgba(204, 204, 204, 0.5);
+                    color: #D6D9DB;
+                    font-size: 15px;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                }
+                li:hover{
+                    transition: 400ms;
+                    background-color: #2F2F3B;
+                    color: white;
+                    transform: scale(1.005);
+                }
+                li:active{
+                    transform: scale(0.95);
+                }
+            }
+        }
+    }
+
     .ImageMainBox{
-        width: 60%;
+        width: 100%;
         min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
 
         img{
-            width: 70%;
+            width: 80%;
             border-radius: 30px;
         }
 
     }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 950px) {
     .CatMainBox{
         flex-direction: column-reverse;
 
-        .HttpMainBox{
+        .HttpMainBox, .BlackHttpMainBox{
             height: 50vh;
             width: 100%;
             display: flex;
@@ -115,7 +169,7 @@
 
     
             img{
-                width: 60%;
+                width: 70%;
             }
     
         }

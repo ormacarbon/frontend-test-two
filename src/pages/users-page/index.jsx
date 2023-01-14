@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react"
 import CardComponent from "./components/card-component";
 import { Audio } from 'react-loader-spinner'
 import styles from '../../styles/users-page/users-page.module.scss'
+import { useContext } from "react";
+import Theme from "../contexts/contexts";
+
 export default function UsersPage(props) {
     const [itens, setItens] = useState([])
     const [currentPage, setCurrentPage] = useState(0)
@@ -12,7 +15,7 @@ export default function UsersPage(props) {
     const startIndex = currentPage * 12
     const endIndex = startIndex + 12;
     const currentItens = itens.slice(startIndex, endIndex)
-
+    const {theme, toggleTheme} = useContext(Theme)
 
     const seachUser = (searchWord) => {
         let temp = []
@@ -63,8 +66,8 @@ export default function UsersPage(props) {
             <div className={styles.HomeMainBox}>
                 <nav>
                     <article className={styles.article}>
-                        <h1>Usuários disponíveis</h1>
-                        <p>Aqui estão todos os usuários disponíveis no momento :)</p>
+                        <h1 className={theme? styles.Light:styles.dark}>Usuários disponíveis</h1>
+                        <p className={theme? styles.Light:styles.dark}>Aqui estão todos os usuários disponíveis no momento :)</p>
                         <input
                             type="text"
                             placeholder="Pesquisa"

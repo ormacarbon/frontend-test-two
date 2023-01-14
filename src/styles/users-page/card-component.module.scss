@@ -1,4 +1,13 @@
+.Light{
+    color: #666;
+}
+.dark{
+    color: #D6D9DB;
+    font-weight: 400;
+}
+
 .CardComponentMainBox{
+    transition: 400ms;
     border: rgba(204, 204, 204, 0.5) solid 1px;
     border-radius: 20px;
     width: 250px;
@@ -7,6 +16,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    overflow-x: hidden;
 
     .CardContentBox{
         display: flex;
@@ -46,7 +56,7 @@
 }
 
 @media screen and (orientation:portrait) {
-    #card{
+    .CardComponentMainBox{
         border: rgba(204, 204, 204, 0.5) solid 1px;
         border-radius: 20px;
         width: 350px;

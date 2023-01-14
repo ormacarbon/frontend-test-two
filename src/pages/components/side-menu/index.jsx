@@ -8,11 +8,11 @@ import Image from 'next/image'
 import styles from '../../../styles/side-menu/side-menu.module.scss'
 import { useState } from 'react'
 import { useContext } from 'react'
-//import Theme from '@/pages/contexts/contexts'
+import Theme from '@/pages/contexts/contexts'
 
 export default function SideMenu({ setSelect }) {
 
-    const [t, setT] = useContext(Theme)
+    const { theme, toggleTheme} = useContext(Theme);
     return (
         <div className={styles.menuMainBox}>
             <div>
@@ -25,11 +25,9 @@ export default function SideMenu({ setSelect }) {
                 <Link href='' onClick={() => { setSelect(0) }} className={styles.li}><Image className={styles.img} src={user} alt="usuários" /><li>Usuários</li></Link>
                 <Link href='' onClick={() => { setSelect(1) }} className={styles.li}><Image className={styles.img} src={cat} alt="gatos" /><li>Gatos</li></Link>
                 <Link href='' onClick={() => { setSelect(2) }} className={styles.li}><Image className={styles.img} src={dog} alt="cachorros" /><li>Cachorros</li></Link>
-                <Link href='' onClick={() => { setSelect(3) }} className={styles.li}><Image className={styles.img} src={client} alt="clientes" /><li>Clientes</li></Link>
-                <button>dsdsd</button>
+                <Link href='' onClick={() => { toggleTheme() }} className={styles.li}><Image className={styles.img} src={client} alt="clientes" /><li>Tema</li></Link>
             </ul>
 
-            <button onClick={() => seta(false)}>teste</button>
         </div>
         
     )

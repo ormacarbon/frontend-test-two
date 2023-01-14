@@ -9,8 +9,12 @@ import { useState } from 'react'
 
 export default function Home() {
   const [theme, setTheme] = useState(true)
+
+  function toggleTheme(){
+    setTheme(theme => (theme === true? false: true));
+  }
   return (
-    <Theme.Provider value={{theme, setTheme}}>
+    <Theme.Provider value={{theme, toggleTheme}}>
       <RootPage/>
     </Theme.Provider>
   )

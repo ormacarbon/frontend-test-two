@@ -9,21 +9,20 @@ import Theme from '@/pages/contexts/contexts'
 export default function RootPage(props) {
 
     const [select, setSelect] = useState(0)
-    const a = false
-    const b = useContext(Theme)
+    const { theme, toggleTheme } = useContext(Theme);
 
     const Content = () => {
 
         switch (select) {
             case 0:
                 return (
-                    <CatPage/>
+                    <CatPage />
                 )
                 break;
 
             case 1:
                 return (
-                    <UsersPage/>
+                    <UsersPage />
                 )
                 break;
 
@@ -42,9 +41,9 @@ export default function RootPage(props) {
     }
 
     return (
-        <div className={a?styles.RootMainPage: styles.BlackRoot}>
+        <div className={theme ? styles.RootMainPage : styles.BlackRoot}>
             <div className={styles.MenuBox}>
-              <SideMenu setSelect={setSelect}/>
+                <SideMenu setSelect={setSelect} />
             </div>
 
             <div className={styles.ContentBox}>
