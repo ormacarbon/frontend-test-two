@@ -13,6 +13,7 @@ export const DetailStyled = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 60px;
+  padding-bottom: 60px;
   flex-wrap: wrap;
   width: 100vw;
   min-height: calc(100vh - 116px);

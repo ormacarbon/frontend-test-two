@@ -51,7 +51,7 @@ export default function Details() {
     <>
       <Navbar />
       <DetailStyled>
-        <div>
+        <div className="card">
           <CardColor
             color={getPokemonColor(
               pokemonDetail.types && pokemonDetail.types[0].type.name

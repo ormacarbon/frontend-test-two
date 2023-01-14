@@ -163,7 +163,6 @@ export const BurgerWrapper = styled.header`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* justify-content: center; */
     position: relative;
     padding-left: 20px;
     padding-top: 20px;
