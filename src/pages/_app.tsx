@@ -1,12 +1,12 @@
-import { ThemeProvider } from "styled-components";
+import { ThemeContext } from "styled-components";
 import { GlobalStyles } from "@/styles/global-styles";
-import { darkTheme } from "@/styles/themes";
 import { QueryProvider } from "@/contexts/QueryContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 function MyApp({ Component, pageProps }) {
   return (
     <QueryProvider pageProps={pageProps}>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider>
         <Component {...pageProps} />
         <GlobalStyles />
       </ThemeProvider>
