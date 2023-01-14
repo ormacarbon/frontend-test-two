@@ -19,6 +19,7 @@ export const Globalstyle = createGlobalStyle`
 
         /*brown pallet*/
         --brown-100: #B16949;
+        --brown-200: #F09B22;
         --brown-300: #B46E27;
         --brown-600: #703316;
 
