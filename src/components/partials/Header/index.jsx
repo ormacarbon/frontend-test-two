@@ -41,10 +41,6 @@ export const Header = () => {
     };
   }, []);
 
-  const leaveMenuMobile = () => {
-    setMenuMobileOpen(false);
-  };
-
   return (
     <HeaderContainer darkMode={darkMode} blackBackground={blackHeader}>
       <Image
@@ -57,9 +53,8 @@ export const Header = () => {
         <span
           onMouseOver={() => setMenuMobileOpen(true)}
           onMouseLeave={() => setMenuMobileOpen(false)}
-          mobileOpen={menuMobileOpen}
         >
-          Navegar{' '}
+          Navegar
         </span>
         <HeaderNavigationMobile
           open={menuMobileOpen}

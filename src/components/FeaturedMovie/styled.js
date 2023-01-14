@@ -4,8 +4,7 @@ export const FeaturedMovieContainer = styled.section`
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-image: url(${`https://image.tmdb.org/t/p/original`}${(props) =>
-    props.backgroundImage});
+  background-image: url(${`https://image.tmdb.org/t/p/original`}${(props) => props.backgroundImage});
 
   h2 {
     font-size: 6rem;

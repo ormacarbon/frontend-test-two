@@ -24,6 +24,7 @@ export const MovieRow = ({
   pagination,
   paginationAdd,
   paginationRemove,
+  page
 }) => {
   const [scrollX, setScrollX] = useState(0);
 
@@ -46,15 +47,23 @@ export const MovieRow = ({
     setScrollX(x);
   }
 
+  function handlePaginationRemove() {
+    setScrollX(0);
+    paginationRemove();
+  }
+
+  function handlePaginationAdd() {
+    setScrollX(0);
+    paginationAdd();
+  }
+
   return (
     <div>
       {itens && (
         <>
           <TitleContainer>
             <Link href={slug} passHref>
-              <MovieRowTitle
-                darkMode={darkMode}
-              >
+              <MovieRowTitle darkMode={darkMode}>
                 <strong>{title}</strong>
                 <span>
                   Ver tudo
@@ -64,10 +73,11 @@ export const MovieRow = ({
             </Link>
             {pagination && (
               <MovieRowPagination darkMode={darkMode}>
-                <button onClick={paginationRemove}>
+                <button onClick={handlePaginationRemove}>
                   <CaretLeft />
                 </button>
-                <button onClick={paginationAdd}>
+                <span>{page}</span>
+                <button onClick={handlePaginationAdd}>
                   <CaretRight />
                 </button>
               </MovieRowPagination>

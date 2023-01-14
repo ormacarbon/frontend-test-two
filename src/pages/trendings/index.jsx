@@ -43,7 +43,6 @@ export default function Home({
 
   const [allListPage, setAllListPage] = useState(1);
   const [updatedAllList, setUpdatedAllList] = useState([]);
-  const [allLoading, setAllLoading] = useState(false);
 
   useEffect(() => {
     setUpdatedMovieList(moviesList);
@@ -93,12 +92,10 @@ export default function Home({
   };
 
   const addAllPagination = async () => {
-    setAllLoading(true);
     setAllListPage(allListPage + 1);
 
     let newAllList = await TMDB.getTrendings('all', allListPage + 1);
     setUpdatedAllList(newAllList);
-    setAllLoading(false);
   };
 
   const minusAllPagination = async () => {
@@ -130,6 +127,7 @@ export default function Home({
               pagination
               paginationAdd={addMoviePagination}
               paginationRemove={minusMoviePagination}
+              page={movieListPage}
             />
           ) : (
             <MovieRow
@@ -139,6 +137,7 @@ export default function Home({
               pagination
               paginationAdd={addMoviePagination}
               paginationRemove={minusMoviePagination}
+              page={1}
             />
           )}
 
@@ -150,6 +149,7 @@ export default function Home({
               pagination
               paginationAdd={addSeriePagination}
               paginationRemove={minusSeriePagination}
+              page={serieListPage}
             />
           ) : (
             <MovieRow
@@ -159,6 +159,7 @@ export default function Home({
               pagination
               paginationAdd={addSeriePagination}
               paginationRemove={minusSeriePagination}
+              page={1}
             />
           )}
 
@@ -170,7 +171,7 @@ export default function Home({
               pagination
               paginationAdd={addAllPagination}
               paginationRemove={minusAllPagination}
-              loading={allLoading}
+              page={allListPage}
             />
           ) : (
             <MovieRow
@@ -180,6 +181,7 @@ export default function Home({
               pagination
               paginationAdd={addAllPagination}
               paginationRemove={minusAllPagination}
+              page={1}
             />
           )}
         </TrendingsMovieListContainer>

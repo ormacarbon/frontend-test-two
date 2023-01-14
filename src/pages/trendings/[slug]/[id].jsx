@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
+import { NavigateBefore } from '../../../components/NavigateBefore';
 import TMDB from '../../../services/tmdb';
 import {
   TrendingSlugIdContainer,
@@ -32,85 +34,89 @@ export const getServerSideProps = async (context) => {
 };
 
 const TrendingsFilmId = ({ movieInformations }) => {
-  console.log(movieInformations);
+  console.log(movieInformations.info);
 
   const formatter = useFormatter();
 
   return (
     <TrendingSlugIdContainer
-      backgroundImage={`url(${TMDB.getImage(movieInformations.backdrop_path)})`}
+      backgroundImage={`url(${TMDB.getImage(movieInformations.info.backdrop_path)})`}
       style={{}}
     >
+      <NavigateBefore href="/trendings" />
       <TrendingSlugIdEffectVertical>
         <TrendingSlugIdEffectHorizontal>
           <TrendingSlugIdTitle>
-            {movieInformations.title
-              ? movieInformations.title
-              : movieInformations.original_name}
+            {movieInformations.info.title
+              ? movieInformations.info.title
+              : movieInformations.info.original_name}
           </TrendingSlugIdTitle>
 
           <TrendingSlugIdDuration>
             <span>
               {formatter.formatDate(
-                movieInformations.release_date
-                  ? movieInformations.release_date
-                  : movieInformations.first_air_date
+                movieInformations.info.release_date
+                  ? movieInformations.info.release_date
+                  : movieInformations.info.first_air_date
               )}
             </span>
-            {movieInformations.seasons ? (
+            {movieInformations.info.seasons ? (
               <span>
-                {movieInformations.seasons.length} temporada
-                {movieInformations.seasons.length > 1 ? 's' : ''}
+                {movieInformations.info.seasons.length} temporada
+                {movieInformations.info.seasons.length > 1 ? 's' : ''}
               </span>
             ) : (
               <span>
-                {formatter.formatTimeThroghMinutes(movieInformations.runtime)}
+                {formatter.formatTimeThroghMinutes(movieInformations.info.runtime)}
               </span>
             )}
           </TrendingSlugIdDuration>
 
           <TrendingSlugIdDescription>
-            {movieInformations.overview}
+            {movieInformations.info.overview}
           </TrendingSlugIdDescription>
 
-          <TrendingSlugIdSlogan>
-            <h2>Slogan:</h2>
-            <h3>{movieInformations.tagline}</h3>
-          </TrendingSlugIdSlogan>
+          {movieInformations.info.slogan && (
+            <TrendingSlugIdSlogan>
+              <h2>Slogan:</h2>
+              <h3>{movieInformations.info.tagline}</h3>
+            </TrendingSlugIdSlogan>
+          )}
           <TrendingSlugIdGenres>
             <h2>Generos:</h2>
-            {movieInformations.genres.map((genre, index) => (
+            {movieInformations.info.genres.map((genre, index) => (
               <div key={index}>
                 <h3>{genre.name},</h3>{' '}
               </div>
             ))}
           </TrendingSlugIdGenres>
 
-          <TrendingSlugIdVotes>
-            <h2>Votos:</h2>
-            <span>{Math.round(movieInformations.vote_count)}</span>
-          </TrendingSlugIdVotes>
+          <div style={{ display: 'flex', gap: '1.6rem' }}>
+            <TrendingSlugIdVotes>
+              <h2>Votos:</h2>
+              <span>{Math.round(movieInformations.info.vote_count)}</span>
+            </TrendingSlugIdVotes>
 
-          <TrendingSlugIdVoteAverage>
-            <h2>Média de votos:</h2>
-            <span>{parseFloat(movieInformations.vote_average).toFixed(2)}</span>
-          </TrendingSlugIdVoteAverage>
+            <TrendingSlugIdVoteAverage>
+              <h2>Média de votos:</h2>
+              <span>
+                {parseFloat(movieInformations.info.vote_average).toFixed(2)}
+              </span>
+            </TrendingSlugIdVoteAverage>
+          </div>
 
           <TrendingSlugIdVoteProducer>
             <h2>Produzido por:</h2>
             <div>
-              {movieInformations.production_companies.map((company, index) => (
+              {movieInformations.info.production_companies.map((company, index) => (
                 <div key={index}>
-                  {company.logo_path && (
+                  {company.logo_path ? (
                     <img
                       src={TMDB.getImage(company.logo_path)}
                       alt={company.name}
-                      style={{
-                        width: '100%',
-                        maxWidth: '10rem',
-                        height: 'auto'
-                      }}
                     />
+                  ) : (
+                    <span>{company.name}</span>
                   )}
                 </div>
               ))}

@@ -170,12 +170,39 @@ export const TitleContainer = styled.div`
 
 export const MovieRowPagination = styled.div`
   display: flex;
-  gap: 2.4rem;
+  gap: 1.2rem;
   margin-right: 3.2rem;
 
   @media (max-width: 768px) {
     gap: 1.2rem;
     margin-right: 1.6rem;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 1.4rem;
+    width: 2.8rem;
+    height: auto;
+
+    padding: 0.5rem;
+    margin-bottom: 0.4rem;
+
+    background: ${(props) =>
+      props.darkMode ? 'rgba(255, 255, 255, .9)' : 'rgba(0, 0, 0, 1)'};
+    color: ${(props) => props.theme.colors['red-600']};
+
+    border-radius: 4px;
+
+    transition: all ease 0.3s;
+
+    @media (max-width: 768px) {
+      width: 2.4rem;
+      padding: 0.2rem;
+    }
   }
 
   button {

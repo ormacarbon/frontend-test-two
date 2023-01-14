@@ -61,12 +61,22 @@ const tmdb = {
       }
     ];
   },
-  getNetflixOriginals: async (page) => {
+  getNetflixOriginalsSSR: async (page) => {
     page ? (page = page.toString()) : (page = '1');
     return {
       slug: 'originals',
       title: 'Originais do Netflix',
       itens: await basicFetch(
+        `/discover/tv?with_network=213&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getNetflixOriginals: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'originals',
+      title: 'Originais do Netflix',
+      itens: await webFetch(
         `/discover/tv?with_network=213&language=pt-BR&page=${page}`
       )
     };
@@ -215,16 +225,16 @@ const tmdb = {
           info = await basicFetch(`/tv/${movieId}?language=pt-BR`);
           break;
         default:
-          info = await basicFetch(`/movie/${movieId}?language=pt-BR`);
+          info = await basicFetch(`/tv/${movieId}?language=pt-BR`);
+          type = 'tv';
           if (info.success === false) {
-            info = await basicFetch(`/tv/${movieId}?language=pt-BR`);
-            return info;
-          } else {
-            return info;
+            info = await basicFetch(`/movie/${movieId}?language=pt-BR`);
+            type = 'movie';
           }
+          break;
       }
 
-      return info;
+      return { info, type };
     }
   },
 

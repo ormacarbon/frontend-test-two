@@ -6,7 +6,7 @@ import { DarkModeProvider } from '../contexts/DarkMode';
 import { PageActiveProvider } from '../contexts/PageActive';
 
 import { Header } from '../components/partials/Header';
-import { BackToTop } from '../components/BackToToTop';
+import { BackToTop } from '../components/BackToTop';
 
 export const getServerSideProps = (context) => {
   console.log(context);
