@@ -7,6 +7,7 @@ import Navbar from "../components/navbar";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 
+
 const AppContainer = styled.div`
   box-sizing: border-box;
   font-family: "Opens-Sans", sans-serif;
@@ -78,8 +79,6 @@ export default function Search() {
   const [searchApiData, setSearchApiData] = useState([])
   const [filterval, setFilterval] = useState('');
   
-  
-
   useEffect(() => {
     Axios.get("https://api.coingecko.com/api/v3/search?query=eth").then((response) => {
       setData(response.data.coins);
@@ -101,9 +100,6 @@ export default function Search() {
 
   }
 
-  
-
-  
   return (
     <AppContainer>
       <StySearch>
@@ -130,8 +126,7 @@ export default function Search() {
           </CardCoins>   
         ))}     
       </DivCoins>
-      
- 
+  
     </AppContainer>
   );
 }

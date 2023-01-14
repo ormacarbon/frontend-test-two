@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Navbar from "../components/navbar";
-
+import Trending from "../components/trending";
 const AppContainer = styled.div`   
   box-sizing: border-box;
   font-family: "Opens-Sans", sans-serif;
@@ -13,8 +13,7 @@ const AppContainer = styled.div`
 export default function Cripto() {
   return (
     <AppContainer>
-      
-      <div>cripto</div>
+      <Trending/>
     </AppContainer>
   )
 }
