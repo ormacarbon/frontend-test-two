@@ -6,10 +6,11 @@ export const Container = styled.button`
   gap: ${props => (props.title && props.icon) && props.theme.spacing.md};
   width: ${props => props.flex ? '100%' : 'max-content'};
   min-width: ${props => !props.icon && '10rem'};
-  border-radius: ${props => !props.title && '50%' || props.theme.spacing.md};
+  border-radius: ${props => (props.rounded && '50%') || props.theme.spacing.md};
   padding: ${props => props.theme.spacing[props.size] || props.theme.spacing.md};
   color: ${props => props.theme.colors[props.textColor] || props.theme.colors.light};
   font-size: ${props => props.theme.fonts.size.md};
+  font-weight: 500;
   transition: background 0.3s, color 0.3s;
   cursor: pointer;
 
