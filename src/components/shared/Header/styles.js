@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-color: ${(p) => p.theme.colors.bg};
   border-bottom: 1px solid ${(p) => p.theme.colors.header.border};
   margin-bottom: -1px;
+  z-index: 999999;
 `;
 
 export const Content = styled.div`
@@ -18,7 +19,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
   width: calc(100% - 40px);
-  max-width: 1200px;
+  max-width: 1000px;
   height: 100%;
 `;
 
@@ -65,7 +66,7 @@ export const ButtonsContainer = styled.div`
   margin-left: auto;
 `;
 
-export const Button = styled.a`
+export const Button = styled.div`
   transition: all 0.3s ease;
   display: grid;
   place-items: center;

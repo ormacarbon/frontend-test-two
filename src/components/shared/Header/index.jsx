@@ -1,18 +1,26 @@
-import { useContext } from "react";
+import Link from "next/link";
 
-import { FiSun, FiMoon } from "react-icons/fi";
+import { useContext } from "react";
+import { FiSun, FiMoon, FiArrowLeft } from "react-icons/fi";
 import {
   AppName,
-  Button,
   ButtonsContainer,
   Container,
   Content,
   ToggleThemeButton,
 } from "./styles";
 import { ThemeContext } from "../../../contexts/theme";
+import { useRouter } from "next/router";
+
+import Button from "../Button";
 
 export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const router = useRouter();
+
+  const goToBack = () => router.back();
+  const goToHome = () => router.push("/");
+  const goToFavorites = () => router.push("/favorites");
 
   return (
     <>
@@ -25,7 +33,9 @@ export default function Header() {
             <ToggleThemeButton onClick={toggleTheme}>
               {theme.name === "light" ? <FiMoon /> : <FiSun />}
             </ToggleThemeButton>
-            <Button type="rounded">Favoritos</Button>
+            <Button primary type="rounded" onClick={goToFavorites}>
+              Favoritos
+            </Button>
           </ButtonsContainer>
         </Content>
       </Container>
