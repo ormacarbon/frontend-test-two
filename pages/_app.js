@@ -3,13 +3,13 @@ import { ThemeProvider } from "styled-components";
 import light from "../themes/light";
 import dark from "../themes/dark";
 import { useState } from "react";
-import usePersistedTheme from "../utils/usePersistedTheme";
+import MainComponent from "../components/MainComponent";
 
 
 function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState(light);
 
-  const toggleTheme = () => {
+  function toggleTheme() {
     setTheme(theme.title === 'light' ? dark : light);
   }
 
@@ -17,7 +17,9 @@ function MyApp({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle/>
-        <Component {...pageProps} toggleTheme={toggleTheme} />
+        <MainComponent toggleTheme={toggleTheme}>
+          <Component {...pageProps}  />
+        </MainComponent>
       </ThemeProvider>
     </>
   )

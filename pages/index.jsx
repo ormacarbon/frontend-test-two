@@ -1,15 +1,14 @@
-import HeaderApp from '../components/Header';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Main } from '../components/Main';
 
 
-export default function Home({ toggleTheme, animes }) {
+export default function Home({ animes }) {
 
   return (
     <>
-      <HeaderApp toggleTheme={toggleTheme} />
-      <Main>
+      <Main justifyContent='space-evenly'>
         {animes.map((anime) => {
           return (
             <>
@@ -51,14 +50,6 @@ export const getServerSideProps = async () => {
     }
   }
 }
-
-const Main = styled.main`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 30px;
-`;
 
 const ContainerAnime = styled.div`
   width: 200px;
