@@ -1,31 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import DogCard from '../components/dogCard';
 import NavBar from '../components/navBar';
-import { getDogFact } from "../services/api";
+import DogImageCard from '../components/dogImageCard';
+import { getDogFact, getDogImage } from "../services/api";
 
 function Dog() {
   const [fact, setFact] = useState();
+  const [images, setImages] = useState();
 
   useEffect(() => {
-    getFact();
+    getFactAndImages();
   }, []);
 
-  async function getFact() {
-    const data = await getDogFact();
-    const result = {
-      title: data.data[0].type,
-      text: data.data[0].attributes.body,
+  async function getFactAndImages() {
+    const dataFact = await getDogFact();
+    const dataImages = await getDogImage();
+
+    const resultFact = {
+      title: dataFact.data[0].type,
+      text: dataFact.data[0].attributes.body,
 
     }
-    setFact(result);
-    console.log(result);
+    /* const resultImage = {
+      title: dataImages.message,
+
+    } */
+    setImages(dataImages.message);
+    setFact(resultFact);
+    console.log(dataImages.message);
   }
   
   if (fact === undefined) {
     return (
       <>
       <NavBar />
-        {console.log('1')}
         Still loading...
       </>
     )
@@ -33,9 +41,11 @@ function Dog() {
   return (
     <>
     <NavBar />
-      {console.log(fact)}
-      <h1>Dog Page</h1>
-      <DogCard { ...fact}/>
+    <h1>Dog Page</h1>
+    <DogCard { ...fact}/>
+    {images.map((url, index) => (
+      <DogImageCard key={ index } { ...{url} } />
+    ))}
     </>
   );
 }

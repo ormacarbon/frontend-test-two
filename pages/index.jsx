@@ -1,3 +1,5 @@
+import NavBar from '../components/navBar';
+
 export default function Home() {
   function toggleTheme(e) {
     const container = document.getElementById('container');
@@ -10,6 +12,7 @@ export default function Home() {
 
   return (
     <div id="container">
+      <NavBar />
       <div
         className={`
         flex justify-center p-6 items-center h-screen 

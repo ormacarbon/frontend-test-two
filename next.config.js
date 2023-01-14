@@ -10,6 +10,12 @@ const nextConfig = {
         port: '',
         pathname: '/cat/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.dog.ceo',
+        port: '',
+        pathname: '/breeds/**',
+      },
     ],
   },
 }
