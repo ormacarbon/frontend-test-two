@@ -3,6 +3,14 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  ListComponentImage,
+  ListComponentName,
+  ListComponentWrapper,
+  ListComponentWrapperInner,
+  ListComponentWrapperInnerInner,
+  ListComponentXP,
+} from "./styles";
 
 export default function PokemonList({ pokemonData }) {
   // It's better to use React Query than useEffect and useState for API calls
@@ -14,23 +22,22 @@ export default function PokemonList({ pokemonData }) {
 
   return (
     data && (
-      <Link href={"pokemon/" + data.id} className="flex">
-        <div className="mx-auto bg-white dark:bg-gray-700 rounded-md w-72 my-2 flex shadow dark:hover:bg-gray-600 transition-all duration-250 ease-in">
-          <div className="flex mx-auto">
-            <Image
+      <ListComponentWrapper href={"pokemon/" + data.id}>
+        <ListComponentWrapperInner>
+          <ListComponentWrapperInnerInner>
+            <ListComponentImage
               src={data.sprites.front_default}
               width={40}
               height={40}
               alt={data.name + "icon"}
-              className="w-[40px] h-[40px] object-contain"
             />
-            <p className="align-middle text-center my-auto flex capitalize dark:text-gray-200">
+            <ListComponentName>
               {data.name}
-              <span className="font-bold ml-1">{data.base_experience}XP</span>
-            </p>
-          </div>
-        </div>
-      </Link>
+              <ListComponentXP>{data.base_experience}XP</ListComponentXP>
+            </ListComponentName>
+          </ListComponentWrapperInnerInner>
+        </ListComponentWrapperInner>
+      </ListComponentWrapper>
     )
   );
 }

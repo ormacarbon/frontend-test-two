@@ -1,11 +1,24 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import axios from "axios";
 import { useQuery } from "react-query";
 import PokemonList from "../components/PokemonList";
 import PokemonGrid from "../components/PokemonGrid";
 import { BsListUl, BsGrid3X3 } from "react-icons/bs";
+import {
+  Container,
+  CurrentPagePaginationButton,
+  GridSwitchButton,
+  GridWrapper,
+  GridWrapperInner,
+  ListWrapper,
+  LoadingImage,
+  PaginationButton,
+  PaginationWrapper,
+  SearchInput,
+  SearchWrapper,
+  SearchWrapperInner,
+} from "../styles/IndexPage";
 
 type PokemonListType = {
   name: string;
@@ -36,7 +49,7 @@ export default function Home() {
   );
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-800 min-w-screen min-h-screen -mb-6">
+    <Container>
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta
@@ -51,73 +64,63 @@ export default function Home() {
         <meta name="author" content="Pedro Lucena"></meta>
         <title>Pokémon Search</title>
       </Head>
-      <div className="flex pt-3">
+      <SearchWrapper>
         {grid ? (
-          <div className="flex mx-auto gap-1">
-            <input
-              type="text"
+          <SearchWrapperInner>
+            <SearchInput
+              input="text"
               placeholder="Search for a Pokémon"
-              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto dark:bg-gray-700 dark:border-gray-800 dark:text-gray-200 dark:focus:border-gray-800"
               value={searchTerm}
               onChange={handleSearch}
             />
-            <button
-              onClick={() => setGrid(!grid)}
-              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
-            >
+            <GridSwitchButton onClick={() => setGrid(!grid)}>
               <BsListUl />
-            </button>
-          </div>
+            </GridSwitchButton>
+          </SearchWrapperInner>
         ) : (
-          <div className="flex mx-auto gap-1">
-            <input
-              type="text"
+          <SearchWrapperInner>
+            <SearchInput
+              input="text"
               placeholder="Search for a Pokémon"
-              className="border focus:border-gray-400 outline-none py-2 pl-3 pr-1 rounded-lg mx-auto dark:bg-gray-700 dark:border-gray-800 dark:text-gray-200 dark:focus:border-gray-800"
               value={searchTerm}
               onChange={handleSearch}
             />
-            <button
-              onClick={() => setGrid(!grid)}
-              className="bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
-            >
+            <GridSwitchButton onClick={() => setGrid(!grid)}>
               <BsGrid3X3 />
-            </button>
-          </div>
+            </GridSwitchButton>
+          </SearchWrapperInner>
         )}
-      </div>
+      </SearchWrapper>
       {grid ? (
-        <div className="mt-3">
+        <GridWrapper>
           {isFetching ? (
-            <Image
+            <LoadingImage
               src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
               alt="loading pokémon list"
               width={100}
               height={100}
-              className="flex mx-auto my-[25vh]"
             />
           ) : (
-            <div className="flex">
-              <div className="mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:px-[10vw] xl:px-0 max-w-screen-xl">
+            <span>
+              <GridWrapperInner>
                 {data?.results?.map((pokemon: PokemonListType) => {
                   return (
                     <PokemonGrid key={pokemon.name} pokemonData={pokemon} />
                   );
                 })}
-              </div>
-            </div>
+              </GridWrapperInner>
+            </span>
           )}
-        </div>
+        </GridWrapper>
       ) : (
-        <div className="mt-1">
+        <ListWrapper>
           <ul>
             {isFetching ? (
-              <Image
+              <LoadingImage
                 src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
                 alt="loading pokémon list"
                 width={100}
                 height={100}
-                className="flex mx-auto my-[25vh]"
               />
             ) : (
               data?.results?.map((pokemon: PokemonListType) => {
@@ -125,61 +128,46 @@ export default function Home() {
               })
             )}
           </ul>
-        </div>
+        </ListWrapper>
       )}
 
-      <div className="flex justify-center py-5 gap-1">
-        <button
-          onClick={() => setPage(1)}
-          className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
-            page === 1
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-          }`}
-        >
-          1
-        </button>
-        <button
-          onClick={() => setPage(2)}
-          className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
-            page === 2
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-          }`}
-        >
-          2
-        </button>
-        <button
-          onClick={() => setPage(3)}
-          className={` py-3 px-5 text-white font-semibold rounded transition-all duration-250 ease-in ${
-            page === 3
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-          }`}
-        >
-          3
-        </button>
-        <button
-          onClick={() => setPage(4)}
-          className={` py-3 px-5 text-gray-200 font-semibold rounded transition-all duration-250 ease-in ${
-            page === 4
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-          }`}
-        >
-          4
-        </button>
-        <button
-          onClick={() => setPage(5)}
-          className={` py-3 px-5 text-gray-200 font-semibold rounded transition-all duration-250 ease-in ${
-            page === 5
-              ? "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-              : "bg-gray-400 hover:bg-gray-500 active:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 dark:active:bg-gray-700"
-          }`}
-        >
-          5
-        </button>
-      </div>
-    </div>
+      <PaginationWrapper>
+        {page === 1 ? (
+          <CurrentPagePaginationButton onClick={() => setPage(1)}>
+            1
+          </CurrentPagePaginationButton>
+        ) : (
+          <PaginationButton onClick={() => setPage(1)}>1</PaginationButton>
+        )}
+        {page === 2 ? (
+          <CurrentPagePaginationButton onClick={() => setPage(2)}>
+            2
+          </CurrentPagePaginationButton>
+        ) : (
+          <PaginationButton onClick={() => setPage(2)}>2</PaginationButton>
+        )}
+        {page === 3 ? (
+          <CurrentPagePaginationButton onClick={() => setPage(3)}>
+            3
+          </CurrentPagePaginationButton>
+        ) : (
+          <PaginationButton onClick={() => setPage(3)}>3</PaginationButton>
+        )}
+        {page === 4 ? (
+          <CurrentPagePaginationButton onClick={() => setPage(4)}>
+            4
+          </CurrentPagePaginationButton>
+        ) : (
+          <PaginationButton onClick={() => setPage(4)}>4</PaginationButton>
+        )}
+        {page === 5 ? (
+          <CurrentPagePaginationButton onClick={() => setPage(5)}>
+            5
+          </CurrentPagePaginationButton>
+        ) : (
+          <PaginationButton onClick={() => setPage(5)}>5</PaginationButton>
+        )}
+      </PaginationWrapper>
+    </Container>
   );
 }

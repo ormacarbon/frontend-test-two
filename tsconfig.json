@@ -21,7 +21,7 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "src/hooks/useTheme.js"
+    "src/utils/usePersistedState.ts"
   ],
   "exclude": ["node_modules"]
 }

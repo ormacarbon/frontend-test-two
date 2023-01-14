@@ -3,6 +3,22 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
+import {
+  BackButton,
+  BackButtonWrapper,
+  DetailsMain,
+  DetailsWrapper,
+  GalleryGrid,
+  GalleryTitle,
+  PokemonTitle,
+  PokemonXP,
+  Section,
+  SectionItem,
+  SectionTitle,
+  SectionWrapper,
+  ShowMoreButton,
+  ShowMoreTrue,
+} from "../../styles/PokemonDetailsPage";
 
 export const getServerSideProps = async (context: {
   params: { id: number };
@@ -42,7 +58,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-800 flex min-w-screen min-h-screen -mb-6">
+    <DetailsWrapper>
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta
@@ -60,66 +76,49 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
           Search
         </title>
       </Head>
-      <main className="mt-5 mx-auto">
-        <div className="block sm:block md:block lg:block xl:flex xl:gap-5">
-          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
+      <DetailsMain>
+        <SectionWrapper>
+          <Section>
             <Image
               src={data.sprites.front_default}
               alt={data.name + "icon"}
               width={400}
               height={400}
             />
-            <h1 className="text-center dark:text-gray-200 capitalize text-4xl font-bold">
-              {data.name}
-            </h1>
-            <p className="text-center text-2xl dark:text-gray-200">
-              {data.base_experience} XP
-            </p>
-          </section>
-          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-center text-2xl dark:text-gray-200 font-bold pb-2">
-              Moves
-            </h2>
+            <PokemonTitle>{data.name}</PokemonTitle>
+            <PokemonXP>{data.base_experience} XP</PokemonXP>
+          </Section>
+          <Section>
+            <SectionTitle>Moves</SectionTitle>
             {showMore ? (
-              <div className="h-96 overflow-y-auto mx-3 border-2 dark:border-gray-600">
+              <ShowMoreTrue>
                 {data.moves.map((i) => {
                   return (
-                    <p
-                      key={i.move.name}
-                      className="text-center text-xl dark:text-gray-200 capitalize"
-                    >
+                    <SectionItem key={i.move.name}>
                       -{i.move.name.replace(/-/g, " ")}
-                    </p>
+                    </SectionItem>
                   );
                 })}
-              </div>
+              </ShowMoreTrue>
             ) : (
               data.moves.slice(0, 13).map((i) => {
                 return (
-                  <p
-                    key={i.move.name}
-                    className="text-center text-xl dark:text-gray-200 capitalize"
-                  >
+                  <SectionItem key={i.move.name}>
                     -{i.move.name.replace(/-/g, " ")}
-                  </p>
+                  </SectionItem>
                 );
               })
             )}
             {data.moves.length > 13 && (
-              <button
-                className="flex mx-auto my-2   bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
-                onClick={() => setShowMore(!showMore)}
-              >
+              <ShowMoreButton onClick={() => setShowMore(!showMore)}>
                 {showMore ? "Show less" : "Show more..."}
-              </button>
+              </ShowMoreButton>
             )}
-          </section>
-          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-center text-2xl dark:text-gray-200 font-bold">
-              Gallery
-            </h2>
-            <div className="flex">
-              <div className="mx-auto grid grid-cols-3">
+          </Section>
+          <Section>
+            <SectionTitle>Gallery</SectionTitle>
+            <span>
+              <GalleryGrid>
                 {data.sprites.front_default && (
                   <div>
                     <Image
@@ -128,9 +127,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">
-                      Front default
-                    </p>
+                    <GalleryTitle>Front default</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.front_shiny && (
@@ -141,9 +138,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">
-                      Front shiny
-                    </p>
+                    <GalleryTitle>Front shiny</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.front_female && (
@@ -154,9 +149,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">
-                      Front female
-                    </p>
+                    <GalleryTitle>Front female</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.back_default && (
@@ -167,9 +160,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">
-                      Back default
-                    </p>
+                    <GalleryTitle>Back default</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.back_shiny && (
@@ -180,7 +171,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">Back shiny</p>
+                    <GalleryTitle>Back shiny</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.back_female && (
@@ -191,9 +182,7 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">
-                      Back female
-                    </p>
+                    <GalleryTitle>Back female</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.front_shiny_female && (
@@ -204,10 +193,10 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">
+                    <GalleryTitle>
                       Front shiny <br />
                       female
-                    </p>
+                    </GalleryTitle>
                   </div>
                 )}
                 {data.sprites.back_shiny_female && (
@@ -218,66 +207,47 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                       width={300}
                       height={300}
                     />
-                    <p className="text-center dark:text-gray-200">
+                    <GalleryTitle>
                       Back shiny <br />
                       female
-                    </p>
+                    </GalleryTitle>
                   </div>
                 )}
-              </div>
-            </div>
-          </section>
-        </div>
-        <div className="block sm:block md:block lg:block xl:flex xl:gap-5">
-          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-2xl font-bold text-center dark:text-gray-200">
-              Abilities
-            </h2>
+              </GalleryGrid>
+            </span>
+          </Section>
+        </SectionWrapper>
+        <SectionWrapper>
+          <Section>
+            <SectionTitle>Abilities</SectionTitle>
             {data.abilities.map((i) => {
               return (
-                <p
-                  key={i.ability.name}
-                  className="text-center text-xl dark:text-gray-200 capitalize"
-                >
+                <SectionItem key={i.ability.name}>
                   -{i.ability.name.replace(/-/g, " ")}
-                </p>
+                </SectionItem>
               );
             })}
-          </section>
-          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-center text-2xl font-bold dark:text-gray-200">
-              Weight
-            </h2>
-            <p className="text-center text-xl dark:text-gray-200">
-              {data.weight} Hg
-            </p>
-          </section>
-          <section className="bg-white dark:bg-gray-700 mt-5 w-80 rounded-xl shadow py-4">
-            <h2 className="text-2xl font-bold text-center dark:text-gray-200">
-              Types
-            </h2>
+          </Section>
+          <Section>
+            <SectionTitle>Weight</SectionTitle>
+            <SectionItem>{data.weight} Hg</SectionItem>
+          </Section>
+          <Section>
+            <SectionTitle>Types</SectionTitle>
             {data.types.map((i) => {
               return (
-                <p
-                  key={i.type.name}
-                  className="text-center text-xl dark:text-gray-200 capitalize"
-                >
+                <SectionItem key={i.type.name}>
                   -{i.type.name.replace(/-/g, " ")}
-                </p>
+                </SectionItem>
               );
             })}
-          </section>
-        </div>
+          </Section>
+        </SectionWrapper>
 
-        <div className="py-7">
-          <Link
-            href="/"
-            className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 py-3 px-5 text-white font-semibold rounded-lg transition-all duration-250 ease-in"
-          >
-            Back
-          </Link>
-        </div>
-      </main>
-    </div>
+        <BackButtonWrapper>
+          <BackButton href="/">Back</BackButton>
+        </BackButtonWrapper>
+      </DetailsMain>
+    </DetailsWrapper>
   );
 }

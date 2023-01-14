@@ -2,17 +2,26 @@ import React from "react";
 import type { AppProps } from "next/app";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "../services/queryClient";
-import ThemeContextProvider from "../hooks/useTheme";
+import { ThemeProvider, DefaultTheme } from "styled-components";
+import usePersistedStateFunction from "../utils/usePersistedState";
+import light from "../styles/themes/light";
+import dark from "../styles/themes/dark";
+import GlobalStyle from "../styles/global";
 import Header from "../components/Header";
-import "../styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = usePersistedStateFunction("theme", light);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === "light" ? dark : light);
+  };
   return (
-    <ThemeContextProvider>
+    <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <Header />
+        <GlobalStyle />
+        <Header toggleTheme={toggleTheme} />
         <Component {...pageProps} />;
       </QueryClientProvider>
-    </ThemeContextProvider>
+    </ThemeProvider>
   );
 }
