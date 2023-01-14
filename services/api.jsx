@@ -14,8 +14,8 @@ export async function getDogFact() {
         const urlCat = `https://cataas.com/cat/says/${text}`;
         const urlCat2 = `https://cataas.com/cat`;
         if (text) {
-          const response = await fetch(urlCat);
-          const data = await response.json();
+          const data = await fetch(urlCat);
+          // const data = await response.json();
           return data;
         }
         const data = await fetch(urlCat2);
