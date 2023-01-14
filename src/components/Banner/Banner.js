@@ -1,5 +1,4 @@
 import * as C from './style'
-import Image from 'next/image'
 
 const Banner = ({ data }) => {
   const date = new Date()
