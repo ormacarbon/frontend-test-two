@@ -25,7 +25,8 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>Rick and Morty NEXT</title>
+        <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon" />
+        <title>Rick and Morty Universe</title>
       </Head>
       <ThemeProvider theme={theme}>
         <Navbar onChangeTheme={onChangeTheme}/>

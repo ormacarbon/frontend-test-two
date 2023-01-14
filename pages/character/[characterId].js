@@ -1,18 +1,7 @@
 //? Components
 import SingleCharacter from "../../components/SingleCharacter/SingleCharacter";
-import {
-  DivCard,
-  NameDiv,
-  CharacterInfo,
-  InfoContainer,
-  Info,
-  Title,
-  StatusBadge,
-  InfoResult,
-} from "../../components/SingleCharacter/singeCharacter";
-
-import Image from "next/image";
-import Link from "next/link";
+//? NEXT
+import Head from "next/head";
 
 export const getStaticPaths = async () => {
   const api = "https://rickandmortyapi.com/api/character/";
@@ -47,13 +36,17 @@ export const getStaticProps = async (context) => {
 
 export default function Character({ character }) {
   return (
-    <div>
 
+
+    <>
+      <Head>
+        <title>Rick and Morty Universe - Character</title>
+      </Head>
       {!character ? (
         <h3>Sorry mate, Try again Later</h3>
       ) : (
         <SingleCharacter character={character} />
       )}
-    </div>
+    </>
   );
 }
