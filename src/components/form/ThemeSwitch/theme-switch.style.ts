@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const SwitchContainer = styled.span`
-  height: 2rem;
-  width: 2rem;
+  height: 2.4rem;
+  width: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;

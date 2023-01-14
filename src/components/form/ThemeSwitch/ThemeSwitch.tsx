@@ -9,9 +9,9 @@ export const ThemeSwitch = () => {
   return (
     <S.SwitchContainer onClick={() => toggleTheme()}>
       {theme === "dark" ? (
-        <BsFillMoonFill id="moon" />
+        <BsFillMoonFill size={"1.5rem"} id="moon" />
       ) : (
-        <BsFillSunFill id="sun" />
+        <BsFillSunFill size={"1.5rem"} id="sun" />
       )}
     </S.SwitchContainer>
   );
