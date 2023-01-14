@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { globalContext } from "../context/globalContext";
 import { useEffect, useContext } from "react";
 import { useRouter } from "next/router";

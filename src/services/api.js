@@ -7,3 +7,10 @@ export const getWeather = async (city) => {
   console.log(data);
   return data;
 };
+
+export const getForecast = async (city) => {
+  const response = await fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}}`);
+  const data = await response.json()
+  console.log(data);
+  return data;
+}

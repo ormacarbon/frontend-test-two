@@ -1,6 +1,8 @@
-import { globalContext } from "./globalContext"
-import { useState } from "react"
-import { getWeather } from "../services/api"
+import { globalContext } from "./globalContext";
+import { useState } from "react";
+import { getWeather } from "../services/api";
+import light from "../styles/theme/light";
+import dark from "../styles/theme/dark";
 
 export const GlobalProvider = ({ children }) => {
   const [weather, setWeather] = useState({});
@@ -8,6 +10,7 @@ export const GlobalProvider = ({ children }) => {
     email: '',
     password: ''
   });
+  const [theme, setTheme] = useState(light);
   
   const currentWeather = async (city) => {
     const currentWeather = await getWeather(city);
@@ -21,12 +24,19 @@ export const GlobalProvider = ({ children }) => {
     return ((emailRegex.test(email)) && (password.length >= minPassword));
   }
 
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light);
+    localStorage.setItem('theme', theme.title === 'light' ? 'dark' : 'light');
+  }
+
   const value = {
     weather,
     currentWeather,
     user,
     setUser,
-    validateUserFields
+    validateUserFields,
+    theme,
+    toggleTheme
   }
 
   return (

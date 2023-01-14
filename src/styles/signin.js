@@ -3,17 +3,18 @@ import wave from "../assets/images/wave.svg";
 
 export const Container = styled.div`
   align-items: center;
-  background-image: url(${wave?.src});
+  background-image: ${ props => props.theme.colors.backgroundImage };
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
 `;
 
 export const LoginContainer = styled.div`
-  background: #F5F5F5;
+  background: ${ props => props.theme.colors.background };
   border-radius: 10px;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   display: grid;
@@ -27,7 +28,7 @@ export const LoginContainer = styled.div`
 export const InitialWeatherContainer = styled.div`
   align-items: center;
   display: flex;
-  color: #5d58e3;
+  color: ${ props => props.theme.colors.fontPrimary };
   justify-content: center;
   padding-top: 6rem;
 `;
@@ -66,7 +67,7 @@ export const TempWeather = styled.div`
     }
 
     p {
-      color: #727272;
+      color: ${ props => props.theme.colors.fontGray };
       font-size: 1.5rem;
       font-weight: 400;
     }
@@ -86,7 +87,7 @@ export const Login = styled.div`
     width: 80%;
 
     h1 {
-      color: #5d58e3;
+      color: ${ props => props.theme.colors.fontPrimary };
       font-size: 2.5rem;
       font-weight: 700;
       margin: 0 0 2rem 0;
@@ -94,7 +95,7 @@ export const Login = styled.div`
     }
   
     span {
-      color: #5d58e3;
+      color: ${ props => props.theme.colors.fontPrimary };
       font-size: 2.5rem;
       font-weight: 400;
     }
@@ -110,7 +111,7 @@ export const Login = styled.div`
       padding: 0 1rem;
 
       p {
-        color: #727272;
+        color: ${ props => props.theme.colors.fontGray };
         font-size: 1.5rem;
         font-weight: 400;
         text-align: center;
@@ -139,7 +140,7 @@ export const LoginForm = styled.div`
 
   label {
     display: flex;
-    color: #727272;
+    color: ${ props => props.theme.colors.fontGray };
     flex-direction: column;
     font-size: 1rem;
     font-weight: 600;
@@ -157,7 +158,7 @@ export const LoginForm = styled.div`
   }
 
   label:first-child {
-    margin: 3rem 0 1rem 0;
+    margin: 4rem 0 2rem 0;
   }
 
   button {
@@ -165,14 +166,15 @@ export const LoginForm = styled.div`
     background: #5d58e3;
     border: none;
     border-radius: 10px;
-    color: #F5F5F5;
+    color: #f5f5f5;
+    cursor: pointer;
     display: flex;
     font-size: 1rem;
     height: 3rem;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 4rem;
     position: relative;
-    left: 0;
-    width: 80%;
+    left: 25%;
+    width: 30%;
   }
 `
