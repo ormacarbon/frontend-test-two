@@ -16,11 +16,10 @@ export function SearchMovie(){
     resolver: zodResolver(searchFormSchema),
   });
 
-  const { getMovies, getQuery } = useContext(LikesContext)
+  const { getMovies } = useContext(LikesContext)
 
   async function handleSearchPost(data: SearchFormInput){
     await getMovies(data.query);
-    await getQuery(data.query);
   }
 
   return(

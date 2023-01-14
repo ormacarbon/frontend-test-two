@@ -1,8 +1,7 @@
 import { MoviesContainer, SearchContainer } from "../styles/pages/search";
 import { MovieCard } from "../components/MovieCard";
-import { IMovie, LikesContext } from '../context/FavoritesContext';
+import { IMovie } from '../context/FavoritesContext';
 import { GetServerSideProps } from "next";
-import { useContext } from 'react';
 
 interface MovieProps {
   movies: IMovie[];
@@ -21,19 +20,18 @@ export default function Search({ movies }: MovieProps){
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { query } = useContext(LikesContext)
-  const response = await fetch(`https:///api.themoviedb.org/3/search/movie/?${process.env.API_KEY}&query=${query}`);
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const query = req.url.replace('/', '');
+  const response = await fetch(`https://api.themoviedb.org/3/search/movie?${process.env.API_KEY}&${query}`);
   const data = await response.json();
-  console.log(query);
   const movies = data.results.map((movie) => {
-     return {
-      id: movie.id,
-      title: movie.title,
-      votes: movie.vote_average,
-      imageUrl: movie.poster_path,
-     }
-    });
+    return {
+     id: movie.id,
+     title: movie.title,
+     votes: movie.vote_average,
+     imageUrl: movie.poster_path,
+    }
+   });
   return {
     props: {
       movies

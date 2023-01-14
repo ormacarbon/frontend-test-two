@@ -21,8 +21,6 @@ interface LikeContextProviderProps {
 
 interface LikeContextData {
   likedItems:  IMovie[];
-  query: string;
-  getQuery: (query?: string) => void;
   getMovies: (query: string) => void;
   addMovieToLiked: (movie: IMovie) => void;
   checkIfMovieAlreadyInLiked: (movie: number) => boolean;
@@ -45,8 +43,6 @@ export function LikeContextProvider({ children }: LikeContextProviderProps) {
     return []
   });
 
-  const [query, setQuery] = useState('');
-
   function addMovieToLiked(movie: IMovie) {
     setlikedItems((state) => [...state, movie]);
   }
@@ -60,11 +56,7 @@ export function LikeContextProvider({ children }: LikeContextProviderProps) {
   }
 
   function getMovies(query?: string){
-    return router.push(`/search?q=${query}`);
-  }
-
-  function getQuery(query?: string){
-    return setQuery(query);
+    return router.push(`query=${query}`);
   }
 
   useEffect(() => {
@@ -72,6 +64,6 @@ export function LikeContextProvider({ children }: LikeContextProviderProps) {
   }, [likedItems]);
 
   return (
-    <LikesContext.Provider value={{ likedItems, query, getQuery, getMovies,  addMovieToLiked, checkIfMovieAlreadyInLiked, removeMovieFromLiked }}>{children}</LikesContext.Provider>
+    <LikesContext.Provider value={{ likedItems, getMovies,  addMovieToLiked, checkIfMovieAlreadyInLiked, removeMovieFromLiked }}>{children}</LikesContext.Provider>
   );
 }
