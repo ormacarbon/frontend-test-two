@@ -31,8 +31,6 @@ const PageHeader = (props) => {
     }
   ]
 
-  console.log(theme)
-
   return (
     <Header>
       <Link href={'/'}>

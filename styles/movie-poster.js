@@ -5,13 +5,13 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
-padding: 0.5rem;
 cursor: default;
+height: 100%;
 `
 
 export const MoviePoster = styled.img`
-height: 225px;
-width: 150px;
+height: 100%;
+width: 100%;
 display: grid;
 border-radius: 0.5rem;
 transition: all 0.2s;
@@ -20,11 +20,6 @@ border: 1px solid var(--separator-color);
 justify-content: center;
 color: var(--font-color);
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-@media (max-width: 521px) {
-  height: 337.5px;
-  width: 225px;
-}
 
 
 &:hover {

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { applicationContext } from '../context/context';
@@ -31,8 +32,7 @@ export default function SearchMovieCard(props) {
 
   }, [router.isReady])
 
-  const movieDirector = movieCredits?.crew.find(it => it.job === "Director")?.original_name
-
+  const movieDirector = movieCredits?.crew.find(it => it.job === "Director")
 
   return (
     <MovieContainer>
@@ -49,7 +49,10 @@ export default function SearchMovieCard(props) {
           <MovieTitleContainer>
             <MovieTitle>{movieData?.title}</MovieTitle>
             <TitleComplementDate>{movieData?.release_date.slice(0, 4)}</TitleComplementDate>
-            {movieDirector && <TitleComplement>Dirigido por {movieDirector}</TitleComplement>}
+            {movieDirector && <TitleComplement>Dirigido por <Link href={{
+              pathname: '/person',
+              query: { personId: movieDirector.id },
+            }}>{movieDirector?.original_name}</Link></TitleComplement>}
             <OriginalTitle>Título original: {movieData?.original_title}</OriginalTitle>
           </MovieTitleContainer>
 
@@ -60,7 +63,12 @@ export default function SearchMovieCard(props) {
             <CastInformation>
               <InformationTitle>Elenco:</InformationTitle>
               <div >{movieCredits?.cast.slice(0, 10).map(cast => (
-                <CastItem >{cast.name}</CastItem>
+                <Link href={{
+                  pathname: '/person',
+                  query: { personId: cast.id },
+                }}>
+                  <CastItem >{cast.name}</CastItem>
+                </Link>
               ))}</div>
             </CastInformation>
           }
@@ -79,7 +87,7 @@ export default function SearchMovieCard(props) {
         </MovieInformation>
 
       </MovieInformationContainer>
-    </MovieContainer>
+    </MovieContainer >
   )
 
 }

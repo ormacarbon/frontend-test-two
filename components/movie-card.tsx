@@ -12,7 +12,7 @@ export default function MovieCard(props) {
       query: { movieId: movieProps.id },
     }}>
       <MovieContainer>
-        <MoviePoster alt={movieProps.title} src={movieBanner} />
+        <MoviePoster alt={movieProps.title || movieProps.original_title} src={movieBanner} />
       </MovieContainer>
     </Link>
   )

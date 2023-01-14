@@ -107,7 +107,7 @@ body {
   max-width: 950px;
   margin: 0 auto;
   background-color: var(--body-color);
-  line-height: 1;
+  line-height: 1.25;
   font-family: 'Poppins', sans-serif;
 }
 

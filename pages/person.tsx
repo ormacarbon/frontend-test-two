@@ -1,0 +1,99 @@
+
+
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+import { applicationContext } from '../context/context';
+import { InfoFooterLink, MovieContainer } from '../styles/movie';
+import { MoviePoster } from '../styles/movie-poster';
+import { Biography, ExpandButton, MovieSectionTitle, PersonDescription, PersonImage, PersonMovies, PersonName, PersonPageContainer, PersonProfile, PersonTitle } from '../styles/person';
+import { MovieList } from '../styles/popular';
+
+export default function MovieCard(props) {
+  const router = useRouter();
+  const { apiKey } = useContext(applicationContext)
+  const [person, setPerson] = useState<any>({});
+  const [credits, setCredits] = useState<any>([]);
+  const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    if (!router.isReady) return
+    const { personId } = router.query
+    function fetchData() {
+      fetch(`https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}&language=en-us`)
+        .then(response => response.json())
+        .then(person => setPerson(person))
+    }
+
+    function fetchCredits() {
+      fetch(`https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=43090d0ed080a422f191b4b3db131431&language=en-US`)
+        .then(response => response.json())
+        .then(responseJson => setCredits(responseJson.cast))
+    }
+
+    fetchCredits()
+    fetchData()
+
+
+  }, [router.isReady])
+
+  const titles = {
+    'Production': 'produzidos',
+    'Acting': 'estrelados',
+    'Directing': 'dirigidos',
+    'Editing': 'editados',
+    'Writing': 'escritos'
+  }
+
+  const { biography } = person;
+
+  const getPersonTitle = titles[person.known_for_department]
+  const moviesBy = (credits.sort((a, b) => a.popularity < b.popularity).slice(0, 20))
+
+  const moviesWithPoster = moviesBy.filter(movie => movie.poster_path)
+
+
+  return (
+    <PersonPageContainer>
+      <PersonProfile>
+        <PersonImage src={`https://image.tmdb.org/t/p/w500${person?.profile_path}`} alt="" />
+        <PersonDescription> {
+          showMore
+            ? <Biography>{biography}<ExpandButton onClick={() => setShowMore(!showMore)} style={{ marginLeft: '0.5rem' }}>less</ExpandButton></Biography>
+            : <Biography>{biography?.substring(0, 200).concat('... ')}<ExpandButton onClick={() => setShowMore(!showMore)}>more</ExpandButton> </Biography>
+        }
+        </PersonDescription>
+        <PersonDescription>
+          More at
+          <InfoFooterLink
+            target='_blank'
+            href={`https://www.imdb.com/name/${person?.imdb_id}/`}>
+            IMDb
+          </InfoFooterLink>
+        </PersonDescription>
+      </PersonProfile>
+      <PersonMovies >
+        <MovieSectionTitle>
+          <PersonTitle>
+            Filmes {getPersonTitle} por
+          </PersonTitle>
+          <PersonName>
+            {person.name}
+          </PersonName>
+        </MovieSectionTitle>
+        <MovieList style={{ gridGap: '1rem', padding: 'unset', gridTemplateColumns: 'repeat(auto-fill,minmax(145px,1fr))' }}>
+          {moviesWithPoster.map(it => (
+            <Link href={{
+              pathname: '/movie',
+              query: { movieId: it.id },
+            }}>
+              <MovieContainer style={{ marginBottom: '1rem' }}>
+                <MoviePoster style={{ width: '100%', height: '100%' }} alt={it.title || it.original_title} src={`https://image.tmdb.org/t/p/w500${it.poster_path}`} />
+              </MovieContainer>
+            </Link>
+          ))}
+        </MovieList>
+      </PersonMovies>
+    </PersonPageContainer >
+  )
+}

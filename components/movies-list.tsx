@@ -41,7 +41,7 @@ export default function MoviesList(props) {
   return (
     <div>
       <PageTitle>
-        <div>{pageTitle}</div>
+        <div>{pageTitle && pageTitle}</div>
       </PageTitle>
       {
         loading ?

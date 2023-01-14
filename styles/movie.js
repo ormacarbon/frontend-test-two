@@ -24,10 +24,9 @@ margin-bottom: 5rem;
 `
 
 export const MoviePosterContainer = styled.div`
-  max-width: 201px;
-  max-height: 302px;
-  min-width: 100px;
-  min-height: 200px;
+  max-width: 250px;
+  min-width: 250px;
+  width: 100%;
 
   @media (max-width: 780px) {
     margin-bottom: 3rem;
@@ -36,7 +35,10 @@ export const MoviePosterContainer = styled.div`
 
 export const MoviePoster = styled.img`
 width: 100%;
-border-radius: 10px
+border-radius: 10px;
+height: 100%;
+max-height: 370px;
+border: 1px solid var(--font-color);
 `
 
 export const MovieInformation = styled.div`
@@ -67,6 +69,9 @@ export const TitleComplement = styled.div`
   margin-right: 1rem;
   font-weight: 300;
   display: inline-block;
+  a {
+    border-bottom: 1px solid var(--font-color);
+  }
 
   @media (max-width: 780px) {
     /* display: block;
@@ -77,6 +82,8 @@ export const TitleComplement = styled.div`
 export const TitleComplementDate = styled(TitleComplement)`
   display: inline-block !important;
   margin-bottom: 1rem;
+  border-bottom: unset;
+
 `
 export const OriginalTitle = styled.div`
   margin-block: 1rem;
