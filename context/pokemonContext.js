@@ -9,10 +9,6 @@ export function PokemonContextProvider({ children }) {
   const [pokemonList, setPokemonList] = useState([])
   const [itemsPerPage] = useState(12)
 
-  function getRandomNumber(max) {
-    return Math.floor(Math.random() * max) + 1
-  }
-
   async function fetchData(url, params) {
     try {
       const response = await axios.get(url, params)
@@ -45,14 +41,14 @@ export function PokemonContextProvider({ children }) {
     setPokemonList(pokemonList)
   }
 
-  async function loadPokemonList() {
+  async function updatePokemonList() {
     const pokemons = await fetchPokemonsFromList(referenceList.slice(pokemonList.length, pokemonList.length + itemsPerPage))
     setPokemonList([...pokemonList, ...pokemons])
   }
 
-  async function fetchPokemon(id) {
+  async function fetchPokemon(url) {
     try {
-      const pokemon = await fetchData(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      const pokemon = await fetchData(url)
       const description = await fetchPokemonDescription(pokemon.id)
       return { ...pokemon, ...description }
     }
@@ -82,9 +78,17 @@ export function PokemonContextProvider({ children }) {
     return filterList.pop()
   }
 
-  async function getPokemonTeam() {
-    const pokemonPromises = Array(6).fill().map(() => fetchPokemon(getRandomNumber(905)))
+  function getRandomNumber(max) {
+    return Math.floor(Math.random() * max) + 1
+  }
 
+  function searchPokemon(name) {
+    const match = referenceList.find(pokemon => pokemon.name === name);
+    return match
+  }
+
+  async function getPokemonTeam() {
+    const pokemonPromises = Array(6).fill().map(() => fetchPokemon(`https://pokeapi.co/api/v2/pokemon/${getRandomNumber(905)}`))
     const team = await Promise.all(pokemonPromises)
     return team
   }
@@ -100,11 +104,19 @@ export function PokemonContextProvider({ children }) {
   }, [])
 
   useEffect(() => {
-    console.log(pokemonTeam)
-  }, [pokemonTeam])
+    console.log(referenceList)
+  }, [referenceList])
 
   return (
-    <PokemonContext.Provider value={{ pokemonTeam, pokemonList, loadPokemonList, referenceList }}>
+    <PokemonContext.Provider value={{ 
+      pokemonTeam,
+       referenceList, 
+       pokemonList, 
+       updatePokemonList, 
+       referenceList, 
+       fetchPokemon,
+       searchPokemon
+    }}>
       {children}
     </PokemonContext.Provider>
   );
