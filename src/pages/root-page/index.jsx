@@ -3,6 +3,7 @@ import { useState } from "react"
 import SideMenu from '../components/side-menu'
 import CatPage from '../cat-page'
 import UsersPage from '../users-page'
+import DogPage from '../dog-page'
 import { useContext } from 'react'
 import Theme from '@/pages/contexts/contexts'
 
@@ -17,7 +18,6 @@ export default function RootPage(props) {
             case 0:
                 return (
                     <UsersPage />
-                    
                 )
                 break;
 
@@ -29,13 +29,7 @@ export default function RootPage(props) {
 
             case 2:
                 return (
-                    <></>
-                )
-                break;
-
-            case 3:
-                return (
-                    <>dsd</>
+                    <DogPage/>
                 )
                 break;
         }

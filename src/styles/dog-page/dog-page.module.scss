@@ -1,0 +1,111 @@
+.DogMainBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 92.2vh;
+    max-width: 100%;
+    overflow-x: hidden;
+
+    article{
+        width: 100%;
+        height: 15%;
+
+        h1{
+            padding: 20px;
+        }
+    }
+
+    .Head{
+        width: 100%;
+        height: 15%;
+
+        h1{
+            padding: 20px;
+        }
+    }
+
+    .BlackHead{
+        width: 100%;
+        height: 15%;
+
+        h1{
+            padding: 20px;
+            color: #D6D9DB;
+        }
+    }
+
+    section{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 75vh;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    article:last-child{
+        height: 10%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        background-color: aliceblue;
+        button{
+            transition: 400ms;
+            width: 100%;
+            height: 100%;
+            color: white;
+            background-color: #0a0e1f;
+            border: none;
+            font-weight: 300;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        button:hover{
+            transition: 400ms;
+        }
+        button:active{
+            transition: 400ms;
+            transform: scale(1);
+        }
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .DogMainBox{
+        height: 100vh;
+
+        section{
+            
+            height: 90vh;
+        }
+    }
+
+    .Head{
+        width: 100%;
+        height: 15%;
+        background-color: #ffffff;
+        display: none;
+
+        h1{
+            padding: 20px;
+        }
+    }
+
+    .BlackHead{
+        width: 100%;
+        height: 15%;
+        display: none;
+
+        h1{
+            padding: 20px;
+            color: #D6D9DB;
+        }
+    }
+
+    
+}
