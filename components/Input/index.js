@@ -8,8 +8,7 @@ import { PokemonContext } from '../../context/pokemonContext'
 function Input() {
   const { referenceList } = useContext(PokemonContext);
   const limitOptionsFilter = useCallback((items) => items.slice(0, 5), []);
-  const closeMatchOptionsFilter = useCallback((items, value) => items.filter((item) => item.value !== value.toLowerCase()),[]);
-  const filters = [startsWithValueFilter, limitOptionsFilter, closeMatchOptionsFilter];
+  const filters = [startsWithValueFilter, limitOptionsFilter];
 
   return(
     <Container>
