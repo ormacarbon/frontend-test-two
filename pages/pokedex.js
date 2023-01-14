@@ -5,7 +5,7 @@ import Navbar from "../src/components/Navbar";
 import PokemonCard from "../src/components/PokemonCard";
 import { StyledPokedex } from "./pokedex.styles";
 
-export default function pokedex() {
+export default function Pokedex() {
   const { pokedex, searchResults, setSearchResults, searchValue } =
     useContext(GlobalContext);
 
