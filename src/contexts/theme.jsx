@@ -10,10 +10,7 @@ export default function CustomThemeProvider({ children }) {
 
   useEffect(() => {
     const theme = localStorage.getItem("@theme");
-    if (theme) {
-      setTheme(JSON.parse(theme));
-    }
-    console.log(theme);
+    if (theme) setTheme(JSON.parse(theme));
   }, []);
 
   function toggleTheme() {
