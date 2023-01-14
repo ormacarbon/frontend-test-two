@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PokemonFound } from "./styles";
+import { PokemonFound } from "../styles";
 
 export default function PokemonResult({ pokemonSearched }) {
   return (

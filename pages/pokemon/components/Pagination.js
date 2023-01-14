@@ -1,3 +1,5 @@
+import { PaginationContainer } from "../styles";
+
 export default function Pagination({
   pokemonPerPage,
   totalPokemons,
@@ -12,14 +14,14 @@ export default function Pagination({
   console.log(pageNumbers);
 
   return (
-    <div>
+    <PaginationContainer>
       {pageNumbers.map((number) => {
         return (
-          <li key={number}>
+          <div key={number}>
             <button onClick={() => paginate(number)}>{number}</button>
-          </li>
+          </div>
         );
       })}
-    </div>
+    </PaginationContainer>
   );
 }
