@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from 'next/image';
 import styled from "styled-components";
 import SearchIcon from '@mui/icons-material/Search';
 import Cardzin from "../components/cardzin";
@@ -48,19 +49,45 @@ const DivIn = styled.div`
 
 `
 
+const DivCoins = styled.div`
+  
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  
+  
+`
+
 export default function Search() {
 
-  const [coins, setCoins] = useState([]);
-  const [coinsPesquisados, setCoinsPesquisados] = useState([]);
+  const [data, setData] = useState([]);
+  const [searchApiData, setSearchApiData] = useState([])
+  const [filterval, setFilterval] = useState('');
+  
   
 
   useEffect(() => {
     Axios.get("https://api.coingecko.com/api/v3/search?query=eth").then((response) => {
-      setCoins(response.data.coins);
+      setData(response.data.coins);
+      setSearchApiData(response.data.coins);
+      
     
   });
 
   }, []);
+
+  const handleFilter=(evento)=> {
+    if(evento.target.value == '') {
+      setData(searchApiData)
+    } else {
+      const filterResult = searchApiData.filter( coin => coin.name.toLowerCase().includes(evento.target.value.toLowerCase()))
+      setData(filterResult)
+    }
+    setFilterval(evento.target.value)
+
+  }
+
+  
 
   
   return (
@@ -73,24 +100,24 @@ export default function Search() {
       <StyPut>
         <DivIn> 
           <StyInp 
-              placeholder="Search Coins" 
+              placeholder="Search Coins"  
               
-              onChange = { evento => { 
-                       
-                const textoDigitado = evento.target.value;         
-                const resultadoPesquisa = coins.filter( coin => coin.name.includes(textoDigitado));
-                setCoinsPesquisados(resultadoPesquisa);        
-                 
+              onChange = { evento => { handleFilter(evento)
+                               
               }}
           ></StyInp>     
         </DivIn>
       </StyPut>
 
+      <DivCoins>
+        { data.map( coin => (
+          <div>
+            <Cardzin src={coin.large} nome={coin.name} />   
+          </div>   
+        ))}     
+      </DivCoins>
       
-      { coinsPesquisados.map( coin => (
-        <Cardzin nome={coin.name}/>
-      ))}
-
+ 
     </AppContainer>
   );
 }

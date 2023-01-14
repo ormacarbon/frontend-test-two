@@ -31,19 +31,24 @@ const Rod = styled.div`
   }
 `
 const ImgStyled = styled(Image)`
-  width: 100px;
-  height: 100px;
+  
   
   border-radius: 50%;
   position: relative;
   
 `
 
-const cardzin = ({img, nome}) => {
+const cardzin = ({src, nome}) => {
+  
   return (
     <Colab>
         <Head>
-            <ImgStyled src={img} alt="/" />
+            <ImgStyled 
+            src={src} 
+            alt="/" 
+            width= {100}
+            height= {100}
+            />
         </Head>
         <Rod>
             <h3>{nome}</h3>

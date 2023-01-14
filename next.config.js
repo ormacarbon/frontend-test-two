@@ -1,6 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// next.config.js
+module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['assets.coingecko.com'],
+  },
 }
-
-module.exports = nextConfig
