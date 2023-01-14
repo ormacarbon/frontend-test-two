@@ -188,7 +188,7 @@ table {
   }
 }
 
-body.white-theme {
+body {
   --body-color: #fff;
   --font-color: rgb(77, 91, 124);
   --font-hover-color: #01040b;
