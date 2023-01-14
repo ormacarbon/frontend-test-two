@@ -5,7 +5,11 @@ export const dark = {
     secundary: "#677483",
 
     bg: "#171C24",
-    blue: "#5484FF",
+    blue: {
+      100: "#7298fa",
+      200: "#5484FF",
+      300: "#3e6fe9",
+    },
     red: "#FF3838",
 
     button: {
@@ -32,7 +36,7 @@ export const dark = {
     },
 
     header: {
-      title: "#C0C9D2",
+      title: "#FFFFFF",
       border: "#2e333a",
     },
 

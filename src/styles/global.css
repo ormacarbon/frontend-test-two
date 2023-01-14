@@ -7,8 +7,16 @@
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 400;
+  font-size: 16px;
+}
+
+a {
+  cursor: pointer;
 }
 
 button {
   cursor: pointer;
+  outline: none;
+  border: none;
+  transition: all 0.3s ease;
 }

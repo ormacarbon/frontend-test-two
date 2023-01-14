@@ -5,7 +5,11 @@ export const light = {
     secundary: "#677483",
 
     bg: "#FFFFFF",
-    blue: "#5484FF",
+    blue: {
+      100: "#7298fa",
+      200: "#5484FF",
+      300: "#3e6fe9",
+    },
     red: "#FF3838",
 
     button: {
