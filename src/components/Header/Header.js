@@ -1,4 +1,5 @@
 import Link from "next/link"
+import * as C from './style'
 
 const linksMenu = [
   {name: 'Home', page: '/'},
@@ -9,16 +10,17 @@ const linksMenu = [
 
 const Header = () => {
   return (
-    <header>
-      <div className="logo">OrmaCarbon</div>
-      <nav>
-        <ul>
+    <C.ContainerHeader>
+      <C.HeaderNavigation>
+        <Link href='/' className="logo">OrmaCarbon</Link>
+        <C.ListItems>
           {linksMenu.map(linkItems => (
             <Link href={linkItems.page}>{linkItems.name}</Link>
           ))}
-        </ul>
-      </nav>
-    </header>
+        </C.ListItems>
+      </C.HeaderNavigation>
+      
+    </C.ContainerHeader>
   )
 }
 
