@@ -1,14 +1,20 @@
 import Link from "next/link"
 import * as C from './style'
+import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
+import { ThemeContext } from "../../contexts/themeContext"
+import { useContext } from "react"
 
 const linksMenu = [
   {name: 'Home', page: '/'},
+  {name: 'Collaborators', page: '/collaborators'},
   {name: 'Air Pollution', page: '/airpollution'},
   {name: 'Forecast', page: '/forecast'},
-  {name: 'Collaborators', page: '/collaborators'},
 ]
 
 const Header = () => {
+  const { theme, setTheme } = useContext(ThemeContext)
+
+
   return (
     <C.ContainerHeader>
       <C.HeaderNavigation>
@@ -19,7 +25,10 @@ const Header = () => {
           ))}
         </C.ListItems>
       </C.HeaderNavigation>
-      
+      <C.ChangeTheme>
+        <BsFillMoonFill onClick={() => setTheme('dark')} />
+        <BsFillSunFill onClick={() => setTheme('light')}/>
+      </C.ChangeTheme>
     </C.ContainerHeader>
   )
 }
