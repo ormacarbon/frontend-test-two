@@ -22,7 +22,7 @@ export default function CategorySlug() {
   return (
     <>
       <Head>
-        <title>My Blog</title>
+        <title>{categoryId.toLocaleUpperCase()} Articles</title>
       </Head>
 
       <AppLayout>
