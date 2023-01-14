@@ -12,6 +12,8 @@ export const GridComponentWrapper = withTheme(styled(Link)`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
   box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  justify-content: center;
 
   &:focus {
     border-color: rgb(156 163 175);
@@ -28,6 +30,8 @@ export const GridComponentWrapper = withTheme(styled(Link)`
 `);
 
 export const GridComponentWrapperInner = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   border-radius: 0.375rem;
@@ -42,6 +46,7 @@ export const GridComponentWrapperInner = styled.div`
 
 export const GridComponentImage = styled(Image)`
   object-fit: contain;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   width: 200px;
@@ -49,8 +54,16 @@ export const GridComponentImage = styled(Image)`
 `;
 
 export const GridComponentName = withTheme(styled.p`
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   text-transform: capitalize;
+  text-decoration: none !important;
+  color: black;
+
+  &:visited {
+    text-decoration: none !important;
+  }
 
   ${(props) =>
     props.theme.title === "dark" &&

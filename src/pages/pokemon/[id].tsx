@@ -9,7 +9,9 @@ import {
   DetailsMain,
   DetailsWrapper,
   GalleryGrid,
+  GalleryImage,
   GalleryTitle,
+  PokemonImage,
   PokemonTitle,
   PokemonXP,
   Section,
@@ -79,11 +81,11 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
       <DetailsMain>
         <SectionWrapper>
           <Section>
-            <Image
+            <PokemonImage
               src={data.sprites.front_default}
               alt={data.name + "icon"}
-              width={400}
-              height={400}
+              width={300}
+              height={300}
             />
             <PokemonTitle>{data.name}</PokemonTitle>
             <PokemonXP>{data.base_experience} XP</PokemonXP>
@@ -121,77 +123,77 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
               <GalleryGrid>
                 {data.sprites.front_default && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.front_default}
                       alt={data.name + "front default"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>Front default</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.front_shiny && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.front_shiny}
                       alt={data.name + "front shiny"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>Front shiny</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.front_female && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.front_female}
                       alt={data.name + "front female"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>Front female</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.back_default && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.back_default}
                       alt={data.name + "back default"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>Back default</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.back_shiny && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.back_shiny}
                       alt={data.name + "back shiny"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>Back shiny</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.back_female && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.back_female}
                       alt={data.name + "back female"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>Back female</GalleryTitle>
                   </div>
                 )}
                 {data.sprites.front_shiny_female && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.front_shiny_female}
                       alt={data.name + "front shiny female"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>
                       Front shiny <br />
@@ -201,11 +203,11 @@ export default function PokemonDetails({ data }: { data: PokemonData }) {
                 )}
                 {data.sprites.back_shiny_female && (
                   <div>
-                    <Image
+                    <GalleryImage
                       src={data.sprites.back_shiny_female}
                       alt={data.name + "back shiny female"}
-                      width={300}
-                      height={300}
+                      width={100}
+                      height={100}
                     />
                     <GalleryTitle>
                       Back shiny <br />

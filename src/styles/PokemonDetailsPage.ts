@@ -1,5 +1,6 @@
 import styled, { withTheme } from "styled-components";
 import Link from "next/link";
+import Image from "next/image";
 
 export const DetailsWrapper = withTheme(styled.div`
   display: flex;
@@ -56,6 +57,15 @@ export const Section = withTheme(styled.section`
      background-color: rgb(55 65 81);
   `};
 `);
+
+export const PokemonImage = styled(Image)`
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  object-fit: contain;
+  width: 300px;
+  height: 300px;
+`;
 
 export const PokemonTitle = withTheme(styled.h1`
   text-align: center;
@@ -126,6 +136,12 @@ export const GalleryTitle = withTheme(styled.div`
   `};
 `);
 
+export const GalleryImage = styled(Image)`
+  object-fit: contain;
+  width: 100px;
+  height: 100px;
+`;
+
 export const ShowMoreTrue = withTheme(styled.div`
   text-align: center;
   height: 22.75rem;
@@ -173,6 +189,7 @@ export const ShowMoreButton = styled.button`
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  border: none;
 
   &:hover {
     background-color: rgb(30 64 175);
@@ -191,6 +208,7 @@ export const BackButton = styled(Link)`
   font-weight: 600;
   color: rgb(255 255 255);
   background-color: rgb(29 78 216);
+  text-decoration: none;
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);

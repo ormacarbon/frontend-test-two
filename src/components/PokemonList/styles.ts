@@ -4,6 +4,7 @@ import Image from "next/image";
 
 export const ListComponentWrapper = styled(Link)`
   display: flex;
+  text-decoration: none;
 `;
 
 export const ListComponentWrapperInner = withTheme(styled.div`
@@ -48,6 +49,7 @@ export const ListComponentName = withTheme(styled.p`
   margin-bottom: auto;
   text-align: center;
   text-transform: capitalize;
+  color: black;
 
   ${(props) =>
     props.theme.title === "dark" &&
@@ -58,4 +60,5 @@ export const ListComponentName = withTheme(styled.p`
 export const ListComponentXP = styled.p`
   font-weight: 700;
   margin-left: 0.25rem;
+  text-decoration: none;
 `;

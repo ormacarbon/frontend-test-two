@@ -27,6 +27,12 @@ export const HomeButton = styled(Link)`
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 700;
+  color: white;
+  text-decoration: none;
+
+  &:visited {
+    text-decoration: none;
+  }
 `;
 
 export const ThemeSwitcherWrapper = styled.div`

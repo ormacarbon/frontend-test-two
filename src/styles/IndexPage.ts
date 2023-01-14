@@ -22,7 +22,6 @@ export const SearchWrapperInner = styled.div`
 `;
 
 export const SearchInput = withTheme(styled.input`
-  border-width: 1px;
   outline: 2px solid transparent;
   outline-offset: 2px;
   padding-top: 0.5rem;
@@ -32,6 +31,7 @@ export const SearchInput = withTheme(styled.input`
   border-radius: 0.5rem;
   margin-left: auto;
   margin-right: auto;
+  border: none;
 
   &:focus {
     border-color: rgb(156 163 175);
@@ -59,6 +59,7 @@ export const GridSwitchButton = withTheme(styled.button`
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  border: none;
 
   &:hover {
     background-color: rgb(107 114 128);
@@ -144,11 +145,11 @@ export const PaginationButton = withTheme(styled.button`
   padding-right: 1.25rem;
   color: rgb(255 255 255);
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-
+  border: none;
   background-color: rgb(156 163 175);
 
   &:hover {
@@ -179,11 +180,11 @@ export const CurrentPagePaginationButton = withTheme(styled.button`
   padding-right: 1.25rem;
   color: rgb(255 255 255);
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-
+  border: none;
   background-color: rgb(107 114 128);
 
   &:hover {
