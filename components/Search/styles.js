@@ -9,18 +9,19 @@ export const SearchContainer = styled.div`
 
 export const Input = styled.input`
   padding: 1rem 7rem 1rem 2rem;
+  color: ${(props) => props.theme.colors.textSecundary};
   border: none;
   border-radius: 0.5rem;
-  background-color: var(--white-100);
-  box-shadow: var(--shadow);
+  background-color: ${(props) => props.theme.colors.container};
+  box-shadow: ${(props) => props.theme.colors.shadow};
   transition: 0.2s;
   outline: none;
   &:hover,
   &:focus {
-    box-shadow: var(--shadow-hover);
+    box-shadow: ${(props) => props.theme.colors.shadowHover};
   }
-  &:placeholder {
-    color: var(--black-100);
+  &::placeholder {
+    color: currentColor;
   }
 `;
 

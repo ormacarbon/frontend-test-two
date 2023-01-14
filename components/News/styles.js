@@ -4,8 +4,8 @@ export const NewsContainer = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 2rem;
-  background-color: var(--white-100);
-  box-shadow: var(--shadow-news);
+  background-color: ${(props) => props.theme.colors.container};
+  box-shadow: ${(props) => props.theme.colors.shadowContainer};
   padding: 2rem;
   border-radius: 1rem;
   @media screen and (max-width: 680px) {
@@ -28,7 +28,7 @@ export const Image = styled.img`
 
 export const Title = styled.h2`
   font-size: 1.35rem;
-  color: var(--black-100);
+  color: ${(props) => props.theme.colors.textPrimary};
   line-height: 1.2;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -40,7 +40,7 @@ export const Title = styled.h2`
 export const Paragraph = styled.p`
   margin: 1rem 0;
   font-size: 0.9rem;
-  color: var(--black-100);
+  color: ${(props) => props.theme.colors.textSecundary};
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -55,12 +55,11 @@ export const FlexDiv = styled.div`
   justify-content: space-between;
   & > span {
     font-size: 0.845rem;
-    color: var(--gray);
+    color: ${(props) => props.theme.colors.textSecundary};
   }
   @media screen and (max-width: 384px) {
     & > span {
       font-size: 0.745rem;
-      color: var(--gray);
     }
   }
 `;

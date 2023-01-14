@@ -10,6 +10,7 @@ const Document = () => {
           href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <meta name="theme-color" content="#3E64FF" />
       </Head>
       <body>
         <Main />

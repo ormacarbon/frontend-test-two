@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   @media screen and (max-width: 730px) {
-    padding: 0.5rem 2rem 0 2rem;
+    padding: 0.5rem 1.25rem 0 1.25rem;
     display: grid;
   }
   & > label {
@@ -33,17 +33,34 @@ export const NavItem = styled.li`
     height: 1.5rem;
     color: var(--white);
   }
-
   & > a:hover,
   & > a.active,
   & > a:focus {
     background-color: var(--blue-100);
   }
-
   @media screen and (max-width: 730px) {
     & > a {
       border-radius: 0.5rem;
       padding: 1rem 1.5rem;
     }
+  }
+`;
+
+export const ThemeButton = styled.label`
+  cursor: pointer;
+  display: block;
+  padding: 2rem 2.5rem;
+  height: 1.5rem;
+  &:hover,
+  &:focus {
+    background-color: var(--blue-100);
+  }
+  & > input {
+    display: none;
+  }
+  @media screen and (max-width: 730px) {
+    height: auto;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
   }
 `;

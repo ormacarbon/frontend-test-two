@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const PlanContainer = styled.div`
   padding: 2rem;
-  background-color: var(--white-100);
-  box-shadow: var(--shadow-hover);
+  background-color: ${(props) => props.theme.colors.container};
+  box-shadow: ${(props) => props.theme.colors.shadowContainer};
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -20,11 +20,11 @@ export const PlanIconContainer = styled.div`
 
 export const Title = styled.h2`
   font-size: 1.8rem;
-  color: var(--black);
+  color: ${(props) => props.theme.colors.textPrimary};
   text-align: center;
   margin-bottom: 1.25rem;
   padding-bottom: 0.8rem;
-  border-bottom: 2px solid var(--white-200);
+  border-bottom: 2px solid ${(props) => props.theme.colors.separator};
 `;
 
 export const Overview = styled.div`
@@ -32,7 +32,7 @@ export const Overview = styled.div`
   line-height: 1.4;
   text-align: center;
   font-weight: bold;
-  color: var(--black);
+  color: ${(props) => props.theme.colors.textPrimary};
   & > span {
     font-size: 1.65rem;
     color: var(--blue);
@@ -44,7 +44,7 @@ export const PriceContainer = styled.div`
   justify-content: center;
   margin: 2rem 0;
   font-size: 0.875rem;
-  color: var(--gray);
+  color: ${(props) => props.theme.colors.textSecundary};
   & > span:last-child {
     align-self: flex-end;
   }
@@ -58,7 +58,7 @@ export const Price = styled.div`
 
 export const Paragraph = styled.p`
   font-size: 1.145rem;
-  color: var(--black);
+  color: ${(props) => props.theme.colors.textSecundary};
   margin-bottom: 2rem;
   text-align: center;
 `;
