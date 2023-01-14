@@ -16,6 +16,7 @@ import {
 import Switch from "react-switch";
 import { useContext } from "react";
 import React, { useState } from "react";
+import Image from "next/image";
 
 
 export default function TopNavbar({ onChangeTheme }) {
@@ -54,8 +55,7 @@ export default function TopNavbar({ onChangeTheme }) {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-
-          <Logo src="/images/portalgun.png" alt="Portal Gun"></Logo>
+          <Image src="/images/portalgun.png" width={80} height={80} alt="Portal Gun"/>
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (

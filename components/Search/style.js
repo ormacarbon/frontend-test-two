@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const FormContainer = styled.form `
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-top: 5em;
     
@@ -23,6 +24,10 @@ export const FormContainer = styled.form `
 
         &:focus {
             border-color: ${(props) => props.theme.colors.borderColor};
+        }
+
+        @media (max-width: 400px) {
+            max-width: 40%;
         }
     }
 

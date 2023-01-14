@@ -23,8 +23,12 @@ export const LeftContainer = styled.div`
 export const RightContainer = styled.div`
   flex: 30%;
   display: flex;
-  justify-content: flex-end;
-  padding-right: 50px;
+  justify-content: center;
+
+
+  img {
+    padding: 1em;
+  }
 `;
 
 export const NavbarInnerContainer = styled.div`
@@ -57,15 +61,9 @@ export const NavbarLink = styled(Link)`
 export const NavbarLinkExtended = styled(Link)`
   color: ${(props) => props.theme.colors.textColor};
   font-size: x-large;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica;
   text-decoration: none;
-  margin: 10px;
-`;
-
-export const Logo = styled.img`
-  margin: 10px;
-  max-width: 180px;
-  height: auto;
+  margin-top: 1em;
 `;
 
 export const OpenLinksButton = styled.button`
@@ -75,6 +73,7 @@ export const OpenLinksButton = styled.button`
   border: none;
   color: white;
   font-size: 45px;
+  color:${(props) => props.theme.colors.textColor} ; 
   cursor: pointer;
   @media (min-width: 700px) {
     display: none;
@@ -85,6 +84,8 @@ export const NavbarExtendedContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 5em;
   @media (min-width: 700px) {
     display: none;
   }
