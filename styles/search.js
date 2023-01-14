@@ -59,7 +59,7 @@ export const SearchMovieDescription = styled.p`
   font-size: 0.75rem;
   margin-bottom: 1rem;
   line-height: 1.3;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -72,4 +72,5 @@ export const SearchMovieRatingContainer = styled.div`
 
 export const SearchMovieRating = styled.div`
   margin-top: 2px;
+  margin-left: 0.5rem;
 `

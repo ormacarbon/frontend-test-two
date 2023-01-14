@@ -193,7 +193,7 @@ body.white-theme {
   --font-color: rgb(77, 91, 124);
   --font-hover-color: #01040b;
   --font-selected-color: #fff;
-  --header-selected-color: #01040b;
+  --header-selected-color: #023e7d;
   --search-color: hsla(0, 0%, 30%, .25);
   --cast-info-color: #434b53;
   --separator-color: rgb(192, 202, 216);
@@ -203,7 +203,7 @@ body.dark-theme {
   --body-color: #14181c;
   --font-color: #fff;
   --font-hover-color: #dbdbdb;
-  --header-selected-color: #1e6091;
+  --header-selected-color: #457b9d;
   --search-color: hsla(0, 0%, 100%, .5);
   --cast-info-color: #303840;
   --separator-color: #2c3440;

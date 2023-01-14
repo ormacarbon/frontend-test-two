@@ -70,8 +70,10 @@ export const TitleComplement = styled.div`
   font-weight: 300;
   display: inline-block;
   a {
+    font-weight: 500;
     border-bottom: 1px solid var(--font-color);
   }
+
 
   @media (max-width: 780px) {
     /* display: block;
@@ -81,13 +83,13 @@ export const TitleComplement = styled.div`
 
 export const TitleComplementDate = styled(TitleComplement)`
   display: inline-block !important;
-  margin-bottom: 1rem;
-  border-bottom: unset;
-
-`
-export const OriginalTitle = styled.div`
   margin-block: 1rem;
-  font-weight: 300;
+  border-bottom: unset;
+`
+export const MovieGenres = styled.div`
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.825rem
 `
 export const Overview = styled.div`
   font-weight: 600;
@@ -114,10 +116,15 @@ export const CastInformation = styled.div`
 `
 
 export const InformationTitle = styled.span`
-  font-weight: 300;
+  font-weight: 600;
   font-size: 0.925rem;
   margin-bottom: 0.5rem;
   display: inline-block;
+  cursor: pointer;
+
+  :not(:first-child) {
+    margin-left: 0.5rem;
+  }
 `
 
 export const CastItem = styled.span`

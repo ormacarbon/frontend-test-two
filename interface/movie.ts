@@ -13,6 +13,7 @@ export interface IMovie {
   poster_path?: string;
   vote_average?: number;
   overview?: string;
+  tagline?: string;
 }
 
 interface IMovieGenre {

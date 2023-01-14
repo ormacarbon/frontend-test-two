@@ -3,34 +3,33 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { applicationContext } from '../context/context';
 import { IMovie } from '../interface/movie';
-import { CastInformation, CastItem, InfoFooterContainer, InfoFooterContent, InfoFooterLink, InformationTitle, MovieBanner, MovieContainer, MovieInformation, MovieInformationContainer, MoviePoster, MoviePosterContainer, MovieTitle, MovieTitleContainer, OriginalTitle, Overview, Separator, TitleComplement, TitleComplementDate } from '../styles/movie';
+import { CastInformation, CastItem, InfoFooterContainer, InfoFooterContent, InfoFooterLink, InformationTitle, MovieBanner, MovieContainer, MovieInformation, MovieInformationContainer, MoviePoster, MoviePosterContainer, MovieTitle, MovieTitleContainer, Overview, Separator, TitleComplement, TitleComplementDate } from '../styles/movie';
 
 export default function SearchMovieCard(props) {
   const [movieData, setMovieData] = useState<IMovie>();
   const [movieCredits, setMovieCredits] = useState<any>();
+  const [selectedInformation, setSelectedInformation] = useState('cast');
   const { apiKey } = useContext(applicationContext);
   const router = useRouter()
 
   useEffect(() => {
     if (!router.isReady) return
-    function fetchData() {
-      const { movieId } = router.query
-      fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=PT-BR`)
-        .then(response => response.json())
-        .then(movie => setMovieData(movie))
-    }
-
-    function fetchCredits() {
-      const { movieId } = router.query
-      fetch(` https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}&language=en-US`)
-        .then(response => response.json())
-        .then(movie => setMovieCredits(movie))
-    }
-
-    fetchCredits()
-    fetchData()
-
+    const { movieId } = router.query
+    Promise.all([
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-us`).then(value => value.json()),
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}&language=en-US`).then(value => value.json())
+    ])
+      .then(([movieData, credits]) => {
+        setMovieData(movieData)
+        setMovieCredits(credits)
+      }).catch((err) => {
+        console.log(err);
+      });
   }, [router.isReady])
+
+  function handleSelectedInformation(type: string) {
+    setSelectedInformation(type)
+  }
 
   const movieDirector = movieCredits?.crew.find(it => it.job === "Director")
 
@@ -49,34 +48,57 @@ export default function SearchMovieCard(props) {
           <MovieTitleContainer>
             <MovieTitle>{movieData?.title}</MovieTitle>
             <TitleComplementDate>{movieData?.release_date.slice(0, 4)}</TitleComplementDate>
-            {movieDirector && <TitleComplement>Dirigido por <Link href={{
-              pathname: '/person',
-              query: { personId: movieDirector.id },
-            }}>{movieDirector?.original_name}</Link></TitleComplement>}
-            <OriginalTitle>Título original: {movieData?.original_title}</OriginalTitle>
+
+            {
+              movieDirector &&
+              <TitleComplement>	Directed by <Link href={{
+                pathname: '/person',
+                query: { personId: movieDirector.id },
+              }}>{movieDirector?.original_name}</Link>
+              </TitleComplement>
+            }
+
+            <div style={{ marginTop: '2rem' }}>{movieData?.tagline}</div>
+
           </MovieTitleContainer>
 
           <Overview>{movieData?.overview}</Overview>
 
-          {/* check if the array is not empty */}
           {movieCredits?.cast.length > 0 &&
             <CastInformation>
-              <InformationTitle>Elenco:</InformationTitle>
-              <div >{movieCredits?.cast.slice(0, 10).map(cast => (
-                <Link href={{
-                  pathname: '/person',
-                  query: { personId: cast.id },
-                }}>
-                  <CastItem >{cast.name}</CastItem>
-                </Link>
-              ))}</div>
+              <InformationTitle style={{ color: selectedInformation === 'cast' && 'var(--header-selected-color)' }} onClick={() => handleSelectedInformation('cast')}>
+                Cast
+              </InformationTitle>
+              <InformationTitle style={{ color: selectedInformation === 'genres' && 'var(--header-selected-color)' }} onClick={() => handleSelectedInformation('genres')}>
+                Genres
+              </InformationTitle>
+
+              {selectedInformation === 'cast' ? (
+                <div >{movieCredits?.cast.slice(0, 10).map((cast, index) => (
+                  <Link key={index} href={{
+                    pathname: '/person',
+                    query: { personId: cast.id },
+                  }}>
+                    <CastItem >{cast.name}</CastItem>
+                  </Link>
+                ))}</div>
+              ) : (
+                <div>{movieData?.genres.map((genre, index) => (
+                  <Link key={index} href={{
+                    pathname: '/genre',
+                    query: { genre: genre.id },
+                  }}>
+                    <CastItem>{genre.name}</CastItem>
+                  </Link>
+                ))}</div>
+              )}
             </CastInformation>
           }
 
           <InfoFooterContainer>
             <InfoFooterContent>{movieData?.runtime} mins</InfoFooterContent>
             <Separator />
-            <InfoFooterContent>Mais em</InfoFooterContent>
+            <InfoFooterContent>More at</InfoFooterContent>
             <InfoFooterLink
               target='_blank'
               href={`https://www.imdb.com/title/${movieData?.imdb_id}/`}>

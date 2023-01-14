@@ -14,43 +14,40 @@ export default function MovieCard(props) {
   const { apiKey } = useContext(applicationContext)
   const [person, setPerson] = useState<any>({});
   const [credits, setCredits] = useState<any>([]);
-  const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(true);
 
   useEffect(() => {
     if (!router.isReady) return
     const { personId } = router.query
-    function fetchData() {
-      fetch(`https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}&language=en-us`)
-        .then(response => response.json())
-        .then(person => setPerson(person))
-    }
-
-    function fetchCredits() {
-      fetch(`https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=43090d0ed080a422f191b4b3db131431&language=en-US`)
-        .then(response => response.json())
-        .then(responseJson => setCredits(responseJson.cast))
-    }
-
-    fetchCredits()
-    fetchData()
+    Promise.all([
+      fetch(`https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}&language=en-us`).then(value => value.json()),
+      fetch(`https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=43090d0ed080a422f191b4b3db131431&language=en-US`).then(value => value.json())])
+      .then(([person, credits]) => {
+        setPerson(person)
+        setCredits(credits.cast)
+      }).catch((err) => {
+        console.log(err);
+      });
 
 
   }, [router.isReady])
 
   const titles = {
-    'Production': 'produzidos',
-    'Acting': 'estrelados',
-    'Directing': 'dirigidos',
-    'Editing': 'editados',
-    'Writing': 'escritos'
+    'Production': 'produced',
+    'Acting': 'starred',
+    'Directing': 'directed',
+    'Editing': 'edited',
+    'Writing': 'written'
   }
 
   const { biography } = person;
 
   const getPersonTitle = titles[person.known_for_department]
-  const moviesBy = (credits.sort((a, b) => a.popularity < b.popularity).slice(0, 20))
+  const moviesByPopularity = (credits.sort((a, b) => a.popularity < b.popularity).slice(0, 20))
 
-  const moviesWithPoster = moviesBy.filter(movie => movie.poster_path)
+  const moviesWithPoster = moviesByPopularity.filter(movie => movie.poster_path)
+  const biographyBigEnough = biography?.length > 200
+
 
 
   return (
@@ -58,9 +55,10 @@ export default function MovieCard(props) {
       <PersonProfile>
         <PersonImage src={`https://image.tmdb.org/t/p/w500${person?.profile_path}`} alt="" />
         <PersonDescription> {
-          showMore
+          !showMore
             ? <Biography>{biography}<ExpandButton onClick={() => setShowMore(!showMore)} style={{ marginLeft: '0.5rem' }}>less</ExpandButton></Biography>
-            : <Biography>{biography?.substring(0, 200).concat('... ')}<ExpandButton onClick={() => setShowMore(!showMore)}>more</ExpandButton> </Biography>
+            : <Biography>{biographyBigEnough ? biography?.substring(0, 200).concat('... ') : biography}
+              <ExpandButton onClick={() => setShowMore(!showMore)}>{biographyBigEnough && 'more'}</ExpandButton> </Biography>
         }
         </PersonDescription>
         <PersonDescription>
@@ -75,15 +73,15 @@ export default function MovieCard(props) {
       <PersonMovies >
         <MovieSectionTitle>
           <PersonTitle>
-            Filmes {getPersonTitle} por
+            Movies {getPersonTitle} by
           </PersonTitle>
           <PersonName>
             {person.name}
           </PersonName>
         </MovieSectionTitle>
         <MovieList style={{ gridGap: '1rem', padding: 'unset', gridTemplateColumns: 'repeat(auto-fill,minmax(145px,1fr))' }}>
-          {moviesWithPoster.map(it => (
-            <Link href={{
+          {moviesWithPoster.map((it, index) => (
+            <Link key={index} href={{
               pathname: '/movie',
               query: { movieId: it.id },
             }}>

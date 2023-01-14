@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
+import styled from "styled-components";
+import Loader from '../components/loader';
 import MovieCard from '../components/movie-card';
 import { applicationContext } from '../context/context';
 import { PageTitle } from '../styles/home';
-import styled from "styled-components";
 import { ListButton, MovieList } from '../styles/popular';
-import Loader from '../components/loader';
 import { handlePageChange } from '../utils/utils';
 
 export default function MoviesList(props) {
@@ -17,7 +17,7 @@ export default function MoviesList(props) {
 
 
   const getMovieRequest = async () => {
-    const url = ` https://api.themoviedb.org/3/movie/${urlPrefix}?api_key=${apiKey}&language=pt-BR&page=${moviePage}`
+    const url = ` https://api.themoviedb.org/3/movie/${urlPrefix}?api_key=${apiKey}&language=en-US&page=${moviePage}`
 
     fetch(url)
       .then(response => response.json())
@@ -47,18 +47,18 @@ export default function MoviesList(props) {
         loading ?
           <Loader /> :
           <MovieList>
-            {movieData.map(movie => (
-              <MovieCard movieProps={movie} />
+            {movieData.map((movie, index) => (
+              <MovieCard key={index} movieProps={movie} />
             ))}
           </MovieList>
       }
 
       <ButtonContainer>
         {moviePage !== 1 &&
-          <ListButton onClick={() => handlePageChange('prev', moviePage, setMoviePage)}>Anterior</ListButton>
+          <ListButton onClick={() => handlePageChange('prev', moviePage, setMoviePage)}>Previous</ListButton>
         }
         {moviePage < totalPages && (
-          <ListButton onClick={() => handlePageChange('next', moviePage, setMoviePage)}>Próximo</ListButton>
+          <ListButton onClick={() => handlePageChange('next', moviePage, setMoviePage)}>Next</ListButton>
         )}
       </ButtonContainer>
     </div>

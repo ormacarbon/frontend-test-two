@@ -1,41 +1,42 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import styled from "styled-components";
 import Loader from '../components/loader';
 import SearchMovieCard from '../components/search-movie-card';
 import { applicationContext } from '../context/context';
-import { ListButton } from '../styles/popular';
 import { SearchListContainer, SearchMovieList, SearchPageContainer, SearchPageInformation } from '../styles/search';
+import styled from "styled-components";
+import { ListButton } from '../styles/popular';
 
 
 export default function Search() {
-  const [movieData, setMovieData] = useState<any>([]);
+  const [movieData, setMovieData] = useState([]);
   const [searchData, setSearchData] = useState<any>();
   const [loading, setLoading] = useState(true)
   const [moviePage, setMoviePage] = useState(1)
+  const [genreList, setGenreList] = useState({ genreList: [], genreName: '' })
   const { apiKey } = useContext(applicationContext);
   const router = useRouter()
-  const searchInput = router.query.searchInput
-
-  const searchMovies = () => {
-    if (!router.isReady) return
-
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-us&query=${searchInput || router.query}&page=${moviePage}`
-    fetch(url)
-      .then((response) => response.json())
-      .then(movieSearch => {
-        setMovieData(movieSearch.results.sort((a, b) => a.popularity < b.popularity))
-        setSearchData(movieSearch)
-        setLoading(false)
-      })
-  }
+  
   useEffect(() => {
-    searchMovies()
-  }, [searchInput, moviePage, router.isReady])
+    if (!router.isReady) return
+    const { genre } = router.query
+    Promise.all([
+      fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-us&with_genres=${genre}&page=${moviePage}`).then(value => value.json()),
+      fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`).then(value => value.json())])
+      .then(([movies, genreList]) => {
+        setMovieData(movies.results)
+        setSearchData(movies)
+        setLoading(false)
+        setGenreList({
+          genreList,
+          genreName: genreList?.genres.filter(it => it.id == genre)[0].name
+        })
+      }).catch((err) => {
+        console.log(err);
+      });
+  }, [moviePage, router.isReady])
 
-  const emptySearch = searchData?.total_results === 0
-
-  console.log(movieData)
+  console.log(genreList)
 
   const ButtonContainer = styled.div`
   display: flex;
@@ -50,16 +51,13 @@ export default function Search() {
 
   return (
     <SearchPageContainer>
-      {!emptySearch ?
-        <SearchPageInformation>Found {searchData?.total_results} results for "{searchInput}" 😀</SearchPageInformation> :
-        <SearchPageInformation> Sadly no results for this search 😢</SearchPageInformation>
-      }
+      <SearchPageInformation>Showing {searchData?.total_results} "{genreList.genreName}" movies 😀</SearchPageInformation>
       {
         loading ?
           <Loader /> :
           <SearchListContainer>
             <SearchMovieList>
-              {movieData.map((movie, index) => (
+              {movieData?.map((movie, index) => (
                 <SearchMovieCard key={index} movieProps={movie} />
               ))}
             </SearchMovieList>

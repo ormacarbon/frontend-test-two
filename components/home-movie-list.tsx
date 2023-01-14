@@ -11,12 +11,12 @@ export default function HomeMovieList(props) {
     <HomeMovieListContainer>
       <HomeMovieListTitle>{title}</HomeMovieListTitle>
       <MovieList>
-        {movieList.slice(0, 5).map(movie => (
-          <MovieCard movieProps={movie} />
+        {movieList.slice(0, 5).map((movie, index) => (
+          <MovieCard key={index} movieProps={movie} />
         ))}
       </MovieList>
       <Link href={route} >
-        <HomeMovieListDetail >Ver mais ➡️</HomeMovieListDetail>
+        <HomeMovieListDetail >See more ➡️</HomeMovieListDetail>
       </Link>
     </HomeMovieListContainer>
   )

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SearchDescriptionContainer, SearchMovieContainer, SearchMovieDescription, SearchMovieOriginalTitle, SearchMoviePoster, SearchMovieRating, SearchMovieRatingContainer, SearchMovieTitle } from '../styles/search';
+import { SearchDescriptionContainer, SearchMovieContainer, SearchMovieDescription, SearchMoviePoster, SearchMovieRating, SearchMovieRatingContainer, SearchMovieTitle } from '../styles/search';
 
 export default function SearchMovieCard(props) {
   const { movieProps } = props;
@@ -15,7 +15,6 @@ export default function SearchMovieCard(props) {
         <SearchMoviePoster alt={movieProps.title} src={movieBanner} />
         <SearchDescriptionContainer>
           <SearchMovieTitle >{movieProps.title}</SearchMovieTitle>
-          <SearchMovieOriginalTitle>Título original: {movieProps.original_title}</SearchMovieOriginalTitle>
           <SearchMovieDescription>{movieProps.overview}</SearchMovieDescription>
           <SearchMovieRatingContainer>
             <span>⭐</span>

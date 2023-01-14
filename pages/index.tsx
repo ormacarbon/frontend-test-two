@@ -3,20 +3,21 @@ import styled from "styled-components";
 import HomeMovieList from '../components/home-movie-list';
 import { applicationContext } from '../context/context';
 import { PageTitle } from '../styles/home';
+import { PageDescription, IndexPage } from '../styles/index'
 
 export default function Index() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [inTheaterMovies, setInTheaterMovies] = useState([]);
-  const [listOfMovies, setListOfMovies] = useState({})
+  const [homePageMovies, setHomePageMovies] = useState({})
   const { apiKey } = useContext(applicationContext);
-  let welcomeMessage: any = 'Olá!'
+  let welcomeMessage: any = 'Hello!'
 
   const hourData = [
-    [0, 4, "Boa noite"],
-    [5, 11, "Bom dia"],
-    [12, 17, "Boa tarde"],
-    [18, 24, "Boa noite",]
+    [0, 4, "Good night"],
+    [5, 11, "Good morning"],
+    [12, 17, "Good afternoon"],
+    [18, 24, "Good evening",]
   ],
     hr = new Date().getHours();
 
@@ -28,69 +29,44 @@ export default function Index() {
   }
 
   useEffect(() => {
-    getPopularMovies()
-    getUpcomingMovies()
-    getInTheaterMovies()
+    Promise.all([
+      fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-us&page=1&region=US`).then(value => value.json()),
+      fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=43090d0ed080a422f191b4b3db131431&language=en-us&page=1`).then(value => value.json()),
+      fetch(`https://api.themoviedb.org/3/movie/popular?api_key=43090d0ed080a422f191b4b3db131431&language=en-us&page=1`).then(value => value.json())
+    ])
+      .then(([upcoming, nowPlaying, popular]) => {
+        setUpcomingMovies(upcoming.results)
+        setPopularMovies(popular.results)
+        setInTheaterMovies(nowPlaying.results)
+
+        setHomePageMovies((prevState) => ({
+          ...prevState,
+          popularMovies: { ...popular, sectionTitle: 'Popular right now 🔥', route: '/popular' },
+        }))
+        setHomePageMovies((prevState) => ({
+          ...prevState,
+          inTheaterMovies: { ...nowPlaying, sectionTitle: 'Now in theaters 🎞️', route: '/in-theater' },
+        }))
+        setHomePageMovies(prevState => ({
+          ...prevState,
+          upcomingMovies: { ...upcoming, sectionTitle: 'Coming soon 🎬', route: '/soon-in-theater' }
+        }))
+      }).catch((err) => {
+        console.log(err);
+      });
   }, [])
 
-  const getUpcomingMovies = () => {
-    const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en&page=1&region=BR`
-    fetch(url)
-      .then((response) => response.json())
-      .then(upcomingMovies => {
-        setUpcomingMovies(upcomingMovies.results)
-        setListOfMovies(prevState => ({
-          ...prevState,
-          upcomingMovies: { ...upcomingMovies, sectionTitle: 'Em breve nos cinemas 🎬', route: '/soon-in-theater' }
-        }))
-      })
-  }
-
-  const getInTheaterMovies = () => {
-    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=43090d0ed080a422f191b4b3db131431&language=pt-br&page=1`
-    fetch(url)
-      .then((response) => response.json())
-      .then(inTheaterMovies => {
-        setInTheaterMovies(inTheaterMovies.results)
-        setListOfMovies((prevState) => ({
-          ...prevState,
-          inTheaterMovies: { ...inTheaterMovies, sectionTitle: 'Em exibição nos cinemas 🎞️', route: '/in-theater' },
-        }))
-      })
-  }
-
-  const getPopularMovies = () => {
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=43090d0ed080a422f191b4b3db131431&language=pt-br&page=1`
-    fetch(url)
-      .then((response) => response.json())
-      .then(popularMovies => {
-        setPopularMovies(popularMovies.results)
-        setListOfMovies((prevState) => ({
-          ...prevState,
-          popularMovies: { ...popularMovies, sectionTitle: 'Populares no momento 🔥', route: '/popular' },
-        }))
-      })
-  }
-
-  const Index = styled.div`
-    margin-bottom: 8rem;
-  `
-
-  const PageDescription = styled.div`
-    text-align: center;
-  `
-
   return (
-    <Index>
+    <IndexPage>
       <div>
         <PageTitle>
-          <PageDescription>{welcomeMessage} e boas vindas ao MovieRoll!</PageDescription>
-          <PageDescription>O que vai assistir hoje?</PageDescription>
+          <PageDescription>{welcomeMessage} and welcome to MovieRoll!</PageDescription>
+          <PageDescription>What are you going to watch today?</PageDescription>
         </PageTitle>
-        {Object.values(listOfMovies).map((list: any) => (
-          <HomeMovieList movieList={list.results} title={list?.sectionTitle} route={list?.route} ></HomeMovieList >
+        {Object.values(homePageMovies).map((list: any, index) => (
+          <HomeMovieList key={index} movieList={list.results} title={list?.sectionTitle} route={list?.route} ></HomeMovieList >
         ))}
       </div>
-    </Index>
+    </IndexPage>
   )
 }

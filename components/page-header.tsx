@@ -1,11 +1,8 @@
 import Link from 'next/link';
-import { useContext } from 'react';
-import styled from "styled-components";
-import { applicationContext } from '../context/context';
-import { HeaderLogo, HeaderLogoContainer, HeaderLogoText, ItemHeaderContainer, Header, HeaderUl, SearchInputContainer, ThemeTogglerContainer } from '../styles/header';
+import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
+import { Header, HeaderLogo, HeaderLogoContainer, HeaderLogoText, HeaderUl, ItemHeaderContainer, SearchInputContainer, ThemeTogglerContainer } from '../styles/header';
 import HeaderItem from './header-item';
 import MovieSearchInput from './movie-search-input';
-import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
 
 
@@ -19,15 +16,15 @@ const PageHeader = (props) => {
     },
     {
       href: '/popular',
-      title: 'Populares'
+      title: 'Popular'
     },
     {
       href: '/in-theater',
-      title: 'Em cartaz'
+      title: 'Now playing'
     },
     {
       href: '/soon-in-theater',
-      title: 'Em breve'
+      title: 'Coming soon'
     }
   ]
 
@@ -42,8 +39,8 @@ const PageHeader = (props) => {
       <HeaderUl>
         <ItemHeaderContainer>
           {headerItems.map(
-            item => (
-              <HeaderItem title={item.title} href={item.href} />
+            (item, index) => (
+              <HeaderItem key={index} title={item.title} href={item.href} />
             )
           )}
 
