@@ -24,7 +24,7 @@ export async function getServerSideProps({ params }) {
   };
 }
 
-export default function ExchangeDetail({ exchange }) {
+export default function ExchangeDetails({ exchange }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 5;
   const totalPages = Math.ceil(exchange.length / perPage);
