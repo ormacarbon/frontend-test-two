@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoaderComponent from "../../Components/Loader";
 import Pagination from "../../Components/Pagination";
 import { SectionTitle } from "../../Components/SectionTitle";
@@ -7,17 +7,23 @@ import { useApi } from "../../hooks/useApi";
 import { CompaniesContainer, Table, Tbody, Thead } from "./styles";
 
 export default function Companies() {
-  const { response, isLoading } = useApi("companies/public_treasury/bitcoin");
+  const url = "companies/public_treasury/bitcoin"
+  const { response, isLoading,error,refresh } = useApi(url);
   const company = response.companies
 
-
-  console.log(company);
+  useEffect(() => {
+    const intervalId = setTimeout(() => {
+      refresh(url);
+    }, 300000);
+    return () => clearInterval(intervalId);
+  }, [refresh]);
+  
   return (
     <main>
       <SEO name="Crypto.me | Companies" />
       <section id="companies">
         <CompaniesContainer>
-          <SectionTitle title="Bitcoin related Companies" />
+        <SectionTitle title="Bitcoin related Companies" />
           <Table>
             <Thead>
               <tr>
@@ -42,6 +48,7 @@ export default function Companies() {
                 : null}
             </Tbody>
           </Table>
+          {error ? error : ''}
         </CompaniesContainer>
       </section>
     </main>

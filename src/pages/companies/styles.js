@@ -6,6 +6,7 @@ export const CompaniesContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
 `
 
 export const Table = styled.table`
@@ -24,7 +25,6 @@ export const Tbody = styled.tbody`
        background-color: ${props=>props.theme.primaryBack};
        text-align: center;
         tr>td{
-            width: 200px;
             padding: 1rem;
             color: ${props=>props.theme.text};
             border-bottom: 1px solid ${props=>props.theme.borderColor} ;

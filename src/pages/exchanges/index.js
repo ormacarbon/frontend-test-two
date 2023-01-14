@@ -8,13 +8,15 @@ import debounce from 'lodash.debounce'
 import LoaderComponent from "../../Components/Loader";
 import SEO from '../../Components/SEO'
 import Pagination from '../../Components/Pagination'
+import {SectionTitle} from '../../Components/SectionTitle/index'
 
 export default function Exchange() {
     const[search,setSearch]=useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 15
+
     const url = 'exchanges'
-    const {response, isLoading,refresh} = useApi(url)
+    const {response, isLoading,refresh,error} = useApi(url)
 
     const handleSearch = debounce(e => {
         e.preventDefault();
@@ -64,6 +66,7 @@ export default function Exchange() {
             totalPages={totalPages}
             />
             <Container>
+            <SectionTitle title='Best exchanges in the market' desc='if you want to see more details about the exchange, just click on that option that you want to open a new page with the details'/>
             <ExchangesBox>
             {isLoading ? <LoaderComponent/> : currentPageExchanges.map(broker=>(
                 <ExchangesList
@@ -77,6 +80,7 @@ export default function Exchange() {
                 />
             ))}
             </ExchangesBox>
+            {error ? error : ''}
             </Container>
         </section>
     </main>

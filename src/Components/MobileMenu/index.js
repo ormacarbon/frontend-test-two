@@ -16,6 +16,9 @@ export default function MobileMenuComponent() {
             <li>
               <Link href="/companies">Companies</Link>
             </li>
+            <li>
+              <Link href="/nfts">NFT´S</Link>
+            </li>
           </ul>
         </NavigationMobile>
       </MobileMenu>

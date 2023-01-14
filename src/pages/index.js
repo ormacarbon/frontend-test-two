@@ -14,7 +14,7 @@ export default function Home() {
   const perPage = 15
 
   const url = `coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false`;
-  const { response,isLoading,refresh } = useApi(url);
+  const { response,isLoading,refresh,error } = useApi(url);
 
   const handleSearch = debounce((e) => {
     e.preventDefault();
@@ -82,6 +82,7 @@ export default function Home() {
             />
           ))
         )}
+        {error ? error : ''}
       </section>
     </main>
   );
