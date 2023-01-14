@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.0.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "babel-plugin-styled-components": "^2.0.7",
+    "next": "^13.0.6",
+    "react": "^18.2.0",
+    "react-debounce-input": "^3.3.0",
+    "react-dom": "^18.2.0",
+    "react-paginate": "^8.1.4",
+    "react-switch": "^7.0.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "8.29.0",
