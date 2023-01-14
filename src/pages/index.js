@@ -1,3 +1,4 @@
+import Banner from "../components/Banner/Banner";
 import { useFetch } from "../hooks/useFetch";
 import useLocation from "../hooks/useLocation";
 
@@ -8,6 +9,7 @@ const Index = () => {
 
   return (
     <div>
+      <Banner data={weather}/>
       <code>
         <pre>{JSON.stringify(weather, null, 2)}</pre>
       </code>
