@@ -1,32 +1,24 @@
 import React from "react";
-import {
-  Container,
-  Frame,
-  Content,
-  Header,
-  Types,
-  Description,
-} from "./styles";
+import { Container, Content, Header, Types, Description } from "./styles";
 
 import TypeLabel from "../TypeLabel";
 import Image from "next/image";
 import Button from "../Button";
+import Frame from "../Frame";
 
 function ExpandedCard(props) {
   return (
     <Container active={props.active} onClick={props.onClick}>
-      <Frame>
-        {props.sprite && (
-          <Image
-            src={props.sprite}
-            alt={props.name + " Sprite"}
-            unoptimized
-            width={360}
-            height={360}
-            priority
-          />
-        )}
-      </Frame>
+      {props.sprite && (
+        <Frame
+          src={props.sprite}
+          alt={props.name + " Sprite"}
+          unoptimized
+          width={360}
+          height={360}
+          priority
+        />
+      )}
       <Content>
         <Header>
           <div className="title-container">

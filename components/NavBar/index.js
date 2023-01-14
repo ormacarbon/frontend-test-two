@@ -13,7 +13,7 @@ function NavBar() {
   
   const handleOptionClick = (option) => {
     setSelectedOption(option)
-    router.push(`/${option}`)
+    router.push(option)
   };
 
   return(
