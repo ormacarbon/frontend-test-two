@@ -16,13 +16,14 @@ export default function RootPage(props) {
         switch (select) {
             case 0:
                 return (
-                    <CatPage />
+                    <UsersPage />
+                    
                 )
                 break;
 
             case 1:
                 return (
-                    <UsersPage />
+                    <CatPage />
                 )
                 break;
 
