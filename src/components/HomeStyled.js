@@ -11,12 +11,7 @@ export const Main = styled.main`
 `;
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(4, auto);
-  gap: 16px;
-  padding: 15px;
-  margin-top: 32px;
+  width: 90%;
 
   a {
     background-color: ${({ theme }) => theme.primaryColor};
@@ -24,13 +19,16 @@ export const Container = styled.div`
     padding: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     border: 1px solid;
+    padding: 15px;
 
     &:hover {
       cursor: pointer;
       background-color: ${({ theme }) => theme.secondaryColor};
       color: ${({ theme }) => theme.primaryColor};
-      transform: scale(1.1);
+      transform: scale(0.9);
     }
 
     :active {
@@ -38,7 +36,7 @@ export const Container = styled.div`
     }
 
     img {
-      width: 20px;
+      width: 300px;
       margin-right: 16px;
     }
 
