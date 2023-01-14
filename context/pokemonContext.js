@@ -104,7 +104,7 @@ export function PokemonContextProvider({ children }) {
   }, [pokemonTeam])
 
   return (
-    <PokemonContext.Provider value={{ pokemonTeam, pokemonList, loadPokemonList }}>
+    <PokemonContext.Provider value={{ pokemonTeam, pokemonList, loadPokemonList, referenceList }}>
       {children}
     </PokemonContext.Provider>
   );
