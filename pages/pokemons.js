@@ -1,3 +1,6 @@
 import Home from './index';
 
-export default (props) => <Home {...props} />;
+const CustomHome = (props) => <Home {...props} />;
+CustomHome.displayName = 'CustomHome';
+
+export default CustomHome;
