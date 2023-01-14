@@ -1,12 +1,16 @@
 //? Components
 import Card from "../components/Card/Card";
 import Search from "../components/Search/Search";
-
-import { useEffect, useState } from "react";
-
-import { CharactersContainer } from "../styles/characterStyles";
 import Pagination from "../components/Pagination/Pagination";
 import FilterButton from "../components/FilterButton/FilterButton";
+//? React Dependences
+import { useEffect, useState } from "react";
+//? Styled components
+import { CharactersContainer } from "../styles/characterStyles";
+
+import { useQuery } from "react-query";
+
+import axios from "axios";
 
 //! API CALL
 // export async function getServerSideProps() {
@@ -25,12 +29,17 @@ import FilterButton from "../components/FilterButton/FilterButton";
 //! COMPONENT
 export default function Characters() {
 
-  
-  const [info, setinfo] = useState(0)
+  const [info, setInfo] = useState(0)
   const [results, setResults] = useState([])
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
+
+
+  // const { data } = useQuery('characters', async () => {
+  //   const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}`)
+  //   return res.results
+  // })
 
 
   useEffect(() => {
@@ -39,22 +48,27 @@ export default function Characters() {
     .then((res) => res.json())
     .then((res) => {
       setResults(res.results)
-      setinfo(res.info)
+      setUnfo(res.info)
     })
     .catch((err) => console.log(err))
   }, [search, pageNumber, status])
 
-  
+
   return (
     <CharactersContainer>
+
+      {/* SEARCH AND FILTER */}
       <Search search={search} setSearch={setSearch}/>
       <FilterButton setStatus={setStatus}/>
 
+      {/* CHARACTERS CARDS */}
       {!results ? (
         <p>No results found...</p>
       ) : (
         <Card characters={results}  />
       )}
+
+      {/* PAGINATION COMPONENT */}
       <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} info={info} />
     </CharactersContainer>
   );

@@ -1,4 +1,6 @@
+//? Styled
 import styled from "styled-components";
+//? Next Dependences
 import Link from "next/link";
 
 export const NavbarContainer = styled.nav`

@@ -15,7 +15,7 @@ export default function Home() {
       />
       <TextContainer>
         <h1>
-          Look Morty !! <br /> We have visitors
+          Look Morty <br /> We have visitors !!
         </h1>
         <p>Finally someone decided to show up! This is my new invention, the <span>Universe of Rick and Morty !! </span> Feel free to explore, it took a lot of work to gather all these people together.</p>
         <Link href='/characters'>Go &#8594;</Link>

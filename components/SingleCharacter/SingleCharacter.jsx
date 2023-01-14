@@ -65,7 +65,7 @@ export default function SingleCharacter({ character }) {
           </Info>
         </InfoContainer>
       </CharacterInfo>
-      <Link href={`/characters`}>voltar</Link> 
+      <Link href={`/characters`}>Return</Link> 
     </DivCard>
   );
 }

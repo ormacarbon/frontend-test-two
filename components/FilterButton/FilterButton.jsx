@@ -1,10 +1,17 @@
-//? Styled Components
+//? React dependences
 import { useState } from "react";
-import { StatusContainer, StatusDiv, StatusButtonDiv, StatusButton, FilterMessage } from "./style";
+//? Styled Components
+import {
+  StatusContainer,
+  StatusDiv,
+  StatusButtonDiv,
+  StatusButton,
+  FilterMessage,
+} from "./style";
 
 export default function FilterButton({ setStatus }) {
-  const [filterMessage, setFilterMessage] = useState('All characters');
-
+  // Message of actual filter selected
+  const [filterMessage, setFilterMessage] = useState("All characters");
 
   // Status Filter Functions
   const handleStatusAlive = () => {
@@ -19,7 +26,7 @@ export default function FilterButton({ setStatus }) {
 
   const handleStatusDefault = () => {
     setStatus("");
-    setFilterMessage('All characters')
+    setFilterMessage("All characters");
   };
 
   return (

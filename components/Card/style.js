@@ -4,12 +4,12 @@ import styled from "styled-components";
 export const CardCapsule = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 35px;
   align-items: center;
   max-width: 100%;
   margin: 4em auto;
-
-  
+  padding: 1em;
  
   a {
     margin-top: 2em;
@@ -39,7 +39,7 @@ export const CardCharacter = styled.div`
   border-radius: 1em;
   border: 2px solid;
   border-color: ${(props) => props.theme.colors.borderColor};
-  width: 23%;
+  min-width: 30%;
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
   background-color: ${(props) => props.theme.colors.cardBgColor};
   color: ${(props) => props.theme.colors.textColor};

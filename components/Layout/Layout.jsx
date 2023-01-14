@@ -13,8 +13,11 @@ import { useState } from "react";
 
 export default function Layout({ children }) {
 
+  // Theme state 
   const [theme, setTheme] = useState(lightTheme)
 
+
+  // Function for change theme 
   const onChangeTheme = () => {
     setTheme(theme.name === 'light' ? darkTheme : lightTheme)
   }
@@ -22,7 +25,6 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        {/* ADD LINK FOR FAVICON */}
         <title>Rick and Morty NEXT</title>
       </Head>
       <ThemeProvider theme={theme}>

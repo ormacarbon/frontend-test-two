@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+//? Components
 import SingleCharacter from "../../components/SingleCharacter/SingleCharacter";
 
 export const getStaticPaths = async () => {

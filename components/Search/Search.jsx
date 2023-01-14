@@ -5,12 +5,12 @@ import { FormContainer } from "./style"
 
 export default function Search({ search, setSearch }) {
 
-
+  // Block reload page
   const handleSubmit = (e) => {
     e.preventDefault()
   }
   
-  
+  // Set user search input 
   const handleChangeSearch = (e) => {
     setSearch(e.target.value)
   }

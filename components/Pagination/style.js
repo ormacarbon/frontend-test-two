@@ -1,3 +1,4 @@
+//? Styled 
 import styled from "styled-components";
 
 
@@ -18,6 +19,10 @@ export const DivButtons = styled.div `
         
         @media (max-width: 699px) {
             font-size: 0.6em;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 0.5em;
         }
 
         @media (max-width: 300px) {
@@ -66,7 +71,15 @@ export const DivButtons = styled.div `
                 border-radius: 0px 0px 10px 10px;
             }
 
-           
+           a {
+            color: ${(props) => props.theme.colors.textColor};
+            transition: all .2s ease-in;
+
+
+            &:hover {
+                color: #00ff00;
+            }
+           }
         }
     }
 `

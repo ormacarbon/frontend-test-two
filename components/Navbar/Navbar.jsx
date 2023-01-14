@@ -8,7 +8,6 @@ import {
   NavbarInnerContainer,
   NavbarLinkContainer,
   NavbarLink,
-  Logo,
   OpenLinksButton,
   NavbarLinkExtended,
 } from "./style";
@@ -20,7 +19,11 @@ import Image from "next/image";
 
 
 export default function TopNavbar({ onChangeTheme }) {
+
+  // Theme context
   const { name, colors } = useContext(ThemeContext);
+
+  // Navbar responsive state
   const [extendNavbar, setExtendNavbar] = useState(false);
 
   return (

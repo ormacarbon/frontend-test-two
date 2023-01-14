@@ -1,3 +1,4 @@
+//? Styled
 import styled,  {keyframes} from "styled-components";
 
 // ANIMATIONS
@@ -73,6 +74,7 @@ export const TextContainer = styled.div `
     h1 {
         align-self:flex-start;
         margin-bottom: .5em;
+        line-height: 1.3em;
     }
 
     p {
@@ -87,7 +89,7 @@ export const TextContainer = styled.div `
     a {
         align-self: flex-start;
         text-decoration: none;
-        margin: 2em;
+        margin-top: 2em;
         color: ${(props) => props.theme.colors.textColor};
         font-weight: bold;
         transition: all .2s ease-in;

@@ -1,3 +1,4 @@
+//? Styled
 import styled from "styled-components";
 
 export const CharactersContainer = styled.div`
@@ -5,5 +6,5 @@ export const CharactersContainer = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 100%;
-
+  
 `;
