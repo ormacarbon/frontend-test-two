@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import useLocation from "../hooks/useLocation";
 
