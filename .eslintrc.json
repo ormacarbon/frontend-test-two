@@ -1,12 +1,4 @@
 {
-  "extends": ["next", "plugin:react/recommended"],
-  "plugins": ["react"],
-  "rules": {
-    "react/prop-types": 0
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+  "extends": "next/core-web-vitals",
+  "presets": ["next/babel"]
 }
