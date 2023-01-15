@@ -5,17 +5,22 @@ import { FaStar } from "react-icons/fa";
 import { LikesContext } from '../context/FavoritesContext';
 import { FavoritesContainer, Liked, MovieContainer, MoviesContainer } from "../styles/pages/favorites";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function Favorites(){
   const { likedItems, removeMovieFromLiked } = useContext(LikesContext);
   const link= 'https://image.tmdb.org/t/p/w500/';
 
   return(
+    <>
+    <Head>
+      <title>Next+</title>
+    </Head>
     <FavoritesContainer>
       <h1>Filmes Favoritos</h1>
       <MoviesContainer>
         {likedItems.map(movie => (
-          <MovieContainer>
+          <MovieContainer key={movie.id}>
               <Image src={ link + movie.imageUrl} width={200} height={150} alt={movie.title} />
               <Liked>
                 <div className="star">
@@ -34,5 +39,6 @@ export default function Favorites(){
         ))}
       </MoviesContainer>
     </FavoritesContainer>
+    </>
   )
 }

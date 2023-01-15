@@ -8,6 +8,7 @@ export const MovieConteiner = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  margin-top: 250px;
 
   img{
     width: 100%;
@@ -31,6 +32,7 @@ gap: 1rem;
 h1{
   font-size: ${(props) => props.theme.fontSize['2xl']};
   color:  ${(props) => props.theme.colors.green500};
+  text-align: center;
   font-weight: bold;
 }
 

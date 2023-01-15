@@ -5,7 +5,7 @@ export const MovieContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-radius: 8px;
   background-color: ${(props) => props.theme.colors.green500};
@@ -21,6 +21,7 @@ export const MovieContainer = styled.div`
   h1{
     color: ${(props) => props.theme.colors.primary100} !important;
     font-size: ${(props) => props.theme.fontSize['2xl']};
+    text-align: center;
     padding: 2rem;
   }
 

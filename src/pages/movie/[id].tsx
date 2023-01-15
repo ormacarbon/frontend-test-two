@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FaStar } from "react-icons/fa";
@@ -26,6 +27,10 @@ export default function Product({ movie }: MovieProps) {
   const link= 'https://image.tmdb.org/t/p/w500/';
 
   return(
+    <>
+    <Head>
+      <title>Next+</title>
+    </Head>
     <MovieConteiner>
       <Image src={ link + movie.backdrop_path} width={200} height={150} alt={movie.title} />
       <MovieContent>
@@ -50,6 +55,7 @@ export default function Product({ movie }: MovieProps) {
         {movie.homepage ? <a href={movie.homepage}>Visitar Página</a> : <></>}
       </MovieContent>
     </MovieConteiner>
+    </>
   )
 }
 
@@ -77,7 +83,8 @@ export const getStaticProps: GetStaticProps<any, {id: string}> = async ({ params
   return {
     props: {
       movie
-    }
-  }
-}
+    },
+    revalidate: 60 * 60 * 1
+  };
+};
 

@@ -15,10 +15,10 @@
     "@types/styled-components": "^5.1.26",
     "axios": "^1.2.2",
     "babel-plugin-styled-components": "^2.0.7",
-    "next": "13.0.6",
+    "next": "^13.1.2",
     "phosphor-react": "^1.4.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.2",
@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "eslint": "8.29.0",
-    "eslint-config-next": "13.0.6"
+    "eslint-config-next": "^13.1.2"
   }
 }

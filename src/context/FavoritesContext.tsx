@@ -56,7 +56,7 @@ export function LikeContextProvider({ children }: LikeContextProviderProps) {
   }
 
   function getMovies(query?: string){
-    return router.push(`query=${query}`);
+    return router.replace(`query=${query}`);
   }
 
   useEffect(() => {

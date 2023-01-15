@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Container, Input } from './styles';
 import { useContext } from 'react';
 import { LikesContext } from '../../context/FavoritesContext';
+import { MagnifyingGlass } from "phosphor-react";
 
 const searchFormSchema = z.object({
     query: z.string(),
@@ -25,6 +26,7 @@ export function SearchMovie(){
   return(
     <Container onSubmit={handleSubmit(handleSearchPost)}>
         <Input type="text" placeholder="Buscar por um filme" {...register("query")} />
+        <button type="submit"><MagnifyingGlass size={25} /></button>
     </Container>
   )
 }
