@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Container, Content } from "./styles";
+import Head from 'next/head';
 import { PokemonContext } from "../../context/pokemonContext";
 
 import ExpandedCard from "../../components/ExpandedCard";
@@ -14,6 +15,10 @@ function Overview() {
 
   return (
     <Container>
+      <Head>
+        <title>Pokémon Universe</title>
+      </Head>
+      
       <Header title="overview" subtitle="hi pokémon trainer," hideButton/>
       <VideoBanner />
       <Content>

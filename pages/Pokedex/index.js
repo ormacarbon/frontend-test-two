@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Head from 'next/head';
 import { Container, Content } from "./styles";
 import { PokemonContext } from "../../context/pokemonContext";
 
@@ -11,6 +12,10 @@ function Pokedex() {
 
   return (
     <Container>
+      <Head>
+        <title>Pokédex</title>
+      </Head>
+
       <Header title="pokédex" showInput />
       <Content>
         {pokemonList.length > 0 &&

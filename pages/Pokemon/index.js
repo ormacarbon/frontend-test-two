@@ -1,16 +1,22 @@
-import React, { useContext, useEffect, useState, PureComponent } from "react";
-import { Container, Content, Description } from "./styles";
+import React, { useContext, useEffect, useState } from "react";
+import { Container, Content, Description, Evolutions, CardContainer, Indicator } from "./styles";
+import Head from 'next/head';
 import { PokemonContext } from "../../context/pokemonContext";
 import { useRouter } from 'next/router';
 
 import Frame from "../../components/Frame";
 import Box from "../../components/Box";
 import Chart from "../../components/Chart";
-import Header from "../../components/Header"
+import Header from "../../components/Header";
+import AttributeBox from "../../components/AttributeBox";
+import Card from "../../components/Card";
+import Button from "../../components/Button";
+import { CaretRight } from "phosphor-react";
 
 function Pokemon() {
   const { referenceList, searchPokemon, fetchPokemon } = useContext(PokemonContext);
   const [pokemon, setPokemon] = useState();
+  const [evolutions, setEvolutions] = useState([]);
 
   const router = useRouter();
   const { pokemon: name } = router.query;
@@ -18,12 +24,16 @@ function Pokemon() {
   useEffect(() => {
     async function fetchPokemonInfo() {
       const match = searchPokemon(name);
-      if(match) {
-        const request = await fetchPokemon(match.url);
-        setPokemon(request)
-      }
-      else {
-        console.log(name)
+      if (match) {
+          const request = await fetchPokemon(match.url);
+
+          const evolutionPromises = request.evolutions.map(evolution => {
+              return fetchPokemon(searchPokemon(evolution).url);
+          });
+
+          const evolutions = await Promise.all(evolutionPromises);
+          setEvolutions(evolutions);
+          setPokemon(request);
       }
     }
     referenceList.length > 0 && fetchPokemonInfo();
@@ -31,9 +41,16 @@ function Pokemon() {
 
   return (
     <Container>
+      <Head>
+        <title>Pokémon</title>
+      </Head>
+
       {pokemon &&
-        <div>
-          <Header title={pokemon.name} subtitle={<div>Nº&nbsp;{pokemon.id.toString().padStart(3, "0")}</div>}/>
+        <>
+          <Header 
+            title={<div>{pokemon.name} <span>#{pokemon.id.toString().padStart(3, "0")}</span></div>}
+            showInput
+          />
           <Box>
             <Content>
               <Frame 
@@ -45,12 +62,35 @@ function Pokemon() {
                 priority
               />
               <div className="description">
+                <header><h3>Description</h3></header>
                 <Description>{pokemon.flavor_text}</Description>
+                <AttributeBox height={pokemon.height} weight={pokemon.weight} types={pokemon.types}/>
                 <Chart data={pokemon.stats.map(item => {return({name:item.stat.name, value:item.base_stat})})}/>
               </div>
             </Content>   
           </Box>
-        </div>
+          <Box title="Evolutions">
+            <Evolutions>
+              {
+                evolutions.map((pokemon, id) => {return(
+                  <CardContainer key={pokemon.id}>
+                    <Card
+                      name={pokemon.name}
+                      sprite={
+                        pokemon.sprites.other["official-artwork"].front_default
+                      }
+                      id={pokemon.id}
+                      type={pokemon.types.map((tp) => tp.type.name)}
+                    />
+                    <Indicator>
+                      {(id+1)%3 !== 0 && <Button rounded hoverColor="primary200" icon={<CaretRight size={32} weight="bold" />}/>}
+                    </Indicator>
+                  </CardContainer>
+                )})
+              }
+            </Evolutions>
+          </Box>
+        </>
       }
     </Container>
   );
