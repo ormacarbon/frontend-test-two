@@ -45,9 +45,13 @@ export const SearchPageTitleContainer = styled.div`
 
 export const SearchPageTitle = styled.h2`
     font-family: 'Press Start 2P';
-    font-size: 2rem;
+    font-size: 1rem;
     color: ${(props) => props.theme.colors.textPrimary};
     text-shadow: 5px 5px ${(props) => props.theme.colors.danger};
+
+    @media only screen and (min-width: 764px){
+        font-size: 2rem;
+    }
 `
 
 export const SearchPageSub = styled.p`
