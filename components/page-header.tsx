@@ -51,7 +51,7 @@ const PageHeader = () => {
             <MovieSearchInput />
           </div>
           <ThemeTogglerContainer onClick={() => setTheme(theme === 'dark' ? 'white' : 'dark')}>
-            {theme === 'white-theme' ? <BsFillMoonFill /> : <BsFillSunFill />}
+            {theme === 'white' ? <BsFillMoonFill /> : <BsFillSunFill />}
           </ThemeTogglerContainer>
         </SearchInputContainer>
       </HeaderUl>
