@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {devices} from '../../styles/Responsive'
 
 export const ContainerHeader = styled.header`
   width: 100%;
@@ -6,7 +7,10 @@ export const ContainerHeader = styled.header`
   height: 100px;
   display: flex;
   align-items: center;
-  
+
+  @media ${devices.laptop} {
+    display: none;
+  }
 `
 
 export const HeaderNavigation = styled.nav`
