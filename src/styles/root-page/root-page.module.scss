@@ -1,0 +1,17 @@
+.BlackRoot{
+    background-color: rgb(10, 14, 31);
+}
+
+.RootMainBox{
+    background-color: rgb(255, 255, 255);
+}
+.ContentBox{
+    margin-left: 250px;
+    height: 100vh;
+    overflow-y: scroll;
+}
+@media screen and (orientation: portrait) {
+    .ContentBox{
+        margin-left: 0;
+    }
+}
