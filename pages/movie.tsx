@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
@@ -34,82 +35,87 @@ export default function SearchMovieCard(props) {
   const movieDirector = movieCredits?.crew.find(it => it.job === "Director")
 
   return (
-    <MovieContainer style={{ minHeight: '80vh' }}>
-      {movieData?.backdrop_path && (
-        <>
-          <MovieBanner src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}></MovieBanner>
-        </>
-      )}
-      <MovieInformationContainer >
-        <MoviePosterContainer>
-          <MoviePoster src={`https://image.tmdb.org/t/p/w500${movieData?.poster_path}`} alt="" />
-        </MoviePosterContainer>
-        <MovieInformation>
-          <MovieTitleContainer>
-            <MovieTitle>{movieData?.title}</MovieTitle>
-            <TitleComplementDate>{movieData?.release_date.slice(0, 4)}</TitleComplementDate>
+    <>
+      <Head>
+        <title>{movieData?.title}</title>
+      </Head>
+      <MovieContainer style={{ minHeight: '80vh' }}>
+        {movieData?.backdrop_path && (
+          <>
+            <MovieBanner src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}></MovieBanner>
+          </>
+        )}
+        <MovieInformationContainer >
+          <MoviePosterContainer>
+            <MoviePoster src={`https://image.tmdb.org/t/p/w500${movieData?.poster_path}`} alt="" />
+          </MoviePosterContainer>
+          <MovieInformation>
+            <MovieTitleContainer>
+              <MovieTitle>{movieData?.title}</MovieTitle>
+              <TitleComplementDate>{movieData?.release_date.slice(0, 4)}</TitleComplementDate>
 
-            {
-              movieDirector &&
-              <TitleComplement>	Directed by <Link href={{
-                pathname: '/person',
-                query: { personId: movieDirector.id },
-              }}>{movieDirector?.original_name}</Link>
-              </TitleComplement>
+              {
+                movieDirector &&
+                <TitleComplement>	Directed by <Link href={{
+                  pathname: '/person',
+                  query: { personId: movieDirector.id },
+                }}>{movieDirector?.original_name}</Link>
+                </TitleComplement>
+              }
+
+              <div style={{ marginTop: '2rem' }}>{movieData?.tagline}</div>
+
+            </MovieTitleContainer>
+
+            <Overview>{movieData?.overview}</Overview>
+
+            {movieCredits?.cast.length > 0 &&
+              <CastInformation>
+                <InformationTitle style={{ color: selectedInformation === 'cast' && 'var(--header-selected-color)' }} onClick={() => handleSelectedInformation('cast')}>
+                  Cast
+                </InformationTitle>
+                <InformationTitle style={{ color: selectedInformation === 'genres' && 'var(--header-selected-color)' }} onClick={() => handleSelectedInformation('genres')}>
+                  Genres
+                </InformationTitle>
+
+                {selectedInformation === 'cast' ? (
+                  <div >{movieCredits?.cast.slice(0, 10).map((cast, index) => (
+                    <Link key={index} href={{
+                      pathname: '/person',
+                      query: { personId: cast.id },
+                    }}>
+                      <CastItem >{cast.name}</CastItem>
+                    </Link>
+                  ))}</div>
+                ) : (
+                  <div>{movieData?.genres.map((genre, index) => (
+                    <Link key={index} href={{
+                      pathname: '/genre',
+                      query: { genre: genre.id },
+                    }}>
+                      <CastItem>{genre.name}</CastItem>
+                    </Link>
+                  ))}</div>
+                )}
+              </CastInformation>
             }
 
-            <div style={{ marginTop: '2rem' }}>{movieData?.tagline}</div>
+            <InfoFooterContainer>
+              <InfoFooterContent>{movieData?.runtime} mins</InfoFooterContent>
+              <Separator />
+              <InfoFooterContent>More at</InfoFooterContent>
+              <InfoFooterLink
+                target='_blank'
+                href={`https://www.imdb.com/title/${movieData?.imdb_id}/`}>
+                IMDb
+              </InfoFooterLink>
+            </InfoFooterContainer>
 
-          </MovieTitleContainer>
+          </MovieInformation>
 
-          <Overview>{movieData?.overview}</Overview>
-
-          {movieCredits?.cast.length > 0 &&
-            <CastInformation>
-              <InformationTitle style={{ color: selectedInformation === 'cast' && 'var(--header-selected-color)' }} onClick={() => handleSelectedInformation('cast')}>
-                Cast
-              </InformationTitle>
-              <InformationTitle style={{ color: selectedInformation === 'genres' && 'var(--header-selected-color)' }} onClick={() => handleSelectedInformation('genres')}>
-                Genres
-              </InformationTitle>
-
-              {selectedInformation === 'cast' ? (
-                <div >{movieCredits?.cast.slice(0, 10).map((cast, index) => (
-                  <Link key={index} href={{
-                    pathname: '/person',
-                    query: { personId: cast.id },
-                  }}>
-                    <CastItem >{cast.name}</CastItem>
-                  </Link>
-                ))}</div>
-              ) : (
-                <div>{movieData?.genres.map((genre, index) => (
-                  <Link key={index} href={{
-                    pathname: '/genre',
-                    query: { genre: genre.id },
-                  }}>
-                    <CastItem>{genre.name}</CastItem>
-                  </Link>
-                ))}</div>
-              )}
-            </CastInformation>
-          }
-
-          <InfoFooterContainer>
-            <InfoFooterContent>{movieData?.runtime} mins</InfoFooterContent>
-            <Separator />
-            <InfoFooterContent>More at</InfoFooterContent>
-            <InfoFooterLink
-              target='_blank'
-              href={`https://www.imdb.com/title/${movieData?.imdb_id}/`}>
-              IMDb
-            </InfoFooterLink>
-          </InfoFooterContainer>
-
-        </MovieInformation>
-
-      </MovieInformationContainer>
-    </MovieContainer >
+        </MovieInformationContainer>
+      </MovieContainer >
+    </>
   )
 
 }

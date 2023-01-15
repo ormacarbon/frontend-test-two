@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import styled from "styled-components";
@@ -49,31 +50,36 @@ export default function Search() {
   }
 
   return (
-    <SearchPageContainer style={{ minHeight: '100vh' }}>
-      {!emptySearch ?
-        <SearchPageInformation>Found {searchData?.total_results} results for "{searchInput}" 😀</SearchPageInformation> :
-        <SearchPageInformation> Sadly no results for this search 😢</SearchPageInformation>
-      }
-      {
-        loading ?
-          <Loader /> :
-          <SearchListContainer>
-            <SearchMovieList>
-              {movieData.map((movie, index) => (
-                <SearchMovieCard key={index} movieProps={movie} />
-              ))}
-            </SearchMovieList>
-          </SearchListContainer>
+    <>
+      <Head>
+        <title>Results for {searchInput}</title>
+      </Head>
+      <SearchPageContainer style={{ minHeight: '100vh' }}>
+        {!emptySearch ?
+          <SearchPageInformation>Found {searchData?.total_results} results for "{searchInput}" 😀</SearchPageInformation> :
+          <SearchPageInformation> Sadly no results for this search 😢</SearchPageInformation>
+        }
+        {
+          loading ?
+            <Loader /> :
+            <SearchListContainer>
+              <SearchMovieList>
+                {movieData.map((movie, index) => (
+                  <SearchMovieCard key={index} movieProps={movie} />
+                ))}
+              </SearchMovieList>
+            </SearchListContainer>
 
-      }
-      {searchData?.total_results !== 0 && (
-        <ButtonContainer>
-          {moviePage !== 1 &&
-            <ListButton onClick={() => handlePageChange('prev')}>Previous</ListButton>
-          }
-          <ListButton onClick={() => handlePageChange('next')}>Next</ListButton>
-        </ButtonContainer>
-      )}
-    </SearchPageContainer>
+        }
+        {searchData?.total_results !== 0 && (
+          <ButtonContainer>
+            {moviePage !== 1 &&
+              <ListButton onClick={() => handlePageChange('prev')}>Previous</ListButton>
+            }
+            <ListButton onClick={() => handlePageChange('next')}>Next</ListButton>
+          </ButtonContainer>
+        )}
+      </SearchPageContainer>
+    </>
   )
 }

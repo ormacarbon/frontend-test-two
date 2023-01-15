@@ -1,5 +1,6 @@
 
 
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
@@ -51,6 +52,10 @@ export default function MovieCard(props) {
 
 
   return (
+    <>
+    <Head>
+      <title>{person.name}</title>
+    </Head>
     <PersonPageContainer style={{ minHeight: '100vh' }}>
       <PersonProfile>
         <PersonImage src={`https://image.tmdb.org/t/p/w500${person?.profile_path}`} alt="" />
@@ -93,5 +98,6 @@ export default function MovieCard(props) {
         </MovieList>
       </PersonMovies>
     </PersonPageContainer >
+    </>
   )
 }

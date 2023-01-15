@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import styled from "styled-components";
 import HomeMovieList from '../components/home-movie-list';
 import { applicationContext } from '../context/context';
 import { PageTitle } from '../styles/home';
-import { PageDescription, IndexPage } from '../styles/index'
+import { IndexPage, PageDescription } from '../styles/index';
+import Head from 'next/head'
+
 
 export default function Index() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -57,16 +58,21 @@ export default function Index() {
   }, [])
 
   return (
-    <IndexPage style={{minHeight: '100vh'}}>
-      <div>
-        <PageTitle>
-          <PageDescription>{welcomeMessage} and welcome to MovieRoll!</PageDescription>
-          <PageDescription>What are you going to watch today?</PageDescription>
-        </PageTitle>
-        {Object.values(homePageMovies).map((list: any, index) => (
-          <HomeMovieList key={index} movieList={list.results} title={list?.sectionTitle} route={list?.route} ></HomeMovieList >
-        ))}
-      </div>
-    </IndexPage>
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <IndexPage style={{ minHeight: '100vh' }}>
+        <div>
+          <PageTitle>
+            <PageDescription>{welcomeMessage} and welcome to MovieRoll!</PageDescription>
+            <PageDescription>What are you going to watch today?</PageDescription>
+          </PageTitle>
+          {Object.values(homePageMovies).map((list: any, index) => (
+            <HomeMovieList key={index} movieList={list.results} title={list?.sectionTitle} route={list?.route} ></HomeMovieList >
+          ))}
+        </div>
+      </IndexPage>
+    </>
   )
 }

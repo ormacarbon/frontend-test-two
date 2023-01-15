@@ -5,6 +5,7 @@ import SearchMovieCard from '../components/search-movie-card';
 import { applicationContext } from '../context/context';
 import { SearchListContainer, SearchMovieList, SearchPageContainer, SearchPageInformation } from '../styles/search';
 import styled from "styled-components";
+import Head from 'next/head'
 import { ListButton } from '../styles/popular';
 
 
@@ -50,28 +51,34 @@ export default function Search() {
   }
 
   return (
-    <SearchPageContainer>
-      <SearchPageInformation>Showing {searchData?.total_results} "{genreList.genreName}" movies 😀</SearchPageInformation>
-      {
-        loading ?
-          <Loader /> :
-          <SearchListContainer>
-            <SearchMovieList>
-              {movieData?.map((movie, index) => (
-                <SearchMovieCard key={index} movieProps={movie} />
-              ))}
-            </SearchMovieList>
-          </SearchListContainer>
+    <>
+      <Head>
+        <title>Search by genre {genreList.genreName}</title>
+      </Head>
+      <SearchPageContainer>
+        <SearchPageInformation>Showing {searchData?.total_results} "{genreList.genreName}" movies 😀</SearchPageInformation>
+        {
+          loading ?
+            <Loader /> :
+            <SearchListContainer>
+              <SearchMovieList>
+                {movieData?.map((movie, index) => (
+                  <SearchMovieCard key={index} movieProps={movie} />
+                ))}
+              </SearchMovieList>
+            </SearchListContainer>
 
-      }
-      {searchData?.total_results !== 0 && (
-        <ButtonContainer>
-          {moviePage !== 1 &&
-            <ListButton onClick={() => handlePageChange('prev')}>Previous</ListButton>
-          }
-          <ListButton onClick={() => handlePageChange('next')}>Next</ListButton>
-        </ButtonContainer>
-      )}
-    </SearchPageContainer>
+        }
+        {searchData?.total_results !== 0 && (
+          <ButtonContainer>
+            {moviePage !== 1 &&
+              <ListButton onClick={() => handlePageChange('prev')}>Previous</ListButton>
+            }
+            <ListButton onClick={() => handlePageChange('next')}>Next</ListButton>
+          </ButtonContainer>
+        )}
+      </SearchPageContainer>
+    </>
+
   )
 }
