@@ -10,7 +10,7 @@ export const Container = styled.section`
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
   border: 1px solid ${ props => props.theme.colors.gray400};
 
-  h3 {
+  .title {
     font-size: ${props => props.theme.fonts.size.lg};
     font-weight: 600;
     margin-bottom: ${props => props.theme.spacing.lg};

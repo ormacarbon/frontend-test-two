@@ -5,7 +5,7 @@ function Box({title, children}) {
   return(
     <Container>
       {title && 
-        <header>
+        <header className='title'>
           <h3>{title}</h3>
         </header>
       }
