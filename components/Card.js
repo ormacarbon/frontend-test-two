@@ -21,7 +21,7 @@ export function Card (props) {
             <TypeArea darkMode={darkMode} >
                 {props.content.place_of_birth || 
                 props.content.genres.map((genre)=> {
-                    return <p>{genre.name}</p>
+                    return <p key={genre.name} >{genre.name}</p>
                 })}
             </TypeArea>
             <NoteArea darkMode={darkMode} > {location.pathname === '/Persons' ? <p>Popularity: {props.content.popularity}</p> :
