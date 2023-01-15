@@ -50,7 +50,6 @@ export const BeersProvider = ({ children }: BeersProviderProps) => {
         .then((res) => {
           setBeersPage(res.data);
           setPage(page);
-          console.log(page);
         })
         .catch((err) => {
           console.log(err);
