@@ -20,6 +20,7 @@ const StyledNavbar = styled.header`
   .name-page{
     color: ${({ theme }) => theme.textColorBase};
   }
+  
   .switch {
     font-size: 17px;
     position: absolute;
