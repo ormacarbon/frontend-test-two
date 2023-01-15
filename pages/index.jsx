@@ -26,7 +26,7 @@ import { useRef } from "react";
 import phoneImage from "../public/images/phone.png";
 import { useContext } from "react";
 
-export default function Home() {
+export default function Index() {
 	const searchRef = useRef();
 	const cardRef = useRef();
 

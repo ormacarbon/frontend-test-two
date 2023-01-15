@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../components/Footer/Footer";
 import {
 	Container,
 	Row,
@@ -9,15 +9,15 @@ import {
 	SearchTip,
 	Column,
 	ErrorMessage,
-} from "../../components/SearchPageComponents/style";
-import Input from "../../components/Input/Input";
+} from "../components/SearchPageComponents/style";
+import Input from "../components/Input/Input";
 import { AiOutlineSearch } from "react-icons/ai";
-import Navbar from "../../components/Navbar/Navbar";
-import WarningSection from "../../components/WarningSection/WarningSection";
+import Navbar from "../components/Navbar/Navbar";
+import WarningSection from "../components/WarningSection/WarningSection";
 import { useState, useReducer } from "react";
 import axios from "axios";
-import CardListingSection from "../../components/SearchPageComponents/CardListingSection/CardListingSection";
-const Index = () => {
+import CardListingSection from "../components/SearchPageComponents/CardListingSection/CardListingSection";
+const Search = () => {
 	//implementing search
 
 	const [search, setSearch] = useState("");
@@ -120,4 +120,4 @@ const Index = () => {
 	);
 };
 
-export default Index;
+export default Search;
