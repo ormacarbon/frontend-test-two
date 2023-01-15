@@ -1,8 +1,11 @@
+import { Header } from "../components/Header";
+import { Introduction } from "../components/Introduction";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  )
+    <>
+      <Header />
+      <Introduction />
+    </>
+  );
 }
