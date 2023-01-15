@@ -4,7 +4,6 @@ import { BeerCardComponent } from "../../components/BeerCard";
 import { BeersCard, Title, Pagination } from "./style";
 
 import { useContext } from "react";
-import { useState } from "react";
 
 import { BeersContext } from "../../providers/beers";
 
@@ -27,6 +26,7 @@ export const AvailableBeersPageComponent = () => {
               tagline={element.tagline}
               abv={element.abv}
               ibu={element.ibu}
+              beer={element}
             />
           );
         })}

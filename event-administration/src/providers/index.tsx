@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
+
 import { BeersProvider } from "./beers";
+import { EventsProvider } from "./eventscenter";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -8,7 +10,9 @@ interface ProvidersProps {
 export const Providers = ({ children }: ProvidersProps) => {
   return (
     <>
-      <BeersProvider>{children}</BeersProvider>
+      <EventsProvider>
+        <BeersProvider>{children}</BeersProvider>
+      </EventsProvider>
     </>
   );
 };
