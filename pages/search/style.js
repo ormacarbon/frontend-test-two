@@ -1,13 +1,14 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     padding: 20px;
 `
 
@@ -16,8 +17,13 @@ export const Row = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 
     width: 100%;
+
+    ${(props) => props.header && css`
+        justify-self: flex-start;
+    `}
 `
 
 export const Column = styled.div`
@@ -34,6 +40,7 @@ export const SearchPageTitleContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
+    text-align: center;
 `
 
 export const SearchPageTitle = styled.h2`
@@ -46,9 +53,21 @@ export const SearchPageTitle = styled.h2`
 export const SearchPageSub = styled.p`
     font-size: 1rem;
     margin: 20px 0;
+    color: ${(props) => props.theme.colors.textPrimary}
 `
 
 export const SearchTip = styled.p`
     font-size: .8rem;
     margin: 20px 0;
+    color: ${(props) => props.theme.colors.textPrimary}
+`
+
+export const ErrorMessage = styled.p`
+    font-size: 12px;
+    color: red;
+    display: none;
+    margin: 10px 0 0 0 ;
+    ${(props) => !(props.isValid )&& css`
+        display: block;
+    `}
 `
