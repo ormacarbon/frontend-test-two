@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import CatCard from '../components/catCard';
-import NavBar from '../components/navBar';
+import CatCard from '../components/CatCard';
+import NavBar from '../components/NavBar';
 import { getCatMessage } from '../services/api';
 
 function Cat() {
@@ -23,7 +23,7 @@ function Cat() {
     <>
     <NavBar />
       <h1>Cat Page</h1>
-      <form> 
+      <form>
           <label htmlFor="message">Message:</label><br />
           <input type="text" id="message" name="message" value={message} placeholder='your text' onChange={event => setMessage(event.target.value)} /><br />
           <button type="button" onClick={() => generateCatMessage()}>Submit</button>
