@@ -76,8 +76,6 @@ export const TitleComplement = styled.div`
 
 
   @media (max-width: 780px) {
-    /* display: block;
-    margin-block: 0.5rem; */
   }
 `
 
@@ -137,7 +135,6 @@ padding: 6px 8px;
 display: inline-block;
 font-size: 0.725rem;
 border-radius: 4px;
-/* cursor: pointer; */
 `
 
 export const InfoFooterContainer = styled.div`
@@ -148,7 +145,6 @@ export const InfoFooterContainer = styled.div`
   `
 
 export const InfoFooterContent = styled.span`
-/* margin-right: 0.5rem */
   
 `
 export const Separator = styled.span`

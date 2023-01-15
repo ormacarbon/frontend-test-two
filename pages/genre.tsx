@@ -37,8 +37,6 @@ export default function Search() {
       });
   }, [moviePage, router.isReady])
 
-  console.log(genreList)
-
   const ButtonContainer = styled.div`
   display: flex;
   justify-content: ${moviePage === 1 ? 'end' : 'space-between'};

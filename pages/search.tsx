@@ -36,8 +36,6 @@ export default function Search() {
 
   const emptySearch = searchData?.total_results === 0
 
-  console.log(movieData)
-
   const ButtonContainer = styled.div`
   display: flex;
   justify-content: ${moviePage === 1 ? 'end' : 'space-between'};

@@ -103,6 +103,5 @@ export const ThemeTogglerContainer = styled.div`
   cursor: pointer;
   @media (max-width: 780px) {
     margin-left: 0.5rem;
-    /* margin-top: 0.5rem; */
   }
 `
