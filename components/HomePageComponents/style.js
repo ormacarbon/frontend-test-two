@@ -57,6 +57,7 @@ export const HeaderTitleContainer = styled.div`
 	box-shadow: 10px 10px 0px ${(props) => props.theme.colors.danger};
     margin: 50px 0;
 	text-align: center;
+	width: 80%;
 `;
 export const HeaderTitle = styled.h1`
 	font-weight: 700;
@@ -66,7 +67,7 @@ export const HeaderTitle = styled.h1`
 `;
 export const HeaderTitleOrma = styled.h1`
 	font-weight: 700;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	margin: 20px 0;
 	text-shadow: 10px 5px 0px ${(props) => props.theme.colors.neutral};
     font-family: 'Press Start 2P';
