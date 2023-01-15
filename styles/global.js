@@ -5,8 +5,8 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Johto Mono', 'sans-serif';
-    
+    font-family: 'sans-serif';
+    width: fit-content;      
   }
 
   body {
