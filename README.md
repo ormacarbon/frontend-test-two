@@ -1,49 +1,48 @@
-# **TESTE DE FRONTEND**
+# Pokedex
 
-Neste teste, você será livre para criar uma aplicação consumindo a API que você quiser e com o tema que desejar.
-Contudo, o seu projeto deverá seguir os requisitos mínimos de conteúdo.
+![Badge Finalizado](http://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=GREEN&style=for-the-badge)
 
-SUGESTÕES DE APIS:
-https://github.com/public-apis/public-apis
+Projeto desenvolvido para o teste da vaga de Desenvolvedor Front End na empresa Orma Carbon.
+Escolhi o tema de uma pokedex, com consumo da api PokeAPI e com as seguintes funcionalidades:
+- ``Header da página contendo botões para navegação entre a home page, pokedex, e input para busca dos pokemons por nome. Contém uma versão com menu sanduíche para visualização em dispositivos móveis;``
+- ``Toggle para o usuário alternar entre modo light e dark, ficando salvo a última escolha do modo nos cookies do navegador;``
+- ``Renderização de lista de pokemons em cards;``
+- ``Em cada card consta dois botões: um para capturar ou excluir da pokedex, e outro para visualizar seus detalhes;``
+- ``Botão de rolagem automática para o topo da página;``
+- ``Botões para navegação da paginação da lista de pokemons;``
 
----------------------------------------------------------------------
-## REQUISITOS:
+# Índice
 
-## GIT
-- Faça um fork deste repositório.
-- Criar uma branch para codar as suas features.
-- Criar um pull-request quando o teste for finalizado e submetido.
+* [Tecnologias usadas](#tecnologias-usadas)
+* [Imagem do projeto](#imagem-do-projeto)
+* [Deploy](#deploy)
+* [Rodando o Projeto](#rodando-o-projeto)
 
-##### **NOTA: Será avaliado também se o nome da branch, títulos de commit, push e comentários possuem boa legibilidade.**
 
------------------------------------------------------
+## Tecnologias usadas:
 
-## FRAMEWORK
+- ``React.js``
+- ``Next.js``
+- ``Styled Components``
+- ``Nookies``
+- ``React Hooks``
 
-- Utilizar as ferramentas presentes no framework do projeto (NEXT.JS).
+## Imagem do projeto:
 
------------------------------------------------------
+![imagem light](./public/images/pokedex-light.png)
+![imagem dark](./public/images/pokedex-dark.png)
+![imagem mobile light](./public/images/pokedex-mobile-light.png)
+![imagem mobile dark](./public/images/pokedex-mobile-dark.png)
 
-## ESTILOS
 
-- Os estilos deste teste devem ser feitos em styled-components (evite utilizar bootstrap, mas se necessário, use).
-- O projeto deverá conter tema claro/escuro e forma do usuário alterar entre os dois.
-- Deve ser totalmente responsivo.
+## Deploy:
 
------------------------------------------------------
+- ``Vercel`` | Link: <https://frontend-test-two-paulajardimf.vercel.app/>
 
-## PROJETO
 
-- Deve utilizar useContext, useState e useEffect.
-- Ter ao menos 3 paginas navegáveis com router (ex: um navbar para facilitar a navegação).
-- Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição.
+## Rodando o projeto:
+- Rode o console na pasta em que você baixou os arquivos;
 
--------------------------------------------------------
+- Insira o comando ``npm install``;
 
-## REQUISITOS DIFERENCIAIS:
-
-- Código tentando seguir SOLID.
-- Código performático.
-- Utilizar inglês no projeto todo.
-- Utilizar Injeção de Dependências.
-- Fazer deploy do mesmo (heroku, netlify, aws, vercel, github pages ou outro da preferência).
+- Depois, o comando ``npm run dev`` para rodar no navegador.
