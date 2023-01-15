@@ -20,10 +20,9 @@ const CardListingSection = ({ cards, handleNext, handlePrevious }) => {
 					<CardImagesContainer>
 						{cards
 							? cards.map((element) => (
-									<CardContainer>
+									<CardContainer key={element.id}>
 										<CardImage
 											src={element.images.small}
-											key={element.id}
 										/>
 										<CardTitle>{element.name}</CardTitle>
 										<PriceContainer>

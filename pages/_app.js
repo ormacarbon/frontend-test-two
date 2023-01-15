@@ -11,10 +11,6 @@ import { useContext, useState, useEffect } from "react";
 function MyApp({ Component, pageProps }) {
 	const themeValues = useContext(LightDarkContext);
 
-	useEffect(() => {
-		themeValues.setTheme("teste");
-	}, []);
-
 	return (
 		<Fragment>
 			<LightDarkProvider>

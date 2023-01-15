@@ -13,7 +13,7 @@ import {
 	ErrorMessage,
 	Column,
 	PhoneImageContainer,
-} from "./style";
+} from "../components/HomePageComponents/style";
 import Footer from "../components/Footer/Footer";
 import SearchSection from "../components/SearchSection/SearchSection";
 import WarningSection from "../components/WarningSection/WarningSection";
@@ -97,9 +97,9 @@ export default function Home() {
 						</SearchSection>
 
 						<SearchTip>
-							Try entering your card's title. The query will
+							Try entering your card&aposs title. The query will
 							search for the informed string inside the data
-							base's card's titles and try to find the ones that
+							base&aposs card&aposs titles and try to find the ones that
 							match! Ex: Venusaur
 						</SearchTip>
 					</Column>
