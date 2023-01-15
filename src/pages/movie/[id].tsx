@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next'
-import * as S from './styles'
+import * as S from 'styles/pageStyles/movie.details.styles'
 
-import { Header } from 'components/Header'
 import { CastCard } from 'components/CastCard'
 
 import { api } from 'services/api'
@@ -10,7 +9,13 @@ import { tmdbImage } from 'constants/url'
 
 import { MovieDetailsData } from 'interfaces/types'
 
+import { formatDate } from 'utils/formatDate'
+import { formatTime } from 'utils/formatTime'
+
 export default function MovieDetails({ movie, credits }: MovieDetailsData) {
+  const newDate = formatDate(movie.release_date)
+  const newTime = formatTime(movie.runtime)
+
   const actingCast = credits.cast.filter(
     (member) => member.known_for_department === 'Acting'
   )
@@ -21,62 +26,64 @@ export default function MovieDetails({ movie, credits }: MovieDetailsData) {
 
   return (
     <S.Container>
-      <Header />
-
       <S.Content>
         <S.ImageContainer>
-          <img src={tmdbImage(movie?.poster_path, 185)} alt="Imagem do filme" />
+          <img src={tmdbImage(movie?.poster_path, 400)} alt="Imagem do filme" />
         </S.ImageContainer>
 
-        <S.MovieInfo>
-          <h1>{movie.title}</h1>
+        <S.MovieInfoContainer>
+          <S.MovieInfo>
+            <h1>{movie.title}</h1>
 
-          <S.Details>
-            <p>{movie.release_date} (BR)</p>
+            <S.Details>
+              <p>{newDate} (BR)</p>
 
-            <S.Genres>
-              {movie.genres.map((genre) => (
-                <div key={genre.id}>
-                  <p>{genre.name},</p>
+              <S.Genres>
+                {movie.genres.map((genre) => (
+                  <div key={genre.id}>
+                    <p>{genre.name},</p>
+                  </div>
+                ))}
+              </S.Genres>
+
+              <p>{newTime}</p>
+            </S.Details>
+          </S.MovieInfo>
+
+          <S.Sinopse>
+            <h2>Sinopse</h2>
+
+            <S.TextContainer>
+              <p>{movie.overview}</p>
+            </S.TextContainer>
+          </S.Sinopse>
+
+          <S.CreditsContainer>
+            {actingCast
+              .map((character) => (
+                <div key={character.id}>
+                  <h3>{character.name}</h3>
+                  <p>Characters</p>
                 </div>
-              ))}
-            </S.Genres>
+              ))
+              .slice(0, 2)}
 
-            <p>{movie.runtime}</p>
-          </S.Details>
-        </S.MovieInfo>
-
-        <S.Sinopse>
-          <h2>Sinopse</h2>
-
-          <S.TextContainer>
-            <p>{movie.overview}</p>
-          </S.TextContainer>
-        </S.Sinopse>
-
-        <S.CreditsContainer>
-          {actingCast
-            .map((character) => (
-              <div key={character.id}>
-                <h3>{character.name}</h3>
-                <p>Characters</p>
-              </div>
-            ))
-            .slice(0, 2)}
-
-          {directorCast
-            .map((director) => (
-              <div key={director.id}>
-                <h3>{director.name}</h3>
-                <p>Direção</p>
-              </div>
-            ))
-            .slice(0, 2)}
-        </S.CreditsContainer>
+            {directorCast
+              .map((director) => (
+                <div key={director.id}>
+                  <h3>{director.name}</h3>
+                  <p>Direção</p>
+                </div>
+              ))
+              .slice(0, 2)}
+          </S.CreditsContainer>
+        </S.MovieInfoContainer>
       </S.Content>
 
       <S.CastContainer>
-        <h2>Elenco original</h2>
+        <S.CastTitle>
+          <h2>Elenco original</h2>
+        </S.CastTitle>
 
         <S.Cast>
           {credits.cast
@@ -88,7 +95,7 @@ export default function MovieDetails({ movie, credits }: MovieDetailsData) {
                 character={c.character}
               />
             ))
-            .slice(0, 10)}
+            .slice(0, 6)}
         </S.Cast>
       </S.CastContainer>
     </S.Container>
