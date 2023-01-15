@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const ContainerCollaborators = styled.div`
   width: 100%;
-  max-width: 80vw;
-  margin: 30px auto;
+  min-height: 100vh;
+  margin: 0 auto;
   border: 1px solid;
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.text};
   padding: 40px;
 `
 export const Select = styled.select`
