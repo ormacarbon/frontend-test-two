@@ -183,7 +183,7 @@ const BurgerWrapper = styled.header`
     button {
       border: none;
       width: 180px;
-      height: 3.5rem;
+      height: 56px;
       font-weight: 500;
       font-size: 1.3rem;
       color: ${({ theme }) => theme.textColorBase};
@@ -266,7 +266,7 @@ const BurgerWrapper = styled.header`
     .name-page{
       position: absolute;
       left: 100px;
-      top: 5px;
+      top: 7px;
     }
 
     .switch {
@@ -325,6 +325,7 @@ export default function Navbar() {
         </div>
         <h1 className="name-page">
           {pathname === "/" && "Home"}
+          {pathname === "/pokemons" && "Home"}
           {pathname === "/pokedex" && "Pokedex"}
           {pathname === "/details/[id]" && "Details"}
         </h1>
@@ -380,6 +381,7 @@ export default function Navbar() {
         )}
         <h1 className="name-page">
           {pathname === "/" && "Home"}
+          {pathname === "/pokemons" && "Home"}
           {pathname === "/pokedex" && "Pokedex"}
           {pathname === "/details/[id]" && "Details"}
         </h1>
