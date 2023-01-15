@@ -26,6 +26,9 @@ export const Content = styled.div`
 
   h2 {
     font-size: ${({theme}) => theme.font.sizes.medium};
+    max-height: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   p {

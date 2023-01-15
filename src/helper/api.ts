@@ -32,7 +32,7 @@ export const getListArts = async (page?: number ): Promise<IArt[]> => {
 
   const arrayArts = [];
   const limit = 100 + getNumberArts();
-  const artsPerPage = 12;
+  const artsPerPage = 15;
   let cont = 100 + (page * artsPerPage);
 
   // Loop feito apenas para pegar as requisições do limit
@@ -52,5 +52,5 @@ export const getArt = async (id: string | string[]): Promise<IArt> => {
 
 // Uma falsa rota para pegar o numero total de Arts
 export const getNumberArts = (): number => {
-  return 80;
+  return 100;
 }
