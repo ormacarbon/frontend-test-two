@@ -13,6 +13,10 @@ export function RouteContextProvider({ children }) {
     setCurrentRoute(router.route)
   }, [router.route])
 
+  const backRoute = () => {
+    router.push(lastRoute);
+  }
+
   const toPokemonLink = (name) => {
     router.push({
       pathname: '/pokemon',
@@ -21,7 +25,7 @@ export function RouteContextProvider({ children }) {
   };
 
   return (
-    <RouteContext.Provider value={{currentRoute, lastRoute, router, toPokemonLink}}>
+    <RouteContext.Provider value={{currentRoute, router, toPokemonLink, backRoute}}>
       {children}
     </RouteContext.Provider>
   );

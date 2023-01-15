@@ -4,7 +4,7 @@ import { RouteContext } from '../../context/routeContext';
 import Image from 'next/image'
 import { SquaresFour, BookBookmark, CircleHalfTilt, EggCrack, ImageSquare, PawPrint } from 'phosphor-react'
 
-import Pokeball from '/assets/pokeball-logo.svg'
+import Pokeball from '/public/pokeball-logo.svg'
 import Button from '../Button'
 
 function NavBar() {
@@ -14,7 +14,7 @@ function NavBar() {
     <Container>
       <Header>
         <Image src={Pokeball} alt="Pokéball Icon" height={40}/>
-        <h2><span className='minor-text'>Pokémon</span> Pokédex .</h2>
+        <h2><span className='minor-text'>Pokémon</span> Universe .</h2>
       </Header>
 
       <nav>
