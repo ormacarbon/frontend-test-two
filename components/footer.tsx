@@ -17,7 +17,7 @@ const Footer = () => {
         <Link target="_blank" href={'mailto: giovanicorrea.dev@gmail.com'}>
           <FiMail />
         </Link>
-        <Link target="_blank" href={'cvgiovanimachado.vercel.app/'}>
+        <Link target="_blank" href={'https://cvgiovanimachado.vercel.app/'}>
           <FiFileText />
         </Link>
       </FooterIcons>
