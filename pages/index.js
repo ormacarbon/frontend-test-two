@@ -10,6 +10,8 @@ const StyledIndex = styled.main`
   width: 100%;
   background-color: ${({ theme }) => theme.backgroundBase};
   min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
 
   .container-pokemons {
     display: flex;
@@ -26,6 +28,8 @@ const StyledIndex = styled.main`
     justify-content: center;
     margin-top: 80px;
     padding-bottom: 20px;
+    position: absolute;
+    bottom: 0;
 
     .button-pages {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
