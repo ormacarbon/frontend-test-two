@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import Loading from "../../../components/Loading";
 import ListArtsPage from "../../../containers/ListArtsPage";
 import { getListArts, getNumberArts } from "../../../helper/api";
 import { IArt } from "../../../interfaces/art";
@@ -12,7 +13,7 @@ export interface PageProps {
 
 export default function Page({arts, pagination}: PageProps) {
   const router = useRouter();
-  if (router.isFallback) return <div>Carregando...</div>
+  if (router.isFallback) return <Loading/>
   if (!arts.length) return <div>Página não encontrada</div>
 
   return <ListArtsPage arts={arts} pagination={pagination}/>
