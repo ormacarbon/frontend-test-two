@@ -10,6 +10,8 @@ export function PokemonProvider({ children }) {
 
   function setLocalStorage() {
     const favoritesFromLocalStorage = JSON.parse(localStorage.getItem('favorite'));
+    console.log({favoritesFromLocalStorage});
+    if (!favoritesFromLocalStorage) return localStorage.setItem('favorite', JSON.stringify([]));
     setFavoritesPokemons(favoritesFromLocalStorage)
   }
 
