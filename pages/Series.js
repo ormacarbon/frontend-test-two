@@ -1,15 +1,16 @@
-import Head from 'next/head'
-import { useContext } from 'react'
-import { Globalcontext } from '../context/GlobalContext'
 import { Card } from '../components/Card'
 import { GlobalSeriesPage } from '../styles/PagesStyles'
+
+import { Globalcontext } from '../context/GlobalContext'
+import { useContext } from 'react'
+
+import Head from 'next/head'
 
 
 export default function Series() {
 
     const context = useContext(Globalcontext)
-    const { series, searchSeries } = context
-
+    const { series, searchSeries, darkMode } = context
 
     return (
         <>
@@ -17,7 +18,7 @@ export default function Series() {
                 <title>Series</title>
             </Head>
 
-            <GlobalSeriesPage>
+            <GlobalSeriesPage darkMode={darkMode} >
                 {series.filter((serie) => {
                     return serie.original_name.toLowerCase().includes(searchSeries)
                 })

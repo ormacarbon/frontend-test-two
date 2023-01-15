@@ -22,7 +22,7 @@ function Header() {
         setSearchSeries(e.target.value)
     }
 
-    const handleSearchActors = (e) => {
+    const handleSearchPersons = (e) => {
         setSearchPersons(e.target.value)
     }
 
@@ -36,19 +36,19 @@ function Header() {
             <HeaderContainer darkMode={darkMode} >
                 <ToolBar>
                     <ToolBarItems>
-                    <Li><Link href='/'  ><A darkMode={darkMode} >Home/Movies</A></Link></Li>
-                    <Li><Link href='/Series'  ><A>Series</A></Link></Li>
-                    <Li><Link href='/Persons'  ><A>Actors</A></Link></Li>
+                        <Li><Link href='/'  ><A darkMode={darkMode} >Home/Movies</A></Link></Li>
+                        <Li><Link href='/Series'  ><A>Series</A></Link></Li>
+                        <Li><Link href='/Persons'  ><A>Actors</A></Link></Li>
                         {location.pathname === '/' ? <Input placeholder='Search' value={searchMovies} onChange={handleSearchMovies} /> : <></>}
                         {location.pathname === '/Series' ? <Input placeholder='Search' value={searchSeries} onChange={handleSearchSeries} /> : <></>}
-                        {location.pathname === '/Persons' ? <Input placeholder='Search' value={searchPersons} onChange={handleSearchActors} /> : <></>}
+                        {location.pathname === '/Persons' ? <Input placeholder='Search' value={searchPersons} onChange={handleSearchPersons} /> : <></>}
 
                         <SwitchButton onClick={switchDarkMode} >{darkMode ? 'DarkMode' : 'LightMode'}</SwitchButton>
                     </ToolBarItems>
                 </ToolBar>
             </HeaderContainer>
 
-            <HeaderLogo>
+            <HeaderLogo darkMode={darkMode} >
                 <Image src='/images/netflix.svg' width='80' height='32' alt='logo-netflix' />
             </HeaderLogo>
         </>

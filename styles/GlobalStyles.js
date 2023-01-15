@@ -13,6 +13,5 @@ export const Container = styled.div`
     flex-direction:column;
     min-height: 100vh;
     max-width: 100vw;
-    background-color:${props => props.darkMode ? "#221f1f" : "white"};
     font-family: 'Inter', sans-serif;
 `

@@ -45,7 +45,7 @@ gap: 0.5rem;
 padding-top: 0.25rem;
 color: ${props => props.darkMode ? 'white' : 'black'};
 `
-export const YearArea = styled.div`
+export const TaglineArea = styled.div`
 width: 100%;
 height: 2.5rem;
 display: flex;
@@ -54,7 +54,7 @@ padding-top: 0.5rem;
 color: ${props => props.darkMode ? 'white' : 'black'};
 `
 
-export const Year = styled.p`
+export const Tagline = styled.p`
 color: #ffff;
 font-weight: 700;
 font-size: 0.85rem;

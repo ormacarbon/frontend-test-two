@@ -4,10 +4,11 @@ export const HeaderContainer = styled.div`
     display: flex;
     height: 12vh;
     max-width: 100vw;
-    box-shadow: 0.2rem 0.2rem 0.1rem #E50914;
+    border-bottom: 4px solid #E50914;
+    box-shadow: 0.2rem 0.2rem 0.2rem #E50914;
     justify-content: space-evenly;
     background-color: ${props => props.darkMode ? "#221f1f" : 'white'};
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
 `
 
 export const ToolBar = styled.section`
@@ -71,8 +72,9 @@ export const SwitchButton = styled.button`
 export const HeaderLogo = styled.div`
     width: 100%;
     height: 8vh;
-    margin: 0.25rem 0;
+    padding: 0.25rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color:${props => props.darkMode ? "#221f1f" : "white"};
 `

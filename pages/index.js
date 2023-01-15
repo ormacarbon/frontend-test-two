@@ -1,16 +1,15 @@
-import Head from 'next/head'
+import { GlobalHomePage } from '../styles/PagesStyles'
 import { Card } from '../components/Card'
 
 import { useContext } from 'react'
 import { Globalcontext } from '../context/GlobalContext'
 
-import { GlobalHomePage } from '../styles/PagesStyles'
+import Head from 'next/head'
 
 export default function Home() {
 
   const context = useContext(Globalcontext)
-  const { movies, searchMovies } = context
-
+  const { movies, searchMovies, darkMode } = context
 
   return (
     <>
@@ -19,7 +18,7 @@ export default function Home() {
       </Head>
 
 
-      <GlobalHomePage>
+      <GlobalHomePage darkMode={darkMode} >
         {movies.filter((movie) => {
           return movie.title.toLowerCase().includes(searchMovies)
         })

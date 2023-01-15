@@ -1,14 +1,15 @@
-import Head from 'next/head'
 import { Card } from '../components/Card'
+import { GlobalPersonsPage } from '../styles/PagesStyles'
+
 import { useContext } from 'react'
 import { Globalcontext } from '../context/GlobalContext'
-import { GlobalPersonsPage } from '../styles/PagesStyles'
+
+import Head from 'next/head'
 
 export default function Persons() {
 
     const context = useContext(Globalcontext)
-    const { persons, searchPersons } = context
-
+    const { persons, searchPersons, darkMode } = context
 
     return (
         <>
@@ -17,7 +18,7 @@ export default function Persons() {
             </Head>
 
 
-            <GlobalPersonsPage>
+            <GlobalPersonsPage darkMode={darkMode} >
                 {persons.filter((person) => {
                     return person.name.toLowerCase().includes(searchPersons)
                 })
