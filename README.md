@@ -5,7 +5,7 @@ What´s up guys ! I´m so happy for being part of this challenge and as you can 
 
 ### 🔗 Live Url: https://orma-cryptomarket.vercel.app/
 
-<a href='https://github.com/RobertoAthos/frontend-test-two/blob/main/READMEPTBR.md'>Click here if you to see the read.me in portuguese</a>
+<a href='https://github.com/RobertoAthos/frontend-test-two/blob/FrontEnd-Challenge/READMEPTBR.md'>Click here if you to see the read.me in portuguese</a>
 
 <img src='https://user-images.githubusercontent.com/94712001/212497840-cc9f83b7-dd50-4d71-a8df-0c150b1c92a5.png' alt='project img'/>
 
