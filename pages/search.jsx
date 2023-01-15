@@ -95,7 +95,7 @@ const Search = () => {
 						<SearchTip>
 							Try entering your card&aposs title. The query will
 							search for the informed string inside the data
-							base&aposs card&aposs titles and try to find the ones that
+							base&aposs card &apos s titles and try to find the ones that
 							match! Ex: Venusaur
 						</SearchTip>
 					</Column>
