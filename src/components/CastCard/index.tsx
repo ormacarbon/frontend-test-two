@@ -2,11 +2,7 @@ import * as S from './styles'
 
 import { tmdbImage } from 'constants/url'
 
-interface CastCardProps {
-  name: string
-  profileImage: string
-  character: string
-}
+import { CastCardProps } from 'interfaces/types'
 
 export function CastCard({ name, profileImage, character }: CastCardProps) {
   return (
@@ -16,7 +12,7 @@ export function CastCard({ name, profileImage, character }: CastCardProps) {
       </S.ImageContainer>
 
       <S.Name>
-        <p>{name}</p>
+        <h2>{name}</h2>
 
         <S.Character>{character}</S.Character>
       </S.Name>

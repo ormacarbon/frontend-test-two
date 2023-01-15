@@ -1,27 +1,52 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
 
-  border-radius: 4px;
-  width: 12rem;
-  height: auto;
+    ${media.lessThan('small')`
+       width: 12rem;
+       height: 22rem;
+    `}
+
+    img {
+      border-radius: 8px;
+    }
+  `}
 `
 export const ImageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 10px;
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+  `}
 `
-export const Name = styled.h3`
-  color: ${(props) => props.theme['gray-900']};
-  font-weight: 700;
-  padding: 10px;
+export const Name = styled.div`
+  ${({ theme }) => css`
+    font-weight: 700;
+    padding: 10px;
+
+    ${media.lessThan('small')`
+      h2 {
+        font-size: 1.2rem;
+        color: ${theme.title}
+      }
+    `}
+  `}
 `
 export const Character = styled.p`
-  color: ${(props) => props.theme['gray-300']};
-  font-weight: 400;
-  font-size: 1rem;
+  ${({ theme }) => css`
+    color: ${theme.subtitle};
+    font-weight: 400;
+    font-size: 1.2rem;
+
+    ${media.lessThan('small')`
+         font-size: 0.9rem;
+    `}
+  `}
 `
