@@ -21,6 +21,7 @@ const fadeAnimation = keyframes`
 export const Container = styled.div`
   flex: 1;
   display: flex;
+  min-height: 20rem;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.md};
   border: 1px solid ${(props) => props.theme.colors.gray400};
@@ -36,6 +37,7 @@ export const Content = styled.div`
 
 export const Label = styled.div`
   display: flex;
+  min-width: 2rem;
   flex-direction: column;
   align-items: center;
   font-size: ${props => props.theme.fonts.size.sm};
@@ -44,15 +46,15 @@ export const Label = styled.div`
 `
 
 export const Area = styled.div`
+  flex: 1;
   position: relative;
   display: flex;
+  justify-content: space-evenly;
   align-items: flex-end;
   gap: ${(props) => props.theme.spacing.md};
   border: 1px solid ${(props) => props.theme.colors.gray400};
   padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.md} 0;
   border-radius: ${(props) => props.theme.spacing.sm};
-  width: 100%;
-  height: 100%;
 
   &::before {
     content: "";
@@ -67,6 +69,7 @@ export const Area = styled.div`
 
 export const Bar = styled.div`
   flex: 1;
+  max-width: 3rem;
   position: relative;
   animation: ${heightAnimation} 1s ease-in-out;
   animation-fill-mode: forwards;

@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Container, Content, Area, Label, Bar } from './styles'
 
 function Chart(props) {
-  const [valueList,setValueList] = useState([]);
-  const [maxValue, setMaxValue] = useState(100);
+  const [maxValue, setMaxValue] = useState(0);
 
   useEffect(()=> {
-    setValueList(props.data.map((item) => {return(item.value)}));
-    const max = valueList.reduce(function(a, b) {return Math.max(a, b)}, -Infinity);
-    setMaxValue(Math.max(max, 100));
-  },[props.data])
+    if(props.data.length > 0) {
+      const valueList = props.data.map((item) => {return(item.value)})
+      const max = Math.max(valueList[0],valueList[1],valueList[2],valueList[3],valueList[4],valueList[5], 100);
+      setMaxValue(max);
+    }
+  },[props])
 
-  function calcSize(n) {
-    return Math.round(n/maxValue*100);
+  function calcSize(value) {
+    return Math.min(value/maxValue*100, 100);
   }
 
   return(
