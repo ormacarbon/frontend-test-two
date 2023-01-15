@@ -11,6 +11,8 @@ const ContainerDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  align-self: center;
 `;
 
 const Image = styled.img`
@@ -25,9 +27,30 @@ const Image = styled.img`
 `;
 
 const Title = styled.h2`
-    text-transform: capitalize;
-    
+    text-transform: capitalize; 
+       
 `;
+
+const UlStyled = styled.ul`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem 12rem;
+  list-style: none;  
+`;
+
+const LiStyled = styled.li`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  color: ${({theme})=> theme.colors.textColor};
+`;
+
+const StrongStyled = styled.strong`
+  text-transform: uppercase;
+`;
+
 
 
 export default function PokemonInfo() {
@@ -35,27 +58,45 @@ export default function PokemonInfo() {
   const { data, isLoading } = useSWR(`https://pokeapi.co/api/v2/pokemon/${query.name}`, fetcher)
   const [isMouseHover, setIsMouseHover] = useState(false)
 
-  if (isLoading) return <Title>Carregando</Title>
-  
-  const frontDefault = data.sprites.front_default;
-  const frontShiny = data.sprites.front_shiny;
+  if (!data) return <Title>Carregando</Title>
+  console.log(data);
+
+  const frontDefault = data.sprites.other.home.front_default;
+  const frontShiny = data.sprites.other.home.front_shiny;
 
   return (
     <>
       <ContainerDiv>
         <FavoriteStar pokemonName={data.name}></FavoriteStar>
-        <ContainerDiv onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
-          {
-            !isMouseHover ? <Image alt={data.name} src={frontDefault} /> : <Image alt={data.name} title={`${data.name} Shiny`}src={frontShiny} />
-          }
+        {
+          !isMouseHover ?
+            <Image
+              onMouseEnter={() => setIsMouseHover(true)}
+              onMouseLeave={() => setIsMouseHover(false)}
+              alt={data.name} src={frontDefault}
+            />
+            :
+            <Image
+              onMouseEnter={() => setIsMouseHover(true)}
+              onMouseLeave={() => setIsMouseHover(false)}
+              alt={data.name} title={`${data.name} Shiny`}
+              src={frontShiny}
+            />
+        }
 
-        </ContainerDiv>
         <Title>
           {data.name}
         </Title>
-        {data.types.map((item, index) => (
-          <p key={index}>{item.type.name}</p>
-        ))}
+        <ContainerDiv >
+          <UlStyled>
+            {data.stats.map((item, index) => (
+              <LiStyled key={index}>
+                <StrongStyled>{item.stat.name} </StrongStyled>
+                <span >{item.base_stat}</span>
+              </LiStyled>
+            ))}
+          </UlStyled>
+        </ContainerDiv>
       </ContainerDiv>
     </>
   )
