@@ -42,41 +42,44 @@ export function PokemonContextProvider({ children }) {
   }
 
   async function updatePokemonList() {
-    const pokemons = await fetchPokemonsFromList(referenceList.slice(pokemonList.length, pokemonList.length + itemsPerPage))
+    const pokemons = await fetchPokemonsFromList(
+      referenceList.slice(pokemonList.length, pokemonList.length + itemsPerPage)
+    )
     setPokemonList([...pokemonList, ...pokemons])
   }
 
   async function fetchPokemon(url) {
     try {
       const pokemon = await fetchData(url)
-      const description = await fetchPokemonDescription(pokemon.id)
-      return { ...pokemon, ...description }
+      const details = await fetchData(pokemon.species.url)
+      const evolutionChain = await fetchData(details.evolution_chain.url)
+      const evolutions = {evolutions: getEvolutions(evolutionChain.chain)}
+      const description = getDescription(details.flavor_text_entries)
+
+      return { ...pokemon, ...description, ...evolutions }
     }
     catch (error) {
       console.error(error)
     }
   }
 
-  async function fetchPokemonDescription(id) {
-    try {
-      const response = await fetchData(
-        `https://pokeapi.co/api/v2/pokemon-species/${id}`
-      )
-      const descriptionList = await response.flavor_text_entries
-      const description = await getLastDescription(descriptionList)
-      return description
-    }
-    catch (error) {
-      console.error(error)
-    }
-  }
-
-  function getLastDescription(descriptionList) {
+  function getDescription(descriptionList) {
     const filterList = descriptionList.filter(
       (desc) => desc.language.name === "en"
     )
     return filterList.pop()
   }
+
+  function getEvolutions(data) {
+    const evolutions = [];
+    if(data.species) {
+      evolutions.push(data.species.name);
+    }
+    if(data.evolves_to.length > 0) {
+      data.evolves_to.forEach(evolution => {evolutions.push(...getEvolutions(evolution))});
+    }
+    return evolutions;
+}
 
   function getRandomNumber(max) {
     return Math.floor(Math.random() * max) + 1
@@ -87,25 +90,19 @@ export function PokemonContextProvider({ children }) {
     return match
   }
 
-  async function getPokemonTeam() {
-    const pokemonPromises = Array(6).fill().map(() => fetchPokemon(`https://pokeapi.co/api/v2/pokemon/${getRandomNumber(905)}`))
-    const team = await Promise.all(pokemonPromises)
-    return team
-  }
-
   async function initPokemonTeam() {
-    const randomTeam = await getPokemonTeam()
-    setPokemonTeam(randomTeam)
+    const pokemonPromises = Array(6).fill().map(() => 
+      fetchPokemon(`https://pokeapi.co/api/v2/pokemon/${getRandomNumber(905)}`)
+    )
+    const team = await Promise.all(pokemonPromises)
+    setPokemonTeam(team)
+    return team
   }
 
   useEffect(() => {
     initPokemonTeam();
     initPokemonList();
   }, [])
-
-  useEffect(() => {
-    console.log(referenceList)
-  }, [referenceList])
 
   return (
     <PokemonContext.Provider value={{ 
