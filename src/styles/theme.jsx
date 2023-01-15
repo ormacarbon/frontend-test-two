@@ -8,6 +8,19 @@ export const GlobalStyle = createGlobalStyle`
   font-family: "Montserrat", sans-serif;
 }
 
+#main {
+  display: flex;
+
+  main {
+    flex: 1;
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 980px) {
+    display: initial;
+  }
+}
+
 .container {
   width: 100%;
   max-width: 1060px;

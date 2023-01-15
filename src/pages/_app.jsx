@@ -1,16 +1,27 @@
 import { ThemeProvider } from "../context/themeContext";
-import { Header } from "../components/header/header";
+import { MenuProvider } from "../context/menuContext";
+import { ConfigProvider } from "../context/apiConfigContext";
 
 import { GlobalStyle, Theme } from "../styles/theme";
+
+import { Header } from "../components/header/header";
+import { MenuSidebar } from "../components/menuSidebar/menuSidebar";
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
-      <Theme>
-        <GlobalStyle />
-        <Header />
-        <Component {...pageProps} />
-      </Theme>
+      <MenuProvider>
+        <ConfigProvider>
+          <Theme>
+            <GlobalStyle />
+            <Header />
+            <div id="main">
+              <MenuSidebar />
+              <Component {...pageProps} />
+            </div>
+          </Theme>
+        </ConfigProvider>
+      </MenuProvider>
     </ThemeProvider>
   );
 }
