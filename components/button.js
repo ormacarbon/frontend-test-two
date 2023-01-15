@@ -11,6 +11,9 @@ const StyledButton = styled.button`
   appearance: none;
   padding: 16px 40px;
   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  @media (max-width: 768px) { 
+    margin-left: 20px;
+  };
   &:hover {
     background: #F6F9FE;
     color: #174ea6;

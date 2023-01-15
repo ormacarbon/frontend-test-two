@@ -13,7 +13,7 @@ const DivInitial = styled.div`
   background: rgb(2,0,36);
   background: linear-gradient(353deg, rgba(2,0,36,1) 0%, rgba(18,18,41,1) 100%, rgba(14,14,14,1) 100%);
 
-
+ 
 
   align-items: center;
   padding: 0 5px;
@@ -46,7 +46,8 @@ const Colum = styled.ul`
   padding: 0 20px;
   align-items: center;
   margin-left: 80px;
-  @media (min-width: 768px) {   
+  @media (min-width: 768px) { 
+    
 }
 `
 
@@ -64,6 +65,9 @@ const ImgBrm = styled(Image)`
   width: 60px;
   height: 60px;
   margin-right: 300px;
+  @media (max-width: 768px) { 
+    visibility: hidden;
+  };
   animation: rotation 8s infinite linear;
   @keyframes rotation {
   from {
@@ -72,6 +76,8 @@ const ImgBrm = styled(Image)`
   to {
     transform: rotate(359deg);
   };
+
+  
 }
 `
 

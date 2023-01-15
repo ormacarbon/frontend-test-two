@@ -18,6 +18,10 @@ const StySearch = styled.div`
   justify-content: center;
   font-size: 6rem;
   margin-top: 60px;
+  @media (max-width: 768px) { 
+    font-size: 2.5rem;
+    margin-left: 50px;
+  };
   
 `
 const StyPut = styled.div`
@@ -32,7 +36,7 @@ const StyPut = styled.div`
 const StyInp = styled.input`
   border-radius: 30px;
   border: none;  
- 
+  
   outline: none;
   
   
@@ -48,7 +52,9 @@ const StyInp = styled.input`
 const DivIn = styled.div`
   border: 2px solid gray;
   border-radius: 20px;
-  
+  @media (max-width: 768px) { 
+    margin-left: 50px;
+  };
   
 
 `
@@ -56,6 +62,9 @@ const DivIn = styled.div`
 const DivCoins = styled.div`
   margin-top: 60px;
   margin-left: 6px;
+  @media (max-width: 768px) { 
+    margin-left: 90px;
+  };
   
   
   

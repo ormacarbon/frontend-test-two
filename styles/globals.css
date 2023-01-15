@@ -68,7 +68,7 @@ h2 {
 
   body.light {
     --background-color: var(--white);
-    --text-color: var(--black);
+    --text-color: var(--blue);
     --font-weight: 400;
     
   }
