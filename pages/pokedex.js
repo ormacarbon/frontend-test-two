@@ -3,7 +3,23 @@ import { useContext, useEffect } from "react";
 import { GlobalContext } from "../contexts/state";
 import Navbar from "../src/components/Navbar";
 import PokemonCard from "../src/components/PokemonCard";
-import { StyledPokedex } from "./pokedex.styles";
+import styled from "styled-components";
+
+const StyledPokedex = styled.main`
+  width: 100vw;
+  min-height: calc(100vh - 56px);
+  max-height: 100%;
+  background-color: ${({ theme }) => theme.backgroundBase};
+  color: ${({ theme }) => theme.textColorBase};
+  .container-pokemons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 33px;
+    padding-top: 30px;
+  }
+`;
+
 
 export default function Pokedex() {
   const { pokedex, searchResults, setSearchResults, searchValue } =
