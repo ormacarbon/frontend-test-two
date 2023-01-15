@@ -54,7 +54,8 @@ const DetailStyled = styled.div`
   }
 
   .container-details {
-    width: 500px;
+    max-width: 500px;
+    min-width: 350px;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -62,7 +63,7 @@ const DetailStyled = styled.div`
     background-color: ${({ theme }) => theme.backgroundLevel3};
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
-    .container-tipo {
+    .container-type {
       width: 150px;
       display: flex;
       img {
@@ -81,7 +82,8 @@ const DetailStyled = styled.div`
     display: flex;
     flex-direction: column;
     padding: 16px;
-    width: 500px;
+    max-width: 500px;
+    width: 350px;
     height: 405px;
     background-color: ${({ theme }) => theme.backgroundLevel3};
     border-radius: 8px;
@@ -94,8 +96,8 @@ const DetailStyled = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0 15px;
-    
   }
+
   .stat {
     display: flex;
     align-items: center;
@@ -119,7 +121,7 @@ const DetailStyled = styled.div`
     .container-bar {
       display: flex;
       justify-content: start;
-      width: 200px;
+      width: 100px;
     }
   }
   hr {
@@ -129,8 +131,7 @@ const DetailStyled = styled.div`
   .stat-total {
     display: flex;
     align-items: center;
-    width: 100%;
-    margin-left: 155px;
+    margin-left: 100px;
     
     p {
       margin-left: 10px;
@@ -143,7 +144,7 @@ const DetailStyled = styled.div`
   .container-moves {
       display: flex;
       flex-direction: column;
-      min-width: 292px;
+      width: 292px;
       height: 440px;
       background-color: ${({ theme }) => theme.backgroundLevel3};
       border-radius: 8px;
@@ -170,12 +171,18 @@ const DetailStyled = styled.div`
         padding: 15px;
       }
     }
+    @media (max-width: 980px) {
+      .container-moves{
+        width: 380px;
+      }
+    }
 `;
 
 const CardColor = styled.div`
   background-color: ${(props) => props.color};
   padding: 16px;
-  width: 500px;
+  max-width: 500px;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
   border-top-right-radius: 6px;
@@ -266,17 +273,16 @@ export default function Details() {
                 ? `0${pokemonDetail.id}`
                 : pokemonDetail.id}
             </h2>
-
             <img
               className="img-pokemon"
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonDetail.id}.png`}
               alt={pokemonDetail.name}
             />
-            <img className="img-pokedex" src={"/images/pokedex.png"} />
+            <img className="img-pokedex" src={"/images/pokedex.png"} alt={"pokedex"} />
           </CardColor>
           <section className="container-details">
             <h1 className="name">{pokemonDetail.name}</h1>
-            <div className="container-tipo">
+            <div className="container-type">
               {pokemonDetail.types?.map((type, index) => {
                 return <img src={getPokemonType(type.type.name)} key={index} />;
               })}

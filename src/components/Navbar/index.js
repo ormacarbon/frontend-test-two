@@ -268,7 +268,7 @@ export default function Navbar() {
   const { searchValue, setSearchValue, setSearchResults, allPokelist } =
     useContext(GlobalContext);
   const context = useContext(ColorModeContext);
-  const [menuIsVisible, setMenuIsVisible] = useState(true);
+  const [menuIsVisible, setMenuIsVisible] = useState(false);
 
   const searchPokemon = () => {
     const foundPokemons = allPokelist.filter((pokemon) =>
@@ -293,7 +293,7 @@ export default function Navbar() {
           </button>
         </Link>
         <Link href="/pokedex">
-          <button className="button-pokedex">Pokédex</button>
+          <button className="button-pokedex">Pokedex</button>
         </Link>
         <div className="search-container">
           <input
@@ -338,7 +338,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/pokedex">
-                <button className="button-pokedex">Pokédex</button>
+                <button className="button-pokedex">Pokedex</button>
               </Link>
             </li>
             <li>
