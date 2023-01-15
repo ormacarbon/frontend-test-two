@@ -4,6 +4,7 @@ import { GlobalContext } from "../contexts/state";
 import Navbar from "../src/components/Navbar";
 import PokemonCard from "../src/components/PokemonCard";
 import styled from "styled-components";
+import ScrollButton from "../src/components/ScrollButton";
 
 const StyledPokedex = styled.main`
   width: 100vw;
@@ -63,6 +64,7 @@ export default function Pokedex() {
               })}
         </section>
       </StyledPokedex>
+      <ScrollButton/>
     </>
   );
 }

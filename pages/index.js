@@ -5,11 +5,14 @@ import PokemonCard from "../src/components/PokemonCard";
 import { useRouter } from "next/router";
 import { GlobalContext } from "../contexts/state";
 import styled from "styled-components";
+import ScrollButton from "../src/components/ScrollButton";
 
 const StyledIndex = styled.main`
   width: 100%;
   background-color: ${({ theme }) => theme.backgroundBase};
   min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
 
   .container-pokemons {
     display: flex;
@@ -26,6 +29,8 @@ const StyledIndex = styled.main`
     justify-content: center;
     margin-top: 80px;
     padding-bottom: 20px;
+    position: absolute;
+    bottom: 0;
 
     .button-pages {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -55,8 +60,15 @@ const StyledIndex = styled.main`
 `;
 
 export default function Home() {
-  const { pokelist, setPokelist, setAllPokelist, searchResults, setSearchResults, searchValue, pokedex } =
-    useContext(GlobalContext);
+  const {
+    pokelist,
+    setPokelist,
+    setAllPokelist,
+    searchResults,
+    setSearchResults,
+    searchValue,
+    pokedex,
+  } = useContext(GlobalContext);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -101,12 +113,12 @@ export default function Home() {
   }, [searchValue, router.query.page]);
 
   const filteredPokemonList = () =>
-  pokelist.filter(
-    (pokemonInList) =>
-      !pokedex.find(
-        (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
-      )
-  );
+    pokelist.filter(
+      (pokemonInList) =>
+        !pokedex.find(
+          (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
+        )
+    );
 
   const getButtonClass = (page) => {
     if (page === currentPage) {
@@ -119,14 +131,33 @@ export default function Home() {
     <StyledIndex>
       <Navbar />
       <section className="container-pokemons">
-        {searchResults.length > 0 ?
-          searchResults.map((pokemon) => {
-              return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
-            })
+        {searchResults.length > 0
+          ? searchResults
+              .filter((pokemon) =>
+                filteredPokemonList().find(
+                  (pokemonInList) => pokemonInList.name === pokemon.name
+                )
+              )
+              .map((pokemon) => {
+                return (
+                  <PokemonCard
+                    pokemon={pokemon}
+                    key={pokemon.url}
+                    pathname={pathname}
+                  />
+                );
+              })
           : filteredPokemonList().map((pokemon) => {
-              return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
+              return (
+                <PokemonCard
+                  pokemon={pokemon}
+                  key={pokemon.url}
+                  pathname={pathname}
+                />
+              );
             })}
       </section>
+      <ScrollButton />
       <section className="container-buttons">
         <button
           className={getButtonClass(0)}

@@ -5,6 +5,7 @@ import { GlobalContext } from "../../contexts/state";
 import Navbar from "../../src/components/Navbar";
 import { getPokemonType } from "../../src/components/PokemonCard/types";
 import styled, { keyframes } from "styled-components";
+import ScrollButton from "../../src/components/ScrollButton";
 
 const fadeIn = keyframes`
   from {
@@ -348,6 +349,7 @@ export default function Details() {
           </section>
         </section>
       </DetailStyled>
+      <ScrollButton/>
     </>
   );
 }
