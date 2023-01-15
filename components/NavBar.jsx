@@ -1,13 +1,23 @@
-import Link from 'next/link'
-
+import React from 'react'
+import { PrimaryNav, MenuLink, Menu } from '../styles/NavBarStyles'
 export default function NavBar() {
+
   return (
-    <div className="nav">
-      <ul>
-        <li className="home"><Link href="/">Home</Link></li>
-        <li className="tutorials"><Link className="active" href="/dog">Dog</Link></li>
-        <li className="about"><Link href="/cat">Cat</Link></li>
-      </ul>
-    </div>
+    <>
+      <PrimaryNav>
+        {/* <Hamburger /> */}
+        <Menu>
+          <MenuLink href="/" activeStyle>
+            Home
+          </MenuLink>
+          <MenuLink href="/dog" activeStyle>
+            Dog
+          </MenuLink>
+          <MenuLink href="/cat" activeStyle>
+            Cat
+          </MenuLink>
+        </Menu>
+      </PrimaryNav>
+    </>
   );
 }

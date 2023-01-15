@@ -21,7 +21,6 @@ function Cat() {
 
   return (
     <>
-    <NavBar />
       <h1>Cat Page</h1>
       <form>
           <label htmlFor="message">Message:</label><br />

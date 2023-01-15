@@ -3,7 +3,9 @@ import { useDarkMode } from '../components/useDarkMode';
 import {ThemeProvider} from "styled-components";
 import { GlobalStyles } from '../styles/GlobalStyles';
 import { lightTheme, darkTheme } from "../components/Theme"
+import { Items } from '../styles/NavBarStyles'
 import Toggle from '../components/Toggler';
+import NavBar from '../components/NavBar';
 
 function MyApp({ Component, pageProps }) {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -14,7 +16,10 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={themeMode}>
       <>
       <GlobalStyles/>
-        <Toggle theme={theme} toggleTheme={themeToggler} />
+        <Items>
+          <NavBar />
+          <Toggle theme={theme} toggleTheme={themeToggler} />
+        </Items>
         <Component {...pageProps}/>
       </>
     </ThemeProvider>

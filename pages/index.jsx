@@ -15,7 +15,6 @@ export default function Home() {
 
   return (
       <>
-        <NavBar />
         <Container>
           {data.map(box => (
             <Box key={box.id} bgColor={box.bgColor}>

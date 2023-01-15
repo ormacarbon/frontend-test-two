@@ -33,14 +33,12 @@ function Dog() {
   if (fact === undefined) {
     return (
       <>
-      <NavBar />
         Still loading...
       </>
     )
   }
   return (
     <>
-    <NavBar />
     <h1>Dog Page</h1>
     {/* <DogCard { ...fact}/> */}
     <Container>
