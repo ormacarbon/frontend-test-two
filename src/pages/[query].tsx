@@ -1,14 +1,23 @@
-import { MoviesContainer, SearchContainer } from "../styles/pages/search";
+import { MoviesContainer, SearchContainer, SkeletonContainer } from "../styles/pages/search";
 import { MovieCard } from "../components/MovieCard";
-import { IMovie } from '../context/FavoritesContext';
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { IMovie } from "../context/ContextAplicattion";
+import { ProductSkeleton } from "../components/MovieSkeleton";
+import { useState, useEffect } from "react";
 
 interface MovieProps {
   movies: IMovie[];
 }
 
 export default function Search({ movies }: MovieProps){
+  //Loading int the page skeleton effect
+  const [isloading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timeOut = setTimeout(() =>  setIsLoading(false),  2000);
+    return () => clearTimeout(timeOut);
+  }, [])
   
   return (
     <>
@@ -16,12 +25,24 @@ export default function Search({ movies }: MovieProps){
       <title>Next+</title>
     </Head>
     <SearchContainer>
-      <h1>Resultados da Pesquisa</h1>
-      <MoviesContainer>
-        {movies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </MoviesContainer>
+    {isloading ? (
+             <>
+              <SkeletonContainer>
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+              </SkeletonContainer>
+             </>
+            ) : (
+              <>
+                <h1>Resultados da Pesquisa</h1>
+                <MoviesContainer>
+                  {movies.map(movie => (
+                    <MovieCard key={movie.id} movie={movie} />
+                  ))}
+                </MoviesContainer>
+                </>
+            )}
     </SearchContainer>
     </>
   )
@@ -29,7 +50,7 @@ export default function Search({ movies }: MovieProps){
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const query = req.url.replace('/', '');
-  const response = await fetch(`https://api.themoviedb.org/3/search/movie?${process.env.API_KEY}&${query}`);
+  const response = await fetch(`${process.env.SEARCH_URL}?${process.env.API_KEY}&${query}`);
   const data = await response.json();
   const movies = data.results.map((movie) => {
     return {

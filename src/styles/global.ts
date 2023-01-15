@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   body{
     background:  ${(props) => props.theme.colors.primary100};
     color: ${(props) => props.theme.colors.secondary100};
+    overflow-x: hidden;
     -webkit-font-smoothing: antialised;
   };
   body, input textarea, button{

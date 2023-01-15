@@ -5,6 +5,7 @@ import { ToggleTheme } from "./styles";
 
 
 export function DarkTheme(){
+  //Receives from the app the function to change the theme and current state that contains the value of the desired theme
   const { toggleTheme, currentTheme } = useContext(ThemeContext)
 
   function handleToggleTheme() {

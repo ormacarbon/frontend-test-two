@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Container, Input } from './styles';
 import { useContext } from 'react';
-import { LikesContext } from '../../context/FavoritesContext';
 import { MagnifyingGlass } from "phosphor-react";
+import { ContextAplicattion } from '../../context/ContextAplicattion';
 
 const searchFormSchema = z.object({
     query: z.string(),
@@ -17,8 +17,9 @@ export function SearchMovie(){
     resolver: zodResolver(searchFormSchema),
   });
 
-  const { getMovies } = useContext(LikesContext)
+  const { getMovies } = useContext(ContextAplicattion);
 
+  // Function that sends the value received in the search input to the context, after this information has been valited
   async function handleSearchPost(data: SearchFormInput){
     await getMovies(data.query);
   }

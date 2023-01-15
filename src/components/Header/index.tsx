@@ -8,6 +8,8 @@ import { HeaderContainer, HeaderContent } from "./styles";
 
 export function Header(){
   const { pathname } = useRouter();
+  
+  // Property that reads which route it is on and if the riute the user is on is not viewing the information of a movie, it does not allow the user to search for another movie
   const showSearch = pathname != '/movie/[id]';
   return(
     <HeaderContainer>

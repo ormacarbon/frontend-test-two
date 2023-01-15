@@ -2,9 +2,9 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MovieContainer, Liked } from './styles';
-import { IMovie, LikesContext } from '../../context/FavoritesContext';
 import { useContext } from 'react';
 import Link from 'next/link';
+import { ContextAplicattion, IMovie } from '../../context/ContextAplicattion';
 
 interface MovieProps {
   movie: IMovie;
@@ -12,9 +12,11 @@ interface MovieProps {
 
 
 export function MovieCard({ movie }: MovieProps){
-const { checkIfMovieAlreadyInLiked, addMovieToLiked, removeMovieFromLiked } = useContext(LikesContext);
-const movieLiked = checkIfMovieAlreadyInLiked(movie.id);
+// Receives the functions of the context to see in the movies al aready favorited, add a movie as favorite and remove the movie from favorites
+const { checkIfMovieAlreadyInFavoritesMovies, addInMoviesFavorites, removeMovieFromFavorites } = useContext(ContextAplicattion);
+const movieLiked = checkIfMovieAlreadyInFavoritesMovies(movie.id);
 
+// Link that must be passed to be able to visualize the image coming from the api
 const link= 'https://image.tmdb.org/t/p/w500/';
   return (
     <MovieContainer>
@@ -25,12 +27,12 @@ const link= 'https://image.tmdb.org/t/p/w500/';
           <span>{movie.votes}</span>
         </div>
         {movieLiked  ? (
-          <button onClick={() => removeMovieFromLiked(movie.id)}>
+          <button onClick={() => removeMovieFromFavorites(movie.id)}>
             <AiFillHeart size={32} color="#d60000" />
           </button>
             
           ) : (
-            <button onClick={() => addMovieToLiked(movie)}>
+            <button onClick={() => addInMoviesFavorites(movie)}>
               <AiOutlineHeart size={32} color="#d60000" />
             </button>
           )}
