@@ -1,16 +1,15 @@
-import React from 'react'
-import {InputContainer,InputStyled} from './style'
+import React from "react";
+import { InputContainer, InputStyled, LeftIconContainer } from "./style";
 
-const Input = ({leftIcon, ...rest}) => {
-  return (
-    <React.Fragment>
-        <InputContainer>
-            {leftIcon}
-            <InputStyled {...rest}/>
+const Input = ({ leftIcon, value, onChange,onClick, ...rest }) => {
+	return (
+		<React.Fragment>
+			<InputContainer>
+				<LeftIconContainer onClick={onClick}>{leftIcon}</LeftIconContainer>
+				<InputStyled {...rest} value={value} onChange={onChange}/>
+			</InputContainer>
+		</React.Fragment>
+	);
+};
 
-        </InputContainer>
-    </React.Fragment>
-    )
-}
-
-export default Input
+export default Input;
