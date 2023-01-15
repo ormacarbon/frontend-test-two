@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Content, Header, Types } from "./styles";
+import { RouteContext } from "../../context/routeContext";
 
 import TypeLabel from "../TypeLabel";
 import Frame from "../Frame";
 
 function Card(props) {
+  const { toPokemonLink } = useContext(RouteContext);
+
   return (
-    <Container active={props.active} onClick={props.onClick}>
+    <Container active={props.active} onClick={() => toPokemonLink(props.name)}>
       {props.sprite && (
         <Frame
           src={props.sprite}

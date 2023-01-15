@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Container, Content } from "./styles";
 import { PokemonContext } from "../../context/pokemonContext";
-import { useRouter } from 'next/router';
 
 import Card from "../../components/Card";
 import Button from "../../components/Button";
@@ -9,14 +8,6 @@ import Header from "../../components/Header";
 
 function Pokedex() {
   const { pokemonList, updatePokemonList } = useContext(PokemonContext);
-  const router = useRouter();
-
-  const handlePokemonClick = (name) => {
-    router.push({
-      pathname: '/pokemon',
-      query: { pokemon: name },
-    }, `/pokemon/${name}`)
-  };
 
   return (
     <Container>
@@ -33,7 +24,6 @@ function Pokedex() {
               }
               id={pokemon.id}
               type={pokemon.types.map((tp) => tp.type.name)}
-              onClick={()=> {handlePokemonClick(pokemon.name)}}
             />
           );
         })}

@@ -11,9 +11,18 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
-  place-items: center;
-  gap: ${props => props.theme.spacing.xs};
-  margin-top: ${props => props.theme.spacing.lg};
+  grid-template-columns: 1fr 1fr;
+  gap: ${props => props.theme.spacing.lg};
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+`
+
+export const Description = styled.div`
+  height: 3.75rem;
+  text-align: start;
+  font-size: ${(props) => props.theme.fonts.size.md};
 `

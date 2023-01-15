@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Content, Header, Types, Description } from "./styles";
+import { RouteContext } from "../../context/routeContext";
 
 import TypeLabel from "../TypeLabel";
-import Image from "next/image";
 import Button from "../Button";
 import Frame from "../Frame";
 
 function ExpandedCard(props) {
+  const { toPokemonLink } = useContext(RouteContext);
+
   return (
     <Container active={props.active} onClick={props.onClick}>
       {props.sprite && (
@@ -35,7 +37,7 @@ function ExpandedCard(props) {
         </Header>
         <Description>{props.description}</Description>
         <div className="button-container">
-          <Button title="Discover More" size="lg"/>
+          <Button title="Discover More" size="lg" onClick={() => toPokemonLink(props.name)}/>
         </div>
       </Content>
     </Container>

@@ -3,17 +3,20 @@ import { ThemeProvider } from 'styled-components'
 import { theme } from '../styles/theme'
 import Layout from '../components/Layout'
 import { PokemonContextProvider } from "../context/pokemonContext"
+import { RouteContextProvider } from '../context/routeContext'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <PokemonContextProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </PokemonContextProvider>
+    <RouteContextProvider>
+      <PokemonContextProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </PokemonContextProvider>
+    </RouteContextProvider>
   )
 }
 

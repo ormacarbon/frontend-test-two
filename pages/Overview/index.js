@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Container, Content } from "./styles";
 import { PokemonContext } from "../../context/pokemonContext";
 
@@ -14,7 +14,7 @@ function Overview() {
 
   return (
     <Container>
-      <Header title="overview" subtitle="hi pokémon trainer,"/>
+      <Header title="overview" subtitle="hi pokémon trainer," hideButton/>
       <VideoBanner />
       <Content>
         <Box title="Team of the day">

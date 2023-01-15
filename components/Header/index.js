@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { Container, Title } from './styles';
+import { RouteContext } from '../../context/routeContext';
+import { ArrowLeft } from 'phosphor-react';
+import Button from '../Button';
 import Input from '../Input';
-import { Container, Title } from './styles'
 
 function Header(props) {
+  const { lastRoute, router } = useContext(RouteContext);
+
   return(
     <Container>
+      {
+        !props.hideButton &&
+        <Button icon={<ArrowLeft size={20} weight="bold" onClick={() => router.push(lastRoute)} />}/>
+      }
       <Title>
         {
           props.subtitle && 

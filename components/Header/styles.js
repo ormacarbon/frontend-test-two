@@ -2,13 +2,14 @@ import styled from 'styled-components'
 
 export const Container = styled.header`
   display: flex;
+  gap: ${props => props.theme.spacing.sm};
   align-items: center;
-  justify-content: space-between;
   margin-bottom: ${props => props.theme.spacing.lg};  
 `
 
 export const Title = styled.header`
   text-transform: capitalize;
+  flex: 1;
 
   h1 {
   font-size: ${props => props.theme.fonts.size['3xl']};

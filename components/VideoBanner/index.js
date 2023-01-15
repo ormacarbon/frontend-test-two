@@ -1,14 +1,17 @@
-import React from "react";
-import Button from "../Button";
 import { Container, Content } from "./styles";
+import React, { useContext } from "react";
+import Button from "../Button";
+import { RouteContext } from '../../context/routeContext';
 
 function VideoBanner() {
+  const { router } = useContext(RouteContext);
+
   return (
     <Container>
       <Content>
         <h4>Pokémon Pokédex</h4>
         <p>Your definitive guide to the universe of Pokémons</p>
-        <Button title="Explore" color="dark" hoverColor="primary200" size="lg" />
+        <Button title="Explore" color="dark" hoverColor="primary200" size="lg" onClick={() => router.push("/pokedex")}/>
       </Content>
 
       <video autoPlay loop muted>

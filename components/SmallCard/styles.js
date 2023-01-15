@@ -11,6 +11,7 @@ export const Container = styled.button`
   border: 1px solid ${ props => props.active ? props.theme.colors.gray300 : props.theme.colors.gray400};
   transition: background 0.3s, border 0.3s;
   margin-bottom: ${props => props.theme.spacing.sm};
+  cursor: pointer;
 
   :hover {
     background: ${props => !props.active && props.theme.colors.gray500};
