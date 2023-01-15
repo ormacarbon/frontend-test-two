@@ -10,12 +10,14 @@ export default function Header() {
   return (
     <StyledHeader theme={currentTheme}>
       <ContainerLogo theme={currentTheme}>
-        <Link href="/"><h1>LOGO</h1></Link>
+        <Link href="/"><h1>FUTstats</h1></Link>
         <Switch
           onChange={handleToggleTheme}
           checked={theme === 'dark'}
           checkedIcon={false}
           uncheckedIcon={false}
+          checkedHandleIcon="🌞"
+          uncheckedHandleIcon="🌑"
           height={25}
           width={50}
           handleDiameter={25}

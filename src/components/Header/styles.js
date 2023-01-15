@@ -6,7 +6,6 @@ export const StyledHeader = styled.header`
   padding: 20px 50px;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1.5px solid ${({ theme }) => theme.tertiaryColor};
 `;
 
 export const ContainerLogo = styled.div`
@@ -27,7 +26,7 @@ export const ListNavMenu = styled.ul`
   li{
     a{
       padding: 10px 15px;
-      border-radius: 4px;
+      border-radius: 10px;
       transition: 0.3s ease-in;
       color:${({ theme }) => theme.textColor};
       font-weight: bold;

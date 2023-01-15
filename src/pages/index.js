@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import Link from 'next/link';
@@ -5,29 +6,28 @@ import Carousel from 'react-elastic-carousel';
 import { ThemeContext } from '../contexts/ThemeContext';
 import APIService from '../services/APIService';
 import { Main, Container } from '../components/HomeStyled';
+import WellCome from '../components/Wellcome';
 
 export default function Home({ leagues }) {
-  const { currentTheme } = useContext(ThemeContext);
+  const { currentTheme, theme } = useContext(ThemeContext);
 
   return (
     <Main theme={currentTheme}>
-      <h1>Ligas Profissionais</h1>
-
+      <WellCome />
       <Container theme={currentTheme}>
         <Carousel itemsToScroll={2} itemsToShow={4}>
-          {leagues.data.map((league) => (
-            <Link
-              href={`/${league.id}`}
-              theme={currentTheme}
-              key={league.id}
-            >
-              <img
-                src={league.logos.light}
-                alt="logo-league"
-              />
-              {league.name}
-            </Link>
-          ))}
+          {leagues.data.map((league) => {
+            const logoDark = league.logos.dark.replace(/["]/g, '');
+            const logoLight = league.logos.light;
+            const setLogoLeague = theme === 'dark' ? logoDark : logoLight;
+
+            return (
+              <Link href={`/${league.id}`} key={league.id}>
+                <img src={setLogoLeague} alt="logo-league" />
+                {league.name}
+              </Link>
+            );
+          })}
         </Carousel>
       </Container>
     </Main>
