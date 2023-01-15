@@ -57,7 +57,7 @@ export default function Index() {
   }, [])
 
   return (
-    <IndexPage>
+    <IndexPage style={{minHeight: '100vh'}}>
       <div>
         <PageTitle>
           <PageDescription>{welcomeMessage} and welcome to MovieRoll!</PageDescription>

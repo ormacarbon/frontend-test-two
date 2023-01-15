@@ -34,7 +34,7 @@ export default function SearchMovieCard(props) {
   const movieDirector = movieCredits?.crew.find(it => it.job === "Director")
 
   return (
-    <MovieContainer>
+    <MovieContainer style={{ minHeight: '80vh' }}>
       {movieData?.backdrop_path && (
         <>
           <MovieBanner src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}></MovieBanner>

@@ -39,7 +39,7 @@ export default function MoviesList(props) {
   margin-block: 2rem;
 `
   return (
-    <div>
+    <div style={{ minHeight: '100vh' }}>
       <PageTitle>
         <div>{pageTitle && pageTitle}</div>
       </PageTitle>

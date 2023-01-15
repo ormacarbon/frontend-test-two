@@ -49,7 +49,7 @@ export default function Search() {
   }
 
   return (
-    <SearchPageContainer>
+    <SearchPageContainer style={{ minHeight: '100vh' }}>
       {!emptySearch ?
         <SearchPageInformation>Found {searchData?.total_results} results for "{searchInput}" 😀</SearchPageInformation> :
         <SearchPageInformation> Sadly no results for this search 😢</SearchPageInformation>

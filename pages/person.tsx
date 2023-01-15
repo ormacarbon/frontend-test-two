@@ -51,7 +51,7 @@ export default function MovieCard(props) {
 
 
   return (
-    <PersonPageContainer>
+    <PersonPageContainer style={{ minHeight: '100vh' }}>
       <PersonProfile>
         <PersonImage src={`https://image.tmdb.org/t/p/w500${person?.profile_path}`} alt="" />
         <PersonDescription> {
