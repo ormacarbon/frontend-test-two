@@ -7,6 +7,8 @@ import {
   PaginationContainer,
   SearchContainer,
   Button,
+  FilterContainer,
+  HeaderContainer,
 } from "./style";
 import Link from "next/link";
 import { Backdrop, CircularProgress } from "@mui/material";
@@ -22,6 +24,7 @@ export default function Movies() {
   const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+
   const { theme } = useContext(GlobalStateContext);
   const [search, setSearch] = useState("");
 
@@ -33,20 +36,54 @@ export default function Movies() {
         },
       });
       setMovies(response.data.results);
+      setTotalPages(response.data.total_pages);
       setLoading(false);
     };
-
     loadMovies();
   }, [currentPage]);
 
-  useEffect(() => {
-    const loadTotalPages = async () => {
-      const response = await api.get("movie/now_playing");
-      setTotalPages(response.data.total_pages);
-    };
+  const NowPlayingMovies = async () => {
+    const response = await api.get("movie/now_playing", {
+      params: {
+        page: currentPage,
+      },
+    });
+    setMovies(response.data.results);
+    setTotalPages(response.data.total_pages);
+  };
 
-    loadTotalPages();
-  });
+  const popularMovies = async () => {
+    setCurrentPage(1);
+    setTotalPages(1);
+    const response = await api.get("movie/popular", {
+      params: {
+        page: currentPage,
+      },
+    });
+    setMovies(response.data.results);
+  };
+
+  const topRatedMovies = async () => {
+    setCurrentPage(1);
+    setTotalPages(1);
+    const response = await api.get("movie/top_rated", {
+      params: {
+        page: currentPage,
+      },
+    });
+    setMovies(response.data.results);
+  };
+
+  const searchMovie = async () => {
+    setCurrentPage(1);
+    setTotalPages(1);
+    if (search === "") {
+      return;
+    }
+    const response = await api.get(`search/movie?query=${search}`);
+    setMovies(response.data.results);
+    setTotalPages(1);
+  };
 
   return (
     <>
@@ -60,30 +97,25 @@ export default function Movies() {
       ) : null}
       <Header />
       <Container>
-        <SearchContainer>
-          <TextField
-            label="Search a Movie"
-            variant="outlined"
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-            size="small"
-            style={window.innerWidth < 600 ? { width: "80%" } : null}
-          />
-          <Button
-            onClick={() => {
-              if (search === "") {
-                return;
-              }
-              api.get(`search/movie?query=${search}`).then((response) => {
-                setMovies(response.data.results);
-              });
-            }}
-          >
-            Search
-          </Button>
-        </SearchContainer>
+        <HeaderContainer>
+          <SearchContainer>
+            <TextField
+              label="Search a Movie"
+              variant="outlined"
+              value={search}
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+              size="small"
+            />
+            <Button onClick={searchMovie}>Search</Button>
+          </SearchContainer>
+          <FilterContainer>
+            <Button onClick={NowPlayingMovies}>Now Playing</Button>
+            <Button onClick={popularMovies}>Popular Movies</Button>
+            <Button onClick={topRatedMovies}>Top Rated Movies</Button>
+          </FilterContainer>
+        </HeaderContainer>
         <MoviesList>
           {movies.map((movie) => (
             <div key={movie.id}>

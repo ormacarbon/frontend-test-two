@@ -21,7 +21,7 @@ export function Header() {
           alt="logo"
           width={100}
           height={100}
-          priority={true}
+          priority
           loading="eager"
         />
       </div>

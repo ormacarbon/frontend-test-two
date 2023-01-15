@@ -9,6 +9,7 @@ export const Container = styled.header`
   @media (max-width: 992px) {
     display: flex;
     flex-direction: column;
+    margin: 2rem 0;
   }
 
   img {

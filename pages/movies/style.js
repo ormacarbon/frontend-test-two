@@ -62,11 +62,30 @@ export const SearchContainer = styled.div`
   margin: 2rem 0;
   display: flex;
   justify-content: start;
-  gap: 0.5rem;
+  gap: 1rem;
 
   @media (max-width: 992px) {
     flex-direction: column;
     align-items: center;
+    width: 100%;
+  }
+`;
+
+export const FilterContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
   }
 `;
 
@@ -81,7 +100,7 @@ export const Button = styled.button`
   text-align: center;
 
   @media (max-width: 992px) {
-    width: 80%;
+    width: 100%;
   }
 
   &:hover {
