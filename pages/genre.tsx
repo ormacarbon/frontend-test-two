@@ -16,7 +16,7 @@ export default function Search() {
   const [genreList, setGenreList] = useState({ genreList: [], genreName: '' })
   const { apiKey } = useContext(applicationContext);
   const router = useRouter()
-  
+
   useEffect(() => {
     if (!router.isReady) return
     const { genre } = router.query
@@ -32,7 +32,7 @@ export default function Search() {
           genreName: genreList?.genres.filter(it => it.id == genre)[0].name
         })
       }).catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }, [moviePage, router.isReady])
 

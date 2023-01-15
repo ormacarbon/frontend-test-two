@@ -23,7 +23,7 @@ export default function SearchMovieCard(props) {
         setMovieData(movieData)
         setMovieCredits(credits)
       }).catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }, [router.isReady])
 

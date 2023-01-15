@@ -52,7 +52,7 @@ export default function Index() {
           upcomingMovies: { ...upcoming, sectionTitle: 'Coming soon 🎬', route: '/soon-in-theater' }
         }))
       }).catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }, [])
 

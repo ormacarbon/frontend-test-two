@@ -26,7 +26,7 @@ export default function MovieCard(props) {
         setPerson(person)
         setCredits(credits.cast)
       }).catch((err) => {
-        console.log(err);
+        alert(err);
       });
 
 
