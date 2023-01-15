@@ -26,7 +26,7 @@ export const InfosBanner = styled.div`
     padding: 20px;
     border-radius: 20px;
     margin-top: 20px;
-    color: black;
+    color: #aaa;
     font-size: 1.3rem;
   }
   `
