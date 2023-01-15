@@ -60,8 +60,15 @@ const StyledIndex = styled.main`
 `;
 
 export default function Home() {
-  const { pokelist, setPokelist, setAllPokelist, searchResults, setSearchResults, searchValue, pokedex } =
-    useContext(GlobalContext);
+  const {
+    pokelist,
+    setPokelist,
+    setAllPokelist,
+    searchResults,
+    setSearchResults,
+    searchValue,
+    pokedex,
+  } = useContext(GlobalContext);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -106,12 +113,12 @@ export default function Home() {
   }, [searchValue, router.query.page]);
 
   const filteredPokemonList = () =>
-  pokelist.filter(
-    (pokemonInList) =>
-      !pokedex.find(
-        (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
-      )
-  );
+    pokelist.filter(
+      (pokemonInList) =>
+        !pokedex.find(
+          (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
+        )
+    );
 
   const getButtonClass = (page) => {
     if (page === currentPage) {
@@ -124,15 +131,33 @@ export default function Home() {
     <StyledIndex>
       <Navbar />
       <section className="container-pokemons">
-        {searchResults.length > 0 ?
-          searchResults.map((pokemon) => {
-              return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
-            })
+        {searchResults.length > 0
+          ? searchResults
+              .filter((pokemon) =>
+                filteredPokemonList().find(
+                  (pokemonInList) => pokemonInList.name === pokemon.name
+                )
+              )
+              .map((pokemon) => {
+                return (
+                  <PokemonCard
+                    pokemon={pokemon}
+                    key={pokemon.url}
+                    pathname={pathname}
+                  />
+                );
+              })
           : filteredPokemonList().map((pokemon) => {
-              return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
+              return (
+                <PokemonCard
+                  pokemon={pokemon}
+                  key={pokemon.url}
+                  pathname={pathname}
+                />
+              );
             })}
       </section>
-      <ScrollButton/>
+      <ScrollButton />
       <section className="container-buttons">
         <button
           className={getButtonClass(0)}

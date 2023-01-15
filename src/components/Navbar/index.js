@@ -286,7 +286,7 @@ export default function Navbar() {
 
   const searchPokemon = () => {
     const foundPokemons = allPokelist.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(searchValue)
+      pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
     );
     setSearchResults(foundPokemons);
     if (foundPokemons.length === 0) {
