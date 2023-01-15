@@ -55,7 +55,7 @@ const StyledIndex = styled.main`
 `;
 
 export default function Home() {
-  const { pokelist, setPokelist, allPokelist, setAllPokelist, searchResults, setSearchResults, searchValue, pokedex } =
+  const { pokelist, setPokelist, setAllPokelist, searchResults, setSearchResults, searchValue, pokedex } =
     useContext(GlobalContext);
 
   const [currentPage, setCurrentPage] = useState(1);
