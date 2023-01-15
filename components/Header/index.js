@@ -6,13 +6,13 @@ import Button from '../Button';
 import Input from '../Input';
 
 function Header(props) {
-  const { lastRoute, router } = useContext(RouteContext);
+  const { backRoute } = useContext(RouteContext);
 
   return(
     <Container>
       {
         !props.hideButton &&
-        <Button icon={<ArrowLeft size={20} weight="bold" onClick={() => router.push(lastRoute)} />}/>
+        <Button icon={<ArrowLeft size={20} weight="bold" onClick={() => backRoute()} />}/>
       }
       <Title>
         {
