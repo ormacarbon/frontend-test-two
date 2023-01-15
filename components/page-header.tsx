@@ -3,11 +3,12 @@ import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { Header, HeaderLogo, HeaderLogoContainer, HeaderLogoText, HeaderUl, ItemHeaderContainer, SearchInputContainer, ThemeTogglerContainer } from '../styles/header';
 import HeaderItem from './header-item';
 import MovieSearchInput from './movie-search-input';
+import { useTheme } from 'next-themes'
 
 
 
-const PageHeader = (props) => {
-  const { theme, toggleTheme } = props;
+const PageHeader = () => {
+  const { theme, setTheme } = useTheme()
 
   const headerItems = [
     {
@@ -49,7 +50,7 @@ const PageHeader = (props) => {
           <div>
             <MovieSearchInput />
           </div>
-          <ThemeTogglerContainer onClick={() => toggleTheme()}>
+          <ThemeTogglerContainer onClick={() => setTheme(theme === 'dark' ? 'white' : 'dark')}>
             {theme === 'white-theme' ? <BsFillMoonFill /> : <BsFillSunFill />}
           </ThemeTogglerContainer>
         </SearchInputContainer>

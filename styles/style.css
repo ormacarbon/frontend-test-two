@@ -188,7 +188,7 @@ table {
   }
 }
 
-body {
+:root {
   --body-color: #fff;
   --font-color: rgb(77, 91, 124);
   --font-hover-color: #01040b;
@@ -199,7 +199,7 @@ body {
   --separator-color: rgb(192, 202, 216);
 }
 
-body.dark-theme {
+[data-theme='dark'] {
   --body-color: #14181c;
   --font-color: #fff;
   --font-hover-color: #dbdbdb;
