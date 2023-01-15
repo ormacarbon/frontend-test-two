@@ -1,8 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
 export const Card = styled.div`
-  background: ${({ theme, type }) => theme.pokemonTypes[type]};
+  ${({ theme, type }) => theme.title === 'light' ?
+    css`
+    background-color: ${theme.pokemonTypes[type]}`
+    :
+    css`
+    background-color: #686a6587`
+  };
+  /* background: ${({ theme, type }) => theme.pokemonTypes[type]}; */
   width: 150px;
   height: 200px;
   border-radius: 15px;
@@ -27,7 +34,13 @@ export const LinkButton = styled(Link)`
 export const Title = styled.h2`
   text-transform: capitalize;
   font-family: 'Johto Mono';
-  
+  color: ${({ theme }) => theme.colors.textColor};
+  border-radius: 1rem;
+  width: 9rem;
+  display: flex;
+  justify-content: center;
+  background-color: ${({theme}) => theme.colors.textCardBackground};
+
   &:hover {
     /* font-weight: 500; */
     scale: 1;
