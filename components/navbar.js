@@ -2,14 +2,22 @@ import React from 'react'
 import styled from 'styled-components';
 import Link from 'next/link'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import Image from 'next/image';
+import bmg from '../public/coin.png'
+import Darkmode from './darkmode';
 
 const DivInitial = styled.div`
   display: flex;
   justify-content: space-between;
+  box-shadow: 10px 5px 500px rgba(0, 0, 0, 0.08);
+  background: rgb(2,0,36);
+  background: linear-gradient(353deg, rgba(2,0,36,1) 0%, rgba(18,18,41,1) 100%, rgba(14,14,14,1) 100%);
+
+
 
   align-items: center;
   padding: 0 5px;
-  height: 45px;
+  height: 75px;
   background-color: black;
   @media (max-width: 576px) {
     
@@ -37,7 +45,7 @@ const Colum = styled.ul`
   display: flex;
   padding: 0 20px;
   align-items: center;
-  
+  margin-left: 80px;
   @media (min-width: 768px) {   
 }
 `
@@ -52,13 +60,26 @@ const StyledIcon = styled(DarkModeOutlinedIcon)`
   color: white;
 `
 
+const ImgBrm = styled(Image)`
+  width: 60px;
+  height: 60px;
+  margin-right: 300px;
+  animation: rotation 8s infinite linear;
+  @keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  };
+}
+`
 
 const navbar = () => {
   return (
     <DivInitial>
-        <h1>Orma Test</h1> 
-        <Colum>
-            <StyledIcon/>
+        
+        <Colum>      
             <Lists>
                 <StyledLink href="/">Home</StyledLink>
             </Lists>
@@ -67,11 +88,10 @@ const navbar = () => {
             </Lists>  
             <Lists>
                 <StyledLink href="/cripto">Coins</StyledLink>
-            </Lists>        
-            <Lists>
-                <StyledLink href="/contact">Exchanges</StyledLink>
-            </Lists>
+            </Lists>  
+            <Darkmode/>
         </Colum>
+        <ImgBrm src={bmg} alt='/'/>   
 
     </DivInitial>
    

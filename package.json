@@ -19,6 +19,7 @@
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-paginate": "^8.1.4",
     "styled-breakpoints": "^11.1.1",
     "styled-components": "^5.3.6"
   }

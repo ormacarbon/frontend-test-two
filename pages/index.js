@@ -2,8 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import Navbar from "../components/navbar";
 import Button from "../components/button";
-import Image from 'next/image';
-import bgimg from '../public/cripto.jpg'
+import Image from "next/image";
+import img from '../public/coin.png'
 
 
 const CentralDiv = styled.div`
@@ -13,24 +13,13 @@ const CentralDiv = styled.div`
   align-items: center;
   
 `
-const StyledImg = styled(Image)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  background-repeat: no-repeat;
-  -webkit-filter: blur(5px);
-  
-`
+
 
 const TransDiv = styled.div`
-  border: 3px solid rgba(0, 0, 0, 0.3);
+  border: 5px solid rgba(0, 0, 0, 0.3);
   padding: 30px;
-  border-radius: 50px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 40px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.20) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   
   
 `
@@ -38,27 +27,44 @@ const BordDiv = styled.div`
   
 `
 const DivP = styled.p`
-  display: flex;
-  justify-content: center;
-  color: white;
+  
   margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 30px;
+  letter-spacing: 1px;
+  line-height: 29px;
+  font-size: 20px;
+  span {
+    color: yellow;
+    font-weight: bold;
+    
+  }
+`
+
+const CriptImg = styled(Image)`
+  width: 250px;
+  height: 250px;
+  animation: rotation 8s infinite linear;
+  @keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 `
 
 export default function Home() {
 
-  
-  
-
   return (
     <BordDiv>
       <CentralDiv>
-        <StyledImg src={bgimg} alt='/'/>
-        <TransDiv>
-          <h2>Welcome to the Cripto World</h2>
-          <DivP>Click and enjoy our product</DivP>
-          <Button butname="Click Here"/>  
+        <CriptImg src={img}/>
+        <TransDiv>    
+          <h2>Welcome to the Crypto World !</h2>
+          <DivP>
+              Here you can learn about Cryptocurrencies <br></br> and discover your favorite currencies <br></br> enjoy your stay !</DivP>
+          
+          <Link href="/search"> <Button butname="Lets go"/>   </Link>
           <div></div>
         </TransDiv>
       </CentralDiv>

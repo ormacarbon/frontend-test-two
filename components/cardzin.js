@@ -5,12 +5,15 @@ import tether from '../public/Tether.jpg'
 
 const Colab = styled.div`
   width: 220px;
+  
+  
 `
 const Head = styled.div`
    background-color:  black;
    border-radius: 10px 10px 0px 0px;
    display: flex;
    justify-content: center;
+   border: 1px solid yellow;
   
 `
 const Rod = styled.div`
@@ -18,6 +21,7 @@ const Rod = styled.div`
   box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.08);
   border-radius: 0px 0px 10px 10px;
   padding-top: 40px;
+  
   padding-bottom: 40px;
 
   h3 {

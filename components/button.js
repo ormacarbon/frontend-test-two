@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import Link from 'next/link'
 const StyledButton = styled.button`
   border-radius: 24px;
   cursor: pointer;
   background-color: #fff;
-  margin-left: 330px;
+  margin-left: 400px;
+  font-weight: bold;
   
   appearance: none;
-  padding: 16px 45px;
+  padding: 16px 40px;
   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
   &:hover {
     background: #F6F9FE;

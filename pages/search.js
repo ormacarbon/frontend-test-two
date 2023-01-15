@@ -7,7 +7,6 @@ import Navbar from "../components/navbar";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 
-
 const AppContainer = styled.div`
   box-sizing: border-box;
   font-family: "Opens-Sans", sans-serif;
@@ -19,6 +18,7 @@ const StySearch = styled.div`
   justify-content: center;
   font-size: 6rem;
   margin-top: 60px;
+  
 `
 const StyPut = styled.div`
   display: flex;
@@ -32,7 +32,10 @@ const StyPut = styled.div`
 const StyInp = styled.input`
   border-radius: 30px;
   border: none;  
+ 
   outline: none;
+  
+  
   background-color: transparent;
   padding: 20px;
   width: 400px;
@@ -69,8 +72,6 @@ const CardCoins = styled.div`
     transform: scale(1.1, 1.1);
   }
 
-  
-
 `
 
 export default function Search() {
@@ -79,6 +80,8 @@ export default function Search() {
   const [searchApiData, setSearchApiData] = useState([])
   const [filterval, setFilterval] = useState('');
   
+  
+
   useEffect(() => {
     Axios.get("https://api.coingecko.com/api/v3/search?query=eth").then((response) => {
       setData(response.data.coins);
@@ -126,7 +129,7 @@ export default function Search() {
           </CardCoins>   
         ))}     
       </DivCoins>
-  
+
     </AppContainer>
   );
 }
