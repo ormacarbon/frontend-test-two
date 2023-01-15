@@ -65,9 +65,8 @@ export const Item = styled.li`
     list-style: none;
     font-weight: 600;
     font-size: 20px;
-    margin: 10px 0;
+    margin: 10px auto;
     padding: 20px;
-    width: 100%;
     text-align: center;
     color: ${(props) => props.theme.colors.letters};
 
@@ -95,4 +94,12 @@ export const Brand = styled.h2`
 	color: ${(props) => props.theme.colors.letters};
 	text-shadow: 2px ${(props) => props.theme.colors.neutral};
 	font-family: 'Press Start 2P';
+`
+export const ThemeToggleButton = styled.button`
+	border: 2px solid ${((props)=>props.theme.colors.border)};
+	padding: 10px;
+	box-shadow: 5px 5px ${((props)=>props.theme.colors.primary)};
+	font-family: 'Press Start 2P';
+	background-color: ${(props) => props.theme.colors.background};
+	color: ${(props) => props.theme.colors.textPrimary}
 `

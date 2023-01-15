@@ -1,13 +1,38 @@
-import { Container, ToggleButton, ContentContainer,MenuItems,Item,Brand,BrandContainer } from "./style";
+import {
+	Container,
+	ToggleButton,
+	ContentContainer,
+	MenuItems,
+	Item,
+	Brand,
+	BrandContainer,
+	ThemeToggleButton
+} from "./style";
 import { Fragment } from "react";
 import Hamburger from "hamburger-react";
 import { useState } from "react";
+import Link from "next/link";
+import LightDarkContext from "../../store/contexts/lightDarkThemeContext";
+import { useContext } from "react";
+import lightTheme from "../../styles/light";
+import darkTheme from '../../styles/dark'
+const Navbar = (props) => {
 
-const Navbar = () => {
+	const [themeName, setThemeName] = useState('Dark')
+
+	const theme = useContext(LightDarkContext);
+
+	const handleChangeTheme = () => {
+		const newTheme = theme.theme === lightTheme? darkTheme:lightTheme
+		const newThemeName = theme.theme === lightTheme? 'Light':'Dark'
+		theme.setTheme(newTheme)
+		setThemeName(newThemeName)
+	}
+
 	const [toggle, setToggle] = useState(false);
 
 	const handleToggle = () => {
-		setToggle((prev) => !prev)
+		setToggle((prev) => !prev);
 	};
 
 	return (
@@ -17,17 +42,21 @@ const Navbar = () => {
 					<Hamburger />
 				</ToggleButton>
 				<ContentContainer toggle={toggle}>
-          <BrandContainer>
-            <Brand>
-              OrmaPokePrice
-            </Brand>
-          </BrandContainer>
-          <MenuItems>
-            <Item>HOME</Item>
-            <Item>CARDS</Item>
-            <Item>CONTACT</Item>
-          </MenuItems>
-        </ContentContainer>
+					<BrandContainer>
+						<Brand>ORMAPOKEPRICE</Brand>
+					</BrandContainer>
+					<MenuItems>
+						<Link href="/">
+							<Item>HOME</Item>
+						</Link>
+						<Link href="/search">
+							<Item>SEARCH</Item>
+						</Link>
+						<Item>
+							<ThemeToggleButton onClick={handleChangeTheme}>Theme: {themeName}</ThemeToggleButton>
+						</Item>
+					</MenuItems>
+				</ContentContainer>
 			</Container>
 		</Fragment>
 	);
