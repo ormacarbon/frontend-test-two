@@ -217,7 +217,7 @@ const ContainerBar = styled.div`
 `;
 
 export default function Details() {
-  const { pokelist, getPokemonColor } = useContext(GlobalContext);
+  const { getPokemonColor } = useContext(GlobalContext);
   const [pokemonDetail, setPokemonDetail] = useState({});
 
   const router = useRouter();

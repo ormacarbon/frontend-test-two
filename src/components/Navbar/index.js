@@ -186,7 +186,7 @@ const BurgerWrapper = styled.header`
       border: 1px solid ${({ theme }) => theme.borderBase};
     }
 
-    li{
+    li {
       margin: 5px 0;
     }
 
@@ -258,7 +258,7 @@ const BurgerWrapper = styled.header`
       background-color: darkgray;
     }
 
-    .switch{
+    .switch {
       margin-top: 15px;
     }
   }
@@ -274,9 +274,10 @@ export default function Navbar() {
     const foundPokemons = allPokelist.filter((pokemon) =>
       pokemon.name.includes(searchValue)
     );
-    foundPokemons > 0
-      ? setSearchResults(foundPokemons)
-      : alert("No Pokemon Found");
+    setSearchResults(foundPokemons);
+    if (foundPokemons.length === 0) {
+      alert("No Pokemon Found");
+    }
   };
 
   const clearSearch = () => {
