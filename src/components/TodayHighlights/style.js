@@ -11,6 +11,15 @@ export const Container = styled.div`
     color: ${props => props.theme.colors.fontPrimary};
     text-align: start;
     margin: 2rem 0 4rem 0;
+
+    @media (max-width: 1000px) {
+      margin: 1rem 0 2rem 0;
+    }
+
+    @media (max-width: 620px) {
+      font-size: 14px;
+      margin-top: 2rem;
+    }
   }
 
   div {
@@ -23,5 +32,14 @@ export const TodayHighlightsContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-gap: 1rem;
+  margin-bottom: 2rem;
   padding: 0 10rem;
+
+  @media (max-width: 1200px) {
+    padding: 0 2rem;
+  }
+
+  @media (max-width: 1000px) {
+    padding: 0;
+  }
 `;

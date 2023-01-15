@@ -14,7 +14,7 @@ export function SwitchTheme({ toggleTheme }) {
       checkedIcon={false}
       uncheckedIcon={false}
       height={15}
-      width={50}
+      width={40}
       handleDiameter={25}
       offHandleColor={ '#222' }
       onHandleColor={ '#f5f5f5' }

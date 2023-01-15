@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Footer, InputSearchDiv, SideBar, SideBarContainer, WeatherSideBarStyle } from './style'
 import search from '../../assets/images/search.svg'
 import { globalContext } from '../../context/globalContext';
@@ -40,11 +40,12 @@ export default function Side() {
         </InputSearchDiv>
         <WeatherSideBarStyle>
           <img
+            className='weather-icon'
             src={weather.current?.condition?.icon}
             alt={weather.current?.condition?.text}
           />
           <div>
-            <h3>{weather.current?.temp_c}°C</h3>
+            <h3>{weather.current?.temp_c} °C</h3>
             <p>{weekDay}, {hour}</p>
             <div>
               <img
@@ -58,7 +59,7 @@ export default function Side() {
                 src={ humidity?.src }
                 alt="Humidity"
               />
-              <p>{ weather.current?.humidity }%</p>
+              <p className='humidity'>{ weather.current?.humidity }%</p>
             </div>
           </div>
           <Footer>
