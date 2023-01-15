@@ -1,5 +1,3 @@
-// import React from 'react';
-
 export default function DogCard(props) {
   const {title, text} = props;
   return (
