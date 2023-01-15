@@ -9,7 +9,7 @@ import {
 import Input from "../Input/Input";
 
 import {AiOutlineSearch} from 'react-icons/ai'
-const SearchSection = () => {
+const SearchSection = ({children}) => {
 	return (
 		<React.Fragment>
 			<Container>
@@ -19,9 +19,7 @@ const SearchSection = () => {
 					</SearchTitleContainer>
 				</Row>
 				<HorizontalLine />
-				<Row>
-					<Input leftIcon={<AiOutlineSearch/>} placeholder="Enter your card title"/>
-				</Row>
+				{children}
 			</Container>
 		</React.Fragment>
 	);
