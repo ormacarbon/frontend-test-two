@@ -15,22 +15,15 @@ export default function MoviesList(props) {
   const { apiKey } = useContext(applicationContext)
   const { urlPrefix, pageTitle } = props;
 
-
-  const getMovieRequest = async () => {
-    const url = ` https://api.themoviedb.org/3/movie/${urlPrefix}?api_key=${apiKey}&language=en-US&page=${moviePage}`
-
-    fetch(url)
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/${urlPrefix}?api_key=${apiKey}&language=en-US&page=${moviePage}`)
       .then(response => response.json())
       .then(json => {
         setLoading(false)
         setMovieData(json.results)
         setTotalPages(json.total_pages)
       })
-  }
-
-  useEffect(() => {
-    getMovieRequest()
-  }, [moviePage])
+  }, [moviePage, apiKey, urlPrefix])
 
   const ButtonContainer = styled.div`
   display: flex;

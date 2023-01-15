@@ -31,7 +31,7 @@ export default function MovieCard(props) {
       });
 
 
-  }, [router.isReady])
+  }, [router.isReady, apiKey, router.query])
 
   const titles = {
     'Production': 'produced',
@@ -53,51 +53,51 @@ export default function MovieCard(props) {
 
   return (
     <>
-    <Head>
-      <title>{person.name}</title>
-    </Head>
-    <PersonPageContainer style={{ minHeight: '100vh' }}>
-      <PersonProfile>
-        <PersonImage src={`https://image.tmdb.org/t/p/w500${person?.profile_path}`} alt="" />
-        <PersonDescription> {
-          !showMore
-            ? <Biography>{biography}<ExpandButton onClick={() => setShowMore(!showMore)} style={{ marginLeft: '0.5rem' }}>less</ExpandButton></Biography>
-            : <Biography>{biographyBigEnough ? biography?.substring(0, 200).concat('... ') : biography}
-              <ExpandButton onClick={() => setShowMore(!showMore)}>{biographyBigEnough && 'more'}</ExpandButton> </Biography>
-        }
-        </PersonDescription>
-        <PersonDescription>
-          More at
-          <InfoFooterLink
-            target='_blank'
-            href={`https://www.imdb.com/name/${person?.imdb_id}/`}>
-            IMDb
-          </InfoFooterLink>
-        </PersonDescription>
-      </PersonProfile>
-      <PersonMovies >
-        <MovieSectionTitle>
-          <PersonTitle>
-            Movies {getPersonTitle} by
-          </PersonTitle>
-          <PersonName>
-            {person.name}
-          </PersonName>
-        </MovieSectionTitle>
-        <MovieList style={{ gridGap: '1rem', padding: 'unset', gridTemplateColumns: 'repeat(auto-fill,minmax(145px,1fr))' }}>
-          {moviesWithPoster.map((it, index) => (
-            <Link key={index} href={{
-              pathname: '/movie',
-              query: { movieId: it.id },
-            }}>
-              <MovieContainer style={{ marginBottom: '1rem' }}>
-                <MoviePoster style={{ width: '100%', height: '100%' }} alt={it.title || it.original_title} src={`https://image.tmdb.org/t/p/w500${it.poster_path}`} />
-              </MovieContainer>
-            </Link>
-          ))}
-        </MovieList>
-      </PersonMovies>
-    </PersonPageContainer >
+      <Head>
+        <title>{person.name}</title>
+      </Head>
+      <PersonPageContainer style={{ minHeight: '100vh' }}>
+        <PersonProfile>
+          <PersonImage src={`https://image.tmdb.org/t/p/w500${person?.profile_path}`} alt="" />
+          <PersonDescription> {
+            !showMore
+              ? <Biography>{biography}<ExpandButton onClick={() => setShowMore(!showMore)} style={{ marginLeft: '0.5rem' }}>less</ExpandButton></Biography>
+              : <Biography>{biographyBigEnough ? biography?.substring(0, 200).concat('... ') : biography}
+                <ExpandButton onClick={() => setShowMore(!showMore)}>{biographyBigEnough && 'more'}</ExpandButton> </Biography>
+          }
+          </PersonDescription>
+          <PersonDescription>
+            More at
+            <InfoFooterLink
+              target='_blank'
+              href={`https://www.imdb.com/name/${person?.imdb_id}/`}>
+              IMDb
+            </InfoFooterLink>
+          </PersonDescription>
+        </PersonProfile>
+        <PersonMovies >
+          <MovieSectionTitle>
+            <PersonTitle>
+              Movies {getPersonTitle} by
+            </PersonTitle>
+            <PersonName>
+              {person.name}
+            </PersonName>
+          </MovieSectionTitle>
+          <MovieList style={{ gridGap: '1rem', padding: 'unset', gridTemplateColumns: 'repeat(auto-fill,minmax(145px,1fr))' }}>
+            {moviesWithPoster.map((it, index) => (
+              <Link key={index} href={{
+                pathname: '/movie',
+                query: { movieId: it.id },
+              }}>
+                <MovieContainer style={{ marginBottom: '1rem' }}>
+                  <MoviePoster style={{ width: '100%', height: '100%' }} alt={it.title || it.original_title} src={`https://image.tmdb.org/t/p/w500${it.poster_path}`} />
+                </MovieContainer>
+              </Link>
+            ))}
+          </MovieList>
+        </PersonMovies>
+      </PersonPageContainer >
     </>
   )
 }

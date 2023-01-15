@@ -26,7 +26,7 @@ export default function SearchMovieCard(props) {
       }).catch((err) => {
         alert(err);
       });
-  }, [router.isReady])
+  }, [router.isReady, apiKey, router.query])
 
   function handleSelectedInformation(type: string) {
     setSelectedInformation(type)

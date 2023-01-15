@@ -18,9 +18,8 @@ export default function Search() {
   const router = useRouter()
   const searchInput = router.query.searchInput
 
-  const searchMovies = () => {
+  useEffect(() => {
     if (!router.isReady) return
-
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-us&query=${searchInput || router.query}&page=${moviePage}`
     fetch(url)
       .then((response) => response.json())
@@ -29,10 +28,7 @@ export default function Search() {
         setSearchData(movieSearch)
         setLoading(false)
       })
-  }
-  useEffect(() => {
-    searchMovies()
-  }, [searchInput, moviePage, router.isReady])
+  }, [searchInput, moviePage, router.isReady, router.query, apiKey])
 
   const emptySearch = searchData?.total_results === 0
 
@@ -54,7 +50,7 @@ export default function Search() {
       </Head>
       <SearchPageContainer style={{ minHeight: '100vh' }}>
         {!emptySearch ?
-          <SearchPageInformation>Found {searchData?.total_results} results for "{searchInput}" 😀</SearchPageInformation> :
+          <SearchPageInformation>Found {searchData?.total_results} results for &quot;{searchInput}&quot; 😀</SearchPageInformation> :
           <SearchPageInformation> Sadly no results for this search 😢</SearchPageInformation>
         }
         {

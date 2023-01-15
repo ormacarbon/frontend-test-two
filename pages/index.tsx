@@ -55,7 +55,7 @@ export default function Index() {
       }).catch((err) => {
         alert(err);
       });
-  }, [])
+  }, [apiKey])
 
   return (
     <>

@@ -15,8 +15,8 @@ export default function Search() {
   const [loading, setLoading] = useState(true)
   const [moviePage, setMoviePage] = useState(1)
   const [genreList, setGenreList] = useState({ genreList: [], genreName: '' })
-  const { apiKey } = useContext(applicationContext);
   const router = useRouter()
+  const { apiKey } = useContext(applicationContext);
 
   useEffect(() => {
     if (!router.isReady) return
@@ -35,7 +35,7 @@ export default function Search() {
       }).catch((err) => {
         alert(err);
       });
-  }, [moviePage, router.isReady])
+  }, [moviePage, router.isReady, apiKey, router.query])
 
   const ButtonContainer = styled.div`
   display: flex;
@@ -54,7 +54,7 @@ export default function Search() {
         <title>Search by genre {genreList.genreName}</title>
       </Head>
       <SearchPageContainer>
-        <SearchPageInformation>Showing {searchData?.total_results} "{genreList.genreName}" movies 😀</SearchPageInformation>
+        <SearchPageInformation>Showing {searchData?.total_results} &quot;{genreList.genreName}&quot; movies 😀</SearchPageInformation>
         {
           loading ?
             <Loader /> :
