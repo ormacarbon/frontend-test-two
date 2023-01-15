@@ -5,6 +5,7 @@ import PokemonCard from "../src/components/PokemonCard";
 import { useRouter } from "next/router";
 import { GlobalContext } from "../contexts/state";
 import styled from "styled-components";
+import ScrollButton from "../src/components/ScrollButton";
 
 const StyledIndex = styled.main`
   width: 100%;
@@ -131,6 +132,7 @@ export default function Home() {
               return <PokemonCard pokemon={pokemon} key={pokemon.url} pathname={pathname} />;
             })}
       </section>
+      <ScrollButton/>
       <section className="container-buttons">
         <button
           className={getButtonClass(0)}
