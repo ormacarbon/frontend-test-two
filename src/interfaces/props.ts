@@ -10,8 +10,17 @@ export interface MovieCardProps {
   poster: string
 }
 
+export interface HeaderProps {
+  themeToggler: () => void
+  theme: string
+}
+
 export interface PaginationItemProps {
   number: number
   isCurrent?: boolean
   onPageChange: (page: number) => void
+}
+
+export interface LoadingProgressProviderProps {
+  children: ReactNode
 }
