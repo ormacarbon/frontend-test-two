@@ -16,6 +16,10 @@ const StyledNavbar = styled.header`
   img {
     width: 25px;
   }
+
+  .name-page{
+    color: ${({ theme }) => theme.textColorBase};
+  }
   .switch {
     font-size: 17px;
     position: absolute;
