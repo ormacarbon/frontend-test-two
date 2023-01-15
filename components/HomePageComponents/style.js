@@ -57,7 +57,6 @@ export const HeaderTitleContainer = styled.div`
 	box-shadow: 10px 10px 0px ${(props) => props.theme.colors.danger};
     margin: 50px 0;
 	text-align: center;
-	width: 80%;
 `;
 export const HeaderTitle = styled.h1`
 	font-weight: 700;
@@ -67,10 +66,14 @@ export const HeaderTitle = styled.h1`
 `;
 export const HeaderTitleOrma = styled.h1`
 	font-weight: 700;
-	font-size: 1.5rem;
+	font-size: .8rem;
 	margin: 20px 0;
 	text-shadow: 10px 5px 0px ${(props) => props.theme.colors.neutral};
     font-family: 'Press Start 2P';
+
+	@media only screen and (min-width: 764px){
+		font-size: 2rem;
+	}
 `;
 
 export const HeaderText = styled.p`
@@ -88,7 +91,6 @@ export const CheckOut = styled.button`
     font-size: 22px;
     font-family: 'Press Start 2P';
     transition: all .4s cubic-bezier(0.075, 0.82, 0.165, 1);
-	width: 50%;
     &:hover{
         transform: translateY(5px);
         transition: all .4s cubic-bezier(0.075, 0.82, 0.165, 1);

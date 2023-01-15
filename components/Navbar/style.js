@@ -38,8 +38,8 @@ export const ContentContainer = styled.div`
 	${(props) =>
 		props.toggle &&
 		css`
-			width: 100vw;
-			height: 100vh;
+			min-width: 100vw;
+			min-height: 100vh;
 			border-radius: 0;
 			top: 0;
 			right: 0;
@@ -89,7 +89,7 @@ export const BrandContainer = styled.div`
 `
 
 export const Brand = styled.h2`
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 700;
 	color: ${(props) => props.theme.colors.letters};
 	text-shadow: 2px ${(props) => props.theme.colors.neutral};

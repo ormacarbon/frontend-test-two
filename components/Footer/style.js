@@ -28,7 +28,7 @@ export const Container = styled.div`
 
 export const Brand = styled.h2`
 	font-family: "Press Start 2P";
-	font-size: 1.5rem;
+	font-size: .8rem;
 	text-shadow: 5px 5px ${(props) => props.theme.colors.danger};
 	color: ${(props) => props.theme.colors.letters};
 	margin: 30px;
