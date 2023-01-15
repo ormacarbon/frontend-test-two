@@ -1,18 +1,24 @@
 import { useContext } from 'react'
 import PokemonCard from '../../components/PokemonCard';
 import { PokemonContext } from '../../context/context';
-import * as S from './style'
+import styled from 'styled-components';
+
+const ContainerDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem; 
+`; 
 
 export default function FavoritePokemons() {
   const { favoritesPokemons } = useContext(PokemonContext)
 
   return (
     <>
-      <S.ContainerDiv>
+      <ContainerDiv>
         {favoritesPokemons.map((item, index) => (
           <PokemonCard key={index} pokemon={item}></PokemonCard>
         ))}
-      </S.ContainerDiv>
+      </ContainerDiv>
     </>
   )
 }
