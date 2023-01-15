@@ -1,19 +1,19 @@
 const lightTheme = {
-	name: "Light Theme",
+	name: "Dark Theme",
 	colors: {
-		background: "#F3F3F3",
+		background: "#17171f",
 		primary: "#7678ED",
 		danger: "#D35269",
 		border: "#93A392",
-		neutral: "#17171f",
+		neutral: "#101014",
 		letters: '#F3F3F3',
-		darker: '#101014',
-		textPrimary: '#101014',
-		textSeconday: '#F3F3F3',
+		darker: '#dfdfdf',
+		textPrimary: '#f3f3f3',
+		textSeconday: '#101014',
 		input: "#dfdfdf",
-		cardColor:'#f3f3f3',
+		cardColor:'#1f1f29',
 		darkColor: '#17171f',
-		cardShadow: '#17171f'
+		cardShadow: '#101014'
 	},
 	screens: {
 		sm: "640px",
