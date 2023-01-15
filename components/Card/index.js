@@ -4,7 +4,6 @@ import { Container, Content, Header, Types } from "./styles";
 import TypeLabel from "../TypeLabel";
 import Frame from "../Frame";
 
-
 function Card(props) {
   return (
     <Container active={props.active} onClick={props.onClick}>
