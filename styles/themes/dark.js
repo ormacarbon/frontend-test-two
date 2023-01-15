@@ -1,24 +1,15 @@
-// --prussian-blue: #082b3fff;
-// --prussian-blue-2: #092f45ff;
-// --prussian-blue-3: #0a344cff;
-// --prussian-blue-4: #0b3954ff;
-// --blue-sapphire: #0a5c70ff;
-// --metallic-seaweed: #087e8bff;
-// --beau-blue: #bfd7eaff;
-// --orange-red-crayola: #ff5a5fff;
-// --lava: #c81d25ff;
-// --madder-lake: #cd3239ff;
+export default {
+  title: 'dark',
 
-export const main = {
   colors: {
     main: {
       red_orange: '#ff5a5fff',
       red_lava: '#c81d25ff'
     },
-    background: {
-      beau_blue: '#bfd7eaff',
-      darkbg: '#082b3fff'
-    }
+    background: 'rgb(0, 0, 0)',
+    textColor: '#ffffff',
+    headerColor: 'white',
+    textCardBackground: '#88898687'
   },
   pokemonTypes: {
     fire: '#F77D25',
