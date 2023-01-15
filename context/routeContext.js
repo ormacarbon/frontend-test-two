@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 export const RouteContext = createContext(undefined)
 
 export function RouteContextProvider({ children }) {
+  const [ menuOpen, setMenuOpen ] = useState(false);
   const [currentRoute, setCurrentRoute] = useState("");
   const [lastRoute, setLastRoute] = useState("");
   const router = useRouter();
@@ -25,7 +26,7 @@ export function RouteContextProvider({ children }) {
   };
 
   return (
-    <RouteContext.Provider value={{currentRoute, router, toPokemonLink, backRoute}}>
+    <RouteContext.Provider value={{currentRoute, router, toPokemonLink, backRoute, menuOpen, setMenuOpen}}>
       {children}
     </RouteContext.Provider>
   );
