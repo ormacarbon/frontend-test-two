@@ -25,7 +25,6 @@ export const light = {
     },
 
     issue: {
-      header_title: "#171C24",
       user: "#677483",
       title: "#171C24",
     },

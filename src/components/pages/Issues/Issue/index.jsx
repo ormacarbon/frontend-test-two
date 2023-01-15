@@ -1,6 +1,7 @@
-import { Container, Content } from "./styles";
+import { Container, Content, Label } from "./styles";
 
 export default function Issue({ data }) {
+  console.log(data.labels);
   return (
     <Container style={{ fontSize: 30 }}>
       <Content>
@@ -8,7 +9,12 @@ export default function Issue({ data }) {
         <div>
           <span className="user_name">{data.user.login}</span>
           <p className="issue_title">
-            Aqui vai ficar todo o texto referente a issue
+            {data.title} <br />
+            {data.labels.map((label) => (
+              <span key={`${label.id}`}>
+                <Label label={label}>{label.name}</Label>
+              </span>
+            ))}
           </p>
         </div>
       </Content>
