@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: fixed;
-  bottom: 20px;
+  bottom: 70px;
   right: 20px;
   display: ${props => (props.show ? 'block' : 'none')};
 `;
@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   height: 50px;
   font-size: 24px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 `;
 
 export default function ScrollButton() {
