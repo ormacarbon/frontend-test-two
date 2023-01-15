@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GlobalContext } from "../../../contexts/state";
 import { ColorModeContext } from "../../../contexts/ColorMode";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const StyledNavbar = styled.header`
   background-color: ${({ theme }) => theme.backgroundLevel2};
@@ -154,6 +155,10 @@ const NavbarWrapper = styled.header`
     outline: none;
     border: 0 none;
   }
+
+  .name-page {
+    margin-left: 20px;
+  }
 `;
 
 const BurgerWrapper = styled.header`
@@ -258,6 +263,12 @@ const BurgerWrapper = styled.header`
       background-color: darkgray;
     }
 
+    .name-page{
+      position: absolute;
+      left: 100px;
+      top: 5px;
+    }
+
     .switch {
       margin-top: 15px;
     }
@@ -269,6 +280,9 @@ export default function Navbar() {
     useContext(GlobalContext);
   const context = useContext(ColorModeContext);
   const [menuIsVisible, setMenuIsVisible] = useState(false);
+
+  const router = useRouter();
+  const { pathname } = router;
 
   const searchPokemon = () => {
     const foundPokemons = allPokelist.filter((pokemon) =>
@@ -309,6 +323,11 @@ export default function Navbar() {
             <img src={"/images/search.svg"} />
           </button>
         </div>
+        <h1 className="name-page">
+          {pathname === "/" && "Home"}
+          {pathname === "/pokedex" && "Pokedex"}
+          {pathname === "/details/[id]" && "Details"}
+        </h1>
         <label className="switch">
           <input
             type="checkbox"
@@ -359,6 +378,11 @@ export default function Navbar() {
             </li>
           </ul>
         )}
+        <h1 className="name-page">
+          {pathname === "/" && "Home"}
+          {pathname === "/pokedex" && "Pokedex"}
+          {pathname === "/details/[id]" && "Details"}
+        </h1>
         <label className="switch">
           <input
             type="checkbox"
