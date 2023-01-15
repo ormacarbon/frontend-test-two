@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "../contexts/state";
 import Navbar from "../src/components/Navbar";
 import PokemonCard from "../src/components/PokemonCard";
@@ -7,6 +7,7 @@ import styled from "styled-components";
 
 const StyledPokedex = styled.main`
   width: 100vw;
+  padding-bottom: 50px;
   min-height: calc(100vh - 56px);
   max-height: 100%;
   background-color: ${({ theme }) => theme.backgroundBase};
@@ -19,7 +20,6 @@ const StyledPokedex = styled.main`
     padding-top: 30px;
   }
 `;
-
 
 export default function Pokedex() {
   const { pokedex, searchResults, setSearchResults, searchValue } =

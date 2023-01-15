@@ -11,7 +11,6 @@ export default function GlobalProvider({ children }) {
   const [searchValue, setSearchValue] = useState("");
   const [isAddPokemon, setIsAddPokemon] = useState(true);
 
-
   function getPokemonColor(pokemonType) {
     switch (pokemonType) {
       case "bug":
