@@ -3,7 +3,7 @@ import PokemonCard from '../components/PokemonCard';
 import PokemonServices from '../services/PokemonServices';
 import { PokemonContext } from '../context/context';
 const pokemonServices = new PokemonServices()
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -36,11 +36,27 @@ export const InputText = styled.input`
 `;
 
 export const Button = styled.button`
-  color: ${(({ theme }) => theme.colors.background.beau_blue)};
-  background-color: ${(({ theme }) => theme.colors.background.darkbg)};
+  ${({ theme }) => theme.title === 'light' ?
+    css`
+    background-color: red;
+    `
+    :
+    css`
+    background-color: #686a6587;
+    `  }
+    
+    ${({ theme }) => theme.title === 'light' ?
+    css`
+    color: ${({ theme }) => theme.colors.textColor};
+    `
+    :
+    css`
+    color: white;
+    `  }
+
   padding: 0.5rem;
   margin: 0.5rem;
-  border-radius: 2.1999999999999993rem;
+  border-radius: 2.2rem;
   width: 5rem;
   font-size: 1rem;
 
@@ -76,21 +92,21 @@ export default function Home() {
   return (
     <>
       <HomeContainer>
-        <Container>
+        <HomeContainer>
           <InputText onChange={handleChange} placeholder='Search' type='text' />
           <Button onClick={handleClick}>Search</Button>
           <Button onClick={handleReset}>Reset</Button>
-        </Container>
-        <Container>
+        </HomeContainer>
+        <HomeContainer>
           {pokemonData.results.map((item, index) => (
             <PokemonCard key={index} pokemon={item.name} />
           ))
           }
-        </Container>
-        <Container>
+        </HomeContainer>
+        <HomeContainer>
           {pokemonData.previous && <Button onClick={() => handlePage(pokemonData.previous)} >Previous</Button>}
           {pokemonData.next && <Button onClick={() => handlePage(pokemonData.next)} >Next</Button>}
-        </Container>
+        </HomeContainer>
       </HomeContainer>
     </>
   )
