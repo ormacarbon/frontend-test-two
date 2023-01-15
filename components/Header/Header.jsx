@@ -1,18 +1,19 @@
 import Link from "next/link.js";
 import Image from "next/image.js";
 import React from "react";
-import HeaderDiv from "./style.js";
+import { HeaderBg, HeaderDiv, MenuUl } from "./style.js";
 import Brewery from "../../assets/brewery.svg";
 
 const Header = () => {
   return (
-    <HeaderDiv>
-      <div className="">
-        <Link href="/" aria-label="Brewery - Home">
+    <HeaderBg>
+      <HeaderDiv>
+        <Link href="./" aria-label="Brewery - Home">
           <Image src={Brewery} alt="Brewery - Logo" />
         </Link>
+
         <nav>
-          <ul>
+          <MenuUl>
             <li>
               <Link href="/">Breweries</Link>
             </li>
@@ -22,10 +23,10 @@ const Header = () => {
             <li>
               <Link href="/">Breweries</Link>
             </li>
-          </ul>
+          </MenuUl>
         </nav>
-      </div>
-    </HeaderDiv>
+      </HeaderDiv>
+    </HeaderBg>
   );
 };
 
