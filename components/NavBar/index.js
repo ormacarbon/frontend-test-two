@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Header, List } from './styles'
 import Image from 'next/image'
 import { useRouter } from 'next/router';
@@ -12,9 +12,12 @@ function NavBar() {
   const[selectedOption, setSelectedOption] = useState(router.pathname)
   
   const handleOptionClick = (option) => {
-    setSelectedOption(option)
     router.push(option)
   };
+
+  useEffect(() => {
+    setSelectedOption(router.pathname);
+  }, [router.pathname])
 
   return(
     <Container>
@@ -28,8 +31,8 @@ function NavBar() {
           <li>
             <Button 
               title="Overview"
-              active={selectedOption === "/overview"} 
-              onClick={() => handleOptionClick("/overview")} 
+              active={!selectedOption.includes("pokemon") && !selectedOption.includes("pokedex")} 
+              onClick={() => router.push("/overview")} 
               icon={<SquaresFour size={32} weight="fill" />}s
               flex
               color="transparent"
@@ -41,8 +44,8 @@ function NavBar() {
           <li>
             <Button 
               title="Pokédex"
-              active={selectedOption === "/pokedex"} 
-              onClick={() => handleOptionClick("/pokedex")}  
+              active={selectedOption.includes("pokedex")} 
+              onClick={() => router.push("/pokedex")}  
               icon={<BookBookmark size={32} weight="fill" />}
               flex
               color="transparent"
@@ -53,9 +56,9 @@ function NavBar() {
 
           <li>
             <Button 
-              title="Pokémons"
-              active={selectedOption === "/pokemon"} 
-              onClick={() => handleOptionClick("/pokemon")} 
+              title="Pokémon"
+              active={selectedOption.includes("pokemon")} 
+              onClick={() => router.push("/pokemon")} 
               icon={<PawPrint size={32} weight="fill" />}
               flex
               color="transparent"
