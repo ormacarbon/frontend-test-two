@@ -9,13 +9,29 @@ const heightAnimation = keyframes`
   }
 `;
 
+const fadeAnimation = keyframes`
+  from {
+    filter: opacity(0)
+  }
+  to {
+    filter: opacity(100)
+  }
+`;
+
 export const Container = styled.div`
   flex: 1;
   display: flex;
+  flex-direction: column;
   gap: ${(props) => props.theme.spacing.md};
   border: 1px solid ${(props) => props.theme.colors.gray400};
   padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing['3xl']};
   border-radius: ${(props) => props.theme.spacing.md};
+`
+
+export const Content = styled.div`
+  display: flex;
+  flex: 1;
+  gap: ${(props) => props.theme.spacing.md};
 `
 
 export const Label = styled.div`
@@ -59,9 +75,22 @@ export const Bar = styled.div`
   border-radius: ${(props) => props.theme.spacing.xs};
   background: linear-gradient( ${(props) => props.theme.colors.primary200}, ${(props) => props.theme.colors.primary300});
   transition: linear-gradient 1s;
+  font-weight: 500;
 
   :hover {
     background: linear-gradient( ${(props) => props.theme.colors.primary100}, ${(props) => props.theme.colors.primary200});
+
+    &::after {
+      content: "${(props) => props.value}";
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      padding-bottom: ${(props) => props.theme.spacing.sm};
+      text-align: center;
+      animation: ${fadeAnimation} 0.5s ease-in-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+    }
   }
 
   &::before {
@@ -74,7 +103,6 @@ export const Bar = styled.div`
     padding-top: ${(props) => props.theme.spacing.xs};
     font-size: 10px;
     text-transform: uppercase;
-    font-weight: 600;
     color: white;
     bottom: 0;
     transform: translateY(100%);
