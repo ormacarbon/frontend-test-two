@@ -9,8 +9,6 @@ import * as C from './style'
 
 const Index = () => {
   const { theme } = useContext(ThemeContext)
-
-
   const { latitude, longitude } = useLocation();
 
   const {
@@ -23,7 +21,7 @@ const Index = () => {
   );
 
   return (
-    <C.ContainerHome style={{background: theme.background}}>
+    <C.ContainerHome theme={theme} >
       {loading ? (
         <Loading />
       ) : (
