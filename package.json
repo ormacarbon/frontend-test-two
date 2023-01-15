@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "eslint-plugin-react-hooks": "^5.0.0-next-7002a6743-20230110",
     "next": "13.0.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "8.29.0",
