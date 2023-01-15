@@ -9,7 +9,7 @@ function VideoBanner() {
   return (
     <Container>
       <Content>
-        <h4>Pokémon Pokédex</h4>
+        <h4>Pokémon Universe</h4>
         <p>Your definitive guide to the universe of Pokémons</p>
         <Button title="Explore" color="dark" hoverColor="primary200" size="lg" onClick={() => router.push("/pokedex")}/>
       </Content>
