@@ -35,8 +35,13 @@ $ git clone "REPOSITORIO DO PROJETO"
 $ cd "PASTA DO PROJETO"
 ```
 
+##### Teceira etapa
 
-##### Terceira etapa
+1. Acesse o site da [TMDB](https://www.themoviedb.org/?language=pt-BR/) e crie uma conta. Vá em Configurações > API e copie a **Chave da API (v3 auth)**
+2. No projeto, crie um arquivo .env.local com a variável `NEXT_PUBLIC_TMDB_API_KEY` e cole a sua chave.
+
+
+##### Quarta etapa
 > Instalando dependências do projeto e executando o projeto.
 ```sh
 $ yarn install
@@ -47,6 +52,8 @@ ou
 $ npm install
 $ npm start
 ```
+
+--
 
 ## 🔖 Demo
 
