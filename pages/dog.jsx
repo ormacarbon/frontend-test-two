@@ -27,7 +27,6 @@ function Dog() {
     } */
     setImages(dataImages.message);
     setFact(resultFact);
-    console.log(dataImages.message);
   }
   
   if (fact === undefined) {

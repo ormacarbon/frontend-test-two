@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDarkMode } from '../components/useDarkMode';
 import {ThemeProvider} from "styled-components";
-import { GlobalStyles } from '../styles/globalStyles';
-import { lightTheme, darkTheme } from "../components/theme"
-import Toggle from '../components/toggler';
+import { GlobalStyles } from '../styles/GlobalStyles';
+import { lightTheme, darkTheme } from "../components/Theme"
+import Toggle from '../components/Toggler';
 
 function MyApp({ Component, pageProps }) {
   const [theme, themeToggler, mountedComponent] = useDarkMode();

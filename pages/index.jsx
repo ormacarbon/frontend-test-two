@@ -1,4 +1,4 @@
-import NavBar from '../components/navBar';
+import NavBar from '../components/NavBar';
 import { Container, Box, BoxTitle, BoxText } from '../styles/HomeStyles';
 import React from 'react';
 

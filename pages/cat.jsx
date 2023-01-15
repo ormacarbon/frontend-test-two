@@ -13,7 +13,6 @@ function Cat() {
       url: data.url
     }
     setUrl(result);
-    console.log(data);
   }
 
   function generateCatMessage(event) {

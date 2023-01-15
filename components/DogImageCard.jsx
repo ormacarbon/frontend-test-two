@@ -4,7 +4,6 @@ export default function DogImageCard(props) {
   const {url} = props;
   return (
     <div>
-      {console.log(url)}
       <Image 
         src={url} 
         alt="A dog" 
