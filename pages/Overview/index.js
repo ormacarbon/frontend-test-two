@@ -23,22 +23,24 @@ function Overview() {
       <VideoBanner />
       <Content>
         <Box title="Team of the day">
-          {pokemonTeam.length > 0 &&
-            pokemonTeam.map((pokemon, id) => {
-              return (
-                <SmallCard
-                  key={id}
-                  name={pokemon.name}
-                  active={selectedPokemon == id}
-                  sprite={
-                    pokemon.sprites.other["official-artwork"].front_default
-                  }
-                  id={pokemon.id}
-                  type={pokemon.types.map((tp) => tp.type.name)}
-                  onClick={() => setSelectedPokemon(id)}
-                />
-              );
+          <div className="team-container">
+            {pokemonTeam.length > 0 &&
+              pokemonTeam.map((pokemon, id) => {
+                return (
+                  <SmallCard
+                    key={id}
+                    name={pokemon.name}
+                    active={selectedPokemon == id}
+                    sprite={
+                      pokemon.sprites.other["official-artwork"].front_default
+                    }
+                    id={pokemon.id}
+                    type={pokemon.types.map((tp) => tp.type.name)}
+                    onClick={() => setSelectedPokemon(id)}
+                  />
+                );
             })}
+          </div>
         </Box>
         <Box title="Pokémon quick view">
           {pokemonTeam.length > 0 && (

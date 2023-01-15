@@ -10,18 +10,20 @@ function Header(props) {
 
   return(
     <Container>
-      {
-        !props.hideButton &&
-        <Button icon={<ArrowLeft size={20} weight="bold" onClick={() => backRoute()} />}/>
-      }
-      <Title>
+      <div className='left-content'>
         {
-          props.subtitle && 
-          <h2>{props.subtitle}</h2>
+          !props.hideButton &&
+          <Button icon={<ArrowLeft size={20} weight="bold" onClick={() => backRoute()} />}/>
         }
-        <h1>{props.title}</h1>
-      </Title>
-      {props.showInput && <Input />}
+        <Title>
+          {
+            props.subtitle && 
+            <h2>{props.subtitle}</h2>
+          }
+          <h1>{props.title}</h1>
+        </Title>
+      </div>
+      <Input />
     </Container>
   )
 }

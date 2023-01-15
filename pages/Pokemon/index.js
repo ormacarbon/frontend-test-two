@@ -49,7 +49,6 @@ function Pokemon() {
         <>
           <Header 
             title={<div>{pokemon.name} <span>#{pokemon.id.toString().padStart(3, "0")}</span></div>}
-            showInput
           />
           <Box>
             <Content>
@@ -60,13 +59,22 @@ function Pokemon() {
                 width={360}
                 height={360}
                 priority
+                className="frame"
               />
               <div className="description">
                 <header><h3>Description</h3></header>
                 <Description>{pokemon.flavor_text}</Description>
-                <AttributeBox height={pokemon.height} weight={pokemon.weight} types={pokemon.types}/>
-                <Chart data={pokemon.stats.map(item => {return({name:item.stat.name, value:item.base_stat})})}/>
               </div>
+              <AttributeBox 
+                className="attributes" 
+                height={pokemon.height} 
+                weight={pokemon.weight} 
+                types={pokemon.types}
+              />
+              <Chart 
+                className="stats" 
+                data={pokemon.stats.map(item => {return({name:item.stat.name, value:item.base_stat})})}
+              />
             </Content>   
           </Box>
           <Box title="Evolutions">

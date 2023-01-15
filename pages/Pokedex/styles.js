@@ -22,4 +22,8 @@ export const Content = styled.div`
   place-items: center;
   gap: ${props => props.theme.spacing.xs};
   margin-top: ${props => props.theme.spacing.lg};
+
+  @media (max-width: ${props => props.theme.breakpoints.sm}) { 
+    grid-template-columns: 1fr;
+  }
 `

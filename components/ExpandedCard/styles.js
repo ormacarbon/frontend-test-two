@@ -54,9 +54,9 @@ export const Content = styled.div`
 
 export const Types = styled.div`
   display: flex;
+  justify-content: center;
   height: 100%;
   flex-direction: column;
-  margin-top: ${(props) => props.theme.spacing.md};
   gap: ${(props) => props.theme.spacing.xs};
 `
 

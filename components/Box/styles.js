@@ -15,4 +15,8 @@ export const Container = styled.section`
     font-weight: 600;
     margin-bottom: ${props => props.theme.spacing.lg};
   }
+
+  @media (max-width: ${props => props.theme.breakpoints.sm}) { 
+    padding: ${props => props.theme.spacing.xl} ${props => props.theme.spacing.lg} ${props => props.theme.spacing.lg};
+  }
 `

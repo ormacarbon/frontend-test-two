@@ -4,7 +4,7 @@ import { Container } from './styles'
 
 function Frame(props) {
   return(
-    <Container>
+    <Container className={props.className}>
       <Image
         src={props.src}
         alt={props.alt}

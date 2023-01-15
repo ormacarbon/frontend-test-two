@@ -22,6 +22,10 @@ export const Container = styled.button`
   :active {
     background: transparent;
   }
+
+  @media (max-width: ${props => props.theme.breakpoints.sm}) { 
+    width: 100%;
+  }
 `
 
 export const Header = styled.header`

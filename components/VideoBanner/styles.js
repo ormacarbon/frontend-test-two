@@ -4,13 +4,21 @@ export const Container = styled.div`
   position: relative;
   display: flex;
   border-radius: ${props => props.theme.spacing.xl};
-  overflow-y: hidden;
+  overflow: hidden;
 
   video {
     position: absolute;
     width: 100%;
     top: 50%;
     transform: translateY(-50%);
+
+    @media (max-width: 527px) { 
+      width: auto;
+      top: 0;
+      right: 50%;
+      transform: translateX(50%);
+      height: 100%;
+    }
   }
 `
 

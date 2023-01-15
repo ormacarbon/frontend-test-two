@@ -16,7 +16,7 @@ function Pokedex() {
         <title>Pokédex</title>
       </Head>
 
-      <Header title="pokédex" showInput />
+      <Header title="pokédex" />
       <Content>
         {pokemonList.length > 0 &&
         pokemonList.map((pokemon) => {

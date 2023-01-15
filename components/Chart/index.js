@@ -17,7 +17,7 @@ function Chart(props) {
   }
 
   return(
-    <Container width={props.width} height={props.height}>
+    <Container width={props.width} height={props.height} className={props.className}>
       <header><h3>Stats</h3></header>
       <Content>
         <Label>

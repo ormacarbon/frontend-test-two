@@ -1,18 +1,27 @@
 import styled from 'styled-components'
 
 export const Container = styled.form`
+  flex: 1;
+  width: 100%;
+  max-width: 20rem;
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.sm};
+  margin-bottom: ${(props) => props.theme.spacing.sm};
+
+  @media (max-width: ${props => props.theme.breakpoints.md}) {
+    max-width: 100%;
+  }
 
   .react-datalist-input__container {
     position: relative;
+    width: 100%;
   }
 
   .react-datalist-input__textbox {
     background: transparent;
     font-weight: 500;
-    min-width: 20rem;
+    width: 100%;
     font-size: ${(props) => props.theme.fonts.size.md};
     color: ${(props) => props.theme.colors.light};
     padding: ${(props) => props.theme.spacing.md};
@@ -32,7 +41,7 @@ export const Container = styled.form`
     overflow: hidden;
     flex-direction: column;
     list-style-type: none;
-    z-index: 1;
+    z-index: 300;
   }
 
   .react-datalist-input__listbox-option {

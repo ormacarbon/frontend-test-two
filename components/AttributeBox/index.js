@@ -4,7 +4,7 @@ import { Container, Content, Types } from './styles'
 
 function AttributeBox(props) {
   return(
-    <Container>
+    <Container className={props.className}>
       <header><h3>Attributes</h3></header>
       <Content>
         <ul>

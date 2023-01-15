@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Container, Header, List } from './styles'
 import { RouteContext } from '../../context/routeContext';
 import Image from 'next/image'
@@ -8,10 +8,10 @@ import Pokeball from '/public/pokeball-logo.svg'
 import Button from '../Button'
 
 function NavBar() {
-  const { currentRoute, router, toPokemonLink } = useContext(RouteContext);
+  const { currentRoute, router, toPokemonLink, menuOpen } = useContext(RouteContext);
 
   return(
-    <Container>
+    <Container isOpen={menuOpen}>
       <Header>
         <Image src={Pokeball} alt="Pokéball Icon" height={40}/>
         <h2><span className='minor-text'>Pokémon</span> Universe .</h2>
