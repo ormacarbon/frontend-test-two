@@ -27,16 +27,6 @@ export const NewsContainer = styled.div`
   }
 `;
 
-export const Image = styled.img`
-  border-radius: 1rem;
-  object-fit: cover;
-  max-width: 16rem;
-  height: 13rem;
-  @media screen and (max-width: 680px) {
-    height: auto;
-  }
-`;
-
 export const Title = styled.h2`
   font-size: 1.35rem;
   color: ${(props) => props.theme.colors.textPrimary};

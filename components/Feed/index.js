@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import Loading from "../../helpers/Loading";
 import useFetch from "../../hooks/useFetch";
 import { GET_NEWS } from "../../api";
+import Image from "../../helpers/Image/index";
 
 import {
   FeedSection,
   NewsContainer,
-  Image,
   Title,
   Paragraph,
   FlexDiv,
@@ -38,8 +38,8 @@ const Feed = ({ section }) => {
     return (
       <FeedSection>
         {data.results.map(
-          ({ multimedia, title, abstract, published_date, url }) => (
-            <NewsContainer>
+          ({ multimedia, title, abstract, published_date, url }, index) => (
+            <NewsContainer key={index}>
               <Image src={multimedia[0].url} alt={multimedia[0].caption} />
               <div>
                 <Title>{title}</Title>
