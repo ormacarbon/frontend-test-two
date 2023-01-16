@@ -16,11 +16,11 @@ export const getServerSideProps = async () => {
   const filmList = await TMDB.getHomeList(1);
 
   //* Get featured movie
-  let originals = filmList.filter((i) => i.slug === 'originals');
+  let series = filmList.filter((i) => i.slug === 'series');
   let randonChosen = Math.floor(
-    Math.random() * (originals[0].itens.results.length - 1)
+    Math.random() * (series[0].itens.results.length - 1)
   );
-  let chosenMovie = originals[0].itens.results[randonChosen];
+  let chosenMovie = series[0].itens.results[randonChosen];
   let chosenMovieInfo = await TMDB.getMovieInfo(chosenMovie.id, 'tv');
 
   return {

@@ -15,6 +15,8 @@ import { HomeContainer } from '../../styles/Home';
 
 export const getServerSideProps = async () => {
   const originalsList = await TMDB.getNetflixOriginalsSSR(1);
+  const amazonList = await TMDB.getAmazonOriginalsSSR(1);
+  const paramountPlusList = await TMDB.getParamountPlusSSR(1);
 
   const trendingBanner = await TMDB.getMovieInfo(
     originalsList.itens.results[
@@ -23,29 +25,43 @@ export const getServerSideProps = async () => {
   );
 
   return {
-    props: { originalsList, trendingBanner }
+    props: { originalsList, amazonList, paramountPlusList, trendingBanner }
   };
 };
 
-export default function Home({ originalsList, trendingBanner }) {
+export default function Home({
+  originalsList,
+  trendingBanner,
+  amazonList,
+  paramountPlusList
+}) {
   const [originalsListPage, setOriginalsPage] = useState(1);
   const [updatedOriginalsList, setUpdatedOriginalsList] = useState([]);
+  const [originalsTotalPages, setOriginalsTotalPages] = useState(1);
 
-  useEffect(() => {
-    setUpdatedOriginalsList(originalsList);
-  }, [originalsList]);
+  const [amazonListpage, setAmazonListpage] = useState(1);
+  const [updatedAmazonList, setUpdatedAmazonList] = useState([]);
+  const [amazonTotalPages, setAmazonTotalPages] = useState(1);
+
+  const [paramountPlusListPage, setParamountPlusListPage] = useState(1);
+  const [updatedParamountPlusList, setUpdatedParamountPlusList] = useState([]);
+  const [paramountPlusTotalPages, setParamountPlusTotalPages] = useState(1);
 
   const { changePageActive } = usePageActiveContext();
   const { darkMode } = useDarkModeContext();
 
-  const addMoviePagination = async () => {
-    setOriginalsPage(originalsListPage + 1);
+  console.log(updatedParamountPlusList);
 
-    let newMovieList = await TMDB.getNetflixOriginals(originalsListPage + 1);
-    setUpdatedOriginalsList(newMovieList);
+  const addOriginalsPagination = async () => {
+    if (originalsListPage < originalsTotalPages) {
+      setOriginalsPage(originalsListPage + 1);
+
+      let newMovieList = await TMDB.getNetflixOriginals(originalsListPage + 1);
+      setUpdatedOriginalsList(newMovieList);
+    }
   };
 
-  const minusMoviePagination = async () => {
+  const minusOriginalsPagination = async () => {
     if (originalsListPage > 1) {
       setOriginalsPage(originalsListPage - 1);
 
@@ -54,6 +70,61 @@ export default function Home({ originalsList, trendingBanner }) {
     }
   };
 
+  const addAmazonPagination = async () => {
+    if (amazonListpage < amazonTotalPages) {
+      setAmazonListpage(amazonListpage + 1);
+
+      let newAmazonList = await TMDB.getAmazonOriginals(amazonListpage + 1);
+      setUpdatedAmazonList(newAmazonList);
+    }
+  };
+
+  const minusAmazonPagination = async () => {
+    if (amazonListpage > 1) {
+      setAmazonListpage(amazonListpage - 1);
+
+      let newAmazonList = await TMDB.getAmazonOriginals(amazonListpage - 1);
+      setUpdatedAmazonList(newAmazonList);
+    }
+  };
+
+  const addParamountPlusPagination = async () => {
+    if (paramountPlusListPage < paramountPlusTotalPages) {
+      setParamountPlusListPage(paramountPlusListPage + 1);
+
+      let newParamountPlusList = await TMDB.getParamountPlus(
+        paramountPlusListPage + 1
+      );
+      setUpdatedParamountPlusList(newParamountPlusList);
+    }
+  };
+
+  const minusParamountPlusPagination = async () => {
+    if (paramountPlusListPage > 1) {
+      setParamountPlusListPage(paramountPlusListPage - 1);
+
+      let newParamountPlusList = await TMDB.getParamountPlus(
+        paramountPlusListPage - 1
+      );
+      setUpdatedParamountPlusList(newParamountPlusList);
+    }
+  };
+
+  useEffect(() => {
+    setUpdatedOriginalsList(originalsList);
+    setOriginalsTotalPages(originalsList.itens.total_pages);
+  }, [originalsList]);
+
+  useEffect(() => {
+    setUpdatedAmazonList(amazonList);
+    setAmazonTotalPages(amazonList.itens.total_pages);
+  }, [amazonList]);
+
+  useEffect(() => {
+    setUpdatedParamountPlusList(paramountPlusList);
+    setParamountPlusTotalPages(paramountPlusList.itens.total_pages);
+  }, [paramountPlusList]);
+
   useEffect(() => {
     changePageActive('/series');
   }, [changePageActive]);
@@ -61,7 +132,7 @@ export default function Home({ originalsList, trendingBanner }) {
   return (
     <>
       <Head>
-        <title>Originals</title>
+        <title>Séries</title>
       </Head>
       <HomeContainer darkMode={darkMode}>
         <FeaturedMovie movie={trendingBanner} />
@@ -72,8 +143,8 @@ export default function Home({ originalsList, trendingBanner }) {
               title={updatedOriginalsList.title}
               itens={updatedOriginalsList.itens}
               pagination
-              paginationAdd={addMoviePagination}
-              paginationRemove={minusMoviePagination}
+              paginationAdd={addOriginalsPagination}
+              paginationRemove={minusOriginalsPagination}
               page={originalsListPage}
             />
           ) : (
@@ -82,8 +153,52 @@ export default function Home({ originalsList, trendingBanner }) {
               title={originalsList.title}
               itens={originalsList.itens}
               pagination
-              paginationAdd={addMoviePagination}
-              paginationRemove={minusMoviePagination}
+              paginationAdd={addOriginalsPagination}
+              paginationRemove={minusOriginalsPagination}
+              page={1}
+            />
+          )}
+
+          {amazonListpage > 1 ? (
+            <MovieRow
+              slug={updatedAmazonList.slug}
+              title={updatedAmazonList.title}
+              itens={updatedAmazonList.itens}
+              pagination
+              paginationAdd={addAmazonPagination}
+              paginationRemove={minusAmazonPagination}
+              page={amazonListpage}
+            />
+          ) : (
+            <MovieRow
+              slug={amazonList.slug}
+              title={amazonList.title}
+              itens={amazonList.itens}
+              pagination
+              paginationAdd={addAmazonPagination}
+              paginationRemove={minusAmazonPagination}
+              page={1}
+            />
+          )}
+
+          {paramountPlusListPage > 1 ? (
+            <MovieRow
+              slug={updatedParamountPlusList.slug}
+              title={updatedParamountPlusList.title}
+              itens={updatedParamountPlusList.itens}
+              pagination
+              paginationAdd={addParamountPlusPagination}
+              paginationRemove={minusParamountPlusPagination}
+              page={paramountPlusListPage}
+            />
+          ) : (
+            <MovieRow
+              slug={paramountPlusList.slug}
+              title={paramountPlusList.title}
+              itens={paramountPlusList.itens}
+              pagination
+              paginationAdd={addParamountPlusPagination}
+              paginationRemove={minusParamountPlusPagination}
               page={1}
             />
           )}

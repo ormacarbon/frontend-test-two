@@ -14,13 +14,23 @@ const webFetch = async (endpoint) => {
   return json;
 };
 
+const moviePaginationAdd = async ({ slug, title, genre, page }) => {
+  return {
+    slug,
+    title,
+    itens: await webFetch(
+      `/discover/movie?with_genres=${genre}&language=pt-BR&page=${page}`
+    )
+  };
+};
+
 const tmdb = {
   getHomeList: async () => {
     return [
       {
-        slug: 'originals',
-        title: 'Originais do Netflix',
-        itens: await basicFetch(`/discover/tv?with_network=213&language=pt-BR`)
+        slug: 'series',
+        title: 'Séries da Netflix',
+        itens: await basicFetch(`/discover/tv?with_networks=213&language=pt-BR`)
       },
       {
         slug: 'trendings',
@@ -61,26 +71,180 @@ const tmdb = {
       }
     ];
   },
+  getAllGenreMoviesList: async () => {
+    return [
+      {
+        slug: 'action',
+        title: 'Ação',
+        itens: await basicFetch(`/discover/movie?with_genres=28&language=pt-BR`)
+      },
+      {
+        slug: 'adventure',
+        title: 'Aventura',
+        itens: await basicFetch(`/discover/movie?with_genres=12&language=pt-BR`)
+      },
+      {
+        slug: 'animation',
+        title: 'Animação',
+        itens: await basicFetch(`/discover/movie?with_genres=16&language=pt-BR`)
+      },
+      {
+        slug: 'comedy',
+        title: 'Comédia',
+        itens: await basicFetch(`/discover/movie?with_genres=35&language=pt-BR`)
+      },
+      {
+        slug: 'crime',
+        title: 'Crime',
+        itens: await basicFetch(`/discover/movie?with_genres=80&language=pt-BR`)
+      },
+      {
+        slug: 'documentary',
+        title: 'Documentários',
+        itens: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR`)
+      },
+      {
+        slug: 'drama',
+        title: 'Drama',
+        itens: await basicFetch(`/discover/movie?with_genres=18&language=pt-BR`)
+      },
+      {
+        slug: 'family',
+        title: 'Família',
+        itens: await basicFetch(
+          `/discover/movie?with_genres=10751&language=pt-BR`
+        )
+      },
+      {
+        slug: 'fantasy',
+        title: 'Fantasia',
+        itens: await basicFetch(`/discover/movie?with_genres=14&language=pt-BR`)
+      },
+      {
+        slug: 'history',
+        title: 'História',
+        itens: await basicFetch(`/discover/movie?with_genres=36&language=pt-BR`)
+      },
+      {
+        slug: 'horror',
+        title: 'Terror',
+        itens: await basicFetch(`/discover/movie?with_genres=27&language=pt-BR`)
+      },
+      {
+        slug: 'music',
+        title: 'Música',
+        itens: await basicFetch(
+          `/discover/movie?with_genres=10402&language=pt-BR`
+        )
+      },
+      {
+        slug: 'mistery',
+        title: 'Mistério',
+        itens: await basicFetch(
+          `/discover/movie?with_genres=9648&language=pt-BR`
+        )
+      },
+      {
+        slug: 'romance',
+        title: 'Romance',
+        itens: await basicFetch(
+          `/discover/movie?with_genres=10749&language=pt-BR`
+        )
+      },
+      {
+        slug: 'sci-fi',
+        title: 'Ficção Cientifica',
+        itens: await basicFetch(
+          `/discover/movie?with_genres=878&language=pt-BR`
+        )
+      },
+      {
+        slug: 'cinema-tv',
+        title: 'Cinema TV',
+        itens: await basicFetch(
+          `/discover/movie?with_genres=10770&language=pt-BR`
+        )
+      },
+      {
+        slug: 'thriller',
+        title: 'Suspense',
+        itens: await basicFetch(`/discover/movie?with_genres=53&language=pt-BR`)
+      },
+      {
+        slug: 'war',
+        title: 'Guerra',
+        itens: await basicFetch(
+          `/discover/movie?with_genres=10752&language=pt-BR`
+        )
+      },
+      {
+        slug: 'western',
+        title: 'Faroeste',
+        itens: await basicFetch(`/discover/movie?with_genres=37&language=pt-BR`)
+      }
+    ];
+  },
   getNetflixOriginalsSSR: async (page) => {
     page ? (page = page.toString()) : (page = '1');
     return {
-      slug: 'originals',
-      title: 'Originais do Netflix',
+      slug: 'series',
+      title: 'Séries da Netflix',
       itens: await basicFetch(
-        `/discover/tv?with_network=213&language=pt-BR&page=${page}`
+        `/discover/tv?with_networks=213&language=pt-BR&page=${page}`
       )
     };
   },
   getNetflixOriginals: async (page) => {
     page ? (page = page.toString()) : (page = '1');
     return {
-      slug: 'originals',
-      title: 'Originais do Netflix',
+      slug: 'series',
+      title: 'Séries da Netflix',
       itens: await webFetch(
-        `/discover/tv?with_network=213&language=pt-BR&page=${page}`
+        `/discover/tv?with_networks=213&language=pt-BR&page=${page}`
       )
     };
   },
+  getAmazonOriginalsSSR: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'series',
+      title: 'Séries da Amazon',
+      itens: await basicFetch(
+        `/discover/tv?with_networks=1024&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getAmazonOriginals: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'series',
+      title: 'Séries da Amazon',
+      itens: await webFetch(
+        `/discover/tv?with_networks=1024&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getParamountPlusSSR: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'series',
+      title: 'Séries da Paramount +',
+      itens: await basicFetch(
+        `/discover/tv?with_networks=4330&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getParamountPlus: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'series',
+      title: 'Séries da Paramount +',
+      itens: await webFetch(
+        `/discover/tv?with_networks=4330&language=pt-BR&page=${page}`
+      )
+    };
+  },
+
   getTrendings: async (type, page) => {
     let itens;
     let title;
@@ -173,6 +337,26 @@ const tmdb = {
       )
     };
   },
+  getAdventureMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'adventure',
+      title: 'Aventura',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=12&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getAnimationMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'animation',
+      title: 'Animação',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=16&language=pt-BR&page=${page}`
+      )
+    };
+  },
   getComedyMovies: async (page) => {
     page ? (page = page.toString()) : (page = '1');
     return {
@@ -183,23 +367,13 @@ const tmdb = {
       )
     };
   },
-  getHorrorMovies: async (page) => {
+  getCrimeMovies: async (page) => {
     page ? (page = page.toString()) : (page = '1');
     return {
-      slug: 'horror',
-      title: 'Terror',
+      slug: 'crime',
+      title: 'Crime',
       itens: await basicFetch(
-        `/discover/movie?with_genres=27&language=pt-BR&page=${page}`
-      )
-    };
-  },
-  getRomanceMovies: async (page) => {
-    page ? (page = page.toString()) : (page = '1');
-    return {
-      slug: 'romance',
-      title: 'Romance',
-      itens: await basicFetch(
-        `/discover/movie?with_genres=10749&language=pt-BR&page=${page}`
+        `/discover/movie?with_genres=80&language=pt-BR&page=${page}`
       )
     };
   },
@@ -213,6 +387,137 @@ const tmdb = {
       )
     };
   },
+  getDramaMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'drama',
+      title: 'Drama',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=18&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getFamilyMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'family',
+      title: 'Família',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=10751&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getFantasyMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'fantasy',
+      title: 'Fantasia',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=14&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getHistoryMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'history',
+      title: 'História',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=36&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getHorrorMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'horror',
+      title: 'Terror',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=27&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getMusicMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'music',
+      title: 'Música',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=10402&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getMisteryMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'mistery',
+      title: 'Mistério',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=9648&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getRomanceMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'romance',
+      title: 'Romance',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=10749&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getSciFiMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'sci-fi',
+      title: 'Ficção Cientifica',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=878&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getCinemaTvMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'cinema-tv',
+      title: 'Cinema TV',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=10770&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getThrillerMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'thriller',
+      title: 'Suspense',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=53&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getWarMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'war',
+      title: 'Guerra',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=10752&language=pt-BR&page=${page}`
+      )
+    };
+  },
+  getWesternMovies: async (page) => {
+    page ? (page = page.toString()) : (page = '1');
+    return {
+      slug: 'western',
+      title: 'Faroeste',
+      itens: await basicFetch(
+        `/discover/movie?with_genres=37&language=pt-BR&page=${page}`
+      )
+    };
+  },
+
   getMovieInfo: async (movieId, type) => {
     let info;
 

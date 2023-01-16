@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
+import { useEffect } from 'react';
+
 import { NavigateBefore } from '../../../components/NavigateBefore';
 import TMDB from '../../../services/tmdb';
 import {
@@ -15,6 +16,8 @@ import {
   TrendingSlugIdSlogan,
   TrendingSlugIdVoteProducer
 } from '../../../styles/Trendings[slug][id]';
+
+import { usePageActiveContext } from '../../../contexts/PageActive';
 
 import { useFormatter } from '../../../utils/formatter';
 
@@ -37,10 +40,17 @@ const TrendingsFilmId = ({ movieInformations }) => {
   console.log(movieInformations.info);
 
   const formatter = useFormatter();
+  const { changePageActive } = usePageActiveContext();
+
+  useEffect(() => {
+    changePageActive('/trendings');
+  }, [changePageActive]);
 
   return (
     <TrendingSlugIdContainer
-      backgroundImage={`url(${TMDB.getImage(movieInformations.info.backdrop_path)})`}
+      backgroundImage={`url(${TMDB.getImage(
+        movieInformations.info.backdrop_path
+      )})`}
       style={{}}
     >
       <NavigateBefore href="/trendings" />
@@ -67,7 +77,9 @@ const TrendingsFilmId = ({ movieInformations }) => {
               </span>
             ) : (
               <span>
-                {formatter.formatTimeThroghMinutes(movieInformations.info.runtime)}
+                {formatter.formatTimeThroghMinutes(
+                  movieInformations.info.runtime
+                )}
               </span>
             )}
           </TrendingSlugIdDuration>
@@ -108,18 +120,20 @@ const TrendingsFilmId = ({ movieInformations }) => {
           <TrendingSlugIdVoteProducer>
             <h2>Produzido por:</h2>
             <div>
-              {movieInformations.info.production_companies.map((company, index) => (
-                <div key={index}>
-                  {company.logo_path ? (
-                    <img
-                      src={TMDB.getImage(company.logo_path)}
-                      alt={company.name}
-                    />
-                  ) : (
-                    <span>{company.name}</span>
-                  )}
-                </div>
-              ))}
+              {movieInformations.info.production_companies.map(
+                (company, index) => (
+                  <div key={index}>
+                    {company.logo_path ? (
+                      <img
+                        src={TMDB.getImage(company.logo_path)}
+                        alt={company.name}
+                      />
+                    ) : (
+                      <span>{company.name}</span>
+                    )}
+                  </div>
+                )
+              )}
             </div>
           </TrendingSlugIdVoteProducer>
         </TrendingSlugIdEffectHorizontal>

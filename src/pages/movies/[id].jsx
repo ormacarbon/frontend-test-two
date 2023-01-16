@@ -23,11 +23,7 @@ import { useFormatter } from '../../utils/formatter';
 
 export const getServerSideProps = async (context) => {
   const { query } = context;
-  console.log(query);
-
-  const movieInformations = await TMDB.getMovieInfo(query.id);
-
-  console.log(movieInformations);
+  const movieInformations = await TMDB.getMovieInfo(query.id, 'movie');
 
   return {
     props: {
@@ -43,7 +39,7 @@ const TrendingsFilmId = ({ movieInformations }) => {
   const formatter = useFormatter();
 
   useEffect(() => {
-    pageActive !== '/series' ? changePageActive(`/series`) : null;
+    pageActive !== '/movies' ? changePageActive(`/movies`) : null;
   }, [changePageActive, pageActive]);
 
   return (
@@ -57,7 +53,7 @@ const TrendingsFilmId = ({ movieInformations }) => {
         )})`}
         style={{}}
       >
-        <NavigateBefore href="/series" />
+        <NavigateBefore href="/movies" />
         <TrendingSlugIdEffectVertical>
           <TrendingSlugIdEffectHorizontal>
             <TrendingSlugIdTitle>
@@ -67,13 +63,13 @@ const TrendingsFilmId = ({ movieInformations }) => {
             </TrendingSlugIdTitle>
 
             <TrendingSlugIdDuration>
-              <span>
+              {/* <span>
                 {formatter.formatDate(
                   movieInformations.info.release_date
                     ? movieInformations.info.release_date
                     : movieInformations.info.first_air_date
                 )}
-              </span>
+              </span> */}
               {movieInformations.info.seasons ? (
                 <span>
                   {movieInformations.info.seasons.length} temporada

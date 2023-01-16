@@ -149,6 +149,35 @@ export const MovieRowIten = styled(Link)`
 
   cursor: pointer;
 
+  div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    span {
+      display: flex;
+      flex-direction: column;
+
+      font-size: 1rem;
+      text-align: center;
+
+      position: absolute;
+      top: 2.4rem;
+      z-index: 10;
+
+      small {
+        text-align: center;
+        font-size: .8rem;
+      }
+    }
+
+    img {
+      width: 40rem
+    }
+  }
+
   img {
     width: 100%;
     height: 22.5rem;

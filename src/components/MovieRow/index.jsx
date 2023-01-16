@@ -17,10 +17,14 @@ import {
 
 import { useDarkModeContext } from '../../contexts/DarkMode';
 
+import loading from '/public/assets/netflix-loading.gif';
+import Image from 'next/image';
+
 export const MovieRow = ({
   title,
   itens,
   slug,
+  type,
   pagination,
   paginationAdd,
   paginationRemove,
@@ -60,9 +64,9 @@ export const MovieRow = ({
   return (
     <div>
       {itens && (
-        <>
+        <div>
           <TitleContainer>
-            <Link href={slug} passHref>
+            <Link href={type ? `${type}/${slug}` : slug} passHref>
               <MovieRowTitle darkMode={darkMode}>
                 <strong>{title}</strong>
                 <span>
@@ -106,27 +110,52 @@ export const MovieRow = ({
               >
                 {itens.results &&
                   itens.results.map((iten, index) => (
-                    <MovieRowIten
-                      href={
-                        iten.media_type
-                          ? `/trendings/${iten.media_type}/${iten.id}`
-                          : title !== 'Originais do Netflix'
-                          ? `${slug}/movie/${iten.id}`
-                          : `/originals/${iten.id}`
-                      }
-                      key={index}
-                      className="movieRow--iten"
-                    >
-                      <img
-                        src={`https://image.tmdb.org/t/p/w300${iten.poster_path}`}
-                        alt={iten.name}
-                      />
-                    </MovieRowIten>
+                    <div key={index}>
+                      {iten.poster_path ? (
+                        <MovieRowIten
+                          href={
+                            slug === 'series'
+                              ? `/series/${iten.id}`
+                              : type === 'movies'
+                              ? `/movies/${iten.id}`
+                              : iten.media_type
+                              ? `/trendings/${iten.media_type}/${iten.id}`
+                              : title !== 'Originais do Netflix'
+                              ? `${slug}/movie/${iten.id}`
+                              : `/originals/${iten.id}`
+                          }
+                          className="movieRow--iten"
+                        >
+                          <img
+                            src={`https://image.tmdb.org/t/p/w300${iten.poster_path}`}
+                            alt={iten.name}
+                          />
+                        </MovieRowIten>
+                      ) : (
+                        <MovieRowIten
+                          href={''}
+                          key={index}
+                          className="movieRow--iten"
+                        >
+                          <div>
+                            <span>
+                              {iten.name}
+                              <small>(Em breve)</small>
+                            </span>
+                            <Image
+                              className="loading"
+                              src={loading}
+                              alt={iten.name}
+                            />
+                          </div>
+                        </MovieRowIten>
+                      )}
+                    </div>
                   ))}
               </MovieRowList>
             </MovieArrowListArea>
           </MovieRowContainer>
-        </>
+        </div>
       )}
     </div>
   );
