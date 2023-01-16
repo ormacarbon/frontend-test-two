@@ -30,7 +30,7 @@ function Register({ onLoginState }) {
       password,
     };
     localStorage.setItem("userData", JSON.stringify(userData));
-    openCustomSnackbar("User registered!");
+    openCustomSnackbar("User successfully registered!");
     onLoginState("start");
   };
 

@@ -19,8 +19,8 @@ const Header = () => {
         <span>Rick and Morty Data</span>
       </div>
       <div className="darkmode-area">
-        <span>Dark mode: {!darkMode ? "off" : "on"}</span>
-        <SwitchContainer>
+        <span data-testid="darkmode-text">Dark mode: {!darkMode ? "off" : "on"}</span>
+        <SwitchContainer data-testid="darkmode-switch">
           <Input
             type="checkbox"
             checked={darkMode}

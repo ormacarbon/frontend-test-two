@@ -61,7 +61,7 @@ function Wrapper({ children }) {
         setEpisodeId,
       }}
     >
-      <DarkWrapper darkMode={darkMode}>{children}</DarkWrapper>
+      <DarkWrapper darkMode={darkMode} data-testid="darkmode-wrapper">{children}</DarkWrapper>
     </MainWrapper.Provider>
   );
 }

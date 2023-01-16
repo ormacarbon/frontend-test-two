@@ -92,6 +92,7 @@ function EpisodeDetail({ onDetailsReturn }) {
                         <div key={i} className="character-pictures">
                           <img
                             src={character?.content}
+                            data-testid={`character-picture-${character?.id}`}
                             alt="character"
                             onClick={() => {
                               goToCharDetail(character?.id);
@@ -100,7 +101,10 @@ function EpisodeDetail({ onDetailsReturn }) {
                         </div>
                       ))}
                     {charactersPictures.length === 0 && (
-                      <p>There are no registered charactersPictures in this location.</p>
+                      <p>
+                        There are no registered charactersPictures in this
+                        location.
+                      </p>
                     )}
                   </div>
                 </div>

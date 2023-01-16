@@ -106,11 +106,12 @@ function LocationList() {
       ) : (
         <LocationListWrapper page={page}>
           <div className="title-search">
-            <h2>Search for an iconic location!</h2>
+            <h2 data-testid="locations-page-title">Search for an iconic location!</h2>
             <input
               ref={filtertRef}
               type="text"
               placeholder="ex: Citadel of ricks"
+              data-testid="location-search-input"
             />
             <div className="search-btns">
               <CustomButton size="small" action={filterCharacters}>
@@ -142,7 +143,7 @@ function LocationList() {
                   <tbody>
                     {characters.map((char) => (
                       <TableRow key={char.id}>
-                        <TableData>{char.name}</TableData>
+                        <TableData data-testid="table-locations-name">{char.name}</TableData>
                         <TableData>{char.type}</TableData>
                         <TableData>{char.dimension}</TableData>
                         <TableData>

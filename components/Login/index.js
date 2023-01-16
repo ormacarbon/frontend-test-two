@@ -20,7 +20,9 @@ function Login() {
             <h1>Rick and Morty Data App</h1>
             <span>Search for your favourite character data</span>
             <div className="login-choice-btn">
-              <CustomButton action={() => setLoginView("login")}>
+              <CustomButton
+                action={() => setLoginView("login")}
+              >
                 Login
               </CustomButton>
               <CustomButton

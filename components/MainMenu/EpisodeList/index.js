@@ -39,7 +39,7 @@ function EpisodeList() {
 
     if (response.error) {
       setIsError(true);
-      console.log(response?.error)
+      console.log(response?.error);
       return;
     }
     if (!response?.results) {
@@ -65,8 +65,10 @@ function EpisodeList() {
     const response = await fetchFilteredEpisodes(filterData);
     if (response.error) {
       setIsError(true);
-      setErrorMessage("Could not find your episode, please try again or reload");
-      console.log(response.error)
+      setErrorMessage(
+        "Could not find your episode, please try again or reload"
+      );
+      console.log(response.error);
       return;
     }
     if (!response?.results) {
@@ -114,11 +116,14 @@ function EpisodeList() {
       ) : (
         <EpisodeListWrapper page={page}>
           <div className="title-search">
-            <h2>Search for your favourite episode!</h2>
+            <h2 data-testid="episodes-page-title">
+              Search for your favourite episode!
+            </h2>
             <input
               ref={filtertRef}
               type="text"
               placeholder="ex: The Ricklantis Mixup"
+              data-testid="episode-search-input"
             />
             <div className="search-btns">
               <CustomButton size="small" action={filterCharacters}>
@@ -150,7 +155,9 @@ function EpisodeList() {
                   <tbody>
                     {characters.map((char) => (
                       <TableRow key={char.id}>
-                        <TableData>{char.name}</TableData>
+                        <TableData data-testid="table-episodes-name">
+                          {char.name}
+                        </TableData>
                         <TableData>{char.air_date}</TableData>
                         <TableData>{char.episode}</TableData>
                         <TableData>

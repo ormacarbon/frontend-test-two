@@ -114,11 +114,12 @@ function CharList() {
       ) : (
         <CharListWrapper page={page}>
           <div className="title-search">
-            <h2>Search for your favourite character!</h2>
+            <h2 data-testid="characters-page-title">Search for your favourite character!</h2>
             <input
               ref={filtertRef}
               type="text"
               placeholder="ex: Rick sanchez"
+              data-testid="character-search-input"
             />
             <div className="search-btns">
               <CustomButton size="small" action={filterCharacters}>
@@ -157,7 +158,7 @@ function CharList() {
                             <img src={char.image} alt={char.name} />
                           </div>
                         </TableData>
-                        <TableData>{char.name}</TableData>
+                        <TableData data-testid="table-characters-name">{char.name}</TableData>
                         <TableData>{char.species}</TableData>
                         <TableData>{char.status}</TableData>
                         <TableData>{char.gender}</TableData>
@@ -166,6 +167,7 @@ function CharList() {
                             onClick={() => {
                               selectChar(char.id);
                             }}
+                            data-testid={`table-characters-more-info-${char.id}`}
                           >
                             More info
                           </button>

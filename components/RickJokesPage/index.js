@@ -94,16 +94,16 @@ function RickJokesPage() {
     <RickJokesPageContainer isLoading={isLoading}>
       <div className="rick-reactions-box">
         <span className="rick-message-baloon-box">
-          <span className="rick-message-baloon">
+          <span className="rick-message-baloon" data-testid="joke-text-box">
             {jokeText || "Wanna hear a joke?"}
           </span>
         </span>
-        <Image src={currentRickReaction} alt="rick" />
+        <Image src={currentRickReaction} alt={currentRickReaction} data-testid="rick-reactions" />
       </div>
-      <button onClick={handleJokes}>
+      <button onClick={handleJokes} data-testid="joke-action-btn">
         {question || "Yeah, tell me a joke!"}
       </button>
-      <button onClick={returnToDashList}>{leaveBtnText}</button>
+      <button onClick={returnToDashList} data-testid="leave-rickjokes">{leaveBtnText}</button>
     </RickJokesPageContainer>
   );
 }
