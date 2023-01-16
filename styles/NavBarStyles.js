@@ -1,4 +1,3 @@
-import { FaBars } from 'react-icons/fa'
 import styled from 'styled-components'
 import Link from 'next/link'
 export const PrimaryNav = styled.nav`
@@ -16,6 +15,7 @@ export const MenuLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0 1.2rem;
+  font-size: 1.5rem;
   height: 100%;
   &.active {
     color: #000000;
@@ -30,4 +30,5 @@ export const Menu = styled.div`
 export const Items = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `
