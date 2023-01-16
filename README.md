@@ -5,7 +5,7 @@ The API - Rick and Morty is a website with information about the Adult Swim show
 ## **Index**
 - <a href="#project-functionalities">Project functionalities</a>
 - <a href="#layout">Layout</a>
-- <a href="#demonstration">Demonstration</a>
+- <a href="#deploy">Deploy</a>
 - <a href="#how-can-i-run-this-project?">How can I run this project?</a>
 - <a href="#tech-stack">Tech stack</a>
 - <a href="#creators">Creators</a>
@@ -26,7 +26,7 @@ The API - Rick and Morty is a website with information about the Adult Swim show
 ![episodes-page](./src/assets/episodes-page.png)
 
 ## **Demonstration**
-[Link demonstração](https://rick-and-morty-api-project.vercel.app/)
+[Deploy link](https://rick-and-morty-api-project.vercel.app/)
 
 ## **How can I run this project?**
 
