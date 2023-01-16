@@ -1,3 +1,7 @@
+# Demonstração
+
+![vídeo](github/video.mp4)
+
 # **TESTE DE FRONTEND**
 
 Neste teste, você será livre para criar uma aplicação consumindo a API que você quiser e com o tema que desejar.
@@ -6,26 +10,28 @@ Contudo, o seu projeto deverá seguir os requisitos mínimos de conteúdo.
 SUGESTÕES DE APIS:
 https://github.com/public-apis/public-apis
 
----------------------------------------------------------------------
+---
+
 ## REQUISITOS:
 
 - SEJA ORIGINAL, PROJETOS SUSPEITOS DE SEREM COPIADOS SERÃO DESCARTADOS!
 - QUEREMOS VER O SEU CÓDIGO, E NÃO O DE OUTROS.
 
 ## GIT
+
 - Faça um fork deste repositório.
 - Criar uma branch para codar as suas features.
 - Criar um pull-request quando o teste for finalizado e submetido.
 
 ##### **NOTA: Será avaliado também se o nome da branch, títulos de commit, push e comentários possuem boa legibilidade.**
 
------------------------------------------------------
+---
 
 ## FRAMEWORK
 
 - Utilizar as ferramentas presentes no framework do projeto (NEXT.JS).
 
------------------------------------------------------
+---
 
 ## ESTILOS
 
@@ -33,7 +39,7 @@ https://github.com/public-apis/public-apis
 - O projeto deverá conter tema claro/escuro e forma do usuário alterar entre os dois.
 - Deve ser totalmente responsivo.
 
------------------------------------------------------
+---
 
 ## PROJETO
 
@@ -41,7 +47,7 @@ https://github.com/public-apis/public-apis
 - Ter ao menos 3 paginas navegáveis com router (ex: um navbar para facilitar a navegação).
 - Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição.
 
--------------------------------------------------------
+---
 
 ## REQUISITOS DIFERENCIAIS:
 
