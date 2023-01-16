@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
+     display: flex;
+     justify-content: center;
+     flex: 1 1 6rem;
      border: 0.1px solid #B2B2B2;
      border-radius: 10px;
      max-width: 12rem;
-     display: flex;
-     justify-content: center;
      padding: 0.6rem;
-     flex: 1 1 12rem;
      margin: 10px 10px;
 
     img{
@@ -17,6 +17,8 @@ export const Container = styled.div`
     }
 
     div{
+        text-align: center;
+        max-width: 100%;
 
         &:hover{
             &#product_name{
@@ -35,35 +37,34 @@ export const Container = styled.div`
                 text-overflow: ellipsis;
                 text-align: left;
                 line-height: 1.5em;
+                min-height: 3rem;
                 margin: 0.5rem 0;
                 text-decoration: none;
 
                 &:hover{
                     text-decoration: underline;
                 }
-            }
-           
+            } 
         }
 
         p{
+                margin-top: 0.8rem;
+                text-align: left;
                 opacity: 0.8;
         }
 
         &#div_see_more {
-                margin-top: 0.8rem;
                 width: 100%;
+                margin-top: 0.8rem;
                 padding-top: 0.5rem;
                 border-top: 0.1px solid #B2B2B2;
-                text-align: center;
+                justify-content: center;
 
                 a{                
-                    margin-top: 4rem;
                     text-decoration: none;
                     opacity: 0.8;
                 }
         }
-
-
     }
 
 
@@ -73,6 +74,11 @@ export const Container = styled.div`
             div{
                 img{
                     max-width: 5rem;
+                }
+
+                a{
+                    font-size: 12px;
+                    max-width: 7rem;
                 }
             }
         }   
