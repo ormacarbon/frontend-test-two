@@ -335,6 +335,11 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
+"@primer/octicons-react@^17.10.2":
+  version "17.10.2"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-17.10.2.tgz#c9f2188f46295c4d0678c15d1edded1faba0410d"
+  integrity sha512-PjaIwdQ46UE2fgpwzAGUqxxqOJgsn+SBYKjeFbIwpkI8SEzIiSRebwk+LexFqOeWEdvbDfMTHptZMfXksacgxQ==
+
 "@rushstack/eslint-patch@^1.1.3":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz"
