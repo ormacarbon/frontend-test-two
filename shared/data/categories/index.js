@@ -1,5 +1,7 @@
-import { transports } from "./transports"
+import { electricity } from "./electricity"
+//import { transports } from "./transports"
 
 export const categories = [
-    transports
-]
+    electricity,
+    /* transports */
+] 
