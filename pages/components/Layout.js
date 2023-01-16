@@ -1,19 +1,19 @@
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Footer from './Footer';
+import Navbar from './Navbar';
 
-import Head from "next/head";
+import Head from 'next/head';
 
-export default function Layout({children}) {
-   return (
-      <>
+export default function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
       <Head>
-         <link rel='shortcut icon' href='/images/favicon.ico'/>
-         <title>Pokémon</title>
-         <meta property="og:title" content="My page title" key="title" />
+        <link rel='shortcut icon' href='/images/favicon.ico' />
+        <title>Pokémon</title>
+        <meta property='og:title' content='My page title' key='title' />
       </Head>
-         <Navbar/>
-         <main>{children}</main>
-         <Footer/>
-      </>
-      )
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
 }

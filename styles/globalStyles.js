@@ -10,5 +10,6 @@ const GlobalStyles = createGlobalStyle`
 main{
     min-height: 70vh;
 }
+
 `
 export default GlobalStyles;

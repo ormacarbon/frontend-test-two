@@ -1,62 +1,84 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
 import styled from 'styled-components';
+import Burger from './Burger';
 
-const Container = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1em 1.2em;
-  margin-bottom: 2em;
-  background-color: #333;
-  color: #fff;
-`;
-const Logo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-const Ul = styled.ul`
+ const Container = styled.nav`
+ width: 100%;
+ height: 65px;
+ border-bottom: 2px solid #f1f1f1;
+ padding: 0 20px;
+ display: flex;
+ justify-content: space-between;
+ background-color: #000;
+ position: fixed;
+ z-index: 1;
+ `;
+ const Logo = styled.div`
+ display: fixed;
+ margin-top: 10px;
+ margin-right: 100px;
+ 
+  a{
     display: flex;
-    list-style: none;
-`
-const Li = styled.li`
-    margin-right: 1.3em;
-`
-const aa = styled.a``;
-const A = styled(aa)`
-    color: #fff;
-    cursor: pointer;
-    padding: 5px;
-    font-weight: bold;
-`
+   padding: 1px;
+   text-decoration: none;
+   color: #ffBB33;
+   font-weight: bold;
+   font-size: 2rem;
+   position: relative;
+  }
 
+   @media (max-width: 768px) {
+    a{
+    
+      display: flex;
+      top: 0;
+      right: 100px;
+      position: absolute;
+      font-size: 1rem;
+      padding: 25px;
+    }  
 
-  
+  }
+ `;
+ const Ul = styled.ul`
+   display: flex;
+   list-style: none;
+   flex-flow: row nowrap;
+
+   li{
+    padding: 18px 10px;
+  }
+
+   @media(max-width: 768px) {
+    display: none;
+    flex-flow:column nowrap;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300px;
+    padding-top: 3.5em;
+   }
+   li{
+    color: #ffbb33;
+  }
+   a{
+    color: #ffbb33;
+    text-decoration: none;
+  }
+ `
+
 export default function Navbar() {
   return (
-    <Container>
-      <Logo>
-        <Image
-          src='/images/pokemon.png'
-          width='80'
-          height='40'
-          alt='Pokémon-logo'
-        />
-      </Logo>
-      <Ul>
-        <Li>
-          <Link href='/' legacyBehavior>
-            <A>Home</A>
-          </Link>
-        </Li>
-        <Li>
-          <Link href='/about' legacyBehavior>
-            <A>About</A>
-          </Link>
-        </Li>
-      </Ul>
-    </Container>
+     <Container>
+       <Burger/>
+       <Logo><Link href='/'>
+    Jikan Lib
+         </Link>
+       </Logo>
+     </Container>
   );
 }
