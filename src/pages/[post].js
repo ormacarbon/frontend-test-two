@@ -77,6 +77,7 @@ function SinglePost(){
           key = {post} 
           postId = {post}
           photos = {photos}
+          theme = {theme}
           /> : 'Loading...'}
         <Footer nobg/>
         <GlobalStyles />

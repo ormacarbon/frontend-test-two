@@ -122,7 +122,7 @@ export function Post(props) {
             <span></span>
             {nextPost !== undefined ? 
             <>
-              <Link href={nextPost.id}>
+              <Link href={nextPost.id + "-" + props.theme}>
                 Next Post <span />
                 <CaretDoubleRight size={16} weight="bold" /> 
               </Link>

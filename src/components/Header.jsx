@@ -99,7 +99,7 @@ export function Header({ handleAboutToggle }) {
         <nav id="top-navbar-1" >
             <ul>
               <li>
-                <p postPage href="/" onClick={handleAboutToggle}>About</p>
+                <p href="/" onClick={handleAboutToggle}>About</p>
               </li>
               <li>
                 <Link href="/#recent">Recent</Link>
