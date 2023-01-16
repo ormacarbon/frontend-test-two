@@ -23,11 +23,12 @@ export const Select = styled.button`
   }
 
   :hover {
-    background-color: ${(p) => p.theme.colors.dropdown.bg};
+    background-color: ${(p) => p.theme.colors.button.bg};
   }
 `;
 
 export const Options = styled.div`
+  box-shadow: 5px 5px 20px -10px ${(p) => p.theme.colors.dropdown.shadow};
   z-index: 9999;
   display: flex;
   justify-content: left;
@@ -40,11 +41,11 @@ export const Options = styled.div`
   width: 100%;
   overflow: hidden;
 
-  *:first-child {
+  span:first-child {
     border-bottom: 1px solid ${(p) => p.theme.colors.dropdown.divider};
   }
 
-  *:last-child {
+  span:last-child {
     border-top: 1px solid ${(p) => p.theme.colors.dropdown.divider};
   }
 `;
@@ -57,6 +58,8 @@ export const Option = styled.span`
   height: 24px;
   display: flex;
   align-items: center;
+  flex-direction: row;
+  gap: 10px;
   cursor: pointer;
   padding: 10px;
   ${(optionProps) =>
