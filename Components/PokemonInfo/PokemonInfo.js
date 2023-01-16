@@ -48,7 +48,7 @@ function Pokemon({ modal, setLoading }) {
       requestApiPokemon();
       setModalClose(modal.class);
     }
-  }, [modal]);
+  });
 
   console.log(modalClose);
   if (modal != "") {

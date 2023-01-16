@@ -5,10 +5,6 @@ import Pagination from "../Components/Pagination/Pagination";
 import PokemonInfo from "../Components/PokemonInfo/PokemonInfo";
 import Search from "../Components/Search/Search";
 import Loading from "../Components/Loading/Loading";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "../styles/theme.js";
-import GlobalTheme from "../styles/global.js";
-import styled from "styled-components";
 
 function Home() {
   const [apiOptions, setApiOptions] = useState([]);
