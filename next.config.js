@@ -3,8 +3,16 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
-    styledComponents: true
-  }
-}
+    styledComponents: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+  exportPathMap: async function () {
+    return {
+      '/': { page: '/' },
+    }
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

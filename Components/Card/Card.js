@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Image from 'next/image'
 
 function Card({ apiOptions, handlePokemonInfo }) {
   return (
@@ -8,7 +9,7 @@ function Card({ apiOptions, handlePokemonInfo }) {
           <li className="not-pokemon">POKEMON NÃO ENCONTRADO</li>
         ) : (
           <li className="card" onClick={() => handlePokemonInfo(apiOptions[2])}>
-            <img src={apiOptions[1]} alt={apiOptions[1]} loading="lazy" />
+            <Image src={apiOptions[1]} alt={apiOptions[1]} loading="lazy" />
             <p>{apiOptions[0]}</p>
           </li>
         )
