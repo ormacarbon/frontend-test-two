@@ -1,12 +1,12 @@
 # **Project API - Rick and Morty**
 
-The API - Rick and Morty is a website with information about the Adult Swim show "Rick and Morty", that contains 4 pages: Home, Detalhes, Locations and Episodes. The project has, as a source of data,the [Rick and Morty API](https://rickandmortyapi.com/ "Rick and Morty API").
+The API - Rick and Morty is a website with information about the Adult Swim show "Rick and Morty", that contains 4 pages: Home, Detalhes, Locations and Episodes. The project has, as a source of data, the [Rick and Morty API](https://rickandmortyapi.com/ "Rick and Morty API").
 
 ## **Index**
 - <a href="#project-functionalities">Project functionalities</a>
 - <a href="#layout">Layout</a>
-- <a href="#demonstration">Demonstration</a>
-- <a href="#how-can-i-run-this-project?">How can I run this project?</a>
+- <a href="#deploy">Deploy</a>
+- <a href="#how-can-i-run-this-project">How can I run this project?</a>
 - <a href="#tech-stack">Tech stack</a>
 - <a href="#creators">Creators</a>
 
@@ -25,8 +25,8 @@ The API - Rick and Morty is a website with information about the Adult Swim show
 ![locations-page](./src/assets/locations-page.png)
 ![episodes-page](./src/assets/episodes-page.png)
 
-## **Demonstration**
-[Link demonstração](https://pokedex-constance03.surge.sh)
+## **Deploy**
+[Link deploy](https://rick-and-morty-api-project.vercel.app/)
 
 ## **How can I run this project?**
 
