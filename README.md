@@ -1,6 +1,6 @@
 # Demonstração
 
-![vídeo](github/video.mp4)
+![gif](github/amostra.gif)
 
 # **TESTE DE FRONTEND**
 
