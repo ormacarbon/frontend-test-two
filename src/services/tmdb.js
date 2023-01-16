@@ -40,34 +40,48 @@ const tmdb = {
       {
         slug: 'toprated',
         title: 'Em alta',
-        itens: await basicFetch(`/movie/top_rated?language=pt-BR`)
+        itens: await basicFetch(`/movie/top_rated?language=pt-BR`),
+        type: 'movies'
       },
       {
         slug: 'action',
         title: 'Ação',
-        itens: await basicFetch(`/discover/movie?with_genres=28&language=pt-BR`)
+        itens: await basicFetch(
+          `/discover/movie?with_genres=28&language=pt-BR`
+        ),
+        type: 'movies'
       },
       {
         slug: 'comedy',
         title: 'Comédia',
-        itens: await basicFetch(`/discover/movie?with_genres=35&language=pt-BR`)
+        itens: await basicFetch(
+          `/discover/movie?with_genres=35&language=pt-BR`
+        ),
+        type: 'movies'
       },
       {
         slug: 'horror',
         title: 'Terror',
-        itens: await basicFetch(`/discover/movie?with_genres=27&language=pt-BR`)
+        itens: await basicFetch(
+          `/discover/movie?with_genres=27&language=pt-BR`
+        ),
+        type: 'movies'
       },
       {
         slug: 'romance',
         title: 'Romance',
         itens: await basicFetch(
           `/discover/movie?with_genres=10749&language=pt-BR`
-        )
+        ),
+        type: 'movies'
       },
       {
         slug: 'documentary',
         title: 'Documentários',
-        itens: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR`)
+        itens: await basicFetch(
+          `/discover/movie?with_genres=99&language=pt-BR`
+        ),
+        type: 'movies'
       }
     ];
   },
@@ -332,7 +346,7 @@ const tmdb = {
     return {
       slug: 'action',
       title: 'Ação',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=28&language=pt-BR&page=${page}`
       )
     };
@@ -342,7 +356,7 @@ const tmdb = {
     return {
       slug: 'adventure',
       title: 'Aventura',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=12&language=pt-BR&page=${page}`
       )
     };
@@ -352,7 +366,7 @@ const tmdb = {
     return {
       slug: 'animation',
       title: 'Animação',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=16&language=pt-BR&page=${page}`
       )
     };
@@ -362,7 +376,7 @@ const tmdb = {
     return {
       slug: 'comedy',
       title: 'Comédia',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=35&language=pt-BR&page=${page}`
       )
     };
@@ -372,7 +386,7 @@ const tmdb = {
     return {
       slug: 'crime',
       title: 'Crime',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=80&language=pt-BR&page=${page}`
       )
     };
@@ -382,7 +396,7 @@ const tmdb = {
     return {
       slug: 'documentary',
       title: 'Documentários',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=99&language=pt-BR&page=${page}`
       )
     };
@@ -392,7 +406,7 @@ const tmdb = {
     return {
       slug: 'drama',
       title: 'Drama',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=18&language=pt-BR&page=${page}`
       )
     };
@@ -402,7 +416,7 @@ const tmdb = {
     return {
       slug: 'family',
       title: 'Família',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=10751&language=pt-BR&page=${page}`
       )
     };
@@ -412,7 +426,7 @@ const tmdb = {
     return {
       slug: 'fantasy',
       title: 'Fantasia',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=14&language=pt-BR&page=${page}`
       )
     };
@@ -422,7 +436,7 @@ const tmdb = {
     return {
       slug: 'history',
       title: 'História',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=36&language=pt-BR&page=${page}`
       )
     };
@@ -432,7 +446,7 @@ const tmdb = {
     return {
       slug: 'horror',
       title: 'Terror',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=27&language=pt-BR&page=${page}`
       )
     };
@@ -442,7 +456,7 @@ const tmdb = {
     return {
       slug: 'music',
       title: 'Música',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=10402&language=pt-BR&page=${page}`
       )
     };
@@ -452,7 +466,7 @@ const tmdb = {
     return {
       slug: 'mistery',
       title: 'Mistério',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=9648&language=pt-BR&page=${page}`
       )
     };
@@ -462,7 +476,7 @@ const tmdb = {
     return {
       slug: 'romance',
       title: 'Romance',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=10749&language=pt-BR&page=${page}`
       )
     };
@@ -472,7 +486,7 @@ const tmdb = {
     return {
       slug: 'sci-fi',
       title: 'Ficção Cientifica',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=878&language=pt-BR&page=${page}`
       )
     };
@@ -482,7 +496,7 @@ const tmdb = {
     return {
       slug: 'cinema-tv',
       title: 'Cinema TV',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=10770&language=pt-BR&page=${page}`
       )
     };
@@ -492,7 +506,7 @@ const tmdb = {
     return {
       slug: 'thriller',
       title: 'Suspense',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=53&language=pt-BR&page=${page}`
       )
     };
@@ -502,7 +516,7 @@ const tmdb = {
     return {
       slug: 'war',
       title: 'Guerra',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=10752&language=pt-BR&page=${page}`
       )
     };
@@ -512,7 +526,7 @@ const tmdb = {
     return {
       slug: 'western',
       title: 'Faroeste',
-      itens: await basicFetch(
+      itens: await webFetch(
         `/discover/movie?with_genres=37&language=pt-BR&page=${page}`
       )
     };

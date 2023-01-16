@@ -50,6 +50,7 @@ export default function Home({ filmList, featuredMovie }) {
                 title={iten.title}
                 itens={iten.itens}
                 slug={iten.slug}
+                type={iten.type ? iten.type : null}
                 key={index}
               />
             ))}

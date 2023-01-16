@@ -66,7 +66,12 @@ export const MovieRow = ({
       {itens && (
         <div>
           <TitleContainer>
-            <Link href={type ? `${type}/${slug}` : slug} passHref>
+            <Link
+              href={
+                type === 'movies' ? '/movies' : type ? `${type}/${slug}` : slug
+              }
+              passHref
+            >
               <MovieRowTitle darkMode={darkMode}>
                 <strong>{title}</strong>
                 <span>

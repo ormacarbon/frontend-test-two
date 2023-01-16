@@ -50,8 +50,6 @@ export default function Home({
   const { changePageActive } = usePageActiveContext();
   const { darkMode } = useDarkModeContext();
 
-  console.log(updatedParamountPlusList);
-
   const addOriginalsPagination = async () => {
     if (originalsListPage < originalsTotalPages) {
       setOriginalsPage(originalsListPage + 1);
