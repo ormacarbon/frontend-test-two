@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { getData } from '@utils/tmdb';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { MoviesProvider } from '@contexts/moviesContext';
+import { ListProvider } from '@contexts/favoritesList';
+import { getGenres } from '@utils/tmdb';
 
 import { Header } from '@components/header';
 import { NavBar } from '@components/navBar';
@@ -15,19 +20,14 @@ type Genres = {
   name: string
 }[]
 
-type GenresResponse = {
-  genres: Genres
-}
-
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-
   const [isDarkTheme, setIsDarkTheme] = useState(true)
   const [genres, setGenres] = useState<Genres>([])
 
   useEffect(() => {
     const genres = async () => {
       try {
-        const { genres }: GenresResponse = await getData({ endPoint: '/genre/movie/list?' })
+        const { genres } = await getGenres({ endPoint: '/genre/movie/list?' })
 
         const getFourteenGenres = []
         
@@ -45,15 +45,20 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <Header
-        isDarkTheme={isDarkTheme}
-        setIsDarkTheme={setIsDarkTheme}
-      />
-      {genres.length && <NavBar genres={genres} />}
-      <Component {...pageProps} />
-      <GlobalStyles isDarkTheme={isDarkTheme} />
-    </ThemeProvider>
+    <ListProvider>
+      <MoviesProvider>
+        <ThemeProvider theme={theme}>
+          <Header
+            isDarkTheme={isDarkTheme}
+            setIsDarkTheme={setIsDarkTheme}
+          />
+          {genres.length && <NavBar genres={genres} />}
+          <Component {...pageProps} />
+          <GlobalStyles isDarkTheme={isDarkTheme} />
+        </ThemeProvider>
+      </MoviesProvider>
+      <ToastContainer />
+    </ListProvider>
   );
 }
 
