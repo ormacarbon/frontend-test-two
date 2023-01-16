@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   max-width: 200px;
+  min-height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 export const MovieInfo = styled.section`
