@@ -2,39 +2,31 @@ import { useContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import * as C from "./style";
 import useLocation from "../../hooks/useLocation";
-import Loading from '../../components/Loading/Loading'
+import Loading from "../../components/Loading/Loading";
 import { ThemeContext } from "../../contexts/themeContext";
 import Title from "../../components/Title/Title";
 import Charts from "../../components/Charts/Charts";
 
 const AirPolluition = () => {
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   const { latitude, longitude } = useLocation();
   const { data, error, loading } = useFetch(
     `/api/air_pollution?latitude=${latitude}&longitude=${longitude}`
   );
 
   return (
-    <C.ContainerAirPolluition style={{background: theme.background, color: theme.text}}>
+    <C.ContainerAirPolluition
+      style={{ background: theme.background, color: theme.text }}
+    >
       {loading ? (
         <Loading />
       ) : (
         <>
           <Title text="Air pollution data" />
-          {data?.list?.map((elements) => (
-            <div className="infosPolluition">
-
-
-            <Charts
-                elements={elements.components}
-                type="line"
-                width="500"
-              />
-            <Charts
-                elements={elements.components}
-                type="area"
-                width="500"
-              />
+          {data?.list?.map((elements, index) => (
+            <div key={index} className="infosPolluition">
+              <Charts elements={elements.components} type="line" width="500" />
+              <Charts elements={elements.components} type="area" width="500" />
               {/* <h1>CO: {elements.components.co}</h1>
               <h1>NH3: {elements.components.nh3}</h1>
               <h1>NO: {elements.components.no}</h1>

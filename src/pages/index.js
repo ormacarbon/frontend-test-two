@@ -16,9 +16,8 @@ const Index = () => {
     error,
     loading,
   } = useFetch(`/api/weather?latitude=${latitude}&longitude=${longitude}`);
-  const { data } = useFetch(
-    `/api/forecast?latitude=${latitude}&longitude=${longitude}`
-  );
+  const { data } = useFetch(`/api/forecast?latitude=${latitude}&longitude=${longitude}`);
+
 
   return (
     <C.ContainerHome theme={theme} >
@@ -28,8 +27,8 @@ const Index = () => {
         <>
         <Banner data={weather} />
         <C.Cards>
-          {data?.list.map((forecast) => (
-            <Cards forecast={forecast} />
+          {data?.list.map((forecast, index) => (
+            <Cards key={index} forecast={forecast} />
           ))}
         </C.Cards>
       </>

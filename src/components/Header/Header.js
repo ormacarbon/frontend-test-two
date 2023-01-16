@@ -22,7 +22,7 @@ const Header = () => {
         </Link>
         <C.ListItems>
           {linksMenu.map((linkItems) => (
-            <Link href={linkItems.page}>{linkItems.name}</Link>
+            <Link href={linkItems.page} key={linkItems.name}>{linkItems.name}</Link>
           ))}
         </C.ListItems>
       </C.HeaderNavigation>
