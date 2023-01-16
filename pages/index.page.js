@@ -1,4 +1,4 @@
-import Overview from './overview'
+import Overview from './overview/index.page'
 
 export default function Home() {
   return (
