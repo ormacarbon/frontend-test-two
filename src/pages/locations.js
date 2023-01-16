@@ -8,7 +8,7 @@ import { BASE_URL_LO } from "../constants/url";
 import { GlobalContext } from "../contexts/GlobalContext";
 import { Container, ContainerCards } from "../styles/indexStyle";
 
-const worlds = () => {
+const Locations = () => {
   const context = useContext(GlobalContext);
   const {
     locations,
@@ -50,4 +50,4 @@ const worlds = () => {
   );
 };
 
-export default worlds;
+export default Locations;
