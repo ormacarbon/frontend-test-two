@@ -25,7 +25,7 @@ The API - Rick and Morty is a website with information about the Adult Swim show
 ![locations-page](./src/assets/locations-page.png)
 ![episodes-page](./src/assets/episodes-page.png)
 
-## **Demonstration**
+## **Deploy**
 [Deploy link](https://rick-and-morty-api-project.vercel.app/)
 
 ## **How can I run this project?**
