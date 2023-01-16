@@ -2,17 +2,27 @@ import PropTypes from 'prop-types';
 import APIService from '../../services/APIService';
 
 export default function Test({ standing }) {
-  console.log(standing);
   return (
-
-    <>
-      <h1>
-        {standing.name}
-      </h1>
-      <div>
-        {standing.standings.map((item) => <p>{item.team.displayName}</p>)}
-      </div>
-    </>
+    <table>
+      <tr>
+        <td>Posição</td>
+        <td>Pontos</td>
+        <td>Jogos</td>
+        <td>Vitorias</td>
+        <td>Empates</td>
+        <td>Derrotas</td>
+      </tr>
+      {standing.standings.map((team) => (
+        <tr>
+          <td>{team.team.displayName}</td>
+          <td>{team.stats[2].value}</td>
+          <td>{team.stats[0].value}</td>
+          <td>{team.stats[6].value}</td>
+          <td>{team.stats[5].value}</td>
+          <td>{team.stats[1].value}</td>
+        </tr>
+      ))}
+    </table>
 
   );
 }

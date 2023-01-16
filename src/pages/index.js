@@ -7,15 +7,21 @@ import { ThemeContext } from '../contexts/ThemeContext';
 import APIService from '../services/APIService';
 import { Main, Container } from '../components/HomeStyled';
 import WellCome from '../components/Wellcome';
+import useWidth from '../hooks/useWidth';
 
 export default function Home({ leagues }) {
   const { currentTheme, theme } = useContext(ThemeContext);
+  const width = useWidth();
 
   return (
     <Main theme={currentTheme}>
       <WellCome />
       <Container theme={currentTheme}>
-        <Carousel itemsToScroll={2} itemsToShow={2.5}>
+        <Carousel
+          isRTL
+          itemsToScroll={2}
+          itemsToShow={width > 1900 ? 4.5 : 3.5}
+        >
           {leagues.data.map((league) => {
             const logoDark = league.logos.dark.replace(/["]/g, '');
             const logoLight = league.logos.light;

@@ -18,11 +18,10 @@ export const StyledHeader = styled.header`
 
     ul {
       display: flex;
+      flex-direction: row;
       list-style: none;
-      gap: 25px;
+      gap: 26px;
     }
-
-
   }
 `;
 
@@ -130,8 +129,13 @@ export const MenuMobile = styled.div`
 `;
 
 export const ListNavMenu = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  gap: 48px;
   list-style: none;
-
+  height: 100%;
 
   li{
     a{
