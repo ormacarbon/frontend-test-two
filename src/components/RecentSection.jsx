@@ -4,10 +4,11 @@ import { BlogItems } from './BlogItems';
 import { HeadingLine } from './HeadingLine';
 
 const RecentSectionStyles = styled.div`
-  background-color: var(--gray-600);  
-  border-top: 1px solid var(--gray-500);
+  background-color: ${({ theme }) => theme.body};
+  border-top: 1px solid ${({ theme }) => theme.line};
   padding: 6rem 0 6rem 0;
   text-align: center;
+  transition: background 0.2s ease-in, color 0.2s ease-in;
 
   h1 {
     color: var(--reddark);
@@ -35,7 +36,7 @@ const Button = styled.button`
   background: ${props => (props.primary ? "var(--reddark)" : "var(--alpha-30)")};
   border: ${props => (props.primary ? "none" : "1px solid var(--gray-100)")};
   border-radius: 4px;
-  color: var(--grey-100);
+  color: #F2F2F2;
   cursor: pointer;
   font-size: 1rem;
   margin: 10px;
@@ -76,29 +77,30 @@ export function RecentSection(props) {
   };
 
   return(
-    <RecentSectionStyles>
-      <div className='wrapper'>
-        <h1>Recent Posts</h1>
-        <HeadingLine />
-        <p> These photos are taken from my Flickr. Follow me there! </p>
-          {postsToRender ? 
-            <BlogItems 
-              key={props.id}
-              id={props.id}
-              imgHeight={500}
-              imgWidth={260}
-              recentPhotos = {props.recentPhotos }
-              photoDates = { props.photoDates }
-              postsToRender = {postsToRender}
-            /> : "Loading posts..."
-          }
-        <Button 
-          onClick={handleShowMorePosts}
-          primary
-        > 
-          Load More 
-        </Button> 
-      </div>
-    </RecentSectionStyles>
+      <RecentSectionStyles>
+        <div className='wrapper' id="recent">
+          <h1>Recent Posts</h1>
+          <HeadingLine />
+          <p> These photos are taken from my Flickr. Follow me there! </p>
+            {postsToRender ? 
+              <BlogItems 
+                key={props.id}
+                id={props.id}
+                imgHeight={500}
+                imgWidth={260}
+                recentPhotos = {props.recentPhotos }
+                photoDates = { props.photoDates }
+                postsToRender = {postsToRender}
+                theme = {props.theme}
+              /> : "Loading posts..."
+            }
+          <Button 
+            onClick={handleShowMorePosts}
+            primary
+          > 
+            Load More 
+          </Button> 
+        </div>
+      </RecentSectionStyles>
   )
 } 

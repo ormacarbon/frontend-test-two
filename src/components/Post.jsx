@@ -10,6 +10,7 @@ const PostStyles = styled.div`
   text-align: center;
 
   h1 {
+    color: var(--reddark);
     padding-top: 3rem;
     font-style: normal;
     font-weight: 100;
@@ -67,7 +68,7 @@ export function Post(props) {
 
   const photosArray = props.photos.photo;
   const postId = props.postId;
- 
+
   if (photosArray !== undefined) {
     currentPost = photosArray.filter(function(item){
      return postId.indexOf(item.id) > -1;
@@ -89,6 +90,7 @@ export function Post(props) {
               height={currentPost[0].height_c}
               src={currentPost[0].url_c}
               alt={currentPost[0].title}
+              priority
             />
           </Link>
           <PostDescription>
@@ -110,14 +112,20 @@ export function Post(props) {
           <LinkSection>
             {prevPost !== undefined ? 
               <>
-                <Link href={prevPost.id}><CaretDoubleLeft size={16} weight="bold" /><span></span>Previous Post</Link> 
+                <Link href={prevPost.id}><CaretDoubleLeft size={16} weight="bold" />
+                  <span />
+                  Previous Post
+                </Link> 
               </>
               : null 
             }
             <span></span>
             {nextPost !== undefined ? 
             <>
-              <Link href={nextPost.id}>Next Post<span></span><CaretDoubleRight size={16} weight="bold" /> </Link>
+              <Link href={nextPost.id}>
+                Next Post <span />
+                <CaretDoubleRight size={16} weight="bold" /> 
+              </Link>
             </>
             : null 
             }

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const HeaderStyles = styled.div`
 
-  background: rgba(0 , 0, 0, 0.6);
+  background: ${({ theme }) => theme.navbar};
+  border-bottom: 1px solid ${({ theme }) => theme.line};
   font-family: 'BigNoodleTitling', sans-serif;
   font-size: 1.35rem;
   font-style: oblique;
@@ -28,12 +30,12 @@ const HeaderStyles = styled.div`
   };
   
   li a {
-    color: var(--gray-200);
+    color: ${({ theme }) => theme.link};
     text-decoration:none;
   }
 
   li a:hover {
-    color: var(--white);
+    color: ${({ theme }) => theme.selected};
     transition: 250ms ease;
   }
 
@@ -49,9 +51,13 @@ const HeaderStyles = styled.div`
     transition: 200ms ease;
   }
 
+  p:hover {
+    color: var(--reddark);
+    cursor: pointer;
+  }
   .header-no-bg {
-    background: var(--gray-500);
-    transition: 350ms ease-in-out;
+    background: ${({ theme }) => theme.navbarScroll};
+    transition: 350ms ease-in;
   }
 
   @media only screen and (max-width: 768px) {
@@ -65,8 +71,20 @@ const HeaderStyles = styled.div`
   }
 
 `
+const StyledLink = styled(Link)`
+    
+    color: var(--gray-200);
+    cursor: pointer;
+    text-decoration:none;
 
-export function Header() {
+    :hover {
+    color: var(--white);
+    transition: 250ms ease;
+    }
+
+`
+
+export function Header({ handleAboutToggle }) {
   
   return(
     <>
@@ -78,22 +96,22 @@ export function Header() {
       </Head>
       <header className="header-menu">
       <HeaderStyles>
-        <nav id="top-navbar-1">
+        <nav id="top-navbar-1" >
             <ul>
               <li>
-                <a href="">About</a>
+                <p postPage href="/" onClick={handleAboutToggle}>About</p>
               </li>
               <li>
-                <a href="">Recent</a>
+                <Link href="/#recent">Recent</Link>
               </li>
               <li>
-                <a href=""><span>Andrek Titanium</span></a>
+                <Link href="/"><span>Andrek Titanium</span></Link>
               </li>
               <li>
-                <a href="">Favorites</a>
+                <Link href="/#favorites">Favorites</Link>
               </li>
               <li>
-                <a href="">Contact</a>
+                <a href="#contact">Contact</a>
               </li>
             </ul>
         </nav>

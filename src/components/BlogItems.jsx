@@ -52,7 +52,7 @@ export function BlogItems(props) {
                 key={post.url_c}
               >
                 <Link
-                  href={{pathname: post.id}}>
+                  href={{pathname: post.id + "-" + props.theme}}>
                     <div>
                       <Image
                         key={post.url_c}

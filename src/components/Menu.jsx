@@ -57,16 +57,15 @@ const CloseToggle = styled(X)`
   cursor: pointer; 
 `
 
-
-export function Menu({handleNavToggle}) {
+export function Menu({handleNavToggle, handleAboutToggle}) {
   return (<div>
     <StyledMenu>
         <h1>Andrek Titanium</h1>
-        <StyledLink href="/">Home</StyledLink>
-        <StyledLink href="/">About</StyledLink>
-        <StyledLink href="/">Recent</StyledLink>
-        <StyledLink href="/">Favorites</StyledLink>
-        <StyledLink href="/">Contact</StyledLink>
+        <StyledLink href="/" onClick={handleNavToggle}>Home</StyledLink>
+        <StyledLink href="/" onClick={handleAboutToggle}>About</StyledLink>
+        <StyledLink href="#recent" onClick={handleNavToggle}>Recent</StyledLink>
+        <StyledLink href="#favorites" onClick={handleNavToggle}>Favorites</StyledLink>
+        <StyledLink href="#contact" onClick={handleNavToggle}>Contact</StyledLink>
         <CloseToggle 
           size={32} 
           onClick={handleNavToggle}

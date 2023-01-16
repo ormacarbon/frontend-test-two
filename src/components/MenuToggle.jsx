@@ -1,7 +1,7 @@
 import { List } from 'phosphor-react';
 import styled from 'styled-components';
 
-const StyledToggle = styled(List)`
+const StyledMenuToggle = styled(List)`
   position: fixed;
   top: 3%;
   left: 5%;
@@ -22,8 +22,8 @@ const StyledToggle = styled(List)`
 
 `
 
-export function Toggle({handleNavToggle}) {
+export function MenuToggle({handleNavToggle}) {
   return(
-    <StyledToggle size={32} onClick={handleNavToggle}/>
+    <StyledMenuToggle size={32} onClick={handleNavToggle}/>
   )
 }

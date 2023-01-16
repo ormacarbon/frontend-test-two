@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BlogItems } from './BlogItems';
+import { HeadingLine } from './HeadingLine';
 
 const FavoriteSectionStyles = styled.div`
-  background-color: var(--gray-700);  
-  border-top: 1px solid var(--gray-500);
+  background-color: ${({ theme }) => theme.body}; 
+  border-top: 1px solid ${({ theme }) => theme.line};
   padding: 6rem 0;
   text-align: center;
   h1 {
@@ -29,20 +30,11 @@ const FavoriteSectionStyles = styled.div`
     overflow: hidden;
   }
 `
-
-const HeadingLine = styled.span`
-  border-bottom: 1px solid var(--reddark);;  
-  display: inline-block;
-  margin: .75rem 0 1.75rem 0;
-  width: 200px;
-  
-`
-
 const Button = styled.button`
   background: ${props => (props.primary ? "var(--reddark)" : "var(--alpha-30)")};
   border: ${props => (props.primary ? "none" : "1px solid var(--gray-100)")};
   border-radius: 4px;
-  color: var(--grey-100);
+  color: #F2F2F2;
   cursor: pointer;
   font-size: 1rem;
   margin: 10px;
@@ -84,7 +76,7 @@ export function FavoriteSection(props) {
 
   return(
     <FavoriteSectionStyles>
-      <div className='wrapper'>
+      <div className='wrapper' id="favorites">
         <h1>My Favorite Posts</h1>
         <HeadingLine />
         <p> Here is a collection of my greatest moments! </p>
