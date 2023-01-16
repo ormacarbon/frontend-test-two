@@ -6,8 +6,12 @@ export const Main = styled.main`
   max-width: 1280px;
   margin: 0 auto;
 
-  display: flex;
-  flex-wrap: wrap;
+  > div:nth-child(1) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 
-  gap: 1rem;
+  flex-direction: column;
+
 `
