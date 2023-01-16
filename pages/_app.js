@@ -1,20 +1,17 @@
-import Layout from '../components/layout'
-import styled from 'styled-components';
-import '../styles/globals.css'
-
+import Layout from "../components/layout";
+import styled from "styled-components";
 
 
 
 function MyApp({ Component, pageProps }) {
-  return  (
+  
+  return (
     <div>
-      <Layout >
-        <Component  {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
       </Layout>
     </div>
-    
-  )
-  
+  );
 }
 
-export default MyApp
+export default MyApp;

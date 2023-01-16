@@ -15,6 +15,7 @@ const AppContainer = styled.div`
 `
 const StySearch = styled.div`
   display: flex;
+  
   justify-content: center;
   font-size: 6rem;
   margin-top: 60px;
@@ -36,7 +37,7 @@ const StyPut = styled.div`
 const StyInp = styled.input`
   border-radius: 30px;
   border: none;  
-  
+  color: white;
   outline: none;
   
   
@@ -89,14 +90,10 @@ export default function Search() {
   const [searchApiData, setSearchApiData] = useState([])
   const [filterval, setFilterval] = useState('');
   
-  
-
   useEffect(() => {
     Axios.get("https://api.coingecko.com/api/v3/search?query=eth").then((response) => {
       setData(response.data.coins);
-      setSearchApiData(response.data.coins);
-      
-    
+      setSearchApiData(response.data.coins);   
   });
 
   }, []);
@@ -111,6 +108,9 @@ export default function Search() {
     setFilterval(evento.target.value)
 
   }
+
+
+
 
   return (
     <AppContainer>

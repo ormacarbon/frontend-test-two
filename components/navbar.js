@@ -1,10 +1,20 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link'
+import Link from 'next/link';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import Image from 'next/image';
-import bmg from '../public/coin.png'
-import Darkmode from './darkmode';
+import bmg from '../public/coin.png';
+
+import MoonIcon from '../public/icons/moonIcon';
+import SunIcon from '../public/icons/sunIcon';
+import Toggle from './toggle';
+
+
+import { useState } from "react";
+import { lightTheme, darkTheme } from "../pages/themes.js";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "../pages/themes.js";
+
 
 const DivInitial = styled.div`
   display: flex;
@@ -12,7 +22,7 @@ const DivInitial = styled.div`
   box-shadow: 10px 5px 500px rgba(0, 0, 0, 0.08);
   background: rgb(2,0,36);
   background: linear-gradient(353deg, rgba(2,0,36,1) 0%, rgba(18,18,41,1) 100%, rgba(14,14,14,1) 100%);
-
+  
  
 
   align-items: center;
@@ -20,6 +30,7 @@ const DivInitial = styled.div`
   height: 75px;
   background-color: black;
   @media (max-width: 576px) {
+    display: inline-block;
     
   }
 `
@@ -46,7 +57,8 @@ const Colum = styled.ul`
   padding: 0 20px;
   align-items: center;
   margin-left: 80px;
-  @media (min-width: 768px) { 
+  
+  @media (max-width: 768px) { 
     
 }
 `
@@ -81,25 +93,41 @@ const ImgBrm = styled(Image)`
 }
 `
 
-const navbar = () => {
-  return (
-    <DivInitial>
-        
-        <Colum>      
-            <Lists>
-                <StyledLink href="/">Home</StyledLink>
-            </Lists>
-            <Lists>
-                <StyledLink href="/search">Search</StyledLink>
-            </Lists>  
-            <Lists>
-                <StyledLink href="/cripto">Coins</StyledLink>
-            </Lists>  
-            <Darkmode/>
-        </Colum>
-        <ImgBrm src={bmg} alt='/'/>   
 
-    </DivInitial>
+const navbar = () => {
+
+  const [theme, setTheme] = useState("light");
+
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+  
+
+  return (
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyles/>
+      <DivInitial>  
+          <Colum>      
+              <Lists>
+                  <StyledLink href="/">Home</StyledLink>
+              </Lists>
+              <Lists>
+                  <StyledLink href="/search">Search</StyledLink>
+              </Lists>  
+              <Lists>
+                  <StyledLink href="/cripto">Galery</StyledLink>
+              </Lists> 
+              <div>     
+                <SunIcon/>
+                <Toggle toggleTheme={themeToggler}/>
+                <MoonIcon/>
+              </div> 
+              
+          </Colum>
+          <ImgBrm src={bmg} alt='/'/>   
+
+      </DivInitial>
+    </ThemeProvider>
    
   )
 }

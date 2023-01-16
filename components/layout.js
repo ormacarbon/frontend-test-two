@@ -10,9 +10,9 @@ import styled from 'styled-components'
 const layout = ({children}) => {
   return (
     <div >
-        <Navbar />
-         {children}    
-        
+        <Navbar />    
+        {children}  
+            
     </div>
   )
 }
