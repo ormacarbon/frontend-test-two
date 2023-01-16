@@ -1,19 +1,31 @@
-import { StyledHeader, Nav, StyledLink } from "./styles";
+import { StyledHeader, Nav } from "./styles";
 
 import { AiOutlineSearch } from "react-icons/ai";
 
-export default function Header() {
+import { StyledLink } from "../../styles/global";
+
+interface SearchProps {
+  showSearch: boolean;
+}
+
+export default function Header({ showSearch }: SearchProps) {
   return (
     <StyledHeader>
-      <h1>
-        <span>Cine</span>
-        phile
-      </h1>
+      <StyledLink href="/">
+        <h1>
+          <span>Cine</span>
+          phile
+        </h1>
+      </StyledLink>
 
-      <form>
-        <AiOutlineSearch size={24} />
-        <input type="text" placeholder="What do you want to watch?" />
-      </form>
+      {showSearch ? (
+        <form>
+          <AiOutlineSearch size={24} />
+          <input type="text" placeholder="What do you want to watch?" />
+        </form>
+      ) : (
+        <br></br>
+      )}
 
       <Nav>
         <StyledLink href={"/movies"}>Movies</StyledLink>
