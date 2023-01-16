@@ -14,26 +14,20 @@ export const Container = styled.div`
   bottom: -125px;
 
   a {
-    background-color: ${({ theme }) => theme.primaryColor};
-    border-radius: 10px;
-    padding: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: ${({ theme }) => theme.primaryColor};
     border: 1px solid ${({ theme }) => theme.tertiaryColor};
     min-width: 250px;
     min-height: 230px;
 
-    &:hover {
-      cursor: pointer;
+    &:hover{
       background-color: ${({ theme }) => theme.secondaryColor};
-      color: #fff;
-    }
-
-    :active {
-      transform: rotate(1deg);
     }
 
     img {
@@ -45,9 +39,6 @@ export const Container = styled.div`
     }
   }
 
-  .rec {
-    cursor: grabbing;
-  }
 
   .rec.rec-arrow {
     background-color: #fff;
@@ -65,7 +56,7 @@ export const Container = styled.div`
   }
 
   .rec-carousel-item {
-    margin-right: 32px;
+    cursor: grabbing;
   }
 
   @media screen and (min-width: 1300px) {
@@ -77,7 +68,32 @@ export const Container = styled.div`
 
     .rec-carousel-item {
       margin-right: 0px;
+    }
   }
-}
 
+  @media (max-width: 1000px) {
+    bottom: -180px;
+  }
+
+  @media (max-width: 768px) {
+    bottom: -130px;
+
+    a {
+      min-height: 150px;
+      min-width: 130px;
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        font-size: 10px;
+      }
+    }
+
+    .rec-carousel-item {
+      margin-right: 48px;
+    }
+
+  }
 `;
