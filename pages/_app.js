@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme, GlobalStyles } from "../shared/styles/ThemeConfig"
 import Navbar from "../components/Navbar"
+import { LocationProvider } from "../contexts/LocationContext"
 function MyApp({ Component, pageProps }) {
 
   const [theme, setTheme] = useState("light")
@@ -25,11 +26,13 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   return (
-    <ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
-      <GlobalStyles />
-      <Navbar toggleThemeCallback = {toggleTheme}/>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <LocationProvider>
+      <ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <Navbar toggleThemeCallback={toggleTheme} />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </LocationProvider>
   )
 }
 
