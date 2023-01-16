@@ -95,7 +95,7 @@ $ npm run dev
 
 ## 📝 License
 
-This project is under the MIT license. See the <a href="https://github.com/ElisonMichell/lab-design-system/blob/main/LICENSE">LICENSE</a> for more information.
+This project is under the MIT license. See the <a href="https://github.com/ElisonMichell/pokemon-universe/blob/pokedex-develop-branch/LICENSE">LICENSE</a> for more information.
 
 ##
 
