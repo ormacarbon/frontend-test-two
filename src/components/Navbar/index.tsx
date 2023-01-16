@@ -50,7 +50,7 @@ export function Navbar() {
         </About>
         <CharactersSession>
           {/* We redirect the user to page=2 because the first page of the API is lacking data */}
-          <Link as='/gotItems?' href="/gotItems?page=2">
+          <Link as='' href="/gotItems?page=2">
             Characters
           </Link>
         </CharactersSession>
