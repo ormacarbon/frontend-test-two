@@ -26,7 +26,7 @@ The API - Rick and Morty is a website with information about the Adult Swim show
 ![episodes-page](./src/assets/episodes-page.png)
 
 ## **Demonstration**
-[Link demonstração](https://pokedex-constance03.surge.sh)
+[Link demonstração](https://rick-and-morty-api-project.vercel.app/)
 
 ## **How can I run this project?**
 
