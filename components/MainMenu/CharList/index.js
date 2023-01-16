@@ -18,6 +18,7 @@ import CharDetail from "./CharDetail";
 import useCustomSnackbar from "../../../helpers/useCustomSnackbar";
 import { pagination } from "../../../helpers";
 import CustomButton from "../../CustomButton";
+import { FadeTransition } from "../../../styles/globalStyled";
 
 function CharList() {
   const [page, setPage] = useState(1);
@@ -110,96 +111,104 @@ function CharList() {
   return (
     <>
       {isCharSelected ? (
-        <CharDetail onDetailsReturn={returnToCharList} />
+        <FadeTransition>
+          <CharDetail onDetailsReturn={returnToCharList} />
+        </FadeTransition>
       ) : (
-        <CharListWrapper page={page}>
-          <div className="title-search">
-            <h2 data-testid="characters-page-title">Search for your favourite character!</h2>
-            <input
-              ref={filtertRef}
-              type="text"
-              placeholder="ex: Rick sanchez"
-              data-testid="character-search-input"
-            />
-            <div className="search-btns">
-              <CustomButton size="small" action={filterCharacters}>
-                Search
-              </CustomButton>
-              {isFiltering && (
-                <CustomButton size="small" action={clearFilters}>
-                  Clear filters
+        <FadeTransition>
+          <CharListWrapper page={page}>
+            <div className="title-search">
+              <h2 data-testid="characters-page-title">
+                Search for your favourite character!
+              </h2>
+              <input
+                ref={filtertRef}
+                type="text"
+                placeholder="ex: Rick sanchez"
+                data-testid="character-search-input"
+              />
+              <div className="search-btns">
+                <CustomButton size="small" action={filterCharacters}>
+                  Search
                 </CustomButton>
-              )}
-            </div>
-          </div>
-          <div className="main-box">
-            {isError ? (
-              <div className="error-box">
-                <h2>{errorMessage}</h2>
-                <CustomButton action={clearFilters}>Reload</CustomButton>
-              </div>
-            ) : (
-              <div className="table">
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableHeading>Photo</TableHeading>
-                      <TableHeading>Name</TableHeading>
-                      <TableHeading>Species</TableHeading>
-                      <TableHeading>Status</TableHeading>
-                      <TableHeading>Gender</TableHeading>
-                    </TableRow>
-                  </TableHead>
-                  <tbody>
-                    {characters.map((char) => (
-                      <TableRow key={char.id}>
-                        <TableData>
-                          <div className="picture">
-                            <img src={char.image} alt={char.name} />
-                          </div>
-                        </TableData>
-                        <TableData data-testid="table-characters-name">{char.name}</TableData>
-                        <TableData>{char.species}</TableData>
-                        <TableData>{char.status}</TableData>
-                        <TableData>{char.gender}</TableData>
-                        <TableData>
-                          <button
-                            onClick={() => {
-                              selectChar(char.id);
-                            }}
-                            data-testid={`table-characters-more-info-${char.id}`}
-                          >
-                            More info
-                          </button>
-                        </TableData>
-                      </TableRow>
-                    ))}
-                  </tbody>
-                </Table>
-                {!isFiltering && !isError && (
-                  <div className="table-btns">
-                    <CustomButton
-                      size="small"
-                      disabled={page === 1}
-                      action={() => handlePagination("prev")}
-                      className="prev"
-                    >
-                      Prev
-                    </CustomButton>
-                    <CustomButton
-                      size="small"
-                      disabled={page === 42}
-                      action={() => handlePagination("next")}
-                      className="next"
-                    >
-                      Next
-                    </CustomButton>
-                  </div>
+                {isFiltering && (
+                  <CustomButton size="small" action={clearFilters}>
+                    Clear filters
+                  </CustomButton>
                 )}
               </div>
-            )}
-          </div>
-        </CharListWrapper>
+            </div>
+            <div className="main-box">
+              {isError ? (
+                <div className="error-box">
+                  <h2>{errorMessage}</h2>
+                  <CustomButton action={clearFilters}>Reload</CustomButton>
+                </div>
+              ) : (
+                <div className="table">
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableHeading>Photo</TableHeading>
+                        <TableHeading>Name</TableHeading>
+                        <TableHeading>Species</TableHeading>
+                        <TableHeading>Status</TableHeading>
+                        <TableHeading>Gender</TableHeading>
+                      </TableRow>
+                    </TableHead>
+                    <tbody>
+                      {characters.map((char) => (
+                        <TableRow key={char.id}>
+                          <TableData>
+                            <div className="picture">
+                              <img src={char.image} alt={char.name} />
+                            </div>
+                          </TableData>
+                          <TableData data-testid="table-characters-name">
+                            {char.name}
+                          </TableData>
+                          <TableData>{char.species}</TableData>
+                          <TableData>{char.status}</TableData>
+                          <TableData>{char.gender}</TableData>
+                          <TableData>
+                            <button
+                              onClick={() => {
+                                selectChar(char.id);
+                              }}
+                              data-testid={`table-characters-more-info-${char.id}`}
+                            >
+                              More info
+                            </button>
+                          </TableData>
+                        </TableRow>
+                      ))}
+                    </tbody>
+                  </Table>
+                  {!isFiltering && !isError && (
+                    <div className="table-btns">
+                      <CustomButton
+                        size="small"
+                        disabled={page === 1}
+                        action={() => handlePagination("prev")}
+                        className="prev"
+                      >
+                        Prev
+                      </CustomButton>
+                      <CustomButton
+                        size="small"
+                        disabled={page === 42}
+                        action={() => handlePagination("next")}
+                        className="next"
+                      >
+                        Next
+                      </CustomButton>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </CharListWrapper>
+        </FadeTransition>
       )}
     </>
   );

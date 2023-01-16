@@ -20,6 +20,7 @@ import { MainWrapper } from "../../Wrapper";
 import useCustomSnackbar from "../../../helpers/useCustomSnackbar";
 import { pagination } from "../../../helpers";
 import CustomButton from "../../CustomButton";
+import { FadeTransition } from "../../../styles/globalStyled";
 
 function EpisodeList() {
   const [page, setPage] = useState(1);
@@ -112,87 +113,91 @@ function EpisodeList() {
   return (
     <>
       {isCharSelected ? (
-        <LocationDetail onDetailsReturn={returnToEpisodeList} />
+        <FadeTransition>
+          <LocationDetail onDetailsReturn={returnToEpisodeList} />
+        </FadeTransition>
       ) : (
-        <EpisodeListWrapper page={page}>
-          <div className="title-search">
-            <h2 data-testid="episodes-page-title">
-              Search for your favourite episode!
-            </h2>
-            <input
-              ref={filtertRef}
-              type="text"
-              placeholder="ex: The Ricklantis Mixup"
-              data-testid="episode-search-input"
-            />
-            <div className="search-btns">
-              <CustomButton size="small" action={filterCharacters}>
-                Search
-              </CustomButton>
-              {isFiltering && (
-                <CustomButton size="small" action={clearFilters}>
-                  Clear filters
+        <FadeTransition>
+          <EpisodeListWrapper page={page}>
+            <div className="title-search">
+              <h2 data-testid="episodes-page-title">
+                Search for your favourite episode!
+              </h2>
+              <input
+                ref={filtertRef}
+                type="text"
+                placeholder="ex: The Ricklantis Mixup"
+                data-testid="episode-search-input"
+              />
+              <div className="search-btns">
+                <CustomButton size="small" action={filterCharacters}>
+                  Search
                 </CustomButton>
-              )}
-            </div>
-          </div>
-          <div className="main-box">
-            {isError ? (
-              <div className="error-box">
-                <h2>{errorMessage}</h2>
-                <CustomButton action={clearFilters}>Reload</CustomButton>
-              </div>
-            ) : (
-              <div className="table">
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableHeading>Name</TableHeading>
-                      <TableHeading>Air date</TableHeading>
-                      <TableHeading>Episode</TableHeading>
-                    </TableRow>
-                  </TableHead>
-                  <tbody>
-                    {characters.map((char) => (
-                      <TableRow key={char.id}>
-                        <TableData data-testid="table-episodes-name">
-                          {char.name}
-                        </TableData>
-                        <TableData>{char.air_date}</TableData>
-                        <TableData>{char.episode}</TableData>
-                        <TableData>
-                          <button onClick={() => selectChar(char.id)}>
-                            More info
-                          </button>
-                        </TableData>
-                      </TableRow>
-                    ))}
-                  </tbody>
-                </Table>
-                {!isFiltering && !isError && (
-                  <div className="table-btns">
-                    <CustomButton
-                      size="small"
-                      disabled={page === 1}
-                      action={() => handlePagination("prev")}
-                      className="prev"
-                    >
-                      Prev
-                    </CustomButton>
-                    <CustomButton
-                      size="small"
-                      disabled={page === 3}
-                      action={() => handlePagination("next")}
-                      className="next"
-                    >
-                      Next
-                    </CustomButton>
-                  </div>
+                {isFiltering && (
+                  <CustomButton size="small" action={clearFilters}>
+                    Clear filters
+                  </CustomButton>
                 )}
               </div>
-            )}
-          </div>
-        </EpisodeListWrapper>
+            </div>
+            <div className="main-box">
+              {isError ? (
+                <div className="error-box">
+                  <h2>{errorMessage}</h2>
+                  <CustomButton action={clearFilters}>Reload</CustomButton>
+                </div>
+              ) : (
+                <div className="table">
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableHeading>Name</TableHeading>
+                        <TableHeading>Air date</TableHeading>
+                        <TableHeading>Episode</TableHeading>
+                      </TableRow>
+                    </TableHead>
+                    <tbody>
+                      {characters.map((char) => (
+                        <TableRow key={char.id}>
+                          <TableData data-testid="table-episodes-name">
+                            {char.name}
+                          </TableData>
+                          <TableData>{char.air_date}</TableData>
+                          <TableData>{char.episode}</TableData>
+                          <TableData>
+                            <button onClick={() => selectChar(char.id)}>
+                              More info
+                            </button>
+                          </TableData>
+                        </TableRow>
+                      ))}
+                    </tbody>
+                  </Table>
+                  {!isFiltering && !isError && (
+                    <div className="table-btns">
+                      <CustomButton
+                        size="small"
+                        disabled={page === 1}
+                        action={() => handlePagination("prev")}
+                        className="prev"
+                      >
+                        Prev
+                      </CustomButton>
+                      <CustomButton
+                        size="small"
+                        disabled={page === 3}
+                        action={() => handlePagination("next")}
+                        className="next"
+                      >
+                        Next
+                      </CustomButton>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </EpisodeListWrapper>
+        </FadeTransition>
       )}
     </>
   );

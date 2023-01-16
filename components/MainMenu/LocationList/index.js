@@ -20,6 +20,7 @@ import LocationDetail from "./LocationDetail";
 import useCustomSnackbar from "../../../helpers/useCustomSnackbar";
 import { pagination } from "../../../helpers";
 import CustomButton from "../../CustomButton";
+import { FadeTransition } from "../../../styles/globalStyled";
 
 function LocationList() {
   const [page, setPage] = useState(1);
@@ -67,7 +68,9 @@ function LocationList() {
     const response = await fetchFilteredLocations(filterData);
     if (response.error) {
       setIsError(true);
-      setErrorMessage("Could not find your location, please try again or reload");
+      setErrorMessage(
+        "Could not find your location, please try again or reload"
+      );
       return;
     }
     if (!response?.results) {
@@ -102,81 +105,89 @@ function LocationList() {
   return (
     <>
       {isCharSelected ? (
-        <LocationDetail onDetailsReturn={returnToLocationList} />
+        <FadeTransition>
+          <LocationDetail onDetailsReturn={returnToLocationList} />
+        </FadeTransition>
       ) : (
-        <LocationListWrapper page={page}>
-          <div className="title-search">
-            <h2 data-testid="locations-page-title">Search for an iconic location!</h2>
-            <input
-              ref={filtertRef}
-              type="text"
-              placeholder="ex: Citadel of ricks"
-              data-testid="location-search-input"
-            />
-            <div className="search-btns">
-              <CustomButton size="small" action={filterCharacters}>
-                Search
-              </CustomButton>
-              {isFiltering && (
-                <CustomButton size="small" action={clearFilters}>
-                  Clear filters
+        <FadeTransition>
+          <LocationListWrapper page={page}>
+            <div className="title-search">
+              <h2 data-testid="locations-page-title">
+                Search for an iconic location!
+              </h2>
+              <input
+                ref={filtertRef}
+                type="text"
+                placeholder="ex: Citadel of ricks"
+                data-testid="location-search-input"
+              />
+              <div className="search-btns">
+                <CustomButton size="small" action={filterCharacters}>
+                  Search
                 </CustomButton>
-              )}
-            </div>
-          </div>
-          <div className="main-box">
-            {isError ? (
-              <div className="error-box">
-                <h2>{errorMessage}</h2>
-                <CustomButton action={clearFilters}>Reload</CustomButton>
-              </div>
-            ) : (
-              <div className="table">
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableHeading>Name</TableHeading>
-                      <TableHeading>Type</TableHeading>
-                      <TableHeading>Dimension</TableHeading>
-                    </TableRow>
-                  </TableHead>
-                  <tbody>
-                    {characters.map((char) => (
-                      <TableRow key={char.id}>
-                        <TableData data-testid="table-locations-name">{char.name}</TableData>
-                        <TableData>{char.type}</TableData>
-                        <TableData>{char.dimension}</TableData>
-                        <TableData>
-                          <button onClick={() => selectChar(char.id)}>
-                            More info
-                          </button>
-                        </TableData>
-                      </TableRow>
-                    ))}
-                  </tbody>
-                </Table>
-                {!isFiltering && !isError && (
-                  <div className="table-btns">
-                    <CustomButton
-                      size="small"
-                      action={() => handlePagination("prev")}
-                      disabled={page === 1}
-                    >
-                      Prev
-                    </CustomButton>
-                    <CustomButton
-                      size="small"
-                      action={() => handlePagination("next")}
-                      disabled={page === 7}
-                    >
-                      Next
-                    </CustomButton>
-                  </div>
+                {isFiltering && (
+                  <CustomButton size="small" action={clearFilters}>
+                    Clear filters
+                  </CustomButton>
                 )}
               </div>
-            )}
-          </div>
-        </LocationListWrapper>
+            </div>
+            <div className="main-box">
+              {isError ? (
+                <div className="error-box">
+                  <h2>{errorMessage}</h2>
+                  <CustomButton action={clearFilters}>Reload</CustomButton>
+                </div>
+              ) : (
+                <div className="table">
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableHeading>Name</TableHeading>
+                        <TableHeading>Type</TableHeading>
+                        <TableHeading>Dimension</TableHeading>
+                      </TableRow>
+                    </TableHead>
+                    <tbody>
+                      {characters.map((char) => (
+                        <TableRow key={char.id}>
+                          <TableData data-testid="table-locations-name">
+                            {char.name}
+                          </TableData>
+                          <TableData>{char.type}</TableData>
+                          <TableData>{char.dimension}</TableData>
+                          <TableData>
+                            <button onClick={() => selectChar(char.id)}>
+                              More info
+                            </button>
+                          </TableData>
+                        </TableRow>
+                      ))}
+                    </tbody>
+                  </Table>
+                  {!isFiltering && !isError && (
+                    <div className="table-btns">
+                      <CustomButton
+                        size="small"
+                        action={() => handlePagination("prev")}
+                        disabled={page === 1}
+                      >
+                        Prev
+                      </CustomButton>
+                      <CustomButton
+                        size="small"
+                        action={() => handlePagination("next")}
+                        disabled={page === 7}
+                      >
+                        Next
+                      </CustomButton>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </LocationListWrapper>
+        </FadeTransition>
       )}
     </>
   );
