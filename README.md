@@ -9,6 +9,9 @@ https://github.com/public-apis/public-apis
 ---------------------------------------------------------------------
 ## REQUISITOS:
 
+- SEJA ORIGINAL, PROJETOS SUSPEITOS DE SEREM COPIADOS SERÃO DESCARTADOS!
+- QUEREMOS VER O SEU CÓDIGO, E NÃO O DE OUTROS.
+
 ## GIT
 - Faça um fork deste repositório.
 - Criar uma branch para codar as suas features.
