@@ -11,7 +11,7 @@ export const Container = styled.div`
   background-color: ${(p) => p.theme.colors.bg};
   border-bottom: 1px solid ${(p) => p.theme.colors.header.border};
   margin-bottom: -1px;
-  z-index: 999999;
+  z-index: 10000;
 `;
 
 export const Content = styled.div`
