@@ -1,0 +1,115 @@
+import styled, { ThemeContext } from 'styled-components';
+import { BsList } from 'react-icons/bs';
+import { shade } from 'polished';
+import Switch from 'react-switch';
+import { useContext } from "react";
+import useMediaQuery from "../utils/useMediaQuery";
+import Link from "next/link";
+import { UtilsContext } from "../context/utilsContext";
+import { useState } from 'react';
+
+export default function HeaderApp() {
+  const { colors, title } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(UtilsContext);
+  const [click, setClick] = useState(false);
+  const matches = useMediaQuery(900);
+
+  function handlerClick() {
+    setClick(!click);
+  }
+
+  return (
+    <>
+      {matches ? (
+        <>
+
+          <Header>
+            <BsList size={25} onClick={handlerClick} />
+            <Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/`}>
+              <h1>AnimeMania</h1>
+            </Link>
+            <Switch
+              onChange={toggleTheme}
+              checked={title === 'dark' ? true : false}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={10}
+              width={40}
+              handleDiameter={20}
+              offColor={shade(0.8, colors.primary)}
+              onColor={colors.secundary}
+            />
+          </Header>
+          {click ? <><Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/characters`} ><Characters backgroundColor={colors.primary}><h2>Characters</h2></Characters></Link></> : <></>}
+        </>
+      ) : (<>
+        <Header>
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/characters`}>
+            <div>
+              <h2>Characters</h2>
+            </div>
+          </Link>
+
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/`}>
+            <h1>AnimeMania</h1>
+          </Link>
+          <Switch
+            onChange={toggleTheme}
+            checked={title === 'dark' ? true : false}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={40}
+            handleDiameter={20}
+            offColor={shade(0.8, colors.primary)}
+            onColor={colors.secundary}
+          />
+        </Header>
+      </>)}
+    </>
+  )
+}
+
+const Header = styled.header`
+  height: 60px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background-color: ${props => props.theme.colors.primary};
+
+  h1 {
+    font-family: 'Jacques Francois', serif;
+    text-align: center;
+    font-size: 32px;
+    margin-left: 18px;
+
+  }
+  @media (min-width:900px) {
+    h1 {
+      margin-left:0;
+      margin-right: 20px;
+    }
+  }
+
+  h2 {
+    font-family: 'Jacques Francois', serif;
+    font-size: 22px;
+    margin-top: 4px;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 24px;
+  }
+`;
+
+const Characters = styled.div`
+  box-sizing: border-box;
+  width: 130px;
+  background-color: ${props => props.backgroundColor};
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+`;
