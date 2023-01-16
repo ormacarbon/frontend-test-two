@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Pokemon } from "../../../styles/pokemonCard";
+import { Pokemon } from "../styles";
 
 export default function PokemonCard({ pokemons }) {
   return (
