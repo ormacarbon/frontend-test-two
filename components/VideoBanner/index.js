@@ -11,7 +11,14 @@ function VideoBanner() {
       <Content>
         <h4>Pokémon Universe</h4>
         <p>Your definitive guide to the universe of Pokémons</p>
-        <Button title="Explore" color="dark" hoverColor="primary200" size="lg" onClick={() => router.push("/pokedex")}/>
+        <Button 
+          title="Explore" 
+          color="dark" 
+          textColor="white"
+          hoverColor="primary200" 
+          size="lg" 
+          onClick={() => router.push("/pokedex")}
+        />
       </Content>
 
       <video autoPlay loop muted>

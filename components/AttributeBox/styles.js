@@ -5,8 +5,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${(props) => props.theme.spacing.md};
-  border: 1px solid ${(props) => props.theme.colors.gray400};
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: ${(props) => props.theme.spacing.md};
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  color: ${props => props.theme.colors.text}
 
   h3 {
     margin-bottom: ${(props) => props.theme.spacing.lg};

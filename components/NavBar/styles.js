@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.aside`
+  display: flex;
+  flex-direction: column;
   width: 17.5rem;
   height: 100vh;
   padding: ${props => props.theme.spacing['2xl']} ${props => props.theme.spacing.xl};
-  background: ${props => props.theme.colors.dark};
-  transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
-  border-right: 1px solid ${props => props.theme.colors.gray400};
+  background: ${props => props.theme.colors.background};
+  border-right: 1px solid ${props => props.theme.colors.border};
+  transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, background 0.3s, border 0.3s;
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
     position: fixed;
@@ -31,6 +33,12 @@ export const Header = styled.header`
     font-size: 0.5em;
     font-weight: 600;
   }
+
+  h1, h2 {
+    color: ${props => props.theme.colors.text};
+    transition: color 0.3s, background 0.3s;
+    transition-delay: 0s;
+  }
 `
 
 export const List = styled.ul`
@@ -39,4 +47,12 @@ export const List = styled.ul`
   li {
     list-style-type: none;
   }
+`
+
+export const DarkMode = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  border-top: 1px solid ${props => props.theme.colors.border};
+  transition: border 0.3s; 
 `

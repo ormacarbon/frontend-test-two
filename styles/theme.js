@@ -1,12 +1,14 @@
 const colors = {
-  light: "#f8f9fa",
+  light: "#E0E0E2",
   dark: "#202028",
+  white: "#FFFFFF",
+  black: "#000000",
 
   primary100: "#ff4d55",
   primary200: "#FF2330",
   primary300: "#B00C2A",
   
-  label: "#4592C430",
+  label: "#4592C480",
   transparent: "transparent",
 
   orange: "#FD7D24",
@@ -146,8 +148,25 @@ const types = {
   },
 };
 
-export const theme = {
-  colors: colors,
+export const darkTheme = {
+  colors: {...colors, 
+    background: colors.dark,
+    text: colors.light,
+    container: colors.gray600,
+    border: colors.gray400
+  }
+}
+
+export const lightTheme = {
+  colors: {...colors, 
+    background: colors.light,
+    text: "#212739",
+    container: colors.light,
+    border: colors.gray200
+  }
+}
+
+export const settings = {
   fonts: fonts,
   types: types,
   spacing: spacing,

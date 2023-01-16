@@ -24,9 +24,10 @@ export const Container = styled.div`
   min-height: 20rem;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.md};
-  border: 1px solid ${(props) => props.theme.colors.gray400};
+  border: 1px solid ${(props) => props.theme.colors.border};
   padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing['3xl']};
   border-radius: ${(props) => props.theme.spacing.md};
+  transition: background 0.3s, color 0.3s, border 0.3s;
 `
 
 export const Content = styled.div`
@@ -52,9 +53,10 @@ export const Area = styled.div`
   justify-content: space-evenly;
   align-items: flex-end;
   gap: ${(props) => props.theme.spacing.md};
-  border: 1px solid ${(props) => props.theme.colors.gray400};
+  border: 1px solid ${(props) => props.theme.colors.border};
   padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.md} 0;
   border-radius: ${(props) => props.theme.spacing.sm};
+  transition: color 0.3s, border 0.3s;
 
   &::before {
     content: "";
@@ -63,7 +65,8 @@ export const Area = styled.div`
     left: 0;
     width: 100%;
     height: 1px;
-    background: ${(props) => props.theme.colors.gray400};
+    background: ${(props) => props.theme.colors.border};
+    transition: background 0.3s;
   }
 `
 
@@ -89,8 +92,11 @@ export const Bar = styled.div`
       width: 100%;
       bottom: 0;
       padding-bottom: ${(props) => props.theme.spacing.sm};
+      font-size: ${props => props.theme.fonts.size.sm};
       text-align: center;
+      color: ${(props) => props.theme.colors.white};
       animation: ${fadeAnimation} 0.5s ease-in-out;
+      transition: color 0.3s;
       animation-fill-mode: forwards;
       animation-iteration-count: 1;
     }
@@ -105,8 +111,10 @@ export const Bar = styled.div`
     text-align: center;
     padding-top: ${(props) => props.theme.spacing.xs};
     font-size: 10px;
+    font-weight: 700;
     text-transform: uppercase;
-    color: white;
+    color: ${props => props.theme.colors.text};
+    transition: color 0.3s;
     bottom: 0;
     transform: translateY(100%);
   }

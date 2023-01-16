@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   border-radius: ${props => props.theme.spacing.xl};
   overflow: hidden;
+  color: ${props => props.theme.colors.white};
 
   video {
     position: absolute;
@@ -25,6 +26,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   z-index: 1;
   padding: ${props => props.theme.spacing['4xl']};
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
   h4 {
     font-size: ${props => props.theme.fonts.size['2xl']};

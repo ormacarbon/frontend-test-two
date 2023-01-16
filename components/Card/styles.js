@@ -3,15 +3,14 @@ import styled from "styled-components";
 export const Container = styled.button`
   flex: 1;
   display: flex;
-  background: ${(props) => props.theme.colors.gray600};
+  background: ${(props) => props.theme.colors.text+10};
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.sm};
   padding: ${(props) => props.theme.spacing.md};
   border-radius: ${(props) => props.theme.spacing.md};
-  color: ${(props) => props.theme.colors.light};
-  border: 1px solid ${(props) => props.theme.colors.gray400};
-  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
-  transition: background 0.3s, margin 0.3s;
+  color: ${(props) => props.theme.colors.text};
+  border: 1px solid ${(props) => props.theme.colors.border};
+  transition: background 0.3s, border 0.3s, color 0.3s, margin 0.3s;
   margin: ${(props) => props.theme.spacing.sm};
   cursor: pointer;
 

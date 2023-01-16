@@ -37,7 +37,13 @@ function ExpandedCard(props) {
         </Header>
         <Description>{props.description}</Description>
         <div className="button-container">
-          <Button title="Discover More" size="lg" onClick={() => toPokemonLink(props.name)}/>
+          <Button 
+            title="Discover More" 
+            textColor="light"
+            hoverColor="primary300" 
+            size="lg" 
+            onClick={() => toPokemonLink(props.name)}
+          />
         </div>
       </Content>
     </Container>

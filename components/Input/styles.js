@@ -23,10 +23,11 @@ export const Container = styled.form`
     font-weight: 500;
     width: 100%;
     font-size: ${(props) => props.theme.fonts.size.md};
-    color: ${(props) => props.theme.colors.light};
+    color: ${(props) => props.theme.colors.text};
     padding: ${(props) => props.theme.spacing.md};
     border-radius: ${(props) => props.theme.spacing.md};
-    border: 1px solid ${(props) => props.theme.colors.gray400};
+    border: 1px solid ${(props) => props.theme.colors.border};
+    transition: color 0.3s, border 0.3s; 
     outline: none;
   }
 
@@ -35,9 +36,10 @@ export const Container = styled.form`
     display: flex;
     width: 100%;
     margin: ${(props) => props.theme.spacing.xs} 0 0 0;
-    border: 1px solid ${(props) => props.theme.colors.gray400};
+    color: ${(props) => props.theme.colors.text};
+    border: 1px solid ${(props) => props.theme.colors.border};
     border-radius: ${(props) => props.theme.spacing.md};
-    background-color: ${(props) => props.theme.colors.dark};
+    background-color: ${(props) => props.theme.colors.background};
     overflow: hidden;
     flex-direction: column;
     list-style-type: none;

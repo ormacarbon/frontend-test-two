@@ -48,7 +48,7 @@ function Pokemon() {
       {pokemon &&
         <>
           <Header 
-            title={<div>{pokemon.name} <span>#{pokemon.id.toString().padStart(3, "0")}</span></div>}
+            title={<div className="header">{pokemon.name} <span>#{pokemon.id.toString().padStart(3, "0")}</span></div>}
           />
           <Box>
             <Content>
@@ -91,7 +91,7 @@ function Pokemon() {
                       type={pokemon.types.map((tp) => tp.type.name)}
                     />
                     <Indicator>
-                      {(id+1)%3 !== 0 && <Button rounded hoverColor="primary200" icon={<CaretRight size={32} weight="bold" />}/>}
+                      {(id+1)%3 !== 0 && <Button rounded textColor="light" hoverColor="primary200" icon={<CaretRight size={32} weight="bold" />}/>}
                     </Indicator>
                   </CardContainer>
                 )})

@@ -13,7 +13,7 @@ function Header(props) {
       <div className='left-content'>
         {
           !props.hideButton &&
-          <Button icon={<ArrowLeft size={20} weight="bold" onClick={() => backRoute()} />}/>
+          <Button hoverColor="primary300" icon={<ArrowLeft size={20} weight="bold" onClick={() => backRoute()} />}/>
         }
         <Title>
           {

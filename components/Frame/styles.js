@@ -6,8 +6,9 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   border-radius: ${(props) => props.theme.spacing.md};
-  background: ${(props) => props.theme.colors.gray500};
-  border: 1px solid ${(props) => props.theme.colors.gray400};
+  background: ${(props) => props.theme.colors.background};
+  border: 1px solid ${(props) => props.theme.colors.border};
+  transition: background 0.3s, border 0.3s; 
   img {
     width: 100%;
     height: auto;

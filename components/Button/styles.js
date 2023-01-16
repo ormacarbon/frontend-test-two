@@ -8,11 +8,15 @@ export const Container = styled.button`
   min-width: ${props => !props.icon && '10rem'};
   border-radius: ${props => (props.rounded && '50%') || props.theme.spacing.md};
   padding: ${props => props.theme.spacing[props.size] || props.theme.spacing.md};
-  color: ${props => props.theme.colors[props.textColor] || props.theme.colors.light};
   font-size: ${props => props.theme.fonts.size.md};
-  font-weight: 500;
-  transition: background 0.3s, color 0.3s;
+  font-weight: 600;
   cursor: pointer;
+
+  color: ${
+    props => props => (props.active &&
+    props.theme.colors.white) ||
+    props.theme.colors[props.textColor] || 
+    props.theme.colors.text};
 
   background: ${
     props => props.active ? 
@@ -21,6 +25,7 @@ export const Container = styled.button`
     props.theme.colors[props.color] || 
     props.theme.colors.primary200
   };
+  transition: background 0.3s, color 0.3s;
 
   span {
     text-align: ${props => props.icon && 'start'};
@@ -28,7 +33,7 @@ export const Container = styled.button`
   }
 
   :hover {
-    background: ${ props => !props.active && (props.theme.colors[props.hoverColor] || props.theme.colors.primary300) };
+    background: ${ props => !props.active && (props.theme.colors[props.hoverColor] || props.theme.colors.text+20) };
   }
 
   :disabled {

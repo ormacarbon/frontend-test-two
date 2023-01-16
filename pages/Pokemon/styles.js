@@ -7,6 +7,12 @@ export const Container = styled.div`
   margin-right: auto;
   flex-direction: column;
   gap: ${props => props.theme.spacing.lg};
+  transition: background 0.3s, color 0.3s, border 0.3s;
+
+  .header {
+    color: ${props => props.theme.colors.text};
+    transition: color 0.3s;
+  }
 `
 
 export const Content = styled.div`
@@ -16,6 +22,7 @@ export const Content = styled.div`
   "frame attributes"
   "frame stats";
   gap: ${props => props.theme.spacing.lg};
+  color: ${props => props.theme.colors.text};
 
   .frame {
     grid-area: frame;
@@ -23,6 +30,8 @@ export const Content = styled.div`
 
   .description {
     grid-area: description;
+    color: ${props => props.theme.colors.text};
+    transition: color 0.3s;
     h3 {
       margin-bottom: ${props => props.theme.spacing.lg};
     }

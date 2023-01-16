@@ -1,14 +1,26 @@
 import React, { useContext, useState } from 'react'
-import { Container, Header, List } from './styles'
+import { Container, Header, List, DarkMode } from './styles'
 import { RouteContext } from '../../context/routeContext';
+import { ThemeContext } from '../../context/themeContext';
 import Image from 'next/image'
-import { SquaresFour, BookBookmark, CircleHalfTilt, EggCrack, ImageSquare, PawPrint } from 'phosphor-react'
+import { 
+  SquaresFour, 
+  BookBookmark, 
+  CircleHalfTilt, 
+  EggCrack, 
+  ImageSquare, 
+  PawPrint,
+  GearSix, 
+  Sun,
+  Moon
+} from 'phosphor-react'
 
 import Pokeball from '/public/pokeball-logo.svg'
 import Button from '../Button'
 
 function NavBar() {
   const { currentRoute, router, toPokemonLink, menuOpen } = useContext(RouteContext);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
 
   return(
     <Container isOpen={menuOpen}>
@@ -24,11 +36,10 @@ function NavBar() {
               title="Overview"
               active={!currentRoute.includes("pokemon") && !currentRoute.includes("pokedex")} 
               onClick={() => router.push("/overview")} 
-              icon={<SquaresFour size={32} weight="fill" />}s
+              icon={<SquaresFour size={28} weight="fill" />}s
               flex
               color="transparent"
               activeColor="primary200"
-              hoverColor="gray500"
             />
           </li>
 
@@ -37,11 +48,10 @@ function NavBar() {
               title="Pokédex"
               active={currentRoute.includes("pokedex")} 
               onClick={() => router.push("/pokedex")}  
-              icon={<BookBookmark size={32} weight="fill" />}
+              icon={<BookBookmark size={28} weight="fill" />}
               flex
               color="transparent"
               activeColor="primary200"
-              hoverColor="gray500"
             />
           </li>
 
@@ -50,11 +60,10 @@ function NavBar() {
               title="Pokémon"
               active={currentRoute.includes("pokemon")} 
               onClick={() => toPokemonLink("bulbasaur")} 
-              icon={<PawPrint size={32} weight="fill" />}
+              icon={<PawPrint size={28} weight="fill" />}
               flex
               color="transparent"
               activeColor="primary200"
-              hoverColor="gray500"
             />
           </li>
 
@@ -62,11 +71,10 @@ function NavBar() {
             <Button
               title="Pokéballs"
               disabled 
-              icon={<CircleHalfTilt size={32} weight="fill" />}
+              icon={<CircleHalfTilt size={28} weight="fill" />}
               flex
               color="transparent"
               activeColor="primary200"
-              hoverColor="gray500"
             />
           </li>
 
@@ -74,11 +82,10 @@ function NavBar() {
             <Button 
               title="Items"
               disabled 
-              icon={<EggCrack size={32} weight="fill" />}
+              icon={<EggCrack size={28} weight="fill" />}
               flex
               color="transparent"
               activeColor="primary200"
-              hoverColor="gray500"
             />
           </li>
 
@@ -86,15 +93,34 @@ function NavBar() {
             <Button
               title="Gallery"
               disabled 
-              icon={<ImageSquare size={32} weight="fill" />}
+              icon={<ImageSquare size={28} weight="fill" />}
               flex
               color="transparent"
               activeColor="primary200"
-              hoverColor="gray500"
+            />
+          </li>
+          <li>
+            <Button
+              title="Settings"
+              disabled 
+              icon={<GearSix size={28} weight="fill" />}
+              flex
+              color="transparent"
+              activeColor="primary200"
             />
           </li>
         </List>
       </nav>
+      <DarkMode>
+        <Button
+          title={!darkMode ? "Dark mode" : "Light mode"}
+          icon={!darkMode ? <Moon size={28} weight="fill" /> : <Sun size={28} weight="bold" />}
+          flex
+          color="transparent"
+          onClick={() => setDarkMode(!darkMode)}
+        />
+      </DarkMode>
+      
     </Container>
   )
 }

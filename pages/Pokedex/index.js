@@ -34,7 +34,13 @@ function Pokedex() {
         })}
       </Content>
       <div className="button-container">
-        <Button title={"Load more Pokémon"} size="lg" onClick={() => updatePokemonList()}/>
+        <Button 
+          title={"Load more Pokémon"} 
+          textColor="white" 
+          hoverColor="primary300"
+          size="lg"
+          onClick={() => updatePokemonList()}
+        />
       </div>
     </Container>
   );

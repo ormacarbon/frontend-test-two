@@ -19,6 +19,7 @@ function MobileMenu() {
       <Button 
         rounded 
         size="xs" 
+        hoverColor="primary300"
         onClick={() => setMenuOpen(!menuOpen)} 
         icon={
           <Hamburger rounded size={24} toggled={menuOpen} label="Show menu" />

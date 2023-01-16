@@ -7,9 +7,10 @@ export const Container = styled.div`
   gap: ${(props) => props.theme.spacing.sm};
   padding: ${(props) => props.theme.spacing.md};
   border-radius: ${(props) => props.theme.spacing.xl};
-  color: ${(props) => props.theme.colors.light};
-  border: 1px solid ${(props) => props.theme.colors.gray400};
+  color: ${(props) => props.theme.colors.text};
+  border: 1px solid ${(props) => props.theme.colors.border};
   transition: background 0.3s, border 0.3s;
+  font-weight: 600;
 `
 
 export const Header = styled.header`
@@ -23,11 +24,12 @@ export const Header = styled.header`
     display: flex;
     gap: ${(props) => props.theme.spacing.sm};
     font-size: ${(props) => props.theme.fonts.size["2xl"]};
-    font-weight: 600;
+    transition: background 0.3s, color 0.3s, border 0.3s; 
 
     p {
       text-align: start;
       text-transform: capitalize;
+      color: ${(props) => props.theme.colors.text};
     }
 
     span {

@@ -35,6 +35,6 @@ export const Title = styled.header`
   } 
 
   span {
-    color: ${props => props.theme.colors.gray400};
+    color: ${props => props.theme.colors.gray300};
   }
 `

@@ -1,21 +1,22 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   width: 100%;
   transform: translateY(-100%);
-  background: ${props => props.theme.colors.dark};
+  background: ${props => props.theme.colors.background};
   padding: ${props => props.theme.spacing.lg} ${props => props.theme.spacing.xl};
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid ${props => props.theme.colors.gray400};
-  transition: transform 0.5s ease-in-out;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
+  transition: background 0.3s, border 0.3s, transform 0.5s ease-in-out;
   z-index: 100;
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
+    display: flex;
     display: flex;
     transform: translateY(0%);
   }

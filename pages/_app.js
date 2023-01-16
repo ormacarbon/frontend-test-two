@@ -1,11 +1,22 @@
 import { GlobalStyle } from '../styles/global'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../styles/theme'
 import Layout from '../components/Layout'
 import { PokemonContextProvider } from "../context/pokemonContext"
 import { RouteContextProvider } from '../context/routeContext'
+import ThemeContextProvider, { ThemeContext } from '../context/themeContext'
+import { useContext } from "react";
 
-function MyApp({ Component, pageProps }) {
+function ThemeWrapper({ children }) {
+  return (
+    <ThemeContextProvider dark={true}>
+      {children}
+    </ThemeContextProvider>
+  );
+}
+
+export function MyApp({ Component, pageProps }) {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <RouteContextProvider>
       <PokemonContextProvider>
@@ -20,4 +31,10 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default function App(props) {
+  return (
+    <ThemeWrapper>
+      <MyApp {...props} />
+    </ThemeWrapper>
+  );
+}
