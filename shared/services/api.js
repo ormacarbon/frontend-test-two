@@ -5,4 +5,9 @@ const estimate = async (data) => {
     return response.data
 }
 
-export { estimate }
+const search = async ({query}) => {
+    const response = await instance.get("/search", { params: query })
+    return response.data
+}
+
+export { estimate, search }
