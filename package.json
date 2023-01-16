@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build"
   },
   "dependencies": {
     "eslint-plugin-react-hooks": "^5.0.0-next-7002a6743-20230110",
