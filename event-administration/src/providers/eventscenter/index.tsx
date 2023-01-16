@@ -4,6 +4,9 @@ import { toast } from "react-toastify";
 interface EventsProviderData {
   selectedEvent: (event: string, beer: Beers) => void;
   removeBeer: (event: string, beer: Beers) => void;
+  weddingBeers: Beers[];
+  confraternizationBeers: Beers[];
+  graduationBeers: Beers[];
 }
 
 interface EventsProviderProps {
@@ -43,7 +46,7 @@ export const EventsProvider = ({ children }: EventsProviderProps) => {
           setWeddingBeers([...weddingBeers, beer]);
           toast.success("Adicionado com sucesso");
         } else {
-          toast.info("Já adicionado para este evento");
+          toast.warn("Já adicionado para este evento");
         }
 
         break;
@@ -57,7 +60,7 @@ export const EventsProvider = ({ children }: EventsProviderProps) => {
           setConfraternizationBeers([...confraternizationBeers, beer]);
           toast.success("Adicionado com sucesso");
         } else {
-          toast.info("Já adicionado para este evento");
+          toast.warn("Já adicionado para este evento");
         }
 
         break;
@@ -71,7 +74,7 @@ export const EventsProvider = ({ children }: EventsProviderProps) => {
           setGraduationBeers([...graduationBeers, beer]);
           toast.success("Adicionado com sucesso");
         } else {
-          toast.info("Já adicionado para este evento");
+          toast.warn("Já adicionado para este evento");
         }
         break;
     }
@@ -80,21 +83,43 @@ export const EventsProvider = ({ children }: EventsProviderProps) => {
   const removeBeer = (event: string, beer: Beers) => {
     switch (event) {
       case "wedding":
-        console.log("casamento");
+        const filterWeddingBeers = weddingBeers.filter((element) => {
+          return element.name !== beer.name;
+        });
+        setWeddingBeers(filterWeddingBeers);
+        toast.info("Cerveja removida com sucesso");
         break;
 
       case "confraternization":
-        console.log("confraternization");
+        const filterConfraternizationBeers = confraternizationBeers.filter(
+          (element) => {
+            return element.name !== beer.name;
+          }
+        );
+        setConfraternizationBeers(filterConfraternizationBeers);
+        toast.info("Cerveja removida com sucesso");
         break;
 
       case "graduation":
-        console.log("graduation");
+        const filterGraduationBeers = graduationBeers.filter((element) => {
+          return element.name !== beer.name;
+        });
+        setGraduationBeers(filterGraduationBeers);
+        toast.info("Cerveja removida com sucesso");
         break;
     }
   };
 
   return (
-    <EventsContext.Provider value={{ selectedEvent, removeBeer }}>
+    <EventsContext.Provider
+      value={{
+        selectedEvent,
+        removeBeer,
+        weddingBeers,
+        confraternizationBeers,
+        graduationBeers,
+      }}
+    >
       {children}
     </EventsContext.Provider>
   );

@@ -10,7 +10,7 @@ function App() {
     <>
       <Globalstyle />
       <ToastContainer
-        position="top-right"
+        position="top-left"
         autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -18,7 +18,6 @@ function App() {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
       />
       <RoutesComponent />
     </>

@@ -14,7 +14,7 @@ export const AvailableBeersPageComponent = () => {
     <>
       <HeaderComponent />
       <Title>
-        <h2>Bebidas disponíveis</h2>
+        <h2>Cervejas disponíveis</h2>
       </Title>
       <BeersCard>
         {beersPage.map((element) => {
@@ -36,14 +36,16 @@ export const AvailableBeersPageComponent = () => {
           <button
             onClick={() => {
               getBeers(page - 1);
+              window.scrollTo(0, 0);
             }}
           >
             &lt;
           </button>
-          <p>página atual</p>
+          <p>página {page}</p>
           <button
             onClick={() => {
               getBeers(page + 1);
+              window.scrollTo(0, 0);
             }}
           >
             &gt;

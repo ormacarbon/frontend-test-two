@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BeerCard = styled.div`
+export const BeerEventCard = styled.div`
   width: 250px;
 
   text-align: center;
@@ -29,7 +29,7 @@ interface BackGroundImageProps {
   image: string | null;
 }
 
-export const BackGroundImage = styled.div<BackGroundImageProps>`
+export const BackGroundImageEvent = styled.div<BackGroundImageProps>`
   width: 100%;
   height: 200px;
   margin: auto;

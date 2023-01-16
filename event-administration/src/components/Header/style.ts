@@ -13,12 +13,14 @@ export const Header = styled.nav`
   > p.drinks {
     position: absolute;
     top: 3%;
+    width: 200px;
+    cursor: pointer;
   }
 
   > p.events {
     position: absolute;
     width: 100%;
-    text-align: right;
+    text-align: left;
     padding-right: 130px;
     top: 1%;
   }
@@ -55,5 +57,17 @@ export const Header = styled.nav`
         margin: 1px 15px;
       }
     }
+  }
+`;
+
+export const HeaderMenu = styled.div`
+  position: absolute;
+  top: 3%;
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+
+  > p.drinks {
+    cursor: pointer;
   }
 `;

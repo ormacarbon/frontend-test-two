@@ -1,19 +1,26 @@
-import { Header } from "./style";
+import { Header, HeaderMenu } from "./style";
 
-import { Routes, Route, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const HeaderComponent = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Header>
-        <p className="drinks">Administração de eventos</p>
-
-        <p className="events">Eventos</p>
+        <HeaderMenu>
+          <p className="drinks" onClick={() => navigate("/availablebeers")}>
+            Administração de eventos
+          </p>
+          <p>Eventos</p>
+        </HeaderMenu>
 
         <ul>
-          <li>casamento</li>
-          <li>confraternização</li>
-          <li>formatura</li>
+          <li onClick={() => navigate("/weddingbeers")}>casamento</li>
+          <li onClick={() => navigate("/confraternizationbeers")}>
+            confraternização
+          </li>
+          <li onClick={() => navigate("/graduationbeers")}>formatura</li>
         </ul>
       </Header>
     </>
