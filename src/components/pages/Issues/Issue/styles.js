@@ -77,7 +77,7 @@ export const Content = styled.div`
       width: 12px;
       height: 12px;
       color: ${(issueProps) =>
-        issueProps.state === "open" ? "#3fb950" : "red"};
+        issueProps.state === "open" ? "#3fb950" : "#f51e1e"};
     }
   }
 `;
