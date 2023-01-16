@@ -16,8 +16,8 @@ export default function Header() {
           checked={theme === 'dark'}
           checkedIcon={false}
           uncheckedIcon={false}
-          checkedHandleIcon="🌞"
-          uncheckedHandleIcon="🌑"
+          checkedHandleIcon={<span>🌞</span>}
+          uncheckedHandleIcon={<span>🌑</span>}
           height={25}
           width={50}
           handleDiameter={25}

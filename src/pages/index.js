@@ -15,7 +15,7 @@ export default function Home({ leagues }) {
     <Main theme={currentTheme}>
       <WellCome />
       <Container theme={currentTheme}>
-        <Carousel itemsToScroll={2} itemsToShow={4}>
+        <Carousel itemsToScroll={2} itemsToShow={3.5}>
           {leagues.data.map((league) => {
             const logoDark = league.logos.dark.replace(/["]/g, '');
             const logoLight = league.logos.light;
@@ -24,7 +24,7 @@ export default function Home({ leagues }) {
             return (
               <Link href={`/${league.id}`} key={league.id}>
                 <img src={setLogoLeague} alt="logo-league" />
-                {league.name}
+                <p>{league.name}</p>
               </Link>
             );
           })}

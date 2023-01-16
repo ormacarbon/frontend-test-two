@@ -5,14 +5,14 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 90vh;
   position: relative;
 `;
 
 export const Container = styled.div`
   width: 90%;
   position: absolute;
-  bottom: 0;
+  bottom: -125px;
+
   a {
     background-color: ${({ theme }) => theme.primaryColor};
     border-radius: 10px;
@@ -20,18 +20,16 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     flex-direction: column;
-    border: 1px solid;
-    padding: 15px;
+    border: 1px solid ${({ theme }) => theme.tertiaryColor};
+    min-width: 250px;
+    min-height: 230px;
 
     &:hover {
       cursor: pointer;
       background-color: ${({ theme }) => theme.secondaryColor};
-      color: ${({ theme }) => theme.primaryColor};
-      transform: scale(1.1);
-      img {
-        width: 280px;
-      }
+      color: #fff;
     }
 
     :active {
@@ -39,32 +37,47 @@ export const Container = styled.div`
     }
 
     img {
-      width: 300px;
-      margin-right: 16px;
+      width: 150px;
     }
 
-  }
-  .rec.rec-arrow:disabled {
-    visibility: hidden;
-  }
-
-  .rec.rec-arrow {
-    color: orange;
-    background-color: ${({ theme }) => theme.tertiaryColor};
-    border-radius: 10px;
-    color: ${({ theme }) => theme.secondaryColor};
+    p{
+      margin-top: 16px;
+    }
   }
 
-  .rec.rec-arrow:hover {
-    background-color: ${({ theme }) => theme.secondaryColor};
-    color: #fff;
-  }
   .rec {
     cursor: grabbing;
   }
 
-  .rec-carousel-item {
-    border-radius: 50%;
+  .rec.rec-arrow {
+    background-color: #fff;
+    color: ${({ theme }) => theme.secondaryColor};
+    border-radius: 10px;
+
+    &:disabled {
+      visibility: hidden;
+    }
+
+    &:hover{
+      background-color: ${({ theme }) => theme.secondaryColor};
+      color: #fff;
+    }
   }
+
+  .rec-carousel-item {
+    margin-right: 32px;
+  }
+
+  @media screen and (min-width: 1300px) {
+    a {
+      img {
+        width: 300px;
+      }
+    }
+
+    .rec-carousel-item {
+      margin-right: 0px;
+  }
+}
 
 `;
