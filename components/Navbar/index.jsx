@@ -3,23 +3,25 @@ import { IoCalculator } from 'react-icons/io5'
 import { BiStats } from 'react-icons/bi'
 import { CgDarkMode } from 'react-icons/cg'
 import { HStack } from "../../shared/styles/sharedStyles"
+import { Baumans } from "@next/font/google"
 import isActive from '../../shared/utils/isActive'
-import logo from '../../shared/assets/logo.svg'
 
-const Navbar = ({toggleThemeCallback}) => { 
+const baumans = Baumans({ subsets: ['latin'], weight: ['400'] })
+
+const Navbar = ({ toggleThemeCallback }) => {
     return (
         <NavbarContainer>
-            <NavLink href="/" active={isActive("/")}> 
-                <Logo src={logo} alt="logo" active={isActive("/")} />
+            <NavLink href="/" active={isActive("/")}>
+                <Logo className={baumans.className} translate={false}> estimator </Logo>
             </NavLink>
             <NavLinks>
-                <HStack width="200px" widthMobile="100px" justify="center">
-                <NavLink href="/estimate" active={isActive("estimate")}> <IoCalculator /> estimate </NavLink>
-                <NavLink href="/stats" active={isActive("stats")}> <BiStats /> stats </NavLink>
+                <HStack width="200px" widthMobile="100px" align="center">
+                    <NavLink href="/estimate" active={isActive("estimate")}> <IoCalculator /> <span> estimate </span> </NavLink>
+                    <NavLink href="/stats" active={isActive("stats")}> <BiStats /> <span>stats</span> </NavLink>
+                    <div onClick={toggleThemeCallback}>
+                        <CgDarkMode size={30} />
+                    </div>
                 </HStack>
-                <div onClick={toggleThemeCallback}>
-                    <CgDarkMode />
-                </div>
             </NavLinks>
         </NavbarContainer>
     )

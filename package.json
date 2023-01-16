@@ -9,13 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.4",
+    "@next/font": "^13.1.2",
+    "axios": "^1.2.2",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-flags-select": "^2.2.3",
+    "react-hook-form": "^7.42.0",
     "react-icons": "^4.7.1",
-    "styled-components": "^5.3.6"
+    "react-loader-spinner": "^5.3.4",
+    "styled-components": "^5.3.6",
+    "swr": "^2.0.0"
   },
   "devDependencies": {
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6"
   }
