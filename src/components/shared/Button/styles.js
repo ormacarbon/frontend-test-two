@@ -9,7 +9,7 @@ export const Container = styled.button`
   gap: 10px;
   padding: 0 14px;
   height: 32px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: ${(p) => p.theme.colors.button.text};
   background-color: ${(p) => p.theme.colors.button.bg};
