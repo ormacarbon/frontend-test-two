@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+
 const StyledButton = styled.button`
   border-radius: 24px;
   cursor: pointer;

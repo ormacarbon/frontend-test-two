@@ -29,11 +29,11 @@ const PaginationSty = styled.div`
     background: #ffe400;
     color: #101010;
   }
+  @media (max-width: 768px) {
+    
+    margin-left: 114px;
+  } ;
 `
-
-
-
-
 
 const Pagination = ({
   totalPosts,

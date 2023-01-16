@@ -4,8 +4,6 @@ import Navbar from "../components/navbar";
 import Button from "../components/button";
 import Image from "next/image";
 import img from "../public/coin.png";
-import { GlobalStyles } from "./themes";
-
 
 const CentralDiv = styled.div`
   height: 85vh;
@@ -14,6 +12,8 @@ const CentralDiv = styled.div`
   align-items: center;
   @media (max-width: 768px) {
     width: 220px;
+    height: 105vh;
+    margin-left: 32px;
   } ;
 `;
 
@@ -21,8 +21,7 @@ const TransDiv = styled.div`
   border: 5px solid rgba(0, 0, 0, 0.3);
   padding: 30px;
   border-radius: 30px;
-  
-  
+
   box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 40px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.2) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -66,6 +65,7 @@ const CriptImg = styled(Image)`
 export default function Home() {
 
   
+
   return (
     <BordDiv>
       <CentralDiv>
@@ -83,6 +83,7 @@ export default function Home() {
           </Link>
         </TransDiv>
       </CentralDiv>
+      
     </BordDiv>
   );
 }

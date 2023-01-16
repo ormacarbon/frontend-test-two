@@ -4,6 +4,7 @@ import Image from "next/image";
 import img from "../public/coin.png";
 import Axios from "axios";
 import Cardpreco from "../components/cardpreco";
+
 import Pagination from "../components/pagination";
 
 import { useEffect, useState } from "react";
@@ -18,7 +19,13 @@ const GalerSty = styled.div`
 
   h5 {
     font-size: 5rem;
+    @media (max-width: 768px) { 
+    font-size: 2rem;
+    margin-right: 25px;
+  };
   }
+
+  
 `;
 
 const CriptImg = styled(Image)`
@@ -40,7 +47,7 @@ const CriptImg = styled(Image)`
 
 
 
-export default function Cripto() {
+export default function Galery() {
   const [coinsData, setCoinsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(21);

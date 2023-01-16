@@ -4,14 +4,16 @@ import styled from "styled-components";
 import Cryptocard from "./cryptocard";
 
 const OrgPrice = styled.div`
-  
+  @media (max-width: 768px) {
+    margin-left: 120px;
+  } ;
   
 `;
 
 const OrgDiv = styled.div`
   display: inline-block;
   cursor: pointer;
-  margin-left: 50px;
+  margin-left: 44px;
   margin-top: 50px;
   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
   &:hover {

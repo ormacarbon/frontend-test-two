@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styled from "styled-components";
 import SearchIcon from '@mui/icons-material/Search';
 import Cardzin from "../components/cardzin";
+
 import Navbar from "../components/navbar";
 import Axios from "axios";
 import { useState, useEffect } from "react";
@@ -20,8 +21,8 @@ const StySearch = styled.div`
   font-size: 6rem;
   margin-top: 60px;
   @media (max-width: 768px) { 
-    font-size: 2.5rem;
-    margin-left: 50px;
+    font-size: 1.5rem;
+    margin-left: 120px;
   };
   
 `
@@ -54,7 +55,7 @@ const DivIn = styled.div`
   border: 2px solid gray;
   border-radius: 20px;
   @media (max-width: 768px) { 
-    margin-left: 50px;
+    margin-left: 120px;
   };
   
 
@@ -64,7 +65,7 @@ const DivCoins = styled.div`
   margin-top: 60px;
   margin-left: 6px;
   @media (max-width: 768px) { 
-    margin-left: 90px;
+    margin-left: 112px;
   };
   
   
