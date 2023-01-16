@@ -44,7 +44,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  button[type="submit"]{
+  button[type="submit"], button{
     background: ${({ theme }) => theme.button};
     border: none;
     color: ${({ theme }) => theme.body};

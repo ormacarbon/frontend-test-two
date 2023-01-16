@@ -13,12 +13,12 @@ const Form = styled.form`
 `
 
 const Button = styled.button`
-    width: 100%;
+    width: ${props => props.width || "100%"};
+    height: ${props => props.height || "auto"};
     padding: 0.5rem;
     margin: 0.5rem 0;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #ccc;
+    font-size: large;
     cursor: pointer;
 `
 
