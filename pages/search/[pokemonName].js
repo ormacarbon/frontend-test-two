@@ -31,8 +31,6 @@ export const getStaticProps = async (context) => {
 };
 
 export default function Pokemon({ pokemon }) {
-  console.log(pokemon);
-
   return (
     <div>
       <Image

@@ -7,7 +7,7 @@ import Pagination from "./components/pagination";
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonPerPage] = useState(10);
+  const [pokemonPerPage] = useState(15);
 
   async function getAllPokemons() {
     try {
