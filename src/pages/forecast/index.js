@@ -2,7 +2,7 @@ import Loading from "../../components/Loading/Loading";
 import { useFetch } from "../../hooks/useFetch";
 import useLocation from "../../hooks/useLocation";
 
-const index = () => {
+const Index = () => {
   const { latitude, longitude } = useLocation();
   const { data, error, loading } = useFetch(
     `/api/forecast?latitude=${latitude}&longitude=${longitude}`
@@ -21,4 +21,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
