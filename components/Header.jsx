@@ -5,33 +5,52 @@ import Switch from 'react-switch';
 import { useContext } from "react";
 import useMediaQuery from "../utils/useMediaQuery";
 import Link from "next/link";
+import { UtilsContext } from "../context/utilsContext";
+import { useState } from 'react';
 
-export default function HeaderApp({ toggleTheme }) {
+export default function HeaderApp() {
   const { colors, title } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(UtilsContext);
+  const [click, setClick] = useState(false);
   const matches = useMediaQuery(900);
+
+  function handlerClick() {
+    setClick(!click);
+  }
+
   return (
     <>
       {matches ? (
+        <>
+
+          <Header>
+            <BsList size={25} onClick={handlerClick} />
+            <Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/`}>
+              <h1>AnimeMania</h1>
+            </Link>
+            <Switch
+              onChange={toggleTheme}
+              checked={title === 'dark' ? true : false}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={10}
+              width={40}
+              handleDiameter={20}
+              offColor={shade(0.8, colors.primary)}
+              onColor={colors.secundary}
+            />
+          </Header>
+          {click ? <><h2>Characters</h2></> : <></>}
+        </>
+      ) : (<>
         <Header>
-          <BsList size={25} />
+          <div>
+            <h2>Characters</h2>
+          </div>
+
           <Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/`}>
             <h1>AnimeMania</h1>
           </Link>
-          <Switch
-            onChange={toggleTheme}
-            checked={title === 'dark' ? true : false}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            height={10}
-            width={40}
-            handleDiameter={20}
-            offColor={shade(0.8, colors.primary)}
-            onColor={colors.secundary}
-          />
-        </Header>
-      ) : (<>
-        <Header>
-          <h1>AnimeMania</h1>
           <Switch
             onChange={toggleTheme}
             checked={title === 'dark' ? true : false}
@@ -61,6 +80,26 @@ const Header = styled.header`
   h1 {
     font-family: 'Jacques Francois', serif;
     text-align: center;
+    font-size: 32px;
     margin-left: 18px;
+
+  }
+  @media (min-width:900px) {
+    h1 {
+      margin-left:0;
+      margin-right: 20px;
+    }
+  }
+
+  h2 {
+    font-family: 'Jacques Francois', serif;
+    font-size: 22px;
+    margin-top: 4px;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 24px;
   }
 `;

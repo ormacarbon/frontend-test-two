@@ -8,7 +8,7 @@ export default function Home({ animes }) {
 
   return (
     <>
-      <Main justifyContent='space-evenly'>
+      <Main justifyContent='center'>
         {animes.map((anime) => {
           return (
             <>
@@ -53,13 +53,20 @@ export const getServerSideProps = async () => {
 
 const ContainerAnime = styled.div`
   width: 200px;
-  box-sizing: border-box;
+  box-sizing: content-box;
   margin-bottom: 20px;
+  padding: 10px;
   cursor: pointer;
   img {
     margin-bottom: 10px;
     width: 200px;
     height: 200px;
+  }
+
+  &:hover {
+    top:-4px;
+    box-shadow:1px 1px 4px 4px #999;
+    transition: all .2s ease-in-out;
   }
 
   h1 {

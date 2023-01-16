@@ -1,9 +1,10 @@
-import HeaderApp from "./Header"
+import HeaderApp from "./Header";
 
-export default function MainComponent({ children, toggleTheme }) {
+
+export default function MainComponent({ children }) {
     return (
         <>
-            <HeaderApp toggleTheme={toggleTheme} />
+            <HeaderApp />
             <div>{children}</div>
         </>
     )
