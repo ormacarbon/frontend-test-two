@@ -7,4 +7,16 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: Arial, Helvetica, sans-serif;
     }
+
+
+    html{
+        
+        @media (max-width: 1080px) {
+            font-size: 93.75%;
+        }
+
+        @media (max-width: 1080px) {
+            font-size: 87.5%;
+        }
+    }
 `;
