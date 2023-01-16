@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react"
 import { GotCard } from "../../src/components/GotCard";
-import { ButtonSearch, CardsContainer, Container, FilterInput, SearchContainer, ItemsAmount } from "./styles";
+import { ButtonSearch, CardsContainer, Container, FilterInput, SearchContainer, ItemsAmount } from "../../src/styles/gotItems";
 
 interface CharactersProps {
   name: string;

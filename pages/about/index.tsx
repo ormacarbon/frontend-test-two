@@ -1,4 +1,4 @@
-import { Title, Container } from "./styles";
+import { Title, Container } from "../../src/styles/about";
 
 export default function About() {
   return (
