@@ -22,9 +22,5 @@
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "babel-plugin-styled-components": "latest"
-  },
-  "engines": {
-    "node": "16",
-    "npm": "8"
   }
 }
