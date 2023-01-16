@@ -2,10 +2,18 @@ import { useState, useEffect } from 'react';
 import AnimeCardInfo from './components/AnimeCardInfo';
 import AnimeCard from './components/AnimeCard';
 import styled from 'styled-components';
+import Pagination from './components/Pagination';
 
 const Container = styled.div`
-  display: flex;
+  display: grid;
   padding-top: 130px;
+  padding-bottom: 100px;
+  grid-auto-flow: row ;
+
+  @media(max-width: 768px) {
+    padding-left: 100px;
+    right: 0;
+  }
 
   input {
     position: absolute;
@@ -43,34 +51,29 @@ export default function HomePage() {
   const pages = Math.ceil(animeData.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = animeData.slice(startIndex, endIndex)
+  const currentItems = animeData.slice(startIndex, endIndex);
 
   const getData = async () => {
-    const res = await fetch(
-      `https://api.jikan.moe/v4/anime?q=${search}`
-    );
+    const res = await fetch(`https://api.jikan.moe/v4/anime?q=${search}`);
     const resData = await res.json();
     console.log(resData.data);
     setAnimeData(resData.data);
   };
   useEffect(() => {
+    setCurrentPage(0);
     getData();
   }, [search]);
 
   return (
     <Container>
-      {pages}
       <input
         placeholder='🔍 Search animes...'
         onChange={(e) => setSearch(e.target.value)}
       />
- {Array.from(Array(pages), (item, index) => {
-        return <button key={index}>{index}</button>
-      })}
-      <AnimeCard animeList={animeData} setAnimeInfo={setAnimeInfo} />
-      {animeInfo && <AnimeCardInfo animeInfo={animeInfo} />}
 
-     
+      <AnimeCard animeList={currentItems} setAnimeInfo={setAnimeInfo} />
+      {animeInfo && <AnimeCardInfo animeInfo={animeInfo} />}
+      <Pagination pages={pages} setCurrentPage={setCurrentPage} />
     </Container>
   );
 }

@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -11,9 +12,15 @@ flex-direction: column;
   justify-content: center;
   align-items: center;
 
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: auto;
+    
+  }
   @media (max-width: 320px) {
     display: flex;
-    width: 300px;
+    width: 320px;
     
   }
   
@@ -22,11 +29,6 @@ const Title = styled.h1`
   text-align: center;
   padding: 0;
   display: flex;
-
-  @media (max-width: 768px){
-    display: flex;
-      margin-left: -80px;
-  }
 `
 const Card = styled.div`
   width: 500px;
@@ -57,9 +59,34 @@ const Card = styled.div`
   }
 `
 
-export default function MovieCard({ animeList, setAnimeInfo, query }) {
+const Search = ({animeList, setAnimeInfo}) => {
+  const router = useRouter();
+
+  const [animes, setAnimes] = useState([]);
+  const query = router.get("q");
+
+const getSearchedMovies = async (url) => {
+  const res = await fetch(url);
+  const data = await res.json();
+  setAnimes(data.results);
+};
+
+// const getData = async () => {
+//     const res = await fetch(
+//       `https://api.jikan.moe/v4/anime?q=${search}&limit=10`
+//     );
+//     const resData = await res.json();
+//     console.log(resData.data);
+//     setAnimeData(resData.data);
+//   };
+
+useEffect(() => {
+  const searchWithQueryURL = `https://api.jikan.moe/v4/anime?q=${search}&limit=10&query=${query}`;
+  getSearchedMovies(searchWithQueryURL);
+}, [query]);
+
   return (
-    <>
+   <>
     <Title>Animes: <span>{query}</span></Title>
     <Container>
       {animeList
@@ -82,4 +109,4 @@ export default function MovieCard({ animeList, setAnimeInfo, query }) {
     </Container>
     </>
   );
-}
+};

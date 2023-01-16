@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Burger from './Burger';
 
@@ -72,6 +72,10 @@ import Burger from './Burger';
  `
 
 export default function Navbar() {
+  const [theme, setTheme] = useState("light") 
+  const toggleTheme = () => {
+    theme == 'light' ? setTheme('dark') : setTheme('light')
+  }
   return (
      <Container>
        <Burger/>
@@ -79,6 +83,7 @@ export default function Navbar() {
     Jikan Lib
          </Link>
        </Logo>
+       <button onClick={toggleTheme}>Switch Theme</button>
      </Container>
   );
 }
