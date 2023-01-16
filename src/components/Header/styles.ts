@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import Link from "next/link";
-
 export const StyledHeader = styled.header`
   background: ${(props) => props.theme.colors.black};
 
@@ -23,7 +21,7 @@ export const StyledHeader = styled.header`
     gap: 0.5rem;
 
     width: 40%;
-    padding: 0.25rem;
+    padding: 0.3rem 0.8rem;
 
     border-radius: 10px;
     background: ${(props) => props.theme.colors["gray-700"]};
@@ -49,8 +47,4 @@ export const StyledHeader = styled.header`
 export const Nav = styled.nav`
   display: flex;
   gap: 1rem;
-`;
-
-export const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.colors.white};
 `;
