@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Main = styled.div`
   margin: 2rem auto;
   max-width: 45rem;
+  min-height: 100vh;
   padding: 1.5rem;
   @media screen and (max-width: 500px) {
     margin: 1rem auto;
