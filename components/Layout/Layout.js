@@ -6,11 +6,9 @@ const Layout = ({ children }) => {
     <>
       <Header />
 
-      <div className="page-content">{children}</div>
+      {children}
 
-      <footer>
-        <p>test</p>
-      </footer>
+      <footer></footer>
     </>
   );
 };

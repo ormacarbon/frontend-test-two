@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderBg = styled.header`
-  background-color: #ededed;
+  background-color: var(--color-2);
 `;
 
 export const HeaderDiv = styled.div`
@@ -23,10 +23,9 @@ export const MenuUl = styled.ul`
   gap: 40px;
 
   a {
-    color: #664400;
+    color: var(--color-p4);
     display: inline-block;
     padding: 16px 0px;
-    font-size: 18px;
     position: relative;
   }
 
@@ -35,7 +34,7 @@ export const MenuUl = styled.ul`
     display: block;
     height: 2px;
     width: 0%;
-    background-color: #664400;
+    background-color: var(--color-p4);
     margin-top: 4px;
     transition: 0.3s;
     position: absolute;
@@ -48,12 +47,12 @@ export const MenuUl = styled.ul`
   @media (max-width: 800px) {
     gap: 20px;
     a {
-      background: #f7f7f7;
+      background: var(--color-1);
       padding: 12px 16px;
       border-radius: 4px;
     }
     a:hover {
-      background-color: #ccc;
+      background-color: var(--color-4);
     }
     a:after {
       display: none;
