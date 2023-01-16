@@ -8,6 +8,7 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   height: 60px;
+  max-width: 100vw;
   background-color: ${(p) => p.theme.colors.bg};
   border-bottom: 1px solid ${(p) => p.theme.colors.header.border};
   margin-bottom: -1px;
@@ -35,11 +36,29 @@ export const PageInfoContainer = styled.div`
     height: 40px;
     border-radius: 50%;
     background-color: ${(p) => p.theme.colors.imgBackground};
+
+    @media (max-width: 420px) {
+      display: none;
+    }
   }
 
-  span {
-    color: ${(p) => p.theme.colors.primary};
-    font-weight: 600;
+  div {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+
+    p {
+      color: ${(p) => p.theme.colors.primary};
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-right: 10px;
+    }
+    span {
+      font-size: 0.8rem;
+      font-weight: 200;
+      color: ${(p) => p.theme.colors.secundary};
+    }
   }
 `;
 

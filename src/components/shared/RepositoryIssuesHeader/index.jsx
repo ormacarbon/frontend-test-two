@@ -1,3 +1,6 @@
+import Button from "../../shared/Button";
+import ToggleThemeButton from "../ToggleThemeButton";
+
 import {
   ActionButtonsContainer,
   Container,
@@ -5,15 +8,12 @@ import {
   PageInfoContainer,
   RepoLogo,
 } from "./styles";
-
+import { useRouter } from "next/router";
 import { FiArrowLeft } from "react-icons/fi";
-import Button from "../../shared/Button";
-import ToggleThemeButton from "../ToggleThemeButton";
 
 export default function RepositoryIssuesHeader(props) {
-  const { repository } = props;
-
-  console.log(repository);
+  const { repository, isEmpty } = props;
+  const router = useRouter();
 
   return (
     <Container>
@@ -23,14 +23,19 @@ export default function RepositoryIssuesHeader(props) {
             alt={`${repository.name} logo`}
             src={repository.owner.avatar_url}
           />
-          <span>{repository.name} • Issues</span>
+          <div>
+            <p>{repository.name}</p>
+            <span>issues</span>
+          </div>
         </PageInfoContainer>
         <ActionButtonsContainer>
           <ToggleThemeButton />
-          <Button type="rounded-square">
-            <FiArrowLeft />
-            Voltar
-          </Button>
+          {!isEmpty && (
+            <Button onClick={() => router.back()} type="rounded-square">
+              <FiArrowLeft />
+              Voltar
+            </Button>
+          )}
         </ActionButtonsContainer>
       </Content>
     </Container>
