@@ -2,8 +2,9 @@ import styled from "styled-components"
 
 const Body = styled.article`
     display: flex;
-    width: 300px;
-    margin: 5px;
+    width: 270px;
+    min-height: 140px;
+    margin: 10px;
     padding: 1rem;
     border: 1px solid #000000;
     box-shadow: .5rem .5rem 0 black;
