@@ -11,8 +11,6 @@ export default function Pagination({
     pageNumbers.push(i);
   }
 
-  console.log(pageNumbers);
-
   return (
     <PaginationContainer>
       {pageNumbers.map((number) => {

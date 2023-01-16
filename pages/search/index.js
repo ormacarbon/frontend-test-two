@@ -22,8 +22,6 @@ export default function Search() {
       } else {
         alert("Pokemon não encontrado.");
       }
-
-      console.log(pokemon);
     } catch (err) {
       console.log(err);
       alert("Pokemon não encontado", err);

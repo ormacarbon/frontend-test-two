@@ -30,9 +30,6 @@ export default function Home() {
   // cont to change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  console.log("aaaaaaaaaaaa", currentPokemons);
-  console.log("bbbbbbbb", pokemons);
-
   useEffect(() => {
     getAllPokemons();
   }, []);
