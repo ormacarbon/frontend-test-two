@@ -11,6 +11,7 @@ import { themeDarkMode, themeLightMode } from "../../src/theme/theme"
 
 export default function RecipePage() {
 	const lightSwitchState = useRecoilValue(themeSwitchState)
+	const lightSwitch = useSetRecoilState(themeSwitchState)
 
 	const router = useRouter()
 	const { id } = router.query
@@ -19,6 +20,15 @@ export default function RecipePage() {
 	const savedRecipes = useRecoilValue(savedRecipesState)
 	const index = recipeList.findIndex(item => item.id == id)
 	console.log(savedRecipes)
+
+	useEffect(() => {
+		const darkMode = localStorage.getItem('darkMode')
+		if(darkMode == 'on'){
+			lightSwitch(lightSwitchState == true ? !lightSwitchState : lightSwitchState)
+		  }else{
+			lightSwitch(true)
+		  }
+	},[])
 
 	return (
 		<div>

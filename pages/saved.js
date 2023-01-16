@@ -3,16 +3,24 @@ import Header from '../src/components/Header/Header'
 import Footer from '../src/components/Footer/Footer'
 import RecepieCard from '../src/components/RecepeCard/RecepeCard'
 import { themeLightMode } from "../src/theme/theme"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useRecoilValue, useSetRecoilState } from "recoil"
-import { savedRecipesState } from "../src/state/atom"
+import { savedRecipesState, themeSwitchState } from "../src/state/atom"
 import Button from "../src/components/Button/Button"
 
 export default function SavedRecipes() {
 	const setSavedRecipe = useSetRecoilState(savedRecipesState)
 	const savedRecipes = useRecoilValue(savedRecipesState)
+	const lightSwitchState = useRecoilValue(themeSwitchState)
+	const lightSwitch = useSetRecoilState(themeSwitchState)
 	useEffect(() => {
+		const darkMode = localStorage.getItem('darkMode')
 		setSavedRecipe(JSON.parse(localStorage.getItem('savedrecipes')))
+		if(darkMode == 'on'){
+			lightSwitch(lightSwitchState == true ? !lightSwitchState : lightSwitchState)
+		  }else{
+			lightSwitch(true)
+		  }
 	}, [])
 	console.log(savedRecipes);
 	return (
@@ -27,7 +35,7 @@ export default function SavedRecipes() {
 								<RecepieCard
 									title={recipe.title}
 									img={recipe.image}
-									to={recipe.id}
+									to={`/recipe/${recipe.id}`}
 								/>
 								<Button
 								m={2}

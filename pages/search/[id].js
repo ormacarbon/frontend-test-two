@@ -1,15 +1,27 @@
 import { useRouter } from "next/router"
-import { useRecoilValue } from "recoil"
+import { useEffect } from "react"
+import { useRecoilValue, useSetRecoilState } from "recoil"
 import styled from "styled-components"
 import Footer from "../../src/components/Footer/Footer"
 import Header from "../../src/components/Header/Header"
 import RecepieCard from "../../src/components/RecepeCard/RecepeCard"
-import { searchResults } from "../../src/state/atom"
+import { searchResults, themeSwitchState } from "../../src/state/atom"
 
 export default function SearchItem() {
+    const lightSwitchState = useRecoilValue(themeSwitchState)
+	const lightSwitch = useSetRecoilState(themeSwitchState)
     const router = useRouter()
     const { id } = router.query
     const results = useRecoilValue(searchResults)
+
+    useEffect(() => {
+        const darkMode = localStorage.getItem('darkMode')
+		if(darkMode == 'on'){
+			lightSwitch(lightSwitchState == true ? !lightSwitchState : lightSwitchState)
+		  }else{
+			lightSwitch(true)
+		  }
+	},[])
     
     return (
         <div>
@@ -22,7 +34,7 @@ export default function SearchItem() {
                             <RecepieCard
                                 title={recipe.title}
                                 img={recipe.image}
-                                to={recipe.id}
+                                to={`/recipe/${recipe.id}`}
                             />
                         </div>
                     ))}

@@ -1,8 +1,5 @@
 import Link from "next/link"
-import { useEffect, useState } from "react"
-import { useRecoilValue } from "recoil"
 import styled, { ThemeProvider } from "styled-components"
-import { listaDeReceitas, themeState } from "../../state/atom"
 import { themeLightMode } from '../../theme/theme'
 
 export default function Menu() {
@@ -11,10 +8,10 @@ export default function Menu() {
          <StyledMenu>
             <ul className="list">
                <li className="item">
-                  <Link href={'/saved'}>Saved Recipes</Link>
+                  <Link href={'/'}>Home</Link>
                </li>
                <li className="item">
-                  <Link href={'/'}>Home</Link>
+                  <Link href={'/saved'}>Saved Recipes</Link>
                </li>
             </ul>
          </StyledMenu>

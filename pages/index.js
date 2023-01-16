@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import styled, {ThemeProvider} from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import Button from "../src/components/Button/Button";
 import Footer from "../src/components/Footer/Footer";
 import Header from "../src/components/Header/Header";
 import RecepieCard from "../src/components/RecepeCard/RecepeCard";
@@ -30,25 +31,21 @@ export default function Home() {
   useEffect(() => {
     const recipeList = JSON.parse(localStorage.getItem('recipelist'))
     const darkMode = localStorage.getItem('darkMode')
-    const date = new Date
-    const hours = date.getHours()
-    localStorage.setItem('hours', JSON.stringify(hours))
-    const savedHors = JSON.parse(localStorage.getItem('hours'))
 
-    if(darkMode == 'on'){
-      lightSwitch(!lightSwitchState)
-    }else{
+    if (darkMode == 'on') {
+      lightSwitch(lightSwitchState == true ? !lightSwitchState : lightSwitchState)
+    } else {
       lightSwitch(true)
     }
 
-    if(recipeList == null || hours != savedHors){
+    if (recipeList == null) {
       axios.request(options).then(function (response) {
         localStorage.setItem('recipelist', JSON.stringify(response.data.recipes))
         Setreceitas(response.data.recipes);
       }).catch(function (error) {
         console.error(error);
       });
-    }else{
+    } else {
       Setreceitas(recipeList)
     }
   }, [])
@@ -57,9 +54,23 @@ export default function Home() {
     <div>
       <ThemeProvider theme={themeLightMode}>
         <Header />
-        <Recommendations
-
-        />
+        <Recommendations />
+        <StyledNewRecipes>
+          <Button
+            width={100}
+            text='new recipes'
+            m={2}
+            onClick={() => {
+              axios.request(options).then(function (response) {
+                localStorage.setItem('recipelist', JSON.stringify(response.data.recipes))
+                Setreceitas(response.data.recipes);
+              }).catch(function (error) {
+                console.error(error);
+              });
+              console.log(receitas)
+            }}
+          />
+        </StyledNewRecipes>
 
         <StyledMoreRecepies>
           <h2>
@@ -71,13 +82,13 @@ export default function Home() {
                 <RecepieCard
                   title={recipe.title}
                   img={recipe.image}
-                  to={recipe.id}
+                  to={`/recipe/${recipe.id}`}
                 />
               </div>
             ))}
           </div>
         </StyledMoreRecepies>
-        <Footer/>
+        <Footer />
       </ThemeProvider>
     </div>
   )
@@ -87,6 +98,10 @@ const StyledMoreRecepies = styled.section`
 width: 80%;
 margin: 2rem auto;
 padding: 1rem;
+
+.new{
+  width: 50%;
+}
 
 h2{
   margin: 3rem 0;
@@ -100,7 +115,7 @@ h2{
   grid-gap: 2rem;
 
   .more__card-container{
-    min-width: 400px;
+    width: 400px;
     min-height: 300px;
   }
 }
@@ -110,7 +125,7 @@ h2{
       width: 100%;
       display: flex;
       flex-direction: column;
-      
+
       .more__card-container{
           min-width: 400px  ;
           height: 300px;
@@ -130,5 +145,12 @@ h2{
         }
     }
 }
+
+`
+
+const StyledNewRecipes = styled.div`
+
+display: flex;
+justify-content: center;
 
 `

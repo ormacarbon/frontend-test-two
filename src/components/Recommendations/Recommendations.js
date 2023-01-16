@@ -17,21 +17,21 @@ export default function Recommendations() {
             <RecepieCard
               title={receitas.length > 0 ? receitas[0].title : ''}
               img={receitas.length > 0 ? receitas[0].image : ''}
-              to={`${receitas[0].id}`}
+              to={`recipe/${receitas[0].id}`}
             />
           </div>
           <div className="recommendations__grid-item">
             <RecepieCard
               title={receitas.length > 0 ? receitas[1].title : ''}
               img={receitas.length > 0 ? receitas[1].image : ''}
-              to={`${receitas[1].id}`}
+              to={`recipe/${receitas[1].id}`}
             />
           </div>
           <div className="recommendations__grid-item">
             <RecepieCard
               title={receitas.length > 0 ? receitas[4].title : ''}
               img={receitas.length > 0 ? receitas[4].image : ''}
-              to={`${receitas[4].id}`}
+              to={`recipe/${receitas[4].id}`}
             />
           </div>
         </div>

@@ -1,13 +1,11 @@
 import Link from "next/link"
-import { useRecoilValue } from "recoil"
 import styled, { ThemeProvider } from "styled-components"
-import { themeState, themeSwitchState } from "../../state/atom"
-import { themeDarkMode, themeLightMode } from "../../theme/theme"
+import { themeLightMode } from "../../theme/theme"
 
 export default function RecepieCard(props) {
     return (
         <ThemeProvider theme={themeLightMode}>
-        <Link href={`/recipe/${props.to}`}>
+        <Link href={props.to}>
             <StyledRecepieCard style={{
                 backgroundImage: `linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7)), url(${props.img})`
             }}>

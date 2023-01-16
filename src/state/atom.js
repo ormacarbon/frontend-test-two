@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import { themeLightMode } from "../theme/theme";
 
 export const listaDeReceitas = atom({
     key: 'listaDeReceitas',
