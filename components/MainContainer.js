@@ -5,7 +5,7 @@ export default function MainContainer({ children }) {
   return (
     <>
       <Navbar />
-      <div>{children}</div>
+      <div className="container">{children}</div>
     </>
   );
 }

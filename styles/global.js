@@ -26,6 +26,27 @@ export const GlobalStyle = createGlobalStyle`
       text-decoration: none;
       font-weight: 700;
       font-size: 1.6rem;
+
+      @media (max-width: 700px) {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+
+    button{
+      padding: 0.7rem;
+      width: 50%;
+      border-radius: 8px;
+      font-weight: 700;
     }
   }
 `;
