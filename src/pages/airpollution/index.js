@@ -21,7 +21,7 @@ const AirPolluition = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <div>
           <Title text="Air pollution data" />
           {data?.list?.map((elements, index) => (
             <div key={index} className="infosPolluition">
@@ -37,7 +37,7 @@ const AirPolluition = () => {
               <h1>so2: {elements.components.so2}</h1> */}
             </div>
           ))}
-        </>
+        </div>
       )}
     </C.ContainerAirPolluition>
   );
