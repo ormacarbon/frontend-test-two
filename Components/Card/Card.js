@@ -21,7 +21,7 @@ function Card({ apiOptions, handlePokemonInfo }) {
               key={index}
               onClick={() => handlePokemonInfo(item[2])}
             >
-              <img src={item[1]} alt={item[1]} loading="lazy" />
+              <Image src={item[1]} alt={item[1]} width={200} height={200} loading="lazy" />
               <p>{item[0]}</p>
             </li>
           ) : (

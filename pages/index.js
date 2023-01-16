@@ -19,10 +19,12 @@ function Home() {
   };
 
   async function apiRequest(uriBase) {
+    const uriBaseDefault = uriBase ?? "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16"; 
+
     setApiOptions([]);
     setLoading(true);
 
-    await fetch(uriBase)
+    await fetch(uriBaseDefault)
       .then((req) => req.json())
       .then((resp) => {
         _handleMapUrlsPagination(resp);
@@ -58,19 +60,18 @@ function Home() {
     setApiOptions(prop);
   };
 
-  const getListPokemon = () => {
-    const uriBase = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=15";
-    setHideBySearch(null);
-    apiRequest(uriBase);
-    return;
-  };
-
   useEffect(() => {
     const localTheme = window.localStorage.getItem("theme");
     localTheme && setTheme(localTheme);
   }, []);
 
   useEffect(() => {
+    const getListPokemon = () => {
+      setHideBySearch(null);
+      apiRequest();
+      return;
+    };
+
     getListPokemon();
   }, []);
 
@@ -80,7 +81,7 @@ function Home() {
 
       <Search
         getSearch={getSearch}
-        getListPokemon={getListPokemon}
+        apiRequest={apiRequest}
         setLoading={setLoading}
       />
 

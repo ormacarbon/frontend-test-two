@@ -8,10 +8,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  exportPathMap: async function () {
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
     return {
-      '/': { page: '/' },
-    }
+      "/": { page: "/" },
+    };
   },
 };
 

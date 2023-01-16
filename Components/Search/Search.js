@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function Search({ getSearch, getListPokemon, setLoading }) {
+function Search({ getSearch, apiRequest, setLoading }) {
   const [state, setState] = useState("");
   const [hideBySearch, setHideBySearch] = useState(null);
 
   const goBack = () => {
     setHideBySearch(null);
     setState("");
-    getListPokemon();
+    apiRequest();
   };
 
   const handleSearch = () => {

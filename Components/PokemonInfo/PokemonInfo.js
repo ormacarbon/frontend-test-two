@@ -1,56 +1,52 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 function Pokemon({ modal, setLoading }) {
-  const [state, setState] = useState("");
   const [info, setInfo] = useState([]);
   const [modalClose, setModalClose] = useState();
   let arrEggGroup = [];
-  if (info != []) {
-    arrEggGroup = info[3];
-  }
-
-  const requestApiPokemon = () => {
-    const id = modal?.id;
-    const urlBase = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    setLoading(true);
-
-    fetch(urlBase)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setInfo({
-          name: data.forms[0].name,
-          pokeImgFront: data.sprites.front_default,
-          pokeImgBack: data.sprites.back_default,
-          pokeImgShinyFront: data.sprites.front_shiny,
-          pokeImgShinyBack: data.sprites.back_shiny,
-          shiny: false,
-          frontImg: true,
-          speed: data.stats[0].base_stat,
-          spDef: data.stats[1].base_stat,
-          spAtk: data.stats[2].base_stat,
-          def: data.stats[3].base_stat,
-          atk: data.stats[4].base_stat,
-          hp: data.stats[5].base_stat,
-          id: "#" + data.id,
-        });
-        setLoading(false);
-
-        return;
-      })
-      .catch((err) => {
-        setLoading(false);
-        throw new Error({ err });
-      });
-  };
+  if (info != []) arrEggGroup = info[3];
 
   useEffect(() => {
     if (modal !== null) {
+      function requestApiPokemon(callback) {
+        const id = modal?.id;
+        const urlBase = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        setLoading(true);
+
+        fetch(urlBase)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setInfo({
+              name: data.forms[0].name,
+              pokeImgFront: data.sprites.front_default,
+              pokeImgBack: data.sprites.back_default,
+              pokeImgShinyFront: data.sprites.front_shiny,
+              pokeImgShinyBack: data.sprites.back_shiny,
+              shiny: false,
+              frontImg: true,
+              speed: data.stats[0].base_stat,
+              spDef: data.stats[1].base_stat,
+              spAtk: data.stats[2].base_stat,
+              def: data.stats[3].base_stat,
+              atk: data.stats[4].base_stat,
+              hp: data.stats[5].base_stat,
+              id: "#" + data.id,
+            });
+            setLoading(false);
+            callback(true);
+            return;
+          })
+          .catch((err) => {
+            setLoading(false);
+            throw new Error({ err });
+          });
+      }
       requestApiPokemon();
       setModalClose(modal.class);
     }
-  });
+  }, [modal, setLoading]);
 
-  console.log(modalClose);
   if (modal != "") {
     return (
       <div className={`modal ${modalClose}`}>
@@ -68,7 +64,12 @@ function Pokemon({ modal, setLoading }) {
           <div className="modal-body gap-3">
             {console.log(info)}
             <h2>{info.name}</h2>
-            <img src={info.pokeImgFront} />
+            <Image
+              src={info.pokeImgFront}
+              width={400}
+              height={400}
+              alt={info.pokeImgFront}
+            />
             <div className="flex-row gap-2 info-details">
               <p>HP:</p>
               <p>{info.hp}</p>

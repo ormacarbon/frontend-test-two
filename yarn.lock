@@ -843,7 +843,7 @@
   "resolved" "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.0.tgz"
   "version" "4.6.0"
 
-"eslint-plugin-react-hooks@^5.0.0-next-7002a6743-20230110":
+"eslint-plugin-react-hooks@^5.0.0-next-4f8ffec45-20230115":
   "integrity" "sha512-mqa+XDVhYm5ZBTWnNIH525ZOkvTwvT26kqW1sHN+mimHI3HXY7EnR1/Wub5arYc4PIZ27xH7qgjptn4XlkmUiw=="
   "resolved" "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.0.0-next-7002a6743-20230110.tgz"
   "version" "5.0.0-next-7002a6743-20230110"

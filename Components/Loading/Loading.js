@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 function Loading({ loading }) {
   const urlLoading =
     "https://olaargentina.com/wp-content/uploads/2019/11/loading-gif-transparent-10.gif";
@@ -7,7 +9,7 @@ function Loading({ loading }) {
       {" "}
       {loading ? (
         <div className="loading">
-          <img src={urlLoading} alt="loading" loading="lazy" />
+          <Image src={urlLoading} width={200} height={200} alt="loading" loading="lazy" />
         </div>
       ) : (
         ""
