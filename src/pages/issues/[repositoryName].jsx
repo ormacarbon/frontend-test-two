@@ -13,21 +13,27 @@ import {
   ActionsContainer,
   Container,
   Content,
+  Empty,
   IssuesContainer,
   PaginationButtons,
 } from "./styles";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../../contexts/theme";
+import Image from "next/image";
+import Button from "../../components/shared/Button";
 
 export default function repositoryNameIssues() {
+  const router = useRouter();
   const { repositoryName } = useRouter().query;
   const { theme } = useContext(ThemeContext);
 
-  const [repository, setRepository] = useState({});
-  const [issues, setIssues] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [state, setState] = useState("all");
+  const [issues, setIssues] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [requested, setRequested] = useState();
+  const [repository, setRepository] = useState({});
+  const [maxPages, setMaxPages] = useState(0);
 
   useEffect(() => {
     if (repositoryName) {
@@ -45,18 +51,37 @@ export default function repositoryNameIssues() {
         // ]);
         // setRepository(repositoryData.data);
         // setIssues(issuesData.data);
-        // setLoading(false);
-
+        setLoading(false);
+        setRequested(true);
         setIssues(issue_data);
         setRepository(repo_data);
-        setLoading(false);
       })();
     }
   }, [repositoryName, page, state]);
 
+  useEffect(() => {
+    setPage(1);
+  }, [state]);
+
+  useEffect(() => {
+    const calc = (value) => {
+      let pages = (value / 15).toFixed(0);
+      let rest = value % 15;
+      return rest > 0 ? pages + 1 : pages;
+    };
+
+    if (repository?.name) {
+      const all = issues[0]?.number;
+      const opened = repository.open_issues_count;
+      const closed = all - opened;
+      setMaxPages(
+        calc(state === "open" ? opened : state === "closed" ? closed : all)
+      );
+    }
+  }, [repository, state]);
+
   function handleChangeIssuesPage(_page) {
     setPage(page + _page);
-    console.log(page);
   }
 
   return (
@@ -66,37 +91,59 @@ export default function repositoryNameIssues() {
           {repository.name ? repository.name + " • issues" : "Loading..."}
         </title>
       </Head>
-      {repository?.name && <RepositoryIssuesHeader repository={repository} />}
+      {repository?.name && (
+        <RepositoryIssuesHeader
+          isEmpty={issues.length === 0}
+          repository={repository}
+        />
+      )}
       <Container>
         <Content>
-          <ActionsContainer>
-            <IssueTypeDropdown state={state} setState={setState} />
-            <PaginationButtons>
-              {page > 1 && (
-                <button onClick={() => handleChangeIssuesPage(-1)}>
-                  <FiArrowLeft /> Anterior
-                </button>
-              )}
-              <button onClick={() => handleChangeIssuesPage(1)}>
-                Próxima
-                <FiArrowRight />
-              </button>
-            </PaginationButtons>
-          </ActionsContainer>
-          <IssuesContainer>
-            {loading ? (
-              <ColorRing
-                visible={true}
-                height="60"
-                width="60"
-                ariaLabel="blocks-loading"
-                wrapperClass="blocks-wrapper"
-                colors={theme.colors.blue[200].repeat(5).match(/.{1,7}/g)}
-              />
-            ) : (
-              issues.map((issue) => <Issue key={issue.id} data={issue} />)
-            )}
-          </IssuesContainer>
+          {!requested || issues.length > 0 ? (
+            <>
+              <ActionsContainer>
+                <IssueTypeDropdown state={state} setState={setState} />
+                <PaginationButtons>
+                  {page > 1 && (
+                    <button onClick={() => handleChangeIssuesPage(-1)}>
+                      <FiArrowLeft /> Anterior
+                    </button>
+                  )}
+                  {page <= maxPages && (
+                    <button onClick={() => handleChangeIssuesPage(1)}>
+                      Próxima
+                      <FiArrowRight />
+                    </button>
+                  )}
+                </PaginationButtons>
+              </ActionsContainer>
+              <IssuesContainer>
+                {loading ? (
+                  <ColorRing
+                    visible={true}
+                    height="60"
+                    width="60"
+                    ariaLabel="blocks-loading"
+                    wrapperClass="blocks-wrapper"
+                    colors={theme.colors.blue[200].repeat(5).match(/.{1,7}/g)}
+                  />
+                ) : (
+                  issues.map((issue) => <Issue key={issue.id} data={issue} />)
+                )}
+              </IssuesContainer>
+            </>
+          ) : (
+            <Empty>
+              <img alt="Empty issues icon" src="/assets/empty-issues.svg" />
+              <span>
+                Não há issues por <br /> aqui ainda.
+              </span>
+              <Button onClick={() => router.back()} type="rounded-square">
+                <FiArrowLeft />
+                Voltar
+              </Button>
+            </Empty>
+          )}
         </Content>
       </Container>
     </>
