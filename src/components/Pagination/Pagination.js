@@ -52,7 +52,7 @@ export const Pagination = (props) => {
             )}
           </>
         );
-      case "/worlds":
+      case "/locations":
         return (
           <>
             {prevPage && (

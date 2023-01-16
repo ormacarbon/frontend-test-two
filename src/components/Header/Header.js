@@ -17,7 +17,7 @@ const Header = () => {
         <Image src={light} onClick={toggleTheme} />
         <DivButtonsNavigation>
           <ButtonHeader onClick={() => router.push("/")}>Home</ButtonHeader>
-          <ButtonHeader onClick={() => router.push("/worlds")}>
+          <ButtonHeader onClick={() => router.push("/locations")}>
             Locations
           </ButtonHeader>
           <ButtonHeader onClick={() => router.push("/episodes")}>

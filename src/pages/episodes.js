@@ -8,7 +8,7 @@ import { BASE_URL_EP } from "../constants/url";
 import { GlobalContext } from "../contexts/GlobalContext";
 import { Container, ContainerCards } from "../styles/indexStyle";
 
-const episodes = () => {
+const Episodes = () => {
   const context = useContext(GlobalContext);
   const {
     episodes,
@@ -50,4 +50,4 @@ const episodes = () => {
   );
 };
 
-export default episodes;
+export default Episodes;

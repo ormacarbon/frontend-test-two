@@ -11,7 +11,7 @@ import {
 } from "../../styles/detailsStyled";
 import { Footer } from "../../components/Footer/Footer";
 
-const detailsPage = () => {
+const Details = () => {
   const [characterDetails, setCharacterDetails] = useState([]);
   const router = useRouter();
   const id = router.query.id;
@@ -31,29 +31,31 @@ const detailsPage = () => {
   }, [id]);
 
   return (
-    <ContainerDetails>
-      <Header />
-      <ContainerCardDetails>
-        <div>
-          <NameCh>{characterDetails.name}</NameCh>
-          <p>
-            <u>Species</u>: {characterDetails.species}
-          </p>
-          <p>
-            <u>Origin</u>: {characterDetails.origin?.name}
-          </p>
-          <p>
-            <u>Last location</u>: {characterDetails.location?.name}
-          </p>
-          <p>
-            <u>Gender</u>: {characterDetails.gender}
-          </p>
-        </div>
-        <ImgDetails src={characterDetails.image} alt="character image" />
-      </ContainerCardDetails>
+    <>
+      <ContainerDetails>
+        <Header />
+        <ContainerCardDetails>
+          <div>
+            <NameCh>{characterDetails.name}</NameCh>
+            <p>
+              <u>Species</u>: {characterDetails.species}
+            </p>
+            <p>
+              <u>Origin</u>: {characterDetails.origin?.name}
+            </p>
+            <p>
+              <u>Last location</u>: {characterDetails.location?.name}
+            </p>
+            <p>
+              <u>Gender</u>: {characterDetails.gender}
+            </p>
+          </div>
+          <ImgDetails src={characterDetails.image} alt="character image" />
+        </ContainerCardDetails>
+      </ContainerDetails>
       <Footer />
-    </ContainerDetails>
+    </>
   );
 };
 
-export default detailsPage;
+export default Details;
