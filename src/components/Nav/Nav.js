@@ -75,15 +75,15 @@ const Nav = () => {
   return (
     <NavStyled>
       <HOneModified>
-        Welcome, let's get to know better each Character, Comic or Creator.
+        Welcome, in here you can get to know better each Character, Comic or Creator.
         <br />
-        Some of them are shy, so they don't enjoyed appearing in pictures.
+        Some of them are shy, so they do not enjoyed appearing in pictures.
         <br />
-        Be free to take a look.
+        Be free to take a look in their cards.
       </HOneModified>
       <ToggleLight>
         <ButtonLight onClick={() => toggleTheme()}>
-          <Image src={toggleButton} width={64} height={64} />
+          <Image src={toggleButton} width={64} height={64} alt="Button" />
         </ButtonLight>
       </ToggleLight>
       {handleDivNav()}

@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     fetchCharacters(count), fetchComics(count), fetchCreators(count)
-  }, []);
+  }, [count]);
 
   useEffect(() => {
     changingPage(count)

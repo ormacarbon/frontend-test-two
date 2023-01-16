@@ -84,6 +84,7 @@ export const InputModified = styled.input`
 export const HOneModified = styled.h1`
   font-family: "Poppins", sans-serif;
   text-align: center;
+  word-break: normal;
   @media (max-width: 1100px) {
     width: 300px;
     font-size: medium;

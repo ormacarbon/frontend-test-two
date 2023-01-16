@@ -11,8 +11,8 @@ const Footer = () => {
       <div>
         <p>Contact me</p>
         <div>
-          <a href="https://www.linkedin.com/in/bruno-maschietto/" target="_blank"><Image src={linkedInIcon} /></a>
-          <a href="https://github.com/brunomaschietto" target="_blank"><Image src={gitHubIcon}/></a>
+          <a href="https://www.linkedin.com/in/bruno-maschietto/" target="_blank" rel="noreferrer"><Image src={linkedInIcon} alt="LinkedIn Icon"/></a>
+          <a href="https://github.com/brunomaschietto" target="_blank" rel="noreferrer"><Image src={gitHubIcon} alt="GitHub Icon"/></a>
         </div>
       </div>
     </FooterStyle>
