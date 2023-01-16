@@ -1,6 +1,6 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
 
-import Link from 'next/link';
+import Link from "next/link";
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
@@ -35,22 +35,22 @@ export const MainContent = styled.main`
   padding: 2rem;
   height: 80vh;
 
-  display: grid; 
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr; 
-  
-  grid-template-areas: 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  grid-template-areas:
     "main main aside"
     "main main aside"
-    "main main aside"; 
+    "main main aside";
 `;
 
 // Global style to Link
 export const StyledLink = styled(Link)`
   color: ${(props) => props.theme.colors.white};
 
-  &:hover{
-    color: ${(props) => props.theme.colors['gray-300']};
+  &:hover {
+    color: ${(props) => props.theme.colors["gray-300"]};
     transition: 0.2s;
   }
 `;
