@@ -40,13 +40,15 @@ export default function HeaderApp() {
               onColor={colors.secundary}
             />
           </Header>
-          {click ? <><h2>Characters</h2></> : <></>}
+          {click ? <><Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/characters`} ><Characters backgroundColor={colors.primary}><h2>Characters</h2></Characters></Link></> : <></>}
         </>
       ) : (<>
         <Header>
-          <div>
-            <h2>Characters</h2>
-          </div>
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/characters`}>
+            <div>
+              <h2>Characters</h2>
+            </div>
+          </Link>
 
           <Link style={{ textDecoration: 'none', color: 'inherit' }} href={`/`}>
             <h1>AnimeMania</h1>
@@ -102,4 +104,12 @@ const Header = styled.header`
     justify-content: space-between;
     column-gap: 24px;
   }
+`;
+
+const Characters = styled.div`
+  box-sizing: border-box;
+  width: 130px;
+  background-color: ${props => props.backgroundColor};
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 `;
