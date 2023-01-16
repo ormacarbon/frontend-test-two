@@ -146,9 +146,9 @@ function LocationList() {
                         <TableData>{char.type}</TableData>
                         <TableData>{char.dimension}</TableData>
                         <TableData>
-                          <CustomButton onClick={() => selectChar(char.id)}>
+                          <button onClick={() => selectChar(char.id)}>
                             More info
-                          </CustomButton>
+                          </button>
                         </TableData>
                       </TableRow>
                     ))}
