@@ -5,47 +5,22 @@ import { fetchEpisodeById } from "../../../../api/episodes";
 import { DetailWrapper } from "./styles";
 import { FadeTransition } from "../../../../styles/globalStyled";
 import { MainWrapper } from "../../../Wrapper";
-import axios from "axios";
+import { getContentFromEndpoints } from "../../../../helpers";
+import { formatDate } from "../../../../helpers";
 
 function EpisodeDetail({ onDetailsReturn }) {
   const [character, setCharacter] = useState({});
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [residents, setResidents] = useState([]);
+  const [charactersPictures, setCharactersPictures] = useState([]);
   const { setCurrentNavigation, episodeId, setCharacterId } =
     useContext(MainWrapper);
 
-  const formatDate = (target) => {
-    const date = new Date(target);
-    const options = { month: "2-digit", day: "2-digit", year: "numeric" };
-    return date.toLocaleDateString("en-US", options);
-  };
-
-  const retrieveImages = async (endpoints) => {
-    setIsLoading(true);
-    const requests = endpoints.map((endpoint) =>
-      axios.get(endpoint).catch(() => "")
-    );
-    let imageUrls = [];
-    try {
-      const responses = await Promise.all(requests);
-      responses.forEach((response) => {
-        if (response !== "") {
-          const imagesList = {
-            id: response?.data?.id,
-            image: response?.data?.image,
-          };
-
-          imageUrls.push(imagesList);
-        }
-      });
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsError(true);
-    }
-    return imageUrls;
+  const goToCharDetail = (id) => {
+    setCharacterId(id);
+    setCurrentNavigation("characters");
+    onDetailsReturn(false);
   };
 
   useEffect(() => {
@@ -63,18 +38,15 @@ function EpisodeDetail({ onDetailsReturn }) {
       setCharacter(data);
       setIsLoading(false);
 
-      const residentsUrl = data?.characters;
-      const residentsData = await retrieveImages(residentsUrl);
-      setResidents(residentsData);
+      const characterUrls = data?.characters;
+      const characterPics = await getContentFromEndpoints(
+        characterUrls,
+        "image"
+      );
+      setCharactersPictures(characterPics);
     };
     fetchDataById();
   }, [episodeId]);
-
-  const goToCharDetail = (id) => {
-    setCharacterId(id);
-    setCurrentNavigation("characters");
-    onDetailsReturn(false);
-  };
 
   return (
     <DetailWrapper>
@@ -114,21 +86,21 @@ function EpisodeDetail({ onDetailsReturn }) {
                 </div>
                 <div className="episodes">
                   <h2>Characters in this episode</h2>
-                  <div className="residents-list-box">
-                    {residents &&
-                      residents.map((resident, i) => (
-                        <div key={i} className="resident-pictures">
+                  <div className="characters-list-box">
+                    {charactersPictures &&
+                      charactersPictures.map((character, i) => (
+                        <div key={i} className="character-pictures">
                           <img
-                            src={resident?.image}
-                            alt="resident"
+                            src={character?.content}
+                            alt="character"
                             onClick={() => {
-                              goToCharDetail(resident?.id);
+                              goToCharDetail(character?.id);
                             }}
                           />
                         </div>
                       ))}
-                    {residents.length === 0 && (
-                      <p>There are no registered residents in this location.</p>
+                    {charactersPictures.length === 0 && (
+                      <p>There are no registered charactersPictures in this location.</p>
                     )}
                   </div>
                 </div>

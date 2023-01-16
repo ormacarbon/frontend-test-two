@@ -72,7 +72,7 @@ export const DetailWrapper = styled.div`
       justify-content: center;
       margin-top: 2em;
 
-      .residents-list-box {
+      .characters-list-box {
         display: flex;
         justify-content: center;
         align-items: center;

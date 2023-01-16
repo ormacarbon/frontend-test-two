@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { LoginWrapper } from "./styles";
 import Enter from "./Enter";
 import Register from "./Register";
-import { FadeTransition } from "../../styles/globalStyled"
+import { FadeTransition } from "../../styles/globalStyled";
+import CustomButton from "../CustomButton";
 
 function Login() {
   const [loginView, setLoginView] = useState("start");
@@ -19,8 +20,15 @@ function Login() {
             <h1>Rick and Morty Data App</h1>
             <span>Search for your favourite character data</span>
             <div className="login-choice-btn">
-              <button onClick={() => setLoginView("login")}>Login</button>
-              <button onClick={() => setLoginView("register")}>Register</button>
+              <CustomButton action={() => setLoginView("login")}>
+                Login
+              </CustomButton>
+              <CustomButton
+                action={() => setLoginView("register")}
+                theme="ghost"
+              >
+                Register
+              </CustomButton>
             </div>
           </FadeTransition>
         ) : loginView === "register" ? (

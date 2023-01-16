@@ -14,47 +14,30 @@ import {
   TableData,
 } from "./styles";
 import { MainWrapper } from "../../Wrapper";
-import { useSnackbar } from "react-simple-snackbar";
 import CharDetail from "./CharDetail";
+import useCustomSnackbar from "../../../helpers/useCustomSnackbar";
+import { pagination } from "../../../helpers";
+import CustomButton from "../../CustomButton";
 
 function CharList() {
-  const options = {
-    position: "top-center",
-    style: {
-      backgroundColor: "midnightblue",
-      border: "2px solid lightgreen",
-      color: "lightblue",
-      fontFamily: "Menlo, monospace",
-      fontSize: "20px",
-      textAlign: "center",
-    },
-    closeStyle: {
-      color: "lightcoral",
-      fontSize: "16px",
-    },
-  };
-
   const [page, setPage] = useState(1);
   const [characters, setCharacters] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
   const filtertRef = useRef();
-  const [openSnackbar] = useSnackbar(options);
+  const { openCustomSnackbar } = useCustomSnackbar();
   const [isError, setIsError] = useState(false);
   const [isCharSelected, setIsCharSelected] = useState(false);
   const [errorMessage, setErrorMessage] = useState(
     "Could not find your character, please try again or reload"
   );
-  const { currentNavigation, setCharacterId } =
-    useContext(MainWrapper);
+  const { currentNavigation, setCharacterId } = useContext(MainWrapper);
 
   const fetchCharData = useCallback(async () => {
     const response = await fetchCharacters(page);
 
     if (response.error) {
       setIsError(true);
-      setErrorMessage(
-        `Looks like the server is down, please try again later. (${response.response})`
-      );
+      console.log(response?.error);
       return;
     }
     if (!response?.results) {
@@ -65,38 +48,25 @@ function CharList() {
     setCharacters(response?.results);
   }, [page]);
 
-  useEffect(() => {
-    fetchCharData();
-  }, [fetchCharData, page]);
-
-  useEffect(() => {
-    const detectNavigation = () => {
-      if (currentNavigation === "characters") {
-        setIsCharSelected(true);
-      }
-    };
-    detectNavigation();
-  }, [currentNavigation]);
-
-  const pagination = (e) => {
-    if (e === "prev" && page === 1) return;
-    if (e === "next") setPage(page + 1);
-    if (e === "prev") setPage(page - 1);
+  const handlePagination = (target) => {
+    const pageUpdate = pagination(target, page);
+    setPage(pageUpdate);
   };
 
   const filterCharacters = async () => {
     setIsError(false);
     const filterData = filtertRef.current.value;
     if (!filterData) {
-      openSnackbar("Fill the search form to filter");
+      openCustomSnackbar("Fill the search form to filter");
       return;
     }
     const response = await fetchFilteredCharacters(filterData);
     if (response.error) {
       setIsError(true);
       setErrorMessage(
-        `Looks like the server is down, please try again later. (${response.response})`
+        "Could not find your character, please try again or reload"
       );
+      console.log(response?.error);
       return;
     }
     if (!response?.results) {
@@ -121,15 +91,26 @@ function CharList() {
 
   const returnToCharList = (data) => {
     setIsCharSelected(data);
-    setCharacterId(0)
+    setCharacterId(0);
   };
+
+  useEffect(() => {
+    fetchCharData();
+  }, [fetchCharData, page]);
+
+  useEffect(() => {
+    const detectNavigation = () => {
+      if (currentNavigation === "characters") {
+        setIsCharSelected(true);
+      }
+    };
+    detectNavigation();
+  }, [currentNavigation]);
 
   return (
     <>
       {isCharSelected ? (
-        <CharDetail
-          onDetailsReturn={returnToCharList}
-        />
+        <CharDetail onDetailsReturn={returnToCharList} />
       ) : (
         <CharListWrapper page={page}>
           <div className="title-search">
@@ -140,9 +121,13 @@ function CharList() {
               placeholder="ex: Rick sanchez"
             />
             <div className="search-btns">
-              <button onClick={filterCharacters}>Search</button>
+              <CustomButton size="small" action={filterCharacters}>
+                Search
+              </CustomButton>
               {isFiltering && (
-                <button onClick={clearFilters}>Clear filters</button>
+                <CustomButton size="small" action={clearFilters}>
+                  Clear filters
+                </CustomButton>
               )}
             </div>
           </div>
@@ -150,7 +135,7 @@ function CharList() {
             {isError ? (
               <div className="error-box">
                 <h2>{errorMessage}</h2>
-                <button onClick={clearFilters}>Reload</button>
+                <CustomButton action={clearFilters}>Reload</CustomButton>
               </div>
             ) : (
               <div className="table">
@@ -180,7 +165,7 @@ function CharList() {
                           <button
                             onClick={() => {
                               selectChar(char.id);
-                          }}
+                            }}
                           >
                             More info
                           </button>
@@ -191,10 +176,22 @@ function CharList() {
                 </Table>
                 {!isFiltering && !isError && (
                   <div className="table-btns">
-                    <button onClick={() => pagination("prev")} className="prev">
+                    <CustomButton
+                      size="small"
+                      disabled={page === 1}
+                      action={() => handlePagination("prev")}
+                      className="prev"
+                    >
                       Prev
-                    </button>
-                    <button onClick={() => pagination("next")}>Next</button>
+                    </CustomButton>
+                    <CustomButton
+                      size="small"
+                      disabled={page === 42}
+                      action={() => handlePagination("next")}
+                      className="next"
+                    >
+                      Next
+                    </CustomButton>
                   </div>
                 )}
               </div>

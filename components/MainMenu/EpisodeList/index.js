@@ -15,36 +15,22 @@ import {
   TableHeading,
   TableData,
 } from "./styles";
-import { useSnackbar } from "react-simple-snackbar";
 import LocationDetail from "./EpisodeDetail";
 import { MainWrapper } from "../../Wrapper";
+import useCustomSnackbar from "../../../helpers/useCustomSnackbar";
+import { pagination } from "../../../helpers";
+import CustomButton from "../../CustomButton";
 
 function EpisodeList() {
-  const options = {
-    position: "top-center",
-    style: {
-      backgroundColor: "midnightblue",
-      border: "2px solid lightgreen",
-      color: "lightblue",
-      fontFamily: "Menlo, monospace",
-      fontSize: "20px",
-      textAlign: "center",
-    },
-    closeStyle: {
-      color: "lightcoral",
-      fontSize: "16px",
-    },
-  };
-
   const [page, setPage] = useState(1);
   const [characters, setCharacters] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
   const filtertRef = useRef();
-  const [openSnackbar] = useSnackbar(options);
+  const { openCustomSnackbar } = useCustomSnackbar();
   const [isError, setIsError] = useState(false);
   const [isCharSelected, setIsCharSelected] = useState(false);
   const [errorMessage, setErrorMessage] = useState(
-    "Could not find your character, please try again or reload"
+    "Could not load episodes, please try again or reload"
   );
   const { currentNavigation, setEpisodeId } = useContext(MainWrapper);
 
@@ -53,9 +39,7 @@ function EpisodeList() {
 
     if (response.error) {
       setIsError(true);
-      setErrorMessage(
-        `Looks like the server is down, please try again later. (${response.response})`
-      );
+      console.log(response?.error)
       return;
     }
     if (!response?.results) {
@@ -66,38 +50,23 @@ function EpisodeList() {
     setCharacters(response?.results);
   }, [page]);
 
-  useEffect(() => {
-    fetchCharData();
-  }, [fetchCharData, page]);
-
-  useEffect(() => {
-    const detectNavigation = () => {
-      if (currentNavigation === "episodes") {
-        setIsCharSelected(true);
-      }
-    };
-    detectNavigation();
-  }, [currentNavigation]);
-
-  const pagination = (e) => {
-    if (e === "prev" && page === 1) return;
-    if (e === "next") setPage(page + 1);
-    if (e === "prev") setPage(page - 1);
+  const handlePagination = (target) => {
+    const pageUpdate = pagination(target, page);
+    setPage(pageUpdate);
   };
 
   const filterCharacters = async () => {
     setIsError(false);
     const filterData = filtertRef.current.value;
     if (!filterData) {
-      openSnackbar("Fill the search form to filter");
+      openCustomSnackbar("Fill the search form to filter");
       return;
     }
     const response = await fetchFilteredEpisodes(filterData);
     if (response.error) {
       setIsError(true);
-      setErrorMessage(
-        `Looks like the server is down, please try again later. (${response.response})`
-      );
+      setErrorMessage("Could not find your episode, please try again or reload");
+      console.log(response.error)
       return;
     }
     if (!response?.results) {
@@ -125,6 +94,19 @@ function EpisodeList() {
     setEpisodeId(0);
   };
 
+  useEffect(() => {
+    fetchCharData();
+  }, [fetchCharData, page]);
+
+  useEffect(() => {
+    const detectNavigation = () => {
+      if (currentNavigation === "episodes") {
+        setIsCharSelected(true);
+      }
+    };
+    detectNavigation();
+  }, [currentNavigation]);
+
   return (
     <>
       {isCharSelected ? (
@@ -139,9 +121,13 @@ function EpisodeList() {
               placeholder="ex: The Ricklantis Mixup"
             />
             <div className="search-btns">
-              <button onClick={filterCharacters}>Search</button>
+              <CustomButton size="small" action={filterCharacters}>
+                Search
+              </CustomButton>
               {isFiltering && (
-                <button onClick={clearFilters}>Clear filters</button>
+                <CustomButton size="small" action={clearFilters}>
+                  Clear filters
+                </CustomButton>
               )}
             </div>
           </div>
@@ -149,7 +135,7 @@ function EpisodeList() {
             {isError ? (
               <div className="error-box">
                 <h2>{errorMessage}</h2>
-                <button onClick={clearFilters}>Reload</button>
+                <CustomButton action={clearFilters}>Reload</CustomButton>
               </div>
             ) : (
               <div className="table">
@@ -178,10 +164,22 @@ function EpisodeList() {
                 </Table>
                 {!isFiltering && !isError && (
                   <div className="table-btns">
-                    <button onClick={() => pagination("prev")} className="prev">
+                    <CustomButton
+                      size="small"
+                      disabled={page === 1}
+                      action={() => handlePagination("prev")}
+                      className="prev"
+                    >
                       Prev
-                    </button>
-                    <button onClick={() => pagination("next")}>Next</button>
+                    </CustomButton>
+                    <CustomButton
+                      size="small"
+                      disabled={page === 3}
+                      action={() => handlePagination("next")}
+                      className="next"
+                    >
+                      Next
+                    </CustomButton>
                   </div>
                 )}
               </div>

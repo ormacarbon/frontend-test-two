@@ -28,22 +28,6 @@ export const LoginWrapper = styled.div`
       justify-content: center;
       margin-top: 1.5em;
       gap: 1em;
-
-      button {
-        background: #1e90ff;
-        border: 1px solid #fff;
-        padding: 1em;
-        border-radius: 5px;
-        color: #ffffff;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-
-        &:hover {
-          background: #fff;
-          color: #1e90ff;
-        }
-      }
     }
   }
 
@@ -83,28 +67,11 @@ export const FormsWrapper = styled.div`
 
       &:focus {
         outline: none;
-    }
+      }
     }
 
     button {
       margin-top: 1em;
-      background: #1e90ff;
-      border: 1px solid #fff;
-      padding: 1em;
-      border-radius: 5px;
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-
-      &:hover {
-        background: #fff;
-        color: #1e90ff;
-      }
-    }
-
-    .return-btn {
-      background: #E97777;
     }
   }
 `;

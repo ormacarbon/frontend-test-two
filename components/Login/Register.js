@@ -1,29 +1,14 @@
 import React, { useRef } from "react";
 import { FormsWrapper } from "./styles";
-import { useSnackbar } from "react-simple-snackbar";
 import { FadeTransition } from "../../styles/globalStyled";
+import useCustomSnackbar from "../../helpers/useCustomSnackbar";
+import CustomButton from "../CustomButton";
 
 function Register({ onLoginState }) {
-  const options = {
-    position: "top-center",
-    style: {
-      backgroundColor: "midnightblue",
-      border: "2px solid lightgreen",
-      color: "lightblue",
-      fontFamily: "Menlo, monospace",
-      fontSize: "20px",
-      textAlign: "center",
-    },
-    closeStyle: {
-      color: "lightcoral",
-      fontSize: "16px",
-    },
-  };
-
   const loginRef = useRef();
   const passwordRef = useRef();
   const repeatPasswordRef = useRef();
-  const [openSnackbar] = useSnackbar(options);
+  const { openCustomSnackbar } = useCustomSnackbar();
 
   const registerUser = () => {
     const { value: login } = loginRef.current;
@@ -31,12 +16,12 @@ function Register({ onLoginState }) {
     const { value: repeatPassword } = repeatPasswordRef.current;
 
     if (!login || !password || !repeatPassword) {
-      openSnackbar("Please fill all the forms!");
+      openCustomSnackbar("Please fill all the forms!");
       return;
     }
 
     if (password !== repeatPassword) {
-      openSnackbar("Passwords are not the same!");
+      openCustomSnackbar("Passwords are not the same!");
       return;
     }
 
@@ -45,7 +30,7 @@ function Register({ onLoginState }) {
       password,
     };
     localStorage.setItem("userData", JSON.stringify(userData));
-    openSnackbar("User registered!");
+    openCustomSnackbar("User registered!");
     onLoginState("start");
   };
 
@@ -61,10 +46,10 @@ function Register({ onLoginState }) {
             type="password"
             placeholder="Repeat password"
           />
-          <button onClick={registerUser}>Register</button>
-          <button className="return-btn" onClick={() => onLoginState("start")}>
+          <CustomButton action={registerUser}>Register</CustomButton>
+          <CustomButton theme="danger" action={() => onLoginState("start")}>
             Return
-          </button>
+          </CustomButton>
         </div>
       </FormsWrapper>
     </FadeTransition>

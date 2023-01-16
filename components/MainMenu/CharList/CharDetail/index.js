@@ -4,7 +4,8 @@ import { fetchCharacterById } from "../../../../api/characters";
 import { DetailWrapper } from "./styles";
 import { FadeTransition } from "../../../../styles/globalStyled";
 import { MainWrapper } from "../../../Wrapper";
-import axios from "axios";
+import { getContentFromEndpoints } from "../../../../helpers";
+import { formatDate } from "../../../../helpers";
 
 function CharDetail({ onDetailsReturn }) {
   const [character, setCharacter] = useState({});
@@ -12,36 +13,13 @@ function CharDetail({ onDetailsReturn }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [episodes, setEpisodes] = useState([]);
-  const {
-    characterId,
-    setEpisodeId,
-    setCurrentNavigation
-  } = useContext(MainWrapper);
+  const { characterId, setEpisodeId, setCurrentNavigation } =
+    useContext(MainWrapper);
 
-  const retrieveEpisodes = async (endpoints) => {
-    setIsLoading(true);
-    const requests = endpoints.map((endpoint) =>
-      axios.get(endpoint).catch(() => "")
-    );
-    let imageUrls = [];
-    try {
-      const responses = await Promise.all(requests);
-      responses.forEach((response) => {
-        if (response !== "") {
-          const imagesList = {
-            id: response?.data?.id,
-            name: response?.data?.episode,
-          };
-
-          imageUrls.push(imagesList);
-        }
-      });
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsError(true);
-    }
-    return imageUrls;
+  const goToEpisodeDetail = (id) => {
+    setEpisodeId(id);
+    setCurrentNavigation("episodes");
+    onDetailsReturn(false);
   };
 
   useEffect(() => {
@@ -57,25 +35,16 @@ function CharDetail({ onDetailsReturn }) {
         return;
       }
       setCharacter(data);
-      setIsLoading(false);
       const episodes = data.episode;
-      const episodesWithImages = await retrieveEpisodes(episodes);
-      setEpisodes(episodesWithImages);
+      const episodesUrl = await getContentFromEndpoints(
+        episodes,
+        "episode"
+      );
+      setEpisodes(episodesUrl);
+      setIsLoading(false);
     };
     fetchDataById();
   }, [characterId]);
-
-  const formatDate = (target) => {
-    const date = new Date(target);
-    const options = { month: "2-digit", day: "2-digit", year: "numeric" };
-    return date.toLocaleDateString("en-US", options);
-  };
-
-  const goToEpisodeDetail = (id) => {
-    setEpisodeId(id);
-    setCurrentNavigation("episodes");
-    onDetailsReturn(false);
-  };
 
   return (
     <DetailWrapper>
@@ -131,7 +100,7 @@ function CharDetail({ onDetailsReturn }) {
                             goToEpisodeDetail(episode?.id);
                           }}
                         >
-                          {episode?.name}
+                          {episode?.content}
                         </button>
                       ))}
                   </div>

@@ -1,9 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState, useRef, useCallback, useContext } from "react";
-import {
-  fetchLocations,
-  fetchFilteredLocations,
-} from "../../../api/locations";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  useContext,
+} from "react";
+import { fetchLocations, fetchFilteredLocations } from "../../../api/locations";
 import {
   LocationListWrapper,
   Table,
@@ -13,35 +16,21 @@ import {
   TableData,
 } from "./styles";
 import { MainWrapper } from "../../Wrapper";
-import { useSnackbar } from "react-simple-snackbar";
 import LocationDetail from "./LocationDetail";
+import useCustomSnackbar from "../../../helpers/useCustomSnackbar";
+import { pagination } from "../../../helpers";
+import CustomButton from "../../CustomButton";
 
 function LocationList() {
-  const options = {
-    position: "top-center",
-    style: {
-      backgroundColor: "midnightblue",
-      border: "2px solid lightgreen",
-      color: "lightblue",
-      fontFamily: "Menlo, monospace",
-      fontSize: "20px",
-      textAlign: "center",
-    },
-    closeStyle: {
-      color: "lightcoral",
-      fontSize: "16px",
-    },
-  };
-
   const [page, setPage] = useState(1);
   const [characters, setCharacters] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
   const filtertRef = useRef();
-  const [openSnackbar] = useSnackbar(options);
+  const { openCustomSnackbar } = useCustomSnackbar();
   const [isError, setIsError] = useState(false);
   const [isCharSelected, setIsCharSelected] = useState(false);
   const [errorMessage, setErrorMessage] = useState(
-    "Could not find your character, please try again or reload"
+    "Could not load locations, please try again or reload"
   );
   const { setLocationId } = useContext(MainWrapper);
 
@@ -63,29 +52,22 @@ function LocationList() {
     setCharacters(response?.results);
   }, [page]);
 
-  useEffect(() => {
-    fetchCharData();
-  }, [fetchCharData, page]);
-
-  const pagination = (e) => {
-    if (e === "prev" && page === 1) return;
-    if (e === "next") setPage(page + 1);
-    if (e === "prev") setPage(page - 1);
+  const handlePagination = (target) => {
+    const pageUpdate = pagination(target, page);
+    setPage(pageUpdate);
   };
 
   const filterCharacters = async () => {
     setIsError(false);
     const filterData = filtertRef.current.value;
     if (!filterData) {
-      openSnackbar("Fill the search form to filter");
+      openCustomSnackbar("Fill the search form to filter");
       return;
     }
     const response = await fetchFilteredLocations(filterData);
     if (response.error) {
       setIsError(true);
-      setErrorMessage(
-        `Looks like the server is down, please try again later. (${response.response})`
-      );
+      setErrorMessage("Could not find your location, please try again or reload");
       return;
     }
     if (!response?.results) {
@@ -113,6 +95,10 @@ function LocationList() {
     setLocationId(0);
   };
 
+  useEffect(() => {
+    fetchCharData();
+  }, [fetchCharData, page]);
+
   return (
     <>
       {isCharSelected ? (
@@ -127,9 +113,13 @@ function LocationList() {
               placeholder="ex: Citadel of ricks"
             />
             <div className="search-btns">
-              <button onClick={filterCharacters}>Search</button>
+              <CustomButton size="small" action={filterCharacters}>
+                Search
+              </CustomButton>
               {isFiltering && (
-                <button onClick={clearFilters}>Clear filters</button>
+                <CustomButton size="small" action={clearFilters}>
+                  Clear filters
+                </CustomButton>
               )}
             </div>
           </div>
@@ -137,7 +127,7 @@ function LocationList() {
             {isError ? (
               <div className="error-box">
                 <h2>{errorMessage}</h2>
-                <button onClick={clearFilters}>Reload</button>
+                <CustomButton action={clearFilters}>Reload</CustomButton>
               </div>
             ) : (
               <div className="table">
@@ -156,9 +146,9 @@ function LocationList() {
                         <TableData>{char.type}</TableData>
                         <TableData>{char.dimension}</TableData>
                         <TableData>
-                          <button onClick={() => selectChar(char.id)}>
+                          <CustomButton onClick={() => selectChar(char.id)}>
                             More info
-                          </button>
+                          </CustomButton>
                         </TableData>
                       </TableRow>
                     ))}
@@ -166,10 +156,20 @@ function LocationList() {
                 </Table>
                 {!isFiltering && !isError && (
                   <div className="table-btns">
-                    <button onClick={() => pagination("prev")} className="prev">
+                    <CustomButton
+                      size="small"
+                      action={() => handlePagination("prev")}
+                      disabled={page === 1}
+                    >
                       Prev
-                    </button>
-                    <button onClick={() => pagination("next")}>Next</button>
+                    </CustomButton>
+                    <CustomButton
+                      size="small"
+                      action={() => handlePagination("next")}
+                      disabled={page === 7}
+                    >
+                      Next
+                    </CustomButton>
                   </div>
                 )}
               </div>

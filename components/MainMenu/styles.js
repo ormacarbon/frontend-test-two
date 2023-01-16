@@ -5,6 +5,12 @@ export const MenuWrapper = styled.div`
   height: 93vh;
   display: flex;
 
+  .modal-btns {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+  }
+
   @media (max-width: 1000px) {
     flex-direction: column;
   }
@@ -37,15 +43,6 @@ export const MenuWrapper = styled.div`
     }
 
     button {
-      background: #1e90ff;
-      border: 1px solid #fff;
-      padding: 1em;
-      border-radius: 5px;
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-
       @media (max-width: 1000px) {
         padding: 0.5em;
         font-size: 0.9rem;
@@ -55,15 +52,6 @@ export const MenuWrapper = styled.div`
         padding: 0.3em;
         font-size: 0.8rem;
       }
-
-      &:hover {
-        background: #fff;
-        color: #1e90ff;
-      }
-    }
-
-    .logout-btn {
-      background: #e97777;
     }
   }
 

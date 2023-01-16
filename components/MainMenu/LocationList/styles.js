@@ -38,17 +38,7 @@ export const LocationListWrapper = styled.div`
       justify-content: center;
       align-items: center;
       gap: 1em;
-      margin-top: 0.4em;
-
-      button {
-        padding: 0.3em;
-        border-radius: 5px;
-        border: 1px solid #1e90ff;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #1e90ff;
-        cursor: pointer;
-      }
+      margin-top: 1em;
     }
   }
 
@@ -66,19 +56,6 @@ export const LocationListWrapper = styled.div`
 
       button {
         margin-top: 1em;
-        background: #1e90ff;
-        border: 1px solid #fff;
-        padding: 1em;
-        border-radius: 5px;
-        color: #ffffff;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-
-        &:hover {
-          background: #fff;
-          color: #1e90ff;
-        }
       }
     }
   }
@@ -96,21 +73,6 @@ export const LocationListWrapper = styled.div`
       align-items: center;
       gap: 1em;
       margin: 2em 0;
-
-      button {
-        padding: 0.3em;
-        border-radius: 5px;
-        border: 1px solid #1e90ff;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #1e90ff;
-        cursor: pointer;
-      }
-
-      .prev {
-        opacity: ${({ page }) => (page === 1 ? "0.5" : "1")};
-        pointer-events: ${({ page }) => (page === 1 ? "none" : "auto")};
-      }
     }
   }
 `;
