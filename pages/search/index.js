@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { NameContext } from "../../components/Context";
 import { api } from "../api/api";
 import PokemonResult from "./components/PokemonResult";
 import { SearchPokemons } from "./styles";
@@ -6,6 +7,7 @@ import { SearchPokemons } from "./styles";
 export default function Search() {
   const [pokemonSearched, setPokemonSearched] = useState("");
   const [showPokemon, setShowPokemon] = useState("");
+  const { user } = useContext(NameContext);
 
   async function handlePokemonSearch() {
     try {
@@ -30,7 +32,7 @@ export default function Search() {
 
   return (
     <SearchPokemons>
-      <h1>Search a pokemon</h1>
+      {user ? <h1>Search a pokemon, {user}</h1> : <h1>Search a pokemon</h1>}
       <div className="search">
         <input
           type="text"
