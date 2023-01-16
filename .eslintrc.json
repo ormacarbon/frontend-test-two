@@ -1,3 +1,9 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": "off",
+    // ...
+    "your-rule-name": "off"
+  }
 }
