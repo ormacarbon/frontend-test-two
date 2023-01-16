@@ -4,9 +4,8 @@ export const MenuSidebarComponent = styled.div`
   ${(props) => props.theme.utils.flexUtil("column")};
   position: sticky;
   top: 80px;
-  width: 100%;
+  min-width: 280px;
   height: calc(100vh - 80px);
-  max-width: 280px;
   background: ${(props) =>
     props.dark ? props.theme.colors.eerieBlack : props.theme.colors.gainsboro};
   transition: 0.2s;

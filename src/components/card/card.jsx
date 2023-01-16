@@ -24,9 +24,12 @@ export function Card({ content }) {
         .replace(/[^a-zA-Z ]/g, "")
         .replaceAll(" ", "-")}`}
       dark={darkTheme}
+      onMouseOver={() => setHighlightMovie(content)}
     >
-      <p>{content?.original_title}</p>
-      <p>{content?.release_date.slice(0, 4)}</p>
+      <div className="info">
+        <p>{content?.original_title}</p>
+        <p>{content?.release_date.slice(0, 4)}</p>
+      </div>
     </CardComponent>
   );
 }

@@ -12,13 +12,18 @@ export const GlobalStyle = createGlobalStyle`
   display: flex;
 
   main {
-    flex: 1;
+    max-width: calc(100% - 280px);
+    min-height: calc(100vh - 80px);
 
     .container {
       @media screen and (min-width: 1900px) {        
         position: relative;
         right: 130px;
       }
+    }
+
+    @media screen and (max-width: 980px) {
+      max-width: 100%;
     }
   }
 
@@ -69,9 +74,9 @@ export const theme = {
     fs_largeXx: "48px",
   },
   utils: {
-    flexUtil(flexFlow, justifyContent, alignItems) {
+    flexUtil(flexFlow, justifyContent, alignItems, important) {
       return {
-        display: "flex",
+        display: `flex ${important ? important : ""}`,
         flexFlow: flexFlow,
         justifyContent: justifyContent,
         alignItems: alignItems,

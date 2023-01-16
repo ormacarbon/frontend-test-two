@@ -19,7 +19,6 @@ export function Banner() {
   useEffect(() => {
     if (!highlightMovie) {
       setHighlightMovie(data?.results[0]);
-      console.log(data);
     }
   }, [data, highlightMovie, setHighlightMovie]);
 
@@ -33,7 +32,7 @@ export function Banner() {
       dark={darkTheme}
     >
       <div className="content">
-        <h2>{highlightMovie?.original_title}</h2>
+        <h2 className="content-title">{highlightMovie?.original_title}</h2>
         <p className="overview">{highlightMovie?.overview}</p>
         <div>
           <Rating
@@ -41,13 +40,15 @@ export function Banner() {
             allowFraction
             size={5}
             iconsCount={10}
-            emptyIcon={<i class="fa-regular fa-star"></i>}
-            fillIcon={<i class="fa-solid fa-star"></i>}
+            emptyIcon={<i className="fa-regular fa-star"></i>}
+            fillIcon={<i className="fa-solid fa-star"></i>}
             emptyColor="#ffffff"
-            fillColor={`${theme.colors.minionYellow}`}
+            fillColor={`${
+              darkTheme ? theme.colors.blueJeans : theme.colors.minionYellow
+            }`}
             initialValue={highlightMovie?.vote_average}
           />
-          <p>({highlightMovie?.vote_average})</p>
+          <p>({highlightMovie?.vote_average.toFixed(1)})</p>
         </div>
         <Link
           href={`/movie/${highlightMovie?.id}-${highlightMovie?.original_title

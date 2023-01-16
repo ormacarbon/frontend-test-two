@@ -11,10 +11,13 @@ export function useFetch(url, params) {
 
     api
       .get(url, { params: params })
-      .then((res) => setData(res.data))
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
-  }, [url, params]);
+  }, [url]);
 
   return { data, error, loading };
 }

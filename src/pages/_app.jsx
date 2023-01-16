@@ -8,6 +8,9 @@ import { GlobalStyle, Theme } from "../styles/theme";
 import { Header } from "../components/header/header";
 import { MenuSidebar } from "../components/menuSidebar/menuSidebar";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>

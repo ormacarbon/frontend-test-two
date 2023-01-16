@@ -4,14 +4,14 @@ export const BannerComponent = styled.div`
   width: 100%;
   height: 350px;
   background-size: 50% !important;
-  border-radius: 8px;
   position: relative;
   padding: 20px;
+  margin-bottom: 20px;
   box-shadow: 2px 2px 6px 1px
-      ${(props) =>
-        props.dark
-          ? props.theme.colors.eerieBlack
-          : props.theme.colors.lightGray};
+    ${(props) =>
+      props.dark
+        ? props.theme.colors.eerieBlack
+        : props.theme.colors.lightGray};
   transition: 0.3s;
 
   &:hover {
@@ -38,15 +38,18 @@ export const BannerComponent = styled.div`
   .content {
     width: 50%;
     height: 100%;
-    ${(props) => props.theme.utils.flexUtil("column", "center", "flex-end")};
+    ${(props) => props.theme.utils.flexUtil("column", "", "flex-start")};
     color: ${(props) => props.theme.colors.white};
     z-index: 1;
     position: relative;
-    text-align: right;
     margin-left: auto;
 
-    h2 {
+    .content-title {
       font-size: ${(props) => props.theme.fontSizes.fs_largeX};
+      color: ${(props) =>
+        props.dark
+          ? props.theme.colors.blueJeans
+          : props.theme.colors.minionYellow};
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -72,7 +75,8 @@ export const BannerComponent = styled.div`
       margin-bottom: 15px;
 
       p {
-        margin-left: 2px;
+        margin-left: 3px;
+        margin-bottom: -2px;
       }
 
       i {
@@ -87,7 +91,7 @@ export const BannerComponent = styled.div`
       padding: 10px 45px;
       border: 2px solid ${(props) => props.theme.colors.white};
       border-radius: 25px;
-      font-size: ${(props) => props.theme.fontSizes.fs_medium};
+      margin-top: auto;
       font-weight: 500;
       text-decoration: none;
       transition: 0.2s;
@@ -124,9 +128,8 @@ export const BannerComponent = styled.div`
       width: 100%;
       ${(props) =>
         props.theme.utils.flexUtil("column", "flex-end", "flex-start")};
-      text-align: left;
 
-      h2 {
+      .content-title {
         font-size: ${(props) => props.theme.fontSizes.fs_large};
       }
 
