@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { NameContext } from "../components/Context";
+import { HomeContainer } from "../styles/style";
 
 export default function Home() {
   const { name, setName, user, setUser } = useContext(NameContext);
@@ -9,17 +10,21 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <HomeContainer>
       {user ? (
         <h1>Welcome to my pokemon page, {user}</h1>
       ) : (
         <h1>Welcome to my pokemon page</h1>
       )}
-      <div>
-        <h4>Type yout name:</h4>
-        <input type="text" onChange={(event) => setName(event.target.value)} />
+      <h3>Type your name:</h3>
+      <div className="form">
+        <input
+          type="text"
+          placeholder="Name"
+          onChange={(event) => setName(event.target.value)}
+        />
         <button onClick={handleShowName}>Click</button>
       </div>
-    </div>
+    </HomeContainer>
   );
 }
