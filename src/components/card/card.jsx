@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { highlightMovieContext } from "../../context/highlightMovieContext";
 
 import { themeContext } from "../../context/themeContext";
 import { useFetch } from "../../hooks/useFetch";
@@ -7,6 +8,8 @@ import { CardComponent } from "./cardStyle";
 
 export function Card({ content }) {
   const [darkTheme, setDarkTheme] = useContext(themeContext);
+  const [highlightMovie, setHighlightMovie] = useContext(highlightMovieContext);
+
   const { data, loading, error } = useFetch("configuration", null);
 
   return (

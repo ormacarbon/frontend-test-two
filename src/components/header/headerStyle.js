@@ -7,6 +7,9 @@ export const HeaderComponent = styled.header`
       ? props.theme.colors.richBlackFogra29
       : props.theme.colors.greenBlueCrayola};
   padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 9;
 
   .container {
     ${(props) => props.theme.utils.flexUtil("row", "", "center")};

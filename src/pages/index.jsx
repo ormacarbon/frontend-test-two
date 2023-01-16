@@ -1,13 +1,20 @@
+import { useContext } from "react";
+
+import { themeContext } from "../context/themeContext";
 import { useFetch } from "../hooks/useFetch";
 
-import { Card } from "../components/card/card";
+import { Banner } from "../components/banner/banner";
+
+import { IndexMain } from "./indexStyle";
 
 export default function Home() {
-  const { data, loading, error } = useFetch("movie/popular", null);
+  const [darkTheme, setDarkTheme] = useContext(themeContext);
 
   return (
-    <main>
-      <Card content={data?.results[0]} />
-    </main>
-  )
+    <IndexMain dark={darkTheme}>
+      <div className="container">
+        <Banner />
+      </div>
+    </IndexMain>
+  );
 }

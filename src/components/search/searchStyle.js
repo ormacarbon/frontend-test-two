@@ -47,7 +47,7 @@ export const SearchComponent = styled.div`
     }
   }
 
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: 625px) {
     display: none;
   }
 `;

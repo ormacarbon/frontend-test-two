@@ -9,6 +9,11 @@ export const CardComponent = styled.a`
   color: ${(props) => props.theme.colors.white};
   padding: 10px;
   border-radius: 10px;
+  box-shadow: 2px 2px 6px 1px
+    ${(props) =>
+      props.dark
+        ? props.theme.colors.eerieBlack
+        : props.theme.colors.lightGray}; 
   text-decoration: none;
   text-align: center;
   position: relative;
@@ -23,9 +28,7 @@ export const CardComponent = styled.a`
     background: linear-gradient(
       0deg,
       ${(props) =>
-          props.dark
-            ? props.theme.colors.black
-            : props.theme.colors.redCrayola}
+          props.dark ? props.theme.colors.black : props.theme.colors.redCrayola}
         15%,
       #00000000 60%,
       #00000000 100%

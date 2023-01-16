@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const MenuSidebarComponent = styled.div`
   ${(props) => props.theme.utils.flexUtil("column")};
   position: sticky;
+  top: 80px;
   width: 100%;
   height: calc(100vh - 80px);
   max-width: 280px;
   background: ${(props) =>
-    props.dark ? props.theme.colors.onyx : props.theme.colors.gainsboro};
+    props.dark ? props.theme.colors.eerieBlack : props.theme.colors.gainsboro};
   transition: 0.2s;
   z-index: 9;
 
@@ -17,9 +18,10 @@ export const MenuSidebarComponent = styled.div`
     border-radius: 0;
     display: none;
     border-bottom: 1px solid
-      ${(props) => (props.dark ? props.theme.colors.eerieBlack : "transparent")};
+      ${(props) =>
+        props.dark ? props.theme.colors.richBlackFogra29 : "transparent"};
 
-    @media screen and (max-width: 575px) {
+    @media screen and (max-width: 625px) {
       ${(props) => props.theme.utils.flexUtil("row")};
     }
   }
@@ -32,7 +34,7 @@ export const MenuSidebarComponent = styled.div`
     border-bottom: 1px solid
       ${(props) =>
         props.dark
-          ? props.theme.colors.eerieBlack
+          ? props.theme.colors.richBlackFogra29
           : props.theme.colors.lightGray};
     overflow-y: auto;
 
@@ -43,7 +45,7 @@ export const MenuSidebarComponent = styled.div`
       padding: 20px 0;
       scrollbar-color: ${(props) =>
           props.dark
-            ? props.theme.colors.eerieBlack
+            ? props.theme.colors.richBlackFogra29
             : props.theme.colors.cadetBlueCrayola}
         transparent;
       scrollbar-width: thin;
@@ -56,7 +58,7 @@ export const MenuSidebarComponent = styled.div`
         box-shadow: inset 0 0 5px 5px
           ${(props) =>
             props.dark
-              ? props.theme.colors.eerieBlack
+              ? props.theme.colors.richBlackFogra29
               : props.theme.colors.cadetBlueCrayola};
         border: solid 3px transparent;
         cursor: pointer;
@@ -72,7 +74,6 @@ export const MenuSidebarComponent = styled.div`
     a {
       ${(props) => props.theme.utils.flexUtil("column", "center", "center")};
       width: 100%;
-      height: 100%;
       color: ${(props) =>
         props.dark ? props.theme.colors.white : props.theme.colors.sonicSilver};
       text-decoration: none;
@@ -108,7 +109,7 @@ export const MenuSidebarComponent = styled.div`
     }
   }
 
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: 625px) {
     min-width: 100%;
   }
 `;

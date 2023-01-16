@@ -1,6 +1,7 @@
 import { ThemeProvider } from "../context/themeContext";
 import { MenuProvider } from "../context/menuContext";
 import { ConfigProvider } from "../context/apiConfigContext";
+import { HighlightMovieProvider } from "../context/highlightMovieContext";
 
 import { GlobalStyle, Theme } from "../styles/theme";
 
@@ -12,14 +13,16 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider>
       <MenuProvider>
         <ConfigProvider>
-          <Theme>
-            <GlobalStyle />
-            <Header />
-            <div id="main">
-              <MenuSidebar />
-              <Component {...pageProps} />
-            </div>
-          </Theme>
+          <HighlightMovieProvider>
+            <Theme>
+              <GlobalStyle />
+              <Header />
+              <div id="main">
+                <MenuSidebar />
+                <Component {...pageProps} />
+              </div>
+            </Theme>
+          </HighlightMovieProvider>
         </ConfigProvider>
       </MenuProvider>
     </ThemeProvider>

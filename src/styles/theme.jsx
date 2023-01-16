@@ -13,7 +13,13 @@ export const GlobalStyle = createGlobalStyle`
 
   main {
     flex: 1;
-    padding: 20px;
+
+    .container {
+      @media screen and (min-width: 1900px) {        
+        position: relative;
+        right: 130px;
+      }
+    }
   }
 
   @media screen and (max-width: 980px) {
