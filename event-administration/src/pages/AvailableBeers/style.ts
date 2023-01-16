@@ -23,5 +23,10 @@ export const Pagination = styled.div`
   > div {
     display: flex;
     justify-content: center;
+    font-family: var(--roboto);
+
+    > p {
+      margin: 0 5px;
+    }
   }
 `;

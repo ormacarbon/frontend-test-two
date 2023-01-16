@@ -1,8 +1,7 @@
-import { BeerCard, BackGroundImage } from "./style";
+import { BeerEventCard, BackGroundImageEvent } from "./style";
 
-import { useState } from "react";
-
-import { EventChoiceModal } from "../Modal";
+import { useContext } from "react";
+import { EventsContext } from "../../providers/eventscenter";
 
 interface BerrCardComponentProps {
   image: string | null;
@@ -11,6 +10,7 @@ interface BerrCardComponentProps {
   abv: number;
   ibu: number;
   beer: Beers;
+  event: string;
 }
 
 interface Beers {
@@ -22,27 +22,25 @@ interface Beers {
   ibu: number;
 }
 
-export const BeerCardComponent = ({
+export const BeerEventCardComponent = ({
   image,
   name,
   tagline,
   abv,
   ibu,
   beer,
+  event,
 }: BerrCardComponentProps) => {
-  const [modalChoice, setModalChoice] = useState(false);
+  const { removeBeer } = useContext(EventsContext);
 
   return (
-    <BeerCard>
-      <BackGroundImage image={image} />
+    <BeerEventCard>
+      <BackGroundImageEvent image={image} />
       <p className="slogan">Nome: {name}</p>
       <p className="slogan">Slogan: {tagline}</p>
       <p>ABV: {abv}%</p>
       <p>IBU: {ibu}</p>
-      <button onClick={() => setModalChoice(true)}>Adicionar</button>
-      {modalChoice ? (
-        <EventChoiceModal setModalChoice={setModalChoice} beer={beer} />
-      ) : null}
-    </BeerCard>
+      <button onClick={() => removeBeer(event, beer)}>Remover</button>
+    </BeerEventCard>
   );
 };
