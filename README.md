@@ -81,6 +81,9 @@ $ git clone https://github.com/pokemon-universe.git
 # Go into the repository
 $ cd pokemon-universe
 
+# Switch branch
+$ git checkout pokedex-develop-branch
+
 # Install dependencies
 $ npm install
 
