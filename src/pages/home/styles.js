@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.main`
   background-color: ${(p) => p.theme.colors.bg};
   padding-top: 60px;
   width: 100%;
-  height: 150vh;
+  min-height: calc(100vh - 60px);
   color: ${(p) => p.theme.colors.primary};
 `;
 
@@ -12,13 +12,18 @@ export const Content = styled.div`
   width: calc(100% - 40px);
   max-width: 600px;
   margin: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+
+  ${(_p) =>
+    _p.emptyHistory &&
+    css`
+      padding-top: 140px;
+    `}
 `;
 
 export const Description = styled.h1`
@@ -74,12 +79,6 @@ export const SearchContainer = styled.div`
     height: 40px;
     background-color: ${(p) => p.theme.colors.blue[200]};
 
-    svg {
-      color: #ffffff;
-      width: 24px;
-      height: 24px;
-    }
-
     :hover {
       background-color: ${(p) => p.theme.colors.blue[300]};
     }
@@ -93,5 +92,35 @@ export const SearchContainer = styled.div`
         height: 18px;
       }
     }
+  }
+`;
+
+export const HistoryContainer = styled.div`
+  width: 100%;
+
+  .header {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: ${(p) => p.theme.colors.primary};
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  }
+
+  .content {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
   }
 `;
