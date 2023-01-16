@@ -19,6 +19,12 @@ export const GlobalStyle = createGlobalStyle`
    }
 
    body {
-      background-color: ${props => props.theme.colors.backgroundColor}
+      background-color: ${props => props.theme.colors.backgroundColor};
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      -webkit-font-smoothing: antialiased;
+
    }
 `

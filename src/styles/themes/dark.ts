@@ -3,10 +3,13 @@ const darkTheme = {
   colors: {
      primary: '#1e1e1e',
      secondary: '#383838',
-     lightGray: '#3c3c3c',
-     offColor: '#cccccc',
+     lightGray: '#b1b1b1',
+     offColor: '#F73577',
      backgroundColor: '#121212',
-     textColor: '#fff'
+     textColor: '#ffffff',
+     textCardItemColor: '#ffffff',
+     textHeaderColor: '#ffffff',
+     cardBgColor: '#363838'
   }
 }
 

@@ -9,7 +9,10 @@ declare module "styled-components" {
          lightGray: string;
          offColor: string;
          backgroundColor: string;
+         cardBgColor: string;
+         textCardItemColor: string;
          textColor: string;
+         textHeaderColor: string;
       }
    }
 }

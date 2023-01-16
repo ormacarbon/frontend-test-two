@@ -26,5 +26,8 @@
 , "src/components/ThemeSwitcher/index.tsz"  ],
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "@types/styled.d.ts"
   ]
 }
