@@ -39,7 +39,11 @@ export default function Pokemon({ pokemon }) {
         height="150"
         alt={pokemon.name}
       />
-      <p>{pokemon.name}</p>
+      <h3>Name: {pokemon.name}</h3>
+      <br></br>
+      <h3>Type: {pokemon.types[0].type.name}</h3>
+      <br></br>
+      <h3>Ability: {pokemon.abilities[0].ability.name}</h3>
     </div>
   );
 }
