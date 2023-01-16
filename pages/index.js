@@ -1,43 +1,26 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Card from "../Components/Card/Card.js";
+import Card from "../Components/Card/Card";
+import Pagination from "../Components/Pagination/Pagination";
+import PokemonInfo from "../Components/PokemonInfo/PokemonInfo";
+import Search from "../Components/Search/Search";
+import Loading from "../Components/Loading/Loading";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "../styles/theme.js";
+import GlobalTheme from "../styles/global.js";
+import styled from "styled-components";
 
 function Home() {
   const [apiOptions, setApiOptions] = useState([]);
-  const [pagination, setPagination] = useState([]);
-  const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  const urlLoading =
-    "https://olaargentina.com/wp-content/uploads/2019/11/loading-gif-transparent-10.gif";
+  const [modal, setModal] = useState(null);
+  const [hideBySearch, setHideBySearch] = useState(null);
+  const [check, setCheck] = useState(false);
+  const [theme, setTheme] = useState("light");
 
-  const handlePagination = (pagination, btnClick) => {
-    btnClick == "next" ? apiRequest(pagination[0]) : apiRequest(pagination[1]);
+  const handlePokemonInfo = (prop) => {
+    setModal({ id: prop, class: "active" });
   };
-
-  function _handleBtnPagination(resp) {
-    if (resp.previous === null) {
-      setPagination([resp.next]);
-      return;
-    }
-    setDisabled(false);
-    setPagination([resp.next, resp.previous]);
-    return;
-  }
-
-  function _handleMapUrlsPagination(resp) {
-    resp.results.map(async (item) => {
-      await fetch(item.url)
-        .then((req) => req.json())
-        .then((resp) => {
-          setApiOptions((prev) => {
-            return [...prev, [resp.name, resp.sprites.front_default]];
-          });
-        })
-        .catch((err) => {
-          throw new Error({ err });
-        });
-    });
-  }
 
   async function apiRequest(uriBase) {
     setApiOptions([]);
@@ -46,23 +29,50 @@ function Home() {
     await fetch(uriBase)
       .then((req) => req.json())
       .then((resp) => {
-        _handleBtnPagination(resp);
         _handleMapUrlsPagination(resp);
-
         setTimeout(() => {
           setLoading(false);
-        }, 2000);
+        }, 1000);
       })
       .catch((err) => {
         throw new Error({ err });
       });
+
+    function _handleMapUrlsPagination(resp) {
+      resp.results.map(async (item) => {
+        await fetch(item.url)
+          .then((req) => req.json())
+          .then((data) => {
+            setApiOptions((prev) => {
+              return [
+                ...prev,
+                [data.name, data.sprites.front_default, data.id],
+              ];
+            });
+          })
+          .catch((err) => {
+            throw new Error({ err });
+          });
+      });
+    }
   }
+
+  const getSearch = (prop) => {
+    setHideBySearch("d-none");
+    setApiOptions(prop);
+  };
 
   const getListPokemon = () => {
     const uriBase = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=15";
+    setHideBySearch(null);
     apiRequest(uriBase);
     return;
   };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("theme");
+    localTheme && setTheme(localTheme);
+  }, []);
 
   useEffect(() => {
     getListPokemon();
@@ -70,28 +80,27 @@ function Home() {
 
   return (
     <div className="container">
-      {loading ? (
-        <div className="loading">
-          <img src={urlLoading} alt="loading" loading="lazy" />
-        </div>
+      <Loading loading={loading} />
+
+      <Search
+        getSearch={getSearch}
+        getListPokemon={getListPokemon}
+        setLoading={setLoading}
+      />
+
+      <h1 className={`${hideBySearch}`} style={{ textAlign: "center" }}>
+        LISTA DE POKEMONS
+      </h1>
+
+      <Card apiOptions={apiOptions} handlePokemonInfo={handlePokemonInfo} />
+
+      <Pagination apiRequest={apiRequest} hideBySearch={hideBySearch} />
+
+      {modal != null ? (
+        <PokemonInfo modal={modal} setLoading={setLoading} />
       ) : (
         ""
       )}
-      <h1 style={{ textAlign: "center" }}>LISTA DE POKEMONS</h1>
-      <div>
-        <Card apiOptions={apiOptions} />
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <button
-          onClick={() => handlePagination(pagination, "prevoius")}
-          disabled={disabled}
-        >
-          ANTERIOR
-        </button>
-        <button onClick={() => handlePagination(pagination, "next")}>
-          PROXIMO
-        </button>
-      </div>
     </div>
   );
 }
