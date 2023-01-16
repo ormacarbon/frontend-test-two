@@ -83,10 +83,10 @@ export const Header = () => {
             Recomendados
           </Link>
           <Link
-            className={pageActive === '/toprated' ? 'active' : ''}
-            href={'/toprated'}
+            className={pageActive === '/my-list' ? 'active' : ''}
+            href={'/my-list'}
           >
-            Em Alta
+            Minha Lista
           </Link>
         </HeaderNavigationMobile>
       </HeaderShowModal>
@@ -114,10 +114,10 @@ export const Header = () => {
           Recomendados
         </Link>
         <Link
-          className={pageActive === '/toprated' ? 'active' : ''}
-          href={'/toprated'}
+          className={pageActive === '/my-list' ? 'active' : ''}
+          href={'/my-list'}
         >
-          Em Alta
+          Minha Lista
         </Link>
       </HeaderNavigationDesktop>
       <DarkModeContainer>

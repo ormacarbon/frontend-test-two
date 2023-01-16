@@ -16,8 +16,9 @@ import {
   TrendingSlugIdVoteAverage,
   TrendingSlugIdVotes,
   TrendingSlugIdSlogan,
-  TrendingSlugIdVoteProducer
-} from '../../styles/Originals[id]';
+  TrendingSlugIdVoteProducer,
+  TraillerLink
+} from '../../styles/Movies[id]';
 
 import { useFormatter } from '../../utils/formatter';
 
@@ -63,13 +64,13 @@ const TrendingsFilmId = ({ movieInformations }) => {
             </TrendingSlugIdTitle>
 
             <TrendingSlugIdDuration>
-              {/* <span>
+              <span>
                 {formatter.formatDate(
                   movieInformations.info.release_date
                     ? movieInformations.info.release_date
                     : movieInformations.info.first_air_date
                 )}
-              </span> */}
+              </span>
               {movieInformations.info.seasons ? (
                 <span>
                   {movieInformations.info.seasons.length} temporada
@@ -82,6 +83,14 @@ const TrendingsFilmId = ({ movieInformations }) => {
                   )}
                 </span>
               )}
+              <TraillerLink
+                className="button--watch"
+                target="_blank"
+                // href={traillerTreated}
+                rel="noreferrer"
+              >
+                ▶ Trailler
+              </TraillerLink>
             </TrendingSlugIdDuration>
 
             <TrendingSlugIdDescription>

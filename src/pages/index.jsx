@@ -23,14 +23,21 @@ export const getServerSideProps = async () => {
   let chosenMovie = series[0].itens.results[randonChosen];
   let chosenMovieInfo = await TMDB.getMovieInfo(chosenMovie.id, 'tv');
 
+  let chosenMovieTrailler = await TMDB.getVideo(chosenMovie.id, 'tv');
+
   return {
-    props: { filmList, featuredMovie: chosenMovieInfo }
+    props: {
+      filmList,
+      featuredMovie: chosenMovieInfo,
+      traillerInfo: chosenMovieTrailler
+    }
   };
 };
 
-export default function Home({ filmList, featuredMovie }) {
+export default function Home({ filmList, featuredMovie, traillerInfo }) {
   const { darkMode } = useDarkModeContext();
   const { changePageActive } = usePageActiveContext();
+  console.log('traillerInfo', traillerInfo);
 
   useEffect(() => {
     changePageActive('/');
@@ -42,7 +49,16 @@ export default function Home({ filmList, featuredMovie }) {
         <title>Início</title>
       </Head>
       <HomeContainer darkMode={darkMode}>
-        {featuredMovie && <FeaturedMovie movie={featuredMovie} />}
+        {featuredMovie && (
+          <FeaturedMovie
+            movie={featuredMovie}
+            trailler={
+              traillerInfo.info.results[0]
+                ? traillerInfo.info.results[0].key
+                : ''
+            }
+          />
+        )}
         <HomeMoviesList>
           {filmList.length > 0 &&
             filmList.map((iten, index) => (

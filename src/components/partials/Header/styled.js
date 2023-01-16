@@ -60,7 +60,7 @@ export const HeaderNavigationDesktop = styled.nav`
 
   transition: all ease 0.3s;
 
-  @media (max-width: 768px) {
+  @media (max-width: 779px) {
     display: none;
   }
 
@@ -100,7 +100,7 @@ export const HeaderShowModal = styled.div`
   flex: 1;
   position: relative;
 
-  @media (min-width: 769px) {
+  @media (min-width: 780px) {
     display: none;
   }
 
@@ -158,7 +158,7 @@ export const HeaderNavigationMobile = styled.nav`
   /* transition: all ease 0.3s; */
   padding-top: 3.2rem;
 
-  @media (min-width: 769px) {
+  @media (min-width: 780px) {
     display: none;
   }
 

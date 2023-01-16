@@ -45,6 +45,11 @@ export const getServerSideProps = async () => {
     allFilmsList[randonAllFilmListNumber].itens.results[randomFilm].id
   );
 
+  let chosenMovieTrailler = await TMDB.getVideo(
+    trendingBanner.info.id,
+    'movie'
+  );
+
   return {
     props: {
       actionMovieList,
@@ -66,7 +71,8 @@ export const getServerSideProps = async () => {
       thrillerMovieList,
       warMovieList,
       westernMovieList,
-      trendingBanner
+      trendingBanner,
+      traillerInfo: chosenMovieTrailler
     }
   };
 };
@@ -91,8 +97,10 @@ export default function Home({
   thrillerMovieList,
   warMovieList,
   westernMovieList,
-  trendingBanner
+  trendingBanner,
+  traillerInfo
 }) {
+  console.log(traillerInfo);
   const { changePageActive } = usePageActiveContext();
   const { darkMode } = useDarkModeContext();
 
@@ -559,7 +567,12 @@ export default function Home({
         <title>Filmes</title>
       </Head>
       <HomeContainer darkMode={darkMode}>
-        <FeaturedMovie movie={trendingBanner} />
+        <FeaturedMovie
+          movie={trendingBanner}
+          trailler={
+            traillerInfo.info.results[0] ? traillerInfo.info.results[0].key : ''
+          }
+        />
         <TrendingsMovieListContainer>
           {actionMoviePage > 1 ? (
             <MovieRow

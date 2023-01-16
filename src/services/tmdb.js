@@ -566,6 +566,45 @@ const tmdb = {
   },
   getTvById: async (movieId) => {
     return await webFetch(`/tv/${movieId}?language=pt-BR`);
+  },
+  getVideo: async (id, type) => {
+    let info;
+
+    if (id) {
+      switch (type) {
+        case 'movie':
+          info = await basicFetch(`/movie/${id}/videos?language=pt-BR`);
+          if (info.results.length < 1) {
+            info = await basicFetch(`/movie/${id}/videos?language=en-US`);
+          }
+          break;
+        case 'tv':
+          info = await basicFetch(`/tv/${id}/videos?language=pt-BR`);
+          if (info.results.length < 1) {
+            info = await basicFetch(`/tv/${id}/videos?language=en-US`);
+          }
+          break;
+        default:
+          info = await basicFetch(`/tv/${id}/videos?language=pt-BR`);
+          type = 'tv';
+          if (info.success === false) {
+            info = await basicFetch(`/movie/${id}/videos?language=pt-BR`);
+            type = 'movie';
+          }
+          break;
+      }
+
+      return { info, type };
+    }
+  },
+  getTvVideoById: async (tvId) => {
+    let serieVideo = await webFetch(`/tv/${tvId}/videos?&language=pt-BR`);
+    if (serieVideo.results.length >= 1) {
+      return serieVideo;
+    } else {
+      serieVideo = await webFetch(`/tv/${tvId}/videos?&language=en-US`);
+      return serieVideo;
+    }
   }
 };
 

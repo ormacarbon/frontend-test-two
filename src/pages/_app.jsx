@@ -7,6 +7,7 @@ import { PageActiveProvider } from '../contexts/PageActive';
 
 import { Header } from '../components/partials/Header';
 import { BackToTop } from '../components/BackToTop';
+import { Footer } from '../components/partials/Footer';
 
 export const getServerSideProps = (context) => {
   console.log(context);
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps }) {
           <Header />
           <BackToTop />
           <Component {...pageProps} />
+          <Footer />
         </ThemeProvider>
       </PageActiveProvider>
     </DarkModeProvider>

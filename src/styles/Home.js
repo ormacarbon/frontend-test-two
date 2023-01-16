@@ -4,6 +4,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+  margin-bottom: 4.8rem;
 
   background-color: ${(props) =>
     props.darkMode ? props.theme.colors.black : props.theme.colors['gray-100']};
