@@ -1,23 +1,12 @@
-import { useState } from "react"
-import { ThemeProvider } from "styled-components"
-import { Header } from "../src/components/Header"
+import Link from "next/link";
+import { Container, Title, SubTitle } from "../src/styles/home";
 
-import light from "../src/styles/themes/light"
-import dark from "../src/styles/themes/dark"
-import { GlobalStyle } from "../src/styles/global"
 
 export default function Home() {  
-  const [theme, setTheme] = useState(dark)
-  
-  function onChangeTheme(): void {
-    setTheme(theme.title === 'light' ? dark : light)
-    console.log("theme switched")
-  }
-
   return (
-    <ThemeProvider theme={theme}>
-      <Header onChangeTheme={onChangeTheme} />
-      <GlobalStyle />
-    </ThemeProvider>
+    <Container>
+      <Title>Saga - A Song of Ice and Fire API</Title>
+      <SubTitle>Click <Link href="/gotItems?page=2">here</Link> to go to Characters List.</SubTitle>
+    </Container>
   )
 }

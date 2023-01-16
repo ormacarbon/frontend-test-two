@@ -2,12 +2,9 @@ import { useContext } from 'react';
 import Switch from 'react-switch'
 import { ThemeContext } from 'styled-components';
 
-interface ThemeSwitcherProps {
-  onChangeTheme: () => void;
-}
 
-export function ThemeSwitcher({ onChangeTheme }: ThemeSwitcherProps) {
-  const {title, colors} = useContext(ThemeContext)
+export function ThemeSwitcher({onChangeTheme}) {
+  const { title, colors } = useContext(ThemeContext)
 
 
   return (
@@ -19,7 +16,7 @@ export function ThemeSwitcher({ onChangeTheme }: ThemeSwitcherProps) {
     checkedIcon={false}
     uncheckedIcon={false}
     handleDiameter={22}
-    offColor={colors.lightGray}
+    offColor={colors.offColor}
     onColor={colors.offColor}
 
  />
