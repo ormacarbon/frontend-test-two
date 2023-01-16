@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import { Dispatch, SetStateAction } from 'react'
 
 import { BiMoviePlay } from 'react-icons/bi'
-import { MdDarkMode, MdLightMode } from 'react-icons/md'
+import { MdDarkMode, MdFavorite, MdLightMode } from 'react-icons/md'
 
 import * as Styled from './styled'
 
@@ -18,7 +19,7 @@ export const Header = ({ isDarkTheme, setIsDarkTheme }: HeaderProps): JSX.Elemen
         <span>BM.play</span>
       </Styled.Logo>
 
-      <Styled.UpdateTheme>
+      <Styled.MenuActions>
         {isDarkTheme ? (
           <MdLightMode
             size='25'
@@ -30,7 +31,13 @@ export const Header = ({ isDarkTheme, setIsDarkTheme }: HeaderProps): JSX.Elemen
             onClick={() => setIsDarkTheme(!isDarkTheme)}
           />
         )}
-      </Styled.UpdateTheme>
+        <Link href='/bm-play/favorites'>
+          <Styled.FavoriteList>
+            <MdFavorite fill='#7160C3' size={25} />
+            <span>Favoritos</span>
+          </Styled.FavoriteList>
+        </Link>
+      </Styled.MenuActions>
     </Styled.Container>
   )
 }
