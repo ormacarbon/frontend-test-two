@@ -1,9 +1,3 @@
 {
-  "extends": "next/core-web-vitals",
-    "rules": {
-      "no-console": "off",
-      "no-unused-vars": "off",
-      // ...
-      "your-rule-name": "off"
-    }
+  "extends": "next/core-web-vitals"
 }
