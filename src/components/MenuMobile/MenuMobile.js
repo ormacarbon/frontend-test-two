@@ -5,7 +5,7 @@ const MenuMobile = () => {
   return (
     <C.ContainerMenuMobile>
         <C.Burger>
-            <div class="strip burger-strip">
+            <div className="strip burger-strip">
                 <div></div>
                 <div></div>
                 <div></div>
