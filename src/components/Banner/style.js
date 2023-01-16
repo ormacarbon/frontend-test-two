@@ -9,12 +9,12 @@ export const ContainerBanner = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: url('/static/images/banner.png');
+  background-image: url("/static/images/banner.png");
   border-radius: 20px;
   @media ${devices.tablet} {
     flex-direction: column;
   }
-`
+`;
 export const InfosBanner = styled.div`
   font-size: 2rem;
   color: white;
@@ -29,7 +29,7 @@ export const InfosBanner = styled.div`
     color: #aaa;
     font-size: 1.3rem;
   }
-  `
+`;
 
 export const InfosTemp = styled.div`
   background-color: white;
@@ -38,4 +38,4 @@ export const InfosTemp = styled.div`
   h3 {
     margin-bottom: 20px;
   }
-`
+`;

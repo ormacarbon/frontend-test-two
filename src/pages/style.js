@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const ContainerHome = styled.div`
   padding-top: 70px;
   background-color: ${(props) => props.theme.background};
-  color: ${props => props.theme.text};
-`
+  color: ${(props) => props.theme.text};
+`;
 export const Cards = styled.div`
   width: 100%;
   max-width: 95vw;
@@ -14,4 +14,4 @@ export const Cards = styled.div`
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-`
+`;

@@ -19,4 +19,4 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     display: block;
   }
-`
+`;

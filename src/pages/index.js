@@ -5,10 +5,10 @@ import Loading from "../components/Loading/Loading";
 import { ThemeContext } from "../contexts/themeContext";
 import { useFetch } from "../hooks/useFetch";
 import useLocation from "../hooks/useLocation";
-import * as C from './style'
+import * as C from "./style";
 
 const Index = () => {
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   const { latitude, longitude } = useLocation();
 
   const {
@@ -16,22 +16,23 @@ const Index = () => {
     error,
     loading,
   } = useFetch(`/api/weather?latitude=${latitude}&longitude=${longitude}`);
-  const { data } = useFetch(`/api/forecast?latitude=${latitude}&longitude=${longitude}`);
-
+  const { data } = useFetch(
+    `/api/forecast?latitude=${latitude}&longitude=${longitude}`
+  );
 
   return (
-    <C.ContainerHome theme={theme} >
+    <C.ContainerHome theme={theme}>
       {loading ? (
         <Loading />
       ) : (
         <>
-        <Banner data={weather} />
-        <C.Cards>
-          {data?.list.map((forecast, index) => (
-            <Cards key={index} forecast={forecast} />
-          ))}
-        </C.Cards>
-      </>
+          <Banner data={weather} />
+          <C.Cards>
+            {data?.list.map((forecast, index) => (
+              <Cards key={index} forecast={forecast} />
+            ))}
+          </C.Cards>
+        </>
       )}
     </C.ContainerHome>
   );

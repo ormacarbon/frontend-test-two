@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import {devices} from '../../styles/Responsive'
+import { devices } from "../../styles/Responsive";
 
 export const ContainerHeader = styled.header`
   width: 100%;
-  background-color: #FFF;
+  background-color: #fff;
   height: 100px;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@ export const ContainerHeader = styled.header`
   @media ${devices.laptop} {
     display: none;
   }
-`
+`;
 
 export const HeaderNavigation = styled.nav`
   width: 90vw;
@@ -25,24 +25,24 @@ export const HeaderNavigation = styled.nav`
     font-weight: bold;
     letter-spacing: 2px;
   }
-  `
+`;
 export const ListItems = styled.ul`
   width: 800px;
   display: flex;
   justify-content: space-around;
 
-  a{
+  a {
     color: #000000ae;
     font-size: 1rem;
     font-weight: 600;
-    transition: all .3s;
+    transition: all 0.3s;
     &:hover {
-      color: #551A8B;
+      color: #551a8b;
     }
   }
-`
+`;
 export const ChangeTheme = styled.div`
   max-width: 200px;
   font-size: 1.5rem;
   margin-right: 100px;
-`
+`;

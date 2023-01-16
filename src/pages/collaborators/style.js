@@ -5,20 +5,20 @@ export const ContainerCollaborators = styled.div`
   min-height: 100vh;
   margin: 0 auto;
   border: 1px solid;
-  background-color: ${props => props.theme.background};
-  color: ${props => props.theme.text};
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.text};
   padding: 40px;
-`
+`;
 export const Select = styled.select`
   height: 30px;
-`
+`;
 export const ContainerSelects = styled.div`
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 export const Table = styled.table`
- display: flex;
+  display: flex;
   flex-direction: column;
   margin: 20px 0;
   align-items: center;
@@ -36,7 +36,7 @@ export const Table = styled.table`
     text-align: center;
     border: 1px solid #aaa;
   }
-`
+`;
 
 export const ContainerButtons = styled.div`
   width: 100%;
@@ -53,4 +53,4 @@ export const ContainerButtons = styled.div`
     cursor: pointer;
     border-radius: 10px;
   }
-`
+`;

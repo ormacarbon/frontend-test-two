@@ -13,4 +13,4 @@ export const ContainerAirPolluition = styled.div`
       flex-direction: column;
     }
   }
-`
+`;

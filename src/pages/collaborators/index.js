@@ -18,7 +18,7 @@ const Collaborators = () => {
   const [filteredPeople, setFilteredPeople] = useState([]);
   const [load, setLoad] = useState(true);
 
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     fetch("https://api.randomuser.me/?results=100")
@@ -30,7 +30,8 @@ const Collaborators = () => {
   useEffect(() => {
     setFilteredPeople(
       people.filter(
-        (person) => !selectedGender || genderTranslate[person.gender] === selectedGender
+        (person) =>
+          !selectedGender || genderTranslate[person.gender] === selectedGender
       )
     );
   }, [people, selectedGender]);

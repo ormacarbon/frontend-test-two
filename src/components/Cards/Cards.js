@@ -1,12 +1,11 @@
-import React from 'react'
-import * as C from './style'
+import React from "react";
+import * as C from "./style";
 
-
-const Cards = ({forecast}) => {
+const Cards = ({ forecast }) => {
   return (
     <C.ContainerCards>
       <p>Temperature: {forecast.main.temp}</p>
-      {forecast.weather.map(({description, main, icon, id}) => (
+      {forecast.weather.map(({ description, main, icon, id }) => (
         <div key={id}>
           <p>{description}</p>
           <p>{main}</p>
@@ -21,9 +20,8 @@ const Cards = ({forecast}) => {
           <p>Temp MIN: {forecast.main.temp_min}</p>
         </div>
       ))}
-
     </C.ContainerCards>
-  )
-}
+  );
+};
 
-export default Cards
+export default Cards;

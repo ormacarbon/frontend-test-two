@@ -10,6 +10,6 @@ export const ContainerCards = styled.div`
   flex-direction: column;
   justify-content: center;
   &:hover {
-    background-color: rgba(59,130,246,.5);
+    background-color: rgba(59, 130, 246, 0.5);
   }
-`
+`;
