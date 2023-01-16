@@ -4,7 +4,7 @@ export const themeLightMode = {
         primaryColor: '#F58322',
         secondaryColor: '#D9212F',
         tertiaryColor: '#A8201D',
-        fontColor: '#FFFFFC',
+        fontColor: '#283845',
         secondaryFontColor: '#FFFFFC'
     },
 
@@ -23,7 +23,8 @@ export const themeDarkMode = {
             bgColor: '#283845',
             primaryColor: '#753906',
             secondaryColor: '#E44E5A',
-            fontColor: '#FFFFFC'
+            fontColor: '#FFFFFC',
+            secondaryFontColor: '#FFFFFC'
     },
 
     typography: {

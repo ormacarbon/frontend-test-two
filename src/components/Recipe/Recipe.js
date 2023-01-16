@@ -1,9 +1,12 @@
+import { useRecoilValue } from "recoil"
 import styled, { ThemeProvider } from "styled-components"
-import { themeLightMode } from "../../theme/theme"
+import { themeSwitchState } from "../../state/atom"
+import { themeDarkMode, themeLightMode } from "../../theme/theme"
 
 export default function Recipe(props) {
+	const lightSwitchState = useRecoilValue(themeSwitchState)
 	return (
-		<ThemeProvider theme={themeLightMode}>
+		<ThemeProvider theme={lightSwitchState == true? themeLightMode: themeDarkMode}>
 			<StyledRecipe>
 				<div className="img" style={{
 					backgroundImage: `linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7)), url(${props.image})`
@@ -23,6 +26,7 @@ const StyledRecipe = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	color: ${(p) => p.theme.colors.fontColor};
 	h2{
 		margin: 2rem 0;
 		font-size: 3rem;

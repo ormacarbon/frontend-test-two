@@ -16,7 +16,7 @@ export default function GlobalStyle() {
         }
         body {
           font-family: ${themeLightMode.typography.fontFamily}, sans-serif;
-          color: ${themeLightMode.colors.fontColor};
+          color: ${lightSwitchState == true? themeLightMode.colors.fontColor: themeDarkMode.colors.fontColor};
           background: ${lightSwitchState == true? themeLightMode.colors.bgColor: themeDarkMode.colors.bgColor};
         }
         img, video {

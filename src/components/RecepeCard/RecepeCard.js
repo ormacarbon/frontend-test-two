@@ -37,5 +37,9 @@ const StyledRecepieCard = styled.div`
     justify-content: flex-end;
     padding: 2rem;
     color: ${p => p.theme.colors.secondaryFontColor};
+
+    @media screen and (max-width: 625px) {
+        font-size: 0.8rem;
+    }
 `
 

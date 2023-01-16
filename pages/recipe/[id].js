@@ -6,10 +6,12 @@ import Button from "../../src/components/Button/Button"
 import Footer from "../../src/components/Footer/Footer"
 import Header from "../../src/components/Header/Header"
 import Recipe from "../../src/components/Recipe/Recipe"
-import { listaDeReceitas, savedRecipesState } from "../../src/state/atom"
-import { themeLightMode } from "../../src/theme/theme"
+import { listaDeReceitas, savedRecipesState, themeSwitchState } from "../../src/state/atom"
+import { themeDarkMode, themeLightMode } from "../../src/theme/theme"
 
 export default function RecipePage() {
+	const lightSwitchState = useRecoilValue(themeSwitchState)
+
 	const router = useRouter()
 	const { id } = router.query
 	const recipeList = useRecoilValue(listaDeReceitas)
@@ -21,7 +23,7 @@ export default function RecipePage() {
 	return (
 		<div>
 			<Header />
-			<ThemeProvider theme={themeLightMode}>
+			<ThemeProvider theme={lightSwitchState == true? themeLightMode: themeDarkMode}>
 			<StyledRandomRecipe>
 				<Recipe
 					image={recipeList[index].image}
@@ -30,18 +32,18 @@ export default function RecipePage() {
 					instructions={recipeList[index].instructions}
 				/>
 
-				{/*<div className="ingredients">
+				<div className="ingredients">
 					<h3>
 						Ingredients
 					</h3>
 					<ul>
-						{recipe[randomNum].extendedIngredients.map(ingredient => (
+						{recipeList[index].extendedIngredients.map(ingredient => (
 							<li>
 								{`${ingredient.amount} ${ingredient.name}`}
 							</li>
 						))}
 					</ul>
-                        </div>*/}
+                    </div>
 
 				<Button
 					text='Save Recipe'
@@ -73,6 +75,8 @@ margin: 3rem auto;
 text-align: center;
 .ingredients{
 	margin-top: 3rem;
+	text-align: justify;
+	color: ${(p) => p.theme.colors.fontColor};
 }
 
 

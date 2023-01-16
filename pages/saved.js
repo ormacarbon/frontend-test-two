@@ -63,13 +63,14 @@ h2{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	justify-items: center;
+	align-items: center;
 	margin-bottom: 3rem;
 
 	.grid-item{
-		width: 80%;
+		width: 70%;
 		height: 300px;
 		text-align: center;
-		margin: 2rem 0;
+		margin: 4rem 0;
 	}
 }
 
@@ -82,6 +83,7 @@ h2{
 @media screen and (max-width: 430px) {
 	.grid-container{
 		.grid-item{
+			width: 100%;
 			height: 200px;
 		}
 	}

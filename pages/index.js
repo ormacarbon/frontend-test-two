@@ -6,11 +6,13 @@ import Footer from "../src/components/Footer/Footer";
 import Header from "../src/components/Header/Header";
 import RecepieCard from "../src/components/RecepeCard/RecepeCard";
 import Recommendations from "../src/components/Recommendations/Recommendations";
-import { listaDeReceitas } from "../src/state/atom"
+import { listaDeReceitas, themeSwitchState } from "../src/state/atom"
 import { themeLightMode } from "../src/theme/theme";
 
 export default function Home() {
   const Setreceitas = useSetRecoilState(listaDeReceitas)
+  const lightSwitch = useSetRecoilState(themeSwitchState)
+  const lightSwitchState = useRecoilValue(themeSwitchState)
   const receitas = useRecoilValue(listaDeReceitas)
   const options = {
     method: 'GET',
@@ -26,13 +28,29 @@ export default function Home() {
   };
 
   useEffect(() => {
-    axios.request(options).then(function (response) {
-      Setreceitas(response.data.recipes);
-      console.log(response.data.recipes);
+    const recipeList = JSON.parse(localStorage.getItem('recipelist'))
+    const darkMode = localStorage.getItem('darkMode')
+    const date = new Date
+    const hours = date.getHours()
+    localStorage.setItem('hours', JSON.stringify(hours))
+    const savedHors = JSON.parse(localStorage.getItem('hours'))
 
-    }).catch(function (error) {
-      console.error(error);
-    });
+    if(darkMode == 'on'){
+      lightSwitch(!lightSwitchState)
+    }else{
+      lightSwitch(true)
+    }
+
+    if(recipeList == null || hours != savedHors){
+      axios.request(options).then(function (response) {
+        localStorage.setItem('recipelist', JSON.stringify(response.data.recipes))
+        Setreceitas(response.data.recipes);
+      }).catch(function (error) {
+        console.error(error);
+      });
+    }else{
+      Setreceitas(recipeList)
+    }
   }, [])
 
   return (
@@ -82,7 +100,7 @@ h2{
   grid-gap: 2rem;
 
   .more__card-container{
-    min-width: 500px;
+    min-width: 400px;
     min-height: 300px;
   }
 }
@@ -90,10 +108,13 @@ h2{
 @media screen and (max-width: 1024px) {
     .more__grid-container{
       width: 100%;
-        .more__card-container{
+      display: flex;
+      flex-direction: column;
+      
+      .more__card-container{
           min-width: 400px  ;
           height: 300px;
-        }
+      }
     }
 }
 

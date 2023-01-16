@@ -3,10 +3,9 @@ import { BiBookHeart } from 'react-icons/bi'
 import Menu from "./Menu"
 import SearchBar from "./Search"
 import { useRecoilValue, useSetRecoilState } from "recoil"
-import { themeState, themeSwitchState } from "../../state/atom"
+import { themeSwitchState } from "../../state/atom"
 import Button from "../Button/Button"
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs"
-import { useState } from "react"
 import { themeDarkMode, themeLightMode } from "../../theme/theme"
 
 export default function Header() {
@@ -17,7 +16,14 @@ export default function Header() {
       <ThemeProvider theme={lightSwitchState == true? themeLightMode: themeDarkMode}>
          <StyledHeader>
          <Button
-         onClick={() => {lightSwitch(!lightSwitchState)}}
+         onClick={() => {
+            lightSwitch(!lightSwitchState)
+            if(lightSwitchState == true){
+               localStorage.setItem('darkMode', 'on')
+            }else{
+               localStorage.setItem('darkMode', 'off')
+            }
+         }}
          size={50}
          m={0.5}
          text={lightSwitchState == true? <BsFillSunFill className="icon"/>: <BsFillMoonFill className="icon"/>}

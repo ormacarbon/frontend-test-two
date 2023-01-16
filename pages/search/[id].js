@@ -22,6 +22,7 @@ export default function SearchItem() {
                             <RecepieCard
                                 title={recipe.title}
                                 img={recipe.image}
+                                to={recipe.id}
                             />
                         </div>
                     ))}
