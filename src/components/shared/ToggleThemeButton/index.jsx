@@ -8,7 +8,7 @@ export default function ToggleThemeButton() {
 
   return (
     <Container onClick={toggleTheme}>
-      {theme.name === "light" ? <FiMoon /> : <FiSun />}
+      {theme.name === "light" ? <FiSun /> : <FiMoon />}
     </Container>
   );
 }
