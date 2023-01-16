@@ -28,8 +28,21 @@ export const Logo = styled.section`
   }
 `
 
-export const UpdateTheme = styled.section`
+export const MenuActions = styled.section`
+  display: flex;
+  gap: .5rem;
+
   svg {
     cursor: pointer;
+  }
+`
+
+export const FavoriteList = styled.section`
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+
+  span {
+    font-weight: 600;
   }
 `
