@@ -2,11 +2,14 @@
   "name": "frontend-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github-LeonardoMachado30.github.io/frontend-test-two",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "eslint-plugin-react-hooks": "^5.0.0-next-7002a6743-20230110",
@@ -17,6 +20,7 @@
   },
   "devDependencies": {
     "eslint": "8.29.0",
-    "eslint-config-next": "13.0.6"
+    "eslint-config-next": "13.0.6",
+    "gh-pages": "^4.0.0"
   }
 }
