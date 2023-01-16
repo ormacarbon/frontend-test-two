@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 1.6rem;
 
       @media (max-width: 700px) {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
   }
