@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Loading from "../../components/Loading/Loading";
 import Title from "../../components/Title/Title";
 import { ThemeContext } from "../../contexts/themeContext";
-import * as C from "./style";
+import * as C from "../../styles/PagesStyles/Collaborators";
 
 const genderTranslate = {
   male: "Masculino",

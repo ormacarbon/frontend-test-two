@@ -5,7 +5,7 @@ import Loading from "../components/Loading/Loading";
 import { ThemeContext } from "../contexts/themeContext";
 import { useFetch } from "../hooks/useFetch";
 import useLocation from "../hooks/useLocation";
-import * as C from "./style";
+import * as C from "../styles/PagesStyles/Home";
 
 const Index = () => {
   const { theme } = useContext(ThemeContext);

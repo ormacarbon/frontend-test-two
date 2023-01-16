@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { devices } from "../../styles/Responsive";
+import { devices } from "../Responsive";
 
 export const ContainerAirPolluition = styled.div`
   width: 100vw;

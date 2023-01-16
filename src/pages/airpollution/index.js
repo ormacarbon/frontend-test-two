@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import * as C from "./style";
+import * as C from "../../styles/PagesStyles/AirPollution";
 import useLocation from "../../hooks/useLocation";
 import Loading from "../../components/Loading/Loading";
 import { ThemeContext } from "../../contexts/themeContext";
