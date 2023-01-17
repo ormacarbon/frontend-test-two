@@ -1,4 +1,4 @@
-import { BeersCard, Title } from "./style";
+import { Container, BeersCard, Title } from "./style";
 import { HeaderComponent } from "../../components/Header";
 
 import { BeerEventCardComponent } from "../../components/BeerEventCard";
@@ -12,26 +12,27 @@ export const ConfraterzinationBeersPageComponent = () => {
   return (
     <>
       <HeaderComponent />
-
-      <Title>
-        <h2>Cervejas selecionadas para confraternização</h2>
-      </Title>
-      <BeersCard>
-        {confraternizationBeers.map((element) => {
-          return (
-            <BeerEventCardComponent
-              key={element.id}
-              image={element.image_url}
-              name={element.name}
-              tagline={element.tagline}
-              abv={element.abv}
-              ibu={element.ibu}
-              beer={element}
-              event={"confraternization"}
-            />
-          );
-        })}
-      </BeersCard>
+      <Container>
+        <Title>
+          <h2>Cervejas selecionadas para confraternização</h2>
+        </Title>
+        <BeersCard>
+          {confraternizationBeers.map((element) => {
+            return (
+              <BeerEventCardComponent
+                key={element.id}
+                image={element.image_url}
+                name={element.name}
+                tagline={element.tagline}
+                abv={element.abv}
+                ibu={element.ibu}
+                beer={element}
+                event={"confraternization"}
+              />
+            );
+          })}
+        </BeersCard>
+      </Container>
     </>
   );
 };
