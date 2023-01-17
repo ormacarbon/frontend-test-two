@@ -36,7 +36,7 @@ https://github.com/public-apis/public-apis
 
 - Deve utilizar useContext, useState e useEffect.
 - Ter ao menos 3 paginas navegáveis com router (ex: um navbar para facilitar a navegação).
-- Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição.
+- Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição .
 
 -------------------------------------------------------
 
