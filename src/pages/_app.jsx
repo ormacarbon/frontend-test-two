@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import GlobalStyles from '../../src/styles/global';
 import { Lexend } from '@next/font/google';
-import Layout from '../components/Layout';
+import { LightTheme, DarkTheme } from '../styles/themes/themes';
+import { ThemeProvider } from 'styled-components';
+import { ThemeContext } from '../components/Context';
 
 const lexend = Lexend({
   subsets: ['latin'],
@@ -8,12 +11,17 @@ const lexend = Lexend({
 });
 
 function MyApp({ Component, pageProps }) {
+  const [theme, setTheme] = useState('light');
+
 	return (
-      <main className={lexend.className}>
-        <Component {...pageProps} />
-        <GlobalStyles />
-        <Layout />
-      </main>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <ThemeProvider theme={theme === 'light' ? LightTheme : DarkTheme}>
+        <main className={lexend.className}>
+          <Component {...pageProps} />
+          <GlobalStyles />
+        </main>
+      </ThemeProvider>
+    </ThemeContext.Provider>
   )
 }
 
