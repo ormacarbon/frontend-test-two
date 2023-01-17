@@ -37,6 +37,12 @@ export const Container = styled.nav<ContainerProps>`
     margin: 0 auto;
   }
 
+  @media (max-width: 768px) {
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
   @media (max-width: 540px) {
     height: 100vh;
     display: ${({mobileMenuVisible}) => mobileMenuVisible ? 'block' : 'none'};
