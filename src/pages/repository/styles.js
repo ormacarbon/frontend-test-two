@@ -92,9 +92,12 @@ export const ActionButtons = styled.div`
   margin-top: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: row;
   gap: 10px;
+
+  @media screen and (max-width: 500px) {
+    justify-content: center;
+  }
 `;
 
 export const LikeButton = styled.button`
@@ -112,7 +115,7 @@ export const LikeButton = styled.button`
 
   :hover {
     svg {
-      color: red;
+      fill: ${(p) => p.theme.colors.red};
     }
   }
 `;
