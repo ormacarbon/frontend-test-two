@@ -13,7 +13,7 @@ export default function Welcome() {
         phile
       </h1>
       <footer>
-        <StyledLink href="/movies">
+        <StyledLink href="/content/movies">
           Lets get start!
           <AiFillStar size={16} color="#fde047" />
         </StyledLink>
