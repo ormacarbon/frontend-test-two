@@ -25,7 +25,7 @@ export default function Details({ movieById }: DetailsProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>BM-PLAY | {movieById.title}</title>
+        <title>BM-PLAY | {movieById?.title}</title>
       </Head>
       {!isFallback && (
         <Styled.Container>
