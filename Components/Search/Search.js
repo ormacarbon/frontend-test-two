@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Api from "../../Controllers/Api";
 
 function Search({ getSearch, apiRequest, setLoading }) {
   const [state, setState] = useState("");
@@ -10,33 +11,34 @@ function Search({ getSearch, apiRequest, setLoading }) {
     apiRequest();
   };
 
-  const handleSearch = () => {
+  async function handleSearch() {
     const urlBase = `https://pokeapi.co/api/v2/pokemon/${state}`;
     setHideBySearch("");
     setLoading(true);
-    fetch(urlBase)
-      .then((resp) => resp.json())
-      .then((data) => {
-        getSearch([
-          data.forms[0].name,
-          data.sprites.front_default,
-          data.id,
-          "search",
-        ]);
-        setLoading(false);
-        return;
-      })
-      .catch(() => {
-        getSearch(["not"]);
-        setLoading(false);
-        return;
-      });
-  };
+
+    await Api(urlBase).then((data) => {
+      getSearch([
+        data.forms[0].name,
+        data.sprites.front_default,
+        data.id,
+        "search",
+      ]);
+      setLoading(false);
+      return;
+    });
+    // .catch(() => {
+    //   getSearch(["not"]);
+    //   setLoading(false);
+    //   return;
+    // });
+
+    return;
+  }
 
   useEffect(() => {
-    document.title = "PESQUISAR"
-  },[])
-  
+    document.title = "PESQUISAR";
+  }, []);
+
   return (
     <div className="search">
       <input

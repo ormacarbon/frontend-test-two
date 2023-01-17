@@ -1,4 +1,4 @@
-import "../public/index.css";
+import "../styles/index.css";
 
 function MyApp({ Component, pageProps }) {
   return (

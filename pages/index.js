@@ -5,60 +5,40 @@ import Pagination from "../Components/Pagination/Pagination";
 import PokemonInfo from "../Components/PokemonInfo/PokemonInfo";
 import Search from "../Components/Search/Search";
 import Loading from "../Components/Loading/Loading";
+import Api from "../Controllers/Api";
 
 function Home() {
   const [apiOptions, setApiOptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(null);
   const [hideBySearch, setHideBySearch] = useState(null);
-  const [check, setCheck] = useState(false);
-  const [theme, setTheme] = useState("light");
 
-  const handlePokemonInfo = (prop) => {
-    setModal({ id: prop, class: "active" });
-  };
+  async function apiRequest(uri) {
+    const _uriBase = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16";
+    const _uri = uri ?? _uriBase;
 
-  async function apiRequest(uriBase) {
     setApiOptions([]);
     setLoading(true);
 
-    function _handleMapUrlsPagination(resp) {
-      resp.results.map(async (item) => {
-        await fetch(item.url)
-          .then((req) => req.json())
-          .then((data) => {
-            setApiOptions((prev) => {
-              return [
-                ...prev,
-                [data.name, data.sprites.front_default, data.id],
-              ];
-            });
-          })
-          .catch((err) => {
-            throw new Error({ err });
+    await Api(_uri).then(async (data) => {
+      await data.results.map(async (resp) => {
+        await Api(resp.url).then(async (item) => {
+          await setApiOptions((prev) => {
+            setLoading(false);
+            return [...prev, [item.name, item.sprites.front_default, item.id]];
           });
+        });
       });
-    }
-
-    const uriBaseDefault =
-      uriBase ?? "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16";
-
-    await fetch(uriBaseDefault)
-      .then((req) => req.json())
-      .then((resp) => {
-        _handleMapUrlsPagination(resp);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      })
-      .catch((err) => {
-        throw new Error({ err });
-      });
+    });
   }
 
   const getSearch = (prop) => {
     setHideBySearch("d-none");
     setApiOptions(prop);
+  };
+
+  const handlePokemonInfo = (prop) => {
+    setModal(prop);
   };
 
   useEffect(() => {
@@ -90,7 +70,7 @@ function Home() {
 
       <Pagination apiRequest={apiRequest} hideBySearch={hideBySearch} />
 
-      {modal != null ? (
+      {modal !== null ? (
         <PokemonInfo modal={modal} setLoading={setLoading} />
       ) : (
         ""
@@ -103,7 +83,7 @@ function Home() {
             target={`_blank`}
           >
             <Image
-              src="/assets/logo-linkedin.svg"
+              src="/images/logo-linkedin.svg"
               width={40}
               height={40}
               alt="LinkedIn"
@@ -114,7 +94,7 @@ function Home() {
         <li>
           <a href="https://github.com/LeonardoMachado30" target={`_blank`}>
             <Image
-              src="/assets/logo-github.svg"
+              src="/images/logo-github.svg"
               width={40}
               height={40}
               alt="GitHub"
