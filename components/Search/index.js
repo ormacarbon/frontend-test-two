@@ -43,24 +43,26 @@ const Search = ({ setSection }) => {
   }, [activeClass, toggleSectionList]);
 
   return (
-    <ButtonContainer>
+    <>
       <Head title={`GetNews - ${sectionTitle}`} />
-      <Button
-        onClick={toggleSectionList}
-        className={`${activeClass ? "active" : ""}`}
-      >
-        {sectionTitle} <ArrowDown />
-      </Button>
-      {activeClass && (
-        <SectionList>
-          {sectionList.map((sec) => (
-            <li key={sec} onClick={() => handleChangeSection(sec)}>
-              {upFirstLetter(sec)}
-            </li>
-          ))}
-        </SectionList>
-      )}
-    </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={toggleSectionList}
+          className={`${activeClass ? "active" : ""}`}
+        >
+          {sectionTitle} <ArrowDown />
+        </Button>
+        {activeClass && (
+          <SectionList>
+            {sectionList.map((sec) => (
+              <li key={sec} onClick={() => handleChangeSection(sec)}>
+                {upFirstLetter(sec)}
+              </li>
+            ))}
+          </SectionList>
+        )}
+      </ButtonContainer>
+    </>
   );
 };
 
