@@ -3,6 +3,7 @@ import ToggleThemeButton from "../ToggleThemeButton";
 
 import {
   ActionButtonsContainer,
+  AppName,
   Container,
   Content,
   PageInfoContainer,
@@ -12,26 +13,37 @@ import { useRouter } from "next/router";
 import { FiArrowLeft } from "react-icons/fi";
 
 export default function RepositoryIssuesHeader(props) {
-  const { repository, isEmpty } = props;
+  const { repository, isEmpty, isIssues } = props;
   const router = useRouter();
+
+  function redirect() {
+    if (props.issues) router.back();
+    else router.push("/");
+  }
 
   return (
     <Container>
       <Content>
-        <PageInfoContainer>
-          <img
-            alt={`${repository.name} logo`}
-            src={repository.owner.avatar_url}
-          />
-          <div>
-            <p>{repository.name}</p>
-            <span>issues</span>
-          </div>
-        </PageInfoContainer>
+        {props.issues ? (
+          <PageInfoContainer>
+            <img
+              alt={`${repository.name} logo`}
+              src={repository.owner.avatar_url}
+            />
+            <div>
+              <p>{repository.name}</p>
+              <span>{isIssues ? "issues" : "repo"}</span>
+            </div>
+          </PageInfoContainer>
+        ) : (
+          <AppName>
+            y<span>ssues</span>
+          </AppName>
+        )}
         <ActionButtonsContainer>
           <ToggleThemeButton />
           {!isEmpty && (
-            <Button onClick={() => router.back()} type="rounded-square">
+            <Button onClick={redirect} type="rounded-square">
               <FiArrowLeft />
               Voltar
             </Button>

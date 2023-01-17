@@ -22,14 +22,14 @@ button {
   transition: all 0.3s ease;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 720px) {
   html {
-    font-size: 90%;
+    font-size: 95%;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 540px) {
   html {
-    font-size: 85%;
+    font-size: 90%;
   }
 }

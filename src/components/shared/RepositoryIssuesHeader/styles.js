@@ -62,6 +62,18 @@ export const PageInfoContainer = styled.div`
   }
 `;
 
+export const AppName = styled.div`
+  color: ${(p) => p.theme.colors.header.title};
+  font-weight: 800;
+  font-size: 1.2rem;
+
+  @media only screen and (max-width: 320px) {
+    span {
+      display: none;
+    }
+  }
+`;
+
 export const ActionButtonsContainer = styled.div`
   display: flex;
   align-items: center;
