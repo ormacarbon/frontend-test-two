@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { FormSearchProducts } from "../components/formSearchProducts";
+import { FormSearchItem } from "../components/formSearchItem";
 import { Header } from "../components/header";
 import { Pagination } from "../components/pagination";
 import { SectionProducts } from "../components/sectionProducts";
 import { api } from "../services/api";
 import { GlobalStyle } from "../styles/global";
+import Router from "next/router";
+
 
 export default function Home(props) {
 
@@ -12,17 +14,29 @@ export default function Home(props) {
   const [dataProducts, setdataProducts] = useState(props.dataProducts)
   const [productName, setPoductName] = useState(props.name)
 
+  console.log(props.error);
+
+
   useEffect(() => {
     setdataProducts(props.dataProducts)
     setPoductName(props.name)
   }, [props.name])
 
+  const handleKeyPressInput = () => {
+    const input = document.getElementById("input_search_products")
+    Router.push(`/?name=${input.value}`)
+  }
 
   return (
     <div>
       <GlobalStyle />
       <Header />
-      <FormSearchProducts />
+      <FormSearchItem
+        label="Buscar produtos"
+        handleKeyPressInput={handleKeyPressInput}
+        placeholder="Digite o nome do produto"
+
+      />
       {
         dataProducts && (
           <>

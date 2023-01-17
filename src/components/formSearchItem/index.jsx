@@ -2,34 +2,31 @@ import { Container } from "./style"
 import { BsSearch } from "react-icons/bs";
 import Router from "next/router";
 
-const FormSearchProducts = () => {
+const FormSearchItem = (props) => {
 
     const handleKeyPressInput = (event) => {
         event.preventDefault();
-        const input = document.getElementById("input_search_products")
-
-        Router.push(`/?name=${input.value}`)
+        props.handleKeyPressInput()
     }
-
 
     return (
         <Container>
             <div>
-                <h1> Buscar produtos </h1>
+                <h1> {props.label}</h1>
                 <form onSubmit={handleKeyPressInput}>
                     <div >
                         <input
                             id="input_search_products"
                             type="text"
-                            placeholder="Digite o nome do produto"
+                            placeholder={props.placeholder}
                         />
                         <BsSearch />
                     </div>
                 </form>
 
             </div>
-        </Container>
+        </Container >
     )
 }
 
-export { FormSearchProducts }
+export { FormSearchItem }
