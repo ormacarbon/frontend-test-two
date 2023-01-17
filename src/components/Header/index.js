@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useContext, useState } from 'react';
 import Switch from 'react-switch';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import useWidth from '../../hooks/useWidth';
 import {
   StyledHeader, ListNavMenu, ContainerLogo, MenuMobile,
 } from './styles';
@@ -11,16 +12,18 @@ import {
 export default function Header() {
   const { handleToggleTheme, theme, currentTheme } = useContext(ThemeContext);
   const [active, setActive] = useState(false);
+  const width = useWidth();
 
   function toggleActive() {
     setActive(!active);
   }
 
   return (
-    <StyledHeader theme={currentTheme}>
+    <StyledHeader menuOpen={active} theme={currentTheme}>
       <ContainerLogo menuOpen={active} theme={currentTheme}>
         <Link href="/"><h1>FUTstats</h1></Link>
         <Switch
+          className="switch"
           onChange={handleToggleTheme}
           checked={theme === 'dark'}
           checkedIcon={false}
@@ -28,7 +31,7 @@ export default function Header() {
           checkedHandleIcon={<span>🌞</span>}
           uncheckedHandleIcon={<span>🌑</span>}
           height={25}
-          width={50}
+          width={width < 425 ? 40 : 50}
           handleDiameter={25}
           onColor="#ccc"
           offColor="#444"

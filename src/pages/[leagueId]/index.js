@@ -9,11 +9,13 @@ import { Section, ContainerLogoLeague, ContainerSeasons } from './styles';
 export default function LeagueDetails({ detailsLeagueSelected, seasonsLeague }) {
   const { currentTheme, theme } = useContext(ThemeContext);
   const { asPath } = useRouter();
+  const logoDark = detailsLeagueSelected.logos.dark.replace(/["]/g, '');
+  const logoLight = detailsLeagueSelected.logos.light;
 
   const setLogo = (
     theme === 'dark'
-      ? detailsLeagueSelected.logos.dark
-      : detailsLeagueSelected.logos.light);
+      ? logoDark
+      : logoLight);
 
   return (
     <Section theme={currentTheme}>
@@ -25,7 +27,7 @@ export default function LeagueDetails({ detailsLeagueSelected, seasonsLeague }) 
         <h2>{detailsLeagueSelected.name}</h2>
       </ContainerLogoLeague>
       <ContainerSeasons theme={currentTheme}>
-        <strong>Temporadas</strong>
+        <strong>Seasons</strong>
         <ul>
           {seasonsLeague.map((season) => (
             <Link key={season.year} href={`${asPath}/${season.year}`}>
@@ -61,7 +63,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       detailsLeagueSelected: detailsLeague.data,
-      seasonsLeague: seasonsLeague.data.seasons,
+      seasonsLeague: seasonsLeague.data.seasons || {},
       leagueId: context.params.leagueId,
     },
   };

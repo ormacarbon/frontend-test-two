@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <Head>
-        <title>Text</title>
+        <title>FUTstats</title>
       </Head>
       <Header />
       <Component {...pageProps} />

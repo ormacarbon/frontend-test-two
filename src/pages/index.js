@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import Link from 'next/link';
@@ -12,6 +12,13 @@ import useWidth from '../hooks/useWidth';
 export default function Home({ leagues }) {
   const { currentTheme, theme } = useContext(ThemeContext);
   const width = useWidth();
+  const calcToShow = () => {
+    if (width > 1900) return 4.5;
+    if (width > 1100) return 3.5;
+    if (width > 500) return 2.5;
+    return 1.5;
+  };
+  const itemsToShow = calcToShow();
 
   return (
     <Main theme={currentTheme}>
@@ -20,7 +27,7 @@ export default function Home({ leagues }) {
         <Carousel
           isRTL
           itemsToScroll={2}
-          itemsToShow={width > 1900 ? 4.5 : 3.5}
+          itemsToShow={itemsToShow}
         >
           {leagues.data.map((league) => {
             const logoDark = league.logos.dark.replace(/["]/g, '');

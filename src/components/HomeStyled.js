@@ -28,6 +28,9 @@ export const Container = styled.div`
 
     &:hover{
       background-color: ${({ theme }) => theme.secondaryColor};
+      -webkit-box-shadow: 0px 0px 41px 8px rgba(145,145,145,1);
+      -moz-box-shadow: 0px 0px 41px 8px rgba(145,145,145,1);
+      box-shadow: 0px 0px 41px 8px rgba(145,145,145,1);
     }
 
     img {
@@ -76,14 +79,14 @@ export const Container = styled.div`
   }
 
   @media (max-width: 768px) {
-    bottom: -130px;
+    bottom: -150px;
 
     a {
       min-height: 150px;
       min-width: 130px;
 
       img {
-        width: 100%;
+        width: 100px;
       }
 
       p {
@@ -93,6 +96,20 @@ export const Container = styled.div`
 
     .rec-carousel-item {
       margin-right: 48px;
+    }
+
+    .rec.rec-pagination {
+      max-width: 50%;
+    }
+
+  }
+
+  @media (max-width: 350px) {
+    bottom: -150px;
+
+    a {
+      min-height: 135px;
+      min-width: 110px;
     }
 
   }

@@ -7,7 +7,12 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  ${({ menuOpen }) => menuOpen && css`
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+  `}
 
   .nav-desktop {
     display: none;
@@ -29,13 +34,18 @@ export const ContainerLogo = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-
   ${({ menuOpen }) => menuOpen && css`
     display: none;
   `}
 
   h1 {
     color: ${({ theme }) => theme.secondaryColor};
+  }
+
+  @media (max-width: 470px) {
+    h1 {
+      font-size:26px;
+    }
   }
 `;
 
@@ -45,10 +55,6 @@ export const MenuMobile = styled.div`
   display: none;
   margin-bottom: 40px;
   margin-right: 12px;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
 
   .icon {
     position: absolute;
@@ -126,6 +132,38 @@ export const MenuMobile = styled.div`
     height: 100%;
   }
 
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  @media (max-width: 450px) {
+    .icon.iconActive .hamburguer {
+
+    ::after {
+      right: 10px;
+    }
+    ::before {
+      right: 10px;
+    }
+  }
+
+  .hamburguer {
+    width: 25px;
+    height: 4px;
+
+    ::before {
+      top: -10px;
+      width: 32px;
+      height: 4px;
+    }
+    ::after {
+      top: 10px;
+      width: 32px;
+      height: 4px;
+    }
+  }
+
+  }
 `;
 
 export const ListNavMenu = styled.ul`

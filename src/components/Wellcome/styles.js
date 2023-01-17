@@ -55,11 +55,26 @@ export const Container = styled.div`
 }
 
  @media (max-width: 768px) {
-  
   h3 {
       font-size: 16px;
     }
  }
+
+ @media (max-width: 768px) {
+  h3 {
+      font-size: 16px;
+    }
+ }
+
+ @media (max-width: 465px) {
+  h3 {
+      max-width: 90%;
+      line-height: 20px;
+      font-size: 14px;
+    }
+ }
+
+
 
 
 `;
