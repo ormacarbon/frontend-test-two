@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRouter } from "next/router"
 import { GetStaticPaths, GetStaticProps } from "next"
 
@@ -23,6 +24,9 @@ export default function Details({ movieById }: DetailsProps): JSX.Element {
 
   return (
     <>
+      <Head>
+        <title>BM-PLAY | {movieById.title}</title>
+      </Head>
       {!isFallback && (
         <Styled.Container>
           <img
