@@ -154,6 +154,7 @@ export const WeatherSideBarStyle = styled.div`
         font-size: 12px;
         text-align: center;
         width 40%;
+        padding-left: 0.5rem;
       }
     }
 
@@ -260,7 +261,7 @@ export const Footer = styled.footer`
     font-size: 12px;
     height: 10%;
     margin: 0;
-    top: -0.9%;
     right: 20%;
+    top: -0.9%;
   }
 `;

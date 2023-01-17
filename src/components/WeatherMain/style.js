@@ -45,7 +45,6 @@ export const User = styled.p`
 
   @media (max-width: 620px) {
     font-size: 14px;
-    margin-top: 0;
   }
 `
 
