@@ -13,7 +13,7 @@ export function Card({ content, configData }) {
     <CardComponent
       style={{
         background: `url("${
-          configData?.images.base_url + configData?.images.poster_sizes[3]
+          configData?.images.secure_base_url + configData?.images.poster_sizes[3]
         }/${content?.poster_path}") no-repeat center`,
       }}
       href={`/movie/${content?.id}-${content?.original_title
@@ -25,7 +25,7 @@ export function Card({ content, configData }) {
     >
       <div className="info">
         <p>{content?.original_title}</p>
-        <p>{content?.release_date.slice(0, 4)}</p>
+        <p>{content?.release_date?.slice(0, 4)}</p>
       </div>
     </CardComponent>
   );

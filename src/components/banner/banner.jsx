@@ -22,7 +22,7 @@ export function Banner({ bannerData, configData }) {
     <BannerComponent
       style={{
         background: `url("${
-          configData?.images.base_url + configData?.images.poster_sizes[5]
+          configData?.images.secure_base_url + configData?.images.poster_sizes[5]
         }/${highlightMovie?.poster_path}") no-repeat left`,
       }}
       dark={darkTheme}
