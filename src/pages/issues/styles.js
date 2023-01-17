@@ -2,10 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: ${(p) => p.theme.colors.bg};
-  padding-top: 60px;
-  color: ${(p) => p.theme.colors.primary};
-  overflow-x: hidden;
   min-height: calc(100vh - 60px);
+  padding-top: 60px;
 `;
 
 export const Content = styled.div`

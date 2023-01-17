@@ -2,8 +2,6 @@ import axios from "axios";
 import Head from "next/head";
 import Issue from "../../components/pages/Issues/Issue";
 import Button from "../../components/shared/Button";
-import repo_data from "../../utils/repositoryData";
-import issue_data from "../../utils/issuesData";
 import IssueTypeDropdown from "../../components/pages/Issues/Dropdown";
 import RepositoryIssuesHeader from "../../components/shared/RepositoryIssuesHeader";
 
@@ -38,22 +36,20 @@ export default function repositoryNameIssues() {
     if (repositoryName) {
       (async () => {
         setLoading(true);
-        // const [repositoryData, issuesData] = await Promise.all([
-        //   axios.get(`https://api.github.com/repos/${repositoryName}`),
-        //   axios.get(`https://api.github.com/repos/${repositoryName}/issues`, {
-        //     params: {
-        //       state,
-        //       per_page: 15,
-        //       page,
-        //     },
-        //   }),
-        // ]);
-        // setRepository(repositoryData.data);
-        // setIssues(issuesData.data);
+        const [repositoryData, issuesData] = await Promise.all([
+          axios.get(`https://api.github.com/repos/${repositoryName}`),
+          axios.get(`https://api.github.com/repos/${repositoryName}/issues`, {
+            params: {
+              state,
+              per_page: 15,
+              page,
+            },
+          }),
+        ]);
+        setRepository(repositoryData.data);
+        setIssues(issuesData.data);
         setLoading(false);
         setRequested(true);
-        setIssues(issue_data);
-        setRepository(repo_data);
       })();
     }
   }, [repositoryName, page, state]);
