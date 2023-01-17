@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out -t true",
-    "static": "next build && next export"
+    "static": "next build && next export",
+    "deploy": "touch ./output_folder/.nojekyll && gh-pages -d output_folder -t true"
   },
   "dependencies": {
     "eslint-plugin-react-hooks": "^5.0.0-next-4f8ffec45-20230115",
