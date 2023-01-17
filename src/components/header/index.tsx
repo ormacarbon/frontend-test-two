@@ -22,10 +22,12 @@ export const Header = ({
 }: HeaderProps): JSX.Element => {
   return (
     <Styled.Container isDarkTheme={isDarkTheme}>
-      <Styled.Logo isDarkTheme={isDarkTheme}>
-        <BiMoviePlay size='40' />
-        <span>BM.play</span>
-      </Styled.Logo>
+      <Link href='/bm-play/home'>
+        <Styled.Logo isDarkTheme={isDarkTheme}>
+          <BiMoviePlay size='40' />
+          <span>BM.play</span>
+        </Styled.Logo>
+      </Link>
 
         <Styled.MenuActions isDarkTheme={isDarkTheme}>
           {isDarkTheme ? (
