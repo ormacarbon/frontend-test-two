@@ -13,6 +13,7 @@ const SectionProducts = (props) => {
                             name={String(product.description)}
                             brand={product.brand?.name}
                             thumbnail={product.thumbnail}
+                            gtin={product.gtin}
                         />
                     )
                 })

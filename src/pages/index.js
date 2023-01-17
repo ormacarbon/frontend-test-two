@@ -8,21 +8,14 @@ import { GlobalStyle } from "../styles/global";
 
 export default function Home(props) {
 
-  console.log("Error:", props.error);
 
   const [dataProducts, setdataProducts] = useState(props.dataProducts)
   const [productName, setPoductName] = useState(props.name)
-
-  const mocks = {
-    exemplo: require("../mocks/products.json")
-  }
 
   useEffect(() => {
     setdataProducts(props.dataProducts)
     setPoductName(props.name)
   }, [props.name])
-
-  console.log(props.name)
 
 
   return (

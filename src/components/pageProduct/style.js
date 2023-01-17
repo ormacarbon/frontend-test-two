@@ -21,17 +21,24 @@ export const Container = styled.div`
         }
 
         p{
+
             font-weight: bold;
+            font-size: 18px;
             margin-top: 1rem;
             opacity: 0.6;
+
         }
 
     }
 
     .footer_product{
-        margin: 2rem auto;
+        margin: 1.5rem auto;
         line-height: 1.5em;
         max-width: 34rem;
+
+        p{
+            font-size: 16px
+        }
     }
 
 

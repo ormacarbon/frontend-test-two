@@ -12,12 +12,12 @@ const ProductItem = (props) => {
                     <img src={props.thumbnail ? props.thumbnail : productImageURL} />
                 </div>
                 <div>
-                    <a id="product_name" href="teste" > {titleCase(props.name)} </a>
+                    <a id="product_name" href={`/products/${props.gtin}`} > {titleCase(props.name)} </a>
 
                     <p > {props.brand ? props.brand : "Não informado"} </p>
                 </div>
                 <div id="div_see_more">
-                    <a href="see_more"> ver mais</a>
+                    <a href={`/products/${props.gtin}`}> ver mais</a>
                 </div>
             </div>
         </Container>
