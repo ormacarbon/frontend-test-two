@@ -7,13 +7,12 @@ import { MainAnotherEntertainment, Cards } from "./styles";
 
 export default function AnotherEntertainment() {
   const { data, type } = useContext(DataContext);
-  const dataSliced = data.slice(0, 16);
 
   return (
     <MainAnotherEntertainment>
       <Cards>
-        {dataSliced.length > 0 ? (
-          dataSliced.map((item) => {
+        {data.length > 0 ? (
+          data.map((item) => {
             // This condition is for identify if the API is 'serie' or movie'. Because the key changes
             let titleOrName = "";
 
