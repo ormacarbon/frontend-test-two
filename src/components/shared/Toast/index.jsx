@@ -10,6 +10,7 @@ export const SucessToast = (props) => {
       background: "#168b25",
       maxHeight: 24,
     },
+    duration: props.duration,
   });
 };
 
@@ -23,5 +24,6 @@ export const ErrorToast = (props) => {
       color: "#ffd0d0",
       maxHeight: 24,
     },
+    duration: props.duration,
   });
 };
