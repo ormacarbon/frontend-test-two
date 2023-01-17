@@ -173,6 +173,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [MDN Web Docs](https://developer.mozilla.org/pt-BR/)
 - [Next.JS Docs](https://nextjs.org/docs/getting-started)
 - [React Hook Forms Docs](https://react-hook-form.com/get-started)
+- [React Infinite Scroll](https://medium.com/suyeonme/react-how-to-implement-an-infinite-scroll-749003e9896a)
 - [Theming in Next.JS With Styled-components](https://blog.logrocket.com/theming-in-next-js-with-styled-components-and-usedarkmode/)
 
 ## 📝 Projeto
