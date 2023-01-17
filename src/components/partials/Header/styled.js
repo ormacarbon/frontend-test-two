@@ -146,7 +146,7 @@ export const HeaderShowModal = styled.div`
 
 export const HeaderNavigationMobile = styled.nav`
   position: absolute;
-  bottom: ${(props) => (props.open ? '-21.5rem' : '8rem')};
+  bottom: ${(props) => (props.open ? '-18rem' : '8rem')};
   left: -3.2rem;
 
   display: flex;

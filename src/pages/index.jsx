@@ -37,7 +37,6 @@ export const getServerSideProps = async () => {
 export default function Home({ filmList, featuredMovie, traillerInfo }) {
   const { darkMode } = useDarkModeContext();
   const { changePageActive } = usePageActiveContext();
-  console.log('traillerInfo', traillerInfo);
 
   useEffect(() => {
     changePageActive('/');
