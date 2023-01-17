@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
+type ContainerProps = {
+  isDarkTheme: boolean
+}
+
+export const Container = styled.header<ContainerProps>`
   margin: 0 auto;
 
   width: 100%;
   max-width: 1280px;
   height: ${({theme}) => theme.spacings[4]};
+
+  color: ${({ isDarkTheme, theme }) => isDarkTheme ? theme.colors.white[100] : theme.colors.gray[700]};
+  background: ${({ isDarkTheme, theme }) => isDarkTheme ? '': theme.colors.gray[700]};
 
   display: flex;
   align-items: center;
@@ -22,12 +29,14 @@ export const Container = styled.header`
   }
 `
 
-export const Logo = styled.section`
+export const Logo = styled.section<ContainerProps>`
   display: flex;
   align-items: center;
 
   width: max-content;
   height: 4rem;
+
+  color: ${({ theme }) => theme.colors.white[100]};
 
   span {
     display: inline-block;
@@ -38,9 +47,10 @@ export const Logo = styled.section`
   }
 `
 
-export const MenuActions = styled.section`
+export const MenuActions = styled.section<ContainerProps>`
   display: flex;
   gap: .5rem;
+  color: ${({ theme }) => theme.colors.white[100]};
 
   svg {
     cursor: pointer;
@@ -55,10 +65,12 @@ export const MenuActions = styled.section`
   }
 `
 
-export const FavoriteList = styled.section`
+export const FavoriteList = styled.section<ContainerProps>`
   display: flex;
   align-items: center;
   gap: .25rem;
+
+  color: ${({ theme }) => theme.colors.white[100]};
 
   span {
     font-weight: 600;
