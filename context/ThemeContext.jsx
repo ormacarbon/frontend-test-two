@@ -45,6 +45,7 @@ export function ThemeProvider({ children }){
 
 
     if (!mounted) return null
+    
 
     return(
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
