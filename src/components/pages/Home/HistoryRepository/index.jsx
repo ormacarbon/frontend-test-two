@@ -1,7 +1,19 @@
-import { useState } from "react";
+import { Container, Content } from "./styles";
 
 export function HistoryRepository({ data }) {
-  console.log(data);
+  function formatUrl(url) {
+    return url.replace("/", "%2F");
+  }
 
-  return;
+  return (
+    <Container
+      target="_blank"
+      href={`/repository/${formatUrl(data.full_name)}`}
+    >
+      <Content>
+        <img alt={`${data.name} logo`} src={data.owner.avatar_url} />
+        <span>{data.full_name}</span>
+      </Content>
+    </Container>
+  );
 }
