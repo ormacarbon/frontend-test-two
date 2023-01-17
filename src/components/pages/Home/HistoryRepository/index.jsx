@@ -6,10 +6,7 @@ export function HistoryRepository({ data }) {
   }
 
   return (
-    <Container
-      target="_blank"
-      href={`/repository/${formatUrl(data.full_name)}`}
-    >
+    <Container href={`/repository/${formatUrl(data.full_name)}`}>
       <Content>
         <img alt={`${data.name} logo`} src={data.owner.avatar_url} />
         <span>{data.full_name}</span>
