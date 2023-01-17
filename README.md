@@ -54,7 +54,7 @@ Ao fornecer essas informações aos usuários, eles podem tomar decisões mais i
 
 ## ▶️ Prévia
 
-Este projeto conta com uma versão de demonstração hospedada na Vercel. Clique [aqui](https://estimator.vercel.app/) e confira. 
+Este projeto conta com uma versão de demonstração hospedada na Vercel. Clique [aqui](https://frontend-test-gd90t2y0x-f7lipe.vercel.app/) e confira. 
 
 ## 🎨 Layout
 
