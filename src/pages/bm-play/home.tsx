@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Head from "next/head"
 import { useMoviesContext } from "@contexts/moviesContext"
 import { useListContext } from "@contexts/favoritesList"
@@ -34,7 +34,18 @@ export type PopularMoviesResponse = {
 
 export default function Home() {
   const { addItem } = useListContext()
+  const [showSpiner, setShowSpinner] = useState(false)
   const { moviesList, setCurrentPage, currentPage, totalPage } = useMoviesContext()
+
+  useEffect(() => {
+    if(moviesList.length){
+      setShowSpinner(!showSpiner)
+  
+      setTimeout(() => {
+        setShowSpinner(false)
+      }, 1000)
+    }
+  }, [moviesList])
   
   return (
     <Styled.Main>
@@ -42,23 +53,27 @@ export default function Home() {
         <title>BM-PLAY | Home</title>
       </Head>
       <div>
-        {moviesList.map(movie => (
-          <Movie 
-            src={`${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/w500${movie.poster_path}`}
-            key={movie.title}
-            title={movie.title}
-            movieId={String(movie.id)}
-            release_date={movie.release_date}
-            vote_average={movie.vote_average}
-            actionOnClick={() => addItem(movie.id)}
-          />
-        ))}
+        {showSpiner ? (
+          <Styled.Spiner />
+        ) : (
+          moviesList.map(movie => (
+            <Movie 
+              src={`${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/w500${movie.poster_path}`}
+              key={movie.title}
+              title={movie.title}
+              movieId={String(movie.id)}
+              release_date={movie.release_date}
+              vote_average={movie.vote_average}
+              actionOnClick={() => addItem(movie.id)}
+            />
+          ))
+        )}
       </div>
-      <Pagination
+      {!showSpiner && <Pagination
         totalPage={totalPage}
         pageActive={currentPage}
         setPage={setCurrentPage}
-      />
+      />}
     </Styled.Main>
   )
 }
