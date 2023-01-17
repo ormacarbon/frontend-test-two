@@ -5,10 +5,7 @@ export const Container = styled.div`
   gap: 0.5rem;
   max-width: max-content;
   margin: 0 auto;
-
-  @media (max-width: 768px) {
-    margin-top: 1rem;
-  }
+  margin-top: 1rem;
 `;
 
 export const ToFistPage = styled.section`
