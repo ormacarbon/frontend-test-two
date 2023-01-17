@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Search({ getSearch, apiRequest, setLoading }) {
   const [state, setState] = useState("");
@@ -24,16 +24,18 @@ function Search({ getSearch, apiRequest, setLoading }) {
           "search",
         ]);
         setLoading(false);
-
         return;
       })
-      .catch((err) => {
+      .catch(() => {
         getSearch(["not"]);
         setLoading(false);
-
         return;
       });
   };
+
+  useEffect(() => {
+    document.title = "PESQUISAR"
+  },[])
   
   return (
     <div className="search">

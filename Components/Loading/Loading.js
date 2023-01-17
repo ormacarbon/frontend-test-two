@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 function Loading({ loading }) {
   const urlLoading =
@@ -6,10 +6,15 @@ function Loading({ loading }) {
 
   return (
     <>
-      {" "}
       {loading ? (
         <div className="loading">
-          <Image src={urlLoading} width={200} height={200} alt="loading" loading="lazy" />
+          <Image
+            src={urlLoading}
+            width={200}
+            height={200}
+            alt="loading"
+            loading="lazy"
+          />
         </div>
       ) : (
         ""

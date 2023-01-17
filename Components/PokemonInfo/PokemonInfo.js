@@ -8,6 +8,8 @@ function Pokemon({ modal, setLoading }) {
   if (info != []) arrEggGroup = info[3];
 
   useEffect(() => {
+    document.title = "VISUALIZAÇÂO DE POKEMONS";
+
     if (modal !== null) {
       function requestApiPokemon(callback) {
         const id = modal?.id;
@@ -37,9 +39,8 @@ function Pokemon({ modal, setLoading }) {
             callback(true);
             return;
           })
-          .catch((err) => {
+          .catch(() => {
             setLoading(false);
-            // throw new Error({ err });
           });
       }
       requestApiPokemon();

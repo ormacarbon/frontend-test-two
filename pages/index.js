@@ -19,23 +19,8 @@ function Home() {
   };
 
   async function apiRequest(uriBase) {
-    const uriBaseDefault =
-      uriBase ?? "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16";
-
     setApiOptions([]);
     setLoading(true);
-
-    await fetch(uriBaseDefault)
-      .then((req) => req.json())
-      .then((resp) => {
-        _handleMapUrlsPagination(resp);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      })
-      .catch((err) => {
-        throw new Error({ err });
-      });
 
     function _handleMapUrlsPagination(resp) {
       resp.results.map(async (item) => {
@@ -54,6 +39,21 @@ function Home() {
           });
       });
     }
+
+    const uriBaseDefault =
+      uriBase ?? "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16";
+
+    await fetch(uriBaseDefault)
+      .then((req) => req.json())
+      .then((resp) => {
+        _handleMapUrlsPagination(resp);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      })
+      .catch((err) => {
+        throw new Error({ err });
+      });
   }
 
   const getSearch = (prop) => {
@@ -62,11 +62,7 @@ function Home() {
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme");
-    localTheme && setTheme(localTheme);
-  }, []);
-
-  useEffect(() => {
+    document.title = "LISTA DE POKEMONS";
     const getListPokemon = () => {
       setHideBySearch(null);
       apiRequest();
