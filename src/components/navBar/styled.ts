@@ -17,7 +17,7 @@ export const Container = styled.nav<ContainerProps>`
   color: ${({ theme }) => theme.colors.white[100]};
   background: ${({theme}) => theme.colors.pink[700]};
 
-  p {
+  span {
     width: 100%;
     line-height: 2.5rem;
 
@@ -31,11 +31,6 @@ export const Container = styled.nav<ContainerProps>`
     :hover {
       background: ${({theme}) => theme.colors.pink[300]};
     }
-  }
-
-  span {
-    display: inline-block;
-    margin: 0 auto;
   }
 
   @media (max-width: 1024px) {

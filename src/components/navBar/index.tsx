@@ -21,13 +21,13 @@ export const NavBar = ({
   return (
     <Styled.Container mobileMenuVisible={mobileMenuVisible}>
       {genres.map(genre => (
-        <p
+        <span
           key={genre.name}
           onClick={() => {
             setGenreId(genre.id)
             setMobileMenuVisible(!mobileMenuVisible)
           }}
-        >{genre.name}</p>
+        >{genre.name}</span>
       ))}
     </Styled.Container>
   )
