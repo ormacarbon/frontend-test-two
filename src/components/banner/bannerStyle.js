@@ -56,6 +56,10 @@ export const BannerComponent = styled.div`
       -webkit-line-clamp: 2;
       line-clamp: 2;
       -webkit-box-orient: vertical;
+
+      @media screen and (max-width: 625px) {
+        margin-top: 240px;
+      }
     }
 
     .overview {
