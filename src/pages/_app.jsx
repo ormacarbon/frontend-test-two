@@ -1,4 +1,4 @@
-import { ThemeProvider } from "../context/themeContext";
+import { themeContext, ThemeProvider } from "../context/themeContext";
 import { MenuProvider } from "../context/menuContext";
 import { SearchProvider } from "../context/searchContext";
 import { MovieIdProvider } from "../context/movieIdContext";
@@ -12,6 +12,7 @@ import { MenuSidebar } from "../components/menuSidebar/menuSidebar";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useContext } from "react";
 
 function MyApp({ Component, pageProps }) {
   return (

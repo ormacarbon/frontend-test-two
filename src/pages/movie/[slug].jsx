@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 import { Rating } from "react-simple-star-rating";
+import { Footer } from "../../components/footer/footer";
+import { Loading } from "../../components/loading/loading";
 
 import { movieIdContext } from "../../context/movieIdContext";
 import { themeContext } from "../../context/themeContext";
@@ -59,6 +61,7 @@ export default function Movie() {
 
   return (
     <IndexMovie dark={darkTheme}>
+      {loading && creditsLoading && configLoading ? <Loading /> : null}
       <div className="container">
         <div
           className="banner"
@@ -66,7 +69,7 @@ export default function Movie() {
             background: `url("${
               data?.backdrop_path
                 ? configData?.images.secure_base_url +
-                  configData?.images.backdrop_sizes[3] +
+                  configData?.images.backdrop_sizes[2] +
                   data?.backdrop_path
                 : "/assets/images/default-banner.jpeg"
             }") no-repeat center`,
@@ -194,7 +197,7 @@ export default function Movie() {
 
               <div>
                 <ul>
-                  {creditsData?.crew.map((item) => (
+                  {creditsData?.crew.slice(0, 50).map((item) => (
                     <li key={item.id}>
                       <div className="info-container">
                         <div className="image-info">
@@ -232,6 +235,8 @@ export default function Movie() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </IndexMovie>
   );
 }

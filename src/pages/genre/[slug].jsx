@@ -7,6 +7,8 @@ import { api } from "../../services/api";
 
 import { Pagination } from "../../components/pagination/pagination";
 import { Card } from "../../components/card/card";
+import { Footer } from "../../components/footer/footer";
+import { Loading } from "../../components/loading/loading";
 
 import { IndexGenre } from "../../styles/pagesStyles/genreStyle";
 
@@ -74,6 +76,7 @@ export default function Genre() {
         />
 
         <div className="cards">
+        { loading && configLoading ? <Loading /> : null }
           {data?.results.map((item) => {
             return (
               <Card key={item.id} content={item} configData={configData} />
@@ -88,6 +91,8 @@ export default function Genre() {
           maxPage={maxPage}
         />
       </div>
+
+      <Footer />
     </IndexGenre>
   );
 }

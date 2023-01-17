@@ -1,11 +1,15 @@
+import { useEffect } from "react";
+
 import { DarkModeComponent } from "./darkModeStyles";
 
 export function DarkMode({ darkTheme, setDarkTheme }) {
-
   return (
     <DarkModeComponent
       dark={darkTheme ? true : false}
-      onClick={() => setDarkTheme(!darkTheme)}
+      onClick={() => {
+        setDarkTheme(!darkTheme);
+        localStorage.setItem("theme", !darkTheme);
+      }}
     >
       <div>
         <i

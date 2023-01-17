@@ -36,6 +36,7 @@ export const MenuSidebarComponent = styled.div`
           ? props.theme.colors.richBlackFogra29
           : props.theme.colors.lightGray};
     overflow-y: auto;
+    position: relative;
 
     &:last-of-type {
       justify-content: flex-start;

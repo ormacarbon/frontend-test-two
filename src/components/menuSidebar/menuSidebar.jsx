@@ -5,6 +5,7 @@ import { themeContext } from "../../context/themeContext";
 import { menuContext } from "../../context/menuContext";
 import { useFetch } from "../../hooks/useFetch";
 
+import { Loading } from "../loading/loading";
 import { Search } from "../search/search";
 
 import { MenuSidebarComponent } from "./menuSidebarStyle";
@@ -31,6 +32,7 @@ export function MenuSidebar() {
       </div>
       <div className="sidebar-link">
         <h2>Genres</h2>
+        { loading ? <Loading /> : null }
         {data?.genres.map((genre) => {
           return (
             <Link

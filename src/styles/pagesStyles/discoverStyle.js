@@ -4,6 +4,7 @@ export const IndexDiscover = styled.main`
   background: ${(props) =>
     props.dark ? props.theme.colors.onyx : props.theme.colors.white};
   padding: 20px;
+  padding-bottom: 0;
   width: 100%;
 
   h1 {
@@ -49,6 +50,7 @@ export const IndexDiscover = styled.main`
 
   .cards {
     ${(props) => props.theme.utils.flexUtil("row wrap", "center")};
+    position: relative;
 
     a {
       margin: 10px;

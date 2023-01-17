@@ -16,6 +16,8 @@ html {
   display: flex;
 
   main {
+    display: flex;
+    flex-direction: column;
     max-width: calc(100% - 280px);
     min-height: calc(100vh - 80px);
 

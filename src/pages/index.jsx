@@ -6,6 +6,7 @@ import { api } from "../services/api";
 
 import { Banner } from "../components/banner/banner";
 import { Card } from "../components/card/card";
+import { Footer } from "../components/footer/footer";
 
 import { IndexMain, SliderComponent } from "../styles/pagesStyles/indexStyle";
 
@@ -131,6 +132,8 @@ export default function Home({
           </SliderComponent>
         </div>
       </div>
+
+      <Footer />
     </IndexMain>
   );
 }

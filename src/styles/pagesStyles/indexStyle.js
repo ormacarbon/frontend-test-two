@@ -6,6 +6,7 @@ export const IndexMain = styled.main`
   background: ${(props) =>
     props.dark ? props.theme.colors.onyx : props.theme.colors.white};
   padding: 20px;
+  padding-bottom: 0;
   width: 100%;
 
   h2:not(.content-title) {

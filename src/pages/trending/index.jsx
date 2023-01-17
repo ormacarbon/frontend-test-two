@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 
 import { Card } from "../../components/card/card";
 import { Pagination } from "../../components/pagination/pagination";
+import { Footer } from "../../components/footer/footer";
+import { Loading } from "../../components/loading/loading";
 
 import { themeContext } from "../../context/themeContext";
 import { useFetch } from "../../hooks/useFetch";
@@ -58,6 +60,7 @@ export default function Trending() {
         />
 
         <div className="cards">
+          { loading && configLoading ? <Loading /> : null }
           {data?.results.map((item) => {
             return (
               <Card key={item.id} content={item} configData={configData} />
@@ -71,6 +74,8 @@ export default function Trending() {
           pagination={pagination}
         />
       </div>
+
+      <Footer />
     </IndexTrending>
   );
 }

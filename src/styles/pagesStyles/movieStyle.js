@@ -4,7 +4,13 @@ export const IndexMovie = styled.main`
   background: ${(props) =>
     props.dark ? props.theme.colors.onyx : props.theme.colors.white};
   padding: 20px;
+  padding-bottom: 0;
   width: 100%;
+  position: relative;
+
+  img {
+    object-fit: cover;
+  }
 
   .banner {
     width: 100%;
@@ -43,7 +49,6 @@ export const IndexMovie = styled.main`
   .movie-info {
     ${(props) => props.theme.utils.flexUtil("row-reverse", "space-between")};
     width: 100%;
-    height: 100%;
     position: relative;
     top: -50px;
 

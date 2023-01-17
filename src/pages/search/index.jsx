@@ -8,6 +8,8 @@ import { api } from "../../services/api";
 
 import { Pagination } from "../../components/pagination/pagination";
 import { Card } from "../../components/card/card";
+import { Footer } from "../../components/footer/footer";
+import { Loading } from "../../components/loading/loading";
 
 import { IndexSearch } from "../../styles/pagesStyles/searchStyle";
 
@@ -30,7 +32,7 @@ export default function Search() {
 
   useEffect(() => {
     setLoading(true);
-    console.log(searchValue)
+    console.log(searchValue);
 
     api
       .get("search/movie", {
@@ -68,6 +70,7 @@ export default function Search() {
         />
 
         <div className="cards">
+        { loading && configLoading ? <Loading /> : null }
           {data?.results.length > 0 ? (
             data?.results.map((item) => {
               return (
@@ -85,6 +88,8 @@ export default function Search() {
           pagination={pagination}
         />
       </div>
+
+      <Footer />
     </IndexSearch>
   );
 }
