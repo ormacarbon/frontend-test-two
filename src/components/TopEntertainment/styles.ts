@@ -22,6 +22,14 @@ export const AsideTop = styled.aside`
       font-size: 2rem;
     }
   }
+
+  @media (max-width: 840px) {
+    margin-left: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const Info = styled.div`
@@ -51,5 +59,13 @@ export const ImgDiv = styled.div`
     height: auto;
     object-fit: contain;
     border-radius: 10px;
+
+    @media (max-width: 1024px) {
+      max-width: 40%;
+    }
+
+    @media (max-width: 786px) {
+      max-width: 50%;
+    }
   }
 `;

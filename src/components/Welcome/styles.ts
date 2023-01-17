@@ -13,7 +13,7 @@ export const WelcomeMain = styled.main`
 
   display: flex;
   justify-content: center;
-  align-itens: center;
+  align-items: center;
   flex-direction: column;
   gap: 2rem;
 
@@ -23,7 +23,7 @@ export const WelcomeMain = styled.main`
 
   footer {
     display: flex;
-    align-itens: center;
+    align-items: center;
     justify-content: center;
     gap: 0.2rem;
 
@@ -31,5 +31,12 @@ export const WelcomeMain = styled.main`
       font-size: 1.1rem;
       transition: 0.1s;
     }
+  }
+
+  @media (max-width: 648px) {
+    width: 60%;
+  }
+  @media (max-width: 400px) {
+    height: fit-content;
   }
 `;

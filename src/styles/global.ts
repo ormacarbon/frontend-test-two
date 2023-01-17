@@ -43,6 +43,35 @@ export const MainContent = styled.main`
     "main main aside"
     "main main aside"
     "main main aside";
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-areas:
+      "main aside aside"
+      "main aside aside"
+      "main aside aside";
+
+    height: 100vh;
+  }
+
+  @media (max-width: 840px) {
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 2fr;
+
+    grid-template-areas:
+      "main aside aside"
+      "main aside aside"
+      "main aside aside";
+  }
+
+  @media (max-width: 600px) {
+    grid-template-areas:
+      "aside aside aside"
+      "main main main"
+      "main main main"
+      "main main main";
+  }
 `;
 
 // Global style to Link

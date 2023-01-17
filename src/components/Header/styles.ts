@@ -42,6 +42,15 @@ export const StyledHeader = styled.header`
       }
     }
   }
+
+  @media (max-width: 600px) {
+    font-size: 87%;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 87%;
+    padding: 3rem;
+  }
 `;
 
 export const Nav = styled.nav`

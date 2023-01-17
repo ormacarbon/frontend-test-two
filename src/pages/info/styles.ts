@@ -9,6 +9,12 @@ export const MainInfo = styled.main`
 
   img {
     border-radius: 10px;
+
+    @media (max-width: 720px) {
+      max-width: 60%;
+      height: auto;
+      object-fit: contain;
+    }
   }
 
   section {
@@ -31,6 +37,10 @@ export const MainInfo = styled.main`
     p {
       text-align: justify;
     }
+  }
+  @media (max-width: 820px) {
+    border: 1px solid;
+    width: 100%;
   }
 `;
 
