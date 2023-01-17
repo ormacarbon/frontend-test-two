@@ -8,6 +8,10 @@ export const GlobalStyle = createGlobalStyle`
   font-family: "Montserrat", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 #main {
   display: flex;
 

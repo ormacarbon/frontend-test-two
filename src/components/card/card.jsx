@@ -2,21 +2,18 @@ import { useContext } from "react";
 import { highlightMovieContext } from "../../context/highlightMovieContext";
 
 import { themeContext } from "../../context/themeContext";
-import { useFetch } from "../../hooks/useFetch";
 
 import { CardComponent } from "./cardStyle";
 
-export function Card({ content }) {
+export function Card({ content, configData }) {
   const [darkTheme, setDarkTheme] = useContext(themeContext);
   const [highlightMovie, setHighlightMovie] = useContext(highlightMovieContext);
-
-  const { data, loading, error } = useFetch("configuration", null);
 
   return (
     <CardComponent
       style={{
         background: `url("${
-          data?.images.base_url + data?.images.poster_sizes[3]
+          configData?.images.base_url + configData?.images.poster_sizes[3]
         }/${content?.poster_path}") no-repeat center`,
       }}
       href={`/movie/${content?.id}-${content?.original_title

@@ -20,16 +20,24 @@ export function MenuSidebar() {
       <Search darkTheme={darkTheme} />
 
       <div className="sidebar-link">
-        <Link href="">Trending</Link>
+        <Link href="/trending">Trending</Link>
       </div>
       <div className="sidebar-link">
-        <Link href="">Discover</Link>
+        <Link href="/discover">Discover</Link>
       </div>
       <div className="sidebar-link">
         <h2>Genres</h2>
         {data?.genres.map((genre) => {
           return (
-            <Link key={genre.id} href="">
+            <Link
+              key={genre.id}
+              href={
+                "/genre/" +
+                genre.id +
+                "-" +
+                genre.name.toLowerCase().replaceAll(" ", "-")
+              }
+            >
               {genre.name}
             </Link>
           );

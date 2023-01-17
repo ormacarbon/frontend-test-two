@@ -1,28 +1,21 @@
 import { useContext } from "react";
+import Link from "next/link";
 
 import { themeContext } from "../context/themeContext";
-import { useFetch } from "../hooks/useFetch";
+import { api } from "../services/api";
 
 import { Banner } from "../components/banner/banner";
 import { Card } from "../components/card/card";
 
-import { IndexMain, SliderComponent } from "./indexStyle";
-import Link from "next/link";
+import { IndexMain, SliderComponent } from "../styles/pagesStyles/indexStyle";
 
-export default function Home() {
+export default function Home({
+  trendingData,
+  discoverData,
+  popularData,
+  configData,
+}) {
   const [darkTheme, setDarkTheme] = useContext(themeContext);
-
-  const SlickButtonFix = ({
-    className,
-    currentSlide,
-    slideCount,
-    children,
-    ...props
-  }) => (
-    <button {...props} className={className}>
-      {children}
-    </button>
-  );
 
   const settings = {
     dots: false,
@@ -32,14 +25,14 @@ export default function Home() {
     slidesToScroll: 1,
     centerMode: true,
     nextArrow: (
-      <SlickButtonFix className="slick-arrow slick-next">
+      <button className="slick-arrow slick-next">
         <i className="fa-solid fa-chevron-right"></i>
-      </SlickButtonFix>
+      </button>
     ),
     prevArrow: (
-      <SlickButtonFix className="slick-arrow slick-prev">
+      <button className="slick-arrow slick-prev">
         <i className="fa-solid fa-chevron-left"></i>
-      </SlickButtonFix>
+      </button>
     ),
     responsive: [
       {
@@ -101,25 +94,10 @@ export default function Home() {
     ],
   };
 
-  const {
-    data: trendingData,
-    loading: trendingLoding,
-    error: TrendingError,
-  } = useFetch("trending/movie/week");
-
-  const {
-    data: discoverData,
-    loading: discoverLoding,
-    error: discoverError,
-  } = useFetch("discover/movie", {
-    include_adult: false,
-    "release_date.lte": "2018-12-31",
-  });
-
   return (
     <IndexMain dark={darkTheme}>
       <div className="container">
-        <Banner />
+        <Banner configData={configData} bannerData={popularData} />
 
         <div className="main-page__section">
           <h2>
@@ -130,7 +108,9 @@ export default function Home() {
           </h2>
           <SliderComponent dark={darkTheme} {...settings}>
             {trendingData?.results.map((item) => {
-              return <Card key={item?.id} content={item} />;
+              return (
+                <Card key={item?.id} content={item} configData={configData} />
+              );
             })}
           </SliderComponent>
         </div>
@@ -144,7 +124,9 @@ export default function Home() {
           </h2>
           <SliderComponent dark={darkTheme} {...settings}>
             {discoverData?.results.map((item) => {
-              return <Card key={item?.id} content={item} />;
+              return (
+                <Card key={item?.id} content={item} configData={configData} />
+              );
             })}
           </SliderComponent>
         </div>
@@ -152,3 +134,29 @@ export default function Home() {
     </IndexMain>
   );
 }
+
+export const getStaticProps = async () => {
+  const trendingResponse = await api.get("trending/movie/week");
+  const trendingData = await trendingResponse.data;
+
+  const discoverResponse = await api.get("discover/movie", {
+    params: { include_adult: false, "release_date.lte": "2018-12-31" },
+  });
+  const discoverData = await discoverResponse.data;
+
+  const popularResponse = await api.get("movie/popular");
+  const popularData = await popularResponse.data;
+
+  const configResponse = await api.get("configuration");
+  const configData = await configResponse.data;
+
+  return {
+    props: {
+      trendingData,
+      discoverData,
+      popularData,
+      configData,
+    },
+    revalidate: 60 * 20, // 20 minutes
+  };
+};

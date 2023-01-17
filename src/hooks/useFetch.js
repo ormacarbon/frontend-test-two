@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
 
-export function useFetch(url, params) {
+export function useFetch(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -10,10 +10,9 @@ export function useFetch(url, params) {
     setLoading(true);
 
     api
-      .get(url, { params: params })
+      .get(url)
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
       })
       .catch((err) => setError(err))
       .finally(() => setLoading(false));

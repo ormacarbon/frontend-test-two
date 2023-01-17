@@ -4,36 +4,36 @@ import { Rating } from "react-simple-star-rating";
 
 import { highlightMovieContext } from "../../context/highlightMovieContext";
 import { themeContext } from "../../context/themeContext";
-import { useFetch } from "../../hooks/useFetch";
 
 import { BannerComponent } from "./bannerStyle";
 import { theme } from "../../styles/theme";
 
-export function Banner() {
+export function Banner({ bannerData, configData }) {
   const [darkTheme, setDarkTheme] = useContext(themeContext);
   const [highlightMovie, setHighlightMovie] = useContext(highlightMovieContext);
 
-  const { data, loading, error } = useFetch("movie/popular", null);
-  const { data: dataConfig } = useFetch("configuration", null);
-
   useEffect(() => {
     if (!highlightMovie) {
-      setHighlightMovie(data?.results[0]);
+      setHighlightMovie(bannerData?.results[0]);
     }
-  }, [data, highlightMovie, setHighlightMovie]);
+  }, [bannerData, highlightMovie, setHighlightMovie]);
 
   return (
     <BannerComponent
       style={{
         background: `url("${
-          dataConfig?.images.base_url + dataConfig?.images.poster_sizes[5]
+          configData?.images.base_url + configData?.images.poster_sizes[5]
         }/${highlightMovie?.poster_path}") no-repeat left`,
       }}
       dark={darkTheme}
     >
       <div className="content">
         <h2 className="content-title">{highlightMovie?.original_title}</h2>
-        <p className="overview">{highlightMovie?.overview}</p>
+        <p className="overview">
+          {highlightMovie?.overview || highlightMovie?.overview != ""
+            ? highlightMovie?.overview
+            : "No description provided."}
+        </p>
         <div>
           <Rating
             readonly
