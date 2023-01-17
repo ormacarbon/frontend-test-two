@@ -7,14 +7,32 @@ export const Container = styled.div`
   display: flex;
   background: ${({ theme }) => theme.colors.white[100]};
   color: ${({ theme }) => theme.colors.gray[800]};
+  margin-top: 1rem;
 
-  padding-top: 1rem;
-  
   img {
     max-width: 200px;
+    margin-right: .5rem;
+
+    @media (max-width: 540px) {
+      max-width: 150px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    width: 95%;
+  }
+
+  @media (max-width: 540px) {
+    padding-right: .5rem;
   }
 `
 
 export const MovieInfo = styled.section`
+  p {
+    margin: 1rem 0;
 
+    > span {
+      font-weight: 600;
+    }
+  }
 `
