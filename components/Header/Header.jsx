@@ -13,15 +13,15 @@ const Header = () => {
         </Link>
 
         <nav>
-          <MenuUl>
+          <MenuUl className="font-1-m color-p4">
             <li>
               <Link href="/">Breweries</Link>
             </li>
             <li>
-              <Link href="/">Breweries</Link>
+              <Link href="/map">Map</Link>
             </li>
             <li>
-              <Link href="/">Breweries</Link>
+              <Link href="/">Plans</Link>
             </li>
           </MenuUl>
         </nav>

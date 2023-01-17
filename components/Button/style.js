@@ -26,6 +26,25 @@ export const ButtonLink = styled.div`
     background: var(--color-9);
   }
 
+  a.seta {
+    display: flex;
+    align-items: center;
+  }
+
+  a.seta::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 3px;
+    margin-left: 12px;
+    background-color: var(--color-p5);
+    transition: transform 0.2s;
+  }
+
+  a.seta:hover::after {
+    transform: translateX(4px);
+  }
+
   @media (max-width: 600px) {
     a {
       padding: 12px 16px;
