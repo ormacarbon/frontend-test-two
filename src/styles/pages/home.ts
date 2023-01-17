@@ -11,7 +11,7 @@ export const Main = styled.main`
     flex-wrap: wrap;
     gap: 1rem;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       justify-content: space-between;
     }
 
@@ -23,7 +23,7 @@ export const Main = styled.main`
 
   flex-direction: column;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 95%;
   }
 
