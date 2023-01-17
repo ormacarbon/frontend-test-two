@@ -1,19 +1,13 @@
-import { DataProps } from "../../pages/movies";
+import { useContext } from "react";
+import { DataContext, DataProps } from "../../pages/content/[type]";
 
 import Card from "../Card";
 
 import { MainAnotherEntertainment, Cards } from "./styles";
 
-interface EntertainmentProps {
-  data: DataProps[];
-  movieOrSerie: string;
-}
-
-export default function AnotherEntertainment({
-  data,
-  movieOrSerie,
-}: EntertainmentProps) {
-  const dataSliced = data.slice(0, 12);
+export default function AnotherEntertainment() {
+  const { data, type } = useContext(DataContext);
+  const dataSliced = data.slice(0, 16);
 
   return (
     <MainAnotherEntertainment>
@@ -23,10 +17,10 @@ export default function AnotherEntertainment({
             // This condition is for identify if the API is 'serie' or movie'. Because the key changes
             let titleOrName = "";
 
-            if (movieOrSerie === "serie") {
+            if (type === "tv") {
               const { name } = item;
               titleOrName = name;
-            } else if (movieOrSerie === "movie") {
+            } else if (type === "movie") {
               const { title } = item;
               titleOrName = title;
             }
