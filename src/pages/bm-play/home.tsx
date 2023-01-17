@@ -1,5 +1,5 @@
 import React from "react"
-
+import Head from "next/head"
 import { useMoviesContext } from "@contexts/moviesContext"
 import { useListContext } from "@contexts/favoritesList"
 
@@ -38,6 +38,9 @@ export default function Home() {
   
   return (
     <Styled.Main>
+      <Head>
+        <title>BM-PLAY | Home</title>
+      </Head>
       <div>
         {moviesList.map(movie => (
           <Movie 
