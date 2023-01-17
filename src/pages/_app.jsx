@@ -1,6 +1,7 @@
 import { ThemeProvider } from "../context/themeContext";
 import { MenuProvider } from "../context/menuContext";
 import { SearchProvider } from "../context/searchContext";
+import { MovieIdProvider } from "../context/movieIdContext";
 import { ConfigProvider } from "../context/apiConfigContext";
 import { HighlightMovieProvider } from "../context/highlightMovieContext";
 
@@ -18,16 +19,18 @@ function MyApp({ Component, pageProps }) {
       <SearchProvider>
         <MenuProvider>
           <ConfigProvider>
-            <HighlightMovieProvider>
-              <Theme>
-                <GlobalStyle />
-                <Header />
-                <div id="main">
-                  <MenuSidebar />
-                  <Component {...pageProps} />
-                </div>
-              </Theme>
-            </HighlightMovieProvider>
+            <MovieIdProvider>
+              <HighlightMovieProvider>
+                <Theme>
+                  <GlobalStyle />
+                  <Header />
+                  <div id="main">
+                    <MenuSidebar />
+                    <Component {...pageProps} />
+                  </div>
+                </Theme>
+              </HighlightMovieProvider>
+            </MovieIdProvider>
           </ConfigProvider>
         </MenuProvider>
       </SearchProvider>

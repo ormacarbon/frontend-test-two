@@ -18,6 +18,10 @@ export const IndexGenre = styled.main`
           : props.theme.colors.redCrayola};
       font-size: ${(props) => props.theme.fontSizes.fs_largeXx};
       text-transform: capitalize;
+
+      @media screen and (max-width: 675px) {
+        font-size: ${(props) => props.theme.fontSizes.fs_largeX};
+      }
     }
 
     hr {

@@ -20,16 +20,21 @@ export function MenuSidebar() {
       <Search darkTheme={darkTheme} />
 
       <div className="sidebar-link">
-        <Link href="/trending">Trending</Link>
+        <Link onClick={() => setMenu(false)} href="/trending">
+          Trending
+        </Link>
       </div>
       <div className="sidebar-link">
-        <Link href="/discover">Discover</Link>
+        <Link onClick={() => setMenu(false)} href="/discover">
+          Discover
+        </Link>
       </div>
       <div className="sidebar-link">
         <h2>Genres</h2>
         {data?.genres.map((genre) => {
           return (
             <Link
+              onClick={() => setMenu(false)}
               key={genre.id}
               href={
                 "/genre/" +
@@ -46,4 +51,3 @@ export function MenuSidebar() {
     </MenuSidebarComponent>
   );
 }
-

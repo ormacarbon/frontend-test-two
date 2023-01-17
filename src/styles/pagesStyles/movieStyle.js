@@ -10,6 +10,7 @@ export const IndexMovie = styled.main`
     width: 100%;
     height: 400px;
     padding: 20px;
+    background-size: cover !important;
     position: relative;
     border-top: 5px solid
       ${(props) =>
@@ -51,6 +52,7 @@ export const IndexMovie = styled.main`
       height: 300px;
       width: 100%;
       max-width: 230px;
+      min-width: 230px;
       border: 2px solid
         ${(props) =>
           props.dark

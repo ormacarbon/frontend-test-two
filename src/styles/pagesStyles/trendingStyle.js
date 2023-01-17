@@ -17,14 +17,19 @@ export const IndexTrending = styled.main`
           ? props.theme.colors.blueJeans
           : props.theme.colors.redCrayola};
       font-size: ${(props) => props.theme.fontSizes.fs_largeXx};
+
+      @media screen and (max-width: 675px) {
+        font-size: ${(props) => props.theme.fontSizes.fs_largeX};
+      }
     }
 
     hr {
       height: 1px;
-      border: 1px solid ${(props) =>
-        props.dark
-          ? props.theme.colors.blueJeans
-          : props.theme.colors.redCrayola};
+      border: 1px solid
+        ${(props) =>
+          props.dark
+            ? props.theme.colors.blueJeans
+            : props.theme.colors.redCrayola};
       flex: 1;
       margin-left: 20px;
       margin-bottom: -5px;

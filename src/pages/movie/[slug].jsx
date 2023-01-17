@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { Rating } from "react-simple-star-rating";
 
+import { movieIdContext } from "../../context/movieIdContext";
 import { themeContext } from "../../context/themeContext";
 import { useFetch } from "../../hooks/useFetch";
 import { api } from "../../services/api";
@@ -20,7 +21,9 @@ export default function Movie() {
   const [creditsError, setCreditsError] = useState(null);
   const [creditsLoading, setCreditsLoading] = useState(false);
 
+  const [movieId, setMovieId] = useContext(movieIdContext);
   const [darkTheme, setDarkTheme] = useContext(themeContext);
+
   const router = useRouter();
 
   const {
@@ -34,7 +37,7 @@ export default function Movie() {
     setCreditsLoading(true);
 
     api
-      .get(`movie/${router.asPath.replace(/\D/g, "")}`)
+      .get(`movie/${movieId ? movieId : router.asPath.replace(/\D/g, "")}`)
       .then((res) => {
         setData(res.data);
         console.log(res.data);
@@ -43,14 +46,16 @@ export default function Movie() {
       .finally(() => setLoading(false));
 
     api
-      .get(`movie/${router.asPath.replace(/\D/g, "")}/credits`)
+      .get(
+        `movie/${movieId ? movieId : router.asPath.replace(/\D/g, "")}/credits`
+      )
       .then((res) => {
         setCreditsData(res.data);
         console.log(res.data);
       })
       .catch((err) => setError(err))
       .finally(() => setCreditsLoading(false));
-  }, [router]);
+  }, [router, movieId]);
 
   return (
     <IndexMovie dark={darkTheme}>
@@ -59,11 +64,11 @@ export default function Movie() {
           className="banner"
           style={{
             background: `url("${
-              typeof window !== "undefined"
+              data?.backdrop_path
                 ? configData?.images.secure_base_url +
-                  configData?.images.backdrop_sizes[2] +
+                  configData?.images.backdrop_sizes[3] +
                   data?.backdrop_path
-                : ""
+                : "/assets/images/default-banner.jpeg"
             }") no-repeat center`,
           }}
         ></div>
@@ -72,9 +77,11 @@ export default function Movie() {
           <div className="image">
             <Image
               src={
-                configData?.images.secure_base_url +
-                configData?.images.poster_sizes[5] +
                 data?.poster_path
+                  ? configData?.images.secure_base_url +
+                    configData?.images.poster_sizes[5] +
+                    data?.poster_path
+                  : "/assets/images/default-movie.png"
               }
               alt={data?.original_title}
               fill
@@ -82,13 +89,17 @@ export default function Movie() {
             <span>
               Release date:{" "}
               {`${
-                typeof window !== "undefined"
-                  ? new Date(data?.release_date).getDate() +
-                    "/" +
-                    new Date(data?.release_date).getMonth() +
-                    "/" +
-                    new Date(data?.release_date).getFullYear()
-                  : ""
+                new Date(
+                  data?.release_date ? data?.release_date : "0000-00-00"
+                ).getDate() +
+                "/" +
+                new Date(
+                  data?.release_date ? data?.release_date : "0000-00-00"
+                ).getMonth() +
+                "/" +
+                new Date(
+                  data?.release_date ? data?.release_date : "0000-00-00"
+                ).getFullYear()
               }`}
             </span>
           </div>
@@ -157,9 +168,11 @@ export default function Movie() {
                         <div className="image-info">
                           <Image
                             src={
-                              configData?.images.secure_base_url +
-                              configData?.images.profile_sizes[2] +
                               item?.profile_path
+                                ? configData?.images.secure_base_url +
+                                  configData?.images.profile_sizes[2] +
+                                  item?.profile_path
+                                : "/assets/images/default-profile.png"
                             }
                             fill
                             alt={item.original_name}
@@ -187,9 +200,11 @@ export default function Movie() {
                         <div className="image-info">
                           <Image
                             src={
-                              configData?.images.secure_base_url +
-                              configData?.images.profile_sizes[2] +
                               item?.profile_path
+                                ? configData?.images.secure_base_url +
+                                  configData?.images.profile_sizes[2] +
+                                  item?.profile_path
+                                : "/assets/images/default-profile.png"
                             }
                             fill
                             alt={item.original_name}

@@ -13,6 +13,10 @@ export const IndexDiscover = styled.main`
         : props.theme.colors.redCrayola};
     font-size: ${(props) => props.theme.fontSizes.fs_largeXx};
     margin: 20px 0;
+
+    @media screen and (max-width: 675px) {
+      font-size: ${(props) => props.theme.fontSizes.fs_largeX};
+    }
   }
 
   .filter {
