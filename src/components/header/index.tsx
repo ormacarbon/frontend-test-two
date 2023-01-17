@@ -21,13 +21,13 @@ export const Header = ({
   setMobileMenuVisible,
 }: HeaderProps): JSX.Element => {
   return (
-    <Styled.Container>
-      <Styled.Logo>
+    <Styled.Container isDarkTheme={isDarkTheme}>
+      <Styled.Logo isDarkTheme={isDarkTheme}>
         <BiMoviePlay size='40' />
         <span>BM.play</span>
       </Styled.Logo>
 
-        <Styled.MenuActions>
+        <Styled.MenuActions isDarkTheme={isDarkTheme}>
           {isDarkTheme ? (
             <MdLightMode
               size='25'
@@ -40,7 +40,7 @@ export const Header = ({
             />
           )}
           <Link href='/bm-play/favorites'>
-            <Styled.FavoriteList>
+            <Styled.FavoriteList isDarkTheme={isDarkTheme}>
               <MdFavorite fill='#7160C3' size={25} />
               <span>Favoritos</span>
             </Styled.FavoriteList>
