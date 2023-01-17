@@ -1,4 +1,5 @@
 import { useMoviesContext } from '@contexts/moviesContext'
+import { Dispatch, SetStateAction } from 'react'
 import * as Styled from './styled'
 
 export type NavBarProps = {
@@ -6,17 +7,26 @@ export type NavBarProps = {
     id: number
     name: string
   }[]
+  mobileMenuVisible: boolean
+  setMobileMenuVisible: Dispatch<SetStateAction<boolean>>
 }
 
-export const NavBar = ({ genres }: NavBarProps): JSX.Element => {
+export const NavBar = ({
+  genres,
+  mobileMenuVisible,
+  setMobileMenuVisible
+}: NavBarProps): JSX.Element => {
   const { setGenreId } = useMoviesContext()
 
   return (
-    <Styled.Container>
+    <Styled.Container mobileMenuVisible={mobileMenuVisible}>
       {genres.map(genre => (
         <p
           key={genre.name}
-          onClick={() => setGenreId(genre.id)}
+          onClick={() => {
+            setGenreId(genre.id)
+            setMobileMenuVisible(!mobileMenuVisible)
+          }}
         >{genre.name}</p>
       ))}
     </Styled.Container>
