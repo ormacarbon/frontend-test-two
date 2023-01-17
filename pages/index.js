@@ -19,7 +19,8 @@ function Home() {
   };
 
   async function apiRequest(uriBase) {
-    const uriBaseDefault = uriBase ?? "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16"; 
+    const uriBaseDefault =
+      uriBase ?? "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16";
 
     setApiOptions([]);
     setLoading(true);
@@ -98,6 +99,34 @@ function Home() {
       ) : (
         ""
       )}
+
+      <ul className="social">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/flavio-leonardo-ads/"
+            target={`_blank`}
+          >
+            <Image
+              src="../static/assets/logo-linkedin.svg"
+              width={40}
+              height={40}
+              alt="LinkedIn"
+              loading="lazy"
+            />
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/LeonardoMachado30" target={`_blank`}>
+            <Image
+              src="../static/assets/logo-github.svg"
+              width={40}
+              height={40}
+              alt="GitHub"
+              loading="lazy"
+            />
+          </a>
+        </li>
+      </ul>
     </div>
   );
 }

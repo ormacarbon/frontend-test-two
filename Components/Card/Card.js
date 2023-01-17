@@ -9,7 +9,7 @@ function Card({ apiOptions, handlePokemonInfo }) {
           <li className="not-pokemon">POKEMON NÃO ENCONTRADO</li>
         ) : (
           <li className="card" onClick={() => handlePokemonInfo(apiOptions[2])}>
-            <Image src={apiOptions[1]} alt={apiOptions[1]} loading="lazy" />
+            <Image src={apiOptions[1]} alt={apiOptions[1]} width={200} height={200} loading="lazy" />
             <p>{apiOptions[0]}</p>
           </li>
         )

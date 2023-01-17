@@ -10,14 +10,16 @@
     "lint": "next lint",
     "predeploy": "npm run build",
     "static": "next build && next export",
-    "deploy": "touch ./output_folder/.nojekyll && gh-pages -d output_folder -t true"
+    "deploy": "next build && next export && gh-pages -d out -t true",
+    "ghpages": "gh-pages -d out -t true"
   },
   "dependencies": {
     "eslint-plugin-react-hooks": "^5.0.0-next-4f8ffec45-20230115",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "touch": "^3.1.0"
   },
   "devDependencies": {
     "eslint": "8.29.0",

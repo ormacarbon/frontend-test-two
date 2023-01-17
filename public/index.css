@@ -174,8 +174,6 @@
 
 .modal-body > img {
   align-self: center;
-  max-width: 120px;
-  width: 100%;
 }
 
 .active {
@@ -253,7 +251,16 @@ p {
 .search-btn:hover {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
-/* 
-.btn-back{
 
-} */
+.social {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.social > li {
+  display: flex;
+  text-decoration: none;
+}

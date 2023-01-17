@@ -39,7 +39,7 @@ function Pokemon({ modal, setLoading }) {
           })
           .catch((err) => {
             setLoading(false);
-            throw new Error({ err });
+            // throw new Error({ err });
           });
       }
       requestApiPokemon();
@@ -62,13 +62,13 @@ function Pokemon({ modal, setLoading }) {
             </button>
           </div>
           <div className="modal-body gap-3">
-            {console.log(info)}
             <h2>{info.name}</h2>
             <Image
               src={info.pokeImgFront}
-              width={400}
-              height={400}
-              alt={info.pokeImgFront}
+              width={200}
+              height={200}
+              alt={info.name}
+              loading="lazy"
             />
             <div className="flex-row gap-2 info-details">
               <p>HP:</p>
