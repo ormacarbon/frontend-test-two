@@ -4,11 +4,10 @@ import axios from "axios";
 import Header from "../../components/pages/Home/Header";
 
 import { useRouter } from "next/router";
-import { RepositoryContext } from "../../contexts/repository";
 import { HistoryRepository } from "../../components/pages/Home/HistoryRepository";
 import { FiAlertCircle, FiSearch } from "react-icons/fi";
 import { SucessToast, ErrorToast } from "../../components/shared/Toast";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import {
   Container,
   Content,
@@ -20,19 +19,16 @@ import { ColorRing } from "react-loader-spinner";
 import { ThemeContext } from "../../contexts/theme";
 import { RepoHistoryContext } from "../../contexts/StorageRepositories/history";
 import { toast } from "react-hot-toast";
-import { ArrowBothIcon, HistoryIcon } from "@primer/octicons-react";
+import { HistoryIcon } from "@primer/octicons-react";
 
 export default function Home() {
-  const router = useRouter();
   const inputRef = useRef();
   const { theme } = useContext(ThemeContext);
-  const { repository, setRepository } = useContext(RepositoryContext);
   const { repositories, saveRepositories } = useContext(RepoHistoryContext);
 
   const [loading, setLoading] = useState(false);
 
   async function getRepository(repositoryName) {
-    setRepository({});
     setLoading(true);
     // axios
     //   .get(`https://api.github.com/repos/${repositoryName}`)
@@ -59,9 +55,7 @@ export default function Home() {
     //     });
     //   })
     //   .finally(() => setLoading(false));
-    setRepository(data);
     saveRepositories([data, ...repositories]);
-    console.log(repositories);
   }
 
   async function searchRepository(input) {

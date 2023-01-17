@@ -1,6 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
 import Issue from "../../components/pages/Issues/Issue";
+import Button from "../../components/shared/Button";
 import repo_data from "../../utils/repositoryData";
 import issue_data from "../../utils/issuesData";
 import IssueTypeDropdown from "../../components/pages/Issues/Dropdown";
@@ -19,13 +20,11 @@ import {
 } from "./styles";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../../contexts/theme";
-import Image from "next/image";
-import Button from "../../components/shared/Button";
 
 export default function repositoryNameIssues() {
   const router = useRouter();
-  const { repositoryName } = useRouter().query;
   const { theme } = useContext(ThemeContext);
+  const { repositoryName } = useRouter().query;
 
   const [page, setPage] = useState(1);
   const [state, setState] = useState("all");
