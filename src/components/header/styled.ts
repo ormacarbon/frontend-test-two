@@ -17,10 +17,7 @@ export const Container = styled.header<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  @media (max-width: 1024px) {
-    width: 95%;
-  }
+  padding: 0 1rem;
 
   @media (max-width: 540px) {
     top: 0;

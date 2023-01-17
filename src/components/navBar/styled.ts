@@ -34,7 +34,6 @@ export const Container = styled.nav<ContainerProps>`
   }
 
   @media (max-width: 1024px) {
-    width: 95%;
     margin: 0 auto;
     overflow: hidden;
     overflow-x: scroll;
@@ -42,11 +41,10 @@ export const Container = styled.nav<ContainerProps>`
   }
 
   @media (max-width: 768px) {
-    width: 95%;
     margin: 0 auto;
     overflow: hidden;
     overflow-x: scroll;
-    padding-left: 0rem;
+    padding-left: 9.75rem;
   }
 
   @media (max-width: 540px) {
