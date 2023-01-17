@@ -5,7 +5,7 @@ import { Container, Content, Main } from "../../styles/App/style";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
-import { Avatar, AvatarContainer, AvatarImage, Bio, Description, Followers, FollowersContent, ProfileContainer, Text, TextCount, Title, UserInfo, UserName } from "./styles";
+import { Avatar, AvatarContainer, AvatarImage, Bio, Description, Followers, FollowersContent, ProfileContainer, Text, TextCount, Title, UserInfo, UserName } from "../../styles/Profile/styles.js";
 import Loading from "../../components/Loading";
 import { BsPatchCheckFill } from "react-icons/bs";
 

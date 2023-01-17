@@ -1,5 +1,5 @@
 import { useSession, signIn } from "next-auth/react";
-import { Container, DescriptionContainer, LoginContainer, Text, Title, TextFilled, LoginButton, Description } from "./styles";
+import { Container, DescriptionContainer, LoginContainer, Text, Title, TextFilled, LoginButton, Description } from "../../styles/Login/styles.js";
 import {FaGithub} from 'react-icons/fa'
 import Router from "next/router";
 import { useEffect } from "react";
