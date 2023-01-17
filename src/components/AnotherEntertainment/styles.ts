@@ -14,4 +14,6 @@ export const Cards = styled.div`
   justify-content: flex-start;
   align-content: space-between;
   flex-wrap: wrap;
+
+  overflow: auto;
 `;
