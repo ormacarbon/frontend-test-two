@@ -74,5 +74,6 @@ const Description = styled.p`
   text-align: center;
   line-height: 1.5;
   font-size: 1.5rem;
+  white-space: pre-line;
 `
 export { HStack, VStack, Container, Main, Title, SectionTitle, Description}

@@ -91,7 +91,7 @@ const EstimatePage = () => {
                     <Button type='submit' disabled={loading}> Estimate </Button>
                 </Form>
                 {loading && <Rings color="#000" height={100} width={100} />}
-                {!error && estimatedData &&  InfoCard(generateInfoCard())}
+                {!error && estimatedData && InfoCard(generateInfoCard())}
                 {error && <strong>No data available for the chosen region</strong>}
             </HStack>
         </Main>
