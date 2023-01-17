@@ -87,12 +87,13 @@ export default function repositoryNameIssues() {
     <>
       <Head>
         <title>
-          {repository.name ? repository.name + " • issues" : "Loading..."}
+          {repository.name ? "Issues • " + repository.name : "Loading..."}
         </title>
       </Head>
       {repository?.name && (
         <RepositoryIssuesHeader
           isEmpty={issues.length === 0}
+          isIssues
           repository={repository}
         />
       )}
