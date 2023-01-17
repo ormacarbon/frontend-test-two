@@ -1,14 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Card } from "../../components/card/card";
 import { Pagination } from "../../components/pagination/pagination";
 
 import { themeContext } from "../../context/themeContext";
 import { useFetch } from "../../hooks/useFetch";
+import { api } from "../../services/api";
 
 import { IndexTrending } from "../../styles/pagesStyles/trendingStyle";
 
 export default function Trending() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
 
   const [darkTheme] = useContext(themeContext);
@@ -19,11 +23,21 @@ export default function Trending() {
     error: configError,
   } = useFetch("configuration", null);
 
-  const params = {
-    page: page,
-  };
+  useEffect(() => {
+    setLoading(true);
 
-  const { data, loading, error } = useFetch("trending/movie/week", params);
+    api
+      .get("trending/movie/week", {
+        params: {
+          page: page,
+        },
+      })
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
+  }, [page]);
 
   function pagination(page) {
     setPage(page);
@@ -45,7 +59,9 @@ export default function Trending() {
 
         <div className="cards">
           {data?.results.map((item) => {
-            return <Card key={item.id} content={item} configData={configData} />;
+            return (
+              <Card key={item.id} content={item} configData={configData} />
+            );
           })}
         </div>
 

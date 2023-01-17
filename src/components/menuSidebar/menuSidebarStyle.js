@@ -11,7 +11,7 @@ export const MenuSidebarComponent = styled.div`
   transition: 0.2s;
   z-index: 9;
 
-  div:not(.sidebar-link) {
+  form {
     max-width: 100%;
     margin: 0;
     border-radius: 0;

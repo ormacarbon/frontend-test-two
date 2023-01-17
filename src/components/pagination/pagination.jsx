@@ -41,7 +41,7 @@ export function Pagination({ totalPages, page, pagination, maxPage }) {
         </Link>
       ) : null}
       {maxPages - page > 3 ? <span>...</span> : null}
-      {page == maxPages ? null : (
+      {page == maxPages || maxPages == 0 || maxPages == null ? null : (
         <Link href="#" onClick={() => pagination(maxPages)}>
           {maxPages}
         </Link>

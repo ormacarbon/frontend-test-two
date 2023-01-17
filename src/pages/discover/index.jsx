@@ -20,12 +20,6 @@ export default function Discover() {
   const [darkTheme] = useContext(themeContext);
 
   const maxPage = 500;
-  const params = {
-    sort_by: selectValue,
-    "certification.lte": "R",
-    certification_country: "US",
-    page: page,
-  };
 
   const {
     data: configData,

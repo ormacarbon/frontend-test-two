@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchComponent = styled.div`
+export const SearchComponent = styled.form`
   ${(props) => props.theme.utils.flexUtil("row")};
   background: ${(props) =>
     props.dark ? props.theme.colors.onyx : props.theme.colors.white};

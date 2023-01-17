@@ -140,7 +140,11 @@ export const getStaticProps = async () => {
   const trendingData = await trendingResponse.data;
 
   const discoverResponse = await api.get("discover/movie", {
-    params: { include_adult: false, "release_date.lte": "2018-12-31" },
+    params: {
+      "release_date.lte": "2020-12-31",
+      "certification.lte": "R",
+      certification_country: "US",
+    },
   });
   const discoverData = await discoverResponse.data;
 

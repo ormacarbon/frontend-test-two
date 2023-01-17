@@ -1,5 +1,6 @@
 import { ThemeProvider } from "../context/themeContext";
 import { MenuProvider } from "../context/menuContext";
+import { SearchProvider } from "../context/searchContext";
 import { ConfigProvider } from "../context/apiConfigContext";
 import { HighlightMovieProvider } from "../context/highlightMovieContext";
 
@@ -14,20 +15,22 @@ import "slick-carousel/slick/slick-theme.css";
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
-      <MenuProvider>
-        <ConfigProvider>
-          <HighlightMovieProvider>
-            <Theme>
-              <GlobalStyle />
-              <Header />
-              <div id="main">
-                <MenuSidebar />
-                <Component {...pageProps} />
-              </div>
-            </Theme>
-          </HighlightMovieProvider>
-        </ConfigProvider>
-      </MenuProvider>
+      <SearchProvider>
+        <MenuProvider>
+          <ConfigProvider>
+            <HighlightMovieProvider>
+              <Theme>
+                <GlobalStyle />
+                <Header />
+                <div id="main">
+                  <MenuSidebar />
+                  <Component {...pageProps} />
+                </div>
+              </Theme>
+            </HighlightMovieProvider>
+          </ConfigProvider>
+        </MenuProvider>
+      </SearchProvider>
     </ThemeProvider>
   );
 }
