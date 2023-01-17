@@ -3,7 +3,24 @@ import styled from 'styled-components';
 export const FooterContainer = styled.footer`
   padding: 8rem;
   background-color: ${(props) => props.theme.colors['gray-700']};
-  border-top: 1px solid ${(props) => props.theme.colors['gray-300']}
+  border-top: 1px solid ${(props) => props.theme.colors['gray-300']};
+
+  button {
+    background-color: transparent;
+    border: 1px solid ${(props) => props.theme.colors['gray-600']};
+    color: ${(props) => props.theme.colors['gray-600']};
+    padding: 0.8rem 1.6rem;
+
+    margin-top: 2.8rem;
+
+    transition: all ease 0.3s;
+
+    &:hover {
+      border-color: transparent;
+      background-color: ${(props) => props.theme.colors['red-600']};
+      color: ${(props) => props.theme.colors['gray-100']};
+    }
+  }
 `;
 
 export const FooterHeader = styled.header`
@@ -43,5 +60,13 @@ export const FooterList = styled.ul`
   li {
     color: ${(props) => props.theme.colors['gray-600']};
     font-size: 1.3rem;
+
+    cursor: pointer;
+
+    transition: all ease 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;

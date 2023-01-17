@@ -82,12 +82,12 @@ export const Header = () => {
           >
             Recomendados
           </Link>
-          <Link
+          {/* <Link
             className={pageActive === '/my-list' ? 'active' : ''}
             href={'/my-list'}
           >
             Minha Lista
-          </Link>
+          </Link> */}
         </HeaderNavigationMobile>
       </HeaderShowModal>
 
@@ -113,12 +113,12 @@ export const Header = () => {
         >
           Recomendados
         </Link>
-        <Link
+        {/* <Link
           className={pageActive === '/my-list' ? 'active' : ''}
           href={'/my-list'}
         >
           Minha Lista
-        </Link>
+        </Link> */}
       </HeaderNavigationDesktop>
       <DarkModeContainer>
         <DarkModeSwitcher />
