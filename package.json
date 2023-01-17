@@ -9,12 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/material": "^5.11.4",
+    "@tabler/icons": "^1.119.0",
+    "i": "^0.3.7",
     "next": "^13.1.2",
+    "npm": "^9.3.0",
+    "radio-browser-api": "^6.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "autoprefixer": "^10.4.13",
     "eslint": "8.22.0",
-    "eslint-config-next": "^13.1.2"
+    "eslint-config-next": "^13.1.2",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4"
   }
 }
