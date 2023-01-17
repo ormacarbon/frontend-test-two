@@ -21,6 +21,7 @@ const Container = styled.div`
       display: grid;
       position: absolute;
     }
+    
   }
 
   @media (max-width: 320px) {
@@ -32,7 +33,27 @@ const Title = styled.h1`
   text-align: center;
   padding: 0;
   display: inline-flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+@media (max-width: 768px){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 `;
+const P = styled.p`
+position: absolute;
+margin-top:310px;
+font-weight: bold;
+
+@media (max-width: 768px) {
+  font-size: .6em;
+  margin-top: 110px;
+  margin-left: -47px;
+}
+`
 const Card = styled.div`
   display: flex;
   width: 400px;
@@ -59,7 +80,7 @@ const Card = styled.div`
       position: relative;
       width: 100px;
       height: 100px;
-      top: 20px;
+      top: 0;
       left: -40px;
     }
 
@@ -69,6 +90,7 @@ const Card = styled.div`
       font-size: 0.7em;
       padding: 0;
     }
+    
   }
 `;
 
@@ -90,6 +112,7 @@ export default function AnimeCard({ animeList, setAnimeInfo }) {
                 <br />
                 <br />
                 <br />
+                <P>Click here to learn more!</P>
               </Card>
             ))
           : 'Oops, we found nothing! Try searching for something else.'}
