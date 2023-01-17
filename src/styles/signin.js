@@ -22,6 +22,11 @@ export const LoginContainer = styled.div`
   height: 80%;
   margin: auto;
   width: 80%;
+
+  @media (max-width: 620px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+  }
 `;
 
 export const InitialWeatherContainer = styled.div`
@@ -30,6 +35,14 @@ export const InitialWeatherContainer = styled.div`
   color: ${ props => props.theme.colors.fontPrimary };
   justify-content: center;
   padding-top: 6rem;
+
+  @media (max-width: 1000px) {
+    padding-top: 4rem;
+  }
+
+  @media (max-width: 620px) {
+    padding-top: 0;
+  }
 `;
 
 export const InitialWeather = styled.div`
@@ -42,6 +55,10 @@ export const InitialWeatherLocation = styled.p`
   font-weight: 700;
   margin-bottom: 1rem;
   text-align: center;
+
+  @media (max-width: 1000px) {
+    font-size: 1.25rem;
+  }
 `
 
 export const TempWeather = styled.div`
@@ -51,8 +68,8 @@ export const TempWeather = styled.div`
   margin: 0 auto;
 
   img {
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
   }
 
   div {
@@ -61,13 +78,13 @@ export const TempWeather = styled.div`
     flex-direction: column;
 
     h3 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 400;
     }
 
     p {
       color: ${ props => props.theme.colors.fontGray };
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 400;
     }
   }
@@ -82,21 +99,34 @@ export const Login = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding-top: 6rem;
+    padding-top: 3rem;
     width: 80%;
 
+    @media (max-width: 620px) {
+      padding-top: 0;
+    }
+  
     h1 {
       color: ${ props => props.theme.colors.fontPrimary };
       font-size: 2.5rem;
       font-weight: 700;
       margin: 0 0 2rem 0;
       text-align: start;
+
+      @media (max-width: 1000px) {
+        font-size: 2rem;
+        margin: 0 0 1rem 0;
+      }
     }
   
     span {
       color: ${ props => props.theme.colors.fontPrimary };
       font-size: 2.5rem;
       font-weight: 400;
+
+      @media (max-width: 1000px) {
+        font-size: 2rem;
+      }
     }
   
     button {
@@ -109,12 +139,35 @@ export const Login = styled.div`
       justify-content: space-between;
       padding: 0 1rem;
 
+      @media (max-width: 1000px) {
+        padding: 0 0.5rem;
+      }
+
+      @media (max-width: 620px) {
+        padding: 0 1rem;
+      }
+
+      img {
+        @media (max-width: 1000px) {
+          height: 1.25rem;
+          width: 1.25rem;
+        }
+      }
+
       p {
         color: ${ props => props.theme.colors.fontGray };
         font-size: 1.5rem;
         font-weight: 400;
         text-align: center;
-        width: 100%;
+        width: 90%;
+
+        @media (max-width: 1200px) {
+          font-size: 1.25rem;
+        }
+
+        @media (max-width: 1000px) {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -124,6 +177,10 @@ export const ImageContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 620px) {
+    display: none;
+  }
 
   img {
     height: 90%;
@@ -158,6 +215,14 @@ export const LoginForm = styled.div`
 
   label:first-child {
     margin: 4rem 0 2rem 0;
+
+    @media (max-width: 1000px) {
+      margin: 2rem 0 1rem 0;
+    }
+
+    @media (max-width: 620px) {
+      margin: 0;
+    }
   }
 
   button {
@@ -175,5 +240,15 @@ export const LoginForm = styled.div`
     position: relative;
     left: 25%;
     width: 30%;
+
+    @media (max-width: 1000px) {
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 620px) {
+      left: 0;
+      margin-top: 1rem;
+      width: 80%;
+    }
   }
 `
