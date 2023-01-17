@@ -154,7 +154,7 @@ The following tools were used in building the project:
 -   Fonts: **[Roboto](https://fonts.google.com/specimen/Roboto)**
 ---
 
-## 🦸 Autor
+## 🦸 Author
 
 <a href="https://github.com/f7lipe">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/16584058?v=4" width="100px;" alt=""/>
