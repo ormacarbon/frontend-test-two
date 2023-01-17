@@ -17,7 +17,7 @@ export default function Nav() {
       {theme.mode == "light" ? (
         <Image
           src="/assets/sun.svg"
-          alt="Aqui"
+          alt="sun"
           onClick={toggleTheme}
           width={35}
           height={35}
@@ -25,7 +25,7 @@ export default function Nav() {
       ) : (
         <Image
           src="/assets/moon.svg"
-          alt=""
+          alt="moon"
           onClick={toggleTheme}
           width={35}
           height={35}
