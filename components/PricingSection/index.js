@@ -1,6 +1,7 @@
-import { Section, PlansContainer } from "./styles";
-import { Title } from "../../styles/global";
 import PlanBox from "../../components/PlanBox/index";
+
+import { Title } from "../../styles/global";
+import { Section, PlansContainer } from "./styles";
 
 const PricingSection = () => {
   return (

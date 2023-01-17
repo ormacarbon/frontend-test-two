@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
 import Loading from "../../helpers/Loading";
-import useFetch from "../../hooks/useFetch";
-import { GET_NEWS } from "../../api";
 import Image from "../../helpers/Image/index";
+import useFetch from "../../hooks/useFetch";
+import { GET_NEWS_BY_SECTION } from "../../api";
 
 import {
-  FeedSection,
+  Template,
   NewsContainer,
   Title,
   Paragraph,
@@ -18,7 +18,7 @@ import Arrow from "../../assets/arrow";
 const Feed = ({ section }) => {
   const { data, request, error, loading } = useFetch();
 
-  function formatDate(dateString) {
+  function convertToDateTemplate(dateString) {
     const date = dateString.slice(0, 10).split("-").join("/");
     const time = dateString.slice(11, 16).split(":").join("h");
     return `${date} • ${time}`;
@@ -26,7 +26,7 @@ const Feed = ({ section }) => {
 
   useEffect(() => {
     async function fetchNews() {
-      const { url, options } = GET_NEWS({ section });
+      const { url, options } = GET_NEWS_BY_SECTION({ section });
       await request(url, options);
     }
     fetchNews();
@@ -36,26 +36,29 @@ const Feed = ({ section }) => {
   if (loading) return <Loading />;
   if (data && data.results.length)
     return (
-      <FeedSection>
+      <Template>
         {data.results.map(
-          ({ multimedia, title, abstract, published_date, url }, index) => (
-            <NewsContainer key={index}>
-              <Image src={multimedia[0].url} alt={multimedia[0].caption} />
-              <div>
-                <Title>{title}</Title>
-                <Paragraph>{abstract}</Paragraph>
-                <FlexDiv>
-                  <span>{formatDate(published_date)}</span>
-                  <Link href={url} target="_blank">
-                    Full Story
-                    <Arrow />
-                  </Link>
-                </FlexDiv>
-              </div>
-            </NewsContainer>
-          )
+          ({ multimedia, title, abstract, published_date, url }, index) =>
+            multimedia && title && abstract && published_date && url ? (
+              <NewsContainer key={index}>
+                <Image src={multimedia[0].url} alt={multimedia[0].caption} />
+                <div>
+                  <Title>{title}</Title>
+                  <Paragraph>{abstract}</Paragraph>
+                  <FlexDiv>
+                    <span>{convertToDateTemplate(published_date)}</span>
+                    <Link href={url} target="_blank">
+                      Full Story
+                      <Arrow />
+                    </Link>
+                  </FlexDiv>
+                </div>
+              </NewsContainer>
+            ) : (
+              ""
+            )
         )}
-      </FeedSection>
+      </Template>
     );
 };
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FeedSection = styled.section`
+export const Template = styled.section`
   margin-top: 3rem;
   display: flex;
   align-items: center;

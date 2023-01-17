@@ -30,7 +30,7 @@ export const sections = [
   "world",
 ];
 
-export function GET_NEWS({ section }) {
+export function GET_NEWS_BY_SECTION({ section }) {
   return {
     url: `${API_URL}/${section ? section : "world"}.json?api-key=${API_KEY}`,
     options: {

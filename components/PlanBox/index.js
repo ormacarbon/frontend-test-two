@@ -1,3 +1,4 @@
+import PlanIcon from "../../assets/plan-icon";
 import {
   PlanContainer,
   PlanIconContainer,
@@ -8,7 +9,6 @@ import {
   Paragraph,
   Button,
 } from "./styles";
-import PlanIcon from "../../assets/plan-icon";
 
 const PlanBox = (props) => {
   return (

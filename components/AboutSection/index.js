@@ -1,10 +1,9 @@
-import { Section } from "./styles";
-
 import { Title, Paragraph } from "../../styles/global";
+import { Template } from "./styles";
 
 const AboutSection = () => {
   return (
-    <Section>
+    <Template>
       <Title>About</Title>
       <Paragraph>
         It is a long established fact that a reader will be distracted by the
@@ -34,7 +33,7 @@ const AboutSection = () => {
         using Lorem Ipsum is that it has a more-or-less normal distribution of
         letters..
       </Paragraph>
-    </Section>
+    </Template>
   );
 };
 

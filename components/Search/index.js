@@ -45,7 +45,7 @@ const Search = ({ setSection }) => {
     <ButtonContainer>
       <Button
         onClick={toggleSectionList}
-        className={`${activeClass ? "active selected" : ""}`}
+        className={`${activeClass ? "active" : ""}`}
       >
         {sectionTitle} <ArrowDown />
       </Button>
