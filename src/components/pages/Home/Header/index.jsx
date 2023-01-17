@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 export default function Header() {
   const router = useRouter();
 
-  const goToBack = () => router.back();
-  const goToHome = () => router.push("/");
   const goToFavorites = () => router.push("/favorites");
 
   return (
