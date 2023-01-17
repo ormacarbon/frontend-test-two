@@ -10,6 +10,12 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 540px) {
+    top: 0;
+    padding: 0 1rem;
+    border-bottom: 1px solid;
+  }
 `
 
 export const Logo = styled.section`
@@ -34,6 +40,14 @@ export const MenuActions = styled.section`
 
   svg {
     cursor: pointer;
+
+    :last-child {
+      display: none;
+
+      @media (max-width: 540px) {
+        display: block;
+      }
+    }
   }
 `
 
@@ -44,5 +58,9 @@ export const FavoriteList = styled.section`
 
   span {
     font-weight: 600;
+  }
+
+  @media (max-width: 540px) {
+    margin-right: .5rem;
   }
 `
