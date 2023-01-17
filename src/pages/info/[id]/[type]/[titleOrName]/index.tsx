@@ -42,9 +42,7 @@ export default function Info() {
     }
 
     getInfo();
-  }, [movieData.id, type]);
-
-  console.log(info);
+  }, [id, movieData.id, type]);
 
   return (
     <>

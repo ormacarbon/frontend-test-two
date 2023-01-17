@@ -31,8 +31,6 @@ export default function AnotherEntertainment() {
             // eslint-disable-next-line camelcase
             const newItem = { poster_path, vote_average, overview };
 
-            console.log(JSON.stringify(newItem));
-
             return (
               <Link
                 key={item.id}

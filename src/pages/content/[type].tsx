@@ -55,8 +55,6 @@ export default function Content() {
     getPopular();
   }, [type]);
 
-  console.log(data);
-
   return (
     <DataContext.Provider value={{ type, data }}>
       <Header showSearch={true} onSearchItem={searchItem} />
