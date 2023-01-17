@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 
 import { sections } from "../../api";
 import ArrowDown from "../../assets/arrow-down";
+import Head from "../../helpers/Head";
 
 import { ButtonContainer, Button, SectionList } from "./styles";
 
@@ -43,6 +44,7 @@ const Search = ({ setSection }) => {
 
   return (
     <ButtonContainer>
+      <Head title={`GetNews - ${sectionTitle}`} />
       <Button
         onClick={toggleSectionList}
         className={`${activeClass ? "active" : ""}`}
