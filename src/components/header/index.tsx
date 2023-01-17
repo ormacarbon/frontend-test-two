@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Dispatch, SetStateAction } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 
@@ -20,14 +20,17 @@ export const Header = ({
   mobileMenuVisible,
   setMobileMenuVisible,
 }: HeaderProps): JSX.Element => {
+  const { push } = useRouter()
+
   return (
     <Styled.Container isDarkTheme={isDarkTheme}>
-      <Link href='/bm-play/home'>
-        <Styled.Logo isDarkTheme={isDarkTheme}>
-          <BiMoviePlay size='40' />
-          <span>BM.play</span>
-        </Styled.Logo>
-      </Link>
+      <Styled.Logo
+        isDarkTheme={isDarkTheme}
+        onClick={() => push('/bm-play/home')}
+      >
+        <BiMoviePlay size='40' />
+        <span>BM.play</span>
+      </Styled.Logo>
 
         <Styled.MenuActions isDarkTheme={isDarkTheme}>
           {isDarkTheme ? (
@@ -41,12 +44,13 @@ export const Header = ({
               onClick={() => setIsDarkTheme(!isDarkTheme)}
             />
           )}
-          <Link href='/bm-play/favorites'>
-            <Styled.FavoriteList isDarkTheme={isDarkTheme}>
-              <MdFavorite fill='#7160C3' size={25} />
-              <span>Favoritos</span>
-            </Styled.FavoriteList>
-          </Link>
+          <Styled.FavoriteList
+            isDarkTheme={isDarkTheme}
+            onClick={() => push('/bm-play/favorites')}
+          >
+            <MdFavorite fill='#7160C3' size={25} />
+            <span>Favoritos</span>
+          </Styled.FavoriteList>
           <AiOutlineMenu
             size='25' 
             onClick={() => setMobileMenuVisible(!mobileMenuVisible)}

@@ -1,5 +1,5 @@
 import { Button } from '@components/buttons/addItem';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import * as Styled from './styled';
 
 export type MovieProps = {
@@ -19,19 +19,16 @@ export function Movie({
   vote_average,
   actionOnClick
 }: MovieProps): JSX.Element {
+  const { push } = useRouter()
 
   return (
     <Styled.Container>
-      <Styled.MovieInfo>
-        <Link href={{
-          pathname: `/bm-play/movie/${movieId}`,
-        }} >
-          <img src={src} alt="movie image" />
-          <Styled.TextSection>
-            <p>{title}</p>
-            <p>Lançado em: {release_date}</p>
-          </Styled.TextSection>
-        </Link>
+      <Styled.MovieInfo onClick={() => push(`/bm-play/movie/${movieId}`)}>
+        <img src={src} alt="movie image" />
+        <Styled.TextSection>
+          <p>{title}</p>
+          <p>Lançado em: {release_date}</p>
+        </Styled.TextSection>
       </Styled.MovieInfo>
       <p>Nota do Público: {vote_average}</p>
       <Button
