@@ -6,8 +6,8 @@ export const Container = styled.div`
   max-width: max-content;
   margin: 0 auto;
 
-  @media (max-width: 540px) {
-    margin-top  : 1rem;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
   }
 `;
 
