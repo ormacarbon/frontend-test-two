@@ -34,6 +34,7 @@ export const Logo = styled.section<ContainerProps>`
   height: 4rem;
 
   color: ${({ theme }) => theme.colors.white[100]};
+  cursor: pointer;
 
   span {
     display: inline-block;
@@ -68,6 +69,7 @@ export const FavoriteList = styled.section<ContainerProps>`
   gap: .25rem;
 
   color: ${({ theme }) => theme.colors.white[100]};
+  cursor: pointer;
 
   span {
     font-weight: 600;
