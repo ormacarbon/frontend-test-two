@@ -11,6 +11,10 @@ export const Container = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
   @media (max-width: 540px) {
     top: 0;
     padding: 0 1rem;
