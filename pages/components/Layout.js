@@ -9,7 +9,7 @@ export default function Layout({ children }) {
       <Navbar />
       <Head>
         <link rel='shortcut icon' href='/images/favicon.ico' />
-        <title>Pokémon</title>
+        <title>Jikan Lib</title>
         <meta property='og:title' content='My page title' key='title' />
       </Head>
       <main>{children}</main>

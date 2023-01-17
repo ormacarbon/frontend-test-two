@@ -1,85 +1,99 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-padding-top: 60%;
-  display: flex;
-flex-direction: column;
+  padding-top: 50%;
+  display: block;
+  flex-direction: column;
   padding: 2rem;
-  margin: 20px auto;
+  margin: auto;
   justify-content: center;
   align-items: center;
+
+  h3 {
+    position: absolute;
+    display: flex;
+    margin-left: -40px;
+    margin-top: -41px;
+
+    img {
+      display: grid;
+      position: absolute;
+    }
+  }
 
   @media (max-width: 320px) {
     display: flex;
     width: 300px;
-    
   }
-  
 `;
 const Title = styled.h1`
   text-align: center;
   padding: 0;
-  display: flex;
-
-  @media (max-width: 768px){
-    display: flex;
-      margin-left: -80px;
-  }
-`
+  display: inline-flex;
+`;
 const Card = styled.div`
-  width: 500px;
-  height: 500px;
-  padding: 0 0  1rem 0;
-  box-shadow:  5px 5px 5px rgba(0,0,0,0.3);
+  display: flex;
+  width: 400px;
+  height: 400px;
+  padding: 3rem;
+  margin-bottom: 2em;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
   text-align: center;
-  position: relative;
-  right: 300px;
-
+  right: 200px;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
   @media (max-width: 768px) {
-    left: 1px;
-    
+    display: grid;
+    width: 120px;
+    height: 180px;
+
+    img {
+      display: grid;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      top: 20px;
+      left: -40px;
+    }
+
+    h3 {
+      flex-direction: column;
+      white-space: normal;
+      font-size: 0.7em;
+      padding: 0;
+    }
   }
+`;
 
-
-  img{
-    position: relative;
-    width: 100%;
-    height: 80%;
-
-  }
-  @media (max-width: 768px) {
-    width: 100px;
-    height: 200px;
-    
-  }
-`
-
-export default function MovieCard({ animeList, setAnimeInfo, query }) {
+export default function AnimeCard({ animeList, setAnimeInfo }) {
   return (
     <>
-    <Title>Animes: <span>{query}</span></Title>
-    <Container>
-      {animeList
-        ? animeList.map((anime, index) => 
+      <Title>Animes:</Title>
+      <Container>
+        {animeList
+          ? animeList.map((anime, index) => (
               <Card key={index} onClick={() => setAnimeInfo(anime)}>
-              
-                 
-              
                 <Image
                   src={anime.images.jpg.image_url}
                   alt={anime.title}
-                  width={400}
-                  height={400}
-
+                  width={200}
+                  height={300}
                 />
-                 <h4>{anime.title}</h4>
+                <h3>{anime.title}</h3>
+                <br />
+                <br />
+                <br />
               </Card>
-        )
-        : 'Not-Found'}
-    </Container>
+            ))
+          : 'Oops, we found nothing! Try searching for something else.'}
+      </Container>
     </>
   );
 }

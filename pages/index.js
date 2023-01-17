@@ -8,9 +8,9 @@ const Container = styled.div`
   display: grid;
   padding-top: 130px;
   padding-bottom: 100px;
-  grid-auto-flow: row ;
+  grid-auto-flow: row;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     padding-left: 100px;
     right: 0;
   }
@@ -30,12 +30,12 @@ const Container = styled.div`
       position: fixed;
       text-align: center;
       display: flex;
-      top: 10px;
+      top: 15px;
       justify-content: center;
       align-items: center;
-      width: 100px;
-      right: 0;
-      height: 40px;
+      width: 120px;
+      right: 70px;
+      height: 30px;
       z-index: 1;
     }
   }
@@ -54,9 +54,10 @@ export default function HomePage() {
   const currentItems = animeData.slice(startIndex, endIndex);
 
   const getData = async () => {
-    const res = await fetch(`https://api.jikan.moe/v4/anime?q=${search}`);
+    const res = await fetch(
+      `https://api.jikan.moe/v4/anime?q=${search}&limit=100`
+    );
     const resData = await res.json();
-    console.log(resData.data);
     setAnimeData(resData.data);
   };
   useEffect(() => {
@@ -73,7 +74,11 @@ export default function HomePage() {
 
       <AnimeCard animeList={currentItems} setAnimeInfo={setAnimeInfo} />
       {animeInfo && <AnimeCardInfo animeInfo={animeInfo} />}
-      <Pagination pages={pages} setCurrentPage={setCurrentPage} />
+      {animeData ? (
+        <Pagination pages={pages} setCurrentPage={setCurrentPage} />
+      ) : (
+        ''
+      )}
     </Container>
   );
 }

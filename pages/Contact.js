@@ -16,29 +16,26 @@ const Paragrafo = styled.p`
   font-weight: bold;
 `;
 const Ul = styled.ul`
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-   
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 
-    li{
-        padding-bottom: 2em;
-        border-color: #000;
-    }
-    a{
-      text-decoration: none;
-      color: #000;
-      font-size: 12pt;
-      transition: .4s;
+  li {
+    padding-bottom: 2em;
+    border-color: #000;
+  }
+  a {
+    text-decoration: none;
+    font-size: 12pt;
+    transition: 0.4s;
     border-bottom: 2px solid transparent;
-
-    }
-    a:hover{
+    color: #0da;
+  }
+  a:hover {
     border-color: rgba(255 0 25);
   }
-    
-`
+`;
 export default function Contact() {
   return (
     <>
@@ -46,14 +43,33 @@ export default function Contact() {
         <H1>Contact</H1>
         <Paragrafo>Developed by Emerson Araújo</Paragrafo>
         <Ul>
-                    <li><Link href='#'>Telegram</Link></li>
-                    <li><Link href='#'>Facebook</Link></li>
-                    <li><Link href='#'>Instagram</Link></li>
-                    <li><Link href='#'>YouTube</Link></li>
-                    <li><Link href='#'>Twitch</Link></li>
-                    <li><Link href='#'>Linkedln</Link></li>
-                    <li><Link href='#'>Discord</Link></li>
-                </Ul>
+          <li>
+            <Link href='#'>Telegram</Link>
+          </li>
+          <li>
+            <Link href='#'>Facebook</Link>
+          </li>
+          <li>
+            <Link href='#'>Instagram</Link>
+          </li>
+          <li>
+            <Link href='#'>YouTube</Link>
+          </li>
+          <li>
+            <Link href='#'>Twitch</Link>
+          </li>
+          <li>
+            <Link
+              href='https://www.linkedin.com/in/emerson-ara%C3%BAjo-584b6a227/'
+              target='_blank'
+            >
+              Linkedln
+            </Link>
+          </li>
+          <li>
+            <Link href='#'>Discord</Link>
+          </li>
+        </Ul>
       </ContactStyle>
     </>
   );

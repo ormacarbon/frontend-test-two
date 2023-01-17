@@ -3,11 +3,7 @@ import styled from "styled-components";
 
 const About_style = styled.div`
     text-align: center;
-`
-const H1 = styled.h1`
-    font-size: 2em;
-    margin-bottom: 1em;
-  
+    padding-top: 100px;
 `
 const Paragrafo = styled.p`
     max-width: 500px;
@@ -18,9 +14,8 @@ const Paragrafo = styled.p`
 export default function About() {
     return (
             <About_style>
-                <H1>About the project</H1>
-                <Paragrafo>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ratione hic nostrum veniam, laudantium dolore vitae nam magni in et consequatur quam debitis sapiente aliquam! Iste maxime in optio fuga!</Paragrafo>
-                <Image src='/images/solgaleo.png' layout="intrinsic" width='500' height='500' sizes="320 640 750" alt='Solgaleo'/> 
+                <Paragrafo>I offer solutions both for you to take your first step on the web, and to help revert or redirect the current approach of your business on the net.</Paragrafo>
+                <Image src='/images/anime.webp' layout="intrinsic" width='600' height='500' sizes="320 640 750" alt='animes'/> 
             </About_style>
         )
 }   
