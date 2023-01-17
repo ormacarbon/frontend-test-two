@@ -103,7 +103,7 @@ function Home() {
             target={`_blank`}
           >
             <Image
-              src="../static/assets/logo-linkedin.svg"
+              src="/assets/logo-linkedin.svg"
               width={40}
               height={40}
               alt="LinkedIn"
@@ -114,7 +114,7 @@ function Home() {
         <li>
           <a href="https://github.com/LeonardoMachado30" target={`_blank`}>
             <Image
-              src="../static/assets/logo-github.svg"
+              src="/assets/logo-github.svg"
               width={40}
               height={40}
               alt="GitHub"
