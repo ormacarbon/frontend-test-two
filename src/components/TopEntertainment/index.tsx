@@ -1,71 +1,46 @@
-import { AsideTop, Info } from "./styles";
+import { AsideTop, ImgDiv, Info } from "./styles";
 
 import Youtube from "react-youtube";
 
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import { AiFillStar } from "react-icons/ai";
 
-import axios from "axios";
+import { DataContext, DataProps } from "../../pages/content/[type]";
 
-import { DataProps } from "../../pages/movies";
-
-interface TopProps {
-  data: DataProps[];
-  movieOrSerie: string;
-}
-
-export default function TopEntertainment({ data, movieOrSerie }: TopProps) {
-  const topTrailer = data[0]; // Get the most popular movie
-  const [trailer, setTrailer] = useState();
+export default function TopEntertainment() {
+  const { data, type } = useContext(DataContext);
   let titleOrName = "";
 
-  if (movieOrSerie === "movie") {
-    const { title } = topTrailer;
+  if (type === "movie") {
+    const { title } = data[0];
     titleOrName = title;
-  } else if (movieOrSerie === "tv") {
-    const { name } = topTrailer;
+  } else if (type === "tv") {
+    const { name } = data[0];
     titleOrName = name;
   }
-
-  useEffect(() => {
-    async function getTrailer() {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/${movieOrSerie}/${topTrailer.id}/videos?api_key=b59de4554604a026d4521e1afaf9d6b3`
-        );
-        setTrailer(response.data.results[0].key);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    getTrailer();
-  }, [data, movieOrSerie, topTrailer.id]);
-
-  console.log(movieOrSerie);
-
   return (
     <AsideTop>
-      <Youtube
-        videoId={trailer}
-        opts={{
-          playerVars: {
-            autoplay: 1,
-            loop: 1,
-            controls: 0,
-          },
-        }}
-      />
-      <Info>
-        <h2>{titleOrName}</h2>
-        <span>
-          {topTrailer.vote_average}
-          <AiFillStar size={16} color="#fde047" />
-        </span>
+      <header>
+        <AiFillStar size={24} color="#fde047" />
+        <h1>Recommended Movie</h1>
+        <AiFillStar size={24} color="#fde047" />
+      </header>
+      <ImgDiv>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${data[0].poster_path}`}
+          alt=""
+        />
+        <Info>
+          <h2>{titleOrName}</h2>
+          <span>
+            {data[0].vote_average}
+            <AiFillStar size={16} color="#fde047" />
+          </span>
 
-        <p>{topTrailer.overview}</p>
-      </Info>
+          <p>{data[0].overview}</p>
+        </Info>
+      </ImgDiv>
     </AsideTop>
   );
 }
