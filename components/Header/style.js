@@ -10,11 +10,8 @@ export const HeaderDiv = styled.div`
   gap: 20px;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
-  padding: 20px;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;
 
 export const MenuUl = styled.ul`

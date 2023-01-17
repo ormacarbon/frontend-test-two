@@ -10,10 +10,20 @@ export const ButtonLink = styled.div`
     text-transform: uppercase;
     color: var(--color-p5);
     font: 600 1.125rem/1.35 "Poppins", sans-serif;
+    max-width: max-content;
   }
 
   a:hover {
     background: linear-gradient(#ffb60d, #e59317);
+  }
+
+  a.second {
+    background: var(--color-10);
+    color: var(--color-2);
+  }
+
+  a.second:hover {
+    background: var(--color-9);
   }
 
   @media (max-width: 600px) {

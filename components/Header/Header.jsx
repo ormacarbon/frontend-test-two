@@ -7,7 +7,7 @@ import Brewery from "../../assets/brewery.svg";
 const Header = () => {
   return (
     <HeaderBg>
-      <HeaderDiv>
+      <HeaderDiv className="container">
         <Link href="./" aria-label="Brewery - Home">
           <Image src={Brewery} alt="Brewery - Logo" />
         </Link>

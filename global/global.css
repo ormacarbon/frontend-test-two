@@ -1,12 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap");
 
 @import "./typography.css";
 @import "./colors.css";
+@import "../utility/utility.css";
+@import "../components/Link/style.css";
 
 body {
   margin: 0px;
   font-family: Arial, Helvetica, sans-serif;
   height: 600px;
+  background-color: var(--color-2);
 }
 
 ul {
@@ -24,8 +27,16 @@ img {
   display: block;
 }
 
+img[src$=".jpg"] {
+  border-radius: 4px;
+}
+
 h1,
+h2,
+h3,
+h4,
 ul,
-p {
+p,
+blockquote {
   margin: 0px;
 }
