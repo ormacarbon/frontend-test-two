@@ -14,6 +14,7 @@ export const Container = styled.nav<ContainerProps>`
   justify-content: space-around;
 
   height: 2.5rem;
+  color: ${({ theme }) => theme.colors.white[100]};
   background: ${({theme}) => theme.colors.pink[700]};
 
   p {
