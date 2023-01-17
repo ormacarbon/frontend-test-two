@@ -48,6 +48,7 @@ Ao fornecer essas informações aos usuários, eles podem tomar decisões mais i
   - [x] estimar a pegada de carbono de uma determinada categoria para o seu país (localização obtida via IP)  
   - [x] alterar o país em um seletor de países 
   - [x] filtrar por ano e região as categorias que mais emitem CO2
+  - [x] alternar entre os temas claro/escuro
  
 ---
 
@@ -67,9 +68,9 @@ O layout da aplicação está disponível no Figma:
 ### Mobile
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="Estimator Welcoming Page on a mobile device" title="#Mobile" src="./dir-assets/splash.png" width="200px">
-  <img alt="Estimator Categories Page on a mobile device" title="#Mobile" src="./dir-assets/estimate.png" width="200px">
-  <img alt="Estimator Stats Page on a mobile device" title="#Mobile" src="./dir-assets/stats.png" width="200px">
+  <img alt="Estimator Welcoming Page on a mobile device" title="#Mobile" src="./dir-assets/splash-mobile.png" width="200px" style="margin: 2px">
+  <img alt="Estimator Categories Page on a mobile device" title="#Mobile" src="./dir-assets/estimate-mobile.png" width="200px" style="margin: 2px">
+  <img alt="Estimator Stats Page on a mobile device" title="#Mobile" src="./dir-assets/stats-mobile.png" width="200px" style="margin: 2px">
 </p>
 
 ### Desktop
@@ -172,6 +173,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [MDN Web Docs](https://developer.mozilla.org/pt-BR/)
 - [Next.JS Docs](https://nextjs.org/docs/getting-started)
 - [React Hook Forms Docs](https://react-hook-form.com/get-started)
+- [Theming in Next.JS With Styled-components](https://blog.logrocket.com/theming-in-next-js-with-styled-components-and-usedarkmode/)
 
 ## 📝 Projeto
 
