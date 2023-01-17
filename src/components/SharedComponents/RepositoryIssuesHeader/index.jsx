@@ -1,4 +1,4 @@
-import Button from "../../shared/Button";
+import Button from "../../SharedComponents/Button";
 import ToggleThemeButton from "../ToggleThemeButton";
 
 import {
@@ -45,7 +45,7 @@ export default function RepositoryIssuesHeader(props) {
             </FavoritesTitle>
           </>
         ) : (
-          <AppName>
+          <AppName rel="noreferrer" href="/">
             y<span>ssues</span>
           </AppName>
         )}

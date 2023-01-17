@@ -1,13 +1,11 @@
 import axios from "axios";
 import Head from "next/head";
-import repo_data from "../../utils/repositoryData";
-import RepositoryIssuesHeader from "../../components/shared/RepositoryIssuesHeader";
+import RepositoryIssuesHeader from "../../components/SharedComponents/RepositoryIssuesHeader";
 
 import { FavoritesContext } from "../../contexts/StorageRepositories/favorites";
 import Router, { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { ActionButtons, Container, Content, LikeButton } from "./styles";
-import Header from "../../components/pages/Home/Header";
 import {
   EyeIcon,
   HeartFillIcon,
@@ -16,7 +14,7 @@ import {
   StarFillIcon,
   StarIcon,
 } from "@primer/octicons-react";
-import Button from "../../components/shared/Button";
+import Button from "../../components/SharedComponents/Button";
 import { ThemeContext } from "../../contexts/theme";
 import { ColorRing } from "react-loader-spinner";
 
@@ -44,7 +42,6 @@ export default function Repository() {
             setRepository(response.data);
             setLoading(false);
           });
-        setRepository(repo_data);
       })();
     }
   }, [repositoryName]);
@@ -86,15 +83,15 @@ export default function Repository() {
                 <div className="stats">
                   <span>
                     <StarIcon />
-                    {formatValue(repository.forks_count)}
+                    {formatValue(repository.watchers_count)}
                   </span>
                   <span>
                     <RepoForkedIcon />
-                    {formatValue(repository.subscribers_count)}
+                    {formatValue(repository.forks_count)}
                   </span>
                   <span>
                     <EyeIcon />
-                    {formatValue(repository.watchers_count)}
+                    {formatValue(repository.subscribers_count)}
                   </span>
                 </div>
                 <ActionButtons>

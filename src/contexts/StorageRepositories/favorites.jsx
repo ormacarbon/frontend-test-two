@@ -1,5 +1,8 @@
 import { createContext, useCallback, useEffect, useState } from "react";
-import { SucessToast, ErrorToast } from "../../components/shared/Toast";
+import {
+  SucessToast,
+  ErrorToast,
+} from "../../components/SharedComponents/Toast";
 import { HeartFillIcon, XIcon } from "@primer/octicons-react";
 
 export const FavoritesContext = createContext();

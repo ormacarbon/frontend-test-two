@@ -1,6 +1,6 @@
 import { Container, Content } from "./styles";
 
-export function HistoryRepository({ data }) {
+export default function HistoryRepository({ data }) {
   function formatUrl(url) {
     return url.replace("/", "%2F");
   }

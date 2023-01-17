@@ -1,6 +1,6 @@
 import Link from "next/link";
-import ToggleThemeButton from "../../../shared/ToggleThemeButton";
-import Button from "../../../shared/Button";
+import ToggleThemeButton from "../../../SharedComponents/ToggleThemeButton";
+import Button from "../../../SharedComponents/Button";
 
 import { AppName, ButtonsContainer, Container, Content } from "./styles";
 import { useRouter } from "next/router";
@@ -14,7 +14,7 @@ export default function Header() {
     <>
       <Container>
         <Content>
-          <AppName>
+          <AppName rel="noreferrer" href="/">
             y<span>ssues</span>
           </AppName>
           <ButtonsContainer>

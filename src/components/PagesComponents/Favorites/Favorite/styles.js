@@ -79,13 +79,13 @@ export const Content = styled.div`
         margin-left: -12px;
 
         svg {
-          color: ${(p) => p.theme.colors.primary};
+          color: #fff;
         }
       }
 
       :hover {
         background-color: ${(p) => p.theme.colors.blue[200]};
-        color: ${(p) => p.theme.colors.primary};
+        color: #fff;
 
         span {
           transform: scale(1);

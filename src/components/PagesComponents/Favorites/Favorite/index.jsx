@@ -3,7 +3,7 @@ import { Container, Content } from "./styles";
 import { useContext } from "react";
 import { FavoritesContext } from "../../../../contexts/StorageRepositories/favorites";
 
-export function FavoriteRepository({ data }) {
+export default function FavoriteRepository({ data }) {
   const { removeFavorite } = useContext(FavoritesContext);
 
   function formatUrl(url) {
@@ -19,7 +19,11 @@ export function FavoriteRepository({ data }) {
           <button onClick={() => removeFavorite(data)}>
             <XIcon />
           </button>
-          <a target="_blank" href={`/repository/${formatUrl(data.full_name)}`}>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={`/repository/${formatUrl(data.full_name)}`}
+          >
             Acessar
             <span>
               <ArrowRightIcon size={14} />

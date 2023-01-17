@@ -1,12 +1,15 @@
-import data from "../../utils/repositoryData";
 import Head from "next/head";
 import axios from "axios";
-import Header from "../../components/pages/Home/Header";
+import Header from "../../components/PagesComponents/Home/Header";
+import Button from "../../components/SharedComponents/Button";
+import HistoryRepository from "../../components/PagesComponents/Home/HistoryRepository";
 
 import { useRouter } from "next/router";
-import { HistoryRepository } from "../../components/pages/Home/HistoryRepository";
 import { FiAlertCircle, FiSearch } from "react-icons/fi";
-import { SucessToast, ErrorToast } from "../../components/shared/Toast";
+import {
+  SucessToast,
+  ErrorToast,
+} from "../../components/SharedComponents/Toast";
 import { useContext, useRef, useState } from "react";
 import {
   Container,
@@ -18,7 +21,6 @@ import {
 import { ColorRing } from "react-loader-spinner";
 import { ThemeContext } from "../../contexts/theme";
 import { RepoHistoryContext } from "../../contexts/StorageRepositories/history";
-import { toast } from "react-hot-toast";
 import { HistoryIcon } from "@primer/octicons-react";
 
 export default function Home() {

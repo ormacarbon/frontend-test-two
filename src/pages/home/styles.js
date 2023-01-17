@@ -99,6 +99,18 @@ export const SearchContainer = styled.div`
 export const HistoryContainer = styled.div`
   width: 100%;
 
+  div {
+    button {
+      transition: all 0.3s ease;
+      background-color: transparent;
+      color: ${(p) => p.theme.colors.secundary};
+
+      :hover {
+        color: ${(p) => p.theme.colors.button.text};
+      }
+    }
+  }
+
   .header {
     margin-top: 20px;
     display: flex;

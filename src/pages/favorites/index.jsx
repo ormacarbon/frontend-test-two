@@ -1,16 +1,15 @@
 import Head from "next/head";
-import RepositoryIssuesHeader from "../../components/shared/RepositoryIssuesHeader";
+import Button from "../../components/SharedComponents/Button";
 import Router, { useRouter } from "next/router";
-
-import { FavoriteRepository as Favorite } from "../../components/pages/Favorites/Favorite";
+import FavoriteRepository from "../../components/PagesComponents/Favorites/Favorite";
+import RepositoryIssuesHeader from "../../components/SharedComponents/RepositoryIssuesHeader";
 
 import { useContext, useState } from "react";
 import { FavoritesContext } from "../../contexts/StorageRepositories/favorites";
 import { Container, Content, Empty, FavoritesContainer } from "./styles";
-import Button from "../../components/shared/Button";
 import { FiArrowLeft } from "react-icons/fi";
 
-export default function Repository() {
+export default function Favorites() {
   const router = useRouter();
   const { repositories } = useContext(FavoritesContext);
 
@@ -27,7 +26,7 @@ export default function Repository() {
               <h1>{repositories.length} repositórios salvos.</h1>
               <FavoritesContainer>
                 {repositories.map((r, i) => (
-                  <Favorite key={i} data={r} />
+                  <FavoriteRepository key={i} data={r} />
                 ))}
               </FavoritesContainer>
             </>

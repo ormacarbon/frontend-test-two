@@ -1,9 +1,9 @@
 import axios from "axios";
 import Head from "next/head";
-import Issue from "../../components/pages/Issues/Issue";
-import Button from "../../components/shared/Button";
-import IssueTypeDropdown from "../../components/pages/Issues/Dropdown";
-import RepositoryIssuesHeader from "../../components/shared/RepositoryIssuesHeader";
+import Issue from "../../components/PagesComponents/Issues/Issue";
+import Button from "../../components/SharedComponents/Button";
+import IssueTypeDropdown from "../../components/PagesComponents/Issues/Dropdown";
+import RepositoryIssuesHeader from "../../components/SharedComponents/RepositoryIssuesHeader";
 
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { ColorRing } from "react-loader-spinner";
@@ -19,7 +19,7 @@ import {
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../../contexts/theme";
 
-export default function repositoryNameIssues() {
+export default function RepositoryNameIssues() {
   const router = useRouter();
   const { theme } = useContext(ThemeContext);
   const { repositoryName } = useRouter().query;

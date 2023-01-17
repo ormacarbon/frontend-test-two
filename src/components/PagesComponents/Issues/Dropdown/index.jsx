@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Container, Options, Option, Select, Background } from "./styles";
 import { TriangleDownIcon as DownIcon } from "@primer/octicons-react";
 
@@ -6,13 +6,17 @@ export default function IssueTypeDropdown(props) {
   const select = useRef();
   const [margin, setMargin] = useState();
   const [openDropdrown, setOpenDropdown] = useState(false);
-  const state = (state) => {
-    return state === "open"
-      ? "Abertas"
-      : state === "closed"
-      ? "Fechadas"
-      : "Todas";
-  };
+
+  const state = useCallback(
+    (state) => {
+      return state === "open"
+        ? "Abertas"
+        : state === "closed"
+        ? "Fechadas"
+        : "Todas";
+    },
+    [state]
+  );
   const options = ["all", "open", "closed"];
 
   useEffect(() => {

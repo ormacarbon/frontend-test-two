@@ -23,7 +23,7 @@ export const Content = styled.div`
   height: 100%;
 `;
 
-export const AppName = styled.div`
+export const AppName = styled.a`
   color: ${(p) => p.theme.colors.header.title};
   font-weight: 800;
   font-size: 1.2rem;
