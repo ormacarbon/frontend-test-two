@@ -37,10 +37,20 @@ export const Container = styled.nav<ContainerProps>`
     margin: 0 auto;
   }
 
+  @media (max-width: 1024px) {
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding-left: 2rem;
+  }
+
   @media (max-width: 768px) {
     width: 95%;
     margin: 0 auto;
     overflow: hidden;
+    overflow-x: scroll;
+    padding-left: 0rem;
   }
 
   @media (max-width: 540px) {
