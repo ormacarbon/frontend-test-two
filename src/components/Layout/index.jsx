@@ -7,7 +7,6 @@ const Layout = () => {
         <Navbar />
         <Content />
       </>
-
     )
 }
 
