@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import { EventChoiceModal } from "../Modal";
 
+import { ButtonComponent } from "../Button";
+
 interface BerrCardComponentProps {
   image: string | null;
   name: string;
@@ -39,7 +41,10 @@ export const BeerCardComponent = ({
       <p className="slogan">Slogan: {tagline}</p>
       <p>ABV: {abv}%</p>
       <p>IBU: {ibu}</p>
-      <button onClick={() => setModalChoice(true)}>Adicionar</button>
+
+      <ButtonComponent onClick={() => setModalChoice(true)}>
+        Adicionar
+      </ButtonComponent>
       {modalChoice ? (
         <EventChoiceModal setModalChoice={setModalChoice} beer={beer} />
       ) : null}

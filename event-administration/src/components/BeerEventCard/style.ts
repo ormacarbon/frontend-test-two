@@ -5,7 +5,7 @@ export const BeerEventCard = styled.div`
 
   text-align: center;
   font-family: var(--roboto);
-  background-color: var(--lightGrey);
+  background-color: var(--white-999);
   font-size: 0.8rem;
   border: 1px solid var(--black-400);
   border-radius: 5px;

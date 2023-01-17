@@ -3,6 +3,8 @@ import { BeerEventCard, BackGroundImageEvent } from "./style";
 import { useContext } from "react";
 import { EventsContext } from "../../providers/eventscenter";
 
+import { ButtonComponent } from "../Button";
+
 interface BerrCardComponentProps {
   image: string | null;
   name: string;
@@ -40,7 +42,10 @@ export const BeerEventCardComponent = ({
       <p className="slogan">Slogan: {tagline}</p>
       <p>ABV: {abv}%</p>
       <p>IBU: {ibu}</p>
-      <button onClick={() => removeBeer(event, beer)}>Remover</button>
+
+      <ButtonComponent onClick={() => removeBeer(event, beer)}>
+        Remover
+      </ButtonComponent>
     </BeerEventCard>
   );
 };

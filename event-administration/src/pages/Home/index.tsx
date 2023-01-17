@@ -2,6 +2,8 @@ import { Container } from "./style";
 
 import { useNavigate } from "react-router-dom";
 
+import { ButtonComponent } from "../../components/Button";
+
 export const HomePage = () => {
   const navigate = useNavigate();
 
@@ -15,7 +17,9 @@ export const HomePage = () => {
           Casamento, Confraternização e Formatura
         </h3>
 
-        <button onClick={() => navigate("/availablebeers")}>entrar</button>
+        <ButtonComponent onClick={() => navigate("/availablebeers")}>
+          ENTRAR
+        </ButtonComponent>
       </Container>
     </>
   );
