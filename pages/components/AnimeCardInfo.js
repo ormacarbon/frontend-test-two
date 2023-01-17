@@ -52,12 +52,7 @@ export default function AnimeCardInfo(props) {
     <>
       <Container>
         <h3>{title}</h3>
-        <Image
-          src={large_image_url}
-          width={100}
-          height={100}
-          alt={props.animeInfo.title}
-        />
+        <Image src={large_image_url} width={100} height={100} alt={title} />
         <div>
           <h3>#Rank: {rank}</h3>
           <h3>#Score: {score}</h3>
