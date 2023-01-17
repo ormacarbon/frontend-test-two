@@ -5,8 +5,8 @@ export const Container = styled.div`
   margin: 0 auto;
 
   display: flex;
-  background: ${({ theme }) => theme.colors.white[100]};
-  color: ${({ theme }) => theme.colors.gray[800]};
+  background: ${({ theme }) => theme.colors.gray[700]};
+  color: ${({ theme }) => theme.colors.white[100]};
   margin-top: 1rem;
 
   img {
