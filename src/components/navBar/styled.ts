@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.nav`
+type ContainerProps = {
+  mobileMenuVisible: boolean
+}
+
+export const Container = styled.nav<ContainerProps>`
   margin: 0 auto;
 
   width: 100%;
@@ -26,5 +30,16 @@ export const Container = styled.nav`
     :hover {
       background: ${({theme}) => theme.colors.pink[300]};
     }
+  }
+
+  span {
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 540px) {
+    height: 100vh;
+    display: ${({mobileMenuVisible}) => mobileMenuVisible ? 'block' : 'none'};
+    z-index: 2;
   }
 `
