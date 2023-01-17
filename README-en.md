@@ -48,13 +48,13 @@ By providing this information to users, they can make more informed decisions ab
    - [x] estimate the carbon footprint of a given category for their country (location obtained via IP)
    - [x] change country in a country selector
    - [x] filter CO2 emissions by year and region
-   - [x] toggle ligth/dark theme
+   - [x] switch between ligth/dark theme
  
 ---
 
 ## ▶️ Preview
 
-This project has a demo version deployed at Vercel. Click [here](https://estimator.vercel.app/) and check it out.
+This project has a demo version deployed at Vercel. Click [here](https://frontend-test-gd90t2y0x-f7lipe.vercel.app/) and check it out.
 
 ## 🎨 Layout
 
@@ -84,13 +84,13 @@ The application layout is available in Figma:
 
 ## 🚀 Running the project
 
-This project requires third-party dependencies to run, see below the steps for running locally. 
+This project requires third-party dependencies to run, see below for steps to running locally. 
 
 ### Prerequisits
 
-Before starting, you will need to have the following tools installed on your machine:
+Before you start, you will need to have the following tools installed on your machine:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), and also a package manager like [npm](https://www. npmjs.com/package/npm) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install/).
-Also it's good to have an editor to work with the code, like [VSCode](https://code.visualstudio.com/)
+In addition it is good to have an editor to work with the code, such as [VSCode](https://code.visualstudio.com/)
 
 #### 🔑 Get the Climatiq API key 
 
