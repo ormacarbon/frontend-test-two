@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import AnotherEntertainment from "../../components/AnotherEntertainment";
 import Header from "../../components/Header";
 import TopEntertainment from "../../components/TopEntertainment";
 import { MainContent } from "../../styles/global";
 
-interface DataProps {
+export interface DataProps {
   id: number;
   title: string;
   name: string;
@@ -14,6 +14,13 @@ interface DataProps {
   vote_average: number;
   overview: string;
 }
+
+interface ContextProps {
+  data: DataProps[];
+  type: string | string[];
+}
+
+export const DataContext = createContext<ContextProps>({});
 
 export default function Content() {
   const { query } = useRouter();
@@ -37,17 +44,17 @@ export default function Content() {
   }, [type]);
 
   return (
-    <>
-      <Header showSearch={true} movieOrSerie={"movie"} />
+    <DataContext.Provider value={{ type, data }}>
+      <Header showSearch={true} />
 
       <MainContent>
         {data && (
           <>
-            <AnotherEntertainment data={data} movieOrSerie={"movie"} />
-            <TopEntertainment data={data} movieOrSerie={"movie"} />
+            <AnotherEntertainment />
+            <TopEntertainment />
           </>
         )}
       </MainContent>
-    </>
+    </DataContext.Provider>
   );
 }
