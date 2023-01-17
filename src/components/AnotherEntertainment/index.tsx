@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useContext } from "react";
 import { DataContext, DataProps } from "../../pages/content/[type]";
 
@@ -24,17 +25,31 @@ export default function AnotherEntertainment() {
               titleOrName = title;
             }
 
+            // eslint-disable-next-line camelcase
+            const { poster_path, vote_average, overview } = item;
+
+            // eslint-disable-next-line camelcase
+            const newItem = { poster_path, vote_average, overview };
+
+            console.log(JSON.stringify(newItem));
+
             return (
-              <Card
+              <Link
                 key={item.id}
-                poster={item.poster_path}
-                title={titleOrName}
-                vote={item.vote_average}
-              />
+                href={`/info/${
+                  item.id
+                }/${type}/${titleOrName}?data=${JSON.stringify(newItem)}`}
+              >
+                <Card
+                  poster={item.poster_path}
+                  title={titleOrName}
+                  vote={item.vote_average}
+                />
+              </Link>
             );
           })
         ) : (
-          <p>carregando</p>
+          <p>loading...</p>
         )}
       </Cards>
     </MainAnotherEntertainment>
