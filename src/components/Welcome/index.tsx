@@ -12,12 +12,14 @@ export default function Welcome() {
         <span> Cine</span>
         phile
       </h1>
-      <footer>
-        <StyledLink href="/content/movie">
+      <h2>Bringing the best of cinema to your screen</h2>
+
+      <StyledLink href="/content/movie">
+        <footer>
           Lets get start!
           <AiFillStar size={16} color="#fde047" />
-        </StyledLink>
-      </footer>
+        </footer>
+      </StyledLink>
     </WelcomeMain>
   );
 }
