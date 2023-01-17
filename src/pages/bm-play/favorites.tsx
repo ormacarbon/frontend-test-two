@@ -15,14 +15,18 @@ export default function Favorites(): JSX.Element {
     const userItemsList = localStorage.getItem('user@listItems');
     const userItemsListJson: MovieData[] = JSON.parse(userItemsList);
 
-    const listWithConvertedDates: MovieData[] = userItemsListJson.map(movieData => {
+    const listWithConvertedDates: MovieData[] = userItemsListJson?.map(movieData => {
       return {
         ...movieData,
         release_date: new Date(movieData.release_date).toLocaleDateString('pt-BR')
       }
     })
 
-    setItemsById(listWithConvertedDates);
+    if(listWithConvertedDates) {
+      setItemsById(listWithConvertedDates);
+    } else {
+      setItemsById([]);
+    }
   }, []);
 
   return (
