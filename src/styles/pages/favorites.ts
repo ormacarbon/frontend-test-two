@@ -4,6 +4,10 @@ type MainProps = {
   hasItemInCartList: boolean;
 };
 
+type TableHeadProps = {
+  isDarkTheme: boolean;
+}
+
 export const Container = styled.main<MainProps>`
   display: ${({ hasItemInCartList }) => (hasItemInCartList ? 'block' : 'none')};
   max-width: 1280px;
@@ -24,7 +28,15 @@ export const Table = styled.table`
   padding: ${({ theme }) => theme.spacings['1.6']};
 `;
 
-export const TableHead = styled.thead`
+export const TableHead = styled.thead<TableHeadProps>`
+  tr {
+    th {
+      :nth-child(1) {
+        border-bottom: none;
+      }
+      border-bottom: 1px solid ${({ theme }) => theme.colors.gray[250]};
+    }
+  }
   color: ${({ theme }) => theme.colors.gray[250]};
 
   @media (max-width: 540px) {
