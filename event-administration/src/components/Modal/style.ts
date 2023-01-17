@@ -19,19 +19,20 @@ export const Container = styled.div`
 
 export const ChoiceEvent = styled.div`
   width: 280px;
-
-  border-radius: 5px 5px 0 0;
-
+  height: 200px;
+  border-radius: 10px;
   background-color: var(--grey-200);
-
+  font-family: var(--roboto);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   > form {
     display: flex;
     flex-direction: column;
-    > label {
+    select {
+      margin: 50px 0;
     }
   }
 `;

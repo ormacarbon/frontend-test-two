@@ -5,8 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Container, ChoiceEvent } from "./style";
 
 import { useContext } from "react";
-
 import { EventsContext } from "../../providers/eventscenter";
+
+import { ButtonComponent } from "../Button";
 
 interface EventChoiceModalProps {
   setModalChoice: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,7 +31,7 @@ export const EventChoiceModal = ({
   beer,
   setModalChoice,
 }: EventChoiceModalProps) => {
-  const { selectedEvent } = useContext(EventsContext);
+  const { selectedEvent, graduationBeers } = useContext(EventsContext);
 
   const formSchema = yup.object().shape({
     event: yup.string().min(1, "Selecione um dos eventos"),
@@ -58,6 +59,7 @@ export const EventChoiceModal = ({
       }}
     >
       <ChoiceEvent>
+        <h4>Selecione o evento</h4>
         <form onSubmit={handleSubmit(submitFunction)}>
           <select {...register("event")}>
             <option value="">Selecione o evento</option>
@@ -65,7 +67,7 @@ export const EventChoiceModal = ({
             <option value="confraternization"> Confraternização </option>
             <option value="graduation"> Formatura </option>
           </select>
-          <button type="submit">Adicionar</button>
+          <ButtonComponent type="submit">Adicionar</ButtonComponent>
           <p>{errors.event?.message}</p>
         </form>
       </ChoiceEvent>

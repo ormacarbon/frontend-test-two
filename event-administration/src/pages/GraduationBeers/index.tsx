@@ -1,6 +1,6 @@
 import { Container, BeersCard, Title } from "./style";
-import { BeerEventCardComponent } from "../../components/BeerEventCard";
 import { HeaderComponent } from "../../components/Header";
+import { BeerEventCardComponent } from "../../components/BeerEventCard";
 
 import { useContext } from "react";
 import { EventsContext } from "../../providers/eventscenter";
@@ -11,10 +11,11 @@ export const GraduationBeersPageComponent = () => {
   return (
     <>
       <HeaderComponent />
-      <Title>
-        <h2>Cervejas selecionadas para formatura</h2>
-      </Title>
       <Container>
+        <Title>
+          <h2>Cervejas selecionadas para formatura</h2>
+        </Title>
+
         <BeersCard>
           {graduationBeers.map((element) => {
             return (
