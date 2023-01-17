@@ -9,6 +9,7 @@ export const Container = styled.main<MainProps>`
   max-width: 1280px;
   margin: 0 auto;
   margin-bottom: 4rem;
+  margin-top: 1rem;
 
   background: ${({ theme }) => theme.colors.white[100]};
 
@@ -64,6 +65,12 @@ export const TableBody = styled.tbody`
           display: none;
         }
       }
+
+      td:nth-child(3){
+        svg {
+          width: 50px;
+        }
+      }
     }
   }
 `;
@@ -89,6 +96,17 @@ export const TableData = styled.td`
 
   p {
     text-align: justify;
+    margin: 1rem 0;
+  }
+
+  img {
+    @media (max-width: 1024px) {
+      max-width: 140px;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 130px;
+    }
   }
 `;
 
@@ -180,6 +198,15 @@ export const SectionSubtotal = styled.section`
   gap: 0.25rem;
 
   svg {
+    width: 55px;
     cursor: pointer;
+
+    @media (max-width: 1024px) {
+      width: 30px;
+    }
+
+    @media (max-width: 768px) {
+      width: 60px;
+    }
   }
 `;
