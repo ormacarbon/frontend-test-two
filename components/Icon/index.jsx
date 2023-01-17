@@ -10,5 +10,5 @@ export default function Icon({ index, isActive = false, menuItems }){
     configIcons.color = isActive ? '#e22b8d' : configIcons.color
     configIcons.fill  = isActive ? '#e22b8d' : configIcons.color
 
-    return <Icon {...configIcons} ></Icon>
+    return <Icon  {...configIcons} ></Icon>
 }

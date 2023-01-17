@@ -53,12 +53,16 @@ export const UserDescription = styled.div`
 `
 
 export const Username = styled.a`
-    font-size: 1.2rem;
+    font-size: 1.12rem;
     font-weight: 400;
     text-decoration: none;
     color: ${props => props.theme.isDark ? props.theme.lightGray : props.theme.black};
     margin-right: 0.6rem;
     cursor: pointer;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: all 200ms ease-in-out;
 
     &:hover{
@@ -66,7 +70,7 @@ export const Username = styled.a`
     }
 
     @media (max-width: 768px){
-        font-size: 1.04rem;
+        font-size: 1rem;
     }
 `
 
@@ -114,4 +118,22 @@ export const FollowButton = styled.button`
     }
 
 
+`
+
+export const Alert = styled.div`
+    display: flex;
+    gap: 1rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.2rem;
+    width: 100%;
+    border: 0.12rem solid ${props => props.theme.isDark ? props.theme.lightBlack : props.theme.gray};
+
+    & > p {
+        color: ${props => props.theme.isDark ? props.theme.gray : props.theme.lightBlack};
+    }
+`
+
+export const Title = styled.h1`
+    font-size: 1.6rem;
+    color: ${ props => props.theme.isDark ? props.theme.white : props.theme.black};
 `

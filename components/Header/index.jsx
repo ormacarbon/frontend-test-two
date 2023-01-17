@@ -3,18 +3,31 @@ import { Avatar, AvatarContainer, AvatarImage, AvatarInfo, ButtonLogout, HeaderC
 import {FaSignOutAlt, FaBars, FaTimes} from 'react-icons/fa'
 import { useState } from "react";
 import MobileMenu from "../MobileMenu";
+import { signOut, useSession } from "next-auth/react";
+import Router from "next/router";
 export default function Header({ currentPage }){
     const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
+    const {data:session, status} = useSession()
+    
+    if(!session || status === "unauthenticated"){
+        Router.push("/")
+        return
+    }
+
+    const {user} = session
+
 
     function handleMobileMenu(){
         setMobileMenuIsOpen( prevState => !prevState)
     } 
+
+
     return (
         <HeaderContainer>
             <MobileMenu isOpen={mobileMenuIsOpen} currentPage={currentPage}/>
             <NavBar>
                 <LogoContainer>
-                    <Link legacyBehavior passHref href="/login">
+                    <Link legacyBehavior passHref href="/">
                         <LogoText>
                             DevKut
                         </LogoText>
@@ -32,18 +45,18 @@ export default function Header({ currentPage }){
                 <AvatarContainer>
                     <Avatar>
                         <Link href="/perfil" passHref legacyBehavior>
-                            <AvatarImage src={'https://github.com/LuizProject46.png'}/>
+                            <AvatarImage src={user.image}/>
                         </Link>
                     </Avatar>
                     <UserInfo>
-                        <UserName>Luiz Gustavo</UserName>
-                        <UserNickName>@LuizGustavo</UserNickName>
+                        <UserName>{user.name.split(" ").slice(0,2).join(" ")}</UserName>
+                        <UserNickName>{user.email}</UserNickName>
                     </UserInfo>
-                    <Link passHref legacyBehavior href="/login">
-                        <ButtonLogout>
-                            <FaSignOutAlt/>
-                        </ButtonLogout>
-                    </Link>
+                    
+                    <ButtonLogout onClick={ () => signOut()}>
+                        <FaSignOutAlt/>
+                    </ButtonLogout>
+                    
                 </AvatarContainer>
             </NavBar>
         </HeaderContainer>

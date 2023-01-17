@@ -1,14 +1,24 @@
-import { useContext } from "react";
+import { useSession, signIn } from "next-auth/react";
 import { Container, DescriptionContainer, LoginContainer, Text, Title, TextFilled, LoginButton, Description } from "./styles";
-import { ThemeContext } from "../../context/ThemeContext";
 import {FaGithub} from 'react-icons/fa'
-import GitHubProvider from "next-auth/providers/github";
+import Router from "next/router";
+import { useEffect } from "react";
 
 export default function Login(){
-    const {theme, toggleTheme} = useContext(ThemeContext)
+    const {data: session, status } = useSession()
+
+    
+    if(session || status === "authenticated"){
+        Router.push("/")
+        return
+    }
+    
+
 
     function handleLogin(){ 
+        signIn('github', { callbackUrl: process.env.NEXTAUTH_URL/*"http://127.0.0.1:3000"*/})
     }
+
     return (
         <Container>
             <LoginContainer>

@@ -4,6 +4,7 @@ import Switch from "../Switch"
 import { FaSignOutAlt } from "react-icons/fa";
 import NavMenuItems from "../NavMenuItems";
 import menuItems from "../../utils/menuItems";
+import { useSession } from "next-auth/react";
 
  const newMenuItems = [
     ...menuItems,
@@ -17,18 +18,21 @@ import menuItems from "../../utils/menuItems";
  ]
 
 export default function MobileMenu({ isOpen, currentPage }){
+    const {data:session, status} = useSession()
+    const {user} = session
+
     return (
        <MobileMenuContainer isOpen={isOpen}>
            <AvatarContainer>
                 <div>
                     <Avatar>
                         <Link href="/perfil" passHref legacyBehavior>
-                            <AvatarImage src={'https://github.com/LuizProject46.png'}/>
+                            <AvatarImage src={user.image}/>
                         </Link>
                     </Avatar>
                     <UserInfo>
-                        <UserName>Luiz Gustavo</UserName>
-                        <UserNickName>@LuizGustavo</UserNickName>
+                        <UserName>{user.name.split(" ").slice(0,2).join(" ")}</UserName>
+                        <UserNickName>{user.email}</UserNickName>
                     </UserInfo>
                 </div>
                 <div>

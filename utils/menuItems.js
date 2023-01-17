@@ -10,7 +10,7 @@ const menuItems = [
     },
     {
         title:  "Perfil",
-        route:  "/perfil",
+        route:  "/profile",
         icon:   FaUser,
         name: "perfil"
 

@@ -4,15 +4,26 @@ import { Avatar, AvatarContainer, AvatarImage, Divider, NavMenu, SidebarContaine
 import menuItems from "../../utils/menuItems";
 import { BsPatchCheckFill  } from "react-icons/bs"
 import NavMenuItems from "../NavMenuItems";
+import { useSession } from "next-auth/react";
+import Router from "next/router";
 export default function Sidebar({ currentPage }){
+    const {data:session, status} = useSession()
+
+    if(!session || status === "unauthenticated"){
+        Router.push("/")
+        return
+    }
+
+    const {user} = session
+
     return (
         <SidebarContainer>
             <AvatarContainer>
                 <Avatar>
-                    <AvatarImage src="https://github.com/LuizProject46.png"/>
+                    <AvatarImage src={user.image}/>
                 </Avatar>
                 <UserInfo>
-                    <UserName><BsPatchCheckFill size={24} color="#e22b8d"/> Luiz gustavo</UserName>
+                    <UserName><BsPatchCheckFill size={24} color="#e22b8d"/> {user.name.split(" ").slice(0,2).join(" ")}</UserName>
                 </UserInfo>
                 <Switch/>
                 <Divider></Divider>

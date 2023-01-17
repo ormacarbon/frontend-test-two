@@ -1,12 +1,16 @@
 import GlobalStyle from "../styles/globalStyles"
 import { ThemeProvider } from "../context/ThemeContext"
+import { SessionProvider } from "next-auth/react"
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps : { session, ...pageProps}}) {
+
   return (
-    <ThemeProvider>  
-      <GlobalStyle/>
-        <Component {...pageProps} />
-    </ThemeProvider>
+    <SessionProvider session={session}>
+      <ThemeProvider>  
+        <GlobalStyle/>
+          <Component {...pageProps} />
+      </ThemeProvider>
+    </SessionProvider>
   )
 }
 
