@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { createContext, useEffect, useState } from "react";
+import { createContext, FormEvent, useEffect, useState } from "react";
 import AnotherEntertainment from "../../components/AnotherEntertainment";
 import Header from "../../components/Header";
 import TopEntertainment from "../../components/TopEntertainment";
@@ -17,7 +17,7 @@ export interface DataProps {
 
 interface ContextProps {
   data: DataProps[];
-  type: string | string[];
+  type: string;
 }
 
 export const DataContext = createContext<ContextProps>({});
@@ -27,8 +27,21 @@ export default function Content() {
   const type = query.type;
   const [data, setData] = useState<DataProps[]>();
 
+  async function searchItem(search: string) {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/${type}?api_key=b59de4554604a026d4521e1afaf9d6b3&query=${search}`
+      );
+      const list = response.data.results;
+      const filteredList = list.filter((item) => item.poster_path !== null);
+      setData(filteredList);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    async function getPopularMovies() {
+    async function getPopular() {
       try {
         const response = await axios.get(
           `https://api.themoviedb.org/3/${type}/popular?api_key=b59de4554604a026d4521e1afaf9d6b3`
@@ -39,13 +52,14 @@ export default function Content() {
       }
     }
 
-    console.log(type);
-    getPopularMovies();
+    getPopular();
   }, [type]);
+
+  console.log(data);
 
   return (
     <DataContext.Provider value={{ type, data }}>
-      <Header showSearch={true} />
+      <Header showSearch={true} onSearchItem={searchItem} />
 
       <MainContent>
         {data && (
