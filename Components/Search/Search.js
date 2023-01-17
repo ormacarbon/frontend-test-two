@@ -46,7 +46,7 @@ function Search({ getSearch, apiRequest, setLoading }) {
         className="search-input"
         placeholder="Digite o nome de um pokemon"
         value={state}
-        onChange={(e) => setState(e.target.value)}
+        onChange={(e) => setState(e.target.value.toLocaleLowerCase())}
       />
       <div className="flex-row gap-2">
         <button
