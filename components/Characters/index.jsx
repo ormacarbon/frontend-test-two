@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import api from "../../services/api"
-import * as S from "./styles"
+import * as S from "./styles.jsx"
 
 export default function Characters() {
   const [characters, setCharacters] = useState([])
@@ -14,25 +14,19 @@ export default function Characters() {
       .catch((err) => console.log(err))
   }, [])
 
-  console.log("resposta", characters)
   return (
     <S.Container>
-      <h1>Characters</h1>
-      <ul>
+      <S.CardWrapper>
         {characters.map((character) => {
           return (
-            <li key={character.id}>
-              {console.log(character)}
-              <img
-                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                alt={`Image of ${character.name}`}
-              />
-              <span className="name">{character.name}</span>
-              <span className="description">{character.description}</span>
-            </li>
+            <S.Card key={character.id}>
+              <S.Image id="img" thumbnail={character.thumbnail} />
+              <h2>{character.name}</h2>
+              <p>{character.description}</p>
+            </S.Card>
           )
         })}
-      </ul>
+      </S.CardWrapper>
     </S.Container>
   )
 }
