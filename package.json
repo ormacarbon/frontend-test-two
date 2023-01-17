@@ -2,7 +2,7 @@
   "name": "frontend-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github-LeonardoMachado30.github.io/frontend-test-two/",
+  "homepage": "https://github-LeonardoMachado30.github.io/frontend-test-two",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
