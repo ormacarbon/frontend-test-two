@@ -76,7 +76,7 @@ export default function Genre() {
         />
 
         <div className="cards">
-        { loading && configLoading ? <Loading /> : null }
+          {loading && configLoading ? <Loading /> : null}
           {data?.results.map((item) => {
             return (
               <Card key={item.id} content={item} configData={configData} />

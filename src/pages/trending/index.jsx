@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import Head from "next/head";
 
 import { Card } from "../../components/card/card";
 import { Pagination } from "../../components/pagination/pagination";
@@ -47,6 +48,10 @@ export default function Trending() {
 
   return (
     <IndexTrending dark={darkTheme}>
+      <Head>
+        <title>CineFinder | Trending</title>
+      </Head>
+
       <div className="container">
         <div className="title">
           <h1>Trending movies</h1>
@@ -60,7 +65,7 @@ export default function Trending() {
         />
 
         <div className="cards">
-          { loading && configLoading ? <Loading /> : null }
+          {loading && configLoading ? <Loading /> : null}
           {data?.results.map((item) => {
             return (
               <Card key={item.id} content={item} configData={configData} />

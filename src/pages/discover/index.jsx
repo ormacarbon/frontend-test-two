@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import Head from "next/head";
 
 import { themeContext } from "../../context/themeContext";
 import { useFetch } from "../../hooks/useFetch";
@@ -54,6 +55,10 @@ export default function Discover() {
 
   return (
     <IndexDiscover dark={darkTheme}>
+      <Head>
+        <title>CineFinder | Discover</title>
+      </Head>
+
       <div className="container">
         <h1>Discover movies</h1>
 

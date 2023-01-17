@@ -1,4 +1,6 @@
-import { themeContext, ThemeProvider } from "../context/themeContext";
+import Head from "next/head";
+
+import { ThemeProvider } from "../context/themeContext";
 import { MenuProvider } from "../context/menuContext";
 import { SearchProvider } from "../context/searchContext";
 import { MovieIdProvider } from "../context/movieIdContext";
@@ -12,7 +14,6 @@ import { MenuSidebar } from "../components/menuSidebar/menuSidebar";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useContext } from "react";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -26,6 +27,10 @@ function MyApp({ Component, pageProps }) {
                   <GlobalStyle />
                   <Header />
                   <div id="main">
+                    <Head>
+                      <link rel="icon" href="/assets/images/flaticon.svg" />
+                      <title>CineFinder | Discover movies</title>
+                    </Head>
                     <MenuSidebar />
                     <Component {...pageProps} />
                   </div>

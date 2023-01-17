@@ -8,7 +8,7 @@ import { menuContext } from "../../context/menuContext";
 import { DarkMode } from "./darkMode/darkMode";
 import { Search } from "../search/search";
 
-import { HeaderComponent } from "./HeaderStyle";
+import { HeaderComponent } from "./headerStyle";
 
 export function Header() {
   const [darkTheme, setDarkTheme] = useContext(themeContext);

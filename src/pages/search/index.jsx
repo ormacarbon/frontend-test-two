@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import { searchContext } from "../../context/searchContext";
 import { themeContext } from "../../context/themeContext";
@@ -54,11 +55,15 @@ export default function Search() {
 
   return (
     <IndexSearch dark={darkTheme}>
+      <Head>
+        <title>CineFinder | You searched for &apos;{searchValue}&apos;</title>
+      </Head>
+
       <div className="container">
         <div className="title">
           <h2>
             You searched for
-            <span> &apos;{decodeURIComponent(searchValue)}&apos; </span>
+            <span> &apos;{searchValue}&apos; </span>
           </h2>
           <hr />
         </div>
@@ -70,7 +75,7 @@ export default function Search() {
         />
 
         <div className="cards">
-        { loading && configLoading ? <Loading /> : null }
+          {loading && configLoading ? <Loading /> : null}
           {data?.results.length > 0 ? (
             data?.results.map((item) => {
               return (
