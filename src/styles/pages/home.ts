@@ -10,8 +10,16 @@ export const Main = styled.main`
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+
+    @media (max-width: 540px) {
+      justify-content: space-around;
+      padding: 0 1rem;
+    }
   }
 
   flex-direction: column;
 
+  @media (max-width: 540px) {
+    gap: 1rem;
+  }
 `
