@@ -22,6 +22,7 @@ type Genres = {
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [isDarkTheme, setIsDarkTheme] = useState(true)
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
   const [genres, setGenres] = useState<Genres>([])
 
   useEffect(() => {
@@ -51,8 +52,16 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           <Header
             isDarkTheme={isDarkTheme}
             setIsDarkTheme={setIsDarkTheme}
+            mobileMenuVisible={mobileMenuVisible}
+            setMobileMenuVisible={setMobileMenuVisible}
           />
-          {genres.length && <NavBar genres={genres} />}
+          {genres.length && (
+            <NavBar
+              genres={genres}
+              setMobileMenuVisible={setMobileMenuVisible}
+              mobileMenuVisible={mobileMenuVisible}
+            />
+          )}
           <Component {...pageProps} />
           <GlobalStyles isDarkTheme={isDarkTheme} />
         </ThemeProvider>
