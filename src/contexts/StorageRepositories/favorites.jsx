@@ -48,6 +48,7 @@ export default function FavoritesProvider({ children }) {
       value={{
         repositories,
         isFavorite,
+        removeFavorite,
         toggleFavorite,
       }}
     >
