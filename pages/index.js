@@ -48,7 +48,7 @@ export default function Home() {
     } else {
       Setreceitas(recipeList)
     }
-  }, [])
+  }, [Setreceitas, lightSwitchState, Setreceitas])
 
   return (
     <div>

@@ -21,7 +21,7 @@ export default function SearchItem() {
 		  }else{
 			lightSwitch(true)
 		  }
-	},[])
+	},[lightSwitchState, lightSwitch])
     
     return (
         <div>

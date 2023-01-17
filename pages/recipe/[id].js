@@ -28,7 +28,8 @@ export default function RecipePage() {
 		  }else{
 			lightSwitch(true)
 		  }
-	},[])
+			lightSwitch(lightSwitchState == true ? !lightSwitchState : lightSwitchState)
+		},[lightSwitch, lightSwitchState])
 
 	return (
 		<div>
@@ -36,10 +37,10 @@ export default function RecipePage() {
 			<ThemeProvider theme={lightSwitchState == true? themeLightMode: themeDarkMode}>
 			<StyledRandomRecipe>
 				<Recipe
-					image={recipeList[index].image}
-					title={recipeList[index].title}
-					ingredients={recipeList[index].extendedIngredients}
-					instructions={recipeList[index].instructions}
+					image={recipeList[index] && recipeList[index].image}
+					title={recipeList[index] && recipeList[index].title}
+					ingredients={recipeList[index] && recipeList[index].extendedIngredients}
+					instructions={recipeList[index] && recipeList[index].instructions}
 				/>
 
 				<div className="ingredients">
@@ -47,8 +48,8 @@ export default function RecipePage() {
 						Ingredients
 					</h3>
 					<ul>
-						{recipeList[index].extendedIngredients.map(ingredient => (
-							<li>
+						{recipeList[index] && recipeList[index].extendedIngredients.map(ingredient => (
+							<li key={ingredient.id}>
 								{`${ingredient.amount} ${ingredient.name}`}
 							</li>
 						))}
