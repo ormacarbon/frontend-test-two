@@ -1,52 +1,51 @@
-# **TESTE DE FRONTEND**
+# Zeldapi Project
 
-Neste teste, você será livre para criar uma aplicação consumindo a API que você quiser e com o tema que desejar.
-Contudo, o seu projeto deverá seguir os requisitos mínimos de conteúdo.
+## A webapp where you can find everything about The Legend of Zelda universe
 
-SUGESTÕES DE APIS:
-https://github.com/public-apis/public-apis
+Zeldapi Project is a SPA where you can dive deep into the universe of Legend of Zelda, since this application displays thousands of informations about this franchise. In Zeldapi Project you'll be able to browse into infos of:
 
----------------------------------------------------------------------
-## REQUISITOS:
+  - bosses
+  - characters
+  - dungeons
+  - games
+  - items
+  - monsters
+  - places
 
-- SEJA ORIGINAL, PROJETOS SUSPEITOS DE SEREM COPIADOS SERÃO DESCARTADOS!
-- QUEREMOS VER O SEU CÓDIGO, E NÃO O DE OUTROS.
+Furthermore, if you don't want to lose too much time by searching through thousands of items, you can simply use the application search bar
 
-## GIT
-- Faça um fork deste repositório.
-- Criar uma branch para codar as suas features.
-- Criar um pull-request quando o teste for finalizado e submetido.
+## Credits to zelda-api
 
-##### **NOTA: Será avaliado também se o nome da branch, títulos de commit, push e comentários possuem boa legibilidade.**
+All the informations presented in this site are being fetched from zelda-api, read the full documentation here: https://docs.zelda.fanapis.com/docszelda-api
 
------------------------------------------------------
+## Stacks
 
-## FRAMEWORK
+- Javascript
+- React
+- NextJS
+- Styled Components
+- React Animated CSS
 
-- Utilizar as ferramentas presentes no framework do projeto (NEXT.JS).
+## How to run this application locally
 
------------------------------------------------------
+1. clone this repository
+2. inside the project directory, run "npm install" in the terminal
+3. run "npm run dev" to run locally in development mode
 
-## ESTILOS
+## How to access this application remotelly
 
-- Os estilos deste teste devem ser feitos em styled-components (evite utilizar bootstrap, mas se necessário, use).
-- O projeto deverá conter tema claro/escuro e forma do usuário alterar entre os dois.
-- Deve ser totalmente responsivo.
+You can access Zeldapi Project here: https://zeldapi-project.vercel.app
 
------------------------------------------------------
+## Important informations
 
-## PROJETO
+- Project layout was fully inspired by The Legend Of Zelda official website: https://www.zelda.com/
+- I do not own any rights about the images that was used in Zeldapi Project
+- All the code inside this repository is mine and was fully made by myself
+- This project was made for professional and educational purposes
 
-- Deve utilizar useContext, useState e useEffect.
-- Ter ao menos 3 paginas navegáveis com router (ex: um navbar para facilitar a navegação).
-- Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição.
+## Contact me!
 
--------------------------------------------------------
+Found any bugs, has some improvement suggestion or liked my job and want to reach me? Go ahead:
 
-## REQUISITOS DIFERENCIAIS:
-
-- Código tentando seguir SOLID.
-- Código performático.
-- Utilizar inglês no projeto todo.
-- Utilizar Injeção de Dependências.
-- Fazer deploy do mesmo (heroku, netlify, aws, vercel, github pages ou outro da preferência).
+- linkedin: https://www.linkedin.com/in/lucas-nobrz/
+- email: lucasnobre37@outlook.com
