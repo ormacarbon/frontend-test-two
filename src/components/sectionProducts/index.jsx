@@ -6,7 +6,7 @@ const SectionProducts = (props) => {
     return (
         <Container>
             {
-                props.products.map((product) => {
+                props.products && props.products.map((product) => {
                     return (
                         <ProductItem
                             key={Math.random()}

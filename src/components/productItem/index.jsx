@@ -1,7 +1,7 @@
 import { titleCase } from "../../utils/titleCase"
 import { Container } from "./style"
 
-const productImageURL = "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTTHi0yE-Rui-kxpDR-CUPsWkEf4CC-uUaojmpPY7x2EaWhLe12tohtHezL7cyiGtPCo8FoOckqJaD2Dj80zQt-XgufS_FYDRTcvabgcWD-0qjcl6FR0Zdz&usqp=CAE"
+const productImageURL = "https://cosmos.bluesoft.com.br/assets/product-placeholder-ce4926921923d1e9bc66cd0e1493b49b.png"
 
 const ProductItem = (props) => {
 

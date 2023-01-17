@@ -14,6 +14,10 @@ export const Container = styled.div`
     img{
         text-align: center;
         max-width: 10rem;
+        min-width: 10rem;
+        max-height: 10rem;
+        min-height: 10rem;
+
     }
 
     div{
@@ -81,5 +85,5 @@ export const Container = styled.div`
                     max-width: 7rem;
                 }
             }
-        }   
+    }   
 `;
