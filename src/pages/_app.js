@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <GlobalProvider>
         <ThemeProvider theme={ theme }>
           <Head>
+            <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
             <title>Weather App</title>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
