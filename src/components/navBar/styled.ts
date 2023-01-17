@@ -48,8 +48,8 @@ export const Container = styled.nav<ContainerProps>`
   }
 
   @media (max-width: 540px) {
-    height: 100vh;
-    display: ${({mobileMenuVisible}) => mobileMenuVisible ? 'block' : 'none'};
+    height: ${({mobileMenuVisible}) => mobileMenuVisible ? 'max-content' : '0'};
+    opacity: ${({mobileMenuVisible}) => mobileMenuVisible ? '100%' : '0'};
     z-index: 2;
   }
 `
