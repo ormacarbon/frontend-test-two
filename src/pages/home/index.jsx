@@ -22,6 +22,7 @@ import { toast } from "react-hot-toast";
 import { HistoryIcon } from "@primer/octicons-react";
 
 export default function Home() {
+  const router = useRouter();
   const inputRef = useRef();
   const { theme } = useContext(ThemeContext);
   const { repositories, saveRepositories } = useContext(RepoHistoryContext);
@@ -30,32 +31,20 @@ export default function Home() {
 
   async function getRepository(repositoryName) {
     setLoading(true);
-    // axios
-    //   .get(`https://api.github.com/repos/${repositoryName}`)
-    //   .then((response) => {
-    //     let data = {
-    //       name: response.data.name,
-    //       description: response.data.description,
-    //       owner: {
-    //         login: response.data.owner.login,
-    //         avatar_url: response.data.owner.avatar_url,
-    //       },
-    //       watchers_count: response.data.watchers_count,
-    //       forks_count: response.data.forks_count,
-    //       subscribers_count: response.data.subscribers_count,
-    //     };
-    //     setRepository(data);
-    //     router.push("/repository/" + repositoryName.replace("/", "%2F"));
-    //   })
-    //   .catch(() => {
-    //     setRepository(null);
-    //     ErrorToast({
-    //       message: "Repositório não encontrado :(",
-    //       icon: <FiAlertCircle size={18} />,
-    //     });
-    //   })
-    //   .finally(() => setLoading(false));
-    saveRepositories([data, ...repositories]);
+    axios
+      .get(`https://api.github.com/repos/${repositoryName}`)
+      .then((response) => {
+        saveRepositories([response.data, ...repositories]);
+        router.push("/repository/" + repositoryName.replace("/", "%2F"));
+      })
+      .catch((e) => {
+        console.log(e);
+        ErrorToast({
+          message: "Repositório não encontrado :(",
+          icon: <FiAlertCircle size={18} />,
+        });
+      })
+      .finally(() => setLoading(false));
   }
 
   async function searchRepository(input) {

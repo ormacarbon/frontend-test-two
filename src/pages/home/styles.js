@@ -18,6 +18,7 @@ export const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+  padding-top: 100px;
 
   ${(_p) =>
     _p.emptyHistory &&
