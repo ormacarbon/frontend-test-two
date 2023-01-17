@@ -74,6 +74,28 @@ export const AppName = styled.div`
   }
 `;
 
+export const FavoritesTitle = styled.div`
+  color: ${(p) => p.theme.colors.header.title};
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+
+  svg {
+    display: none;
+    width: 24px;
+    height: 24px;
+    fill: ${(p) => p.theme.colors.red};
+
+    @media only screen and (max-width: 320px) {
+      display: none !important;
+    }
+  }
+`;
+
 export const ActionButtonsContainer = styled.div`
   display: flex;
   align-items: center;

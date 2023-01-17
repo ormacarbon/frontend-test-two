@@ -6,25 +6,27 @@ import {
   AppName,
   Container,
   Content,
+  FavoritesTitle,
   PageInfoContainer,
   RepoLogo,
 } from "./styles";
 import { useRouter } from "next/router";
 import { FiArrowLeft } from "react-icons/fi";
+import { HeartFillIcon } from "@primer/octicons-react";
 
 export default function RepositoryIssuesHeader(props) {
   const { repository, isEmpty, isIssues } = props;
   const router = useRouter();
 
   function redirect() {
-    if (props.issues) router.back();
+    if (props.isIssues) router.back();
     else router.push("/");
   }
 
   return (
     <Container>
       <Content>
-        {props.issues ? (
+        {props.isIssues ? (
           <PageInfoContainer>
             <img
               alt={`${repository.name} logo`}
@@ -35,6 +37,13 @@ export default function RepositoryIssuesHeader(props) {
               <span>{isIssues ? "issues" : "repo"}</span>
             </div>
           </PageInfoContainer>
+        ) : props.isFavorites ? (
+          <>
+            <FavoritesTitle>
+              <HeartFillIcon />
+              Favoritos
+            </FavoritesTitle>
+          </>
         ) : (
           <AppName>
             y<span>ssues</span>
