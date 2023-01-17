@@ -54,7 +54,7 @@ By providing this information to users, they can make more informed decisions ab
 
 ## ▶️ Preview
 
-This project has a demo version deployed at Vercel. Click [here](https://frontend-test-gd90t2y0x-f7lipe.vercel.app/) and check it out.
+This project has a demo version deployed at Vercel. Click [here](https://estimator-ouobmeo69-f7lipe.vercel.app/) and check it out.
 
 ## 🎨 Layout
 
