@@ -1,5 +1,6 @@
 import { FormSearchProducts } from "../components/formSearchProducts";
 import { Header } from "../components/header";
+import { Pagination } from "../components/pagination";
 import { SectionProducts } from "../components/sectionProducts";
 import { api } from "../services/api";
 import { GlobalStyle } from "../styles/global";
@@ -12,12 +13,14 @@ export default function Home(props) {
 
 
 
+
   return (
     <div>
       <GlobalStyle />
       <Header />
       <FormSearchProducts />
       <SectionProducts products={mocks.exemplo.products} />
+      <Pagination pageCount={mocks.exemplo.total_count} />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     
@@ -20,7 +20,8 @@ export const Container = styled.div`
             height: 2.5rem;
             margin-top: 0.6rem;
             border-radius: 70px;
-            border: 0.5px solid #000;
+            /// border: 0.1px solid #000;
+            box-shadow: 1px 1px 3px black;
             align-items: center;
             padding: 0.8rem;
 
