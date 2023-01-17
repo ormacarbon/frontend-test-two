@@ -4,10 +4,6 @@ type MainProps = {
   hasItemInCartList: boolean;
 };
 
-type TableHeadProps = {
-  isDarkTheme: boolean;
-}
-
 export const Container = styled.main<MainProps>`
   display: ${({ hasItemInCartList }) => (hasItemInCartList ? 'block' : 'none')};
   max-width: 1280px;
@@ -28,7 +24,7 @@ export const Table = styled.table`
   padding: ${({ theme }) => theme.spacings['1.6']};
 `;
 
-export const TableHead = styled.thead<TableHeadProps>`
+export const TableHead = styled.thead`
   tr {
     th {
       :nth-child(1) {
