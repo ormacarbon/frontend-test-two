@@ -1,4 +1,6 @@
+import { useRouter } from "next/router";
 import React from "react";
+import axios from "axios";
 
 import {
   FormContainer,
@@ -10,12 +12,30 @@ import Logo from "../components/Login/Logo";
 import Input from "../components/Form/Input";
 
 function Login() {
+  const router = useRouter();
   const [name, setName] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState();
+
+  const authUser = async (e) => {
+    e.preventDefault();
+    const user = await axios.post(
+      "http://localhost:3000/api/users/authenticate",
+      {
+        name,
+        password,
+      }
+    );
+
+    if (!user.data) {
+      return setError("User invalid");
+    }
+    router.push("/");
+  };
 
   return (
     <FormPageContainer>
-      <FormContainer onSubmit={() => {}}>
+      <FormContainer onSubmit={authUser}>
         <Logo />
         <InputContainer>
           <Input
