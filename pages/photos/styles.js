@@ -10,4 +10,8 @@ export const MainContent = styled.div`
   justify-content: center;
 
   gap: 0.6rem;
+
+  @media (min-width: 1100px) {
+    grid-template-columns: 23% 23% 23% 23%;
+  }
 `;

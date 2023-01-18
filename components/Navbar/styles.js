@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: none;
-  @media (min-width: 1024px) {
+  @media (min-width: 1100px) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,24 +9,14 @@ export const Container = styled.div`
     gap: 1rem;
 
     a {
-      color: ${(props) => props.theme.colors.text};
-      font-size: ${(props) => props.theme.font_size.md};
-      text-decoration: none;
       transition: 0.2s;
       cursor: pointer;
       border-bottom: 2px solid transparent;
 
       &:hover {
         color: ${(props) => props.theme.colors.caption_400};
-        border-bottom: 2px solid ${(props) => props.theme.colors.caption_400};
       }
     }
-  }
-`;
-
-export const ContainerMobile = styled.div`
-  @media (min-width: 1024px) {
-    display: none;
   }
 `;
 
@@ -70,9 +59,13 @@ export const Nav = styled.nav`
     font-size: ${(props) => props.theme.font_size.sm};
     font-weight: ${(props) => props.theme.font_weight.black};
     text-decoration: none;
-    border-bottom: 1px solid ${(props) => props.theme.colors.caption_400};
+    border-bottom: 2px solid ${(props) => props.theme.colors.caption_400};
     width: 100%;
     padding: 0.5rem;
+  }
+
+  @media (min-width: 1100px) {
+    width: 25%;
   }
 `;
 
@@ -81,7 +74,7 @@ export const NavHeader = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid ${(props) => props.theme.colors.caption_400};
+  border-bottom: 2px solid ${(props) => props.theme.colors.caption_400};
 
   button {
     width: fit-content;
@@ -95,6 +88,11 @@ export const NavContent = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.caption_400};
+  }
 `;
 
 export const NavFooter = styled.div`

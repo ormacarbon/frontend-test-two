@@ -8,7 +8,6 @@ import {
   Button,
   Nav,
   Container,
-  ContainerMobile,
   StyledNavLink,
   NavHeader,
   NavContent,
@@ -28,69 +27,56 @@ export default function Navbar(props) {
   const onClick = () => setIsActive(!isActive);
 
   return (
-    <>
-      <Container>
-        <Link href={'/'} onClick={onClick}>
-          Home
-        </Link>
-        <Link href={'/photos'} onClick={onClick}>
-          Photos
-        </Link>
-        <Link href={'/search'} onClick={onClick}>
-          Search
-        </Link>
-      </Container>
-      <ContainerMobile>
-        <Button onClick={onClick}>
-          <MenuIcon />
-        </Button>
+    <Container>
+      <Button onClick={onClick}>
+        <MenuIcon />
+      </Button>
 
-        {isActive && <StyledNavLink />}
-        <Nav
-          ref={dropDownRef}
-          style={
-            isActive
-              ? { left: 0, transition: '450ms' }
-              : { left: '-100%', transition: '450ms' }
-          }
-        >
-          <NavHeader>
-            <Button onClick={onClick}>
-              <CloseIcon />
-            </Button>
-          </NavHeader>
+      {isActive && <StyledNavLink />}
+      <Nav
+        ref={dropDownRef}
+        style={
+          isActive
+            ? { left: 0, transition: '450ms' }
+            : { left: '-100%', transition: '450ms' }
+        }
+      >
+        <NavHeader>
+          <Button onClick={onClick}>
+            <CloseIcon />
+          </Button>
+        </NavHeader>
 
-          <NavContent>
-            <Link href={'/'} onClick={onClick}>
-              Home
-            </Link>
-            <Link href={'/photos'} onClick={onClick}>
-              Photos
-            </Link>
-            <Link href={'/about'} onClick={onClick}>
-              About
-            </Link>
-          </NavContent>
+        <NavContent>
+          <Link href={'/'} onClick={onClick}>
+            Home
+          </Link>
+          <Link href={'/photos'} onClick={onClick}>
+            Photos
+          </Link>
+          <Link href={'/about'} onClick={onClick}>
+            About
+          </Link>
+        </NavContent>
 
-          <NavFooter>
-            <ThemeSwitcherContainer>
-              {props.theme.title === 'light' ? <SunIcon /> : <MoonIcon />}
-              <Switch
-                onChange={props.toggleTheme}
-                checked={title === 'dark'}
-                checkedIcon={false}
-                uncheckedIcon={false}
-                height={4}
-                width={30}
-                handleDiameter={15}
-                offColor={colors.text_overlay}
-                onColor={colors.text_overlay}
-                offHandleColor={colors.text}
-              />
-            </ThemeSwitcherContainer>
-          </NavFooter>
-        </Nav>
-      </ContainerMobile>
-    </>
+        <NavFooter>
+          <ThemeSwitcherContainer>
+            {props.theme.title === 'light' ? <SunIcon /> : <MoonIcon />}
+            <Switch
+              onChange={props.toggleTheme}
+              checked={title === 'dark'}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={4}
+              width={30}
+              handleDiameter={15}
+              offColor={colors.text_overlay}
+              onColor={colors.text_overlay}
+              offHandleColor={colors.text}
+            />
+          </ThemeSwitcherContainer>
+        </NavFooter>
+      </Nav>
+    </Container>
   );
 }

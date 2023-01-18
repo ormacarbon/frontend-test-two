@@ -78,7 +78,7 @@ export const DownloadBtnMobile = styled.button`
     opacity: 95%;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1100px) {
     svg {
       display: none;
     }
