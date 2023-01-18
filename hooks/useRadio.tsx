@@ -1,15 +1,16 @@
 import { RadioBrowserApi, Station } from 'radio-browser-api';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import PaginationContext, { PaginationContextType } from '../contexts/Pagination/Pagination.context';
 
 const APP_NAME = 'OrmaCarbonChallenge/0.1.0';
-const AMOUNT = 15;
 
 const useRadio: () => {
   stations: Station[],
   loading: boolean,
-  loadStations: (page: number, amount?: number) => void
+  loadStations: () => void
 } = () => {
   const browser = new RadioBrowserApi(APP_NAME);
+  const { page, amount } = useContext<PaginationContextType>(PaginationContext);
 
   const [stations, setStations] = useState<Station[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -18,21 +19,23 @@ const useRadio: () => {
   useEffect(() => {
     if(typeof window === 'undefined')
       return;
-    loadStations(1);
+    loadStations();
   }, []);
 
-  function loadStations(page: number, amount?: number) {
+  useEffect(() => {
+    loadStations();
+  }, [page]);
+
+  function loadStations() {
     if(_loading)
       return;
 
     setLoading(_loading = true);
-    console.log(page);
     browser.getAllStations({
-      offset: (page -1) * (amount || AMOUNT),
-      limit: (amount || AMOUNT),
+      offset: (page -1) * (amount),
+      limit: (amount),
       hideBroken: true
-    }).then(s => { console.debug(s); return s; })
-      .then(s => setStations([...stations, ...s]))
+    }).then(setStations)
       .then(() => _loading = false)
       .then(setLoading);
   }
@@ -42,6 +45,14 @@ const useRadio: () => {
     loading,
     loadStations
   };
+  
+  function vote(id: string) {
+    browser.voteForStation(id);
+  }
+  
+  function click(id: string) {
+    browser.sendStationClick(id);
+  }
 }
 
 export default useRadio;
