@@ -18,7 +18,7 @@ function FavoritesContextComponent(props: PropsWithChildren) {
   }, []);
 
   function addStation(station: Station) {
-    if(favorites.includes(station))
+    if(favorites.find(favorite => favorite.id === station.id))
       return;
     window.localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify([...favorites, station]));
     setFavorites([...favorites, station]);
@@ -31,7 +31,7 @@ function FavoritesContextComponent(props: PropsWithChildren) {
   }
 
   function toggleStation(station: Station) {
-    if(favorites.includes(station))
+    if(favorites.find(favorite => favorite.id === station.id))
       removeStation(station.id);
     else
       addStation(station);

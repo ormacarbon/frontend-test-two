@@ -68,7 +68,7 @@ function Station(props: Station) {
     return <div className="basis-10 flex-shrink-0 h-10 mt-3 sm:mt-0 flex justify-center items-center">
       {
         favicon
-          // The iamges sources are not consiste for this to work
+          // The images sources are not consistent for this to work
           // eslint-disable-next-line @next/next/no-img-element
         ? <img src={favicon} alt="favicon" aria-hidden className="w-full"/>
         : <IconRadio className="text-fuchsia-600 w-8 h-8"/>

@@ -4,7 +4,7 @@ import { CircularProgress } from '@mui/material';
 import Station from '../components/Station';
 import RadioContext, { RadioContextType } from '../contexts/Radio/Radio.context';
 
-function Home() {
+function HomePage() {
   const { loading, stations } = useContext<RadioContextType>(RadioContext);
 
   function renderLoading() {
@@ -30,11 +30,11 @@ function Home() {
   }
 
   return (
-    <div className="w-full sm:w-auto overflow-hidden">
+    <div className="w-full overflow-hidden">
       { renderLoading() }
       { renderStations() }
     </div>
   )
 }
 
-export default Home;
+export default HomePage;
