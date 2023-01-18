@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
+    "@googlemaps/react-wrapper": "^1.1.35",
     "@mui/material": "^5.11.4",
     "@tabler/icons": "^1.119.0",
     "i": "^0.3.7",
@@ -19,9 +20,11 @@
     "npm": "^9.3.0",
     "radio-browser-api": "^6.0.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "remove": "^0.1.5"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.51.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "autoprefixer": "^10.4.13",

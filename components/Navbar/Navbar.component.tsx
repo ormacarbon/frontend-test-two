@@ -1,5 +1,5 @@
 import { AppBar, IconButton, Pagination, Toolbar } from '@mui/material';
-import { IconHome2, IconMoon, IconPlayerPause, IconPlayerPlay, IconStar, IconSun } from '@tabler/icons';
+import { IconHeart, IconHome2, IconMoon, IconPlayerPause, IconPlayerPlay, IconSun } from '@tabler/icons';
 import React, { useContext } from 'react';
 import { ThemeContextType, ThemeContext } from '../../contexts/Theme/Theme.context';
 import RadioContext, { RadioContextType } from '../../contexts/Radio/Radio.context';
@@ -35,7 +35,7 @@ function Navbar() {
         </Link>
         <Link href="/favorites">
           <IconButton aria-label="my favorites page">
-            <IconStar strokeWidth={1} className="text-gray-800 dark:text-fuchsia-200"/>
+            <IconHeart strokeWidth={1} className="text-gray-800 dark:text-fuchsia-200"/>
           </IconButton>
         </Link>
         <IconButton aria-label="switch dark/light mode" onClick={themeContext.toggle}>
@@ -63,7 +63,7 @@ function Navbar() {
         </Link>
         <Link href="/favorites">
           <IconButton aria-label="my favorites page">
-            <IconStar strokeWidth={1} className="text-gray-800 dark:text-fuchsia-200"/>
+            <IconHeart strokeWidth={1} className="text-gray-800 dark:text-fuchsia-200"/>
           </IconButton>
         </Link>
         <IconButton aria-label="switch dark/light mode" onClick={themeContext.toggle}>
@@ -77,7 +77,12 @@ function Navbar() {
       <Pagination count={ 35700/15 }
                   page={ pageContext.page }
                   onChange={ pageContext.setPage }
-                  className="mb-2 mx-auto" />
+                  size="small"
+                  className="mb-2 mx-auto sm:hidden" />
+      <Pagination count={ 35700/15 }
+                  page={ pageContext.page }
+                  onChange={ pageContext.setPage }
+                  className="mb-2 mx-auto hidden sm:block" />
     </AppBar>;
   }
 

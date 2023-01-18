@@ -1,68 +1,25 @@
 import { Station } from 'radio-browser-api';
 import {
-  IconHeartMinus,
-  IconHeartPlus, IconPlayerPause,
-  IconPlayerPlay,
-  IconRadio, IconStar,
+  IconRadio,
   IconStars,
-  IconWaveSquare,
-  IconWorld
+  IconWaveSquare
 } from '@tabler/icons';
-import { IconButton, LinearProgress, Typography } from '@mui/material';
-import { useContext, useMemo } from 'react';
-import FavoritesContext, { FavoritesContextType } from '../../contexts/Favorites/Favorites.context';
-import useRadio from '../../hooks/useRadio';
+import { LinearProgress, Typography } from '@mui/material';
+import { useContext } from 'react';
 import PlayerContext from '../../contexts/Player';
 import { PlayerContextType } from '../../contexts/Player/Player.context';
+import StationControls from '../StationControls';
 
 function Station(props: Station) {
   const {
     name,
-    homepage,
     bitrate,
     votes,
     favicon,
     id
   } = props;
 
-  const { favorites, toggleStation } = useContext<FavoritesContextType>(FavoritesContext);
-  const { loading, playing, current, play, pause } = useContext<PlayerContextType>(PlayerContext);
-  const { vote, click } = useRadio();
-
-  const isFavorite = useMemo(() => {
-    if(!favorites.length)
-      return false;
-    return !!favorites.find(favorite => favorite.id === id);
-  }, [favorites]);
-
-  function onPlayPause() {
-    if(current && current.id === id && playing)
-      return pause();
-    click(id);
-    play(props);
-  }
-
-  function renderPlayPause() {
-    const isPlaying = current && current.id === id && playing;
-
-    return <IconButton onClick={onPlayPause} aria-label={ !isPlaying ? 'Play station' : 'Pause'}>
-      {
-        isPlaying
-        ? <IconPlayerPause/>
-        : <IconPlayerPlay/>
-      }
-    </IconButton>
-  }
-
-  function renderFavorite() {
-    return <IconButton onClick={() => toggleStation(props)} aria-label="Save station">
-      {
-        isFavorite
-          ? <IconHeartMinus/>
-          : <IconHeartPlus/>
-      }
-    </IconButton>;
-  }
+  const { loading, current } = useContext<PlayerContextType>(PlayerContext);
 
   function renderFavIcon() {
     return <div className="basis-10 flex-shrink-0 h-10 mt-3 sm:mt-0 flex justify-center items-center">
@@ -86,7 +43,7 @@ function Station(props: Station) {
 
   return <li className="flex flex-col w-full border-fuchsia-500 dark:border-fuchsia-900 border-b-[1px]">
     <div className="flex flex-col sm:flex-row w-full sm:justify-between py-6">
-      <div className="w-full flex gap-4 truncate sm:items-center justify-self-stretch">
+      <div className="w-full flex gap-4 truncate sm:items-center justify-self-stretch mb-2 sm:mb-0">
         { renderFavIcon() }
         <div className="truncate">
           <Typography variant="h6" className="text-fuchsia-600 dark:text-fuchsia-300 truncate max-w-full">{ name.trim().length > 1 ? name.trim() : 'Unnamed' }</Typography>
@@ -104,18 +61,7 @@ function Station(props: Station) {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center w-full mt-2 sm:w-fit sm:gap-x-4">
-        { renderPlayPause() }
-        { renderFavorite() }
-        <IconButton onClick={() => vote(id)} aria-label="Like this Station">
-          <IconStar/>
-        </IconButton>
-        <a href={ homepage } target="_blank" rel="noreferrer" title="Station home page">
-          <IconButton>
-            <IconWorld/>
-          </IconButton>
-        </a>
-      </div>
+      <StationControls { ...props }/>
     </div>
     { renderLoading() }
   </li>;
