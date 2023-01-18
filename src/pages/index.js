@@ -7,11 +7,12 @@ import { api } from "../services/api";
 import { GlobalStyle } from "../styles/global";
 import Router from "next/router";
 import { ThemeContext, ThemeProvider } from "../contextx/themeContext";
+import { MessageBox } from "../components/messageBox";
 
 
 export default function Home(props) {
 
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const [dataProducts, setdataProducts] = useState(props.dataProducts)
   const [productName, setPoductName] = useState(props.name)
@@ -40,7 +41,7 @@ export default function Home(props) {
 
       />
       {
-        dataProducts && (
+        dataProducts && dataProducts.products.length > 0 && (
           <>
             <SectionProducts products={dataProducts?.products} />
 
@@ -48,9 +49,16 @@ export default function Home(props) {
               pageCount={dataProducts?.total_pages}
               setdataProducts={setdataProducts}
               product_name={productName}
-            /></>
+            />
+          </>
+        )}
+
+      {
+        dataProducts && dataProducts.products.length === 0 && (
+          <MessageBox />
         )
       }
+
 
     </div>
   )

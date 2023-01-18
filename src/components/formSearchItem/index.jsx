@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 const FormSearchItem = (props) => {
 
-    const { theme, setTheme } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
 
     const handleKeyPressInput = (event) => {
