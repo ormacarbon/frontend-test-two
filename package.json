@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^13.1.2",
+    "axios": "^1.2.2",
+    "md5": "^2.3.0",
     "next": "13.0.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-paginate": "^8.1.4",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "8.29.0",

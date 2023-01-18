@@ -10,8 +10,8 @@ import {
   Title,
 } from "../styles/common"
 
-function Home() {
-  const [characters, setCharacters] = useState([])
+function Events() {
+  const [events, setEvents] = useState([])
   const [itemOffset, setItemOffset] = useState(0)
   const [totalItems, setTotalItems] = useState(0)
 
@@ -19,13 +19,13 @@ function Home() {
 
   useEffect(() => {
     api
-      .get("characters", { params: { offset: itemOffset } })
+      .get("events", { params: { offset: itemOffset } })
       .then((res) => {
-        setCharacters(res.data.data.results)
+        setEvents(res.data.data.results)
         setTotalItems(res.data.data.total)
       })
       .catch((err) => console.log(err))
-  }, [characters])
+  }, [events])
 
   const handlePageClick = (event) => {
     const newOffset = event.selected * 20
@@ -34,15 +34,15 @@ function Home() {
 
   return (
     <>
-      <Title>Characters</Title>
+      <Title>Comics</Title>
       <Container>
         <CardWrapper>
-          {characters.map((character) => {
+          {events.map((event) => {
             return (
-              <Card key={character.id}>
-                <Image id="img" thumbnail={character.thumbnail} />
-                <h2>{character.name}</h2>
-                <p>{character.description}</p>
+              <Card key={event.id}>
+                <Image id="img" thumbnail={event.thumbnail} />
+                <h2>{event.title}</h2>
+                <p>{event.description}</p>
               </Card>
             )
           })}
@@ -64,4 +64,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Events
