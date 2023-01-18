@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useContext } from "react";
 import { Header } from "../../components/header";
@@ -12,6 +13,11 @@ export default function Products(props) {
 
     return (
         <>
+            <Head>
+                <title>
+                    {props.dataProduct.description}
+                </title>
+            </Head>
             <GlobalStyle theme={theme} />
             <Header />
             <PageProduct data={props.dataProduct} />

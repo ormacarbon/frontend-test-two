@@ -7,7 +7,7 @@ const defaultThumbnailURL = "https://cosmos.bluesoft.com.br/assets/product-place
 
 const PageProduct = (props) => {
 
-    const { theme, setTheme } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     return (
         <Container theme={theme}>
@@ -20,14 +20,12 @@ const PageProduct = (props) => {
             </div>
             <div className="footer_product">
                 <p>
-                    NCM: {props.data?.ncm.full_description}
+                    NCM: {props.data?.ncm?.full_description}
                 </p>
                 < Link href="/">
                     Voltar ao inicio
                 </Link>
             </div>
-
-
         </Container>
     )
 }

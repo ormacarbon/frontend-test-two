@@ -8,6 +8,7 @@ import { GlobalStyle } from "../styles/global";
 import Router from "next/router";
 import { ThemeContext, ThemeProvider } from "../contextx/themeContext";
 import { MessageBox } from "../components/messageBox";
+import Head from "next/head";
 
 
 export default function Home(props) {
@@ -17,12 +18,14 @@ export default function Home(props) {
   const [dataProducts, setdataProducts] = useState(props.dataProducts)
   const [productName, setPoductName] = useState(props.name)
 
-  console.log(props.error);
-
 
   useEffect(() => {
     setdataProducts(props.dataProducts)
     setPoductName(props.name)
+
+    if (props.error) {
+      alert("Limite de requisições à API excedido!")
+    }
   }, [props.name])
 
   const handleKeyPressInput = () => {
@@ -31,36 +34,42 @@ export default function Home(props) {
   }
 
   return (
-    <div>
-      <GlobalStyle theme={theme} />
-      <Header />
-      <FormSearchItem
-        label="Buscar produtos"
-        handleKeyPressInput={handleKeyPressInput}
-        placeholder="Digite o nome do produto"
+    <>
+      <Head>
+        <title>
+          Find products
+        </title>
+      </Head>
+      <div>
+        <GlobalStyle theme={theme} />
+        <Header />
+        <FormSearchItem
+          label="Buscar produtos"
+          handleKeyPressInput={handleKeyPressInput}
+          placeholder="Digite o nome do produto"
 
-      />
-      {
-        dataProducts && dataProducts.products.length > 0 && (
-          <>
-            <SectionProducts products={dataProducts?.products} />
+        />
+        {
+          dataProducts && dataProducts.products.length > 0 && (
+            <>
+              <SectionProducts products={dataProducts?.products} />
 
-            <Pagination
-              pageCount={dataProducts?.total_pages}
-              setdataProducts={setdataProducts}
-              product_name={productName}
-            />
-          </>
-        )}
+              <Pagination
+                pageCount={dataProducts?.total_pages}
+                setdataProducts={setdataProducts}
+                product_name={productName}
+              />
+            </>
+          )}
 
-      {
-        dataProducts && dataProducts.products.length === 0 && (
-          <MessageBox />
-        )
-      }
+        {
+          dataProducts && dataProducts.products.length === 0 && (
+            <MessageBox />
+          )
+        }
+      </div>
+    </>
 
-
-    </div>
   )
 }
 

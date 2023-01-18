@@ -7,7 +7,7 @@ import { Container } from './style';
 
 const Pagination = (props) => {
 
-    const { theme, setTheme } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
 
     const handlePageClick = async (event) => {

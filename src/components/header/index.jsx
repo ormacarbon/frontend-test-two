@@ -8,7 +8,7 @@ import { ThemeMode } from "../themeMode";
 
 const Header = () => {
 
-    const { theme, setTheme } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     return (
         <Container theme={theme}>
