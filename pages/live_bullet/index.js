@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 
 const LiveBullet = () => {
   return (
-    <Layout titulo="Live Bullet">
+    <Layout title="Live Bullet">
       <Leaderboards />
     </Layout>
   );

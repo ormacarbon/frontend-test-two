@@ -5,6 +5,7 @@ export const UserName = styled.div`
   margin-top: 16px;
   background-color: #f1faee;
   margin: auto;
+  border: 1px solid;
 `;
 
 export const Img = styled.img`

@@ -1,14 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import dataContext from "../../context/dataContext";
-import { Card, CardsView, Img, Space } from "./styles";
+import { Buttons, Card, CardsView, Img, Space } from "./styles";
 
 const Cards = () => {
-  const { board, selectedItem, setSelectedItem } = useContext(dataContext);
+  const { board, setSelectedItem } = useContext(dataContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(15);
-  const router = useRouter();
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -22,12 +20,14 @@ const Cards = () => {
     <>
       <div>
         {indexOfFirstItem > 0 && (
-          <button onClick={() => setCurrentPage(currentPage - 1)}>
+          <Buttons onClick={() => setCurrentPage(currentPage - 1)}>
             Previous
-          </button>
+          </Buttons>
         )}
         {indexOfLastItem < board.length && (
-          <button onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
+          <Buttons onClick={() => setCurrentPage(currentPage + 1)}>
+            Next
+          </Buttons>
         )}
       </div>
       <CardsView>
@@ -39,8 +39,14 @@ const Cards = () => {
               </div>
               <div>{item.username}</div>
               <Space>
-                <div>Rank: {item.rank}</div>
-                <div>Score: {item.score}</div>
+                <div>
+                  <strong>Rank: </strong>
+                  {item.rank}
+                </div>
+                <div>
+                  <strong> core: </strong>
+                  {item.score}
+                </div>
                 <Link
                   href={"/player/[username]"}
                   as={`/player/${item.username}`}

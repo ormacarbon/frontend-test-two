@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 
 const Daily = () => {
   return (
-    <Layout titulo="Daily">
+    <Layout title="Daily">
       <Leaderboards />
     </Layout>
   );

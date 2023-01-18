@@ -23,7 +23,7 @@ const Player = () => {
   }, [userName]);
 
   return (
-    <Layout>
+    <Layout title={"Player Details"}>
       <UserName>
         <div>
           <Img

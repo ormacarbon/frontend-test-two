@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 
 const Blitz = () => {
   return (
-    <Layout titulo="Blitz">
+    <Layout title="Blitz">
       <Leaderboards />
     </Layout>
   );

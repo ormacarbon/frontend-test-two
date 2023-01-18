@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { createGlobalStyle } from "styled-components";
-import Titulo from "../Titulo";
+import Title from "../Title";
 import { HeaderStyle, Hr, LayoutButtoms } from "./styles";
 
 const GlobalStyle = createGlobalStyle`
@@ -45,7 +45,7 @@ export default function Layout(props) {
           </svg>
         </LayoutButtoms>
         <div>
-          <Titulo>{props.titulo ? props.titulo : "Leaderboards"}</Titulo>
+          <Title>{props.title ? props.title : "Leaderboards"}</Title>
         </div>
         <LayoutButtoms>
           <svg

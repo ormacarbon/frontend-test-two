@@ -21,4 +21,5 @@ export const LayoutButtoms = styled.div`
   &:hover {
     color: #f2f2f2;
   }
+  cursor: pointer;
 `;

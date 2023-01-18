@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TituloStyle = styled.div`
+export const TitleStyle = styled.div`
   padding: 0;
   margin: 0;
 `;
