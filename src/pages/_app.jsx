@@ -5,6 +5,7 @@ import { LightTheme, DarkTheme } from '../styles/themes/themes';
 import { ThemeProvider } from 'styled-components';
 import { ThemeContext } from '../components/Context';
 
+// Using Font Optimization new Feature in Next.js 13
 const lexend = Lexend({
   subsets: ['latin'],
   weight: ['300', '500']

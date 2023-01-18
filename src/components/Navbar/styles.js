@@ -49,60 +49,6 @@ export const NavLinks = styled.ul`
   }
 `;
 
-export const NavMobileLinks = styled.ul`
-  display: flex;
-  gap: 5rem;
-  cursor: pointer;
-
-  li {
-    list-style-type: none;
-
-    button {
-      border: none;
-      font-size: 1rem;
-      color: ${props => props.theme.navlinksFontColor};
-      transition: 0.2s ease-in;
-
-      &:hover {
-        color: ${props => props.theme.navlinksFontColorHover};
-      }
-    }
-  }
-
-  @media (max-width: 992px) {
-    gap: 2rem;
-  }
-
-  @media (max-width: 576px) {
-    display: none;
-  }
-`;
-
-export const SearchInputContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  input {
-    background-color: ${props => props.theme.searchInputColor};
-    color: ${props => props.theme.navlinksFontColor};
-    padding: 1rem;
-    font-size: 1rem;
-    border-radius: 1rem;
-    border: 2px solid ${props => props.theme.navlinksFontColor};
-
-    &:focus {
-      outline: none;
-      border-color: 2px solid ${props => props.theme.userCardBorderColorHover};
-    }
-}
-
-@media (max-width: 768px) {
-  display: none;
-}
-`;
-
 export const NavEndSection = styled.div`
   display: flex;
   gap: 1rem;

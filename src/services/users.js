@@ -1,3 +1,4 @@
+// This service injects the http request wherever we want to use it
 const url = 'https://63c5b232f80fabd877ee639a.mockapi.io'
 
 module.exports = (httpClient) => {

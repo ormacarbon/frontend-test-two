@@ -6,11 +6,13 @@ import { useRouter } from 'next/router';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GrFormClose } from 'react-icons/gr';
 
+// Navbar component which contains routes that can be navigated to
 const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const router = useRouter();
   const [navbarMobile, setNavbarMobile] = useState(false);
 
+  // Toggling of the themes into dark or light
   const handleThemeChange = () => {
     const isCurrentDark = theme === 'dark';
     setTheme(isCurrentDark ? 'light' : 'dark');
@@ -19,7 +21,6 @@ const Navbar = () => {
   return (
     <>
       <Styles.NavContainer>
-
         <Styles.NavLogo>
           <p onClick={() => router.push('/')}>
             Next UserDB
@@ -44,35 +45,8 @@ const Navbar = () => {
               </button>
             </li>
           </Styles.NavLinks>
-
-          <Styles.NavMobileLinks>
-            <li>
-              <button
-                type='button'
-                onClick={() => router.push('/about')}
-              >
-                About us
-              </button>
-            </li>
-            <li>
-              <button
-                type='button'
-                onClick={() => router.push('/contact')}
-              >
-                Contact
-              </button>
-            </li>
-          </Styles.NavMobileLinks>
-
-
         </div>
-
-
         <Styles.NavEndSection>
-          <Styles.SearchInputContainer>
-            <input type="text" placeholder='Search for a user ...' onKeyUp={() => { console.log('slkfgjhsdfhj') }} />
-          </Styles.SearchInputContainer>
-
           <Styles.ThemeButton
             type='button'
             onClick={handleThemeChange}
@@ -82,7 +56,6 @@ const Navbar = () => {
               : <p><MdBrightnessHigh /> Light</p>
             }
           </Styles.ThemeButton>
-
           <div>
             <Styles.MobileToggleButton onClick={() => setNavbarMobile((current) => !current)}>
               {navbarMobile ? <GrFormClose /> : <GiHamburgerMenu />}

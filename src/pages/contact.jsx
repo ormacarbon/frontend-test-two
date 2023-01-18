@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
-import React from 'react'
+import React from 'react';
+import { useRouter } from 'next/router';
 import Hero from '../components/Hero';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
 
 const Contact = () => {
   const router = useRouter();

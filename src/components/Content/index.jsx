@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import Service from '../../services/index'
-import Image from "next/image";
+import { useEffect, useState } from 'react';
+import Service from '../../services/index';
+import Image from 'next/image';
 import * as Styles from './styles';
 import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 
@@ -32,7 +32,6 @@ const Content = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-
             }}
           />
           <p>
@@ -42,6 +41,7 @@ const Content = () => {
       )
     })
 
+    // Both these functions below make use of the dependency injected here by the User's Service
     const changePage = async ({ selected }) => {
       selected += 1
       const { data } = await Service.user.getAllUsers(search, selected);
@@ -57,14 +57,13 @@ const Content = () => {
 
   return (
     <>
-        <Styles.SearchInputContainer>
-          <input
-            type="text"
-            placeholder='Search for a user ...'
-            onKeyUp={searchUser}
-          />
-        </Styles.SearchInputContainer>
-
+      <Styles.SearchInputContainer>
+        <input
+          type="text"
+          placeholder='Search for a user ...'
+          onKeyUp={searchUser}
+        />
+      </Styles.SearchInputContainer>
       <Styles.ContentContainer>
         {showUsers}
       </Styles.ContentContainer>
@@ -80,7 +79,6 @@ const Content = () => {
           activeClassName={'paginateActive'}
           onPageChange={changePage}
         />
-
       </div>
     </>
   )
