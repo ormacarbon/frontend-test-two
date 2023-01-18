@@ -1,6 +1,11 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 const urlImg = (thumb) => `${thumb.path}.${thumb.extension}`
+
+export const Title = styled.h2`
+  margin: 40px;
+  font-size: 42px;
+`
 
 export const Container = styled.main`
   display: flex;
