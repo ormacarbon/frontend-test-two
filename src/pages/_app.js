@@ -1,4 +1,5 @@
 import { Poppins } from "@next/font/google";
+import React from "react";
 
 import { SceneContextProvider } from "../contexts/SceneContext";
 import { ThemeContextProvider } from "../contexts/ThemeContext";
@@ -9,13 +10,13 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={poppins.className}>
+    <div className={poppins.className}>
       <SceneContextProvider>
         <ThemeContextProvider>
           <GlobalStyle />
           <Component {...pageProps} />
         </ThemeContextProvider>
       </SceneContextProvider>
-    </main>
+    </div>
   );
 }

@@ -1,11 +1,12 @@
 const lightTheme = {
   title: "dark",
   colors: {
-    primary: "#333",
-    secundary: "#C62E65",
+    primary: "#3A3A47",
+    secondary: "#7a7b8e",
 
-    background: "#222",
-    text: "#fff",
+    background: "#24252E",
+    border: "#515162",
+    text: "#FFFFFF",
   },
 };
 

@@ -12,6 +12,7 @@ export default async function handler(req, res) {
     throw new Error(401, "Field empty");
   }
 
+  mongoose.set("strictQuery", false);
   await connectToDatabase();
 
   const authService = new AuthService(User);

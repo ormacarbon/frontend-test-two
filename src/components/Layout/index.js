@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Flex } from "../../styles/global";
 
+import { GrAddCircle } from "react-icons/gr";
+
 import Header from "../Header";
 import Head from "./Head";
 
@@ -15,8 +17,8 @@ function Layout({ title, children }) {
         <main>
           <Flex fullWidth={true} fullHeight={true} gap="0">
             <TitleContainer>
-              <h1>Contato</h1>
-              <Link href="/scene/new">Adicionar</Link>
+              <h1>{title}</h1>
+              <Link href="/scene/new">+</Link>
             </TitleContainer>
             {children}
           </Flex>

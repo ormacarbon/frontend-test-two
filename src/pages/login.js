@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import {
   FormContainer,
@@ -8,6 +9,7 @@ import {
   Button,
   FormPageContainer,
 } from "../components/Login/styles";
+import Layout from "../components/Layout";
 import Logo from "../components/Login/Logo";
 import Input from "../components/Form/Input";
 
@@ -20,7 +22,7 @@ function Login() {
   const authUser = async (e) => {
     e.preventDefault();
     const user = await axios.post(
-      "http://localhost:3000/api/users/authenticate",
+      "http://localhost:3000/api/auth/authenticate",
       {
         name,
         password,
@@ -30,6 +32,7 @@ function Login() {
     if (!user.data) {
       return setError("User invalid");
     }
+    Cookies.set("user", user.data);
     router.push("/");
   };
 
@@ -72,3 +75,8 @@ function Login() {
 }
 
 export default Login;
+
+// TODO: Tratamento de erros
+// TODO: Vercel
+// TODO: Responsividade
+// TODO: Consumo de API

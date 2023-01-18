@@ -14,6 +14,10 @@ export const GlobalStyle = createGlobalStyle`
 
   ul {
     list-style: none;
+  } 
+
+  body {
+    background: ${(props) => props.theme.colors.background};
   }
 `;
 

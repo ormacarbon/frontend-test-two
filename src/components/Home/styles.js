@@ -6,11 +6,12 @@ export const Ul = styled.ul`
 `;
 
 export const Item = styled.li`
+  color: ${(props) => props.theme.colors.text};
   padding: 13px 58px 13px 24px;
   width: 100%;
   min-height: 50px;
   margin-top: 1rem;
-  background: ${(props) => (props.checked ? "#da2535" : "#FFFFFF")};
+  background: ${(props) => props.theme.colors.secondary};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   list-style: none;

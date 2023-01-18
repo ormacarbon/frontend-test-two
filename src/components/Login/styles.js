@@ -10,8 +10,8 @@ export const FormPageContainer = styled.div`
   justify-content: center;
 `;
 export const FormContainer = styled.form`
-  min-height: 50vh;
-  width: 18.75rem;
+  min-height: 60vh;
+  width: 22rem;
   padding: 2rem;
   border-radius: 0.3rem;
   border: 2px solid #aaa;

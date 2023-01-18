@@ -5,8 +5,11 @@ export const BoxInput = styled.div`
   width: 100%;
   height: 2.5rem;
 
+  display: flex;
+  justify-content: center;
+
   input {
-    width: 100%;
+    width: 18rem;
     height: 100%;
     border: 0;
     border-bottom: 2px solid silver;

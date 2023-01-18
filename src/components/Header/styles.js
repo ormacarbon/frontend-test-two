@@ -10,6 +10,7 @@ export const Container = styled.div`
   justify-content: space-around;
 
   background: ${(props) => props.theme.colors.primary};
+  border-bottom: 2px solid ${(props) => props.theme.colors.border};
 `;
 
 export const NavLinkContainer = styled.div`

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 
@@ -25,10 +24,13 @@ export default function Home() {
               <span>{scene}</span>
               <Flex direction="row">
                 <button>
-                  <BiTrash onClick={() => deleteItemList(scene)} />
+                  <BiTrash
+                    onClick={() => deleteItemList(scene)}
+                    color="#f0f0f5"
+                  />
                 </button>
                 <button>
-                  <BiEdit />
+                  <BiEdit color="#f0f0f5" />
                 </button>
               </Flex>
             </Item>

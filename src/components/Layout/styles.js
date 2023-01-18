@@ -13,12 +13,12 @@ export const PageContainer = styled.div`
   main {
     width: 100%;
     height: 100%;
-    background: #eee;
+    background: ${(props) => props.theme.colors.border};
 
     padding: 0 1.5rem;
     margin: 2rem 0 0 0;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid ${(props) => props.theme.colors.secondary};
   }
 `;
 
@@ -26,7 +26,16 @@ export const TitleContainer = styled.div`
   width: 100%;
   margin-top: 3rem;
 
+  color: ${(props) => props.theme.colors.text};
+
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  a {
+    font-size: 2rem;
+    padding: 0 0.3rem;
+
+    color: ${(props) => props.theme.colors.text};
+  }
 `;
