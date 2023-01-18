@@ -13,6 +13,29 @@ export const Container = styled.div`
   }
 `;
 
+export const ContainerCenter = styled.div`
+  width: 100%;
+  height: 90vw;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  @media (min-width: 930px) {
+    height: 70vw;
+  }
+  @media (min-width: 1050px) {
+    height: 55vw;
+  }
+  @media (min-width: 1330px) {
+    height: 45vw;
+  }
+  @media (min-width: 1744px) {
+    height: 40vw;
+  }
+  @media (min-width: 2000px) {
+    height: 35vw;
+  }
+`;
+
 export const Box = styled.div`
   display: flex;
   width: ${px2vw(320, 320)};

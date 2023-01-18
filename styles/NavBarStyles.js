@@ -32,7 +32,7 @@ export const Items = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-width: 1px 1px 4px 1px;
-  border-color: ${({ theme }) => theme.text};
+  border-width: 0px 0px 4px 0px;
+  border-color: #11998e;
   border-style: solid;
 `

@@ -3,30 +3,19 @@ import px2vw from "../services/px2vw";
 
 const Wrapper = styled.div`
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: ${px2vw(600)};
+  height: ${px2vw(600)};
   align-items: center;
   justify-content: center;
   display: flex;
   border-radius: 15px;
   background: linear-gradient(to right, #11998e,#38ef7d);
-  padding: 20px;
+  padding: ${px2vw(10)};
+
   margin-top: 10%;
-  z-index: -2;
-
   @media (min-width: 550px) {
-    width: 250px;
-    height: 250px;
-  }
-
-  @media (min-width: 768px) {
-    width: ${px2vw(300)};
-    height: ${px2vw(300)};
-  }
-
-  @media (min-width: 1024px) {
-    width: ${px2vw(300)};
-    height: ${px2vw(300)};
+    width: ${px2vw(400)};
+    height: ${px2vw(400)};
   }
 `;
 
@@ -37,7 +26,6 @@ const Image = styled.img`
   object-fit: contain;
   border-radius: 25px;
   border: 2px solid black;
-  z-index: -1;
   src: ${props => props.url};
 `;
 

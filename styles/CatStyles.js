@@ -102,3 +102,35 @@ export const Button = styled.button`
     transform: translateY(2px);
   }
 `
+export const Container = styled.div`
+  position: relative;
+  width: 100%;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  }
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
+  width: ${px2vw(500)};
+  height: ${px2vw(500)};
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 15px;
+  background: linear-gradient(to right, #11998e,#38ef7d);
+  padding: ${px2vw(10)};
+  margin-top: 10%;
+  }
+`;
+
+export const Image = styled.img`
+  display:block;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 25px;
+  border: 2px solid black;
+  src: ${props => props.url};
+`;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Carousel from "react-elastic-carousel";
 import DogImageCard from '../components/DogImageCard';
 import { getDogFact, getDogImage } from "../services/api";
+import { ContainerCenter } from '../styles/DogStyles';
 
 function Dog() {
   const [fact, setFact] = useState();
@@ -10,7 +11,6 @@ function Dog() {
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
     { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 },
   ];
 
   useEffect(() => {
@@ -43,12 +43,13 @@ function Dog() {
   }
   return (
     <>
-    <h1>Dog Page</h1>
-    <Carousel breakPoints={breakPoints}>
-    {images.map((url, index) => (
-      <DogImageCard key={ index } { ...{url} } />
-    ))}
-    </Carousel>
+    <ContainerCenter>
+      <Carousel breakPoints={breakPoints}>
+      {images.map((url, index) => (
+        <DogImageCard key={ index } { ...{url} } />
+      ))}
+      </Carousel>
+    </ContainerCenter>
     {/* <DogCard { ...fact}/> */}
     {/* <Container>
       {fact.map(box => (

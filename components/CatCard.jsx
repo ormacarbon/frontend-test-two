@@ -1,10 +1,11 @@
-import Image from "next/image";
+// import Image from "next/image";
+import { Wrapper, Image } from '../styles/CatStyles';
 
 export default function CatCard(props) {
   const {url} = props;
   return (
-    <div>
-      <Image src={url} alt="A cat" width="500" height="600" />
-    </div>
+    <Wrapper>
+      <Image src={url} alt="A cat" />
+    </Wrapper>
   );
 }

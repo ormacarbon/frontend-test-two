@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CatCard from '../components/CatCard';
-import NavBar from '../components/NavBar';
-import { Label, Form, Input, Button } from '../styles/CatStyles';
+import { Label, Form, Input, Button, Container } from '../styles/CatStyles';
 import { getCatMessage } from '../services/api';
 
 function Cat() {
@@ -47,7 +46,9 @@ function Cat() {
           <Button type="button" onClick={() => generateCatMessage()}>Submit</Button>
         </Form>
       </form>
-      <CatCard {...url}/>
+      <Container>
+        <CatCard {...url}/>
+      </Container>
     </>
   );
 }
