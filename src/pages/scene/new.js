@@ -33,3 +33,9 @@ function NewScene() {
 }
 
 export default NewScene;
+
+export const getServerSideProps = withSSRAuth(() => {
+  return {
+    props: {},
+  };
+});

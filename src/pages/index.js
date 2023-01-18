@@ -6,6 +6,7 @@ import { useScene } from "../hooks/useScene";
 import Layout from "../components/Layout";
 import { Item, Ul } from "../components/Home/styles";
 import { Flex } from "../styles/global";
+import { withSSRAuth } from "../shared/withSSRAuth";
 
 export default function Home() {
   const { scenes, setScene } = useScene();
@@ -39,3 +40,20 @@ export default function Home() {
     </Layout>
   );
 }
+
+export const getServerSideProps = async (ctx) => {
+  const { user } = parseCookies(ctx);
+
+  if (!user) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

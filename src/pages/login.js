@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import React from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { setCookie } from "nookies";
+import { withSSRGuest } from "../shared/withSSRGuest";
 
 import {
   FormContainer,
@@ -9,7 +10,6 @@ import {
   Button,
   FormPageContainer,
 } from "../components/Login/styles";
-import Layout from "../components/Layout";
 import Logo from "../components/Login/Logo";
 import Input from "../components/Form/Input";
 
@@ -32,7 +32,12 @@ function Login() {
     if (!user.data) {
       return setError("User invalid");
     }
-    Cookies.set("user", user.data);
+
+    setCookie(null, "user", JSON.stringify(user.data), {
+      path: "/",
+      maxAge: 60 * 60 * 24, // 24 hours
+    });
+
     router.push("/");
   };
 
@@ -80,3 +85,9 @@ export default Login;
 // TODO: Vercel
 // TODO: Responsividade
 // TODO: Consumo de API
+
+export const getServerSideProps = withSSRGuest(() => {
+  return {
+    props: {},
+  };
+});
