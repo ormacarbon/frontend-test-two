@@ -41,19 +41,8 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps = async (ctx) => {
-  const { user } = parseCookies(ctx);
-
-  if (!user) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
-
+export const getServerSideProps = withSSRAuth(() => {
   return {
     props: {},
   };
-};
+});

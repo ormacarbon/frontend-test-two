@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/router";
+import { withSSRAuth } from "../../shared/withSSRAuth";
 
 import { useScene } from "../../hooks/useScene";
 
@@ -39,3 +40,5 @@ export const getServerSideProps = withSSRAuth(() => {
     props: {},
   };
 });
+
+// TODO;

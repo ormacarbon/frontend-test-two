@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import md5 from "md5";
 
 export default class AuthService {
@@ -11,11 +12,14 @@ export default class AuthService {
       throw new Error(401, "Not Authorized");
     }
 
-    const checkedPassword = this.checkPassword(user, password);
-    console.log(checkedPassword);
+    this.checkPassword(user, password);
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
 
     return {
-      name: user.name,
+      token,
     };
   }
 

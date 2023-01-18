@@ -2,9 +2,9 @@ import { parseCookies } from "nookies";
 
 export function withSSRAuth(fn) {
   return async (ctx) => {
-    const { user } = parseCookies(ctx);
+    const { token } = parseCookies(ctx);
 
-    if (!user) {
+    if (!token) {
       return {
         redirect: {
           destination: "/login",

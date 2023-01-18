@@ -21,7 +21,7 @@ function Login() {
 
   const authUser = async (e) => {
     e.preventDefault();
-    const user = await axios.post(
+    const session = await axios.post(
       "http://localhost:3000/api/auth/authenticate",
       {
         name,
@@ -29,11 +29,11 @@ function Login() {
       }
     );
 
-    if (!user.data) {
+    if (!session.data.token) {
       return setError("User invalid");
     }
 
-    setCookie(null, "user", JSON.stringify(user.data), {
+    setCookie(null, "token", session.data.token, {
       path: "/",
       maxAge: 60 * 60 * 24, // 24 hours
     });
