@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import useFetch from "../utility/useFetch";
@@ -11,28 +11,24 @@ import {
 import Img1 from "../assets/thomas-thompson-BoVxWyS5KAE-unsplash.jpg";
 import ReactPaginate from "react-paginate";
 import { ButtonLink } from "../components/Button/style";
-import {
-  MapContainer,
-  Marker,
-  TileLayer,
-  Popup,
-  CircleMarker,
-} from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import { Context } from "../utility/context";
 
-const attribution =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-const url =
-  "https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=puoG6vOLC4oqJXcum8fR";
+import MapChart from "../components/Map/Map";
 
 export default function Map() {
   const { data, loading, error, request } = useFetch();
   const [currentPage, setCurrentPage] = useState(0);
   const [info, setInfo] = useState([]);
+  const [firstMarkers, setFirstMarkers] = useState();
+  const { context, setContext } = useContext(Context);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    setFirstMarkers(currentPageData);
+  }, [data]);
 
   async function fetchData() {
     const { response, json } = await request(
@@ -48,14 +44,23 @@ export default function Map() {
   const PER_PAGE = 2;
   const offset = currentPage * PER_PAGE;
   const currentPageData = info.slice(offset, offset + PER_PAGE);
+  // setFirstMarkers(currentPageData);
+  console.log(currentPageData);
   const pageCount = Math.ceil(info.length / PER_PAGE);
 
-  const [center, setCenter] = useState({
-    lat: 23.729211164246585,
-    lng: 90.40874895549243,
-  });
+  // const [center, setCenter] = useState({
+  //   lat: 41.78575824052096,
+  //   lng: -101.92046997552498,
+  // });
   const mapRef = useRef();
-  console.log(Map);
+  // console.log(Map);
+
+  function handleClick(brewery) {
+    setFirstMarkers(brewery);
+  }
+  // const MapWithNoSSR = dynamic(() => import("../components/Map/Map"), {
+  //   ssr: false,
+  // });
 
   return (
     <>
@@ -84,8 +89,8 @@ export default function Map() {
 
                       <h2 className="font-1-xl">{brewery.name}</h2>
                       <span className="font-2-m color-0">{brewery.state}</span>
-                      <ButtonLink>
-                        <Link className="button seta" href="/">
+                      <ButtonLink onClick={setContext(brewery)}>
+                        <Link className="button seta" href="/brewery">
                           SEE MORE
                         </Link>
                       </ButtonLink>
@@ -112,17 +117,47 @@ export default function Map() {
         </div>
 
         <DivBreweriesMap className="container">
-          <MapContainer
+          {/* <MapContainer
             style={{ width: "100%", height: "100vh" }}
-            center={center}
-            zoom={9}
+            center={[41.78575824052096, -101.92046997552498]}
+            zoom={5}
+            scrollWheelZoom={false}
             ref={mapRef}
           >
             <TileLayer attribution={attribution} url={url} />
-            <Marker position={[23.729211164246585, 90.40874895549243]}>
+            {info ? (
+              loading ? (
+                <p>Loading...</p>
+              ) : (
+                <ul>
+                  {currentPageData.map((brewery) => (
+                    <li key={brewery.id}>
+                      <Marker position={[brewery.latitude, brewery.longitude]}>
+                        <Popup>This is a popup.</Popup>
+                      </Marker>
+                    </li>
+                  ))}
+                </ul>
+              )
+            ) : (
+              <ul>
+                <li>
+                  <Marker position={[41.78575824052096, -101.92046997552498]}>
+                    <Popup>This is a popup.</Popup>
+                  </Marker>
+                </li>
+              </ul>
+            )} */}
+          {/* <Marker position={[40.8054, -74.0241]}>
               <Popup>This is a popup.</Popup>
-            </Marker>
-          </MapContainer>
+            </Marker> */}
+          {/* </MapContainer> */}
+          {/* <main>
+            <div id="map"> */}
+          {/* <MapWithNoSSR /> */}
+          {/* </div>
+          </main> */}
+          <MapChart />
         </DivBreweriesMap>
       </MainBreweries>
     </>

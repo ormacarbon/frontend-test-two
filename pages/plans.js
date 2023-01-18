@@ -4,15 +4,15 @@ import { DivTerms, DivTermsTitle, MainTerms } from "./Terms/style";
 export default function Contact() {
   return (
     <>
-      <MainTerms>
-        <DivTermsTitle>
+      <MainPlans>
+        <DivPlansTitle>
           <div className="title container">
-            <p className="font-2-l-b color-5">Use terms</p>
+            <p className="font-2-l-b color-5">choose a plan</p>
             <h1 className="font-1-xxl color-0">
-              terms and conditions<span className="color-p1">.</span>
+              cheers<span className="color-p1">.</span>
             </h1>
           </div>
-        </DivTermsTitle>
+        </DivPlansTitle>
 
         <DivTerms className="font-2-s color-10 container">
           <h2 className="font-1-l color-11">1. Brewery private informations</h2>
