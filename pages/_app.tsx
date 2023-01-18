@@ -8,16 +8,15 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-
 function App(props: AppProps) {
   const { Component, pageProps } = props;
 
   return (
     <ThemeContextComponent>
-      <PageContainer>
-        <Navbar/>
-        <Component {...pageProps} />
-      </PageContainer>
+        <PageContainer>
+          <Navbar/>
+          <Component {...pageProps} />
+        </PageContainer>
     </ThemeContextComponent>
   );
 }

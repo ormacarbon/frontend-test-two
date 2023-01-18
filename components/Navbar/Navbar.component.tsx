@@ -6,7 +6,7 @@ import { ThemeContextType, ThemeContext } from '../../contexts/Theme/Theme.conte
 function Navbar() {
   const themeContext = useContext<ThemeContextType>(ThemeContext);
   function renderNavDesktop() {
-    return <div className={`hidden sm:flex flex-col gap-y-4 bg-fuchsia-600 dark:bg-fuchsia-200 rounded-full py-4 px-2`}>
+    return <div className="hidden top-4 sticky sm:flex flex-col gap-y-4 bg-fuchsia-600 dark:bg-fuchsia-200 rounded-full py-4 px-2">
       <IconButton aria-label="home page">
         <IconHome2 strokeWidth={1} className="text-fuchsia-300 dark:text-fuchsia-800"/>
       </IconButton>
@@ -41,7 +41,7 @@ function Navbar() {
     </AppBar>;
   }
 
-  return <div>
+  return <div className="self-stretch relative">
     { renderNavDesktop() }
     { renderNavMobile() }
   </div>;
