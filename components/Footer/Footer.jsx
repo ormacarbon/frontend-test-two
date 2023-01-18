@@ -43,13 +43,10 @@ const Footer = () => {
           <nav>
             <ul className="font-1-m color-5">
               <li>
-                <Link href="/">Breweries</Link>
+                <Link href="/map">Map</Link>
               </li>
               <li>
-                <Link href="/">Plans</Link>
-              </li>
-              <li>
-                <Link href="/">Contact</Link>
+                <Link href="/plans">Plans</Link>
               </li>
               <li>
                 <Link href="/terms">Terms and Conditions</Link>
