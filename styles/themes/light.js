@@ -28,5 +28,6 @@ export default {
     sm: '1rem',
     md: '1.3rem',
     lg: '1.9rem',
+    xlg: '3rem',
   },
 };

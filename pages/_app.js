@@ -8,10 +8,10 @@ import light from '../styles/themes/light';
 import usePersistedState from '../utils/usePersistedState';
 
 function MyApp({ Component, pageProps }) {
-  const [theme, setTheme] = usePersistedState('theme', dark);
+  const [theme, setTheme] = usePersistedState('theme', light);
 
   const toggleTheme = () => {
-    setTheme(theme.title === 'dark' ? light : dark);
+    setTheme(theme.title === 'light' ? dark : light);
   };
 
   return (

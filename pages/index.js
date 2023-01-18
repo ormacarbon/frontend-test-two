@@ -1,14 +1,26 @@
 import Link from 'next/link';
-import { Container, Title, Description, Button } from './styles';
+
+import {
+  Container,
+  TitleContainer,
+  Title,
+  Description,
+  ButtonContainer,
+  Button,
+} from './styles';
 
 export default function Home() {
   return (
     <Container>
-      <Title>The best free stock photos for yout to download.</Title>
-      <Description>Start searching</Description>
-      <Link href={'/search'}>
-        <Button>Jump into it</Button>
-      </Link>
+      <TitleContainer>
+        <Title>The best stock photos for yout to download.</Title>
+        <Description>Royalty free images shared by creators.</Description>
+      </TitleContainer>
+      <ButtonContainer>
+        <Link href={'/photos'}>
+          <Button>Discover photos</Button>
+        </Link>
+      </ButtonContainer>
     </Container>
   );
 }
