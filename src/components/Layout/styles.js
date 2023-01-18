@@ -10,11 +10,15 @@ export const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background: rgba(0, 0, 0, 0.1);
-
   main {
     width: 100%;
     height: 100%;
+    background: #eee;
+
+    padding: 0 1.5rem;
+    margin: 2rem 0 0 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
   }
 `;
 
