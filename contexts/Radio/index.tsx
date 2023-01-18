@@ -1,3 +1,3 @@
-import RadioContext from './Pagination.context';
+import RadioContext from './Radio.context';
 
 export default RadioContext;
