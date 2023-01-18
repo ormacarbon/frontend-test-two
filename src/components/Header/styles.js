@@ -3,21 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   height: 4rem;
+  font-size: 0.9rem;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
-  background-color: #aaa;
-
-  ul {
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 2rem;
-  }
+  background: ${(props) => props.theme.colors.primary};
 `;
 
 export const NavLinkContainer = styled.div`
@@ -25,7 +17,7 @@ export const NavLinkContainer = styled.div`
     text-transform: uppercase;
     transition: 0.3s;
 
-    color: blue;
+    color: ${(props) => props.theme.colors.text};
 
     &:hover {
       color: #000;

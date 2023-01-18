@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Ul = styled.ul`
+  width: 100%;
+  height: 100%;
+`;
+
 export const Item = styled.li`
   padding: 13px 58px 13px 24px;
   width: 100%;
@@ -33,9 +38,4 @@ export const Item = styled.li`
       opacity: 0.6;
     }
   }
-`;
-
-export const Ul = styled.ul`
-  width: 100%;
-  height: 100%;
 `;

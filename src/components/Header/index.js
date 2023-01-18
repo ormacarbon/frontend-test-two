@@ -1,3 +1,5 @@
+import Switch from "react-switch";
+
 import NavLink from "./NavLink";
 
 import { Container } from "./styles";
@@ -7,8 +9,16 @@ function Header() {
     <Container>
       <ul>
         <NavLink title="Home" path="/" />
-        <NavLink title="Cenas" path="/cenas" />
       </ul>
+      <Switch
+        onChange={() => {}}
+        checked={true}
+        checkedIcon={false}
+        uncheckedIcon={false}
+        height={10}
+        width={40}
+        handleDiameter={20}
+      />
     </Container>
   );
 }

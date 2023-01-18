@@ -13,7 +13,7 @@ function Layout({ title, children }) {
       <PageContainer>
         <Header />
         <main>
-          <Flex fullWidth={true} fullHeight={true}>
+          <Flex fullWidth={true} fullHeight={true} gap="0">
             <TitleContainer>
               <h1>Contato</h1>
               <Link href="/scene/new">Adicionar</Link>
