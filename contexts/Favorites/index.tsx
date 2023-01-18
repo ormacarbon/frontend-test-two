@@ -1,3 +1,3 @@
-import FavoritesContext from './Pagination.context';
+import FavoritesContext from './Favorites.context';
 
 export default FavoritesContext;
