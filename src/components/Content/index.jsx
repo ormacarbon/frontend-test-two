@@ -6,22 +6,19 @@ import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 
 const Content = () => {
   const [users, setUsers] = useState([]);
-  // slice(0, 15)
-  const [pageNumber, setPageNumber] = useState(0);
+  const [search, setSearch] = useState('');
+  const [pageNumber, setPageNumber] = useState(2);
 
-  const usersPerPage = 15;
-  const currentPage = pageNumber * usersPerPage;
+  const getUsers = async () => {
+    const { data } = await Service.user.getAllUsers('');
+    setUsers(data);
+  }
 
   useEffect(() => {
-    const getUsers = async () => {
-      const { data } = await Service.user.getAllUsers('');
-      setUsers(data);
-    }
     getUsers();
   }, [])
 
   const showUsers = users
-    .slice(currentPage, currentPage + usersPerPage)
     .map((user) => {
       return (
         <Styles.UserCard key={user.id}>
@@ -45,47 +42,43 @@ const Content = () => {
       )
     })
 
-    // Function to round up the number and create another page to paginate correctly
-    const pageCount = Math.ceil(users.length/usersPerPage);
+    const changePage = async ({ selected }) => {
+      selected += 1
+      const { data } = await Service.user.getAllUsers(search, selected);
+      setUsers(data);
+    }
 
-    const changePage = ({ selected }) => {
-      setPageNumber(selected);
+    const searchUser = async (event) => {
+      const name = event.target.value
+      const { data } = await Service.user.getAllUsers(name);
+      setSearch(name)
+      setUsers(data);
     }
 
   return (
     <>
-        {/* <Styles.SearchInputContainer>
-          <input type="text" placeholder='Search for a user ...' onKeyUp={() => { console.log('slkfgjhsdfhj') }} />
-        </Styles.SearchInputContainer> */}
+        <Styles.SearchInputContainer>
+          <input
+            type="text"
+            placeholder='Search for a user ...'
+            onKeyUp={searchUser}
+          />
+        </Styles.SearchInputContainer>
 
       <Styles.ContentContainer>
-
-
         {showUsers}
-        {/* {users.length === 0 ? (
-          <div>Loading users...</div>
-        ) : (
-          users.map((user) => (
-            <Styled.UserCard key={user.id}>
-              <p>
-                {user.name}
-              </p>
-              <Image src={user.avatar} width={100} height={100} alt="random user image" />
-            </Styled.UserCard>
-          ))
-        )} */}
       </Styles.ContentContainer>
       <div>
         <Styles.Pagination
           previousLabel={<CgChevronLeft />}
           nextLabel={<CgChevronRight />}
-          pageCount={pageCount}
-          onPageChange={changePage}
+          pageCount={pageNumber}
           containerClassName={'paginateBtn'}
           previousLinkClassName={'prevBtn'}
           nextLinkClassName={'nextBtn'}
           disabledClassName={'paginateDisabled'}
           activeClassName={'paginateActive'}
+          onPageChange={changePage}
         />
 
       </div>

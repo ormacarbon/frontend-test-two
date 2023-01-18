@@ -4,6 +4,9 @@ module.exports = (httpClient) => {
   return {
       getAllUsers(name, page = 1, limit = 15) {
         return httpClient.get(`${url}/users/?page=${page}&limit=${limit}&name=${name}`)
+      },
+      countUsers() {
+        return httpClient.get(`${url}/users`)
       }
   }
 }

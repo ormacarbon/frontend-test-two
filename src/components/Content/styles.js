@@ -75,3 +75,24 @@ export const Pagination = styled(ReactPaginate).attrs({})`
   }
 `;
 
+
+export const SearchInputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    background-color: ${props => props.theme.searchInputColor};
+    color: ${props => props.theme.navlinksFontColor};
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    border: 2px solid ${props => props.theme.navlinksFontColor};
+
+    &:focus {
+      outline: none;
+      border-color: 2px solid ${props => props.theme.userCardBorderColorHover};
+    }
+  }
+`;
