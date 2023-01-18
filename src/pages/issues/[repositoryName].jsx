@@ -60,7 +60,7 @@ export default function RepositoryNameIssues() {
 
   useEffect(() => {
     const calc = (value) => {
-      let pages = (value / 15).toFixed(0);
+      let pages = Number((value / 15).toFixed(0));
       let rest = value % 15;
       return rest > 0 ? pages + 1 : pages;
     };
@@ -105,7 +105,7 @@ export default function RepositoryNameIssues() {
                       <FiArrowLeft /> Anterior
                     </button>
                   )}
-                  {page <= maxPages && (
+                  {page < maxPages - 1 && (
                     <button onClick={() => handleChangeIssuesPage(1)}>
                       Próxima
                       <FiArrowRight />
