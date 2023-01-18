@@ -13,7 +13,7 @@ export const PageContainer = styled.div`
   main {
     width: 100%;
     height: 100%;
-    background: ${(props) => props.theme.colors.border};
+    background: ${(props) => props.theme.colors.bgSecondary};
 
     padding: 0 1.5rem;
     margin: 2rem 0 0 0;
@@ -25,6 +25,7 @@ export const PageContainer = styled.div`
 export const TitleContainer = styled.div`
   width: 100%;
   margin-top: 3rem;
+  margin-bottom: 0.3rem;
 
   color: ${(props) => props.theme.colors.text};
 

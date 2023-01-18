@@ -27,11 +27,11 @@ export default function Home() {
                 <button>
                   <BiTrash
                     onClick={() => deleteItemList(scene)}
-                    color="#f0f0f5"
+                    color={(props) => props.theme.colors.text}
                   />
                 </button>
                 <button>
-                  <BiEdit color="#f0f0f5" />
+                  <BiEdit color={(props) => props.theme.colors.text} />
                 </button>
               </Flex>
             </Item>
@@ -46,3 +46,5 @@ export const getServerSideProps = withSSRAuth(() => {
     props: {},
   };
 });
+
+// TODO: Bug na troca de cor dos svgs

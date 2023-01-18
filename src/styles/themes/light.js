@@ -2,10 +2,11 @@ const darkTheme = {
   title: "light",
 
   colors: {
-    primary: "#0070f3",
-    secundary: "#D63AF9",
+    primary: "#9575CD",
+    secondary: "#BB86FC",
 
-    background: "#FFFFFF",
+    background: "#EDE7F6",
+    bgSecondary: "#EDE7F6",
     text: "#222222",
   },
 };

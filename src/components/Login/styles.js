@@ -22,27 +22,6 @@ export const FormContainer = styled.form`
   justify-content: center;
 `;
 
-export const InputContainer = styled.div`
-  width: 100%;
-  margin: 1rem 0;
-  padding: 0 1rem;
-  text-align: left;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height: 2.875rem;
-  border: 0;
-  border-radius: 8px;
-
-  transition: 0.3s;
-
-  &:hover {
-    background: #f7f7f7;
-  }
-`;
-
 export const Label = styled.label`
   font-size: 0.625rem;
 `;

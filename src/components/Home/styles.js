@@ -11,7 +11,7 @@ export const Item = styled.li`
   width: 100%;
   min-height: 50px;
   margin-top: 1rem;
-  background: ${(props) => props.theme.colors.secondary};
+  background: ${(props) => props.theme.colors.primary};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   list-style: none;

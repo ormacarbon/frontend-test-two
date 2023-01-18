@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const BoxInput = styled.div`
   position: relative;
-  width: 100%;
   height: 2.5rem;
 
   display: flex;
@@ -49,4 +48,24 @@ export const Line = styled.div`
 
   background-color: #4158d0;
   transform: scaleX(0);
+`;
+
+export const InputContainer = styled.div`
+  margin: 1rem 0;
+  padding: 0 1rem;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 2.875rem;
+  border: 0;
+  border-radius: 8px;
+
+  transition: 0.3s;
+
+  &:hover {
+    background: #f7f7f7;
+  }
 `;

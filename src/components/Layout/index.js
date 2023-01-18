@@ -18,7 +18,11 @@ function Layout({ title, children }) {
           <Flex fullWidth={true} fullHeight={true} gap="0">
             <TitleContainer>
               <h1>{title}</h1>
-              <Link href="/scene/new">+</Link>
+              {title === "Home" ? (
+                <Link href="/scene/new">+</Link>
+              ) : (
+                <Link href="/">@</Link>
+              )}
             </TitleContainer>
             {children}
           </Flex>

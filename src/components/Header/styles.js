@@ -10,18 +10,13 @@ export const Container = styled.div`
   justify-content: space-around;
 
   background: ${(props) => props.theme.colors.primary};
-  border-bottom: 2px solid ${(props) => props.theme.colors.border};
+  border-bottom: 1px solid ${(props) => props.theme.colors.secondary};
 `;
 
 export const NavLinkContainer = styled.div`
   a {
-    text-transform: uppercase;
     transition: 0.3s;
 
     color: ${(props) => props.theme.colors.text};
-
-    &:hover {
-      color: #000;
-    }
   }
 `;

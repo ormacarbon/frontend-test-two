@@ -1,34 +1,54 @@
-import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/router";
-import { withSSRAuth } from "../../shared/withSSRAuth";
 
+import { withSSRAuth } from "../../shared/withSSRAuth";
 import { useScene } from "../../hooks/useScene";
 
+import Input from "../../components/Form/Input";
 import Layout from "../../components/Layout";
+import { Button } from "../../components/Login/styles";
+import { InputContainer } from "../../components/Form/styles";
 
 function NewScene() {
-  const [valueInputScene, setValueInputScene] = React.useState("");
+  const [nameScene, setNameScene] = React.useState("");
+  const [phoneNumber, setPhoneNumber] = React.useState("");
+
   const { scenes, setScene } = useScene();
   const router = useRouter();
 
   const addItemList = () => {
-    setScene([...scenes, valueInputScene]);
+    if (scenes === "" && phoneNumber === "") alert("Preencha os campos");
+    // if (phoneNumber.length !==) alert("Preencha os campos");
+
+    setScene([...scenes, nameScene]);
     router.push("/");
+    return;
   };
 
   return (
-    <Layout>
-      <input
-        label="Nome da cena"
-        id="name"
-        type="text"
-        value={valueInputScene}
-        onChange={({ target }) => setValueInputScene(target.value)}
-        required
-      />
-      <button onClick={addItemList}>Salvar</button>
-      <Link href="/">Voltar</Link>
+    <Layout title="Create scene">
+      <InputContainer>
+        <Input
+          label="Name Scene"
+          id="name"
+          type="text"
+          value={nameScene}
+          onChange={({ target }) => setNameScene(target.value)}
+          required
+        />
+      </InputContainer>
+      <InputContainer>
+        <Input
+          label="DDD + Phone Number"
+          id="phoneNumber"
+          type="text"
+          value={phoneNumber}
+          onChange={({ target }) => setPhoneNumber(target.value)}
+          required
+        />
+      </InputContainer>
+
+      <Button onClick={addItemList}>Salvar</Button>
     </Layout>
   );
 }

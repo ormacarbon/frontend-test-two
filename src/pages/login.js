@@ -6,10 +6,10 @@ import { withSSRGuest } from "../shared/withSSRGuest";
 
 import {
   FormContainer,
-  InputContainer,
   Button,
   FormPageContainer,
 } from "../components/Login/styles";
+import { InputContainer } from "../components/Form/styles";
 import Logo from "../components/Login/Logo";
 import Input from "../components/Form/Input";
 
