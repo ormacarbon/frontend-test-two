@@ -7,16 +7,13 @@ export default function IssueTypeDropdown(props) {
   const [margin, setMargin] = useState();
   const [openDropdrown, setOpenDropdown] = useState(false);
 
-  const state = useCallback(
-    (state) => {
-      return state === "open"
-        ? "Abertas"
-        : state === "closed"
-        ? "Fechadas"
-        : "Todas";
-    },
-    [state]
-  );
+  const state = useCallback((state) => {
+    return state === "open"
+      ? "Abertas"
+      : state === "closed"
+      ? "Fechadas"
+      : "Todas";
+  });
   const options = ["all", "open", "closed"];
 
   useEffect(() => {
