@@ -21,13 +21,10 @@ function Login() {
 
   const authUser = async (e) => {
     e.preventDefault();
-    const session = await axios.post(
-      "http://localhost:3000/api/auth/authenticate",
-      {
-        name,
-        password,
-      }
-    );
+    const session = await axios.post("/api/auth/authenticate", {
+      name,
+      password,
+    });
 
     if (!session.data.token) {
       return setError("User invalid");
