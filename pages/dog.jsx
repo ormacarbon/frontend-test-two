@@ -5,7 +5,7 @@ import { getDogFact, getDogImage } from "../services/api";
 import { ContainerCenter } from '../styles/DogStyles';
 
 function Dog() {
-  const [fact, setFact] = useState();
+  // const [fact, setFact] = useState();
   const [images, setImages] = useState();
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -20,16 +20,11 @@ function Dog() {
   async function getFactAndImages() {
     // const dataFact = await getDogFact();
     const dataImages = await getDogImage();
-    console.log(dataImages)
 
     /* const resultFact = [{
       title: dataFact.data[0].type,
       text: dataFact.data[0].attributes.body,
     }] */
-    /* const resultImage = {
-      title: dataImages.message,
-
-    } */
     setImages(dataImages.message);
     // setFact(resultFact);
   }
@@ -50,7 +45,6 @@ function Dog() {
       ))}
       </Carousel>
     </ContainerCenter>
-    {/* <DogCard { ...fact}/> */}
     {/* <Container>
       {fact.map(box => (
         <Box key={box.id} bgColor={box.bgColor}>
@@ -59,23 +53,6 @@ function Dog() {
         </Box>
       ))}
     </Container> */}
-    {/* <Gallery>
-      {images.map((url, index) => (
-        <ImageComponent key={ index } { ...{url} } />
-        ))}
-		</Gallery> */}
-    {/* <Content>
-        <CarouselComponent>
-          <div>1</div>
-          <div />
-          <div />
-          <div />
-          <div />
-        </CarouselComponent>
-      </Content> */}
-    {/* {images.map((url, index) => (
-      <DogImageCard key={ index } { ...{url} } />
-    ))} */}
     </>
   );
 }
