@@ -48,3 +48,54 @@ export const Image = styled.div`
       background-size: cover;
     `}
 `
+
+export const PaginateContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 30px;
+
+  .pagination {
+    display: flex;
+    list-style-type: none;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .pagination li.selected,
+  li.selected:hover {
+    background-color: #ed1d24 !important;
+    color: white;
+    border: 1px solid #ed1d24;
+    a {
+      border: none;
+      color: white;
+    }
+  }
+
+  .pagination li:hover:not(.disabled) {
+    background-color: #ddd;
+  }
+
+  .previous-link {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .next-link {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .disabled a {
+    color: #a1a1a1;
+    cursor: default;
+  }
+`
