@@ -4,6 +4,7 @@ import GlobalStyle from '../styles/global';
 
 import dark from '../styles/themes/dark';
 import light from '../styles/themes/light';
+
 import usePersistedState from '../utils/usePersistedState';
 
 function MyApp({ Component, pageProps }) {

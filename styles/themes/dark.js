@@ -7,6 +7,9 @@ export default {
 
     text: '#F5F5F5',
     text_overlay: '#F5F5F5',
+    overlay: 'rgba(0,0,0,0.9)',
+
+    caption_400: '#a1a1aa',
   },
 
   font_family: {
