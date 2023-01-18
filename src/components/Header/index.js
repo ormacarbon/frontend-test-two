@@ -1,7 +1,16 @@
-import React from "react";
+import NavLink from "./NavLink";
+
+import { Container } from "./styles";
 
 function Header() {
-  return <div>Header</div>;
+  return (
+    <Container>
+      <ul>
+        <NavLink title="Home" path="/" />
+        <NavLink title="Cenas" path="/cenas" />
+      </ul>
+    </Container>
+  );
 }
 
 export default Header;
