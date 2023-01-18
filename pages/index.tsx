@@ -1,17 +1,11 @@
-import React, { useMemo } from 'react';
-import useRadio from '../hooks/useRadio';
+import React, { useContext } from 'react';
 import { Station as StationType } from 'radio-browser-api';
 import { CircularProgress } from '@mui/material';
 import Station from '../components/Station';
+import RadioContext, { RadioContextType } from '../contexts/Radio/Radio.context';
 
 function Home() {
-  const { loading, stations } = useRadio();
-
-  const list = useMemo(() => {
-    if(loading)
-      return [];
-    return stations;
-  }, [loading]);
+  const { loading, stations } = useContext<RadioContextType>(RadioContext);
 
   function renderLoading() {
     return loading
@@ -30,7 +24,7 @@ function Home() {
     return !loading
       ? (
         <ol className="flex flex-col w-full overflow-hidden">
-          { list.map(renderStation) }
+          { stations.map(renderStation) }
         </ol>
       ) : <></>;
   }

@@ -2,11 +2,11 @@ import { AppBar, IconButton, Pagination, Toolbar } from '@mui/material';
 import { IconHome2, IconMoon, IconStar, IconSun } from '@tabler/icons';
 import React, { useContext } from 'react';
 import { ThemeContextType, ThemeContext } from '../../contexts/Theme/Theme.context';
-import PaginationContext, { PaginationContextType } from '../../contexts/Pagination/Pagination.context';
+import RadioContext, { RadioContextType } from '../../contexts/Radio/Radio.context';
 
 function Navbar() {
   const themeContext = useContext<ThemeContextType>(ThemeContext);
-  const pageContext = useContext<PaginationContextType>(PaginationContext);
+  const pageContext = useContext<RadioContextType>(RadioContext);
 
   function renderNavDesktop() {
     return <div className="hidden top-4 sticky sm:flex flex-col">
@@ -24,7 +24,7 @@ function Navbar() {
           }
         </IconButton>
       </div>
-      <Pagination count={ 5 }
+      <Pagination count={ 35700/15 }
                   page={ pageContext.page }
                   onChange={ pageContext.setPage }
                   className="my-6 mx-auto w-min" />
@@ -47,7 +47,7 @@ function Navbar() {
           }
         </IconButton>
       </Toolbar>
-      <Pagination count={ 5 }
+      <Pagination count={ 35700/15 }
                   page={ pageContext.page }
                   onChange={ pageContext.setPage }
                   className="mb-2 mx-auto" />

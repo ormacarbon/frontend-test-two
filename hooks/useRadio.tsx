@@ -1,58 +1,51 @@
 import { RadioBrowserApi, Station } from 'radio-browser-api';
-import { useContext, useEffect, useState } from 'react';
-import PaginationContext, { PaginationContextType } from '../contexts/Pagination/Pagination.context';
-
-const APP_NAME = 'OrmaCarbonChallenge/0.1.0';
+import { useState } from 'react';
+import { APP_USER_AGENT } from '../contexts/Radio/Radio.config';
 
 const useRadio: () => {
   stations: Station[],
   loading: boolean,
-  loadStations: () => void
+  loadStations: (page: number, amount: number) => void,
+  click: (id: string) => void,
+  vote: (id: string) => void
 } = () => {
-  const browser = new RadioBrowserApi(APP_NAME);
-  const { page, amount } = useContext<PaginationContextType>(PaginationContext);
+  const browser = new RadioBrowserApi(APP_USER_AGENT);
 
   const [stations, setStations] = useState<Station[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   let _loading = false;
 
-  useEffect(() => {
-    if(typeof window === 'undefined')
-      return;
-    loadStations();
-  }, []);
-
-  useEffect(() => {
-    loadStations();
-  }, [page]);
-
-  function loadStations() {
+  function loadStations(page: number, amount: number) {
     if(_loading)
       return;
 
     setLoading(_loading = true);
     browser.getAllStations({
-      offset: (page -1) * (amount),
-      limit: (amount),
-      hideBroken: true
+      offset: (page -1) * amount,
+      limit: amount,
+      hideBroken: true,
+      removeDuplicates: true
     }).then(setStations)
       .then(() => _loading = false)
-      .then(setLoading);
+      .then(setLoading)
+      .catch(console.error);
+  }
+
+  function vote(id: string) {
+    browser.voteForStation(id);
+  }
+
+  function click(id: string) {
+    browser.sendStationClick(id);
   }
 
   return {
     stations,
     loading,
-    loadStations
+    loadStations,
+    click,
+    vote
   };
-  
-  function vote(id: string) {
-    browser.voteForStation(id);
-  }
-  
-  function click(id: string) {
-    browser.sendStationClick(id);
-  }
 }
 
 export default useRadio;
