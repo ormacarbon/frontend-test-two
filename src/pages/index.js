@@ -11,6 +11,11 @@ import { Flex } from "../styles/global";
 export default function Home() {
   const { scenes, setScene } = useScene();
 
+  const deleteItemList = (item, id) => {
+    const newScenes = scenes.filter((sceneItem) => sceneItem !== item);
+    setScene([...newScenes]);
+  };
+
   return (
     <Layout title="Home">
       <Ul>

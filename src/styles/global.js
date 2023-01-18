@@ -18,7 +18,8 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const Flex = styled.div`
-  width: ${(props) => (props.fullSpace ? "100%" : "0%")};
+  width: ${(props) => (props.fullWidth ? "100%" : "")};
+  height: ${(props) => (props.fullHeight ? "100%" : "")};
 
   display: flex;
   flex-direction: ${(props) => props.direction || "column"};

@@ -36,6 +36,6 @@ export const Item = styled.li`
 `;
 
 export const Ul = styled.ul`
-  padding: 0.8rem 0;
   width: 100%;
+  height: 100%;
 `;
