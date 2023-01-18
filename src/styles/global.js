@@ -8,6 +8,10 @@ export const GlobalStyle = createGlobalStyle`
         font-family: Arial, Helvetica, sans-serif;
     }
 
+    body{
+        transition: background 0.2 linear;
+        background-color: ${(props) => props.theme.bg};
+    }
 
     html{
         

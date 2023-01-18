@@ -1,8 +1,13 @@
 import { Container } from "./style"
 import { BsSearch } from "react-icons/bs";
 import Router from "next/router";
+import { ThemeContext } from "../../contextx/themeContext";
+import { useContext } from "react";
 
 const FormSearchItem = (props) => {
+
+    const { theme, setTheme } = useContext(ThemeContext);
+
 
     const handleKeyPressInput = (event) => {
         event.preventDefault();
@@ -10,13 +15,13 @@ const FormSearchItem = (props) => {
     }
 
     return (
-        <Container>
+        <Container theme={theme}>
             <div>
                 <h1> {props.label}</h1>
                 <form onSubmit={handleKeyPressInput}>
                     <div >
                         <input
-                            id="input_search_products"
+                            id="input_search_items"
                             type="text"
                             placeholder={props.placeholder}
                         />

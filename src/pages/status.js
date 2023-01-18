@@ -1,3 +1,4 @@
+import axios from "axios";
 import { FormSearchItem } from "../components/formSearchItem";
 import { Header } from "../components/header";
 import { GlobalStyle } from "../styles/global";
@@ -6,10 +7,20 @@ import { GlobalStyle } from "../styles/global";
 
 export default function Status() {
 
+    const handleKeyPressInput = async () => {
 
-    const handleKeyPressInput = (event) => {
-        event.preventDefault();
-        props.handleKeyPressInput()
+        try {
+            const input = document.getElementById("input_search_items")
+
+            const { data } = await axios.get("https://dog.ceo/api/breeds/image/randomFetch!", {},
+                {
+                    headers: {
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                })
+        } catch (error) {
+
+        }
     }
 
 

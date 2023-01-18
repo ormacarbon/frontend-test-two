@@ -9,9 +9,9 @@ export const Container = styled.div`
     div{
         
         h1{
-        color: black;
-        font-size: 36px;
-        text-align: center;
+            color: ${(props) => props.theme.fontColor};
+            font-size: 36px;
+            text-align: center;
         }
 
         div{
@@ -24,6 +24,8 @@ export const Container = styled.div`
             box-shadow: 1px 1px 3px black;
             align-items: center;
             padding: 0.8rem;
+            color: ${(props) => props.theme.fontColor};
+
 
             input{
                 width: 20rem;
@@ -31,7 +33,18 @@ export const Container = styled.div`
                 padding: 3px;
                 font-size: 14px;
                 outline: none;
-                border: none;                
+                border: none;        
+                background-color: ${(props) => props.theme.bg};
+                color: ${(props) => props.theme.fontColor};
+
+                &::placeholder {
+                    color: ${(props) => props.theme.fontColor};
+                    opacity: 0.6;
+                }
+
+                &:focus{
+                    background-color: ${(props) => props.theme.bg};
+                }
             }
         }
     }

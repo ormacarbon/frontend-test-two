@@ -3,14 +3,24 @@ import styled from "styled-components"
 
 export const Container = styled.header`
     display: flex;
-    background-color: #3FAFBE;
+
+   background-color: ${(props) => props.theme.bgHeader};
+
     height: 4rem;
     width: 100%;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
 
-    ul {
+    svg{
+        font-size: 28px;
+
+        path{
+            color: white;
+        }
+    }
+
+    /* ul {
         display: flex; 
         justify-content: space-between;
         width: 10rem;
@@ -23,6 +33,6 @@ export const Container = styled.header`
                 color: white;
             }
         }
-    }
+    } */
 
 `;

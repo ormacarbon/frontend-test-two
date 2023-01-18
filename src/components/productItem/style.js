@@ -14,10 +14,9 @@ export const Container = styled.div`
     img{
         text-align: center;
         max-width: 10rem;
-        min-width: 10rem;
         max-height: 10rem;
-        min-height: 10rem;
-
+        min-width: 5rem;
+        min-height: 5rem;
     }
 
     div{
@@ -44,6 +43,8 @@ export const Container = styled.div`
                 min-height: 3rem;
                 margin: 0.5rem 0;
                 text-decoration: none;
+                color: ${(props) => props.theme.fontColor};
+
 
                 &:hover{
                     text-decoration: underline;
@@ -52,6 +53,7 @@ export const Container = styled.div`
         }
 
         p{
+            color: ${(props) => props.theme.fontColor};
                 margin-top: 0.8rem;
                 text-align: left;
                 opacity: 0.8;
@@ -65,6 +67,7 @@ export const Container = styled.div`
                 justify-content: center;
 
                 a{                
+                    color: ${(props) => props.theme.fontColor};
                     text-decoration: none;
                     opacity: 0.8;
                 }

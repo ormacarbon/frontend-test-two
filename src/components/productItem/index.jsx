@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { useContext } from "react";
+import { ThemeContext } from "../../contextx/themeContext";
 import { titleCase } from "../../utils/titleCase"
 import { Container } from "./style"
 
@@ -5,11 +8,16 @@ const productImageURL = "https://cosmos.bluesoft.com.br/assets/product-placehold
 
 const ProductItem = (props) => {
 
+    const { theme, setTheme } = useContext(ThemeContext);
+
     return (
-        <Container>
+        <Container theme={theme}>
             <div>
                 <div>
-                    <img src={props.thumbnail ? props.thumbnail : productImageURL} />
+                    <img
+                        alt={`Imagem do produto ${props.name}`}
+                        src={props.thumbnail ? props.thumbnail : productImageURL}
+                    />
                 </div>
                 <div>
                     <a id="product_name" href={`/products/${props.gtin}`} > {titleCase(props.name)} </a>

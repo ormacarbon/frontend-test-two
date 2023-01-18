@@ -1,11 +1,16 @@
+import Link from "next/link"
+import { useContext } from "react";
+import { ThemeContext } from "../../contextx/themeContext";
 import { Container } from "./style"
 
 const defaultThumbnailURL = "https://cosmos.bluesoft.com.br/assets/product-placeholder-ce4926921923d1e9bc66cd0e1493b49b.png"
 
 const PageProduct = (props) => {
 
+    const { theme, setTheme } = useContext(ThemeContext);
+
     return (
-        <Container>
+        <Container theme={theme}>
             <div className="header_product">
                 <h1>{props.data?.description}</h1>
                 <div>
@@ -17,7 +22,12 @@ const PageProduct = (props) => {
                 <p>
                     NCM: {props.data?.ncm.full_description}
                 </p>
+                < Link href="/">
+                    Voltar ao inicio
+                </Link>
             </div>
+
+
         </Container>
     )
 }

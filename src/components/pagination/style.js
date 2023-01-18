@@ -11,7 +11,8 @@ export const Container = styled.div`
 
         li{
             margin: 0 0.4rem;
-            background-color: #2E8CA3;
+          ///  background-color: #2E8CA3;
+          background-color: ${(props) => props.theme.bgHeader};
            /// border: 1px solid #1F6B88;
             border-radius: 10px;
             box-shadow: 1px 1px 2px black;

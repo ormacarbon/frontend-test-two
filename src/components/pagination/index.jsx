@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import { ThemeContext } from '../../contextx/themeContext';
 import { api } from '../../services/api';
 import { Container } from './style';
 
 
 const Pagination = (props) => {
+
+    const { theme, setTheme } = useContext(ThemeContext);
+
 
     const handlePageClick = async (event) => {
 
@@ -15,7 +19,7 @@ const Pagination = (props) => {
     };
 
     return (
-        <Container>
+        <Container theme={theme}>
             <ReactPaginate
                 breakLabel=""
                 className="container_className"

@@ -1,14 +1,18 @@
+import Link from "next/link"
 import { Container } from "./style"
+import { AiFillHome } from "react-icons/ai";
+import { useContext } from "react";
+import { ThemeContext } from "../../contextx/themeContext";
+import { ThemeMode } from "../themeMode";
+
 
 const Header = () => {
+
+    const { theme, setTheme } = useContext(ThemeContext);
+
     return (
-        <Container>
-            <nav>
-                <ul>
-                    <li> <a href="" > Produtos </a></li>
-                    <li> <a href="" > Status </a></li>
-                </ul>
-            </nav>
+        <Container theme={theme}>
+            <ThemeMode />
         </Container>
     )
 }

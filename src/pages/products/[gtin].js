@@ -1,13 +1,18 @@
+import Link from "next/link";
+import { useContext } from "react";
 import { Header } from "../../components/header";
 import { PageProduct } from "../../components/pageProduct";
+import { ThemeContext } from "../../contextx/themeContext";
 import { api } from "../../services/api";
 import { GlobalStyle } from "../../styles/global";
 
 
 export default function Products(props) {
+    const { theme, setTheme } = useContext(ThemeContext);
+
     return (
         <>
-            <GlobalStyle />
+            <GlobalStyle theme={theme} />
             <Header />
             <PageProduct data={props.dataProduct} />
         </>
