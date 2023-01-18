@@ -47,8 +47,8 @@ export default function Header() {
           <nav className="nav-mobile">
             <ListNavMenu theme={currentTheme}>
               <li><Link href="/"> Home</Link></li>
-              <li><Link href="/"> Seasons</Link></li>
-              <li><Link href="/"> Results</Link></li>
+              <li><Link href="/bra.1"> Seasons BRA</Link></li>
+              <li><Link href="/bra.1/2022"> Stadings BRA</Link></li>
             </ListNavMenu>
           </nav>
         </div>
@@ -58,8 +58,8 @@ export default function Header() {
         <nav className="nav-desktop">
           <ListNavMenu menuOpen theme={currentTheme}>
             <li><Link href="/"> Home</Link></li>
-            <li><Link href="/"> Seasons</Link></li>
-            <li><Link href="/"> Results</Link></li>
+            <li><Link href="/bra.1"> Seasons BRA</Link></li>
+            <li><Link href="/bra.1/2022"> Stadings BRA</Link></li>
           </ListNavMenu>
         </nav>
       )}

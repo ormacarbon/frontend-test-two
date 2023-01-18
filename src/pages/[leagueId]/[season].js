@@ -9,17 +9,17 @@ export default function SeasonStading({ standings }) {
       <TableStyled>
         <tr className="statistics">
           <td>Classificação</td>
-          <td>Pontos</td>
           <td>Jogos</td>
-          <td>Vitorias</td>
-          <td>Empates</td>
-          <td>Derrotas</td>
+          <td>P</td>
+          <td>V</td>
+          <td>E</td>
+          <td>D</td>
         </tr>
         {standings.standings.map((team) => (
           <tr className="teams">
             <td>{team.team.displayName}</td>
-            <td>{team.stats[2].value}</td>
             <td>{team.stats[0].value}</td>
+            <td>{team.stats[2].value}</td>
             <td>{team.stats[6].value}</td>
             <td>{team.stats[5].value}</td>
             <td>{team.stats[1].value}</td>

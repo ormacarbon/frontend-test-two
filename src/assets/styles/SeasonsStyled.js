@@ -26,4 +26,15 @@ export const TableStyled = styled.table`
     }
   }
 
+  @media (max-width: 615px) {
+    td {
+      padding: 3px;
+    }
+  }
+  @media (max-width: 550px) {
+    td {
+      padding: 1px;
+    }
+  }
+
 `;
