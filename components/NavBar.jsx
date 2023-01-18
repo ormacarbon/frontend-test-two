@@ -5,7 +5,6 @@ export default function NavBar() {
   return (
     <>
       <PrimaryNav>
-        {/* <Hamburger /> */}
         <Menu>
           <MenuLink href="/" activeStyle>
             Home

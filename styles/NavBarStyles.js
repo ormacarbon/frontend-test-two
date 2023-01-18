@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
+
 export const PrimaryNav = styled.nav`
   z-index: 14;
   height: 50px;
@@ -31,4 +32,7 @@ export const Items = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-width: 1px 1px 4px 1px;
+  border-color: ${({ theme }) => theme.text};
+  border-style: solid;
 `
