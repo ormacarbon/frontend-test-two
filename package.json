@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^13.1.1",
+    "axios": "^1.2.2",
     "next": "13.0.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-paginate": "^8.1.4",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "eslint": "8.29.0",
-    "eslint-config-next": "13.0.6"
+    "eslint": "^8.31.0",
+    "eslint-config-next": "^13.1.2",
+    "eslint-plugin-react": "^7.32.0",
+    "react-icons": "^4.7.1"
   }
 }
