@@ -1,5 +1,6 @@
 import {
   faBars,
+  faChevronDown,
   faDownload,
   faMagnifyingGlass,
   faMoon,
@@ -28,4 +29,8 @@ export function SunIcon() {
 }
 export function SearchIcon() {
   return <FontAwesomeIcon icon={faMagnifyingGlass} />;
+}
+
+export function ChevronDown() {
+  return <FontAwesomeIcon icon={faChevronDown} />;
 }

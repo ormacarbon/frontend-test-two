@@ -4,6 +4,20 @@ export const HomeContainer = styled.div`
   color: ${(props) => props.theme.colors.text};
 `;
 
+export const DropdownContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media (min-width: 1100px) {
+    padding: 0 1.4rem;
+  }
+
+  @media (min-width: 1800px) {
+    padding: 0 2.9rem;
+  }
+`;
+
 export const MainContent = styled.div`
   display: grid;
   grid-template-columns: 45% 45%;

@@ -3,6 +3,7 @@ export default {
 
   colors: {
     background: '#333',
+    background_700: '#404040',
     background_800: '#252525',
 
     text: '#F5F5F5',
