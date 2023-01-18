@@ -6,9 +6,10 @@ import { Card } from '../../components/Card';
 
 import { API_KEY } from '../../services/api';
 
-import { HomeContainer, DropdownContainer, MainContent } from './styles';
+import { PhotoContainer, DropdownContainer, MainContent } from './styles';
 
 import Dropdown from '../../components/Dropdown';
+import SearchBar from '../../components/Form';
 
 export async function getStaticProps() {
   const response = await fetch('https://api.pexels.com/v1/curated', {
@@ -54,9 +55,9 @@ export default function Photos({ photoList }) {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Photos</title>
       </Head>
-      <HomeContainer>
+      <PhotoContainer>
         <DropdownContainer>
           <Dropdown onClick={onClick} toggling={toggling} isOpen={isOpen} />
         </DropdownContainer>
@@ -85,7 +86,7 @@ export default function Photos({ photoList }) {
                 />
               ))}
         </MainContent>
-      </HomeContainer>
+      </PhotoContainer>
     </>
   );
 }

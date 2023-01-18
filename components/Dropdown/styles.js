@@ -6,7 +6,6 @@ export const Main = styled.div`
   color: ${(props) => props.theme.colors.text};
 
   margin-top: 1rem;
-  padding: 0 1rem;
 
   display: flex;
   justify-content: flex-end;

@@ -11,6 +11,7 @@ export default {
     overlay: 'rgba(0,0,0,0.9)',
 
     caption_400: '#a1a1aa',
+    caption_600: '#a1a1aa',
   },
 
   font_family: {

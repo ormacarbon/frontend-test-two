@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { useState } from 'react';
 import useDownloader from 'react-use-downloader';
+import Link from 'next/link';
 import { DownloadIcon } from '../Icons';
 
 import {
@@ -34,18 +34,18 @@ export function Card(props) {
   return (
     <Container>
       <CardBox onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-        <Link href={`/photos/${props.photoId}`}>
+        <Link href={`photos/photo/${props.photoId}`}>
           <Img src={props.photo} alt={props.alt} />
-        </Link>
 
-        {isHovering && (
-          <CardOverlay>
-            <h1>{props.author}</h1>
-            <DownloadBtn onClick={handleDownload}>
-              <DownloadIcon />
-            </DownloadBtn>
-          </CardOverlay>
-        )}
+          {isHovering && (
+            <CardOverlay>
+              <h1>{props.author}</h1>
+              <DownloadBtn onClick={handleDownload}>
+                <DownloadIcon />
+              </DownloadBtn>
+            </CardOverlay>
+          )}
+        </Link>
         <DownloadBtnMobile onClick={handleDownload}>
           <DownloadIcon />
         </DownloadBtnMobile>

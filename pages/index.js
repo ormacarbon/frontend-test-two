@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 
 import {
@@ -12,6 +13,10 @@ import {
 export default function Home() {
   return (
     <Container>
+      <Head>
+        <title>Home</title>
+      </Head>
+
       <TitleContainer>
         <Title>The best stock photos for yout to download.</Title>
         <Description>Royalty free images shared by creators.</Description>
