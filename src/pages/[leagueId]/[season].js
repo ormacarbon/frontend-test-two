@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import APIService from '../../services/APIService';
-import { Section } from './styles';
-import { TableStyled } from './stylesSeason';
+import { Section } from '../../assets/styles/LeagueStyled';
+import { TableStyled } from '../../assets/styles/SeasonsStyled';
 
 export default function SeasonStading({ standings }) {
   return (

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import stadium from '../../assets/imgs/stadium.jpg';
+import stadium from '../imgs/stadium.jpg';
 
 export const Container = styled.div`
   display: flex;

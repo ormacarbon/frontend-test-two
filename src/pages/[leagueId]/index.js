@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import APIService from '../../services/APIService';
-import { Section, ContainerLogoLeague, ContainerSeasons } from './styles';
+import { Section, ContainerLogoLeague, ContainerSeasons } from '../../assets/styles/LeagueStyled';
 
 export default function LeagueDetails({ detailsLeagueSelected, seasonsLeague }) {
   const { currentTheme, theme } = useContext(ThemeContext);

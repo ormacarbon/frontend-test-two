@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Carousel from 'react-elastic-carousel';
 import { ThemeContext } from '../contexts/ThemeContext';
 import APIService from '../services/APIService';
-import { Main, Container } from '../components/HomeStyled';
+import { Main, Container } from '../assets/styles/HomeStyled';
 import WellCome from '../components/Wellcome';
 import useWidth from '../hooks/useWidth';
 

@@ -7,7 +7,7 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import useWidth from '../../hooks/useWidth';
 import {
   StyledHeader, ListNavMenu, ContainerLogo, MenuMobile,
-} from './styles';
+} from '../../assets/styles/HeaderStyled';
 
 export default function Header() {
   const { handleToggleTheme, theme, currentTheme } = useContext(ThemeContext);

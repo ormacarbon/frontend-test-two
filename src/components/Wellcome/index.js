@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-one-expression-per-line */
-import { Container } from './styles';
+import { Container } from '../../assets/styles/WellcomeStyled';
 
 export default function WellCome() {
   return (
