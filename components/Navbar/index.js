@@ -54,8 +54,8 @@ export default function Navbar(props) {
           <Link href={'/photos'} onClick={onClick}>
             Photos
           </Link>
-          <Link href={'/about'} onClick={onClick}>
-            About
+          <Link href={'/search'} onClick={onClick}>
+            Search
           </Link>
         </NavContent>
 

@@ -36,16 +36,16 @@ export function Card(props) {
       <CardBox onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
         <Link href={`/photos/${props.photoId}`}>
           <Img src={props.photo} alt={props.alt} />
-
-          {isHovering && (
-            <CardOverlay>
-              <h1>{props.author}</h1>
-              <DownloadBtn onClick={handleDownload}>
-                <DownloadIcon />
-              </DownloadBtn>
-            </CardOverlay>
-          )}
         </Link>
+
+        {isHovering && (
+          <CardOverlay>
+            <h1>{props.author}</h1>
+            <DownloadBtn onClick={handleDownload}>
+              <DownloadIcon />
+            </DownloadBtn>
+          </CardOverlay>
+        )}
         <DownloadBtnMobile onClick={handleDownload}>
           <DownloadIcon />
         </DownloadBtnMobile>

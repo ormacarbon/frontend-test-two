@@ -1,7 +1,9 @@
+import SearchBar from '../../components/Form';
+
 export default function Search() {
   return (
     <div>
-      <h1>search</h1>
+      <SearchBar />
     </div>
   );
 }

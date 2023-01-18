@@ -1,6 +1,7 @@
 import {
   faBars,
   faDownload,
+  faMagnifyingGlass,
   faMoon,
   faSun,
   faXmark,
@@ -24,4 +25,7 @@ export function MoonIcon() {
 
 export function SunIcon() {
   return <FontAwesomeIcon icon={faSun} />;
+}
+export function SearchIcon() {
+  return <FontAwesomeIcon icon={faMagnifyingGlass} />;
 }
