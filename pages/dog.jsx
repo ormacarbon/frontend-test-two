@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Carousel from "react-elastic-carousel";
 import DogImageCard from '../components/DogImageCard';
 import { getDogFact, getDogImage } from "../services/api";
-import { ContainerCenter } from '../styles/DogStyles';
+import { Main, ContainerCarousel, Container, Box, BoxText, BoxTitle } from '../styles/DogStyles';
 
 function Dog() {
-  // const [fact, setFact] = useState();
+  const [fact, setFact] = useState();
   const [images, setImages] = useState();
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -18,15 +18,16 @@ function Dog() {
   }, []);
 
   async function getFactAndImages() {
-    // const dataFact = await getDogFact();
+    const dataFact = await getDogFact();
     const dataImages = await getDogImage();
 
-    /* const resultFact = [{
+    const resultFact = [{
       title: dataFact.data[0].type,
-      text: dataFact.data[0].attributes.body,
-    }] */
+      text: "dataFact.data[0].attributes.body,aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa"
+      /* text: dataFact.data[0].attributes.body, */
+    }]
     setImages(dataImages.message);
-    // setFact(resultFact);
+    setFact(resultFact);
   }
   
   if (images === undefined) {
@@ -38,21 +39,23 @@ function Dog() {
   }
   return (
     <>
-    <ContainerCenter>
-      <Carousel breakPoints={breakPoints}>
-      {images.map((url, index) => (
-        <DogImageCard key={ index } { ...{url} } />
-      ))}
-      </Carousel>
-    </ContainerCenter>
-    {/* <Container>
-      {fact.map(box => (
-        <Box key={box.id} bgColor={box.bgColor}>
-          <BoxTitle>{box.title}</BoxTitle>
-          <BoxText>{box.text}</BoxText>
-        </Box>
-      ))}
-    </Container> */}
+    <Main>
+      <Container>
+        {fact.map(box => (
+          <Box key={box.id} bgColor={box.bgColor}>
+            <BoxTitle>{box.title}</BoxTitle>
+            <BoxText>{box.text}</BoxText>
+          </Box>
+        ))}
+      </Container>
+      <ContainerCarousel>
+        <Carousel breakPoints={breakPoints}>
+        {images.map((url, index) => (
+          <DogImageCard key={ index } { ...{url} } />
+        ))}
+        </Carousel>
+      </ContainerCarousel>
+    </Main>
     </>
   );
 }
