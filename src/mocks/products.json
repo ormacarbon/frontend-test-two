@@ -1,0 +1,1115 @@
+{
+    "products": [
+        {
+            "description": "AÇUCAR CRISTAL 2KG",
+            "gtin": 7896576200219,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:20:54.000-03:00",
+            "updated_at": "2022-08-04T13:24:14.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896576200219,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/08203CF8014F0597E416ABF0D9508E71.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 5KG",
+            "gtin": 7898945258012,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:23:29.000-03:00",
+            "updated_at": "2021-07-11T10:18:59.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898945258012,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/7B3E1437233F4D2D0A96A7A38634CB01.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 1KG",
+            "gtin": 7898994111931,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:28:52.000-03:00",
+            "updated_at": "2021-12-10T09:18:20.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898994111931,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/E6E75AC8F64F649D3F5C11B3DE75314B.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 2KG",
+            "gtin": 7898926037025,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:29:11.000-03:00",
+            "updated_at": "2020-07-17T02:44:42.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898926037025,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/346AF44333E690A6D9A0A0BAC290CDA9.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 5KG",
+            "gtin": 7898355600067,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:29:35.000-03:00",
+            "updated_at": "2019-10-12T11:07:51.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898355600067,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/7A36EFA4C1C59AE4F61C0D441743CAC6.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 1KG",
+            "gtin": 7898902202034,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:22:33.000-03:00",
+            "updated_at": "2021-10-04T03:59:44.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898902202034,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/E2BF6A3B3C33F255952634C1BD803E16.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 5KG",
+            "gtin": 7898355600203,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:17:02.000-03:00",
+            "updated_at": "2020-10-12T01:42:33.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898355600203,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/7A36EFA4C1C59AE461A4F91E3C2E0E27.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 2KG",
+            "gtin": 7898994105350,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:21:12.000-03:00",
+            "updated_at": "2019-12-13T02:36:07.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898994105350,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/E6E75AC8F64F649D7260A87239488320.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 5KG",
+            "gtin": 7898902202010,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:25:45.000-03:00",
+            "updated_at": "2019-12-12T20:21:13.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898902202010,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/E2BF6A3B3C33F2554FF9049F31D76FD6.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 5KG",
+            "gtin": 7898994105367,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:25:51.000-03:00",
+            "updated_at": "2019-12-11T11:43:07.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898994105367,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/E6E75AC8F64F649DF86DFC0619A73635.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 1KG",
+            "gtin": 7898938738033,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:31:45.000-03:00",
+            "updated_at": "2022-08-04T13:24:22.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898938738033,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/D07F471A796B2425AFC16DB86579D594.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "AÇUCAR CRISTAL 5KG",
+            "gtin": 7898352350019,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2016-04-06T01:33:28.000-03:00",
+            "updated_at": "2022-10-07T12:34:34.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898352350019,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/A1FDC6C2E5DA5B8B096AED054D5C097B.png",
+            "ncm": {
+                "code": "17011100",
+                "description": "De cana",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido - Açúcares em bruto, sem adição de aromatizantes ou de corantes: - De cana",
+                "ex": null
+            }
+        },
+        {
+            "description": "BANANA PASSA SEM ACUCAR",
+            "gtin": 7896241608159,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2023-01-13T04:22:06.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896241608159,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/FC80E65DB6404EF45F98FBDFC5F9ECEF.png",
+            "ncm": {
+                "code": "20079990",
+                "description": "Outros",
+                "full_description": "Preparações de produtos hortícolas, de frutas ou de outras partes de plantas - Doces, geleias, marmelades, purês e pastas de fruta, obtidos por cozimento, mesmo com adição de açúcar ou de outros edulcorantes. - Outros: - Outros - Outros",
+                "ex": null
+            }
+        },
+        {
+            "description": "BANANADA NATURAL S ACUCAR",
+            "gtin": 7898379440083,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 1,
+            "gross_weight": 1,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2021-05-22T17:50:54.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898379440083,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/156D76A9D4EEE4067DBCB6728D96D8B6.png",
+            "ncm": {
+                "code": "20079910",
+                "description": "Geleias e marmelades",
+                "full_description": "Preparações de produtos hortícolas, de frutas ou de outras partes de plantas - Doces, geleias, marmelades, purês e pastas de fruta, obtidos por cozimento, mesmo com adição de açúcar ou de outros edulcorantes. - Outros: - Outros - Geleias e marmelades",
+                "ex": null
+            }
+        },
+        {
+            "description": "PAO YANTHIA ACUCAR",
+            "gtin": 7898394491930,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 1,
+            "gross_weight": 1,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2022-07-06T15:11:37.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898394491930,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/BF3994B432DC6D3BC14460D5A6E829A3.png",
+            "ncm": {
+                "code": "19059090",
+                "description": "Outros",
+                "full_description": "Preparações à base de cereais, farinhas, amidos, féculas ou de leite; produtos de pastelaria - Produtos de padaria, pastelaria ou da indústria de bolachas e biscoitos, mesmo adicionados de cacau; hóstias, cápsulas vazias para medicamentos, obreias, pastas secas de farinha, amido ou fécula, em folhas, e produtos semelhantes -  Outros - Outros",
+                "ex": null
+            }
+        },
+        {
+            "description": "BEIJINHO PRAZERES DO ACÚCAR",
+            "gtin": 7898015620763,
+            "thumbnail": "https://cdn-cosmos.bluesoft.com.br/products/7898015620763",
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2023-01-14T00:39:02.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898015620763,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/B5A57175510DCC2A4792A5DFE17D9584.png",
+            "ncm": {
+                "code": "20079990",
+                "description": "Outros",
+                "full_description": "Preparações de produtos hortícolas, de frutas ou de outras partes de plantas - Doces, geleias, marmelades, purês e pastas de fruta, obtidos por cozimento, mesmo com adição de açúcar ou de outros edulcorantes. - Outros: - Outros - Outros",
+                "ex": null
+            }
+        },
+        {
+            "description": "BALA BANANA S/ACUCAR",
+            "gtin": 7898388838512,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2020-12-20T11:05:10.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898388838512,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/50B2F04A54744CDB1C58273E48C4BAC2.png",
+            "ncm": {
+                "code": "17049020",
+                "description": "Caramelos, confeitos, dropes, pastilhas, e produtos semelhantes",
+                "full_description": "Açúcares e produtos de confeitaria - Produtos de confeitaria, sem cacau (incluído o chocolate branco) - Outros - Caramelos, confeitos, dropes, pastilhas, e produtos semelhantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "CANGALHA BAEPENDI S/ACUCAR",
+            "gtin": 7896268101046,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2023-01-13T04:14:03.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896268101046,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/B5A559873A0C6A98905FC29639F44848.png",
+            "ncm": {
+                "code": "19054000",
+                "description": "Torradas (tostas), pão torrado e produtos semelhantes torrados",
+                "full_description": "Preparações à base de cereais, farinhas, amidos, féculas ou de leite; produtos de pastelaria - Produtos de padaria, pastelaria ou da indústria de bolachas e biscoitos, mesmo adicionados de cacau; hóstias, cápsulas vazias para medicamentos, obreias, pastas secas de farinha, amido ou fécula, em folhas, e produtos semelhantes. - Torradas (tostas), pão torrado e produtos semelhantes torrados",
+                "ex": null
+            },
+            "cest": {
+                "id": 2099,
+                "code": "1705900",
+                "description": "Torradas, pão torrado e produtos semelhantes torrados",
+                "parent_id": 1671
+            }
+        },
+        {
+            "description": "PANETTONE ESCK S/ACUCAR",
+            "gtin": 7898388839250,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2021-03-03T05:10:40.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898388839250,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/50B2F04A54744CDBC9A9768E35834BE6.png",
+            "ncm": {
+                "code": "19052010",
+                "description": "Panetone",
+                "full_description": "Preparações à base de cereais, farinhas, amidos, féculas ou de leite; produtos de pastelaria - Produtos de padaria, pastelaria ou da indústria de bolachas e biscoitos, mesmo adicionados de cacau; hóstias, cápsulas vazias para medicamentos, obreias, pastas secas de farinha, amido ou fécula, em folhas, e produtos semelhantes - Pão de especiarias - Panetone",
+                "ex": null
+            },
+            "cest": {
+                "id": 2091,
+                "code": "1705200",
+                "description": "Panetones",
+                "parent_id": 1671
+            }
+        },
+        {
+            "description": "SEQUILHO ESCK S/ACUCAR",
+            "gtin": 7898388839625,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2021-03-13T06:05:06.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898388839625,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/50B2F04A54744CDB1843471BD2CF7D92.png",
+            "ncm": {
+                "code": "19053100",
+                "description": "Bolachas e biscoitos, adicionados de edulcorantes",
+                "full_description": "Preparações à base de cereais, farinhas, amidos, féculas ou de leite; produtos de pastelaria - Produtos de padaria, pastelaria ou da indústria de bolachas e biscoitos, mesmo adicionados de cacau; hóstias, cápsulas vazias para medicamentos, obreias, pastas secas de farinha, amido ou fécula, em folhas, e produtos semelhantes. - Bolachas e biscoitos, adicionados de edulcorantes; waffles e wafers: - Bolachas e biscoitos, adicionados de edulcorantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "CONJUNTO CAFE/ACUCAR",
+            "gtin": 7898121652337,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": 0,
+            "gross_weight": 0,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2022-12-22T10:51:46.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898121652337,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/2789DA21C43D3FB158D777338F73C486.png",
+            "ncm": {
+                "code": "39241000",
+                "description": "Serviços de mesa e outros utensílios de mesa ou de cozinha",
+                "full_description": "Plásticos e suas obras - Serviços de mesa, artigos de cozinha, outros artigos de uso doméstico e artigos de higiene ou de toucador, de plástico. - Serviços de mesa e outros utensílios de mesa ou de cozinha",
+                "ex": null
+            }
+        },
+        {
+            "description": "ACUCAR MASCAVO NUTRILEVIS",
+            "gtin": 7898335120875,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2021-11-19T10:16:22.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7898335120875,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/DFCC21E33982FE5BA4E3E9042E1DF0EF.png",
+            "brand": {
+                "name": "NUTRILEVIS",
+                "picture": "/assets/brand-placeholder-7080174fbd24025783105a607811edad.png"
+            },
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17019900",
+                "description": "Outros",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Outros: - Outros",
+                "ex": null
+            },
+            "cest": {
+                "id": 2154,
+                "code": "1710300",
+                "description": "Outros tipos de açúcar, em embalagens de conteúdo inferior ou igual a 2 kg, exceto as embalagens contendo envelopes individualizados (sachês) de conteúdo inferior ou igual a 10 g",
+                "parent_id": 1671
+            }
+        },
+        {
+            "description": "ACUCAR BRETZKE COLOR.",
+            "gtin": 7896072001013,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2015-01-14T22:00:00.000-02:00",
+            "updated_at": "2021-02-11T13:43:57.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896072001013,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/19EEEBBB3169A0543A5D65A66C7E624E.png",
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17019100",
+                "description": "Adicionados de aromatizantes ou de corantes",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Outros: - Adicionados de aromatizantes ou de corantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "ACUCAR BRETZKE BAUNILHA",
+            "gtin": 7896072001044,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2015-01-14T22:00:00.000-02:00",
+            "updated_at": "2022-12-14T17:19:47.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896072001044,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/19EEEBBB3169A0541DEE67799787646A.png",
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17011300",
+                "description": "Açúcar de cana mencionado na Nota de subposição 2 do presente Capítulo",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Açúcares brutos sem adição de aromatizantes ou de corantes: - Açúcar de cana mencionado na Nota de subposição 2 do presente Capítulo",
+                "ex": null
+            }
+        },
+        {
+            "description": "ACUCAR BRETZKE COLOR.AMARELO",
+            "gtin": 7896072002010,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2015-01-14T22:00:00.000-02:00",
+            "updated_at": "2020-10-14T22:06:14.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896072002010,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/19EEEBBB3169A054522F5DBB685D4F7A.png",
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17019100",
+                "description": "Adicionados de aromatizantes ou de corantes",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Outros: - Adicionados de aromatizantes ou de corantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "ACUCAR BRETZKE COLOR.AZUL",
+            "gtin": 7896072002027,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2015-01-14T22:00:00.000-02:00",
+            "updated_at": "2021-10-04T12:46:28.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896072002027,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/19EEEBBB3169A0549E15844811E6A98C.png",
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17019100",
+                "description": "Adicionados de aromatizantes ou de corantes",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Outros: - Adicionados de aromatizantes ou de corantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "ACUCAR BRETZKE COLOR.ROSA",
+            "gtin": 7896072002058,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2015-01-14T22:00:00.000-02:00",
+            "updated_at": "2021-06-18T04:02:44.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896072002058,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/19EEEBBB3169A054CDFB29923D41AF0B.png",
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17019100",
+                "description": "Adicionados de aromatizantes ou de corantes",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Outros: - Adicionados de aromatizantes ou de corantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "ACUCAR BRETZKE COLOR.VERDE",
+            "gtin": 7896072002065,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2015-01-14T22:00:00.000-02:00",
+            "updated_at": "2021-10-10T00:28:28.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896072002065,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/19EEEBBB3169A0545B290E914696DEFB.png",
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17019100",
+                "description": "Adicionados de aromatizantes ou de corantes",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Outros: - Adicionados de aromatizantes ou de corantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "ACUCAR BRETZKE COLOR.VERMELHO",
+            "gtin": 7896072002072,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2015-01-14T22:00:00.000-02:00",
+            "updated_at": "2021-10-08T04:25:32.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896072002072,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/19EEEBBB3169A0547F94E1B16089FA2F.png",
+            "gpc": {
+                "code": "10000043",
+                "description": "Açúcar / Substitutos do Açúcar (Não perecível)"
+            },
+            "ncm": {
+                "code": "17019100",
+                "description": "Adicionados de aromatizantes ou de corantes",
+                "full_description": "Açúcares e produtos de confeitaria - Açúcares de cana ou de beterraba e sacarose quimicamente pura, no estado sólido. - Outros: - Adicionados de aromatizantes ou de corantes",
+                "ex": null
+            }
+        },
+        {
+            "description": "HALAWA ZEENNY S/ACUCAR",
+            "gtin": 7896111087053,
+            "width": 0.0,
+            "height": 0.0,
+            "length": 0.0,
+            "net_weight": null,
+            "gross_weight": null,
+            "created_at": "2014-04-24T11:07:34.000-03:00",
+            "updated_at": "2023-01-14T00:45:29.000-03:00",
+            "release_date": null,
+            "price": null,
+            "avg_price": null,
+            "max_price": 0.0,
+            "min_price": 0.0,
+            "gtins": [
+                {
+                    "gtin": 7896111087053,
+                    "commercial_unit": {
+                        "type_packaging": "Unidade",
+                        "quantity_packaging": 1,
+                        "ballast": null,
+                        "layer": null
+                    }
+                }
+            ],
+            "origin": "COSMOS",
+            "barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/35BD49074675BF4F172A08DF1BDB4125.png",
+            "ncm": {
+                "code": "20079990",
+                "description": "Outros",
+                "full_description": "Preparações de produtos hortícolas, de frutas ou de outras partes de plantas - Doces, geleias, marmelades, purês e pastas de fruta, obtidos por cozimento, mesmo com adição de açúcar ou de outros edulcorantes. - Outros: - Outros - Outros",
+                "ex": null
+            }
+        }
+    ],
+    "current_page": "2",
+    "per_page": 30,
+    "total_pages": 222,
+    "total_count": 6657,
+    "next_page": "https://api.cosmos.bluesoft.com.br/products?page=3&query=a%C3%A7ucar",
+    "previous_page": "https://api.cosmos.bluesoft.com.br/products?page=1&query=a%C3%A7ucar"
+}
