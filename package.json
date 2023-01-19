@@ -9,12 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "embla-carousel-react": "^7.0.5",
     "next": "13.0.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-elastic-carousel": "^0.11.5",
+    "react-icons": "^4.7.1",
+    "react-progressive-bg-image": "^3.0.0",
+    "react-router-dom": "^6.6.2",
+    "react-styled-carousel": "^0.5.1",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
     "eslint": "8.29.0",
-    "eslint-config-next": "13.0.6"
+    "eslint-config-next": "13.0.6",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4"
   }
 }
