@@ -1,8 +1,10 @@
+import Layout from "../components/Layout";
+import Main from "./main";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  )
+    <Layout>
+      <Main />
+    </Layout>
+  );
 }
