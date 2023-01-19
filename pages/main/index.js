@@ -13,6 +13,8 @@ export const MainStyles = styled.div`
 const StyledLink = styled(Link)`
   color: blue;
   text-decoration: none;
+  font-weight: 400;
+  font-size: 48px;
 
   &:hover {
     text-decoration: underline;

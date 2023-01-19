@@ -18,8 +18,8 @@ export default function Layout(props) {
     parseCookies("theme").theme || "LightTheme"
   );
   const isDarkTheme = theme === "DarkTheme";
-
   const router = useRouter();
+
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
       <div>
