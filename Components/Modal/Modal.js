@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Api from "../../Controllers/Api";
 
-function Pokemon({ modal, setLoading }) {
+function Modal({ modal, setLoading }) {
   const [info, setInfo] = useState([]);
   const [modalClose, setModalClose] = useState("");
 
@@ -89,4 +89,4 @@ function Pokemon({ modal, setLoading }) {
   }
 }
 
-export default Pokemon;
+export default Modal;

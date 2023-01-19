@@ -1,8 +1,21 @@
+/*  ITEMS CSS PARA LOCALIZAÇÃO RAPIDA:
+**  GENERIC CONTENT
+**  LOADING
+**  CARD
+**  PAGINATION
+**  MODAL
+**  SEARCH
+**  SOCIAL LINKS
+**  DARK MODE
+*/
+
 :root {
   --color-primary: #0ea8e3;
   --color-secondary: #034159;
 }
 
+/*#region @===GENERIC CONTENT===@ */
+/*RESET*/
 html,
 body,
 #__next,
@@ -14,12 +27,54 @@ body,
   top: 0;
 }
 
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 120px;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 0;
+  }
+}
+
+.d-none {
+  display: none !important;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-3 {
+  gap: 10px;
+}
+
+p,
+span,
+label,
+strong {
+  font-size: 1rem;
+  margin: 0;
+}
+
 [disabled] {
   cursor: default !important;
   opacity: 0.5 !important;
 }
+/*#endregion @===GENERIC CONTENT===@ */
 
-/* @===LOADING START===@ */
+/*#region @===LOADING===@ */
 .loading {
   display: flex;
   justify-content: center;
@@ -39,21 +94,9 @@ body,
   position: fixed;
   top: 30%;
 }
-/* @===LOADING END===@ */
+/*#endregion @===LOADING END===@ */
 
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 120px;
-}
-
-@media screen and (max-width: 500px) {
-  .container {
-    padding: 0;
-  }
-}
-
-/* @===CARD START===@ */
+/*#region @===CARD===@ */
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -75,15 +118,14 @@ body,
 }
 
 .card-list:hover > :not(:hover) {
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
-.card,
-.modal-content {
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 0;
+  padding: 40px 0;
   margin: 10px;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -92,9 +134,28 @@ body,
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: 0.2s;
-  cursor: pointer !important;
   max-width: 446px;
   width: 100%;
+  gap: 8px;
+}
+
+.btn-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 60px;
+  width: 100%;
+  background-color: var(--color-primary);
+  border: 0;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.4s;
+  color: #fff;
+}
+
+.height-card {
+  height: 28px !important;
 }
 
 .not-pokemon {
@@ -111,9 +172,9 @@ body,
   opacity: initial;
 }
 
-/* @===CARD END===@ */
+/*#endregion @===CARD END===@ */
 
-/* @===PAGINATION===@ */
+/*#region @===PAGINATION===@ */
 .pagination-container {
   display: flex;
   gap: 20px;
@@ -139,9 +200,9 @@ body,
 .selected {
   background-color: var(--color-secondary);
 }
-/* @===PAGINATION END===@ */
+/*#endregion @===PAGINATION END===@ */
 
-/* @===MODAL START===@ */
+/*#region @===MODAL===@ */
 .modal {
   display: none;
   justify-content: center;
@@ -213,30 +274,9 @@ body,
   font-weight: bold;
 }
 
-/* @===MODAL END===@ */
-.d-none {
-  display: none !important;
-}
+/*#endregion @===MODAL END===@ */
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.gap-2 {
-  gap: 8px;
-}
-
-.gap-3 {
-  gap: 10px;
-}
-
-p {
-  margin: 0;
-}
-
-/* @===MODAL SEARCH===@ */
-
+/*#region @===SEARCH===@ */
 .search {
   display: flex;
   flex-direction: column;
@@ -279,6 +319,9 @@ p {
 .search-btn:hover {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
+/*#endregion @===SEARCH===@ */
+
+/*#region @===SOCIAL LINKS===@ */
 
 .social {
   position: fixed;
@@ -292,6 +335,9 @@ p {
   display: flex;
   text-decoration: none;
 }
+/*#endregion @===SOCIAL LINKS===@ */
+
+/*#region @===DARK MODE===@ */
 
 .dark-mode {
   background-color: #32383d;
@@ -299,8 +345,18 @@ p {
 
 .dark-mode h1,
 .dark-mode h2,
-.dark-mode p {
+.dark-mode p,
+.dark-mode span,
+.dark-mode label,
+.dark-mode strong,
+.dark-mode button {
   color: #fff;
+}
+
+.dark-mode .search-input,
+.dark-mode .info-container,
+.search-btn:hover {
+  box-shadow: 0px -13px 15px -11px #fff;
 }
 
 .dark-mode .card {
@@ -357,3 +413,135 @@ p {
   left: 4px;
   top: 12px;
 }
+/*#endregion @===DARK MODE END===@ */
+
+/*#region @===INFO CARD===@ */
+
+.info-container {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 0px -8px 15px 7px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  height: 0;
+}
+
+.info-transition {
+  transition: 0.4s;
+  opacity: 1;
+  height: auto;
+  padding: 16px 0;
+}
+
+.info-container > li {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-closeInfo,
+.btn-compareInfo,
+.btn-compare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  border: 0;
+  border-radius: 100%;
+  background-color: var(--color-primary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-compareInfo {
+  top: -12px;
+  right: 38px;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+/*#endregion @===INFO CARD===@ */
+
+/*#region @===COMPARE==@*/
+.card-comapre {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 20px;
+  margin: 0 auto;
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  left: 0;
+  right: 0;
+  max-width: 500px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0px -8px 15px 7px rgba(0, 0, 0, 0.1);
+}
+
+.btn-compare {
+  position: relative;
+  top: initial;
+  right: initial;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.btn-compare:hover {
+  transition: 1s;
+  transform: rotate(90deg);
+}
+
+.card-comapreDone {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 4px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #c1c1c1;
+  color: #000;
+  position: absolute;
+  height: 132px;
+  top: -140px;
+  left: 0;
+  right: 0;
+}
+
+.compared-up{
+  color: green;
+}
+
+.compared-down{
+  color: red;
+}
+
+/*#endregion @===COMPARE==@*/
+
+/*#region @===ALERT BOX==@*/
+.card-alertbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background-color: rgb(245, 71, 71);
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+}
+
+/*#endregion @===ALERT BOX==@*/
