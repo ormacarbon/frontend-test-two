@@ -23,8 +23,7 @@ function Dog() {
 
     const resultFact = [{
       title: dataFact.data[0].type,
-      text: "dataFact.data[0].attributes.body,aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa"
-      /* text: dataFact.data[0].attributes.body, */
+      text: dataFact.data[0].attributes.body,
     }]
     setImages(dataImages.message);
     setFact(resultFact);

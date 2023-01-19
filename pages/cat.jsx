@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CatCard from '../components/CatCard';
 import { Label, Form, Input, Button, Container } from '../styles/CatStyles';
 import { getCatMessage } from '../services/api';
@@ -15,8 +15,8 @@ function Cat() {
     setUrl(result);
   }
 
-  function generateCatMessage(event) {
-    getCat(message)
+  function generateCatMessage() {
+    getCat(message);
   }
 
   if (url === undefined) {
@@ -28,7 +28,7 @@ function Cat() {
               <Input placeholder="Name" name="name" id='name' onChange={event => setMessage(event.target.value)} value={message} />
               <Label htmlFor="name">Message:</Label>
             </div>
-            <Button type="button" onClick={() => generateCatMessage()}>Submit</Button>
+            <Button type="button" onClick={() => generateCatMessage()}>Search</Button>
           </Form>
         </form>
       </>
