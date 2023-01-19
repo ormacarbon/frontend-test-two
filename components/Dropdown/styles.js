@@ -32,6 +32,10 @@ export const DropDownHeader = styled.div`
   font-size: ${(props) => props.theme.font_size.sm};
 
   border-radius: 5px;
+
+  @media (min-width: 1100px) {
+    margin: 0.5rem 1rem 0 0;
+  }
 `;
 
 export const Title = styled.span``;
@@ -47,7 +51,6 @@ export const DropDownList = styled.ul`
   border-radius: 5px;
   position: absolute;
   z-index: 1;
-  margin-right: 1rem;
 
   right: 0;
   width: 13rem;
@@ -57,6 +60,10 @@ export const DropDownList = styled.ul`
   box-sizing: border-box;
   font-size: 1.3rem;
   font-weight: 500;
+
+  @media (min-width: 1100px) {
+    margin: 0.5rem 1rem 0;
+  }
 `;
 
 export const ListItem = styled.li`

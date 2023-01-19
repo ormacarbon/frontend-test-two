@@ -29,6 +29,7 @@ export const ArtistInfo = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  width: 15%;
 
   a {
     text-decoration: none;
@@ -37,6 +38,7 @@ export const ArtistInfo = styled.div`
     font-size: ${(props) => props.theme.font_size.md};
     font-weight: ${(props) => props.theme.font_weight.black};
     padding: 0 0 0.3rem;
+    width: 100%;
   }
 
   span {
