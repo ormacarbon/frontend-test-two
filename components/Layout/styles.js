@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  body{
+    background-color: ${(props) => props.theme.body};;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 export const HeaderStyle = styled.div`
   background: #52796f;
@@ -7,6 +19,15 @@ export const HeaderStyle = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const LightTheme = {
+  body: "#fefae0",
+  background: "#52796f",
+};
+
+export const DarkTheme = {
+  body: "#582f0e",
+};
 
 export const Hr = styled.hr`
   border: 1px solid;
@@ -22,4 +43,8 @@ export const LayoutButtoms = styled.div`
     color: #f2f2f2;
   }
   cursor: pointer;
+`;
+
+export const RightButtoms = styled.div`
+  display: flex;
 `;

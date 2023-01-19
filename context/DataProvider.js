@@ -27,8 +27,6 @@ const DataProvider = ({ children }) => {
     }
   }, [router.route]);
 
-  //console.log("Current board state:", board);
-
   return (
     <dataContext.Provider
       value={{ board, setBoard, fetchData, selectedItem, setSelectedItem }}

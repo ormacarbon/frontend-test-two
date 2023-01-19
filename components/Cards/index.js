@@ -1,10 +1,19 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import dataContext from "../../context/dataContext";
-import { Buttons, Card, CardsView, Img, Space } from "./styles";
+import {
+  Buttons,
+  Card,
+  CardsView,
+  Img,
+  Input,
+  InputButtons,
+  Space,
+} from "./styles";
 
 const Cards = () => {
-  const { board, setSelectedItem } = useContext(dataContext);
+  const { board, setBoard, setSelectedItem } = useContext(dataContext);
+  const [originalBoard, setOriginalBoard] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(15);
 
@@ -16,20 +25,32 @@ const Cards = () => {
     setSelectedItem(item);
   };
 
+  const [filterValue, setFilterValue] = useState("");
+
+  const handleFilter = () => {
+    // lógica para filtrar jogadores com base no valor digitado no campo de entrada
+    setOriginalBoard(board);
+    const filteredPlayers = board.filter(
+      (player) => player.username.includes(filterValue)
+      // player.rank === Number(filterValue)
+    );
+    setBoard(filteredPlayers);
+  };
+
+  const handleClearFilter = () => {
+    setFilterValue("");
+    setBoard(originalBoard);
+  };
+
   return (
     <>
-      <div>
-        {indexOfFirstItem > 0 && (
-          <Buttons onClick={() => setCurrentPage(currentPage - 1)}>
-            Previous
-          </Buttons>
-        )}
-        {indexOfLastItem < board.length && (
-          <Buttons onClick={() => setCurrentPage(currentPage + 1)}>
-            Next
-          </Buttons>
-        )}
-      </div>
+      <Input
+        value={filterValue}
+        onChange={(e) => setFilterValue(e.target.value)}
+        placeholder={"Filter by name"}
+      />
+      <InputButtons onClick={handleFilter}>Filter</InputButtons>
+      <InputButtons onClick={handleClearFilter}>Clear</InputButtons>
       <CardsView>
         {currentItems.length > 0 &&
           currentItems.map((item) => (
@@ -44,7 +65,7 @@ const Cards = () => {
                   {item.rank}
                 </div>
                 <div>
-                  <strong> core: </strong>
+                  <strong> Score: </strong>
                   {item.score}
                 </div>
                 <Link
@@ -59,6 +80,18 @@ const Cards = () => {
             </Card>
           ))}
       </CardsView>
+      <div>
+        {indexOfFirstItem > 0 && (
+          <Buttons onClick={() => setCurrentPage(currentPage - 1)}>
+            Previous
+          </Buttons>
+        )}
+        {indexOfLastItem < board.length && (
+          <Buttons onClick={() => setCurrentPage(currentPage + 1)}>
+            Next
+          </Buttons>
+        )}
+      </div>
     </>
   );
 };

@@ -12,8 +12,7 @@ export const CardsView = styled.div`
 export const Card = styled.div`
   background-color: #f1faee;
   width: 200px;
-  margin-right: 2rem;
-  margin-bottom: 2rem;
+  margin: 0.5rem;
   border: 1px solid;
 `;
 
@@ -37,7 +36,8 @@ export const Buttons = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 1rem;
+  margin: 0.5rem;
+  margin-bottom: 16px;
   width: 127px;
   &:hover {
     opacity: 80%;
@@ -46,3 +46,31 @@ export const Buttons = styled.button`
 `;
 
 export const DetailsButton = styled.button``;
+
+export const Input = styled.input`
+  padding: 10px 10px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 1rem;
+  width: 240px;
+  &:hover {
+    opacity: 80%;
+  }
+`;
+
+export const InputButtons = styled.button`
+  background-color: #52796f; /* Green */
+  border-color: gray;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 0.2rem;
+  width: 127px;
+  &:hover {
+    opacity: 80%;
+  }
+  cursor: pointer;
+`;
