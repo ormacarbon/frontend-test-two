@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import useDownloader from 'react-use-downloader';
@@ -22,7 +23,7 @@ import {
   InfoTitle,
   Info,
   AvgColor,
-} from './styles';
+} from '../../../styles/photoId';
 
 export async function getServerSideProps(context) {
   const { photoId } = context.query;
@@ -52,6 +53,9 @@ export default function Photo(context) {
 
   return (
     <Container>
+      <Head>
+        <title>Photo - {photo.id}</title>
+      </Head>
       <Content>
         <Header>
           <ArtistInfo>

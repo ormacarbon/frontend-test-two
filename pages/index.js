@@ -8,7 +8,7 @@ import {
   Description,
   ButtonContainer,
   Button,
-} from './styles';
+} from '../styles/home';
 
 export default function Home() {
   return (

@@ -13,7 +13,7 @@ import {
   PageSelector,
   PageCounter,
   SelectPage,
-} from './styles';
+} from '../../styles/photos';
 
 import Dropdown from '../../components/Dropdown';
 
