@@ -10,6 +10,15 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  @media (max-width: 500px) {
+  html {
+    display: flex;
+  }}
+
+  html, * {
+    box-sizing: border-box;
+  }
 `;
 
 export const HeaderStyle = styled.div`
@@ -26,7 +35,7 @@ export const LightTheme = {
 };
 
 export const DarkTheme = {
-  body: "#582f0e",
+  body: "#766153",
 };
 
 export const Hr = styled.hr`

@@ -8,6 +8,14 @@ export const MainStyles = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 800px) {
+    margin-top: 5rem;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -19,7 +27,6 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
-  flex: 1;
 `;
 
 const Main = () => {
