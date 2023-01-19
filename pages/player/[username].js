@@ -1,8 +1,35 @@
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import Layout from "../../components/Layout";
-import { DivDetails, H2, Img, PDetails, UserName } from "./styles";
+import styled from "styled-components";
 
+const UserName = styled.div`
+  width: 400px;
+  margin-top: 16px;
+  background-color: #f1faee;
+  margin: auto;
+  border: 1px solid;
+`;
+
+const Img = styled.img`
+  width: 400px;
+`;
+
+const DivDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background: gray;
+`;
+
+const PDetails = styled.p`
+  margin-right: 2rem;
+  margin-left: 2rem;
+`;
+
+const H2 = styled.h2`
+  margin-top: 8px;
+  margin-bottom: 8px;
+`;
 const Player = () => {
   const router = useRouter();
   const [player, setPlayer] = useState({});
