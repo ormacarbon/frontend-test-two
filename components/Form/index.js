@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { API_KEY } from '../../services/api';
 import { Card } from '../Card/index';
 import { SearchIcon } from '../Icons';
 
@@ -14,40 +12,15 @@ import {
   T,
 } from './styles';
 
-export default function SearchBar() {
-  const [photoData, setPhotoData] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
-  const [photoID, setPhotoId] = useState();
-
-  // const [error, setError] = useState<boolean>(true);
-
-  const search = async (event) => {
-    event.preventDefault();
-
-    const response = await fetch(
-      `https://api.pexels.com/v1/search?query=${searchKey}`,
-      {
-        headers: {
-          Authorization: API_KEY,
-        },
-      }
-    );
-    const data = await response.json();
-    const searchResult = data.photos;
-    setPhotoData(searchResult);
-    photoData.map((response) => {
-      return setPhotoId(response.id);
-    });
-  };
-
+export default function SearchBar(props) {
   return (
     <Container>
       <FormContainer>
-        <Form onSubmit={search} key={photoID}>
+        <Form onSubmit={props.search} key={props.photoID}>
           <Input
             type='text'
-            placeholder={`Search for your favorite food`}
-            onChange={(event) => setSearchKey(event.target.value)}
+            placeholder={`Search for free photos`}
+            onChange={props.onChange}
             tabIndex={1}
           />
           <Button>
@@ -57,7 +30,7 @@ export default function SearchBar() {
       </FormContainer>
       <ContainerResults>
         <Section>
-          {photoData.map((photo) => (
+          {props.photoData.map((photo) => (
             <Card
               key={photo.id}
               photo={photo.src.large}
