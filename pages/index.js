@@ -2,17 +2,16 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Card from "../Components/Card/Card";
 import Pagination from "../Components/Pagination/Pagination";
-import PokemonInfo from "../Components/PokemonInfo/PokemonInfo";
 import Search from "../Components/Search/Search";
 import Loading from "../Components/Loading/Loading";
+import Compare from "../Components/Compare/Compare";
 import Api from "../Controllers/Api";
-
 function Home() {
   const [apiOptions, setApiOptions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState(null);
   const [hideBySearch, setHideBySearch] = useState(null);
   const [theme, setTheme] = useState("");
+  const [compare, setCompare] = useState({ player1: null });
 
   async function apiRequest(uri) {
     const _uriBase = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16";
@@ -37,14 +36,19 @@ function Home() {
     setApiOptions(prop);
   };
 
-  const handlePokemonInfo = (prop) => {
-    setModal(prop);
-  };
-
   const changeTheme = (prop) => {
     const enableDarkMode = prop ? "dark-mode" : "";
     localStorage.setItem("darkMode", enableDarkMode);
     setTheme(enableDarkMode);
+  };
+
+  const handleCompare = (prop) => {
+    if (prop !== null && compare.player1 !== null) {
+      setCompare((prev) => ({ ...prev, player2: prop }));
+      return;
+    }
+
+    setCompare({ player1: prop, player2: null });
   };
 
   useEffect(() => {
@@ -91,15 +95,12 @@ function Home() {
           LISTA DE POKEMONS
         </h1>
 
-        <Card apiOptions={apiOptions} handlePokemonInfo={handlePokemonInfo} />
+        <Card apiOptions={apiOptions} handleCompare={handleCompare} />
 
         <Pagination apiRequest={apiRequest} hideBySearch={hideBySearch} />
-
-        {modal !== null ? (
-          <PokemonInfo modal={modal} setLoading={setLoading} />
-        ) : (
-          ""
-        )}
+      
+        {/* ITEMS FLUTUANTES */}
+        <Compare compare={compare} />
 
         <ul className="social">
           <li>
