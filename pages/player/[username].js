@@ -1,3 +1,4 @@
+import { getRequestMeta } from "next/dist/server/request-meta";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
@@ -20,7 +21,7 @@ const Player = () => {
 
   useEffect(() => {
     getPlayerData();
-  }, [userName]);
+  }, [userName, getPlayerData()]);
 
   return (
     <Layout title={"Player Details"}>
