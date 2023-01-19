@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import { DivDetails, H2, Img, PDetails, UserName } from "./styles";
 
@@ -8,7 +8,7 @@ const Player = () => {
   const [player, setPlayer] = useState({});
   const userName = router.query.username;
 
-  const getPlayerData = async () => {
+  const getPlayerData = useCallback(async () => {
     try {
       const res = await fetch(`https://api.chess.com/pub/player/${userName}`);
       const data = await res.json();
@@ -16,7 +16,7 @@ const Player = () => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [userName]);
 
   useEffect(() => {
     getPlayerData();
