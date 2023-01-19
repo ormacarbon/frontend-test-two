@@ -50,3 +50,19 @@ https://github.com/public-apis/public-apis
 - Utilizar inglês no projeto todo.
 - Utilizar Injeção de Dependências.
 - Fazer deploy do mesmo (heroku, netlify, aws, vercel, github pages ou outro da preferência).
+
+------------------------------------------------------
+
+## APPLICATION TO FETCH CHESS.COM API
+
+- Application made with Next.js
+- Styled with styled components
+- Responsive even on smaller screens
+- Use of useEffects, useState, useContext
+- Deployed on vercel
+
+------------------------------------------------------
+
+## VERCEL DEPLOYED APPLICATION
+
+- https://frontend-test-two-jade.vercel.app/
