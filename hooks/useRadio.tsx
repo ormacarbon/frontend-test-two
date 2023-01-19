@@ -1,7 +1,8 @@
-import { RadioBrowserApi, Station } from 'radio-browser-api';
+import { Station } from 'radio-browser-api';
 import { useState } from 'react';
 import { APP_USER_AGENT } from '../contexts/Radio/Radio.config';
 import station from '../components/Station';
+import RadioBrowserApi from '../api/RadioBrowserApi.overwrite';
 
 const useRadio: () => {
   stations: Station[],
@@ -56,6 +57,7 @@ const useRadio: () => {
     browser.sendStationClick(id)
       .catch(console.error);
   }
+
 
   return {
     stations,
