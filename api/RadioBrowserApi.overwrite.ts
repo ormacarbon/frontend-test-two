@@ -17,8 +17,11 @@ class RadioBrowserApi extends RadioBrowserApiSuper {
   // temporary fix for https cert error when in frontend hardcode the server
   // https://github.com/segler-alex/radiobrowser-api-rust/issues/122
   async resolveBaseUrl(config: RequestInit = {}): Promise<Server[]> {
-    const httpsAgent = new https.Agent({ rejectUnauthorized: false });
-    const SERVER_LIST_URL = 'https://all.api.radio-browser.info/json/servers';
+    const httpsAgent = new https.Agent({
+
+      rejectUnauthorized: false
+    });
+    const SERVER_LIST_URL = 'https://de1.api.radio-browser.info/json/servers';
 
     return axios(SERVER_LIST_URL, { httpsAgent })
       .then(response => response.status === 200 ? response.data : Promise.reject(response.status))
