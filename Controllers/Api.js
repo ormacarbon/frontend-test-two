@@ -1,12 +1,11 @@
-async function Api(url) {
-  return await fetch(url)
+const Api = async (url) =>
+  await fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
       return data;
     })
     .catch((err) => {
-      throw new Error({ err });
+      console.log({ err });
     });
-}
 
 export default Api;

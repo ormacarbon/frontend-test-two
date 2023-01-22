@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import Api from "../../Controllers/Api";
+import { CompareContext } from "../../Controllers/Context";
 
-function Info({ id, handleCloseInfo, handleCompare }) {
+function Info({ id, handleCloseInfo }) {
   const [info, setInfo] = useState("");
-
-  // const handleCompare = ({ _id }) => {
-  //   localStorage.setItem("players", { player: `player${_id}` });
-  // };
+  const { compare, setCompare } = useContext(CompareContext);
 
   useEffect(() => {
     document.title = "VISUALIZAÇÂO DE POKEMONS";
@@ -61,7 +59,15 @@ function Info({ id, handleCloseInfo, handleCompare }) {
         </button>
       </li>
       <li>
-        <button className="btn-compareInfo" onClick={() => handleCompare(info)}>
+        <button
+          className="btn-compareInfo"
+          onClick={() => {
+            const validplayer1 = compare.Pokemon1 !== null ? true : false;
+            validplayer1
+              ? setCompare((prev) => ({ ...prev, Pokemon2: info }))
+              : setCompare({ Pokemon1: info });
+          }}
+        >
           <Image
             src={`/images/icon-compare.svg`}
             width={18}

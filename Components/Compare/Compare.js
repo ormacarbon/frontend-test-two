@@ -1,152 +1,90 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import Alertbox from "../Alertbox/AlertBox";
+import { CompareContext } from "../../Controllers/Context";
+import CompareInfo from "./CompareInfo";
 
-function Compare({ compare }) {
+function Compare() {
   const [disabled, setDisabled] = useState(true);
-  const validCompare = compare.player1 !== null && compare.player2 !== null;
+  const [comparison, setComparison] = useState({});
+  const { compare } = useContext(CompareContext);
+  const { Pokemon1, Pokemon2 } = compare;
+  const allowPokemon1 = Pokemon1 !== undefined && Pokemon1;
+  const allowPokemon2 = Pokemon1 !== undefined && Pokemon2;
+  const allowPokemons =
+    Pokemon1 !== undefined && Pokemon2 !== undefined ? true : false;
+
   function handleCompare(prop) {
     console.log(prop.player2);
   }
 
+  const comparePokemons = useCallback(
+    (pokemon1, pokemon2) => {
+      const prop = {
+        Pokemon1: {
+          ...Pokemon1,
+          comparison: {
+            atk: pokemon1.atk - pokemon2.atk,
+            def: pokemon1.def - pokemon2.def,
+            hp: pokemon1.hp - pokemon2.hp,
+            speed: pokemon1.speed - pokemon2.speed,
+            media:
+              Pokemon1.hp + Pokemon1.atk + Pokemon1.def + Pokemon1.speed * 4,
+            atkClass:
+              pokemon1.atk > pokemon2.atk ? "compared-up" : "compared-down",
+            defClass:
+              pokemon1.def > pokemon2.def ? "compared-up" : "compared-down",
+            hpClass:
+              pokemon1.hp > pokemon2.hp ? "compared-up" : "compared-down",
+            speedClass:
+              pokemon1.speed > pokemon2.speed ? "compared-up" : "compared-down",
+          },
+        },
+        Pokemon2: {
+          ...Pokemon2,
+          comparison: {
+            atk: pokemon2.atk - pokemon1.atk,
+            def: pokemon2.def - pokemon1.def,
+            hp: pokemon2.hp - pokemon1.hp,
+            speed: pokemon2.speed - pokemon1.speed,
+            media:
+              pokemon2.hp + pokemon2.atk + pokemon2.def + pokemon2.speed * 4,
+            atkClass:
+              pokemon2.atk > pokemon1.atk ? "compared-up" : "compared-down",
+            defClass:
+              pokemon2.def > pokemon1.def ? "compared-up" : "compared-down",
+            hpClass:
+              pokemon2.hp > pokemon1.hp ? "compared-up" : "compared-down",
+            speedClass:
+              pokemon2.speed > pokemon1.speed ? "compared-up" : "compared-down",
+          },
+        },
+      };
+
+      setComparison(prop);
+    },
+    [Pokemon1, Pokemon2]
+  );
+
   useEffect(() => {
-    if (compare.player2 !== undefined && compare.player2 !== null) {
+    if (allowPokemons) {
       setDisabled(false);
+      return comparePokemons(Pokemon1, Pokemon2);
     }
-  }, [compare, disabled]);
+  }, [Pokemon1, Pokemon2, allowPokemons, comparePokemons]);
 
   return (
     <section>
       <div className="card-comapre">
-        {validCompare ? (
+        {allowPokemons && (
           <div className="card-comapreDone">
-            <div>
-              <p>{compare.player1.name}</p>
-              <div>
-                <label>HP: {compare.player1.hp} </label>
-                <label
-                  className={`${
-                    compare.player1.hp - compare.player2.hp > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player1.hp - compare.player2.hp}
-                </label>
-              </div>
-              <div>
-                <label>ATA: {compare.player1.atk} </label>
-                <label
-                  className={`${
-                    compare.player1.atk - compare.player2.atk > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player1.atk - compare.player2.atk}
-                </label>
-              </div>
-              <div>
-                <label>DEF: {compare.player1.def} </label>
-                <label
-                  className={`${
-                    compare.player1.def - compare.player2.def > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player1.def - compare.player2.def}
-                </label>
-              </div>
-              <div>
-                <label>VEL: {compare.player1.speed} </label>
-                <label
-                  className={`${
-                    compare.player1.speed - compare.player2.speed > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player1.speed - compare.player2.speed}
-                </label>
-              </div>
-              <div>
-                <label>Media: </label>
-                <label>
-                  {compare.player1.hp +
-                    compare.player1.atk +
-                    compare.player1.def +
-                    compare.player1.speed * 4}
-                </label>
-              </div>
-            </div>
-
-            <div>
-              <p>{compare.player2.name}</p>
-              <div>
-                <label>HP: {compare.player2.hp} / </label>
-                <label
-                  className={`${
-                    compare.player2.hp - compare.player1.hp > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player2.hp - compare.player1.hp}
-                </label>
-              </div>
-              <div>
-                <label>ATA: {compare.player2.atk} / </label>
-                <label
-                  className={`${
-                    compare.player2.atk - compare.player1.atk > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player2.atk - compare.player1.atk}
-                </label>
-              </div>
-              <div>
-                <label>DEF: {compare.player2.def} / </label>
-                <label
-                  className={`${
-                    compare.player2.def - compare.player1.def > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player2.def - compare.player1.def}
-                </label>
-              </div>
-              <div>
-                <label>VEL: {compare.player2.speed} / </label>
-                <label
-                  className={`${
-                    compare.player2.speed - compare.player1.speed > 0
-                      ? "compared-up"
-                      : "compared-down"
-                  }`}
-                >
-                  {compare.player2.speed - compare.player1.speed}
-                </label>
-              </div>
-              <div>
-                <label>Media: </label>
-                <label>
-                  {compare.player2.hp +
-                    compare.player2.atk +
-                    compare.player2.def +
-                    compare.player2.speed * 4}
-                </label>
-              </div>
-            </div>
+            {allowPokemon1 && <CompareInfo prop={comparison.Pokemon1} />}
+            {allowPokemon2 && <CompareInfo prop={comparison.Pokemon2} />}
           </div>
-        ) : (
-          ""
         )}
 
-        <div>{compare.player1 != null ? compare.player1.name : "="}</div>
+        <div>{allowPokemon1 && Pokemon1.name}</div>
+
         <button
           className="btn-compare"
           disabled={disabled}
@@ -162,7 +100,7 @@ function Compare({ compare }) {
           />
         </button>
 
-        <div>{compare.player2 != null ? compare.player2.name : "="}</div>
+        <div>{allowPokemon2 && Pokemon2.name}</div>
       </div>
     </section>
   );

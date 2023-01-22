@@ -1,136 +1,51 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Card from "../Components/Card/Card";
-import Pagination from "../Components/Pagination/Pagination";
-import Search from "../Components/Search/Search";
-import Loading from "../Components/Loading/Loading";
-import Compare from "../Components/Compare/Compare";
-import Api from "../Controllers/Api";
+import { LoadingContext } from "../Controllers/Context";
+//COMPONENTS
+import { Loading, CardList } from "../Components/index";
+//THEME
+import { ThemeContext, themes, BtnDarkMode } from "../styles/ThemeContext";
+
 function Home() {
-  const [apiOptions, setApiOptions] = useState([]);
+  const [theme, setTheme] = useState(themes.dark);
   const [loading, setLoading] = useState(false);
-  const [hideBySearch, setHideBySearch] = useState(null);
-  const [theme, setTheme] = useState("");
-  const [compare, setCompare] = useState({ player1: null });
 
-  async function apiRequest(uri) {
-    const _uriBase = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=16";
-    const _uri = uri ?? _uriBase;
-
-    setApiOptions([]);
-
-    await Api(_uri).then(async (data) => {
-      await data.results.map(async (resp) => {
-        await Api(resp.url).then(async (item) => {
-          await setApiOptions((prev) => {
-            setLoading(false);
-            return [...prev, [item.name, item.sprites.front_default, item.id]];
-          });
-        });
-      });
-    });
+  function changeTheme(prop) {
+    const _theme = prop === "dark-mode" ? themes.light : themes.dark;
+    localStorage.setItem("theme", _theme);
   }
-
-  const getSearch = (prop) => {
-    setHideBySearch("d-none");
-    setApiOptions(prop);
-  };
-
-  const changeTheme = (prop) => {
-    const enableDarkMode = prop ? "dark-mode" : "";
-    localStorage.setItem("darkMode", enableDarkMode);
-    setTheme(enableDarkMode);
-  };
-
-  const handleCompare = (prop) => {
-    if (prop !== null && compare.player1 !== null) {
-      setCompare((prev) => ({ ...prev, player2: prop }));
-      return;
-    }
-
-    setCompare({ player1: prop, player2: null });
-  };
 
   useEffect(() => {
     document.title = "LISTA DE POKEMONS";
+    const _theme = localStorage.getItem("theme");
 
-    const darkMode = localStorage.getItem("darkMode");
-    if (darkMode === "dark-mode") {
-      setTheme(darkMode);
+    switch (_theme) {
+      case themes.light:
+        document.body.classList.remove("dark-mode");
+        break;
+      case themes.dark:
+        document.body.classList.add("dark-mode");
+        break;
     }
-
-    const getListPokemon = () => {
-      setLoading(true);
-      setHideBySearch(null);
-      setTimeout(() => {
-        apiRequest();
-      }, 2000);
-      return;
-    };
-
-    getListPokemon();
-  }, []);
+  }, [theme]);
 
   return (
-    <div className={`${theme}`}>
-      <div className="darkMode-btn">
-        <input
-          type="checkbox"
-          className="darkMode-input"
-          checked={theme != "" ? true : ""}
-          onChange={(e) => changeTheme(e.target.checked)}
-        />
-        <i className="darkMode-icon"></i>
-      </div>
-      <div className="container">
-        <Loading loading={loading} />
+    <ThemeContext.Provider value={{ theme: theme }}>
+      <LoadingContext.Provider value={{ loading, setLoading }}>
+        <section className={`container`}>
+          <Loading />
 
-        <Search
-          getSearch={getSearch}
-          apiRequest={apiRequest}
-          setLoading={setLoading}
-        />
+          <BtnDarkMode
+            className="darkMode-btn"
+            value={theme}
+            onClick={(e) => {
+              changeTheme(e.target.value);
+            }}
+          />
 
-        <h1 className={`${hideBySearch}`} style={{ textAlign: "center" }}>
-          LISTA DE POKEMONS
-        </h1>
-
-        <Card apiOptions={apiOptions} handleCompare={handleCompare} />
-
-        <Pagination apiRequest={apiRequest} hideBySearch={hideBySearch} />
-      
-        {/* ITEMS FLUTUANTES */}
-        <Compare compare={compare} />
-
-        <ul className="social">
-          <li>
-            <a
-              href="https://www.linkedin.com/in/flavio-leonardo-ads/"
-              target={`_blank`}
-            >
-              <Image
-                src="/frontend-test-two/images/logo-linkedin.svg"
-                width={40}
-                height={40}
-                alt="LinkedIn"
-                loading="lazy"
-              />
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/LeonardoMachado30" target={`_blank`}>
-              <Image
-                src="/frontend-test-two/images/logo-github.svg"
-                width={40}
-                height={40}
-                alt="GitHub"
-                loading="lazy"
-              />
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+          <CardList />
+        </section>
+      </LoadingContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
