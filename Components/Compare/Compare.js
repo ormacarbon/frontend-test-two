@@ -7,13 +7,14 @@ import CompareInfo from "./CompareInfo";
 function Compare() {
   const [disabled, setDisabled] = useState(true);
   const [comparison, setComparison] = useState({});
+  const [closeCompare, setCloseCompare] = useState("");
   const { compare } = useContext(CompareContext);
   const { Pokemon1, Pokemon2 } = compare;
   const allowPokemon1 = Pokemon1 !== undefined && Pokemon1;
   const allowPokemon2 = Pokemon1 !== undefined && Pokemon2;
   const allowPokemons =
     Pokemon1 !== undefined && Pokemon2 !== undefined ? true : false;
-
+  console.log(compare);
   function handleCompare(prop) {
     console.log(prop.player2);
   }
@@ -74,22 +75,38 @@ function Compare() {
   }, [Pokemon1, Pokemon2, allowPokemons, comparePokemons]);
 
   return (
-    <section>
-      <div className="card-comapre">
-        {allowPokemons && (
-          <div className="card-comapreDone">
-            {allowPokemon1 && <CompareInfo prop={comparison.Pokemon1} />}
-            {allowPokemon2 && <CompareInfo prop={comparison.Pokemon2} />}
-          </div>
-        )}
+    <section className="compare-container">
+      {allowPokemons && (
+        <div className={`card-comapre-body ${closeCompare}`}>
+          <button className="btn-secondary" onClick={() => { setCloseCompare("d-none")}}>X</button>
+          <Image
+            src={Pokemon1?.sprite_front}
+            alt={Pokemon1?.name}
+            width={60}
+            height={60}
+          />
 
+          {allowPokemon1 && <CompareInfo prop={comparison.Pokemon1} />}
+
+          {allowPokemon2 && <CompareInfo prop={comparison.Pokemon2} />}
+
+          <Image
+            src={Pokemon2?.sprite_front}
+            alt={Pokemon2?.name}
+            width={60}
+            height={60}
+          />
+        </div>
+      )}
+
+      <div className="card-comapre">
         <div>{allowPokemon1 && Pokemon1.name}</div>
 
         <button
           className="btn-compare"
           disabled={disabled}
           onClick={() => {
-            handleCompare(compare);
+            setCloseCompare("");
           }}
         >
           <Image

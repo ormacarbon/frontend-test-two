@@ -1,7 +1,7 @@
 function CompareInfo({ prop }) {
   return (
-    <div>
-      <p>{prop?.name}</p>
+    <div className="compareInfo-container">
+      <p className="compareInfo-name">{prop?.name}</p>
       <div>
         <label>HP: {prop?.hp} </label>
         <label className={prop?.comparison?.hpClass}>

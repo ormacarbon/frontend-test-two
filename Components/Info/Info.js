@@ -5,11 +5,11 @@ import { CompareContext } from "../../Controllers/Context";
 
 function Info({ id, handleCloseInfo }) {
   const [info, setInfo] = useState("");
+  const [disabled, setDisabled] = useState(false);
   const { compare, setCompare } = useContext(CompareContext);
 
   useEffect(() => {
     document.title = "VISUALIZAÇÂO DE POKEMONS";
-
     async function requestPokemon() {
       const urlBase = `https://pokeapi.co/api/v2/pokemon/${id}`;
       await Api(urlBase).then((data) => {
@@ -22,6 +22,7 @@ function Info({ id, handleCloseInfo }) {
           def: data.stats[3].base_stat,
           atk: data.stats[4].base_stat,
           hp: data.stats[5].base_stat,
+          sprite_front: data.sprites.front_default,
         });
       });
     }
@@ -52,7 +53,7 @@ function Info({ id, handleCloseInfo }) {
       </li>
       <li>
         <button
-          className="btn-closeInfo"
+          className="btn-secondary"
           onClick={() => handleCloseInfo({ _id: null })}
         >
           X
@@ -60,18 +61,30 @@ function Info({ id, handleCloseInfo }) {
       </li>
       <li>
         <button
-          className="btn-compareInfo"
-          onClick={() => {
-            const validplayer1 = compare.Pokemon1 !== null ? true : false;
-            validplayer1
-              ? setCompare((prev) => ({ ...prev, Pokemon2: info }))
-              : setCompare({ Pokemon1: info });
+          className="btn-primary"
+          disabled={disabled}
+          onClick={(e) => {
+            e.target.disabled = true;
+
+            const validplayer1 = compare?.Pokemon1 !== null ? true : false;
+            if (validplayer1) {
+              setCompare((prev) => ({ ...prev, Pokemon2: info }));
+              if (
+                compare?.Pokemon1?.name === info.name ||
+                compare?.Pokemon2?.name === info.name
+              ) {
+                setDisabled(true);
+                return;
+              }
+            } else {
+              setCompare({ Pokemon1: info });
+            }
           }}
         >
           <Image
             src={`/images/icon-compare.svg`}
             width={18}
-            height={18}
+            height={20}
             alt={`compare`}
           />
         </button>

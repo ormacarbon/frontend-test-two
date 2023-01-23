@@ -72,6 +72,10 @@ strong {
   cursor: default !important;
   opacity: 0.5 !important;
 }
+
+.H4 {
+  font-size: 1.4rem;
+}
 /*#endregion @===GENERIC CONTENT===@ */
 
 /*#region @===LOADING===@ */
@@ -421,22 +425,26 @@ strong {
   position: absolute;
   bottom: 0;
   display: flex;
-  width: 100%;
+  width: 101%;
   justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 0;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   box-shadow: 0px -8px 15px 7px rgba(0, 0, 0, 0.1);
   opacity: 0;
-  height: 0;
+  transform: translateY(20px);
+  background-color: #c1c1c1;
+  background-color: #c1c1c1;
+  box-shadow: inset 0px 45px 69px 0px rgba(0, 0, 0, 0.1);
 }
 
 .info-transition {
   transition: 0.4s;
   opacity: 1;
-  height: auto;
+  /* height: auto; */
   padding: 16px 0;
+  transform: translateY(0px);
 }
 
 .info-container > li {
@@ -444,8 +452,8 @@ strong {
   gap: 4px;
 }
 
-.btn-closeInfo,
-.btn-compareInfo,
+.btn-primary,
+.btn-secondary,
 .btn-compare {
   display: flex;
   align-items: center;
@@ -455,38 +463,70 @@ strong {
   right: 16px;
   border: 0;
   border-radius: 100%;
-  background-color: var(--color-primary);
   font-size: 1rem;
   cursor: pointer;
+}
+
+.btn-primary {
+  top: -12px;
+  right: 40px;
+  border-radius: 8px;
+  background-color: var(--color-primary);
   color: #fff;
 }
 
-.btn-compareInfo {
+.btn-secondary {
   top: -12px;
-  right: 38px;
+  right: 16px;
   border-radius: 8px;
-  padding: 4px;
+  background-color: var(--color-secondary);
+  color: #fff;
+  font-weight: bold;
 }
 
 /*#endregion @===INFO CARD===@ */
 
 /*#region @===COMPARE==@*/
-.card-comapre {
+
+.compare-container {
   position: fixed;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: auto;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.card-comapre {
+  display: flex;
   justify-content: space-around;
+  position: relative;
   align-items: center;
-  bottom: 20px;
   margin: 0 auto;
   width: 100%;
   height: 40px;
   background-color: #fff;
-  left: 0;
-  right: 0;
-  max-width: 500px;
   border-radius: 8px;
   font-weight: bold;
   box-shadow: 0px -8px 15px 7px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  z-index: 20;
+  animation: dropCard 1s ease;
+}
+
+@keyframes dropCard {
+  from {
+    transform: translateY(50px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
 
 .btn-compare {
@@ -508,28 +548,66 @@ strong {
   transform: rotate(90deg);
 }
 
-.card-comapreDone {
+.card-comapre-body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 4px;
+  top: 10px;
+  padding: 14px 4px;
   border: 0;
-  border-radius: 4px;
+  border-radius: 8px 8px 0 0;
   background-color: #c1c1c1;
   color: #000;
-  position: absolute;
+  position: relative;
   height: 132px;
-  top: -140px;
-  left: 0;
-  right: 0;
+  z-index: 19;
+  animation: dropCompare 1s ease;
 }
 
-.compared-up{
-  color: green;
+.card-compare-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 21;
 }
 
-.compared-down{
-  color: red;
+.card-compare-header > button {
+  top: 0;
+  right: 20px;
+}
+
+@keyframes dropCompare {
+  from {
+    /* height: 0; */
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    /* height: auto; */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.compared-up {
+  color: #005300;
+}
+
+.compared-down {
+  color: #970000;
+}
+
+.compareInfo-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 4px 0;
+}
+
+.compareInfo-container > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #000;
 }
 
 /*#endregion @===COMPARE==@*/
