@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
-const prefix = isProd ? "/frontend-test-two" : "/public";
 
 const nextConfig = {
   reactStrictMode: true,
-  publicRuntimeConfig: {
-    // Will be available on both server and client
-    staticFolder: prefix,
-  },
+  assetPrefix: isProd
+    ? "https://leonardomachado30.github.io/frontend-test-two/"
+    : undefined,
   swcMinify: true,
   compiler: {
     styledComponents: true,

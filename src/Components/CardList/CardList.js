@@ -10,8 +10,9 @@ import {
   Search,
   Image,
 } from "../index";
+import logo_linkedin from "/public/images/logo_linkedin.svg";
+import logo_github from "/public/images/logo_github.svg";
 
-const ENV = "";
 // const ENV = window.location.host.includes("localhost") ? "" : "/frontend-test-two";
 
 function CardList() {
@@ -78,7 +79,7 @@ function CardList() {
             target={`_blank`}
           >
             <Image
-              src={`${ENV}/images/logo-linkedin.svg`}
+              src={logo_linkedin}
               width={40}
               height={40}
               alt="LinkedIn"
@@ -89,7 +90,7 @@ function CardList() {
         <li>
           <a href="https://github.com/LeonardoMachado30" target={`_blank`}>
             <Image
-              src={`${ENV}/images/logo-github.svg`}
+              src={logo_github}
               width={40}
               height={40}
               alt="GitHub"
