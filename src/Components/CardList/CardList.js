@@ -1,10 +1,16 @@
 import { useState, useEffect, useContext, useCallback } from "react";
-import Image from "next/image";
-import { LoadingContext, CompareContext } from "../../Controllers/Context";
 //COMPONENTS
-import { Card, Compare, Pagination, Search } from "../index";
-//CONTROLLERS
-import Api from "../../Controllers/Api";
+import {
+  Api,
+  LoadingContext,
+  CompareContext,
+  Card,
+  Compare,
+  Pagination,
+  Search,
+  Image,
+} from "../index";
+
 const ENV = "";
 // const ENV = window.location.host.includes("localhost") ? "" : "/frontend-test-two";
 

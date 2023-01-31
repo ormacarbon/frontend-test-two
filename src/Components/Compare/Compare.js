@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
-import Alertbox from "../Alertbox/AlertBox";
-import { CompareContext } from "../../Controllers/Context";
+import { CompareContext, Image } from "../index";
 import CompareInfo from "./CompareInfo";
 
 function Compare() {
@@ -78,7 +76,14 @@ function Compare() {
     <section className="compare-container">
       {allowPokemons && (
         <div className={`card-comapre-body ${closeCompare}`}>
-          <button className="btn-secondary" onClick={() => { setCloseCompare("d-none")}}>X</button>
+          <button
+            className="btn-secondary"
+            onClick={() => {
+              setCloseCompare("d-none");
+            }}
+          >
+            X
+          </button>
           <Image
             src={Pokemon1?.sprite_front}
             alt={Pokemon1?.name}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Api from "../../Controllers/Api";
+import { Api } from "../index";
 
 function Search({ handleApi }) {
   const [name, setName] = useState("");

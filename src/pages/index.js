@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { LoadingContext } from "../Controllers/Context";
+import { LoadingContext } from "../../Controllers/Context";
 //COMPONENTS
 import { Loading, CardList } from "../Components/index";
 //THEME
-import { ThemeContext, themes, BtnDarkMode } from "../styles/ThemeContext";
+import {
+  ThemeContext,
+  themes,
+  BtnDarkMode,
+} from "../../public/styles/ThemeContext";
 
 function Home() {
   const [theme, setTheme] = useState(themes.dark);

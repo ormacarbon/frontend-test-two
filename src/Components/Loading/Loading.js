@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import Image from "next/image";
 import loadingImage from "./loading.gif";
-import { LoadingContext } from "../../Controllers/Context";
+import { LoadingContext, Image } from "../index";
 
 function Loading() {
   const { loading } = useContext(LoadingContext);

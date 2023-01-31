@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState } from "react";
+import { Image } from "../index";
 import Info from "../Info/Info";
 
 function Card({ apiOptions }) {
@@ -18,7 +18,7 @@ function Card({ apiOptions }) {
   const handleCardMap = () =>
     apiOptions.map((item, index) => {
       const validId = id !== null && id === item[2];
-      
+
       return (
         index < 15 && (
           <li className="card" key={index}>
@@ -40,12 +40,7 @@ function Card({ apiOptions }) {
               Info
             </button>
 
-            {validId && (
-              <Info
-                id={id}
-                handleCloseInfo={handleCloseInfo}
-              />
-            )}
+            {validId && <Info id={id} handleCloseInfo={handleCloseInfo} />}
           </li>
         )
       );

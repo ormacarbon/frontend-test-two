@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import Image from "next/image";
-import Api from "../../Controllers/Api";
-import { CompareContext } from "../../Controllers/Context";
+import { Api, CompareContext, Image } from "../index";
 
 function Info({ id, handleCloseInfo }) {
   const [info, setInfo] = useState("");

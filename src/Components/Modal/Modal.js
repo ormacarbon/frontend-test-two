@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Api from "../../Controllers/Api";
+import Api from "../../../Controllers/Api";
 
 function Modal({ modal, setLoading }) {
   const [info, setInfo] = useState([]);
