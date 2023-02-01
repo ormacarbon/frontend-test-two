@@ -12,6 +12,7 @@
     "deploy": "next build && next export && gh-pages -d out -t true"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "eslint-plugin-react-hooks": "^5.0.0-next-4f8ffec45-20230115",
     "next": "13.0.6",
     "react": "18.2.0",
