@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { CompareContext, Image } from "../index";
 import CompareInfo from "./CompareInfo";
-
+import icon_compare from "/public/images/icon_compare.svg";
 function Compare() {
   const [disabled, setDisabled] = useState(true);
   const [comparison, setComparison] = useState({});
@@ -114,12 +114,7 @@ function Compare() {
             setCloseCompare("");
           }}
         >
-          <Image
-            src={`/images/icon-compare.svg`}
-            width={18}
-            height={18}
-            alt={`compare`}
-          />
+          <Image src={icon_compare} width={18} height={18} alt={`compare`} />
         </button>
 
         <div>{allowPokemon2 && Pokemon2.name}</div>

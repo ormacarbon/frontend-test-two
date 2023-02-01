@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === "production";
+const isProd =
+  process.env.NODE_ENV === "production"
+    ? process.env.STATIC_ASSETS_URL
+    : undefined;
 
 const nextConfig = {
   reactStrictMode: true,
-  assetPrefix: isProd
-    ? "https://leonardomachado30.github.io/frontend-test-two/"
-    : undefined,
+  assetPrefix: isProd,
   swcMinify: true,
   compiler: {
     styledComponents: true,

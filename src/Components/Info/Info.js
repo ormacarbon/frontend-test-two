@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Api, CompareContext, Image } from "../index";
-
+import icon_compare from "/public/images/icon_compare.svg";
 function Info({ id, handleCloseInfo }) {
   const [info, setInfo] = useState("");
   const [disabled, setDisabled] = useState(false);
@@ -79,12 +79,7 @@ function Info({ id, handleCloseInfo }) {
             }
           }}
         >
-          <Image
-            src={`/images/icon-compare.svg`}
-            width={18}
-            height={20}
-            alt={`compare`}
-          />
+          <Image src={icon_compare} width={18} height={20} alt={`compare`} />
         </button>
       </li>
     </ul>
