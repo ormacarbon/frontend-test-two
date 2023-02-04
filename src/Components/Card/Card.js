@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useCallback, useState, useEffect, useContext } from "react";
 import { Image } from "../index";
 import Info from "../Info/Info";
+import { PokemonContext } from "../index";
 
-function Card({ apiOptions }) {
+function Card() {
+  const { pokemon } = useContext(PokemonContext);
+
+  return (
+    <ul className="card-list">
+      <CardMap pokemon={pokemon} />
+    </ul>
+  );
+}
+
+function CardMap({ pokemon }) {
+  const [data, setData] = useState([]);
   const [id, setId] = useState(null);
 
   const handleCloseInfo = ({ _id }) => {
@@ -14,39 +26,49 @@ function Card({ apiOptions }) {
       return;
     }
   };
+  useEffect(() => {
+    const value = pokemon == null || pokemon;
+    if (value) {
+      setData([]);
+      // console.log(pokemon);
+      const objectMap = pokemon.reduce((map, object) => {
+        map.set(object[2], object);
 
-  const handleCardMap = () =>
-    apiOptions.map((item, index) => {
-      const validId = id !== null && id === item[2];
+        return map;
+      }, new Map());
 
-      return (
-        index < 15 && (
-          <li className="card" key={index}>
-            <Image
-              src={item[1]}
-              alt={item[1]}
-              width={200}
-              height={200}
-              loading="lazy"
-            />
-            <p>{item[0]}</p>
+      const uniqList = Array.from(objectMap, ([_, value]) => value);
 
-            <button
-              className={`height-card ${!validId ? "btn-card" : "opacity-0"}`}
-              onClick={() => {
-                handleCloseInfo({ _id: item[2] });
-              }}
-            >
-              Info
-            </button>
+      setData(uniqList);
+    }
+  }, [pokemon]);
+  console.log(data);
+  return data.map((item, index) => {
+    // console.log(item);
+    const validId = id !== null && id === item[2];
+    return (
+      <li className="card" key={index}>
+        {/* <Image
+          src={item[1]}
+          alt={item[0]}
+          width={200}
+          height={200}
+          loading="lazy"
+        /> */}
+        <p>{item[0]}</p>
+        {/* 
+        <button
+          className={`height-card ${!validId ? "btn-card" : "opacity-0"}`}
+          onClick={() => {
+            handleCloseInfo({ _id: item[2] });
+          }}
+        >
+          Info
+        </button>
 
-            {validId && <Info id={id} handleCloseInfo={handleCloseInfo} />}
-          </li>
-        )
-      );
-    });
-
-  return <ul className="card-list">{handleCardMap()}</ul>;
+        {validId && <Info id={id} handleCloseInfo={handleCloseInfo} />} */}
+      </li>
+    );
+  });
 }
-
 export default Card;

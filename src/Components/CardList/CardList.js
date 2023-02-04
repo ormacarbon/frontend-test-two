@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext, useCallback } from "react";
+
 //COMPONENTS
 import {
   Api,
   LoadingContext,
+  PokemonContext,
   CompareContext,
   Card,
   Compare,
@@ -10,67 +12,63 @@ import {
   Search,
   Image,
 } from "../index";
+
 import logo_linkedin from "/public/images/logo_linkedin.svg";
 import logo_github from "/public/images/logo_github.svg";
 
-// const ENV = window.location.host.includes("localhost") ? "" : "/frontend-test-two";
-
 function CardList() {
-  const [apiOptions, setApiOptions] = useState([]);
+  const [apiOptions, setApiOptions] = useState(null);
   const [hideBySearch, setHideBySearch] = useState(null);
+  const [api, setApi] = useState(null);
   const [compare, setCompare] = useState({ Pokemon1: null, Pokemon2: null });
   const { setLoading } = useContext(LoadingContext);
+  const { pokemon } = useContext(PokemonContext);
 
   const handleCardList = useCallback(async (prop) => {
+    const arr = [];
     await prop.map(async (resp) => {
       await Api(resp.url).then(async (data) => {
-        setApiOptions((prev) => [
-          ...prev,
-          [data.name, data.sprites.front_default, data.id],
-        ]);
+        arr.push([data.name, data.sprites.front_default, data.id]);
       });
     });
+    setApiOptions(arr);
   }, []);
 
-  const handleApi = useCallback(
-    async (path = null) => {
-      const pathList = "?offset=0&limit=16";
-      const uri = `https://pokeapi.co/api/v2/pokemon${path ?? pathList}`;
-
-      setApiOptions([]);
-      setLoading(true);
-
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(async () => {
+      const uri = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=15`;
       await Api(uri).then(async (data) => {
-        path === null
-          ? await handleCardList(data.results)
-          : setApiOptions([data.name, data.sprites.front_default, data.id]);
+        await handleCardList(data.results);
+
         setLoading(false);
       });
-    },
-    [setLoading, handleCardList]
-  );
-
-  useEffect(() => {
-    handleApi();
-  }, [handleApi]);
+    }, 1000);
+  }, [handleCardList, setLoading]);
 
   return (
-    <CompareContext.Provider
-      className="container"
-      value={{ compare, setCompare }}
-    >
-      <Search handleApi={handleApi} />
+    <div>
+      <PokemonContext.Provider
+        value={{ pokemon: apiOptions, setPokemon: setApiOptions }}
+      >
+        <Search />
 
-      <h1 className={`${hideBySearch}`} style={{ textAlign: "center" }}>
-        LISTA DE POKEMONS
-      </h1>
+        <h1 className={`${hideBySearch}`} style={{ textAlign: "center" }}>
+          LISTA DE POKEMONS
+        </h1>
 
-      <Card apiOptions={apiOptions} />
+        <CompareContext.Provider
+          className="container"
+          value={{ compare, setCompare }}
+        >
+          {pokemon && <Card />}
+
+          {/* ITEMS FLUTUANTES */}
+          {compare.Pokemon1 !== null && <Compare />}
+        </CompareContext.Provider>
+      </PokemonContext.Provider>
 
       <Pagination hideBySearch={hideBySearch} />
-
-      {/* ITEMS FLUTUANTES */}
-      {compare.Pokemon1 !== null && <Compare />}
 
       <ul className="social">
         <li>
@@ -99,7 +97,7 @@ function CardList() {
           </a>
         </li>
       </ul>
-    </CompareContext.Provider>
+    </div>
   );
 }
 
