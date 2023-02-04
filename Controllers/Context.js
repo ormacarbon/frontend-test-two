@@ -7,6 +7,11 @@ export const LoadingContext = createContext({
   setLoading: (prop) => {},
 });
 
+export const PokemonContext = createContext({
+  pokemon: [],
+  setPokemon: (prop) => {},
+});
+
 export const CompareContext = createContext({
   compare: { Pokemon1: null, Pokemon2: null },
   setCompare: () => {},

@@ -13,6 +13,12 @@ import CardList from "./CardList/CardList";
 export { Card, Compare, Info, Loading, Pagination, Search, CardList };
 
 import Api from "../../Controllers/Api";
-import { LoadingContext, CompareContext } from "../../Controllers/Context";
+import getAutoComplete from "../../Controllers/getAutoComplete";
 
-export { Api, LoadingContext, CompareContext };
+import {
+  LoadingContext,
+  CompareContext,
+  PokemonContext,
+} from "../../Controllers/Context";
+
+export { Api, getAutoComplete, LoadingContext, CompareContext, PokemonContext };
