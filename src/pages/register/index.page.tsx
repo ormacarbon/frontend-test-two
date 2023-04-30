@@ -1,7 +1,9 @@
-import React, { useState, type FC } from 'react'
+import React, { useState, type FC, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 import { validateEmail } from '../../utils/utils'
+import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import * as C from './RegisterStyles'
 import Input from '../../components/input/index'
 import Button from '../../components/button'
@@ -35,7 +37,14 @@ interface RegisterFormState {
   };
 }
 
+interface LoginResponse {
+  token: string;
+  userID: number;
+}
+
 const Register: FC = () => {
+  const router = useRouter()
+
   const [disableButton, setDisableButton] = useState<boolean>(false)
   const [registerForm, setRegisterForm] = useState<RegisterForm>({ name: '', email: '', password: '', retypePassword: '' })
   const [registerFormState, setRegisterFormState] = useState<RegisterFormState>({
@@ -44,6 +53,14 @@ const Register: FC = () => {
     password: { state: true, feedback: '' },
     retypePassword: { state: true, feedback: '' }
   })
+
+  useEffect(() => {
+    const userID: string = localStorage.getItem('userID')
+    const token: string = localStorage.getItem('token')
+
+    if (userID && token) router.push('/tasks')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleNameInputChange = (newValue: string): void => {
     setRegisterForm({ ...registerForm, name: newValue })
@@ -100,6 +117,32 @@ const Register: FC = () => {
     return !states.includes(false)
   }
 
+  const register = (): void => {
+    const validation: boolean = validateFields()
+
+    if (validation) {
+      setDisableButton(true)
+      http.post('/user', {...registerForm, role: 0})
+        .then(() => {
+          http.post<LoginResponse>('/login', registerForm)
+            .then((response) => {
+              const { token, userID } = response.data
+              setAuthTokenAndUserID(token, userID.toString())
+              router.push('/tasks')
+            })
+            .catch((e) => {
+              setDisableButton(false)
+              console.error(e?.message)
+              router.push('/login')
+            })
+        })
+        .catch((e): void => {
+          setDisableButton(false)
+          console.error(e?.message)
+        })
+    }
+  }
+
   return (
     <C.Container>
       <C.RegisterContainer>
@@ -147,7 +190,12 @@ const Register: FC = () => {
             state={registerFormState.retypePassword.state}
           />
         </C.Form>
-        <Button label="Cadastrar" option="salmon" disabled={disableButton} />
+        <Button
+          label="Cadastrar"
+          option="salmon"
+          disabled={disableButton}
+          onClick={register}
+        />
         <C.LoginText>Já possui uma conta? <Link href="/login">Faça login</Link></C.LoginText>
       </C.RegisterContainer>
     </C.Container>
