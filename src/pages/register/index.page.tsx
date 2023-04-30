@@ -1,7 +1,9 @@
 import React, { useState, type FC } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 import { validateEmail } from '../../utils/utils'
+import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import * as C from './RegisterStyles'
 import Input from '../../components/input/index'
 import Button from '../../components/button'
@@ -35,7 +37,14 @@ interface RegisterFormState {
   };
 }
 
+interface LoginResponse {
+  token: string;
+  idUser: number;
+}
+
 const Register: FC = () => {
+  const router = useRouter()
+
   const [disableButton, setDisableButton] = useState<boolean>(false)
   const [registerForm, setRegisterForm] = useState<RegisterForm>({ name: '', email: '', password: '', retypePassword: '' })
   const [registerFormState, setRegisterFormState] = useState<RegisterFormState>({
@@ -100,6 +109,32 @@ const Register: FC = () => {
     return !states.includes(false)
   }
 
+  const register = (): void => {
+    const validation: boolean = validateFields()
+
+    if (validation) {
+      setDisableButton(true)
+      http.post('/user', {...registerForm, role: 0})
+        .then(() => {
+          http.post<LoginResponse>('/login', registerForm)
+            .then((response) => {
+              const { token, idUser } = response.data
+              setAuthTokenAndUserID(token, idUser)
+              router.push('/tasks')
+            })
+            .catch((e) => {
+              setDisableButton(false)
+              console.error(e?.message)
+              router.push('/login')
+            })
+        })
+        .catch((e): void => {
+          setDisableButton(false)
+          console.error(e?.message)
+        })
+    }
+  }
+
   return (
     <C.Container>
       <C.RegisterContainer>
@@ -147,7 +182,12 @@ const Register: FC = () => {
             state={registerFormState.retypePassword.state}
           />
         </C.Form>
-        <Button label="Cadastrar" option="salmon" disabled={disableButton} />
+        <Button
+          label="Cadastrar"
+          option="salmon"
+          disabled={disableButton}
+          onClick={register}
+        />
         <C.LoginText>Já possui uma conta? <Link href="/login">Faça login</Link></C.LoginText>
       </C.RegisterContainer>
     </C.Container>
