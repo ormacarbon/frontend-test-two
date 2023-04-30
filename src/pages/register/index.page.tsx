@@ -1,4 +1,4 @@
-import React, { useState, type FC } from 'react'
+import React, { useState, type FC, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -53,6 +53,14 @@ const Register: FC = () => {
     password: { state: true, feedback: '' },
     retypePassword: { state: true, feedback: '' }
   })
+
+  useEffect(() => {
+    const userID: string = localStorage.getItem('userID')
+    const token: string = localStorage.getItem('token')
+
+    if (userID && token) router.push('/tasks')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleNameInputChange = (newValue: string): void => {
     setRegisterForm({ ...registerForm, name: newValue })
@@ -119,7 +127,7 @@ const Register: FC = () => {
           http.post<LoginResponse>('/login', registerForm)
             .then((response) => {
               const { token, userID } = response.data
-              setAuthTokenAndUserID(token, userID)
+              setAuthTokenAndUserID(token, userID.toString())
               router.push('/tasks')
             })
             .catch((e) => {
