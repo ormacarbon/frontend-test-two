@@ -9,12 +9,12 @@ function createAxios(config: MyConfig): AxiosInstance {
 
   http.interceptors.request.use((config) => {
     const token = localStorage.getItem('token')
-    const idUser = localStorage.getItem('idUser')
+    const userID = localStorage.getItem('userID')
 
     if (token) {
       // eslint-disable-next-line dot-notation
       config.headers['Authorization'] = `Bearer ${token}`
-      config.headers['Id-User'] = idUser
+      config.headers['user-id'] = userID
     }
 
     return config
@@ -25,7 +25,6 @@ function createAxios(config: MyConfig): AxiosInstance {
 
 const http = createAxios({
   baseURL: process.env.API_URL,
-  timeout: 5000,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -34,10 +33,10 @@ const http = createAxios({
 export const setAuthTokenAndUserID = (token: string, id: number): void => {
   if (token) {
     localStorage.setItem('token', token)
-    localStorage.setItem('idUser', id.toString())
+    localStorage.setItem('userID', id.toString())
     // eslint-disable-next-line dot-notation
     http.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    http.defaults.headers.common['Id-User'] = id
+    http.defaults.headers.common['user-id'] = id
   } else {
     removeAuthTokenAndUserID()
   }
@@ -45,10 +44,10 @@ export const setAuthTokenAndUserID = (token: string, id: number): void => {
 
 export const removeAuthTokenAndUserID = (): void => {
   localStorage.setItem('token', '')
-  localStorage.setItem('idUser', '')
+  localStorage.setItem('userID', '')
   // eslint-disable-next-line dot-notation
   delete http.defaults.headers.common['Authorization']
-  delete http.defaults.headers.common['Id-User']
+  delete http.defaults.headers.common['user-id']
 }
 
 export default http

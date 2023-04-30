@@ -39,7 +39,7 @@ interface RegisterFormState {
 
 interface LoginResponse {
   token: string;
-  idUser: number;
+  userID: number;
 }
 
 const Register: FC = () => {
@@ -118,8 +118,8 @@ const Register: FC = () => {
         .then(() => {
           http.post<LoginResponse>('/login', registerForm)
             .then((response) => {
-              const { token, idUser } = response.data
-              setAuthTokenAndUserID(token, idUser)
+              const { token, userID } = response.data
+              setAuthTokenAndUserID(token, userID)
               router.push('/tasks')
             })
             .catch((e) => {
