@@ -30,10 +30,10 @@ const http = createAxios({
   }
 })
 
-export const setAuthTokenAndUserID = (token: string, id: number): void => {
+export const setAuthTokenAndUserID = (token: string, id: string): void => {
   if (token) {
     localStorage.setItem('token', token)
-    localStorage.setItem('userID', id.toString())
+    localStorage.setItem('userID', id)
     // eslint-disable-next-line dot-notation
     http.defaults.headers.common['Authorization'] = `Bearer ${token}`
     http.defaults.headers.common['user-id'] = id
@@ -43,8 +43,7 @@ export const setAuthTokenAndUserID = (token: string, id: number): void => {
 }
 
 export const removeAuthTokenAndUserID = (): void => {
-  localStorage.setItem('token', '')
-  localStorage.setItem('userID', '')
+  localStorage.clear()
   // eslint-disable-next-line dot-notation
   delete http.defaults.headers.common['Authorization']
   delete http.defaults.headers.common['user-id']
