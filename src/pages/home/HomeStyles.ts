@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: calc(100vh - 60px);
   display: flex;
   align-items: center;
   position: relative;
