@@ -49,6 +49,7 @@ interface TaskGet {
   created_at: string;
   updated_at: string;
 }
+
 interface Props {
   data: Task[];
 }
@@ -56,11 +57,82 @@ interface Props {
 const Tasks: FC<Props> = ({ data }) => {
   const [taskForm, setTaskForm] = useState<TaskForm>({ name: '', description: ''})
   const [taskFormState, setTaskFormState] = useState<TaskFormState>({ name: { state: true, feedback: '' }, description: { state: true, feedback: '' } })
-  const [modalTitle, setModalTitle] = useState<string>('')
+  const [modalTitle, setModalTitle] = useState<string>()
+  const [modalAction, setModalAction] = useState<string>('add')
   const [modalDisplay, setModalDisplay] = useState<boolean>(false)
   const [taskIdToEdit, setTaskIdToEdit] = useState<number | null>(null)
   const [tasks, setTasks] = useState<Task[]>(data)
-  console.log(tasks)
+
+  const getTasks = (): Promise<void> => http.get('/activity')
+    .then((response: AxiosResponse) => {
+      const tasks = response.data.data?.map((task : TaskGet) => {
+        return {
+          id: task.id,
+          task: task.name,
+          description: task.description,
+          created: moment(task.created_at).format('DD/MM/YYYY'),
+          updated: task.updated_at ? moment(task.updated_at).format('DD/MM/YYYY') : ''
+        }
+      })
+
+      setTasks(tasks)
+    })
+
+  const validateFields = (): boolean => {
+    Object.keys(taskForm).forEach((prop) => {
+      if (taskForm[prop] === '') {
+        taskFormState[prop].state = false
+        taskFormState[prop].feedback = 'Campo obrigatório'
+      } else {
+        taskFormState[prop].state = true
+        taskFormState[prop].feedback = ''
+        if (prop === 'name') {
+          taskFormState[prop].state = tasks.find(task => task.task === taskForm[prop]) === undefined
+          taskFormState[prop].feedback = tasks.find(task => task.task === taskForm[prop]) === undefined ? '' : 'Tarefa já existente'
+        }
+      }
+      setTaskFormState({ ...taskFormState })
+    })
+    const states = Object.keys(taskFormState).map((prop) => taskFormState[prop].state)
+
+    return !states.includes(false)
+  }
+
+  const saveTask = (): void => {
+    const validation = validateFields()
+
+    if (validation) {
+      http.post('/activity', taskForm)
+        .then(() => {
+          getTasks()
+          setModalDisplay(false)
+        })
+        .catch(e => console.error(e))
+
+      setModalDisplay(false)
+    }
+  }
+
+  const editTask = (): void => {
+    const validation = validateFields()
+
+    if (validation) {
+      http.put(`/activity/${taskIdToEdit}`, taskForm)
+        .then(() => {
+          getTasks()
+          setModalDisplay(false)
+        })
+        .catch(e => console.error(e))
+
+      setModalDisplay(false)
+    }
+  }
+
+  const deleteTask = (id: number): void => {
+    http.delete(`/activity/${id}`)
+      .then(() => getTasks())
+      .catch(e => console.error(e))
+  }
 
   const handleInputChange = (newValue: string, inputName: string): void => {
     setTaskForm({ ...taskForm, [inputName]: newValue })
@@ -85,12 +157,15 @@ const Tasks: FC<Props> = ({ data }) => {
         break
     }
 
+    setModalAction(action)
     setModalTitle(title)
   }
 
   const handleTaskEditing = (id: number): void => {
     changeModalTitle('edit')
     setTaskIdToEdit(id)
+    const { task, description } = tasks.find((task: Task) => task.id === id)
+    setTaskForm({ name: task || '', description: description || ''})
     setModalDisplay(true)
   }
 
@@ -106,6 +181,7 @@ const Tasks: FC<Props> = ({ data }) => {
         setDisplay={setModalDisplay}
         title={modalTitle}
         clearFields={clearFields}
+        save={modalAction === 'add' ? saveTask : editTask}
       >
         <Input
           name="name"
@@ -143,6 +219,7 @@ const Tasks: FC<Props> = ({ data }) => {
             key={`task-${id}`}
             taskProp={task}
             handleTaskEditing={handleTaskEditing}
+            deleteTask={deleteTask}
           />
         ))}
       </C.TasksContainer>
@@ -177,14 +254,18 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     }
   }
 
-  const data: Task[] = response.data.data.map((task: TaskGet) => {
-    return {
-      ...task,
-      task: task.name,
-      created: moment(task.created_at).format('DD/MM/YYYY'),
-      updated: task.updated_at ? moment(task.updated_at).format('DD/MM/YYYY') : ''
-    }
-  })
+  let data: Task[] | [] = []
+  data = response
+    ? response.data.data.map((task: TaskGet) => {
+      return {
+        id: task.id,
+        task: task.name,
+        description: task.description,
+        created: moment(task.created_at).format('DD/MM/YYYY'),
+        updated: task.updated_at ? moment(task.updated_at).format('DD/MM/YYYY') : ''
+      }
+    })
+    : []
 
   return {
     props: {

@@ -30,6 +30,7 @@ const Modal: FC<Props> = ({ title, display, setDisplay, children, save, clearFie
         status = true
         break
       case DisplayAction.Close:
+        clearFields()
         status = false
         break
       default:
@@ -41,10 +42,12 @@ const Modal: FC<Props> = ({ title, display, setDisplay, children, save, clearFie
   }
 
   const handleButtonAction = (action?: string): void => {
-    if (action === ButtonAction.Save) save && save()
-
-    handleDisplayChange('close')
-    clearFields && clearFields()
+    if (action === ButtonAction.Save) {
+      save && save()
+    } else {
+      handleDisplayChange('close')
+      clearFields && clearFields()
+    }
   }
 
   return (

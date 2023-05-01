@@ -13,9 +13,10 @@ interface Task {
 interface Props {
   taskProp: Task;
   handleTaskEditing: (id: number) => void;
+  deleteTask: (id: number) => void;
 }
 
-const TaskCard: FC<Props> = ({ taskProp, handleTaskEditing }) => {
+const TaskCard: FC<Props> = ({ taskProp, handleTaskEditing, deleteTask }) => {
   const { id, task, description, created, updated } = taskProp
   const items: MenuProps['items'] = [
     {
@@ -29,7 +30,7 @@ const TaskCard: FC<Props> = ({ taskProp, handleTaskEditing }) => {
     {
       key: '2',
       label: (
-        <a target="_blank" rel="noopener noreferrer">
+        <a target="_blank" rel="noopener noreferrer" onClick={() => deleteTask(id)}>
           Excluir
         </a>
       )
