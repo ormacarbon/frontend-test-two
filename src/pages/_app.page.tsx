@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 import Head from 'next/head'
+import LoadingProvider from '../context/loading-context'
 import 'antd/dist/reset.css'
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
@@ -13,7 +14,9 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <Head>
         <title>To do</title>
       </Head>
-      <Component {...pageProps} />
+      <LoadingProvider>
+        <Component {...pageProps} />
+      </LoadingProvider>
       <GlobalStyle />
     </ThemeProvider>
   )

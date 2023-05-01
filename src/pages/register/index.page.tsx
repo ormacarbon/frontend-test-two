@@ -1,4 +1,4 @@
-import React, { useState, type FC, useEffect } from 'react'
+import React, { useState, type FC, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -7,6 +7,7 @@ import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import * as C from './RegisterStyles'
 import Input from '../../components/input/index'
 import Button from '../../components/button'
+import { LoadingContext } from '../../context/loading-context'
 
 interface RegisterForm {
   name: string;
@@ -43,6 +44,7 @@ interface LoginResponse {
 }
 
 const Register: FC = () => {
+  const { setIsLoading } = useContext(LoadingContext)
   const router = useRouter()
 
   const [disableButton, setDisableButton] = useState<boolean>(false)
@@ -110,18 +112,22 @@ const Register: FC = () => {
 
     if (validation) {
       setDisableButton(true)
+      setIsLoading(true)
+
       http.post('/user', {...registerForm, role: 0})
         .then(() => {
           http.post<LoginResponse>('/login', registerForm)
             .then((response) => {
               const { token, userID } = response.data
               setAuthTokenAndUserID(token, userID.toString())
+
               router.push('/tasks')
             })
             .catch((e) => {
               setDisableButton(false)
               console.error(e?.message)
               router.push('/login')
+              setIsLoading(false)
             })
         })
         .catch((e): void => {
