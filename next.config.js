@@ -1,8 +1,13 @@
 const { config } = require('dotenv')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverRuntimeConfig: {
+    logger: {
+      level: 'debug'
+    }
+  },
   env: {
-    API_URL: config().parsed.API_URL,
+    API_URL: config().parsed.API_URL
   },
   reactStrictMode: true,
   swcMinify: true,

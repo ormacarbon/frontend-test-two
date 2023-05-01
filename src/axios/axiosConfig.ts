@@ -1,4 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import { setCookie, destroyCookie, parseCookies } from 'nookies'
+
 interface MyConfig extends AxiosRequestConfig {
   baseURL: string;
   timeout?: number;
@@ -8,8 +10,9 @@ function createAxios(config: MyConfig): AxiosInstance {
   const http = axios.create(config)
 
   http.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token')
-    const userID = localStorage.getItem('userID')
+    const cookies = parseCookies()
+    const token = cookies.token
+    const userID = cookies.userID
 
     if (token) {
       // eslint-disable-next-line dot-notation
@@ -32,8 +35,16 @@ const http = createAxios({
 
 export const setAuthTokenAndUserID = (token: string, id: string): void => {
   if (token) {
-    localStorage.setItem('token', token)
-    localStorage.setItem('userID', id)
+    setCookie(null, 'token', token, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/'
+    })
+
+    setCookie(null, 'userID', id, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/'
+    })
+
     // eslint-disable-next-line dot-notation
     http.defaults.headers.common['Authorization'] = `Bearer ${token}`
     http.defaults.headers.common['user-id'] = id
@@ -43,7 +54,12 @@ export const setAuthTokenAndUserID = (token: string, id: string): void => {
 }
 
 export const removeAuthTokenAndUserID = (): void => {
-  localStorage.clear()
+  const cookies = parseCookies(null)
+
+  Object.keys(cookies).forEach((cookieName) => {
+    destroyCookie(null, cookieName)
+  })
+
   // eslint-disable-next-line dot-notation
   delete http.defaults.headers.common['Authorization']
   delete http.defaults.headers.common['user-id']
