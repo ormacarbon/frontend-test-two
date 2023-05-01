@@ -140,6 +140,7 @@ const Register: FC = () => {
             name="name"
             label="Nome"
             placeholder="Digite aqui"
+            value={registerForm.name}
             change={handleInputChange}
             invalidFeedback={registerFormState.name.feedback}
             state={registerFormState.name.state}
@@ -149,6 +150,7 @@ const Register: FC = () => {
             name="email"
             label="E-mail"
             placeholder="Digite aqui"
+            value={registerForm.email}
             change={handleInputChange}
             invalidFeedback={registerFormState.email.feedback}
             state={registerFormState.email.state}
@@ -159,6 +161,7 @@ const Register: FC = () => {
             label="Senha"
             type="password"
             placeholder="*********"
+            value={registerForm.password}
             change={handleInputChange}
             invalidFeedback={registerFormState.password.feedback}
             state={registerFormState.password.state}
@@ -169,6 +172,7 @@ const Register: FC = () => {
             label="Repita a senha"
             type="password"
             placeholder="*********"
+            value={registerForm.retypePassword}
             change={handleInputChange}
             invalidFeedback={registerFormState.retypePassword.feedback}
             state={registerFormState.retypePassword.state}

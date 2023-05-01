@@ -97,6 +97,7 @@ const Tasks: FC = () => {
           name="name"
           label="Tarefa"
           placeholder="Digite aqui"
+          value={taskForm.name}
           change={handleInputChange}
           state={taskFormState.name.state}
           invalidFeedback={taskFormState.name.feedback}
@@ -106,6 +107,7 @@ const Tasks: FC = () => {
           name="description"
           label="Descrição"
           placeholder="Digite aqui"
+          value={taskForm.description}
           change={handleInputChange}
           state={taskFormState.description.state}
           invalidFeedback={taskFormState.description.feedback}

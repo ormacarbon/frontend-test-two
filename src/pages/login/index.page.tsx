@@ -98,6 +98,7 @@ const Login: FC = () => {
             name="email"
             label="E-mail"
             placeholder="Digite aqui"
+            value={loginForm.email}
             change={handleInputChange}
             invalidFeedback={loginFormState.email.feedback}
             state={loginFormState.email.state}
@@ -108,6 +109,7 @@ const Login: FC = () => {
             label="Senha"
             type="password"
             placeholder="*********"
+            value={loginForm.password}
             change={handleInputChange}
             invalidFeedback={loginFormState.email.feedback}
             state={loginFormState.password.state}
