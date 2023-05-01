@@ -40,12 +40,8 @@ const Login: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleEmailInputChange = (newValue: string): void => {
-    setLoginForm({...loginForm, email: newValue})
-  }
-
-  const handlePasswordInputChange = (newValue: string): void => {
-    setLoginForm({...loginForm, password: newValue})
+  const handleInputChange = (newValue: string, inputName: string) => {
+    setLoginForm({...loginForm, [inputName]: newValue})
   }
 
   const validateFields = (): boolean => {
@@ -97,22 +93,22 @@ const Login: FC = () => {
       <C.LoginContainer>
         <C.Title>Login</C.Title>
         <C.Form>
-          {userNotFound && <C.FormError>Usuário ou senha inválidos!</C.FormError>}
+          { userNotFound && <C.FormError>Usuário ou senha inválidos!</C.FormError> }
           <Input
-            id="email-input"
+            name="email"
             label="E-mail"
             placeholder="Digite aqui"
-            onChange={handleEmailInputChange}
+            change={handleInputChange}
             invalidFeedback={loginFormState.email.feedback}
             state={loginFormState.email.state}
           />
 
           <Input
-            id="password-input"
+            name="password"
             label="Senha"
             type="password"
             placeholder="*********"
-            onChange={handlePasswordInputChange}
+            change={handleInputChange}
             invalidFeedback={loginFormState.email.feedback}
             state={loginFormState.password.state}
           />

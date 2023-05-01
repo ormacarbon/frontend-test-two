@@ -62,20 +62,8 @@ const Register: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleNameInputChange = (newValue: string): void => {
-    setRegisterForm({ ...registerForm, name: newValue })
-  }
-
-  const handleEmailInputChange = (newValue: string): void => {
-    setRegisterForm({ ...registerForm, email: newValue })
-  }
-
-  const handlePasswordInputChange = (newValue: string): void => {
-    setRegisterForm({ ...registerForm, password: newValue })
-  }
-
-  const handleRetypePasswordInputChange = (newValue: string): void => {
-    setRegisterForm({ ...registerForm, retypePassword: newValue })
+  const handleInputChange = (newValue: string, inputName: string) => {
+    setRegisterForm({...registerForm, [inputName]: newValue})
   }
 
   const validateFields = (): boolean => {
@@ -149,43 +137,39 @@ const Register: FC = () => {
         <C.Title>Cadastro</C.Title>
         <C.Form>
           <Input
-            id="name-input"
-            className="register-input"
+            name="name"
             label="Nome"
             placeholder="Digite aqui"
-            onChange={handleNameInputChange}
+            change={handleInputChange}
             invalidFeedback={registerFormState.name.feedback}
             state={registerFormState.name.state}
           />
 
           <Input
-            id="email-input"
-            className="register-input"
+            name="email"
             label="E-mail"
             placeholder="Digite aqui"
-            onChange={handleEmailInputChange}
+            change={handleInputChange}
             invalidFeedback={registerFormState.email.feedback}
             state={registerFormState.email.state}
           />
 
           <Input
-            id="password-input"
-            className="register-input"
+            name="password"
             label="Senha"
             type="password"
             placeholder="*********"
-            onChange={handlePasswordInputChange}
+            change={handleInputChange}
             invalidFeedback={registerFormState.password.feedback}
             state={registerFormState.password.state}
           />
 
           <Input
-            id="retype-password-input"
-            className="register-input"
+            name="retypePassword"
             label="Repita a senha"
             type="password"
             placeholder="*********"
-            onChange={handleRetypePasswordInputChange}
+            change={handleInputChange}
             invalidFeedback={registerFormState.retypePassword.feedback}
             state={registerFormState.retypePassword.state}
           />

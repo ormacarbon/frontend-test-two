@@ -4,6 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  &.is-invalid {
+    input {
+      border-color: #FF2121;
+    }
+  }
 `
 
 export const Label = styled.label`
@@ -29,10 +35,6 @@ export const Input = styled.input`
 
   &::placeholder {
     color: #9C9C9C
-  }
-
-  &.is-invalid {
-    border-color: #FF2121;
   }
 `
 
