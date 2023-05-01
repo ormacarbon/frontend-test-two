@@ -1,4 +1,4 @@
-import React, { useState, type FC, ReactNode} from 'react'
+import React, { type FC, ReactNode} from 'react'
 
 import * as C from './ModalStyles'
 import Button from '../button'
@@ -14,14 +14,14 @@ enum ButtonAction {
 
 interface Props {
   title: string;
+  display: boolean;
   children?: ReactNode;
+  setDisplay: (status: boolean) => void;
   clearFields?: () => void;
   save?: () => void;
 }
 
-const Modal: FC<Props> = ({ title, children, save, clearFields }) => {
-  const [display, setDisplay] = useState<boolean>(true)
-
+const Modal: FC<Props> = ({ title, display, setDisplay, children, save, clearFields }) => {
   const handleDisplayChange = (action: string): void => {
     let status: boolean
 
