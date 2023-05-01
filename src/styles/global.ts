@@ -19,4 +19,25 @@ export default createGlobalStyle`
     color: ${props => props.theme.colors.background};
     text-decoration: none;
   }
+
+  .ant-dropdown-menu {
+    li {
+      span {
+        display: flex;
+        align-items: center;
+
+        a {
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+
+      &:hover {
+        background: #FE6763 !important;
+        a {
+          color: #fff !important;
+        }
+      }
+    }
+  }
 `
