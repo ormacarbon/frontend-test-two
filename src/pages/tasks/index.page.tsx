@@ -6,6 +6,12 @@ import Button from '../../components/button'
 import TaskCard from '../../components/task-card'
 import Input from '../../components/input'
 
+import { GetServerSideProps } from 'next'
+import { AxiosResponse } from 'axios'
+import nookies from 'nookies'
+import http from '../../axios/axiosConfig'
+import moment from 'moment'
+
 enum ActivityAction {
   Edit = 'edit',
   Add = 'add'
@@ -36,17 +42,25 @@ interface Task {
   updated: string;
 }
 
-const Tasks: FC = () => {
+interface TaskGet {
+  id: number;
+  name: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+}
+interface Props {
+  data: Task[];
+}
+
+const Tasks: FC<Props> = ({ data }) => {
   const [taskForm, setTaskForm] = useState<TaskForm>({ name: '', description: ''})
   const [taskFormState, setTaskFormState] = useState<TaskFormState>({ name: { state: true, feedback: '' }, description: { state: true, feedback: '' } })
   const [modalTitle, setModalTitle] = useState<string>('')
   const [modalDisplay, setModalDisplay] = useState<boolean>(false)
   const [taskIdToEdit, setTaskIdToEdit] = useState<number | null>(null)
-  const [tasks, setTasks] = useState<Array<Task>>([
-    { id: 1, task: 'test', description: 'test', created: 'teste', updated: 'test' },
-    { id: 2, task: 'test', description: 'test', created: 'teste', updated: 'test' },
-    { id: 3, task: 'test', description: 'test', created: 'teste', updated: 'test' }
-  ])
+  const [tasks, setTasks] = useState<Task[]>(data)
+  console.log(tasks)
 
   const handleInputChange = (newValue: string, inputName: string): void => {
     setTaskForm({ ...taskForm, [inputName]: newValue })
@@ -137,3 +151,44 @@ const Tasks: FC = () => {
 }
 
 export default Tasks
+
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  const cookies = nookies.get(context)
+  const token = cookies.token
+  const userID = cookies.userID
+  let response: AxiosResponse
+
+  try {
+    response = await http.get('/activity', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Beraer ${token}`,
+        'user-id': `${userID}`
+      }
+    })
+  } catch (e) {
+    if (e.response.status === 401) {
+      return {
+        redirect: {
+          destination: '/login',
+          permanent: false
+        }
+      }
+    }
+  }
+
+  const data: Task[] = response.data.data.map((task: TaskGet) => {
+    return {
+      ...task,
+      task: task.name,
+      created: moment(task.created_at).format('DD/MM/YYYY'),
+      updated: task.updated_at ? moment(task.updated_at).format('DD/MM/YYYY') : ''
+    }
+  })
+
+  return {
+    props: {
+      data
+    }
+  }
+}
