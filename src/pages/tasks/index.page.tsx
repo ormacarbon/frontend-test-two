@@ -1,4 +1,4 @@
-import React, { useState, type FC} from 'react'
+import React, { useState, type FC, useContext, useEffect} from 'react'
 
 import * as C from './TasksStyles'
 import Modal from '../../components/modal'
@@ -8,6 +8,7 @@ import Input from '../../components/input'
 
 import { GetServerSideProps } from 'next'
 import { AxiosResponse } from 'axios'
+import { LoadingContext } from '../../context/loading-context'
 import nookies from 'nookies'
 import http from '../../axios/axiosConfig'
 import moment from 'moment'
@@ -55,6 +56,7 @@ interface Props {
 }
 
 const Tasks: FC<Props> = ({ data }) => {
+  const { setIsLoading } = useContext(LoadingContext)
   const [taskForm, setTaskForm] = useState<TaskForm>({ name: '', description: ''})
   const [taskFormState, setTaskFormState] = useState<TaskFormState>({ name: { state: true, feedback: '' }, description: { state: true, feedback: '' } })
   const [modalTitle, setModalTitle] = useState<string>()
@@ -62,6 +64,11 @@ const Tasks: FC<Props> = ({ data }) => {
   const [modalDisplay, setModalDisplay] = useState<boolean>(false)
   const [taskIdToEdit, setTaskIdToEdit] = useState<number | null>(null)
   const [tasks, setTasks] = useState<Task[]>(data)
+
+  useEffect(() => {
+    setIsLoading(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const getTasks = (): Promise<void> => http.get('/activity')
     .then((response: AxiosResponse) => {
@@ -76,6 +83,7 @@ const Tasks: FC<Props> = ({ data }) => {
       })
 
       setTasks(tasks)
+      setIsLoading(false)
     })
 
   const validateFields = (): boolean => {
@@ -102,12 +110,16 @@ const Tasks: FC<Props> = ({ data }) => {
     const validation = validateFields()
 
     if (validation) {
+      setIsLoading(true)
       http.post('/activity', taskForm)
         .then(() => {
           getTasks()
           setModalDisplay(false)
         })
-        .catch(e => console.error(e))
+        .catch(e => {
+          console.error(e)
+          setIsLoading(false)
+        })
 
       setModalDisplay(false)
     }
@@ -117,21 +129,30 @@ const Tasks: FC<Props> = ({ data }) => {
     const validation = validateFields()
 
     if (validation) {
+      setIsLoading(true)
       http.put(`/activity/${taskIdToEdit}`, taskForm)
         .then(() => {
           getTasks()
           setModalDisplay(false)
         })
-        .catch(e => console.error(e))
+        .catch(e => {
+          console.error(e)
+          setIsLoading(false)
+        })
 
       setModalDisplay(false)
     }
   }
 
   const deleteTask = (id: number): void => {
+    setIsLoading(true)
+
     http.delete(`/activity/${id}`)
       .then(() => getTasks())
-      .catch(e => console.error(e))
+      .catch(e => {
+        console.error(e)
+        setIsLoading(false)
+      })
   }
 
   const handleInputChange = (newValue: string, inputName: string): void => {

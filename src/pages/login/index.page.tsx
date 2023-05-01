@@ -1,4 +1,4 @@
-import React, { useState, type FC, useEffect } from 'react'
+import React, { useState, type FC, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -7,6 +7,7 @@ import { validateEmail } from '../../utils/utils'
 import * as C from './LoginStyles'
 import Input from '../../components/input'
 import Button from '../../components/button'
+import { LoadingContext } from '../../context/loading-context'
 
 interface LoginForm {
   email: string;
@@ -25,6 +26,7 @@ interface LoginFormState {
 }
 
 const Login: FC = () => {
+  const { setIsLoading } = useContext(LoadingContext)
   const router = useRouter()
 
   const [loginForm, setLoginForm] = useState<LoginForm>({ email: '', password: '' })
@@ -73,6 +75,8 @@ const Login: FC = () => {
 
     if (validation) {
       setDisableButton(true)
+      setIsLoading(true)
+
       http.post('/login', loginForm)
         .then((response) => {
           const { token, userID } = response.data
@@ -83,6 +87,7 @@ const Login: FC = () => {
         .catch((e): void => {
           setUserNotFound(true)
           setDisableButton(false)
+          setIsLoading(false)
           console.error(e?.message)
         })
     }
