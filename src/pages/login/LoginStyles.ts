@@ -35,16 +35,16 @@ export const Form = styled.form`
   margin-top: 30px;
   width: 100%;
 
-  #email-input {
+  .input-component {
     margin-bottom: 20px;
-  }
 
-  #password-input {
-    margin-bottom: 45px;
-    padding-top: 0px;
+    &:nth-child(2) {
+      margin-bottom: 45px;
+      padding-top: 0px;
 
-    &.is-invalid {
-      margin-bottom: 20px;
+      &.is-invalid {
+        margin-bottom: 20px;
+      }
     }
   }
 `

@@ -35,20 +35,21 @@ export const Form = styled.form`
   margin-top: 30px;
   width: 100%;
 
-  .register-input,
-  .register-input,
-  .register-input {
+  .input-component {
     margin-bottom: 20px;
-  }
 
-  #retype-password-input {
-    &.register-input {
+    &:nth-child(4) {
       margin-bottom: 45px;
       padding-top: 0px;
 
       &.is-invalid {
         margin-bottom: 20px;
       }
+    }
+  }
+
+  #retype-password-input {
+    &.register-input {
     }
   }
 `

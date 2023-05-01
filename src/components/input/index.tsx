@@ -1,33 +1,27 @@
-import React, { type FC } from 'react'
+import React, { type FC, InputHTMLAttributes } from 'react'
 import * as C from './InputStyles'
 
-interface Props {
-  id?: string;
-  className?: string;
-  type?: string;
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  customClass?: string;
   label: string;
-  placeholder: string;
   invalidFeedback?: string;
   state?: boolean;
-  onChange: (newValue: string) => void;
+  change(newValue: string, inputName: string): void;
 }
 
-const Input: FC<Props> = ({ id, className, type, label, placeholder, invalidFeedback, state, onChange }) => {
+const Input: FC<Props> = ({ customClass, label, invalidFeedback, state, change, ...rest }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value)
+    change(event.target.value, event.target.name)
   }
 
   return (
     <C.Container
-      id={id || ''}
-      className={`${className || ''} ${!state && state !== undefined ? 'is-invalid' : ''}`}
+      className={`input-component ${customClass || ''} ${!state && state !== undefined ? 'is-invalid' : ''}`}
     >
       <C.Label>{label}</C.Label>
       <C.Input
-        placeholder={placeholder}
         onChange={handleChange}
-        className={!state && state !== undefined ? 'is-invalid' : ''}
-        type={type || 'text'}
+        {...rest}
       />
       {(!state && state !== undefined) && <C.InvalidFeedback>{invalidFeedback || ''}</C.InvalidFeedback>}
     </C.Container>
