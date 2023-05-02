@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 155px);
   display: flex;
   align-items: center;
   position: relative;
@@ -11,6 +11,7 @@ export const Container = styled.div`
 
 export const LoginContainer = styled.div`
   width: 100vw;
+  height: 100%;;
   max-width: 456px;
   background: #fff;
   display: flex;
