@@ -40,4 +40,19 @@ export default createGlobalStyle`
       }
     }
   }
+
+  .ant-notification-notice {
+    background: ${props => props.theme.colors.cardBackground} !important;
+    color: ${props => props.theme.colors.label};
+
+    .ant-notification-notice-message {
+      color: ${props => props.theme.colors.label} !important;
+    }
+
+    svg {
+      path {
+        fill: ${props => props.theme.colors.label} !important;
+      }
+    }
+  }
 `

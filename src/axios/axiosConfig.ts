@@ -33,7 +33,7 @@ const http = createAxios({
   }
 })
 
-export const setAuthTokenAndUserID = (token: string, id: string): void => {
+export const setAuthTokenAndUserID = (token: string, id: string, userName: string): void => {
   if (token) {
     setCookie(null, 'token', token, {
       maxAge: 30 * 24 * 60 * 60,
@@ -41,6 +41,11 @@ export const setAuthTokenAndUserID = (token: string, id: string): void => {
     })
 
     setCookie(null, 'userID', id, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/'
+    })
+
+    setCookie(null, 'userName', userName, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/'
     })

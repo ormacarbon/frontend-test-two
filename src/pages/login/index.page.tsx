@@ -87,7 +87,7 @@ const Login: React.FC = () => {
       http.post('/login', loginForm)
         .then((response) => {
           const { token, userID, name} = response.data
-          setAuthTokenAndUserID(token, userID.toString())
+          setAuthTokenAndUserID(token, userID.toString(), name)
           setUserName(name)
           if (!userNotFound) setUserNotFound(false)
           router.push('/tasks')
