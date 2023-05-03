@@ -109,9 +109,10 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
         })
 
         if (page > 0) {
+          const totalTasks = [...tasks, ...tasksRoute].sort((a, b) => a.task.localeCompare(b.task))
           setCurrentPage(page)
-          setTotalPages(response.data.totalPages)
-          setTasks([...tasks, ...tasksRoute])
+          setTotalPages(response.data?.data.totalPages)
+          setTasks([...totalTasks])
         } else if (action) {
           setTasks([...tasksRoute])
         }
@@ -308,7 +309,6 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
               return ''
             })}
       </C.TasksContainer>
-
       { totalPages > currentPage && <C.ShowMoreContainer>
         <Button
           option="salmon"
@@ -357,7 +357,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
         created: moment(task.created_at).format('DD/MM/YYYY'),
         updated: task.updated_at ? moment(task.updated_at).format('DD/MM/YYYY') : ''
       }
-    })
+    }).sort((a: Task, b: Task) => a.task.localeCompare(b.task))
     : []
 
   return {
