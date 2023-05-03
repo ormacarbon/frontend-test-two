@@ -50,3 +50,35 @@ export const TasksContainer = styled.div`
   grid-template-columns: minmax(0, 1fr);
   gap: 30px 0;
 `
+
+export const ShowMoreContainer = styled.div`
+  padding-top: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    width: 55vw;
+    max-width: 480px;
+  }
+`
+
+export const Input = styled.input`
+  margin-top: 30px;
+  border: 1px solid ${props => props.theme.colors.inputBorderColor};
+  height: 38px;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  padding: 0 15px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #1C1C1C;
+
+  &::placeholder {
+    color: #9C9C9C
+  }
+`

@@ -6,10 +6,12 @@ import React, {
 
 type NavbarContextType = {
   username: string;
+  setUserName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const NavbarContext = createContext<NavbarContextType>({
-  username: ''
+  username: '',
+  setUserName: undefined
 })
 
 type NavbarContextProviderProps = {
@@ -21,7 +23,7 @@ export const NavbarContextProvider = ({ children }: NavbarContextProviderProps) 
 
   const value = {
     username,
-    setUsername
+    setUserName: setUsername
   }
 
   return <NavbarContext.Provider value={value}>{children}</NavbarContext.Provider>

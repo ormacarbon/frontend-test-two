@@ -14,7 +14,7 @@ const Home: React.FC = () => {
             <C.HomeImage src="home-image.svg" alt="home image" />
         </C.SvgContainer>
         <C.Title>
-            Gerenciador<br/>de<br/>Tarefas
+          Gerenciador<br/>de<br/>Tarefas
         </C.Title>
         <C.Button onClick={redirectToLoginScreen}>
           <C.ButtonText>
