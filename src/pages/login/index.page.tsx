@@ -122,7 +122,7 @@ const Login: React.FC = () => {
             placeholder="*********"
             value={loginForm.password}
             change={handleInputChange}
-            invalidFeedback={loginFormState.email.feedback}
+            invalidFeedback={loginFormState.password.feedback}
             state={loginFormState.password.state}
           />
         </C.Form>
