@@ -5,6 +5,7 @@ import React, {
 } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import nookies from 'nookies'
 
 import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import { validateEmail } from '../../utils/utils'
@@ -40,8 +41,9 @@ const Login: React.FC = () => {
   const [disableButton, setDisableButton] = useState<boolean>(false)
 
   useEffect(() => {
-    const userID: string = localStorage.getItem('userID')
-    const token: string = localStorage.getItem('token')
+    const cookies = nookies.get()
+    const token = cookies.token
+    const userID = cookies.userID
 
     if (userID && token) router.push('/tasks')
     // eslint-disable-next-line react-hooks/exhaustive-deps
