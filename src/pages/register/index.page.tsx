@@ -46,6 +46,7 @@ interface RegisterFormState {
 interface LoginResponse {
   token: string;
   userID: number;
+  name: string;
 }
 
 const Register: React.FC = () => {
@@ -124,8 +125,8 @@ const Register: React.FC = () => {
         .then(() => {
           http.post<LoginResponse>('/login', registerForm)
             .then((response) => {
-              const { token, userID } = response.data
-              setAuthTokenAndUserID(token, userID.toString())
+              const { token, userID, name} = response.data
+              setAuthTokenAndUserID(token, userID.toString(), name)
 
               router.push('/tasks')
             })
