@@ -1,14 +1,10 @@
 import React, { createContext, useContext, useState } from 'react'
 
 type NavbarContextType = {
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
   username: string;
 }
 
 const NavbarContext = createContext<NavbarContextType>({
-  isDarkMode: false,
-  toggleDarkMode: undefined,
   username: ''
 })
 
@@ -17,16 +13,9 @@ type NavbarContextProviderProps = {
 }
 
 export const NavbarContextProvider = ({ children }: NavbarContextProviderProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const [username, setUsername] = useState('Fulano')
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
+  const [username, setUsername] = useState('')
 
   const value = {
-    isDarkMode,
-    toggleDarkMode,
     username,
     setUsername
   }

@@ -1,6 +1,6 @@
 import React, { type FC, ReactNode} from 'react'
 
-import * as C from './ModalStyles'
+import * as C from './styles'
 import Button from '../button'
 
 enum DisplayAction {

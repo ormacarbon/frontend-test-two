@@ -1,5 +1,5 @@
 import React, { type FC } from 'react'
-import * as C from './HomeStyles'
+import * as C from './styles'
 import { useRouter } from 'next/router'
 
 const Home: FC = () => {

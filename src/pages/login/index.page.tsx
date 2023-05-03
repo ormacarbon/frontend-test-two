@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import { validateEmail } from '../../utils/utils'
-import * as C from './LoginStyles'
+import * as C from './styles'
 import Input from '../../components/input'
 import Button from '../../components/button'
-import { LoadingContext } from '../../context/loading-context'
+import { LoadingContext } from '../../context/LoadingContext'
 
 interface LoginForm {
   email: string;

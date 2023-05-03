@@ -1,6 +1,6 @@
 import React, { useState, type FC, useContext, useEffect} from 'react'
 
-import * as C from './TasksStyles'
+import * as C from './styles'
 import Modal from '../../components/modal'
 import Button from '../../components/button'
 import TaskCard from '../../components/task-card'
@@ -8,7 +8,7 @@ import Input from '../../components/input'
 
 import { GetServerSideProps } from 'next'
 import { AxiosResponse } from 'axios'
-import { LoadingContext } from '../../context/loading-context'
+import { LoadingContext } from '../../context/LoadingContext'
 import nookies from 'nookies'
 import http from '../../axios/axiosConfig'
 import moment from 'moment'

@@ -1,5 +1,5 @@
 import React, { type FC } from 'react'
-import * as C from './TaskStyles'
+import * as C from './styles'
 import { Dropdown, Space, Tooltip, type MenuProps } from 'antd'
 
 interface Task {

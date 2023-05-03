@@ -1,5 +1,5 @@
 import React, { type FC, InputHTMLAttributes } from 'react'
-import * as C from './InputStyles'
+import * as C from './styles'
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   customClass?: string;

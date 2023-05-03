@@ -1,6 +1,6 @@
 import React, { type FC } from 'react'
 
-import * as C from './LoadingStyles'
+import * as C from './styles'
 
 const Loading: FC = () => (
   <C.Container>
