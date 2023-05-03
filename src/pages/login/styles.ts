@@ -39,7 +39,7 @@ export const Form = styled.form`
   .input-component {
     margin-bottom: 20px;
 
-    &:nth-child(2) {
+    &:last-child {
       margin-bottom: 45px;
       padding-top: 0px;
 
