@@ -1,11 +1,7 @@
 import styled from 'styled-components'
 import { Menu } from 'antd'
 
-interface NavbarContainerProps {
-  isDarkMode: boolean;
-}
-
-export const NavbarContainer = styled.nav<NavbarContainerProps>`
+export const NavbarContainer = styled.nav`
   position: absolute;
   left: 0;
   top: 0;
@@ -13,8 +9,8 @@ export const NavbarContainer = styled.nav<NavbarContainerProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props) => (props.isDarkMode ? '#333' : '#fff')};
-  color: ${(props) => (props.isDarkMode ? '#fff' : '#333')};
+  background-color: ${props => props.theme.colors.cardBackground};
+  color: ${props => props.theme.colors.label};
   height: 64px;
   padding: 0 24px;
   z-index: 5;

@@ -13,7 +13,7 @@ export const LoginContainer = styled.div`
   width: 100vw;
   height: 100%;;
   max-width: 456px;
-  background: #fff;
+  background:  ${props => props.theme.colors.cardBackground};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,7 @@ export const LoginContainer = styled.div`
 `
 
 export const Title = styled.h1`
-  color: #1C1C1C;
+  color: ${props => props.theme.colors.label};
   font-size: 24px;
   font-weight: 600;
   line-height: 29.05px;
@@ -64,7 +64,7 @@ export const FormError = styled.p`
 export const RegisterText = styled.p`
   margin-top: 23px;
   width: 100%;
-  color: #1c1c1c;
+  color: ${props => props.theme.colors.label};
   text-align: center;
 
   &, a {

@@ -10,7 +10,7 @@ export default createGlobalStyle`
 
   body {
     background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.label};
     min-height: 100vh;
     padding: 110px 10px 45px;
   }

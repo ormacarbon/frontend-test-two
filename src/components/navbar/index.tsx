@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import * as C from './styles'
 
 import { MenuOutlined } from '@ant-design/icons'
-import { Dropdown, Menu, Switch } from 'antd'
+import { Dropdown, Menu } from 'antd'
 import { useNavbarContext } from '../../context/NavbarContext'
 import { removeAuthTokenAndUserID } from '../../axios/axiosConfig'
 import { useRouter } from 'next/router'
 
-const Navbar: React.FC = () => {
-  const { isDarkMode, toggleDarkMode, username } = useNavbarContext()
+interface Props {
+  children: ReactNode;
+}
+
+const Navbar: React.FC<Props> = ({ children }) => {
+  const { username } = useNavbarContext()
   const router = useRouter()
 
   const logout = (): void => {
@@ -38,10 +42,10 @@ const Navbar: React.FC = () => {
   )
 
   return (
-    <C.NavbarContainer isDarkMode={isDarkMode}>
+    <C.NavbarContainer>
       <C.SwitchContainer>
         <C.SwitchLabel>Modo</C.SwitchLabel>
-        <Switch checked={isDarkMode} onChange={toggleDarkMode} />
+        { children }
       </C.SwitchContainer>
       <C.UserContainer>
         {username !== '' && (

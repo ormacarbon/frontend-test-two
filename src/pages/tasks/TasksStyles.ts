@@ -4,7 +4,7 @@ export const Card = styled.div`
   width: 100%;
   margin: 65px 0;
 
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.cardBackground};
   border: 2px solid #000000;
   box-shadow: 14px 18px 27px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -41,7 +41,7 @@ export const Title = styled.h1`
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
-  color: #1C1C1C;
+  color: ${props => props.theme.colors.label};
 `
 
 export const TasksContainer = styled.div`

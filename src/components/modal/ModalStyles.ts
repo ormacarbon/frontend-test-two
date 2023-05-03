@@ -21,7 +21,7 @@ export const Modal = styled.div`
   padding: 40px;
   z-index: 101;
 
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.cardBackground};
   border: 2px solid #000000;
   box-shadow: 24px 18px 27px rgba(0, 0, 0, 0.25);
   border-radius: 20px;

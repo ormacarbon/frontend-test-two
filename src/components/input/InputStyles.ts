@@ -16,12 +16,12 @@ export const Label = styled.label`
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #1C1C1C;
+  color: ${props => props.theme.colors.label};
   margin-bottom: 9px;
 `
 
 export const Input = styled.input`
-  border: 1px solid #000;
+  border: 1px solid ${props => props.theme.colors.inputBorderColor};
   height: 38px;
   border-radius: 6px;
   outline: none;
