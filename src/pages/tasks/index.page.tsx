@@ -1,4 +1,8 @@
-import React, { useState, type FC, useContext, useEffect} from 'react'
+import React, {
+  useState,
+  useContext,
+  useEffect
+} from 'react'
 
 import * as C from './styles'
 import Modal from '../../components/modal'
@@ -55,7 +59,7 @@ interface Props {
   data: Task[];
 }
 
-const Tasks: FC<Props> = ({ data }) => {
+const Tasks: React.FC<Props> = ({ data }) => {
   const { setIsLoading } = useContext(LoadingContext)
   const [taskForm, setTaskForm] = useState<TaskForm>({ name: '', description: ''})
   const [taskFormState, setTaskFormState] = useState<TaskFormState>({ name: { state: true, feedback: '' }, description: { state: true, feedback: '' } })

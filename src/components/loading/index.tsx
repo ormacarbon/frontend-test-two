@@ -1,8 +1,8 @@
-import React, { type FC } from 'react'
+import React from 'react'
 
 import * as C from './styles'
 
-const Loading: FC = () => (
+const Loading: React.FC = () => (
   <C.Container>
     <C.Spinner />
   </C.Container>

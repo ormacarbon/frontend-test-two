@@ -1,8 +1,8 @@
-import React, { type FC } from 'react'
+import React from 'react'
 import * as C from './styles'
 import { useRouter } from 'next/router'
 
-const Home: FC = () => {
+const Home: React.FC = () => {
   const router = useRouter()
 
   const redirectToLoginScreen = (): Promise<boolean> => router.push('/login')

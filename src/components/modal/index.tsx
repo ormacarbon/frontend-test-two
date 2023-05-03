@@ -1,4 +1,6 @@
-import React, { type FC, ReactNode} from 'react'
+import React, {
+  ReactNode
+} from 'react'
 
 import * as C from './styles'
 import Button from '../button'
@@ -21,7 +23,7 @@ interface Props {
   save?: () => void;
 }
 
-const Modal: FC<Props> = ({ title, display, setDisplay, children, save, clearFields }) => {
+const Modal: React.FC<Props> = ({ title, display, setDisplay, children, save, clearFields }) => {
   const handleDisplayChange = (action: string): void => {
     let status: boolean
 
