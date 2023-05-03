@@ -14,6 +14,7 @@ import { GetServerSideProps } from 'next'
 import { AxiosResponse } from 'axios'
 import { LoadingContext } from '../../context/LoadingContext'
 import { useNavbarContext } from '../../context/NavbarContext'
+import { notification } from 'antd'
 import nookies from 'nookies'
 import http from '../../axios/axiosConfig'
 import moment from 'moment'
@@ -73,6 +74,7 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(totalPagesContext)
   const [search, setSearch] = useState<string>('')
+  const [api, contextHolder] = notification.useNotification()
   const { setUserName } = useNavbarContext()
 
   useEffect(() => {
@@ -83,10 +85,18 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const openNotification = (message: string): void => {
+    api.open({
+      message: 'Erro!',
+      description: message,
+      duration: 4
+    })
+  }
+
   const getTasks = (page = 0, action = false):void => {
     setIsLoading(true)
 
-    http.get(`/activities?${action ? `limit=${currentPage * 15}` : ''}${page > 0 ? `page=${currentPage}` : ''}`)
+    http.get(`/activities?${action ? `limit=${currentPage * 15}` : ''}${page > 0 ? `page=${page}` : ''}`)
       .then((response: AxiosResponse) => {
         const tasksRoute = response.data.data?.activities?.map((task : TaskGet) => {
           return {
@@ -99,7 +109,7 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
         })
 
         if (page > 0) {
-          setCurrentPage(currentPage + 1)
+          setCurrentPage(page)
           setTotalPages(response.data.totalPages)
           setTasks([...tasks, ...tasksRoute])
         } else if (action) {
@@ -107,21 +117,19 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
         }
         setIsLoading(false)
       })
+      .catch(e => {
+        console.error(e)
+        setIsLoading(false)
+
+        openNotification(e.response?.data)
+      })
   }
 
   const validateFields = (): boolean => {
     Object.keys(taskForm).forEach((prop) => {
-      if (taskForm[prop] === '') {
-        taskFormState[prop].state = false
-        taskFormState[prop].feedback = 'Campo obrigatório'
-      } else {
-        taskFormState[prop].state = true
-        taskFormState[prop].feedback = ''
-        if (prop === 'name') {
-          taskFormState[prop].state = tasks.find(task => task.task === taskForm[prop]) === undefined
-          taskFormState[prop].feedback = tasks.find(task => task.task === taskForm[prop]) === undefined ? '' : 'Tarefa já existente'
-        }
-      }
+      taskFormState[prop].state = taskForm[prop] !== ''
+      taskFormState[prop].feedback = taskForm[prop] === '' ? 'Campo obrigatório' : ''
+
       setTaskFormState({ ...taskFormState })
     })
     const states = Object.keys(taskFormState).map((prop) => taskFormState[prop].state)
@@ -142,9 +150,16 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
         .catch(e => {
           console.error(e)
           setIsLoading(false)
-        })
 
-      setModalDisplay(false)
+          if (e.response?.data === 'Activity name already registered!') {
+            taskFormState.name.state = false
+            taskFormState.name.feedback = 'Tarefa já existente'
+
+            setTaskFormState({ ...taskFormState })
+          }
+
+          openNotification(e.response?.data)
+        })
     }
   }
 
@@ -161,6 +176,8 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
         .catch(e => {
           console.error(e)
           setIsLoading(false)
+
+          openNotification(e.response?.data)
         })
 
       setModalDisplay(false)
@@ -175,6 +192,8 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
       .catch(e => {
         console.error(e)
         setIsLoading(false)
+
+        openNotification(e.response?.data)
       })
   }
 
@@ -184,6 +203,7 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
 
   const clearFields = (): void => {
     setTaskForm({ ...taskForm, name: '', description: ''})
+    setTaskFormState({ name: { state: true, feedback: '' }, description: { state: true, feedback: '' } })
   }
 
   const changeModalTitle = (action: string): void => {
@@ -220,6 +240,7 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
 
   return (
     <C.Card>
+      { contextHolder }
       <Modal
         display={modalDisplay}
         setDisplay={setModalDisplay}
@@ -288,11 +309,11 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
             })}
       </C.TasksContainer>
 
-      { totalPages === currentPage && <C.ShowMoreContainer>
+      { totalPages > currentPage && <C.ShowMoreContainer>
         <Button
           option="salmon"
           label="Mostrar mais"
-          onClick={() => getTasks(currentPage, false)}
+          onClick={() => getTasks(currentPage + 1, false)}
         />
       </C.ShowMoreContainer> }
     </C.Card>
