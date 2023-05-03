@@ -12,11 +12,12 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = ({ children }) => {
-  const { username } = useNavbarContext()
+  const { username, setUserName } = useNavbarContext()
   const router = useRouter()
 
   const logout = (): void => {
     removeAuthTokenAndUserID()
+    setUserName('')
     router.push('/login')
   }
 
@@ -44,7 +45,7 @@ const Navbar: React.FC<Props> = ({ children }) => {
   return (
     <C.NavbarContainer>
       <C.SwitchContainer>
-        <C.SwitchLabel>Modo</C.SwitchLabel>
+        <C.SwitchLabel>Theme</C.SwitchLabel>
         { children }
       </C.SwitchContainer>
       <C.UserContainer>

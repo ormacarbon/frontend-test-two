@@ -5,10 +5,12 @@ import React, {
 } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import nookies from 'nookies'
 
 import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import { validateEmail } from '../../utils/utils'
 import { LoadingContext } from '../../context/LoadingContext'
+import { useNavbarContext } from '../../context/NavbarContext'
 import * as C from './styles'
 import Input from '../../components/input'
 import Button from '../../components/button'
@@ -32,15 +34,16 @@ interface LoginFormState {
 const Login: React.FC = () => {
   const { setIsLoading } = useContext(LoadingContext)
   const router = useRouter()
-
+  const { setUserName } = useNavbarContext()
   const [loginForm, setLoginForm] = useState<LoginForm>({ email: '', password: '' })
   const [loginFormState, setLoginFormState] = useState<LoginFormState>({ email: { state: true, feedback: '' }, password: { state: true, feedback: '' } })
   const [userNotFound, setUserNotFound] = useState<boolean>(false)
   const [disableButton, setDisableButton] = useState<boolean>(false)
 
   useEffect(() => {
-    const userID: string = localStorage.getItem('userID')
-    const token: string = localStorage.getItem('token')
+    const cookies = nookies.get()
+    const token = cookies.token
+    const userID = cookies.userID
 
     if (userID && token) router.push('/tasks')
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -83,8 +86,9 @@ const Login: React.FC = () => {
 
       http.post('/login', loginForm)
         .then((response) => {
-          const { token, userID } = response.data
+          const { token, userID, name} = response.data
           setAuthTokenAndUserID(token, userID.toString())
+          setUserName(name)
           if (!userNotFound) setUserNotFound(false)
           router.push('/tasks')
         })
@@ -120,7 +124,7 @@ const Login: React.FC = () => {
             placeholder="*********"
             value={loginForm.password}
             change={handleInputChange}
-            invalidFeedback={loginFormState.email.feedback}
+            invalidFeedback={loginFormState.password.feedback}
             state={loginFormState.password.state}
           />
         </C.Form>

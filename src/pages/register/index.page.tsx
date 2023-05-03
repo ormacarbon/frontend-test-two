@@ -12,6 +12,7 @@ import { LoadingContext } from '../../context/LoadingContext'
 import * as C from './styles'
 import Input from '../../components/input/index'
 import Button from '../../components/button'
+import nookies from 'nookies'
 
 interface RegisterForm {
   name: string;
@@ -61,8 +62,9 @@ const Register: React.FC = () => {
   })
 
   useEffect(() => {
-    const userID: string = localStorage.getItem('userID')
-    const token: string = localStorage.getItem('token')
+    const cookies = nookies.get()
+    const token = cookies.token
+    const userID = cookies.userID
 
     if (userID && token) router.push('/tasks')
     // eslint-disable-next-line react-hooks/exhaustive-deps

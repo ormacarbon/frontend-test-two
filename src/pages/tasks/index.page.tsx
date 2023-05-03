@@ -68,27 +68,41 @@ const Tasks: React.FC<Props> = ({ data }) => {
   const [modalDisplay, setModalDisplay] = useState<boolean>(false)
   const [taskIdToEdit, setTaskIdToEdit] = useState<number | null>(null)
   const [tasks, setTasks] = useState<Task[]>(data)
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [search, setSearch] = useState<string>('')
 
   useEffect(() => {
     setIsLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const getTasks = (): Promise<void> => http.get('/activity')
-    .then((response: AxiosResponse) => {
-      const tasks = response.data.data?.map((task : TaskGet) => {
-        return {
-          id: task.id,
-          task: task.name,
-          description: task.description,
-          created: moment(task.created_at).format('DD/MM/YYYY'),
-          updated: task.updated_at ? moment(task.updated_at).format('DD/MM/YYYY') : ''
-        }
-      })
+  const getTasks = (page = 0, action = false):void => {
+    setIsLoading(true)
 
-      setTasks(tasks)
-      setIsLoading(false)
-    })
+    http.get(`/activities?
+      ${action ? `?limit=${tasks?.length}` : ''}
+      ${page > 0 ? `?page=${currentPage}` : ''}
+    `)
+      .then((response: AxiosResponse) => {
+        const tasksRoute = response.data.data?.activities?.map((task : TaskGet) => {
+          return {
+            id: task.id,
+            task: task.name,
+            description: task.description,
+            created: moment(task.created_at).format('DD/MM/YYYY'),
+            updated: task.updated_at ? moment(task.updated_at).format('DD/MM/YYYY') : ''
+          }
+        })
+
+        if (page > 0) {
+          setCurrentPage(currentPage + 1)
+          setTasks([...tasks, ...tasksRoute])
+        } else if (action) {
+          setTasks([...tasksRoute])
+        }
+        setIsLoading(false)
+      })
+  }
 
   const validateFields = (): boolean => {
     Object.keys(taskForm).forEach((prop) => {
@@ -117,7 +131,7 @@ const Tasks: React.FC<Props> = ({ data }) => {
       setIsLoading(true)
       http.post('/activity', taskForm)
         .then(() => {
-          getTasks()
+          getTasks(0, true)
           setModalDisplay(false)
         })
         .catch(e => {
@@ -136,7 +150,7 @@ const Tasks: React.FC<Props> = ({ data }) => {
       setIsLoading(true)
       http.put(`/activity/${taskIdToEdit}`, taskForm)
         .then(() => {
-          getTasks()
+          getTasks(0, true)
           setModalDisplay(false)
         })
         .catch(e => {
@@ -152,7 +166,7 @@ const Tasks: React.FC<Props> = ({ data }) => {
     setIsLoading(true)
 
     http.delete(`/activity/${id}`)
-      .then(() => getTasks())
+      .then(() => getTasks(0, true))
       .catch(e => {
         console.error(e)
         setIsLoading(false)
@@ -238,16 +252,44 @@ const Tasks: React.FC<Props> = ({ data }) => {
         />
       </C.Container>
 
+      <C.Input
+        placeholder="Pesquise aqui"
+        onChange={e => setSearch(e.target.value)}
+      />
+
       <C.TasksContainer>
-        {tasks.length > 0 && tasks.map((task: Task, id: number) => (
-          <TaskCard
-            key={`task-${id}`}
-            taskProp={task}
-            handleTaskEditing={handleTaskEditing}
-            deleteTask={deleteTask}
-          />
-        ))}
+        {(search === '' && tasks.length > 0)
+          ? tasks.map((task: Task, id: number) => (
+            <TaskCard
+              key={`task-${id}`}
+              taskProp={task}
+              handleTaskEditing={handleTaskEditing}
+              deleteTask={deleteTask}
+            />
+          ))
+          : (search !== '' && tasks.length > 0) && tasks.map((task: Task, id: number) => {
+              if (task.task.match(search)) {
+                return (
+                  <TaskCard
+                    key={`task-${id}`}
+                    taskProp={task}
+                    handleTaskEditing={handleTaskEditing}
+                    deleteTask={deleteTask}
+                  />
+                )
+              }
+
+              return ''
+            })}
       </C.TasksContainer>
+
+      <C.ShowMoreContainer>
+        <Button
+          option="salmon"
+          label="Mostrar mais"
+          onClick={() => getTasks(currentPage, false)}
+        />
+      </C.ShowMoreContainer>
     </C.Card>
   )
 }
@@ -261,7 +303,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
   let response: AxiosResponse
 
   try {
-    response = await http.get('/activity', {
+    response = await http.get('/activities?page=1', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Beraer ${token}`,
@@ -269,7 +311,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
       }
     })
   } catch (e) {
-    if (e.response.status === 401) {
+    if (e.response?.status === 401) {
       return {
         redirect: {
           destination: '/login',
@@ -281,7 +323,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
 
   let data: Task[] | [] = []
   data = response
-    ? response.data.data.map((task: TaskGet) => {
+    ? response.data?.data?.activities?.map((task: TaskGet) => {
       return {
         id: task.id,
         task: task.name,
