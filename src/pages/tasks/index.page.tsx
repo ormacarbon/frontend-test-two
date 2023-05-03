@@ -13,6 +13,7 @@ import Input from '../../components/input'
 import { GetServerSideProps } from 'next'
 import { AxiosResponse } from 'axios'
 import { LoadingContext } from '../../context/LoadingContext'
+import { useNavbarContext } from '../../context/NavbarContext'
 import nookies from 'nookies'
 import http from '../../axios/axiosConfig'
 import moment from 'moment'
@@ -57,9 +58,10 @@ interface TaskGet {
 
 interface Props {
   data: Task[];
+  totalPagesContext: number;
 }
 
-const Tasks: React.FC<Props> = ({ data }) => {
+const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
   const { setIsLoading } = useContext(LoadingContext)
   const [taskForm, setTaskForm] = useState<TaskForm>({ name: '', description: ''})
   const [taskFormState, setTaskFormState] = useState<TaskFormState>({ name: { state: true, feedback: '' }, description: { state: true, feedback: '' } })
@@ -69,9 +71,14 @@ const Tasks: React.FC<Props> = ({ data }) => {
   const [taskIdToEdit, setTaskIdToEdit] = useState<number | null>(null)
   const [tasks, setTasks] = useState<Task[]>(data)
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [totalPages, setTotalPages] = useState<number>(totalPagesContext)
   const [search, setSearch] = useState<string>('')
+  const { setUserName } = useNavbarContext()
 
   useEffect(() => {
+    const cookies = nookies.get()
+    const userName = cookies.userName
+    setUserName(userName)
     setIsLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -79,10 +86,7 @@ const Tasks: React.FC<Props> = ({ data }) => {
   const getTasks = (page = 0, action = false):void => {
     setIsLoading(true)
 
-    http.get(`/activities?
-      ${action ? `?limit=${tasks?.length}` : ''}
-      ${page > 0 ? `?page=${currentPage}` : ''}
-    `)
+    http.get(`/activities?${action ? `limit=${currentPage * 15}` : ''}${page > 0 ? `page=${currentPage}` : ''}`)
       .then((response: AxiosResponse) => {
         const tasksRoute = response.data.data?.activities?.map((task : TaskGet) => {
           return {
@@ -96,6 +100,7 @@ const Tasks: React.FC<Props> = ({ data }) => {
 
         if (page > 0) {
           setCurrentPage(currentPage + 1)
+          setTotalPages(response.data.totalPages)
           setTasks([...tasks, ...tasksRoute])
         } else if (action) {
           setTasks([...tasksRoute])
@@ -283,13 +288,13 @@ const Tasks: React.FC<Props> = ({ data }) => {
             })}
       </C.TasksContainer>
 
-      <C.ShowMoreContainer>
+      { totalPages === currentPage && <C.ShowMoreContainer>
         <Button
           option="salmon"
           label="Mostrar mais"
           onClick={() => getTasks(currentPage, false)}
         />
-      </C.ShowMoreContainer>
+      </C.ShowMoreContainer> }
     </C.Card>
   )
 }
@@ -321,8 +326,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     }
   }
 
-  let data: Task[] | [] = []
-  data = response
+  const totalPagesContext: number = response ? response.data?.data.totalPages : 0
+  const data: Task[] | [] = response
     ? response.data?.data?.activities?.map((task: TaskGet) => {
       return {
         id: task.id,
@@ -336,7 +341,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
 
   return {
     props: {
-      data
+      data,
+      totalPagesContext
     }
   }
 }
