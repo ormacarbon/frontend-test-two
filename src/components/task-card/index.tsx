@@ -1,6 +1,11 @@
-import React, { type FC } from 'react'
-import * as C from './TaskStyles'
-import { Dropdown, Space, Tooltip, type MenuProps } from 'antd'
+import {
+  Dropdown,
+  Space,
+  Tooltip,
+  type MenuProps
+} from 'antd'
+import React from 'react'
+import * as C from './styles'
 
 interface Task {
   id: number;
@@ -16,7 +21,7 @@ interface Props {
   deleteTask: (id: number) => void;
 }
 
-const TaskCard: FC<Props> = ({ taskProp, handleTaskEditing, deleteTask }) => {
+const TaskCard: React.FC<Props> = ({ taskProp, handleTaskEditing, deleteTask }) => {
   const { id, task, description, created, updated } = taskProp
   const items: MenuProps['items'] = [
     {

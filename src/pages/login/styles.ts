@@ -2,17 +2,18 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 155px);
   display: flex;
   align-items: center;
   position: relative;
   margin: 0 auto;
 `
 
-export const RegisterContainer = styled.div`
+export const LoginContainer = styled.div`
   width: 100vw;
+  height: 100%;;
   max-width: 456px;
-  background: #fff;
+  background:  ${props => props.theme.colors.cardBackground};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +26,7 @@ export const RegisterContainer = styled.div`
 `
 
 export const Title = styled.h1`
-  color: #1C1C1C;
+  color: ${props => props.theme.colors.label};
   font-size: 24px;
   font-weight: 600;
   line-height: 29.05px;
@@ -38,7 +39,7 @@ export const Form = styled.form`
   .input-component {
     margin-bottom: 20px;
 
-    &:nth-child(4) {
+    &:nth-child(2) {
       margin-bottom: 45px;
       padding-top: 0px;
 
@@ -47,17 +48,23 @@ export const Form = styled.form`
       }
     }
   }
-
-  #retype-password-input {
-    &.register-input {
-    }
-  }
 `
 
-export const LoginText = styled.p`
+export const FormError = styled.p`
+  width: 100%;
+  padding: 10px 0;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  color: #FF2121;
+  text-align: center;
+`
+
+export const RegisterText = styled.p`
   margin-top: 23px;
   width: 100%;
-  color: #1c1c1c;
+  color: ${props => props.theme.colors.label};
   text-align: center;
 
   &, a {

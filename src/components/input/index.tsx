@@ -1,5 +1,8 @@
-import React, { type FC, InputHTMLAttributes } from 'react'
-import * as C from './InputStyles'
+import React, {
+  InputHTMLAttributes
+} from 'react'
+
+import * as C from './styles'
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   customClass?: string;
@@ -9,7 +12,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   change(newValue: string, inputName: string): void;
 }
 
-const Input: FC<Props> = ({ customClass, label, invalidFeedback, state, change, ...rest }) => {
+const Input: React.FC<Props> = ({ customClass, label, invalidFeedback, state, change, ...rest }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     change(event.target.value, event.target.name)
   }

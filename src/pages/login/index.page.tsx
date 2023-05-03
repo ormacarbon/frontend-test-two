@@ -1,13 +1,17 @@
-import React, { useState, type FC, useEffect, useContext } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useContext
+} from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import { validateEmail } from '../../utils/utils'
-import * as C from './LoginStyles'
+import { LoadingContext } from '../../context/LoadingContext'
+import * as C from './styles'
 import Input from '../../components/input'
 import Button from '../../components/button'
-import { LoadingContext } from '../../context/loading-context'
 
 interface LoginForm {
   email: string;
@@ -25,7 +29,7 @@ interface LoginFormState {
   };
 }
 
-const Login: FC = () => {
+const Login: React.FC = () => {
   const { setIsLoading } = useContext(LoadingContext)
   const router = useRouter()
 

@@ -1,12 +1,15 @@
-import React, { type FC, ButtonHTMLAttributes} from 'react'
-import * as C from './ButtonStyles'
+import React, {
+  ButtonHTMLAttributes
+} from 'react'
+
+import * as C from './styles'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   option: 'grey' | 'salmon' | 'white';
 }
 
-const Button: FC<Props> = ({ label, option, ...rest }) => {
+const Button: React.FC<Props> = ({ label, option, ...rest }) => {
   return (
     <C.Button
       option={option}
