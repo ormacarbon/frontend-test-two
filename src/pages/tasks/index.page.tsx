@@ -146,6 +146,7 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
       http.post('/activity', taskForm)
         .then(() => {
           getTasks(0, true)
+          clearFields()
           setModalDisplay(false)
         })
         .catch(e => {
@@ -172,6 +173,7 @@ const Tasks: React.FC<Props> = ({ data, totalPagesContext }) => {
       http.put(`/activity/${taskIdToEdit}`, taskForm)
         .then(() => {
           getTasks(0, true)
+          clearFields()
           setModalDisplay(false)
         })
         .catch(e => {
