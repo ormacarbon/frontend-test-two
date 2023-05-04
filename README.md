@@ -3,27 +3,30 @@
 
 Feito para organizar as tarefas do cotidiano
 
-
+![giftodo](https://user-images.githubusercontent.com/65923385/236119214-ecc1d10c-da4d-4627-a68c-f79252919908.gif)
 
 ## Deploy
 
-https://to-do-list-production-49f5.up.railway.app/
+``Railway`` https://to-do-list-production-49f5.up.railway.app/
+
+## ☕ Stacks utilizadas
+
+- ``NextJS``
+- ``Typescript``
+- ``Styled-components``
+- ``Ant Design``
+- ``Axios``
+- ``Nookies``
+- ``Moment``
+- ``Eslint``
+
+O back-end foi feito por mim e está hospedado em plataformas gratuitas. Portanto, não é tão perfomático, mas dá pra testar!! :D
+
+Repositório do back-end (NodeJS / Typescript / MYSQL)
+- https://github.com/HJosephDEV/api-to-do-list-nodejs
 
 
-
-## Stacks utilizadas
-
-#### NextJS
-#### Typescript
-#### Styled-components
-#### Ant Design
-#### Axios
-#### Nookies
-#### Moment
-#### Eslint
-
-
-## Rodando localmente
+## 💻 Rodando localmente
 Requisitos
 ```bash
   yarn v1.22.19
