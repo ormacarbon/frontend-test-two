@@ -121,7 +121,8 @@ const Register: React.FC = () => {
       setDisableButton(true)
       setIsLoading(true)
 
-      http.post('/user', {...registerForm, role: 0})
+      const payload = { ...registerForm, email: registerForm.email.toLowerCase(), role: 0 }
+      http.post('/user', payload)
         .then(() => {
           http.post<LoginResponse>('/login', registerForm)
             .then((response) => {
