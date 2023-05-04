@@ -9,6 +9,7 @@ import Link from 'next/link'
 import http, { setAuthTokenAndUserID } from '../../axios/axiosConfig'
 import { validateEmail } from '../../utils/utils'
 import { LoadingContext } from '../../context/LoadingContext'
+import { notification } from 'antd'
 import * as C from './styles'
 import Input from '../../components/input/index'
 import Button from '../../components/button'
@@ -61,6 +62,7 @@ const Register: React.FC = () => {
     password: { state: true, feedback: '' },
     retypePassword: { state: true, feedback: '' }
   })
+  const [api, contextHolder] = notification.useNotification()
 
   useEffect(() => {
     const cookies = nookies.get()
@@ -70,6 +72,14 @@ const Register: React.FC = () => {
     if (userID && token) router.push('/tasks')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const openNotification = (message: string): void => {
+    api.open({
+      message: 'Erro!',
+      description: message,
+      duration: 4
+    })
+  }
 
   const handleInputChange = (newValue: string, inputName: string) => {
     setRegisterForm({...registerForm, [inputName]: newValue})
@@ -132,13 +142,15 @@ const Register: React.FC = () => {
               router.push('/tasks')
             })
             .catch((e) => {
-              setDisableButton(false)
               console.error(e?.message)
               router.push('/login')
+              openNotification(e.response?.data)
+              setDisableButton(false)
               setIsLoading(false)
             })
         })
         .catch((e): void => {
+          openNotification(e.response?.data)
           setDisableButton(false)
           console.error(e?.message)
         })
@@ -147,6 +159,7 @@ const Register: React.FC = () => {
 
   return (
     <C.Container>
+      { contextHolder }
       <C.RegisterContainer>
         <C.Title>Cadastro</C.Title>
         <C.Form>
