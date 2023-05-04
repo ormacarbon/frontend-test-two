@@ -25,7 +25,7 @@ export const RegisterContainer = styled.div`
 `
 
 export const Title = styled.h1`
-  color: ${props => props.theme.colors.label};;
+  color: ${props => props.theme.colors.label};
   font-size: 24px;
   font-weight: 600;
   line-height: 29.05px;

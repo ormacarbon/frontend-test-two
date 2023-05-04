@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
   width: 100%;
-  margin: 65px 0;
 
   background: ${props => props.theme.colors.cardBackground};
   border: 2px solid #000000;

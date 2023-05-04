@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const LoginContainer = styled.div`
   width: 100vw;
-  height: 100%;;
+  height: 100%;
   max-width: 456px;
   background:  ${props => props.theme.colors.cardBackground};
   display: flex;
