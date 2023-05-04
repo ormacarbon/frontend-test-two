@@ -1,52 +1,68 @@
-# **TESTE DE FRONTEND**
 
-Neste teste, você será livre para criar uma aplicação consumindo a API que você quiser e com o tema que desejar.
-Contudo, o seu projeto deverá seguir os requisitos mínimos de conteúdo.
+# To-do-list
 
-SUGESTÕES DE APIS:
-https://github.com/public-apis/public-apis
+Feito para organizar as tarefas do cotidiano
 
----------------------------------------------------------------------
-## REQUISITOS:
+![giftodo](https://user-images.githubusercontent.com/65923385/236119214-ecc1d10c-da4d-4627-a68c-f79252919908.gif)
 
-- SEJA ORIGINAL, PROJETOS SUSPEITOS DE SEREM COPIADOS SERÃO DESCARTADOS!
-- QUEREMOS VER O SEU CÓDIGO, E NÃO O DE OUTROS.
+## Deploy
 
-## GIT
-- Faça um fork deste repositório.
-- Criar uma branch para codar as suas features.
-- Criar um pull-request quando o teste for finalizado e submetido.
+``Railway`` https://to-do-list-production-49f5.up.railway.app/
 
-##### **NOTA: Será avaliado também se o nome da branch, títulos de commit, push e comentários possuem boa legibilidade.**
+Conta com 100 itens para teste:
+user: teste@teste.com
+password: teste
 
------------------------------------------------------
+## ☕ Stacks utilizadas
 
-## FRAMEWORK
+- ``NextJS``
+- ``Typescript``
+- ``Styled-components``
+- ``Ant Design``
+- ``Axios``
+- ``Nookies``
+- ``Moment``
+- ``Eslint``
 
-- Utilizar as ferramentas presentes no framework do projeto (NEXT.JS).
+O back-end foi feito por mim e está hospedado em plataformas gratuitas. Portanto, não é tão perfomático, mas dá pra testar!! :D
 
------------------------------------------------------
+Repositório do back-end (NodeJS / Typescript / MYSQL)
+- https://github.com/HJosephDEV/api-to-do-list-nodejs
 
-## ESTILOS
 
-- Os estilos deste teste devem ser feitos em styled-components (evite utilizar bootstrap, mas se necessário, use).
-- O projeto deverá conter tema claro/escuro e forma do usuário alterar entre os dois.
-- Deve ser totalmente responsivo.
+## 💻 Rodando localmente
+Requisitos
+```bash
+  yarn v1.22.19
+```
 
------------------------------------------------------
+Clone o projeto
 
-## PROJETO
+```bash
+  git clone https://github.com/HJosephDEV/to-do-list.git
+```
 
-- Deve utilizar useContext, useState e useEffect.
-- Ter ao menos 3 paginas navegáveis com router (ex: um navbar para facilitar a navegação).
-- Deve consumir uma API de sua escolha, desde que os dados sejam filtraveis e paginados. No mínimo 15 itens por requisição.
+Entre no diretório do projeto
 
--------------------------------------------------------
+```bash
+  cd to-do-list
+```
 
-## REQUISITOS DIFERENCIAIS:
+Instale as dependências
 
-- Código tentando seguir SOLID.
-- Código performático.
-- Utilizar inglês no projeto todo.
-- Utilizar Injeção de Dependências.
-- Fazer deploy do mesmo (heroku, netlify, aws, vercel, github pages ou outro da preferência).
+```bash
+  yarn ou yarn install
+```
+
+Inicie o servidor
+
+```bash
+  yarn dev
+```
+
+
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env.local
+
+`NEXT_PUBLIC_API_URL=https://api-to-do-list-nodejs-production.up.railway.app/`
