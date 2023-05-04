@@ -84,7 +84,8 @@ const Login: React.FC = () => {
       setDisableButton(true)
       setIsLoading(true)
 
-      http.post('/login', loginForm)
+      const payload = { ...loginForm, email: loginForm.email.toLowerCase() }
+      http.post('/login', payload)
         .then((response) => {
           const { token, userID, name} = response.data
           setAuthTokenAndUserID(token, userID.toString(), name)
