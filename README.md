@@ -9,6 +9,10 @@ Feito para organizar as tarefas do cotidiano
 
 ``Railway`` https://to-do-list-production-49f5.up.railway.app/
 
+Conta com 100 itens para teste:
+user: teste@teste.com
+password: teste
+
 ## ☕ Stacks utilizadas
 
 - ``NextJS``

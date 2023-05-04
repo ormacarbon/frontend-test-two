@@ -152,6 +152,7 @@ const Register: React.FC = () => {
         .catch((e): void => {
           openNotification(e.response?.data)
           setDisableButton(false)
+          setIsLoading(false)
           console.error(e?.message)
         })
     }
